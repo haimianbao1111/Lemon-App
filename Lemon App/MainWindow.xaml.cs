@@ -142,23 +142,23 @@ namespace Lemon_App
             D.Add(2, "别来无恙啊，{Name}");
             KTEXT.Text = D[Get()].Replace("{Name}", Settings.Default.RobotName);
             StartAd();
-            if (Uuuhh.Lalala("www.mi.com"))
-            {
-                if (Settings.Default.RNBM == false)
-                {
-                    Home.Visibility = Visibility.Collapsed;
-                    textBlock6.Text = "柠萌账号成长中";
-                    Load.Visibility = Visibility.Visible;
-                    Load.BeginAnimation(WidthProperty, new DoubleAnimation(620, 630, TimeSpan.FromSeconds(0.2)));
-                    Load.BeginAnimation(OpacityProperty, new DoubleAnimation(0.2, 1, TimeSpan.FromSeconds(0.2)));
-                }
-                else
-                {
-                    Load.Visibility = Visibility.Collapsed; Home.Visibility = Visibility.Visible; Load.BeginAnimation(WidthProperty, new DoubleAnimation(620, 630, TimeSpan.FromSeconds(0.2)));
-                    Load.BeginAnimation(OpacityProperty, new DoubleAnimation(0.2, 1, TimeSpan.FromSeconds(0.2)));
-                }
-            }
-            else { textBlock6.Text = "未链接到互联网"; Load.Visibility = Visibility.Collapsed; }
+            //if (Uuuhh.Lalala("www.mi.com"))
+            //{
+            //    if (Settings.Default.RNBM == false)
+            //    {
+            //        Home.Visibility = Visibility.Collapsed;
+            //        textBlock6.Text = "柠萌账号成长中";
+            //        Load.Visibility = Visibility.Visible;
+            //        Load.BeginAnimation(WidthProperty, new DoubleAnimation(620, 630, TimeSpan.FromSeconds(0.2)));
+            //        Load.BeginAnimation(OpacityProperty, new DoubleAnimation(0.2, 1, TimeSpan.FromSeconds(0.2)));
+            //    }
+            //    else
+            //    {
+            //        Load.Visibility = Visibility.Collapsed; Home.Visibility = Visibility.Visible; Load.BeginAnimation(WidthProperty, new DoubleAnimation(620, 630, TimeSpan.FromSeconds(0.2)));
+            //        Load.BeginAnimation(OpacityProperty, new DoubleAnimation(0.2, 1, TimeSpan.FromSeconds(0.2)));
+            //    }
+            //}
+            //else { textBlock6.Text = "未链接到互联网"; Load.Visibility = Visibility.Collapsed; }
 
             Timer.Interval = 1000;
             Timer.Tick += Tick;
@@ -895,14 +895,17 @@ namespace Lemon_App
         }
 
         private void RNBM_Checked(object sender, RoutedEventArgs e)
-        {
-            if (Email.Text != "")
-                if (key.Text != "")
-                    if (ini != "")
+        {try
+            {
+                if (Email.Text != "")
+                    if (key.Text != ini)
                     {
                         Settings.Default.RNBM = (bool)RNBM.IsChecked;
                         Settings.Default.Save();
-                    }else { RNBM.IsChecked = false; }
+                    }
+                    else { RNBM.IsChecked = false; }
+            }
+            catch { }
         }
         //
         private void TextBlock8_MouseDown(object sender, MouseButtonEventArgs e)
