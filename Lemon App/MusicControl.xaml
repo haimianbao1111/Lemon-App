@@ -1,0 +1,208 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Lemon_App"
+             xmlns:MetroStyleBusyIndicator="clr-namespace:Transvalue.MetroStyleBusyIndicator" x:Class="Lemon_App.MusicControl"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Width="591" Height="348" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+
+        <LinearGradientBrush x:Key="SliderBackground"  StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Offset="0" Color="#59ccfc"/>
+            <GradientStop Offset="0.5" Color="#00b3fe"/>
+            <GradientStop Offset="1" Color="#59ccfc"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="SliderThumb"  StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Offset="0" Color="#FFD9D3E8"/>
+            <!--<GradientStop Offset="1" Color="#dfdfdf"/>-->
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="SliderText"  StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Offset="0" Color="#7cce45"/>
+            <GradientStop Offset="1" Color="#4ea017"/>
+        </LinearGradientBrush>
+
+        <!--Slider模板-->
+        <Style x:Key="Slider_RepeatButton" TargetType="{x:Type RepeatButton}">
+            <Setter Property="Focusable" Value="false" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RepeatButton}">
+                        <Border Background="{StaticResource SliderBackground}" />
+
+                    </ControlTemplate>
+
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="Slider_RepeatButton1" TargetType="{x:Type RepeatButton}">
+            <Setter Property="Focusable" Value="false" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RepeatButton}">
+                        <Border Background="Transparent" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="Slider_Thumb" TargetType="{x:Type Thumb}">
+            <Setter Property="Focusable" Value="false" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Thumb}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Border Background="{StaticResource SliderBackground}"/>
+                            <Border Grid.ColumnSpan="2" CornerRadius="4"  Background="Black" Width="15">
+                                <!--<TextBlock Text="||" HorizontalAlignment="Center" VerticalAlignment="Center"/>-->
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="Slider_CustomStyle" TargetType="{x:Type Slider}">
+            <Setter Property="Focusable" Value="false" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Slider}">
+                        <Grid>
+                            <Border Grid.Column="1" BorderBrush="Gray" BorderThickness="1" CornerRadius="8,0,0,8">
+                                <Track Grid.Column="1" x:Name="PART_Track">
+                                    <Track.DecreaseRepeatButton>
+                                        <RepeatButton Style="{StaticResource Slider_RepeatButton}"
+                                Command="Slider.DecreaseLarge"/>
+                                    </Track.DecreaseRepeatButton>
+                                    <Track.IncreaseRepeatButton>
+                                        <RepeatButton Style="{StaticResource Slider_RepeatButton1}"
+                                Command="Slider.IncreaseLarge"/>
+                                    </Track.IncreaseRepeatButton>
+                                    <Track.Thumb>
+                                        <Thumb Style="{StaticResource Slider_Thumb}"/>
+                                    </Track.Thumb>
+                                </Track>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="ListBox.Static.Background" Color="#FFFFFFFF"/>
+        <SolidColorBrush x:Key="ListBox.Static.Border" Color="#FFABADB3"/>
+        <SolidColorBrush x:Key="ListBox.Disabled.Background" Color="#FFFFFFFF"/>
+        <SolidColorBrush x:Key="ListBox.Disabled.Border" Color="#FFD9D9D9"/>
+        <Style x:Key="ListBoxStyle" TargetType="{x:Type ListBox}">
+            <Setter Property="Background" Value="{StaticResource ListBox.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource ListBox.Static.Border}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListBox}">
+                        <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="1" SnapsToDevicePixels="true">
+                            <ScrollViewer Focusable="false" Padding="{TemplateBinding Padding}" Style="{DynamicResource for_scrollviewer}">
+                                <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Style="{DynamicResource ItemsPresenterStyle}"/>
+                            </ScrollViewer>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="Bd" Value="{StaticResource ListBox.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource ListBox.Disabled.Border}"/>
+                            </Trigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsGrouping" Value="true"/>
+                                    <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+                            </MultiTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ItemsPresenterStyle" TargetType="{x:Type ItemsPresenter}"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid x:Name="ZjImAgE" Margin="0,0,0,49" Visibility="Collapsed">
+            <TextBlock Height="25" Margin="0,5,10,0" TextWrapping="Wrap" Text="{Binding Text, ElementName=lrcname}" VerticalAlignment="Top" Foreground="#CCFFFFFF" FontSize="20" TextAlignment="Center"/>
+            <TextBlock Height="19" Margin="0,30,10,0" TextWrapping="Wrap" Text="{Binding Text, ElementName=zk}" VerticalAlignment="Top" Foreground="#66FFFFFF" FontSize="14" TextAlignment="Center"/>
+            <Border x:Name="os" BorderBrush="#4CFFFFFF" BorderThickness="5" Margin="0,54,0,10" Width="235" Height="235" CornerRadius="235" Background="{Binding Background, ElementName=tx}" RenderTransformOrigin="0.5,0.5"/>
+        </Grid>
+        <Grid x:Name="G" Margin="0,0,0,49" Visibility="Collapsed" Background="#00000000">
+            <Grid Margin="0,60,0,0" Background="#00000000">
+                <Canvas  x:Name="CanvasLyric" ClipToBounds="True" Background="#00000000">
+                    <StackPanel x:Name="StackPanelCommonLyric"  Canvas.Left="0" Canvas.Top="300" Width="{Binding ActualWidth, ElementName=CanvasLyric, Mode=OneWay}" OpacityMask="Black" Background="#00000000" />
+                    <Canvas x:Name="CanvasFocusLyric"  Height="36"  Canvas.Left="0" Canvas.Top="253" Width="{Binding ActualWidth, ElementName=CanvasLyric, Mode=OneWay}" Background="#00000000" OpacityMask="Black" ClipToBounds="True">
+                        <TextBlock x:Name="TBFocusLyricBack" Text="柠檬Music" Height="{Binding Height, ElementName=CanvasFocusLyric}" Width="{Binding ActualWidth, ElementName=CanvasLyric, Mode=OneWay}" FontSize="22" TextAlignment="Center" Foreground="White" OpacityMask="Black" Background="#00000000" />
+                        <Canvas x:Name="CanvasFocusLyricFore" Height="{Binding Height, ElementName=CanvasFocusLyric}" Width="30" ClipToBounds="True" OpacityMask="Black" Background="#00000000">
+                            <TextBlock x:Name="TBFocusLyricFore" Text="{Binding Text, ElementName=TBFocusLyricBack}" Height="{Binding Height, ElementName=CanvasFocusLyric}" FontSize="{Binding FontSize, ElementName=TBFocusLyricBack}" TextAlignment="{Binding TextAlignment, ElementName=TBFocusLyricBack}" Foreground="Yellow" FontFamily="{Binding FontFamily, ElementName=TBFocusLyricBack}" Width="{Binding ActualWidth, ElementName=CanvasLyric, Mode=OneWay}" Visibility="{Binding Visibility, ElementName=TBFocusLyricBack}" TextWrapping="{Binding TextWrapping, ElementName=TBFocusLyricBack}" TextTrimming="{Binding TextTrimming, ElementName=TBFocusLyricBack}" OpacityMask="Black" Background="#00000000" />
+                        </Canvas>
+                    </Canvas>
+                </Canvas>
+                <StackPanel Margin="28,254.024,23,2" x:Name="BaseLineSP" Background="#00000000">
+                    <Line Stroke="#FF007ACC" StrokeThickness="2" StrokeDashArray="4,2" X1="0" X2="{Binding ActualWidth, ElementName=CanvasLyric}" Y2="0" x:Name="BaseLine" Visibility="Collapsed" Fill="#00000000" OpacityMask="{x:Null}" Y1="0" Grid.ColumnSpan="2" Height="4" />
+                    <TextBlock x:Name="tbDragTime" Text="0.00.00" TextAlignment="Left" Foreground="#FF007ACC" FontSize="18" Visibility="Collapsed" Width="{Binding ActualWidth, ElementName=CanvasLyric}" Background="#00000000" />
+                </StackPanel>
+            </Grid>
+            <TextBlock x:Name="lrcname" HorizontalAlignment="Left" Height="Auto" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="Auto" Margin="10,10,0,0" Foreground="#CCFFFFFF" FontSize="22"/>
+            <TextBlock x:Name="zk" HorizontalAlignment="Left" Height="Auto" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="Auto" Margin="10,35,0,0" Foreground="#99FFFFFF" FontSize="16"/>
+        </Grid>
+        <Grid x:Name="h" Margin="0,0,0,49">
+            <ListBox x:Name="listBox" Margin="0,43,0,0" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEEEEEE" SelectionChanged="listBox_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Visible" Style="{DynamicResource ListBoxStyle}"/>
+            <Grid Height="41" VerticalAlignment="Top">
+                <Border BorderThickness="1" HorizontalAlignment="Right" Height="27" Margin="0,7,9,0" VerticalAlignment="Top" Width="194" Background="#4CFFFFFF" CornerRadius="10" BorderBrush="#4C000000">
+                    <TextBox x:Name="textBox" Margin="9,4" BorderThickness="0" TextWrapping="Wrap" Text="搜索" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" KeyDown="textBox_KeyDown" Foreground="#CCFFFFFF"/>
+                </Border>
+                <Border BorderBrush="#4C000000" BorderThickness="1" HorizontalAlignment="Right" Height="25" Margin="0,8,208,0" VerticalAlignment="Top" Width="25" Background="#33FFFFFF" CornerRadius="5" MouseDown="Border_MouseDown_2" ToolTip="我的收藏">
+                    <Path Data="M92.361,35.955L67.95,30.352L52.814,7.012c-1.554-2.397-4.074-2.397-5.628,0L32.05,30.352   L7.639,35.955c-2.784,0.639-3.523,2.906-1.651,5.063l18.019,20.759l-2.757,25.916c-0.302,2.841,1.669,4.471,4.402,3.641L50,83.945   l24.347,7.39c2.733,0.83,4.704-0.801,4.402-3.641l-2.757-25.916l18.019-20.759C95.884,38.861,95.145,36.594,92.361,35.955z" Fill="#CCFFFFFF" Stretch="Uniform" StrokeThickness="0" Margin="4"/>
+                </Border>
+            </Grid>
+            <Grid x:Name="DOWN" Margin="0,41,0,0" Visibility="Collapsed">
+                <Border BorderThickness="1" Margin="69,42,70,42" Background="#33FFFFFF" CornerRadius="5">
+                    <Grid>
+                        <ProgressBar x:Name="PB" Height="13" Margin="10,0,10,47" VerticalAlignment="Bottom" Foreground="#FF3399FF" Background="White" BorderBrush="#FF3399FF"/>
+                        <TextBlock x:Name="textBlock6" Height="17" Margin="10,0,10,25" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Bottom" Foreground="White" TextAlignment="Center"/>
+                        <local:MetroLoadControl Height="11" Margin="0,96,0,0" VerticalAlignment="Top" Width="100"/>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+        <Grid  Height="49" VerticalAlignment="Bottom" Background="#33FFFFFF">
+            <Border x:Name="tx" BorderBrush="#33FFFFFF" BorderThickness="1" HorizontalAlignment="Left" Margin="55,5,0,5" Width="39" Background="#33FFFFFF" CornerRadius="5" MouseDown="tx_MouseDown"/>
+            <TextBlock x:Name="textBlock1" Height="Auto" Margin="99,6,105,23" TextWrapping="Wrap" Foreground="White" Text="柠萌音乐" MouseLeave="tx_MouseLeave" MouseMove="Grid_MouseDown"/>
+            <Border BorderBrush="#33FFFFFF" BorderThickness="1" HorizontalAlignment="Left" Margin="10,0,0,5" Width="39" Background="#33FFFFFF" CornerRadius="100" Height="39" VerticalAlignment="Bottom" MouseDown="textBlock_MouseDown">
+                <Path x:Name="s" Data="M40.2,3.8C36.4,0,30,2.7,30,8v112c0,5.3,6.4,8,10.2,4.2l56-56c2.3-2.3,2.3-6.1,0-8.4L40.2,3.8z" Stretch="Fill" Fill="White" Margin="12,10,10,10"/>
+            </Border>
+            <Slider x:Name="jd" Height="13" Margin="99,22,10,0" VerticalAlignment="Top" Style="{DynamicResource SimpleSlider}" MouseMove="jd_MouseMove" BorderBrush="{x:Null}" Foreground="{x:Null}"/>
+            <Border BorderBrush="#4C000000" BorderThickness="1" HorizontalAlignment="Right" Height="20" Margin="0,5,30,0" VerticalAlignment="Top" Width="20" Background="#33FFFFFF" CornerRadius="5" MouseDown="Border_MouseDown" ToolTip="上一页">
+                <Path Data="M53.696,30.254l32.099,32.1c2.042,2.042,2.042,5.352,0,7.393c-2.041,2.041-5.352,2.041-7.393,0L50,41.344L21.598,69.746  c-2.042,2.041-5.352,2.041-7.393,0c-2.042-2.041-2.042-5.351,0-7.393l32.099-32.1c1.021-1.02,2.358-1.53,3.696-1.53  S52.676,29.234,53.696,30.254z" Fill="White" Stretch="Uniform" StrokeThickness="0" Margin="3"/>
+            </Border>
+            <Border BorderBrush="#4C000000" BorderThickness="1" HorizontalAlignment="Right" Margin="0,5,5,0" Width="20" Background="#33FFFFFF" CornerRadius="5" ToolTip="下一页" MouseDown="textBlock2_MouseDown" Height="20" VerticalAlignment="Top">
+                <Path Data="M50,71.276c-1.338,0-2.676-0.511-3.696-1.53l-32.099-32.1c-2.042-2.042-2.042-5.352,0-7.393  c2.041-2.041,5.351-2.041,7.393,0L50,58.656l28.402-28.402c2.042-2.041,5.352-2.041,7.393,0c2.042,2.041,2.042,5.351,0,7.393  l-32.099,32.1C52.676,70.766,51.338,71.276,50,71.276z" Fill="White" Stretch="Uniform" StrokeThickness="0" Margin="3" ToolTip="下一页"/>
+            </Border>
+            <Border BorderThickness="1" HorizontalAlignment="Right" Margin="0,5,55,0" Width="20" MouseDown="textBlock4_MouseDown" Height="20" Background="#33FFFFFF" CornerRadius="3" BorderBrush="#4C000000" VerticalAlignment="Top">
+                <Path StrokeThickness="0" Margin="3" Fill="#CCEEEEEE" Data="M405,254c-10-10-24-10-34,0l-92,91V41c0-14-10-24-24-24s-25,10-25,24v304l-91-91c-10-10-24-10-34,0s-10,25,0,35l133,133  c5,5,10,7,17,7s12-2,17-7l133-133c5-5,8-12,8-18S410,259,405,254z" Stretch="Fill" ToolTip="下载"/>
+            </Border>
+            <Border BorderThickness="1" HorizontalAlignment="Right" Margin="0,5,80,0" Width="20" MouseDown="Border_MouseDown_1" Height="20" Background="#33FFFFFF" CornerRadius="3" BorderBrush="#4C000000" ToolTip="添加到收藏" VerticalAlignment="Top">
+                <Path StrokeThickness="0" Margin="2" Fill="#CCEEEEEE" Data="M56.14,28.375H35.274V7.506c0-1.809-1.462-3.271-3.274-3.271c-1.811,0-3.274,1.463-3.274,3.271v20.869H7.862  c-1.813,0-3.274,1.464-3.274,3.272c0,1.807,1.462,3.27,3.274,3.27h20.863v20.869c0,1.809,1.464,3.272,3.274,3.272  c1.813,0,3.274-1.464,3.274-3.272V34.918H56.14c1.811,0,3.272-1.463,3.272-3.27C59.412,29.839,57.95,28.375,56.14,28.375z" Stretch="Fill" ToolTip="添加到收藏"/>
+            </Border>
+            <TextBlock x:Name="loading" HorizontalAlignment="Left" Height="18" Margin="110,32,0,-1" TextWrapping="Wrap" Text="加载中..." VerticalAlignment="Top" Width="80" Foreground="#99FFFFFF" Visibility="Collapsed"/>
+
+        </Grid>
+    </Grid>
+</UserControl>

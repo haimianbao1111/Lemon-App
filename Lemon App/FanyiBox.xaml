@@ -1,0 +1,158 @@
+﻿<UserControl x:Class="Lemon_App.FanyiBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Lemon_App"
+             mc:Ignorable="d" Height="406" Width="774" Foreground="{x:Null}">
+    <UserControl.Resources>
+        <Style  TargetType="{x:Type ComboBox}">
+            <Setter Property="Margin" Value="5"></Setter>
+            <Setter Property="Width" Value="120"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ComboBox}">
+                        <Border  BorderBrush="#4C000000" BorderThickness="1" CornerRadius="5" Background="#33FFFFFF">
+                            <Grid>
+                                <!--下拉箭头-->
+                                <ToggleButton ClickMode="Press" Focusable="False" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Margin="2" MinWidth="0" MinHeight="0" Width="Auto" Foreground="White">
+                                    <ToggleButton.Style>
+                                        <Style TargetType="{x:Type ToggleButton}">
+                                            <Setter Property="MinWidth" Value="0"/>
+                                            <Setter Property="MinHeight" Value="0"/>
+                                            <Setter Property="Width" Value="Auto"/>
+                                            <Setter Property="Height" Value="Auto"/>
+                                            <Setter Property="Background" Value="Transparent"/>
+                                            <Setter Property="BorderBrush" Value="#00000000"/>
+                                            <Setter Property="BorderThickness" Value="2"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                                                        <DockPanel Background="{TemplateBinding Background}" LastChildFill="False" SnapsToDevicePixels="True">
+                                                            <Border x:Name="Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"  DockPanel.Dock="Right" >
+                                                                <Path Data="M0,0L3.5,4 7,0z" Fill="{TemplateBinding Foreground}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                            </Border>
+                                                        </DockPanel>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsChecked" Value="True">
+
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsEnabled" Value="False">
+                                                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </ToggleButton.Style>
+                                </ToggleButton>
+                                <!--项内容-->
+                                <ContentPresenter  IsHitTestVisible="False" Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" VerticalAlignment="Center" Margin="3" HorizontalAlignment="Stretch" />
+                                <TextBox x:Name="PART_EditableTextBox" HorizontalAlignment="Stretch" Focusable="True" Visibility="Collapsed" IsReadOnly="False"/>
+                                <!--下拉显示面板HorizontalOffset:设置下拉面板的相对位置-->
+                                <Popup HorizontalOffset="-1" Width="{TemplateBinding ActualWidth}"
+                                       IsOpen="{TemplateBinding IsDropDownOpen}" Focusable="False"    PopupAnimation="Slide">
+                                    <Grid  SnapsToDevicePixels="True" HorizontalAlignment="Stretch">
+                                        <Border  BorderThickness="1,1,1,1" BorderBrush="#4C000000" HorizontalAlignment="Stretch" CornerRadius="5">
+                                            <Border.Background>
+                                                <SolidColorBrush Color="#33FFFFFF" />
+                                            </Border.Background>
+                                        </Border>
+                                        <ScrollViewer  Style="{StaticResource for_scrollviewer}" SnapsToDevicePixels="True" HorizontalAlignment="Stretch" >
+                                            <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" HorizontalAlignment="Stretch" />
+                                        </ScrollViewer>
+                                    </Grid>
+                                </Popup>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Border>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+            </Grid.ColumnDefinitions>
+            <Border Background="#33FFFFFF" Margin="10,51,2.841,186.458" BorderBrush="#4C000000" BorderThickness="1" CornerRadius="5">
+                <TextBox x:Name="textBox1" Margin="0" TextWrapping="Wrap" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" BorderThickness="0" Background="{x:Null}" Foreground="White"/>
+            </Border>
+            <Border Margin="2.159,51,10,186.458" Background="#33FFFFFF" BorderBrush="#4C000000" BorderThickness="1" CornerRadius="5" Grid.Column="1">
+                <TextBox x:Name="FanyiFromtoTextBox" TextWrapping="Wrap" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" BorderThickness="0" TextChanged="FanyiFromtoTextBox_TextChanged" Background="{x:Null}" Foreground="White"/>
+            </Border>
+            <Border BorderThickness="1" Height="34" Margin="0,10,10,0" VerticalAlignment="Top" CornerRadius="5" HorizontalAlignment="Right" Width="77" Background="#33FFFFFF" BorderBrush="#4C000000" Grid.Column="1">
+                <Label x:Name="label1" Content="翻译" Margin="20,3" Foreground="White" MouseDown="button_Cli"/>
+            </Border>
+            <ComboBox x:Name="Yyycombo" HorizontalAlignment="Right" Height="34" Margin="0,10,191,0" VerticalAlignment="Top" Width="82" BorderBrush="{x:Null}" SelectedIndex="26" FontSize="14" Background="{x:Null}" Foreground="White" Grid.Column="1" >
+                <ComboBoxItem  BorderBrush="{x:Null}" Content="阿拉伯语" Foreground="{x:Null}"/>
+                <ComboBoxItem BorderBrush="{x:Null}" Content="爱沙尼亚语"/>
+                <ComboBoxItem BorderBrush="{x:Null}" Content="保加利亚语"/>
+                <ComboBoxItem BorderBrush="{x:Null}" Content="波兰语"/>
+                <ComboBoxItem  Content="丹麦语"/>
+                <ComboBoxItem  Content="德语"/>
+                <ComboBoxItem BorderBrush="{x:Null}" Content="俄语"/>
+                <ComboBoxItem BorderBrush="{x:Null}" Content="法语"/>
+                <ComboBoxItem  BorderBrush="{x:Null}" Content="繁体中文"/>
+                <ComboBoxItem  BorderBrush="{x:Null}" Content="芬兰语"/>
+                <ComboBoxItem  BorderBrush="{x:Null}" Content="韩语"/>
+                <ComboBoxItem  BorderBrush="{x:Null}" Content="荷兰语"/>
+                <ComboBoxItem  Content="捷克语"/>
+                <ComboBoxItem  BorderBrush="{x:Null}" Content="罗马尼亚语"/>
+                <ComboBoxItem  BorderBrush="{x:Null}" Content="葡萄牙语"/>
+                <ComboBoxItem BorderBrush="{x:Null}" Content="日语"/>
+                <ComboBoxItem BorderBrush="{x:Null}" Content="瑞典语"/>
+                <ComboBoxItem BorderBrush="{x:Null}" Content="斯洛文尼亚语"/>
+                <ComboBoxItem BorderBrush="{x:Null}" Content="泰语"/>
+                <ComboBoxItem BorderBrush="{x:Null}" Content="文言文"/>
+                <ComboBoxItem BorderBrush="{x:Null}" Content="西班牙语"/>
+                <ComboBoxItem  BorderBrush="{x:Null}" Content="希腊语"/>
+                <ComboBoxItem BorderBrush="{x:Null}" Content="匈牙利语"/>
+                <ComboBoxItem BorderBrush="{x:Null}" Content="意大利语"/>
+                <ComboBoxItem BorderBrush="{x:Null}" Content="英语"/>
+                <ComboBoxItem  BorderBrush="{x:Null}" Content="粤语"/>
+                <ComboBoxItem BorderBrush="{x:Null}" Content="自动"/>
+                <ComboBoxItem  BorderBrush="{x:Null}" Content="中文"/>
+            </ComboBox>
+            <ComboBox x:Name="HyycomboBox" HorizontalAlignment="Right" Height="34" Margin="0,10,92,0" VerticalAlignment="Top" Width="94" BorderBrush="{x:Null}" SelectedIndex="20" FontSize="14" Text="英语" Background="White" Foreground="White" Grid.Column="1">
+                <ComboBoxItem  BorderBrush="{x:Null}" Content="阿拉伯语"/>
+                <ComboBoxItem BorderBrush="{x:Null}" Content="爱沙尼亚语"/>
+                <ComboBoxItem BorderBrush="{x:Null}" Content="保加利亚语"/>
+                <ComboBoxItem BorderBrush="{x:Null}" Content="波兰语"/>
+                <ComboBoxItem  Content="丹麦语"/>
+                <ComboBoxItem  Content="德语"/>
+                <ComboBoxItem BorderBrush="{x:Null}" Content="俄语"/>
+                <ComboBoxItem BorderBrush="{x:Null}" Content="法语"/>
+                <ComboBoxItem  BorderBrush="{x:Null}" Content="繁体中文"/>
+                <ComboBoxItem  BorderBrush="{x:Null}" Content="芬兰语"/>
+                <ComboBoxItem  BorderBrush="{x:Null}" Content="韩语"/>
+                <ComboBoxItem  BorderBrush="{x:Null}" Content="荷兰语"/>
+                <ComboBoxItem  Content="捷克语"/>
+                <ComboBoxItem  BorderBrush="{x:Null}" Content="罗马尼亚语"/>
+                <ComboBoxItem  BorderBrush="{x:Null}" Content="葡萄牙语"/>
+                <ComboBoxItem BorderBrush="{x:Null}" Content="日语"/>
+                <ComboBoxItem BorderBrush="{x:Null}" Content="瑞典语"/>
+                <ComboBoxItem BorderBrush="{x:Null}" Content="斯洛文尼亚语"/>
+                <ComboBoxItem BorderBrush="{x:Null}" Content="泰语"/>
+                <ComboBoxItem BorderBrush="{x:Null}" Content="文言文"/>
+                <ComboBoxItem BorderBrush="{x:Null}" Content="西班牙语"/>
+                <ComboBoxItem  BorderBrush="{x:Null}" Content="希腊语"/>
+                <ComboBoxItem BorderBrush="{x:Null}" Content="匈牙利语"/>
+                <ComboBoxItem BorderBrush="{x:Null}" Content="意大利语"/>
+                <ComboBoxItem BorderBrush="{x:Null}" Content="英语"/>
+                <ComboBoxItem  BorderBrush="{x:Null}" Content="粤语"/>
+                <ComboBoxItem  BorderBrush="{x:Null}" Content="中文"/>
+            </ComboBox>
+            <Border BorderThickness="1" Margin="10,10,0,0" CornerRadius="5" HorizontalAlignment="Left" Width="62.667" Background="#33FFFFFF" BorderBrush="#4C000000" Height="30.667" VerticalAlignment="Top">
+                <Label x:Name="label3" Content="阅读" Margin="12,1.667,12.667,0" Foreground="White" MouseDown="label3_MouseDown" Height="25" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment"/>
+            </Border>
+            <TextBlock x:Name="textBlock" Margin="10,224.542,10,10" TextWrapping="Wrap" Foreground="#FFFDFDFD" Grid.ColumnSpan="2"/>
+
+        </Grid>
+    </Border>
+</UserControl>
