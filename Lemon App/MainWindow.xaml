@@ -21,7 +21,6 @@
                 <!--一只大猫咪，喵喵喵~~~-->
             </Border>
             <Grid>
-                <!--蓝蓝路-->
                 <Grid x:Name="Home" MouseLeftButtonDown="Gridhome_MouseLeftButtonDown" d:LayoutOverrides="Width, Height">
                     <local:IMBOX x:Name="SCCC" Margin="43,99,0,0" Height="Auto" Width="Auto" Visibility="Collapsed"/>
                     <!--"鱼鱼在这里呢!"他的主人说到.-->
