@@ -376,6 +376,17 @@ namespace Lemon_App
             sr.Dispose();
             return st;
         }
+
+        public static async System.Threading.Tasks.Task<string> GetWebAsync(string url,Encoding c)
+        {
+            HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(url);
+            if (Settings.Default.isWebProxy) hwr.Proxy = He.proxy;
+            var o = await hwr.GetResponseAsync();
+            StreamReader sr = new StreamReader(o.GetResponseStream(), c);
+            var st = await sr.ReadToEndAsync();
+            sr.Dispose();
+            return st;
+        }
         public static string GetWeb(string url)
         {
             HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(url);
