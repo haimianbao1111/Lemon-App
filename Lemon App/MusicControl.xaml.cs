@@ -81,7 +81,7 @@ namespace Lemon_App
                     {
                         Proxy = He.proxy
                     };
-                    dc.DownloadFileCompleted += Fi;
+                    dc.DownloadFileCompleted += Fis;
                     dc.DownloadFileAsync(new Uri(musicurl), AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.mp3");
                     ///等待播放
                     loading.Visibility = Visibility.Visible;
@@ -140,6 +140,15 @@ namespace Lemon_App
             }
             catch { deskLyricWin.Close(); LyricShow.backInitial(); LyricShow.initializeLyricUI(null); LyricShow.IsPauseLyricShow = true; }
         }
+
+        private void Fis(object sender, AsyncCompletedEventArgs e)
+        {
+            player.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.mp3"));
+            player.Play();
+            t.Start();
+            loading.Visibility = Visibility.Collapsed;
+        }
+
         private void Tick(object sender, EventArgs e)
         {
             try
