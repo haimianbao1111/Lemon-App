@@ -58,7 +58,7 @@ namespace Lemon_App
         DeskLyricWin deskLyricWin;
         private async void io(object sender, EventArgs e)
         {
-            try {
+         //   try {
                 s.Data = Geometry.Parse("M2.432,11.997L13.69,1.714c0.393-0.392,0.393-1.028,0-1.42c-0.393-0.392-1.031-0.392-1.424,0L0.286,11.236c-0.21,0.209-0.299,0.487-0.285,0.76c-0.014,0.274,0.075,0.551,0.285,0.76l11.98,10.942c0.393,0.392,1.031,0.392,1.424,0c0.393-0.392,0.393-1.028,0-1.42L2.432,11.997z");
                 string i = (listBox.Items[listBox.SelectedIndex + 1] as MusicItemControl).Content;
                 listBox.SelectedItem = listBox.Items[listBox.SelectedIndex + 1];
@@ -137,8 +137,8 @@ namespace Lemon_App
                     LyricShow.initializeLyricUI(getLT.LyricAndTimeDictionary);//解析歌词->得到歌词时间和歌词        }
 
                 }
-            }
-            catch { deskLyricWin.Close(); LyricShow.backInitial(); LyricShow.initializeLyricUI(null); LyricShow.IsPauseLyricShow = true; }
+           // }
+        //    catch { deskLyricWin.Close(); LyricShow.backInitial(); LyricShow.initializeLyricUI(null); LyricShow.IsPauseLyricShow = true; }
         }
 
         private void Fis(object sender, AsyncCompletedEventArgs e)
