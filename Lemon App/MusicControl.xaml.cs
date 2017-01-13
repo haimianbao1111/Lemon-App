@@ -78,8 +78,8 @@ namespace Lemon_App
             He.on = $"https://y.gtimg.cn/music/photo_new/T002R300x300M000{img}.jpg";
             tx.Background = new ImageBrush(new BitmapImage(new Uri(He.on)));
             musicid = ((listBox.SelectedItem as MusicItemControl).Music as string[])[20];
-            if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{i}.mp3"))
-            {
+         //   if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{i}.mp3"))
+            //{
                 // musicurl = $"http://cc.stream.qqmusic.qq.com/C100{musicid}.m4a?fromtag=52";
                 string guid = "20D919A4D7700FBC424740E8CED80C6F";
                 string ioo = Uuuhh.GetWeb($"http://59.37.96.220/base/fcgi-bin/fcg_musicexpress2.fcg?version=12&miniversion=92&key=19914AA57A96A9135541562F16DAD6B885AC8B8B5420AC567A0561D04540172E&guid={guid}");
@@ -93,13 +93,13 @@ namespace Lemon_App
                 dc.DownloadFileAsync(new Uri(musicurl), AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{i}.mp3");
                 ///等待播放
                 loading.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                player.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{i}.mp3"));
-                player.Play();
-                t.Start();
-            }
+   //         }
+      //      else
+         //   {
+            //    player.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{i}.mp3"));
+               // player.Play();
+                //t.Start();
+           // }
             if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc"))
             {
                 string lrc = ((listBox.SelectedItem as MusicItemControl).Music as string[])[0];
@@ -159,9 +159,13 @@ namespace Lemon_App
 
         private void Tick(object sender, EventArgs e)
         {
+            try
+            {
                 LyricShow.refreshLyricShow(player.Position.TotalSeconds);
                 jd.Maximum = GetMusicDurationTime().TotalMilliseconds;
                 jd.Value = GetPosition().TotalMilliseconds;
+            }
+            catch { }
         }
         int ioi = 1;
         private async void textBox_KeyDown(object sender, KeyEventArgs e)
