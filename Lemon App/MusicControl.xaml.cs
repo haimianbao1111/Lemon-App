@@ -78,7 +78,7 @@ namespace Lemon_App
             He.on = $"https://y.gtimg.cn/music/photo_new/T002R300x300M000{img}.jpg";
             tx.Background = new ImageBrush(new BitmapImage(new Uri(He.on)));
             musicid = ((listBox.SelectedItem as MusicItemControl).Music as string[])[20];
-            if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.mp3"))
+            if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{i}.mp3"))
             {
                 // musicurl = $"http://cc.stream.qqmusic.qq.com/C100{musicid}.m4a?fromtag=52";
                 string guid = "20D919A4D7700FBC424740E8CED80C6F";
@@ -90,13 +90,13 @@ namespace Lemon_App
                     Proxy = He.proxy
                 };
                 dc.DownloadFileCompleted += Fis;
-                dc.DownloadFileAsync(new Uri(musicurl), AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.mp3");
+                dc.DownloadFileAsync(new Uri(musicurl), AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{i}.mp3");
                 ///等待播放
                 loading.Visibility = Visibility.Visible;
             }
             else
             {
-                player.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.mp3"));
+                player.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{i}.mp3"));
                 player.Play();
                 t.Start();
             }
@@ -105,7 +105,7 @@ namespace Lemon_App
                 string lrc = ((listBox.SelectedItem as MusicItemControl).Music as string[])[0];
                 string lrcid = lrc.Substring(lrc.Length - 2, 2);
                 //     MessageBox.Show(He.Text(sr.ReadToEnd(), @"<lyric><![CDATA[", "]]></lyric>", 0));
-                FileStream fs = new FileStream(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc", FileMode.Create);
+                FileStream fs = new FileStream(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{i}.lrc", FileMode.Create);
                 StreamWriter sw = new StreamWriter(fs);
                 string ijo = He.Text(await Uuuhh.GetWebUAsync($"http://music.qq.com/miniportal/static/lyric/{lrcid}/{lrc}.xml"), @"<lyric><![CDATA[", "]]></lyric>", 0).Replace("&apos;", "'");
                 if (ijo != "")
@@ -124,7 +124,7 @@ namespace Lemon_App
                         LyricShow.HR = 0;
                     }
                     LyricShow.IsPauseLyricShow = false;
-                    getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc");
+                    getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{i}.lrc");
                     LyricShow.initializeLyricUI(getLT.LyricAndTimeDictionary);//解析歌词->得到歌词时间和歌词       
                 }
                 else { deskLyricWin.Close(); LyricShow.backInitial(); LyricShow.initializeLyricUI(null); LyricShow.IsPauseLyricShow = true; }
@@ -159,13 +159,9 @@ namespace Lemon_App
 
         private void Tick(object sender, EventArgs e)
         {
-            try
-            {
                 LyricShow.refreshLyricShow(player.Position.TotalSeconds);
                 jd.Maximum = GetMusicDurationTime().TotalMilliseconds;
                 jd.Value = GetPosition().TotalMilliseconds;
-            }
-            catch { }
         }
         int ioi = 1;
         private async void textBox_KeyDown(object sender, KeyEventArgs e)
