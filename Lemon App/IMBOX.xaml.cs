@@ -31,7 +31,7 @@ namespace Lemon_App
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            
+            Robot.Width = this.ActualWidth;
         }
 
         private async void label_MouseDown(object sender, MouseButtonEventArgs e)
@@ -39,11 +39,11 @@ namespace Lemon_App
             JObject obj = JObject.Parse(await Uuuhh.GetWebAsync("http://www.tuling123.com/openapi/api?key=0651b32a3a6c8f54c7869b9e62872796&info=" + Uri.EscapeUriString(textBox1.Text) + "&userid=" + Uri.EscapeUriString(Settings.Default.LemonAreeunIts)));
             User U = new User(textBox1.Text)
             {
-                Width = 591
+                Width = Robot.ActualWidth
             };
             Robot Rb = new Robot((string)obj["text"])
             {
-                Width = 591
+                Width = Robot.ActualWidth
             };
             Robot.Children.Add(U);
             Robot.Children.Add(Rb);
@@ -51,9 +51,9 @@ namespace Lemon_App
             {
                 string i = (string)obj["text"];
                 User Uu = new User(textBox1.Text);
-                U.Width = 591;
+                U.Width = Robot.ActualWidth;
                 Lemon_App.Robot Rbu = new Lemon_App.Robot((string)obj["url"] + i);
-                Rb.Width = 591;
+                Rb.Width = Robot.ActualWidth;
                 Robot.Children.Add(Uu);
                 Robot.Children.Add(Rbu);
             }
@@ -66,18 +66,18 @@ namespace Lemon_App
             {
                 JObject obj = JObject.Parse(await Uuuhh.GetWebAsync("http://www.tuling123.com/openapi/api?key=0651b32a3a6c8f54c7869b9e62872796&info=" + Uri.EscapeUriString(textBox1.Text) + "&userid=" + Uri.EscapeUriString(Settings.Default.LemonAreeunIts)));
                 User U = new User(textBox1.Text);
-                U.Width = 591;
+                U.Width = Robot.ActualWidth;
                 Lemon_App.Robot Rb = new Lemon_App.Robot((string)obj["text"]);
-                Rb.Width = 591;
+                Rb.Width = Robot.ActualWidth;
                 Robot.Children.Add(U);
                 Robot.Children.Add(Rb);
                 if ((string)obj["code"] == "200000")
                 {
                     string i = (string)obj["text"];
                     User Uu = new User(textBox1.Text);
-                    U.Width = 591;
+                    U.Width = Robot.ActualWidth;
                     Lemon_App.Robot Rbu = new Lemon_App.Robot((string)obj["url"] + i);
-                    Rb.Width = 591;
+                    Rb.Width = Robot.ActualWidth;
                     Robot.Children.Add(Uu);
                     Robot.Children.Add(Rbu);
                 }
@@ -88,6 +88,11 @@ namespace Lemon_App
         {
             double d = this.Sllv.ActualHeight + this.Sllv.ViewportHeight + this.Sllv.ExtentHeight;
             this.Sllv.ScrollToVerticalOffset(d);
+        }
+
+        private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            Robot.Width = this.ActualWidth;
         }
     }
 }
