@@ -93,6 +93,10 @@ namespace Lemon_App
         private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             Robot.Width = this.ActualWidth;
+            foreach(var o in Robot.Children)
+            {
+                (o as UserControl).Width = this.ActualWidth;
+            }
         }
     }
 }

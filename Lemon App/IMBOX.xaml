@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Lemon_App"
              xmlns:Forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" x:Name="userControl" x:Class="Lemon_App.IMBOX"
-             mc:Ignorable="d" Loaded="UserControl_Loaded" Height="348" Width="591" SizeChanged="UserControl_SizeChanged">
+             mc:Ignorable="d" Loaded="UserControl_Loaded"  SizeChanged="UserControl_SizeChanged">
     <Grid>
         <TextBox x:Name="textBox1" TextWrapping="Wrap" FontSize="14" BorderThickness="0" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" KeyDown="textBox1_KeyDown" Height="31" VerticalAlignment="Bottom">
             <TextBox.Background>

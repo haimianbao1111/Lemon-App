@@ -12,7 +12,7 @@
             <ColumnDefinition Width="20*"/>
             <ColumnDefinition Width="20*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock x:Name="Nm" TextWrapping="Wrap" Text="MusicName" Foreground="#FFEEEEEE" FontSize="14" Margin="5,15,0,15" HorizontalAlignment="Left"/>
+        <TextBlock x:Name="Nm" TextWrapping="Wrap" Text="MusicName" Foreground="#FF686868" FontSize="14" Margin="5,15,0,15" HorizontalAlignment="Left"/>
         <TextBlock x:Name="GS" TextWrapping="Wrap" Foreground="#FFCFCFCF" FontSize="14" Margin="5,15,0,15" Grid.Column="1" HorizontalAlignment="Left" Text="MusicSinger"/>
         <TextBlock x:Name="ZJ" HorizontalAlignment="Left" TextWrapping="Wrap" Foreground="#FFCFCFCF" FontSize="14" Margin="5,15,0,15" Grid.Column="2" Text="MusicAlbum"/>
 

@@ -122,6 +122,9 @@ namespace Lemon_App
                         LyricShow.HB = 204;
                         LyricShow.HG = 122;
                         LyricShow.HR = 0;
+                        LyricShow.CB = 193;
+                        LyricShow.CG = 180;
+                        LyricShow.CR = 180;
                     }
                     LyricShow.IsPauseLyricShow = false;
                     getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{i}.lrc");
@@ -139,6 +142,9 @@ namespace Lemon_App
                     LyricShow.HB = 204;
                     LyricShow.HG = 122;
                     LyricShow.HR = 0;
+                    LyricShow.CB = 193;
+                    LyricShow.CG = 180;
+                    LyricShow.CR = 180;
                 }
                 LyricShow.IsPauseLyricShow = false;
                 getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc");
@@ -269,6 +275,9 @@ namespace Lemon_App
                             LyricShow.HB = 204;
                             LyricShow.HG = 122;
                             LyricShow.HR = 0;
+                            LyricShow.CB = 193;
+                            LyricShow.CG = 180;
+                            LyricShow.CR = 180;
                         }
                         LyricShow.IsPauseLyricShow = false;
                         getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc");
@@ -286,6 +295,9 @@ namespace Lemon_App
                         LyricShow.HB = 204;
                         LyricShow.HG = 122;
                         LyricShow.HR = 0;
+                        LyricShow.CB = 193;
+                        LyricShow.CG = 180;
+                        LyricShow.CR = 180;
                     }
                     LyricShow.IsPauseLyricShow = false;
                     getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc");
