@@ -183,7 +183,7 @@
             </Grid>
         </Grid>
         <Grid  Height="49" VerticalAlignment="Bottom" Background="#FF2D2D30">
-            <Border x:Name="tx" BorderBrush="#33FFFFFF" BorderThickness="1" HorizontalAlignment="Left" Margin="55,5,0,5" Width="39" Background="#33FFFFFF" CornerRadius="5" MouseDown="tx_MouseDown"/>
+            <Border x:Name="tx" BorderBrush="#33FFFFFF" BorderThickness="1" HorizontalAlignment="Left" Margin="55,5,0,5" Width="39" CornerRadius="5" MouseDown="tx_MouseDown" Background="White"/>
             <TextBlock x:Name="textBlock1" Height="Auto" Margin="99,6,105,23" TextWrapping="Wrap" Foreground="White" Text="柠萌音乐" MouseLeave="tx_MouseLeave" MouseMove="Grid_MouseDown"/>
             <Border BorderBrush="#33FFFFFF" BorderThickness="1" HorizontalAlignment="Left" Margin="10,0,0,5" Width="39" Background="#33FFFFFF" CornerRadius="100" Height="39" VerticalAlignment="Bottom" MouseDown="textBlock_MouseDown">
                 <Path x:Name="s" Data="M40.2,3.8C36.4,0,30,2.7,30,8v112c0,5.3,6.4,8,10.2,4.2l56-56c2.3-2.3,2.3-6.1,0-8.4L40.2,3.8z" Stretch="Fill" Fill="White" Margin="12,10,10,10"/>

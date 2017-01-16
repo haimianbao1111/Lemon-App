@@ -159,9 +159,6 @@
     <Compile Include="HaWindow.xaml.cs">
       <DependentUpon>HaWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="HomeControl.xaml.cs">
-      <DependentUpon>HomeControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ImageHelper.cs" />
     <Compile Include="IMBOX.xaml.cs">
       <DependentUpon>IMBOX.xaml</DependentUpon>
@@ -170,7 +167,6 @@
       <DependentUpon>Lemon.xaml</DependentUpon>
     </Compile>
     <Compile Include="LyricShow.cs" />
-    <Compile Include="MainWindow.xaml.cs" />
     <Compile Include="MetroLoadControl.xaml.cs">
       <DependentUpon>MetroLoadControl.xaml</DependentUpon>
     </Compile>
@@ -216,6 +212,9 @@
     <Compile Include="UserFeedback.xaml.cs">
       <DependentUpon>UserFeedback.xaml</DependentUpon>
     </Compile>
+    <Compile Include="uSeRhOmE.xaml.cs">
+      <DependentUpon>uSeRhOmE.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WeatherBox.xaml.cs">
       <DependentUpon>WeatherBox.xaml</DependentUpon>
     </Compile>
@@ -247,10 +246,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="HomeControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="IMBOX.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -267,10 +262,6 @@
     </Compile>
     <Compile Include="He.cs" />
     <Page Include="Lemon.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -344,6 +335,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserFeedback.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="uSeRhOmE.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

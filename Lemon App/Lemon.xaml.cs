@@ -11,6 +11,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -76,8 +77,11 @@ namespace Lemon_App
         {
             if((sender as Border).ToolTip.ToString()== "小萌机器人")
             {
+                BackgroundPage.Background = new SolidColorBrush(Colors.White);
+                BackgroundPage.Effect = new BlurEffect() { Radius = 0 };
                 Robot.Visibility = Visibility.Visible;
                 Music.Visibility = Visibility.Collapsed;
+                User.Visibility = Visibility.Collapsed;
                 All.Visibility = Visibility.Collapsed;
                 //IContentPage.Children.Clear();
                 //IContentPage.Children.Add(new IMBOX());
@@ -87,8 +91,11 @@ namespace Lemon_App
             }
             else if((sender as Border).ToolTip.ToString() == "小萌音乐")
             {
+                BackgroundPage.Background = new SolidColorBrush(Colors.White);
+                BackgroundPage.Effect = new BlurEffect() { Radius = 0 };
                 Robot.Visibility = Visibility.Collapsed;
                 All.Visibility = Visibility.Collapsed;
+                User.Visibility = Visibility.Collapsed;
                 Music.Visibility = Visibility.Visible;
                 //IContentPage.Children.Clear();
                 //   IContentPage.Children.Add(new MusicControl());
@@ -98,8 +105,11 @@ namespace Lemon_App
             }
             else if ((sender as Border).ToolTip.ToString() == "其他")
             {
+                BackgroundPage.Background = new SolidColorBrush(Colors.White);
+                BackgroundPage.Effect = new BlurEffect() { Radius = 0 };
                 Robot.Visibility = Visibility.Collapsed;
                 Music.Visibility = Visibility.Collapsed;
+                User.Visibility = Visibility.Collapsed;
                 All.Visibility = Visibility.Visible;
                 //  IContentPage.Children.Clear();
                 //IContentPage.Children.Add(new AllControl());
@@ -129,6 +139,39 @@ namespace Lemon_App
                 Toast.SetToastNotion("下午好:", "欢迎回来" + Settings.Default.RobotName, "------祝你今天好运！").Show();
             LemonWeather w = new LemonWeather(Settings.Default.WeatherInfo);
             Toast.SetToastNotion($"今日{w.WeatherName}天气", w.WeatherMessage, "-----来自柠檬天气Toast").Show();
+        }
+
+        private void tx_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            //if (Email.Text != "")
+            //{
+            //    Random ra = new Random();
+            //    ini = ra.Next().ToString();
+            //    MailMessage m = new MailMessage()
+            //    {
+            //        From = new MailAddress("lemon.app@qq.com", "Lemon团队")
+            //    };
+            //    m.To.Add(new MailAddress(Email.Text));
+            //    m.Subject = "Lemon App";
+            //    m.SubjectEncoding = Encoding.UTF8;
+            //    m.Body = He.EmailMessage.Replace("{ninini}", ini);
+            //    m.BodyEncoding = Encoding.UTF8;
+            //    m.IsBodyHtml = true;
+            //    SmtpClient s = new SmtpClient()
+            //    {
+            //        Host = "smtp.qq.com",
+            //        Port = 587,
+            //        EnableSsl = true,
+            //        Credentials = new NetworkCredential("lemon.app@qq.com", "qtmiqibczofmddbi")
+            //    };
+            //    s.Send(m);
+            //}
+            Robot.Visibility = Visibility.Collapsed;
+            All.Visibility = Visibility.Collapsed;
+            Music.Visibility = Visibility.Collapsed;
+            User.Visibility = Visibility.Visible;
+            BackgroundPage.Background = User.TXIMAGE;
+            BackgroundPage.Effect = new BlurEffect() { Radius = 80 };
         }
     }
 }

@@ -185,7 +185,7 @@ namespace Lemon_App
                     listBox.Items.Clear();
                     JObject o = JObject.Parse(await Uuuhh.GetWebAsync($"http://s.music.qq.com/fcgi-bin/music_search_new_platform?t=0&n=50&aggr=1&cr=1&loginUin={Settings.Default.RobotName}&format=json&inCharset=GB2312&outCharset=utf-8&notice=0&platform=jqminiframe.json&needNewCode=0&p={ioi.ToString()}&catZhida=0&remoteplace=sizer.newclient.next_song&w={Uri.EscapeDataString(textBox.Text)}"));
                     int i = 0;
-                    while (i < 100)
+                    while (i < 50)
                     {
                         string f = o["data"]["song"]["list"][i]["f"].ToString().Replace("|", "\r\n");
                         string[] ContentLines = f.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
@@ -519,7 +519,7 @@ namespace Lemon_App
                     listBox.Items.Clear();
                     JObject o = JObject.Parse(await Uuuhh.GetWebAsync($"http://s.music.qq.com/fcgi-bin/music_search_new_platform?t=0&n=50&aggr=1&cr=1&loginUin={Settings.Default.RobotName}&format=json&inCharset=GB2312&outCharset=utf-8&notice=0&platform=jqminiframe.json&needNewCode=0&p={ioi.ToString()}&catZhida=0&remoteplace=sizer.newclient.next_song&w={Uri.EscapeDataString(textBox.Text)}"));
                     int i = 0;
-                    while (i < 100)
+                    while (i < 50)
                     {
                         string f = o["data"]["song"]["list"][i]["f"].ToString().Replace("|", "\r\n");
                         string[] ContentLines = f.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
@@ -546,7 +546,7 @@ namespace Lemon_App
                 listBox.Items.Clear();
                 JObject o = JObject.Parse(await Uuuhh.GetWebAsync($"http://s.music.qq.com/fcgi-bin/music_search_new_platform?t=0&n=50&aggr=1&cr=1&loginUin={Settings.Default.RobotName}&format=json&inCharset=GB2312&outCharset=utf-8&notice=0&platform=jqminiframe.json&needNewCode=0&p={ioi.ToString()}&catZhida=0&remoteplace=sizer.newclient.next_song&w={Uri.EscapeDataString(textBox.Text)}"));
                 int i = 0;
-                while (i < 100)
+                while (i < 50)
                 {
                     string f = o["data"]["song"]["list"][i]["f"].ToString().Replace("|", "\r\n");
                     string[] ContentLines = f.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);

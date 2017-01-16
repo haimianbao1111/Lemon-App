@@ -21,12 +21,12 @@ namespace Lemon_App
     /// </summary>
     public partial class HaWindow : Window
     {
-        public HaWindow(MainWindow w)
+        public HaWindow(Window w)
         {
             InitializeComponent();
             this.w = w;
         }
-        MainWindow w;
+        Window w;
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             if (System.IO.File.Exists(AppDomain.CurrentDomain.BaseDirectory + "UserImage.bmp"))
@@ -54,8 +54,8 @@ namespace Lemon_App
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            this.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.3)));
-            w.gridhome.BeginAnimation(HeightProperty, new DoubleAnimation(0, 441, TimeSpan.FromSeconds(0.3)));
+            w.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.3)));
+            w.BeginAnimation(HeightProperty, new DoubleAnimation(0, 441, TimeSpan.FromSeconds(0.3)));
             ShowInTaskbar = true;
             this.Activate();
         }
