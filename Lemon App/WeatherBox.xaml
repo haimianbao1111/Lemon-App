@@ -5,126 +5,141 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Lemon_App"
              xmlns:Forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" x:Class="Lemon_App.WeatherBox"
-             mc:Ignorable="d" Loaded="UserControl_Loaded" Width="591" Height="348" >
-    <ScrollViewer Style="{DynamicResource for_scrollviewer}">
-        <Grid Width="591" >
+             mc:Ignorable="d" Loaded="UserControl_Loaded" >
+    <ScrollViewer x:Name="scrollViewer" Style="{DynamicResource for_scrollviewer}" >
+        <Grid x:Name="grid" Width="{Binding ActualWidth, ElementName=scrollViewer}" Height="Auto">
             <Grid Margin="0" Height="32" VerticalAlignment="Top">
-                <TextBlock x:Name="Biaoti" TextWrapping="Wrap" TextAlignment="Center" Margin="12,7,311.25,5.44" Foreground="White"><Run Text="天气预报•临沧"/></TextBlock>
-                <Border BorderThickness="1" HorizontalAlignment="Right" Height="25" Margin="0,4,0,0" VerticalAlignment="Top" Width="275" CornerRadius="7" BorderBrush="#FFD8D8D8">
-                    <TextBox x:Name="textBox" Margin="9,3,-1,1" TextWrapping="Wrap" Text="地区" KeyDown="textBox_KeyDown" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Background="{x:Null}" Foreground="White" BorderThickness="0"/>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="Biaoti" TextWrapping="Wrap" TextAlignment="Center" Margin="10,7,0,5" Foreground="#FF686868" Height="20"><Run Text="天气预报•临沧"/></TextBlock>
+                <Border BorderThickness="1" Height="25" Margin="40,4,0,0" VerticalAlignment="Top" CornerRadius="7" Background="#FFF1F2F6" Grid.Column="1">
+                    <TextBox x:Name="textBox" Margin="9,3,-1,1" TextWrapping="Wrap" Text="地区" KeyDown="textBox_KeyDown" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Background="{x:Null}" Foreground="#FF2D2D30" BorderThickness="0"/>
                 </Border>
-                <Border BorderThickness="1" Margin="0,3.5,281.25,3.5" Width="25" Height="25" HorizontalAlignment="Right" d:LayoutOverrides="Width" MouseDown="textBlock2_MouseDown">
-                    <Path StrokeThickness="0" Margin="2" Fill="#CCEEEEEE"  Data="M23.74,2H31c0.552,0,1-0.448,1-1c0-0.552-0.448-1-1-1H21c-0.121,0-1,0-1,1
+                <Border BorderThickness="1" Margin="10,4,0,3" Width="25" Height="25" HorizontalAlignment="Left" MouseDown="textBlock2_MouseDown" Grid.Column="1">
+                    <Path StrokeThickness="0" Margin="2" Fill="#FF686868"  Data="M23.74,2H31c0.552,0,1-0.448,1-1c0-0.552-0.448-1-1-1H21c-0.121,0-1,0-1,1
 			v10c0,0.552,0.448,1,1,1c0.552,0,1-0.448,1-1V3.359c4.728,2.246,8,7.058,8,12.641c0,7.732-6.268,14-14,14C8.268,30,2,23.732,2,16
 			C2,8.949,7.218,3.132,14,2.159V0.138C6.11,1.124,0,7.842,0,16c0,8.837,7.163,16,16,16s16-7.163,16-16
 			C32,9.972,28.664,4.728,23.74,2z" Stretch="Fill"/>
                 </Border>
             </Grid>
-            <Border x:Name="CY1" BorderThickness="0" HorizontalAlignment="Left" Height="40" Margin="0,448,0,0" VerticalAlignment="Top" Width="40" CornerRadius="100" Background="#FF3399FF">
-                <TextBlock Foreground="White" Text="👕" FontSize="24" TextAlignment="Center" Margin="0,5"/>
-            </Border>
-            <TextBlock x:Name="CY" Height="Auto" Margin="43,457,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" HorizontalAlignment="Left" Width="90"><Run Text="穿衣指数:"/><Run Text="N/N"/></TextBlock>
-            <Border x:Name="ZWX" BorderThickness="0" HorizontalAlignment="Left" Height="40" Margin="174,393,0,0" VerticalAlignment="Top" Width="40" CornerRadius="40" Background="#FF3399FF">
-                <TextBlock x:Name="textBlock1" Margin="0,5" TextWrapping="Wrap" Foreground="White" Text="🌤" FontSize="26" TextAlignment="Center"/>
-            </Border>
-            <TextBlock x:Name="ZYX" Height="Auto" Margin="217,406,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" HorizontalAlignment="Left" Width="101"><Run Text="紫外线指数:"/><Run Text="N/N"/></TextBlock>
-            <Border x:Name="XC1" BorderThickness="0" HorizontalAlignment="Left" Height="40" Margin="-4,497,0,0" VerticalAlignment="Top" Width="40" Background="#FF3399FF" CornerRadius="40">
-                <TextBlock x:Name="textBlock3" Margin="0,0,0,10" TextWrapping="Wrap" Foreground="White" Text="🚕" FontSize="24" TextAlignment="Center" FontFamily="Microsoft YaHei"/>
-            </Border>
-            <TextBlock x:Name="XC" Height="Auto" Margin="33,505,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" HorizontalAlignment="Left" Width="86"><Run Text="洗车指数:"/><Run Text="N/N"/></TextBlock>
-            <Border x:Name="LY1" BorderThickness="0" HorizontalAlignment="Left" Height="40" Margin="2,394,0,0" VerticalAlignment="Top" Width="40" Background="#FF3399FF" CornerRadius="40">
-                <TextBlock x:Name="textBlock5" TextWrapping="Wrap" Text="✈" Foreground="White" FontSize="24" TextAlignment="Center" Margin="0,3,0,7"/>
-            </Border>
-            <TextBlock x:Name="LY" Height="Auto" Margin="43,406,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" HorizontalAlignment="Left" Width="117"><Run Text="旅游指数:较不"/><Run Text="N/N"/></TextBlock>
-            <Border x:Name="GM1" BorderThickness="0" HorizontalAlignment="Left" Height="40" Margin="176,446,0,0" VerticalAlignment="Top" Width="40" Background="#FF3399FF" CornerRadius="40">
-                <TextBlock x:Name="textBlock7" Margin="0,5" TextWrapping="Wrap" Text="💊" Foreground="White" FontSize="24" TextAlignment="Center"/>
-            </Border>
-            <TextBlock x:Name="GM" Height="Auto" Margin="217,457,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Text="感冒指数:N/N" HorizontalAlignment="Left" Width="91"/>
-            <Border x:Name="YD1" BorderThickness="0" HorizontalAlignment="Left" Height="40" Margin="166,495,0,0" VerticalAlignment="Top" Width="40" Background="#FF3399FF" CornerRadius="40">
-                <TextBlock x:Name="textBlock9" Margin="0,5" TextWrapping="Wrap" Text="🏃" Foreground="White" FontSize="24" TextAlignment="Center"/>
-            </Border>
-            <TextBlock x:Name="YD" Height="Auto" Width="98" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Margin="212,505,0,0" HorizontalAlignment="Left"><Run Text="运动指数:"/><Run Text="N/N"/></TextBlock>
 
-            <Image x:Name="Icon" Margin="196,29,0,515" Source="http://www.heweather.com/weather/images/icon/300.png" HorizontalAlignment="Left" Width="56"/>
-            <TextBlock x:Name="Qiwen" Margin="10,29,10,0" TextWrapping="Wrap" FontSize="36" Foreground="White" TextAlignment="Center" Height="50" VerticalAlignment="Top"><Run Text="N/N"/><Run Text="°"/></TextBlock>
-            <TextBlock x:Name="Tianqi" Margin="10,79,10,0" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" Height="18" VerticalAlignment="Top">
+            <Image x:Name="Icon" Margin="100,29,250,0" Source="http://www.heweather.com/weather/images/icon/300.png" Height="50" VerticalAlignment="Top" Width="50"/>
+            <TextBlock x:Name="Qiwen" Margin="0,29,0,0" TextWrapping="Wrap" FontSize="36" Foreground="#FF252526" TextAlignment="Center" Height="50" VerticalAlignment="Top"><Run Text="N/N"/><Run Text="°"/></TextBlock>
+            <TextBlock x:Name="Tianqi" Margin="0,79,0,0" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" Height="18" VerticalAlignment="Top">
                 <TextBlock.Foreground>
-                    <SolidColorBrush Color="#FFEEEEEE" Opacity="0.7"/>
+                    <SolidColorBrush Color="#FF333337" Opacity="0.7"/>
                 </TextBlock.Foreground><Run Text="N/N"/><Run Text="    相对湿度 "/><Run Text="N/N"/><Run Text="%"/></TextBlock>
-            <TextBlock x:Name="fengsu" Margin="10,99,10,0" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" Foreground="#FFEEEEEE" Height="18" VerticalAlignment="Top"><Run Text="N/N"/><Run Text="风    "/><Run Text="N/N"/><Run Text="级"/></TextBlock>
-            <Border BorderThickness="1" Margin="14,181,10,0" BorderBrush="#99FFFFFF" Height="1" VerticalAlignment="Top"/>
-            <Label x:Name="hourlyTimew" Content="N/N./N/N./N/N" HorizontalAlignment="Right" Height="28" Margin="0,386,144,0" VerticalAlignment="Top" Width="123" Foreground="White"/>
-            <Label x:Name="hourlyTimeww" Content="N/N" HorizontalAlignment="Right" Height="26" Margin="0,388,10,0" VerticalAlignment="Top" Width="123" Foreground="White"/>
-            <Label x:Name="hourlyQww" Content="N/N℃" HorizontalAlignment="Right" Height="36" Margin="0,409,154,0" VerticalAlignment="Top" Width="102" Foreground="White" FontSize="24"/>
-            <Label x:Name="hourlyQwww" Content="N/N℃" HorizontalAlignment="Right" Height="36" Margin="0,409,20,0" VerticalAlignment="Top" Width="102" Foreground="White" FontSize="24"/>
-            <Label x:Name="hourlyfsw" Content="☁N/N风    N/N级" HorizontalAlignment="Right" Height="24" Margin="0,445,154,0" VerticalAlignment="Top" Width="122" Foreground="White"/>
-            <Label x:Name="hourlyfsww" Content="☁N/N风    N/N级" HorizontalAlignment="Right" Height="24" Margin="0,445,10,0" VerticalAlignment="Top" Width="129" Foreground="White"/>
-            <Border BorderThickness="1" Margin="10,299,10,0" BorderBrush="#99FFFFFF" Height="1" VerticalAlignment="Top"/>
+            <TextBlock x:Name="fengsu" Margin="10,99,10,0" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" Foreground="#FF333337" Height="18" VerticalAlignment="Top"><Run Text="N/N"/><Run Text="风    "/><Run Text="N/N"/><Run Text="级"/></TextBlock>
             <Border x:Name="Erro" BorderThickness="0" Height="0" VerticalAlignment="Top" Background="#FF3399FF" Visibility="Collapsed">
                 <Grid Margin="0" Background="#FF3399FF">
                     <Label x:Name="label2" Content="❌" HorizontalAlignment="Right" Height="26" VerticalAlignment="Top" Width="25" Foreground="White" FontSize="10" MouseDown="label2_MouseDown" Margin="0,0,549,0"/>
                     <Label x:Name="label1" Content="不支持所填写城市,或查询失败" Foreground="White" FontSize="16" Margin="24,3,25,2" Width="229" Height="32"/>
                 </Grid>
             </Border>
-            <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="35" Margin="6,340,0,0" TextWrapping="Wrap" Text="☁天气指数" VerticalAlignment="Top" Width="132" Foreground="White" FontSize="24"/>
-            <Border BorderThickness="1" Height="1" Margin="10,380,0,0" VerticalAlignment="Top" BorderBrush="#99FFFFFF" HorizontalAlignment="Left" Width="474.5"/>
-            <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Right" Height="35" Margin="0,340,154,0" TextWrapping="Wrap" Text="⛅小时预报" VerticalAlignment="Top" Width="132" Foreground="White" FontSize="24"/>
-            <Border BorderThickness="1" Height="1" Margin="0,380,10,0" VerticalAlignment="Top" BorderBrush="#99FFFFFF" Width="266" HorizontalAlignment="Right"/>
-            <Border BorderBrush="#99FFFFFF" BorderThickness="1" HorizontalAlignment="Right" Height="1" Margin="0,492.5,10,0" VerticalAlignment="Top" Width="266"/>
-            <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Margin="10,141,0,0" TextWrapping="Wrap" Text="🌤每日预报" Width="132" Foreground="White" FontSize="24" Height="35" VerticalAlignment="Top"/>
-            <TextBlock x:Name="allqiyanjd" Margin="10,120,10,0" TextWrapping="Wrap" Foreground="#FFEEEEEE" FontSize="14" TextAlignment="Center" Height="21" VerticalAlignment="Top"><Run Text="气压:"/><Run Text="N/N"/><Run Text="     ，"/></TextBlock>
-            <ScrollViewer Height="118" Margin="14,179,0,0" VerticalAlignment="Top" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto" Style="{DynamicResource for_scrollviewer}">
+            <TextBlock x:Name="allqiyanjd" Margin="10,120,10,0" TextWrapping="Wrap" Foreground="#FF333337" FontSize="14" TextAlignment="Center" Height="21" VerticalAlignment="Top"><Run Text="气压:"/><Run Text="N/N"/><Run Text="     ，"/></TextBlock>
+            <ScrollViewer Height="118" Margin="0,146,0,0" VerticalAlignment="Top" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto" Style="{DynamicResource for_scrollviewer}">
                 <Grid Height="Auto" Width="Auto">
                     <Grid HorizontalAlignment="Left" Margin="27,10,0,0" Width="97" Height="108" VerticalAlignment="Top">
-                        <TextBlock x:Name="shijianw" Height="16.669" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Margin="9,3,9,0"><Run Text="/N"/><Run Text="-"/><Run Text="N/N"/><Run Text="-"/><Run Text="N/N"/></TextBlock>
+                        <TextBlock x:Name="shijianw" Height="16.669" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF252526" Margin="9,3,9,0"><Run Text="/N"/><Run Text="-"/><Run Text="N/N"/><Run Text="-"/><Run Text="N/N"/></TextBlock>
                         <Image x:Name="iconw" Margin="18,20,29,43" Source="http://www.heweather.com/weather/images/icon/306.png" Height="45"/>
-                        <TextBlock x:Name="qiwenw" Height="19" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="White" Margin="0,0,0,21" TextAlignment="Center"><Run Text="N/N"/><Run Text="°  "/><Run Text="N/N"/><Run Text="°"/></TextBlock>
-                        <Label x:Name="jcglw" Content="💧N/N" HorizontalAlignment="Left" Height="28" Margin="18,0,0,0" VerticalAlignment="Bottom" Width="50" Foreground="White"/>
+                        <TextBlock x:Name="qiwenw" Height="19" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="#FF333337" Margin="0,0,0,21" TextAlignment="Center"><Run Text="N/N"/><Run Text="°  "/><Run Text="N/N"/><Run Text="°"/></TextBlock>
+                        <Label x:Name="jcglw" Content="💧N/N" HorizontalAlignment="Left" Height="28" Margin="18,0,0,0" VerticalAlignment="Bottom" Width="50" Foreground="#FF333337"/>
                     </Grid>
                     <Grid HorizontalAlignment="Left" Margin="129,10,0,0" Width="97" Height="108" VerticalAlignment="Top">
-                        <TextBlock x:Name="shijianww" Height="16.669" TextWrapping="Wrap" Text="N/N" VerticalAlignment="Top" Foreground="White" Margin="9,3,17,0"/>
+                        <TextBlock x:Name="shijianww" Height="16.669" TextWrapping="Wrap" Text="N/N" VerticalAlignment="Top" Foreground="#FF252526" Margin="9,3,17,0"/>
                         <Image x:Name="iconww" Margin="18,22,31,41" Source="http://www.heweather.com/weather/images/icon/306.png" Height="45"/>
-                        <TextBlock x:Name="qiwenww" Height="19" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="White" Margin="0,0,0,22" TextAlignment="Center"><Run Text="N/N"/><Run Text="°  "/><Run Text="N/N"/><Run Text="°"/></TextBlock>
-                        <Label x:Name="jcglww" Content="💧N/N" HorizontalAlignment="Left" Height="28" Margin="18,0,0,-3" VerticalAlignment="Bottom" Width="50" Foreground="White"/>
+                        <TextBlock x:Name="qiwenww" Height="19" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="#FF333337" Margin="0,0,0,22" TextAlignment="Center"><Run Text="N/N"/><Run Text="°  "/><Run Text="N/N"/><Run Text="°"/></TextBlock>
+                        <Label x:Name="jcglww" Content="💧N/N" HorizontalAlignment="Left" Height="28" Margin="18,0,0,-3" VerticalAlignment="Bottom" Width="50" Foreground="#FF333337"/>
                     </Grid>
                     <Grid Margin="231,10,0,0" HorizontalAlignment="Left" Width="97" Height="108" VerticalAlignment="Top">
-                        <TextBlock x:Name="shijianwww" Height="16.669" TextWrapping="Wrap" Text="N/N" VerticalAlignment="Top" Foreground="White" Margin="9,3,11,0"/>
+                        <TextBlock x:Name="shijianwww" Height="16.669" TextWrapping="Wrap" Text="N/N" VerticalAlignment="Top" Foreground="#FF1B1B1C" Margin="9,3,11,0"/>
                         <Image x:Name="iconwww" Margin="18,22,0,41" Source="http://www.heweather.com/weather/images/icon/306.png" Height="45" HorizontalAlignment="Left" Width="50"/>
-                        <TextBlock x:Name="qiwenwww" Height="19" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="White" Margin="0,0,0,22" TextAlignment="Center"><Run Text="N/N"/><Run Text="°  "/><Run Text="N/N"/><Run Text="°"/></TextBlock>
-                        <Label x:Name="jcglwww" Content="💧N/N" HorizontalAlignment="Left" Height="28" Margin="18,0,0,-3" VerticalAlignment="Bottom" Width="50" Foreground="White"/>
+                        <TextBlock x:Name="qiwenwww" Height="19" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="#FF333337" Margin="0,0,0,22" TextAlignment="Center"><Run Text="N/N"/><Run Text="°  "/><Run Text="N/N"/><Run Text="°"/></TextBlock>
+                        <Label x:Name="jcglwww" Content="💧N/N" HorizontalAlignment="Left" Height="28" Margin="18,0,0,-3" VerticalAlignment="Bottom" Width="50" Foreground="#FF333337"/>
                     </Grid>
                     <Grid Margin="333,10,0,0" HorizontalAlignment="Left" Width="96" Height="108" VerticalAlignment="Top">
-                        <TextBlock x:Name="shijianwwww" Height="17" TextWrapping="Wrap" Text="N/N" VerticalAlignment="Top" Foreground="White" Margin="9,3,16,0"/>
+                        <TextBlock x:Name="shijianwwww" Height="17" TextWrapping="Wrap" Text="N/N" VerticalAlignment="Top" Foreground="#FF1B1B1C" Margin="9,3,16,0"/>
                         <Image x:Name="iconwwww" Margin="18,20,0,43" Source="http://www.heweather.com/weather/images/icon/306.png" Height="45" HorizontalAlignment="Left" Width="50"/>
-                        <TextBlock x:Name="qiwenwwww" Height="19" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="White" Margin="0,0,0,22" HorizontalAlignment="Left" Width="97" TextAlignment="Center"><Run Text="N/N"/><Run Text="°  "/><Run Text="N/N"/><Run Text="°"/></TextBlock>
-                        <Label x:Name="jcglwwww" Content="💧N/N" HorizontalAlignment="Left" Height="28" Margin="18,0,0,-3" VerticalAlignment="Bottom" Width="50" Foreground="White"/>
+                        <TextBlock x:Name="qiwenwwww" Height="19" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="#FF333337" Margin="0,0,0,22" HorizontalAlignment="Left" Width="97" TextAlignment="Center"><Run Text="N/N"/><Run Text="°  "/><Run Text="N/N"/><Run Text="°"/></TextBlock>
+                        <Label x:Name="jcglwwww" Content="💧N/N" HorizontalAlignment="Left" Height="28" Margin="18,0,0,-3" VerticalAlignment="Bottom" Width="50" Foreground="#FF333337"/>
                     </Grid>
                     <Grid Margin="434,10,0,0" HorizontalAlignment="Left" Width="97" Height="108" VerticalAlignment="Top">
-                        <TextBlock x:Name="shijianwwwww" Height="16.669" TextWrapping="Wrap" Text="N/N" VerticalAlignment="Top" Foreground="White" Margin="9,3,16,0"/>
+                        <TextBlock x:Name="shijianwwwww" Height="16.669" TextWrapping="Wrap" Text="N/N" VerticalAlignment="Top" Foreground="#FF1B1B1C" Margin="9,3,16,0"/>
                         <Image x:Name="iconwwwww" Margin="18,22,0,41" Source="http://www.heweather.com/weather/images/icon/306.png" Height="45" HorizontalAlignment="Left" Width="50"/>
-                        <TextBlock x:Name="qiwenwwwww" Height="19" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="White" Margin="0,0,0,22" HorizontalAlignment="Left" Width="97" TextAlignment="Center"><Run Text="N/N"/><Run Text="°  "/><Run Text="N/N"/><Run Text="°"/></TextBlock>
-                        <Label x:Name="jcglwwwww" Content="💧N/N" HorizontalAlignment="Left" Height="28" Margin="18,0,0,-3" VerticalAlignment="Bottom" Width="50" Foreground="White"/>
+                        <TextBlock x:Name="qiwenwwwww" Height="19" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="#FF333337" Margin="0,0,0,22" HorizontalAlignment="Left" Width="97" TextAlignment="Center"><Run Text="N/N"/><Run Text="°  "/><Run Text="N/N"/><Run Text="°"/></TextBlock>
+                        <Label x:Name="jcglwwwww" Content="💧N/N" HorizontalAlignment="Left" Height="28" Margin="18,0,0,-3" VerticalAlignment="Bottom" Width="50" Foreground="#FF333337"/>
                     </Grid>
                     <Grid Margin="536,13,0,0" HorizontalAlignment="Left" Width="97" Height="105" VerticalAlignment="Top">
-                        <TextBlock x:Name="shijianwwwwww" Height="16.669" TextWrapping="Wrap" Text="N/N" VerticalAlignment="Top" Foreground="White" Margin="9,3,16,0"/>
+                        <TextBlock x:Name="shijianwwwwww" Height="16.669" TextWrapping="Wrap" Text="N/N" VerticalAlignment="Top" Foreground="#FF1B1B1C" Margin="9,3,16,0"/>
                         <Image x:Name="iconwwwwww" Margin="18,19,0,41" Source="http://www.heweather.com/weather/images/icon/306.png" Height="45" HorizontalAlignment="Left" Width="50"/>
-                        <TextBlock x:Name="qiwenwwwwww" Height="19" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="White" Margin="0,0,0,22" HorizontalAlignment="Left" Width="97" TextAlignment="Center"><Run Text="N/N"/><Run Text="°  "/><Run Text="N/N"/><Run Text="°"/></TextBlock>
-                        <Label x:Name="jcglwwwwww" Content="💧N/N" HorizontalAlignment="Left" Height="28" Margin="18,0,0,-3" VerticalAlignment="Bottom" Width="50" Foreground="White"/>
+                        <TextBlock x:Name="qiwenwwwwww" Height="19" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="#FF333337" Margin="0,0,0,22" HorizontalAlignment="Left" Width="97" TextAlignment="Center"><Run Text="N/N"/><Run Text="°  "/><Run Text="N/N"/><Run Text="°"/></TextBlock>
+                        <Label x:Name="jcglwwwwww" Content="💧N/N" HorizontalAlignment="Left" Height="28" Margin="18,0,0,-3" VerticalAlignment="Bottom" Width="50" Foreground="#FF333337"/>
                     </Grid>
                     <Grid Margin="638,13,0,0" HorizontalAlignment="Left" Width="97" Height="105" VerticalAlignment="Top">
-                        <TextBlock x:Name="shijianwwwwwww" Height="16.669" TextWrapping="Wrap" Text="N/N" VerticalAlignment="Top" Foreground="White" Margin="9,3,16,0"/>
+                        <TextBlock x:Name="shijianwwwwwww" Height="16.669" TextWrapping="Wrap" Text="N/N" VerticalAlignment="Top" Foreground="#FF1B1B1C" Margin="9,3,16,0"/>
                         <Image x:Name="iconwwwwwww" Margin="18,20,0,40" Source="http://www.heweather.com/weather/images/icon/306.png" Height="45" HorizontalAlignment="Left" Width="50"/>
-                        <TextBlock x:Name="qiwenwwwwwww" Height="19" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="White" Margin="0,0,0,22" HorizontalAlignment="Left" Width="97" TextAlignment="Center"><Run Text="N/N"/><Run Text="°  "/><Run Text="N/N"/><Run Text="°"/></TextBlock>
-                        <Label x:Name="jcglwwwwwww" Content="💧N/N" HorizontalAlignment="Left" Height="28" Margin="18,0,0,-3" VerticalAlignment="Bottom" Width="50" Foreground="White"/>
+                        <TextBlock x:Name="qiwenwwwwwww" Height="19" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="#FF333337" Margin="0,0,0,22" HorizontalAlignment="Left" Width="97" TextAlignment="Center"><Run Text="N/N"/><Run Text="°  "/><Run Text="N/N"/><Run Text="°"/></TextBlock>
+                        <Label x:Name="jcglwwwwwww" Content="💧N/N" HorizontalAlignment="Left" Height="28" Margin="18,0,0,-3" VerticalAlignment="Bottom" Width="50" Foreground="#FF333337"/>
                     </Grid>
                 </Grid>
             </ScrollViewer>
-            <Label x:Name="hourlyTimewww" Content="N/N" HorizontalAlignment="Right" Height="26" Margin="0,503,144,0" VerticalAlignment="Top" Width="123" Foreground="White"/>
-            <Label x:Name="hourlyQwwww" Content="N/N℃" HorizontalAlignment="Right" Height="36" Margin="0,524,154,0" VerticalAlignment="Top" Width="102" Foreground="White" FontSize="24"/>
-            <Label x:Name="hourlyfswww" Content="☁N/N风    N/N级" HorizontalAlignment="Right" Height="24" Margin="0,560,144,0" VerticalAlignment="Top" Width="132" Foreground="White"/>
-            <Label x:Name="hourlyTimewwww" Content="N/N" HorizontalAlignment="Right" Height="26" Margin="0,503,10,0" VerticalAlignment="Top" Width="123" Foreground="White"/>
-            <Label x:Name="hourlyQwwwww" Content="N/N℃" HorizontalAlignment="Right" Height="36" Margin="0,524,20,0" VerticalAlignment="Top" Width="102" Foreground="White" FontSize="24"/>
-            <Label x:Name="hourlyfswwww" Content="☁N/N风    N/N级" HorizontalAlignment="Right" Height="24" Margin="0,560,10,0" VerticalAlignment="Top" Width="129" Foreground="White"/>
+            <WrapPanel Height="Auto" Margin="0,270,0,0" VerticalAlignment="Top">
+                <WrapPanel Height="Auto" VerticalAlignment="Top">
+                    <Border x:Name="CY1" BorderThickness="0" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="40" CornerRadius="100" Background="#FF3399FF">
+                        <TextBlock Foreground="White" Text="👕" FontSize="24" TextAlignment="Center" Margin="0,5"/>
+                    </Border>
+                    <TextBlock x:Name="CY" Height="Auto" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF333337" HorizontalAlignment="Left" Width="90" Margin="0,10,0,0"><Run Text="穿衣指数:"/><Run Text="N/N"/></TextBlock>
+                    <Border x:Name="ZWX" BorderThickness="0" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="40" CornerRadius="40" Background="#FF3399FF">
+                        <TextBlock x:Name="textBlock1" Margin="0,5" TextWrapping="Wrap" Foreground="White" Text="🌤" FontSize="26" TextAlignment="Center"/>
+                    </Border>
+                    <TextBlock x:Name="ZYX" Height="Auto" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF333337" HorizontalAlignment="Left" Width="101" Margin="0,10,0,0"><Run Text="紫外线指数:"/><Run Text="N/N"/></TextBlock>
+                    <Border x:Name="XC1" BorderThickness="0" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="40" Background="#FF3399FF" CornerRadius="40">
+                        <TextBlock x:Name="textBlock3" Margin="0,0,0,10" TextWrapping="Wrap" Foreground="White" Text="🚕" FontSize="24" TextAlignment="Center" FontFamily="Microsoft YaHei"/>
+                    </Border>
+                    <TextBlock x:Name="XC" Height="Auto" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF333337" HorizontalAlignment="Left" Width="86" Margin="0,10,0,0"><Run Text="洗车指数:"/><Run Text="N/N"/></TextBlock>
+                    <Border x:Name="LY1" BorderThickness="0" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="40" Background="#FF3399FF" CornerRadius="40">
+                        <TextBlock x:Name="textBlock5" TextWrapping="Wrap" Text="✈" Foreground="White" FontSize="24" TextAlignment="Center" Margin="0,3,0,7"/>
+                    </Border>
+                    <TextBlock x:Name="LY" Height="Auto" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF333337" HorizontalAlignment="Left" Width="117" Margin="0,10,0,0"><Run Text="旅游指数:较不"/><Run Text="N/N"/></TextBlock>
+                    <Border x:Name="GM1" BorderThickness="0" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="40" Background="#FF3399FF" CornerRadius="40">
+                        <TextBlock x:Name="textBlock7" Margin="0,5" TextWrapping="Wrap" Text="💊" Foreground="White" FontSize="24" TextAlignment="Center"/>
+                    </Border>
+                    <TextBlock x:Name="GM" Height="Auto" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF333337" Text="感冒指数:N/N" HorizontalAlignment="Left" Width="91" Margin="0,10,0,0"/>
+                    <Border x:Name="YD1" BorderThickness="0" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="40" Background="#FF3399FF" CornerRadius="40">
+                        <TextBlock x:Name="textBlock9" Margin="0,5" TextWrapping="Wrap" Text="🏃" Foreground="White" FontSize="24" TextAlignment="Center"/>
+                    </Border>
+                    <TextBlock x:Name="YD" Height="Auto" Width="98" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF333337" HorizontalAlignment="Left" Margin="0,10,0,0"><Run Text="运动指数:"/><Run Text="N/N"/></TextBlock>
+                </WrapPanel>
+                <WrapPanel Height="Auto" VerticalAlignment="Top" Width="Auto">
+                    <Grid HorizontalAlignment="Right" Height="84" VerticalAlignment="Top" Width="131">
+                        <Label x:Name="hourlyTimew" Content="N/N./N/N./N/N" HorizontalAlignment="Left" Height="28" Margin="26,1,0,0" VerticalAlignment="Top" Width="123" Foreground="#FF333337"/>
+                        <Label x:Name="hourlyQww" Content="N/N℃" HorizontalAlignment="Left" Height="36" Margin="37,24,0,0" VerticalAlignment="Top" Width="102" Foreground="#FF333337" FontSize="24"/>
+                        <Label x:Name="hourlyfsw" Content="☁N/N风    N/N级" HorizontalAlignment="Left" Height="24" Margin="17,60,0,0" VerticalAlignment="Top" Width="122" Foreground="#FF333337"/>
+                    </Grid>
+                    <Grid HorizontalAlignment="Left" Height="87" VerticalAlignment="Top" Width="146">
+                        <Label x:Name="hourlyTimeww" Content="N/N" HorizontalAlignment="Right" Height="26" Margin="0,0,6,0" VerticalAlignment="Top" Width="123" Foreground="#FF333337"/>
+                        <Label x:Name="hourlyQwww" Content="N/N℃" HorizontalAlignment="Right" Height="36" Margin="0,26,23,0" VerticalAlignment="Top" Width="102" Foreground="#FF333337" FontSize="24"/>
+                        <Label x:Name="hourlyfsww" Content="☁N/N风    N/N级" HorizontalAlignment="Right" Height="24" Margin="0,62,6,0" VerticalAlignment="Top" Width="129" Foreground="#FF333337"/>
+                    </Grid>
+                    <Grid HorizontalAlignment="Left" Height="96" VerticalAlignment="Top" Width="139">
+                        <Label x:Name="hourlyTimewwww" Content="N/N" HorizontalAlignment="Left" Height="26" Margin="6,6,0,0" VerticalAlignment="Top" Width="123" Foreground="#FF333337"/>
+                        <Label x:Name="hourlyQwwwww" Content="N/N℃" HorizontalAlignment="Left" Height="36" Margin="16,32,0,0" VerticalAlignment="Top" Width="102" Foreground="#FF333337" FontSize="24"/>
+                        <Label x:Name="hourlyfswwww" Content="☁N/N风    N/N级" HorizontalAlignment="Left" Height="24" Margin="0,62,0,0" VerticalAlignment="Top" Width="129" Foreground="#FF333337"/>
+                    </Grid>
+                    <Grid HorizontalAlignment="Left" Height="90" VerticalAlignment="Top" Width="166">
+                        <Label x:Name="hourlyTimewww" Content="N/N" HorizontalAlignment="Left" Height="26" Margin="23,0,0,0" VerticalAlignment="Top" Width="123" Foreground="#FF333337"/>
+                        <Label x:Name="hourlyQwwww" Content="N/N℃" HorizontalAlignment="Left" Height="36" Margin="33,26,0,0" VerticalAlignment="Top" Width="102" Foreground="#FF333337" FontSize="24"/>
+                        <Label x:Name="hourlyfswww" Content="☁N/N风    N/N级" HorizontalAlignment="Left" Height="24" Margin="14,56,0,0" VerticalAlignment="Top" Width="132" Foreground="#FF333337"/>
+                    </Grid>
+                    <Grid HorizontalAlignment="Left" Height="90" VerticalAlignment="Top" Width="166">
+                        <Label x:Name="hourlyTimewwwww" Content="N/N" HorizontalAlignment="Left" Height="26" Margin="23,0,0,0" VerticalAlignment="Top" Width="123" Foreground="#FF333337"/>
+                        <Label x:Name="hourlyQwwwwww" Content="N/N℃" HorizontalAlignment="Left" Height="36" Margin="33,26,0,0" VerticalAlignment="Top" Width="102" Foreground="#FF333337" FontSize="24"/>
+                        <Label x:Name="hourlyfswwwww" Content="☁N/N风    N/N级" HorizontalAlignment="Left" Height="24" Margin="14,56,0,0" VerticalAlignment="Top" Width="132" Foreground="#FF333337"/>
+                    </Grid>
+                </WrapPanel>
+            </WrapPanel>
         </Grid>
     </ScrollViewer>
 </UserControl>

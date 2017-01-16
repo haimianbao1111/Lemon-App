@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -20,9 +21,19 @@ namespace Lemon_App
     /// </summary>
     public partial class lemon : Window
     {
+        Timer t = new Timer();
         public lemon()
         {
             InitializeComponent();
+            t.BeginInit();
+            t.Elapsed += T_Elapsed;
+            t.Interval = 1000;
+            t.Start();
+        }
+
+        private void T_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            GC.Collect();
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -67,6 +78,9 @@ namespace Lemon_App
             {
                 Robot.Visibility = Visibility.Visible;
                 Music.Visibility = Visibility.Collapsed;
+                All.Visibility = Visibility.Collapsed;
+                //IContentPage.Children.Clear();
+                //IContentPage.Children.Add(new IMBOX());
                 Mus.Fill = new SolidColorBrush(Color.FromArgb(255, 180, 180, 193));
                 ALL.Fill = new SolidColorBrush(Color.FromArgb(255, 180, 180, 193));
                 Rbt.Fill = new SolidColorBrush(Color.FromArgb(255, 31, 183, 245));
@@ -74,15 +88,32 @@ namespace Lemon_App
             else if((sender as Border).ToolTip.ToString() == "小萌音乐")
             {
                 Robot.Visibility = Visibility.Collapsed;
+                All.Visibility = Visibility.Collapsed;
                 Music.Visibility = Visibility.Visible;
+                //IContentPage.Children.Clear();
+                //   IContentPage.Children.Add(new MusicControl());
                 Mus.Fill = new SolidColorBrush(Color.FromArgb(255, 31, 183, 245));
                 ALL.Fill = new SolidColorBrush(Color.FromArgb(255, 180, 180, 193));
+                Rbt.Fill = new SolidColorBrush(Color.FromArgb(255, 180, 180, 193));
+            }
+            else if ((sender as Border).ToolTip.ToString() == "其他")
+            {
+                Robot.Visibility = Visibility.Collapsed;
+                Music.Visibility = Visibility.Collapsed;
+                All.Visibility = Visibility.Visible;
+                //  IContentPage.Children.Clear();
+                //IContentPage.Children.Add(new AllControl());
+                Mus.Fill = new SolidColorBrush(Color.FromArgb(255, 180, 180, 193));
+                ALL.Fill = new SolidColorBrush(Color.FromArgb(255, 31, 183, 245));
                 Rbt.Fill = new SolidColorBrush(Color.FromArgb(255, 180, 180, 193));
             }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            if (!Uuuhh.Lalala("www.mi.com"))
+                ZX.Background = MIN.Background;
+            else ZX.Background = MAX.Background;
             if (System.IO.File.Exists(AppDomain.CurrentDomain.BaseDirectory + "UserImage.bmp"))
             { tx.Background = new ImageBrush(new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "UserImage.bmp", UriKind.Absolute)));}
             DateTime tmCur = DateTime.Now;

@@ -5,12 +5,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Lemon_App"
              xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="Lemon_App.SearchBox"
-             mc:Ignorable="d" Width="774" Height="396" Loaded="UserControl_Loaded" SizeChanged="UserControl_SizeChanged">
+             mc:Ignorable="d"  Loaded="UserControl_Loaded" SizeChanged="UserControl_SizeChanged">
     <Grid>
-        <Border x:Name="S" BorderThickness="1" Height="Auto" Margin="0,50,0,0" VerticalAlignment="Top" CornerRadius="5" BorderBrush="#4C000000" Background="#33FFFFFF" Width="500">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20*" MinWidth="100"/>
+            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="20*" MinWidth="100"/>
+        </Grid.ColumnDefinitions>
+        <Border x:Name="S" BorderThickness="1" MinWidth="200" MaxWidth="400" Height="Auto"  VerticalAlignment="Top" CornerRadius="5" Background="#FFF1F2F6" Grid.Column="1" Margin="0,50,0,0">
             <Grid Width="Auto" Height="Auto">
-                <TextBox x:Name="textBox1" Height="23" Margin="10,13,35,0" TextWrapping="Wrap" Text="搜索" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Foreground="White" FontSize="18" KeyDown="textBox1_KeyDown" BorderThickness=" 0,0,0,0" TextChanged="textBox1_TextChanged"/>
-                <Border BorderThickness="1" Height="20" Margin="0,13,10,0" VerticalAlignment="Top" CornerRadius="20" MouseDown="Border_MouseDown" Background="#FF007ACC" BorderBrush="#FF007ACC" HorizontalAlignment="Right" Width="20"/>
+                <TextBox x:Name="textBox1" Margin="10,15,35,15" TextWrapping="Wrap" Text="搜索" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Foreground="#FF1B1B1C" FontSize="18" KeyDown="textBox1_KeyDown" BorderThickness=" 0,0,0,0" TextChanged="textBox1_TextChanged"/>
+                <Border Margin="0,0,10,0" CornerRadius="20" MouseDown="Border_MouseDown" Background="#FF007ACC" HorizontalAlignment="Right" Width="20" Height="20"/>
                 <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="Auto" Margin="10,51,0,0" VerticalAlignment="Top" Width="437" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden" BorderThickness="0"/>
             </Grid>
         </Border>

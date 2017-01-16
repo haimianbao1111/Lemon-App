@@ -5,11 +5,51 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lemon_App"
         mc:Ignorable="d"
-        Title="lemon" Height="610" Width="855" MinWidth="310" MinHeight="410" BorderThickness="10" Background="{x:Null}" WindowStyle="None" AllowsTransparency="True" MouseLeftButtonDown="Window_MouseLeftButtonDown" ResizeMode="CanResizeWithGrip" SizeChanged="Window_SizeChanged" Loaded="Window_Loaded">
+        Title="lemon" Height="610" Width="855" MinWidth="310" MinHeight="410" BorderThickness="10" Background="{x:Null}" WindowStyle="None" AllowsTransparency="True" MouseLeftButtonDown="Window_MouseLeftButtonDown" ResizeMode="CanResizeWithGrip" SizeChanged="Window_SizeChanged" Loaded="Window_Loaded" Icon="Lemon App Ico.ico" Style="{DynamicResource WindowStyle}">
     <Window.Effect>
         <DropShadowEffect Color="#FF2D2D30" Opacity="0.4"/>
     </Window.Effect>
     <Window.Resources>
+
+        <ControlTemplate x:Key="WindowTemplateKey" TargetType="{x:Type Window}">
+            <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                <Grid>
+                    <AdornerDecorator>
+                        <ContentPresenter/>
+                    </AdornerDecorator>
+                    <ResizeGrip x:Name="WindowResizeGrip" HorizontalAlignment="Right" IsTabStop="false" Visibility="Collapsed" VerticalAlignment="Bottom" Background="Transparent"/>
+                </Grid>
+            </Border>
+            <ControlTemplate.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="ResizeMode" Value="CanResizeWithGrip"/>
+                        <Condition Property="WindowState" Value="Normal"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="Visibility" TargetName="WindowResizeGrip" Value="Visible"/>
+                </MultiTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <Style x:Key="WindowStyle" TargetType="{x:Type Window}">
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Window}">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                            <AdornerDecorator>
+                                <ContentPresenter/>
+                            </AdornerDecorator>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="ResizeMode" Value="CanResizeWithGrip">
+                    <Setter Property="Template" Value="{StaticResource WindowTemplateKey}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
 
     </Window.Resources>
     <Grid x:Name="Page">
@@ -30,7 +70,7 @@
                 <Border x:Name="MIN"  HorizontalAlignment="Left" Margin="40,0,0,0" Width="13" Height="13" Background="#FFFDBC40" CornerRadius="13"/>
                 <Border x:Name="MAX"  HorizontalAlignment="Left" Margin="60,0,0,0" Width="13" Height="13" Background="#FF41DB2A" CornerRadius="13"/>
                 <Border x:Name="tx" HorizontalAlignment="Right" Margin="0,10,43,10" Width="30" Height="30" Background="#FF007ACC" CornerRadius="100">
-                    <Border  HorizontalAlignment="Right" Height="10" VerticalAlignment="Bottom" Width="10" Background="#FF41DB2A" CornerRadius="100"/>
+                    <Border x:Name="ZX"  HorizontalAlignment="Right" Height="10" VerticalAlignment="Bottom" Width="10" Background="#FF41DB2A" CornerRadius="100"/>
                 </Border>
                 <Border BorderThickness="1" HorizontalAlignment="Right" Margin="0,0,20,0" Width="15" Height="15" Background="#00000000" MouseDown="SSPath_Copy_MouseDown">
                     <Path x:Name="Litt" StrokeThickness="0" Fill="#FFBABCC7" Margin="0"  ToolTip="极简模式" Data="M7.209,8.5L10.1,5.609c0.195-0.195,0.195-0.512,0-0.707c-0.195-0.195-0.512-0.195-0.707,0L6.15,8.145  C6.052,8.243,6.004,8.371,6.004,8.5S6.052,8.757,6.15,8.855l3.243,3.242c0.195,0.195,0.512,0.195,0.707,0s0.195-0.512,0-0.707  L7.209,8.5z" Stretch="Uniform"/>
@@ -50,8 +90,8 @@
 	c-0.388,0.345-0.873,0.55-1.336,0.55c-0.388,0-0.679-0.108-0.862-0.312c-0.14-0.172-0.237-0.42-0.237-0.647
 	c0-0.42,0.28-0.819,0.744-1.067c0.248-0.129,0.636-0.248,0.841-0.248c0.334,0,0.657,0.054,0.916,0.162V7.877L9.215,9.202V14.451z" Stretch="Uniform"/>
                     </Border>
-                    <Border BorderThickness="1" Margin="0" Width="30" Height="30" HorizontalAlignment="Left" Background="#00000000">
-                        <Path x:Name="ALL" StrokeThickness="0" Fill="#FFB4B4C1" Margin="0"  ToolTip="小萌机器人" Data="M113.66,73.506c0.22,0.99,0.962,1.677,1.98,1.677c0.66,0,1.32-0.302,1.87-0.825l26.485-25.357
+                    <Border BorderThickness="1" Margin="0" Width="30" Height="30" HorizontalAlignment="Left" Background="#00000000" ToolTip="其他" MouseDown="Border_MouseDown">
+                        <Path x:Name="ALL" StrokeThickness="0" Fill="#FFB4B4C1" Margin="0"   Data="M113.66,73.506c0.22,0.99,0.962,1.677,1.98,1.677c0.66,0,1.32-0.302,1.87-0.825l26.485-25.357
 		c0.797-0.77,1.265-1.843,1.265-2.86c0-0.825-0.33-1.567-0.907-2.145c-7.014-6.683-16.446-10.836-26.567-11.716
 		c-1.925-0.165-4.236,1.32-4.236,3.355l0,0l0,0v37.348l0,0l0,0C113.577,73.176,113.604,73.341,113.66,73.506z M113.082,81.234c-1.292-1.293-2.613-2.063-2.613-4.125l0.138-39.851c0.137-0.77,0.055-1.348-0.248-1.733
 		c-0.22-0.248-0.522-0.413-0.853-0.413c-23.652,0-42.876,20.104-42.876,44.829c0,24.092,19.747,43.701,44.031,43.701
@@ -64,6 +104,7 @@
             <Grid x:Name="IContentPage" Background="#FFFDFDFD" Margin="0,50,0,0">
                 <local:IMBOX x:Name="Robot" Visibility="Collapsed" />
                 <local:MusicControl x:Name="Music" Visibility="Collapsed"/>
+                <local:AllControl x:Name="All" Visibility="Collapsed" />
             </Grid>
         </Grid>
     </Grid>

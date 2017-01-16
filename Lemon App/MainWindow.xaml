@@ -155,7 +155,7 @@
                         </Grid>
                     </Border>
                     <Grid x:Name="GRDIII" HorizontalAlignment="Left" Margin="0,50,0,0" Width="42" Background="#0C000000">
-                        <ScrollViewer Style="{DynamicResource for_scrollviewer}" Margin="0,46,0,65">
+                        <ScrollViewer Style="{DynamicResource for_scrollviewer}" Margin="0,46,0,-129">
                             <Grid>
                                 <!--没了.-->
                                 <Border x:Name="Weather" HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="43"  MouseDown="TextBlock1_MouseDown" ToolTip="天气" Background="Transparent">
@@ -257,7 +257,7 @@
                         <Border BorderThickness="0" HorizontalAlignment="Left" Width="43" MouseDown="Border_MouseDown" ToolTip="详细" Height="46" VerticalAlignment="Top" Style="{DynamicResource BorderStyle}" Background="Transparent" Margin="0,0,-1,0">
                             <Path StrokeThickness="0" Fill="#CCEEEEEE" Margin="13,17" Data="M0,0 L0,2.3181818 23,2.3181818 23,0 0,0 z M0,13.909091 L23,13.909091 23,11.590909 0,11.590909 0,13.909091 z M0,25.5 L23,25.5 23,23.181818 0,23.181818 0,25.5 z" Stretch="Fill"/>
                         </Border>
-                        <Border x:Name="UFT" HorizontalAlignment="Left" Height="47" Margin="0,0,-1,2" VerticalAlignment="Bottom" Width="43" MouseDown="TextBlock9_Copy3_MouseDown" ToolTip="用户反馈" Background="Transparent">
+                        <Border x:Name="UFT" HorizontalAlignment="Left" Height="47" Margin="0,0,-1,2" VerticalAlignment="Bottom" Width="43" MouseDown="TextBlock9_Copy3_MouseDown" ToolTip="用户反馈" Background="Transparent" Visibility="Collapsed">
                             <Grid>
                                 <Path x:Name="UFPath" StrokeThickness="0" Fill="#CCEEEEEE" Margin="12" Data="M17.951,16.352C19.231,14.625,20,12.412,20,10c0-5.523-4.029-10-9-10    C6.029,0,2,4.477,2,10c0,2.412,0.769,4.625,2.049,6.352C1.699,17.165,0,19.373,0,22v4c0,3.314,2.686,6,6,6h10c3.314,0,6-2.686,6-6    v-4C22,19.373,20.301,17.165,17.951,16.352z M4,10c0-4.418,3.134-8,7-8s7,3.582,7,8s-3.134,8-7,8S4,14.418,4,10z M20,25.5    c0,2.485-2.198,4.5-4.909,4.5H6.909C4.198,30,2,27.985,2,25.5v-3c0-2.126,1.613-3.897,3.776-4.368C7.25,19.304,9.05,20,11,20    c1.95,0,3.75-0.696,5.224-1.868C18.387,18.603,20,20.374,20,22.5V25.5z" Stretch="Fill" MouseDown="TextBlock9_Copy3_MouseDown"/>
                                 <Grid x:Name="UTFItem" HorizontalAlignment="Left" Width="5" Background="#FF3399FF" Margin="0,2,0,2.5" Visibility="Collapsed"/>

@@ -143,6 +143,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AllControl.xaml.cs">
+      <DependentUpon>AllControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CmdControl.xaml.cs">
       <DependentUpon>CmdControl.xaml</DependentUpon>
     </Compile>
@@ -180,9 +183,6 @@
     <Compile Include="MusicItemControl.xaml.cs">
       <DependentUpon>MusicItemControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MusicIteml.xaml.cs">
-      <DependentUpon>MusicIteml.xaml</DependentUpon>
-    </Compile>
     <Compile Include="NewsList.xaml.cs">
       <DependentUpon>NewsList.xaml</DependentUpon>
     </Compile>
@@ -219,6 +219,10 @@
     <Compile Include="WeatherBox.xaml.cs">
       <DependentUpon>WeatherBox.xaml</DependentUpon>
     </Compile>
+    <Page Include="AllControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="BingDayImage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -285,10 +289,6 @@
     <Page Include="MusicItemControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="MusicIteml.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="NewsList.xaml">
       <SubType>Designer</SubType>

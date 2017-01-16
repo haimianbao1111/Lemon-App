@@ -4,14 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Lemon_App"
-             mc:Ignorable="d"  Height="406" Width="774">
+             mc:Ignorable="d"  >
     <Border>
         <Grid Loaded="Grid_Loaded">
             <Image x:Name="bingDailyPicture" Margin="0,0,0,35"/>
             <Grid Height="35" VerticalAlignment="Bottom">
-                <TextBlock x:Name="label" Text="设为桌面壁纸" Margin="255,6,254,5" MouseDown="label_MouseDown" Foreground="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" TextAlignment="Center"/>
-                <Label x:Name="label1" Content="◀" HorizontalAlignment="Left" Height="35" Margin="10,0,0,0" VerticalAlignment="Top" Width="37" FontSize="20" MouseDown="Border_MouseDown_1" Foreground="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
-                <Label x:Name="label2" Content="▶" HorizontalAlignment="Right" Height="35" VerticalAlignment="Top" Width="35" MouseDown="Border_MouseDown_2" FontSize="20" Foreground="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+                <TextBlock x:Name="label" Text="设为桌面壁纸" Margin="255,6,254,5" MouseDown="label_MouseDown" Foreground="#FF333337" TextAlignment="Center" Background="#00000000"/>
+                <Label x:Name="label1" Content="◀" HorizontalAlignment="Left" Height="35" Margin="10,0,0,0" VerticalAlignment="Top" Width="37" FontSize="20" MouseDown="Border_MouseDown_1" Foreground="#FF333337" Background="{x:Null}"/>
+                <Label x:Name="label2" Content="▶" HorizontalAlignment="Right" Height="35" VerticalAlignment="Top" Width="35" MouseDown="Border_MouseDown_2" FontSize="20" Foreground="#FF333337" Background="{x:Null}"/>
             </Grid>
             <TextBlock x:Name="textBlock" Height="18" Margin="0,0,0,35" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="White" Background="#4CFDFDFD" MouseDown="textBlock_MouseDown"/>
 

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Lemon_App"
              mc:Ignorable="d" 
-             d:DesignHeight="348" d:DesignWidth="574" Loaded="UserControl_Loaded" Width="591">
+             Loaded="UserControl_Loaded">
     <UserControl.Resources>
         <Style  TargetType="{x:Type ComboBox}">
             <Setter Property="Margin" Value="5"></Setter>
@@ -76,14 +76,14 @@
         </Style>
     </UserControl.Resources>
     <Grid>
-        <Label x:Name="label" Content="新闻" HorizontalAlignment="Left" Height="29" Margin="5,6,0,0" VerticalAlignment="Top" Width="40" Foreground="White" FontSize="14"/>
+        <Label x:Name="label" Content="新闻" HorizontalAlignment="Left" Height="29" Margin="5,6,0,0" VerticalAlignment="Top" Width="40" Foreground="#FF3F3F46" FontSize="14"/>
         <ScrollViewer x:Name="O" PanningMode="Both" Style="{StaticResource for_scrollviewer}" Margin="0,36,0,0">
             <WrapPanel x:Name="WP" HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="574"/>
         </ScrollViewer>
-        <Border BorderThickness="1" Height="32" Margin="50,4,10,0" VerticalAlignment="Top" CornerRadius="7" BorderBrush="#4C000000" Background="#33FFFFFF">
+        <Border BorderThickness="1" Height="32" Margin="50,4,10,0" VerticalAlignment="Top" CornerRadius="7" Background="#FFF1F3F7">
             <Grid>
-                <TextBox x:Name="textBox" Margin="27,7,0,0" TextWrapping="Wrap" Text="最新" KeyDown="textBox_KeyDown" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Background="{x:Null}" Foreground="White" BorderThickness="0"/>
-                <Path x:Name="SSPath" StrokeThickness="0" Fill="#CCEEEEEE" Margin="8" Data="M31.689,30.252l-8.26-8.128c2.163-2.35,3.492-5.458,3.492-8.878    C26.92,5.93,20.894,0,13.46,0C6.026,0,0,5.93,0,13.246s6.026,13.246,13.46,13.246c3.212,0,6.158-1.111,8.472-2.958l8.292,8.16    c0.404,0.398,1.06,0.398,1.464,0C32.093,31.296,32.093,30.65,31.689,30.252z M13.46,24.454c-6.29,0-11.389-5.018-11.389-11.208    S7.17,2.038,13.46,2.038c6.29,0,11.389,5.018,11.389,11.208S19.75,24.454,13.46,24.454z" Stretch="Uniform"  ToolTip="搜索" HorizontalAlignment="Left" Width="19"/>
+                <TextBox x:Name="textBox" Margin="27,7,0,0" TextWrapping="Wrap" Text="最新" KeyDown="textBox_KeyDown" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Background="{x:Null}" Foreground="#FF686868" BorderThickness="0"/>
+                <Path x:Name="SSPath" StrokeThickness="0" Fill="#FFB4B4C1" Margin="8" Data="M31.689,30.252l-8.26-8.128c2.163-2.35,3.492-5.458,3.492-8.878    C26.92,5.93,20.894,0,13.46,0C6.026,0,0,5.93,0,13.246s6.026,13.246,13.46,13.246c3.212,0,6.158-1.111,8.472-2.958l8.292,8.16    c0.404,0.398,1.06,0.398,1.464,0C32.093,31.296,32.093,30.65,31.689,30.252z M13.46,24.454c-6.29,0-11.389-5.018-11.389-11.208    S7.17,2.038,13.46,2.038c6.29,0,11.389,5.018,11.389,11.208S19.75,24.454,13.46,24.454z" Stretch="Uniform"  ToolTip="搜索" HorizontalAlignment="Left" Width="19"/>
             </Grid>
         </Border>
     </Grid>

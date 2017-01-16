@@ -47,17 +47,17 @@ namespace Lemon_App
                 Tianqi.Text = obj["HeWeather5"][0]["now"]["cond"]["txt"] + "    相对湿度 " + obj["HeWeather5"][0]["now"]["tmp"] + "%";
                 fengsu.Text = obj["HeWeather5"][0]["now"]["wind"]["dir"] + "    " + obj["HeWeather5"][0]["now"]["wind"]["sc"] + "级";
                 allqiyanjd.Text = "气压:" + obj["HeWeather5"][0]["now"]["pres"] + "    能见度" + obj["HeWeather5"][0]["now"]["vis"];
-                Icon.Source = new BitmapImage(new Uri($"http://d.139.sh/Twilight/{obj["HeWeather5"][0]["now"]["cond"]["code"]}.png"));
+                Icon.Source = new BitmapImage(new Uri($"http://files.heweather.com/cond_icon/{obj["HeWeather5"][0]["now"]["cond"]["code"]}.png"));
                 //7天天气预报
                 JObject obj1 = JObject.Parse(await Uuuhh.GetWebAsync($"https://api.heweather.com/v5/forecast?city={Uri.EscapeUriString(i)}&key=f97e6a6ad4cd49babd0538747c86b88d"));
                 //Icon图标
-                iconw.Source = new BitmapImage(new Uri($"http://d.139.sh/Twilight/{obj1["HeWeather5"][0]["daily_forecast"][0]["cond"]["code_d"]}.png"));
-                iconww.Source = new BitmapImage(new Uri($"http://d.139.sh/Twilight/{obj1["HeWeather5"][0]["daily_forecast"][1]["cond"]["code_d"]}.png"));
-                iconwww.Source = new BitmapImage(new Uri($"http://d.139.sh/Twilight/{obj1["HeWeather5"][0]["daily_forecast"][2]["cond"]["code_d"]}.png"));
-                iconwwww.Source = new BitmapImage(new Uri($"http://d.139.sh/Twilight/{obj1["HeWeather5"][0]["daily_forecast"][3]["cond"]["code_d"]}.png"));
-                iconwwwww.Source = new BitmapImage(new Uri($"http://d.139.sh/Twilight/{obj1["HeWeather5"][0]["daily_forecast"][4]["cond"]["code_d"]}.png"));
-                iconwwwwww.Source = new BitmapImage(new Uri($"http://d.139.sh/Twilight/{obj1["HeWeather5"][0]["daily_forecast"][5]["cond"]["code_d"]}.png"));
-                iconwwwwwww.Source = new BitmapImage(new Uri($"http://d.139.sh/Twilight/{obj1["HeWeather5"][0]["daily_forecast"][6]["cond"]["code_d"]}.png"));
+                iconw.Source = new BitmapImage(new Uri($"http://files.heweather.com/cond_icon/{obj1["HeWeather5"][0]["daily_forecast"][0]["cond"]["code_d"]}.png"));
+                iconww.Source = new BitmapImage(new Uri($"http://files.heweather.com/cond_icon/{obj1["HeWeather5"][0]["daily_forecast"][1]["cond"]["code_d"]}.png"));
+                iconwww.Source = new BitmapImage(new Uri($"http://files.heweather.com/cond_icon/{obj1["HeWeather5"][0]["daily_forecast"][2]["cond"]["code_d"]}.png"));
+                iconwwww.Source = new BitmapImage(new Uri($"http://files.heweather.com/cond_icon/{obj1["HeWeather5"][0]["daily_forecast"][3]["cond"]["code_d"]}.png"));
+                iconwwwww.Source = new BitmapImage(new Uri($"http://files.heweather.com/cond_icon/{obj1["HeWeather5"][0]["daily_forecast"][4]["cond"]["code_d"]}.png"));
+                iconwwwwww.Source = new BitmapImage(new Uri($"http://files.heweather.com/cond_icon/{obj1["HeWeather5"][0]["daily_forecast"][5]["cond"]["code_d"]}.png"));
+                iconwwwwwww.Source = new BitmapImage(new Uri($"http://files.heweather.com/cond_icon/{obj1["HeWeather5"][0]["daily_forecast"][6]["cond"]["code_d"]}.png"));
                 //时间
                 shijianw.Text = obj1["HeWeather5"][0]["daily_forecast"][0]["date"].ToString();
                 shijianww.Text = obj1["HeWeather5"][0]["daily_forecast"][1]["date"].ToString();
@@ -88,14 +88,17 @@ namespace Lemon_App
                 hourlyTimeww.Content = o["HeWeather5"][0]["hourly_forecast"][1]["date"].ToString();
                 hourlyTimewww.Content = o["HeWeather5"][0]["hourly_forecast"][2]["date"].ToString();
                 hourlyTimewwww.Content = o["HeWeather5"][0]["hourly_forecast"][3]["date"].ToString();
+                hourlyTimewwwww.Content = o["HeWeather5"][0]["hourly_forecast"][4]["date"].ToString();
                 hourlyQww.Content = o["HeWeather5"][0]["hourly_forecast"][0]["tmp"] + "℃";
                 hourlyQwww.Content = o["HeWeather5"][0]["hourly_forecast"][1]["tmp"] + "℃";
                 hourlyQwwww.Content = o["HeWeather5"][0]["hourly_forecast"][2]["tmp"] + "℃";
                 hourlyQwwwww.Content = o["HeWeather5"][0]["hourly_forecast"][3]["tmp"] + "℃";
+                hourlyQwwwwww.Content = o["HeWeather5"][0]["hourly_forecast"][4]["tmp"] + "℃";
                 hourlyfsw.Content = "☁" + o["HeWeather5"][0]["hourly_forecast"][0]["wind"]["dir"] + "    " + o["HeWeather5"][0]["hourly_forecast"][0]["wind"]["sc"];
                 hourlyfsww.Content = "☁" + o["HeWeather5"][0]["hourly_forecast"][1]["wind"]["dir"] + "    " + o["HeWeather5"][0]["hourly_forecast"][1]["wind"]["sc"];
                 hourlyfswww.Content = "☁" + o["HeWeather5"][0]["hourly_forecast"][2]["wind"]["dir"] + "    " + o["HeWeather5"][0]["hourly_forecast"][2]["wind"]["sc"];
                 hourlyfswwww.Content = "☁" + o["HeWeather5"][0]["hourly_forecast"][3]["wind"]["dir"] + "    " + o["HeWeather5"][0]["hourly_forecast"][3]["wind"]["sc"];
+                hourlyfswwwww.Content = "☁" + o["HeWeather5"][0]["hourly_forecast"][4]["wind"]["dir"] + "    " + o["HeWeather5"][0]["hourly_forecast"][4]["wind"]["sc"];
                 //生活指数
                 JObject b = JObject.Parse(await Uuuhh.GetWebAsync($"https://api.heweather.com/v5/suggestion?city={Uri.EscapeUriString(i)}&key=f97e6a6ad4cd49babd0538747c86b88d"));
                 CY.Text = "穿衣指数:" + b["HeWeather5"][0]["suggestion"]["drsg"]["brf"];
