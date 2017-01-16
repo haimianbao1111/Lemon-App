@@ -113,27 +113,27 @@
                     <TextBlock x:Name="YD" Height="Auto" Width="98" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF333337" HorizontalAlignment="Left" Margin="0,10,0,0"><Run Text="运动指数:"/><Run Text="N/N"/></TextBlock>
                 </WrapPanel>
                 <WrapPanel Height="Auto" VerticalAlignment="Top" Width="Auto">
-                    <Grid HorizontalAlignment="Right" Height="84" VerticalAlignment="Top" Width="131">
+                    <Grid HorizontalAlignment="Right" Height="Auto" VerticalAlignment="Top" Width="Auto">
                         <Label x:Name="hourlyTimew" Content="N/N./N/N./N/N" HorizontalAlignment="Left" Height="28" Margin="26,1,0,0" VerticalAlignment="Top" Width="123" Foreground="#FF333337"/>
                         <Label x:Name="hourlyQww" Content="N/N℃" HorizontalAlignment="Left" Height="36" Margin="37,24,0,0" VerticalAlignment="Top" Width="102" Foreground="#FF333337" FontSize="24"/>
                         <Label x:Name="hourlyfsw" Content="☁N/N风    N/N级" HorizontalAlignment="Left" Height="24" Margin="17,60,0,0" VerticalAlignment="Top" Width="122" Foreground="#FF333337"/>
                     </Grid>
-                    <Grid HorizontalAlignment="Left" Height="87" VerticalAlignment="Top" Width="146">
+                    <Grid HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="Auto">
                         <Label x:Name="hourlyTimeww" Content="N/N" HorizontalAlignment="Right" Height="26" Margin="0,0,6,0" VerticalAlignment="Top" Width="123" Foreground="#FF333337"/>
                         <Label x:Name="hourlyQwww" Content="N/N℃" HorizontalAlignment="Right" Height="36" Margin="0,26,23,0" VerticalAlignment="Top" Width="102" Foreground="#FF333337" FontSize="24"/>
                         <Label x:Name="hourlyfsww" Content="☁N/N风    N/N级" HorizontalAlignment="Right" Height="24" Margin="0,62,6,0" VerticalAlignment="Top" Width="129" Foreground="#FF333337"/>
                     </Grid>
-                    <Grid HorizontalAlignment="Left" Height="96" VerticalAlignment="Top" Width="139">
+                    <Grid HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="Auto">
                         <Label x:Name="hourlyTimewwww" Content="N/N" HorizontalAlignment="Left" Height="26" Margin="6,6,0,0" VerticalAlignment="Top" Width="123" Foreground="#FF333337"/>
-                        <Label x:Name="hourlyQwwwww" Content="N/N℃" HorizontalAlignment="Left" Height="36" Margin="16,32,0,0" VerticalAlignment="Top" Width="102" Foreground="#FF333337" FontSize="24"/>
+                        <Label x:Name="hourlyQwwwww" Content="N/N℃" HorizontalAlignment="Left" Height="36" Margin="16,26,0,0" VerticalAlignment="Top" Width="102" Foreground="#FF333337" FontSize="24"/>
                         <Label x:Name="hourlyfswwww" Content="☁N/N风    N/N级" HorizontalAlignment="Left" Height="24" Margin="0,62,0,0" VerticalAlignment="Top" Width="129" Foreground="#FF333337"/>
                     </Grid>
-                    <Grid HorizontalAlignment="Left" Height="90" VerticalAlignment="Top" Width="166">
+                    <Grid HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="Auto">
                         <Label x:Name="hourlyTimewww" Content="N/N" HorizontalAlignment="Left" Height="26" Margin="23,0,0,0" VerticalAlignment="Top" Width="123" Foreground="#FF333337"/>
                         <Label x:Name="hourlyQwwww" Content="N/N℃" HorizontalAlignment="Left" Height="36" Margin="33,26,0,0" VerticalAlignment="Top" Width="102" Foreground="#FF333337" FontSize="24"/>
                         <Label x:Name="hourlyfswww" Content="☁N/N风    N/N级" HorizontalAlignment="Left" Height="24" Margin="14,56,0,0" VerticalAlignment="Top" Width="132" Foreground="#FF333337"/>
                     </Grid>
-                    <Grid HorizontalAlignment="Left" Height="90" VerticalAlignment="Top" Width="166">
+                    <Grid HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="Auto">
                         <Label x:Name="hourlyTimewwwww" Content="N/N" HorizontalAlignment="Left" Height="26" Margin="23,0,0,0" VerticalAlignment="Top" Width="123" Foreground="#FF333337"/>
                         <Label x:Name="hourlyQwwwwww" Content="N/N℃" HorizontalAlignment="Left" Height="36" Margin="33,26,0,0" VerticalAlignment="Top" Width="102" Foreground="#FF333337" FontSize="24"/>
                         <Label x:Name="hourlyfswwwww" Content="☁N/N风    N/N级" HorizontalAlignment="Left" Height="24" Margin="14,56,0,0" VerticalAlignment="Top" Width="132" Foreground="#FF333337"/>
