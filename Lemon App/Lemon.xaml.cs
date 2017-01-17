@@ -11,6 +11,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
@@ -77,7 +78,7 @@ namespace Lemon_App
         {
             if((sender as Border).ToolTip.ToString()== "小萌机器人")
             {
-                BackgroundPage.Background = new SolidColorBrush(Colors.White);
+                BackgroundPage.Background = new SolidColorBrush(Color.FromArgb(255,253,253,253));
                 BackgroundPage.Effect = new BlurEffect() { Radius = 0 };
                 Robot.Visibility = Visibility.Visible;
                 Music.Visibility = Visibility.Collapsed;
@@ -91,7 +92,7 @@ namespace Lemon_App
             }
             else if((sender as Border).ToolTip.ToString() == "小萌音乐")
             {
-                BackgroundPage.Background = new SolidColorBrush(Colors.White);
+                BackgroundPage.Background = new SolidColorBrush(Color.FromArgb(255, 253, 253, 253));
                 BackgroundPage.Effect = new BlurEffect() { Radius = 0 };
                 Robot.Visibility = Visibility.Collapsed;
                 All.Visibility = Visibility.Collapsed;
@@ -105,7 +106,7 @@ namespace Lemon_App
             }
             else if ((sender as Border).ToolTip.ToString() == "其他")
             {
-                BackgroundPage.Background = new SolidColorBrush(Colors.White);
+                BackgroundPage.Background = new SolidColorBrush(Color.FromArgb(255, 253, 253, 253));
                 BackgroundPage.Effect = new BlurEffect() { Radius = 0 };
                 Robot.Visibility = Visibility.Collapsed;
                 Music.Visibility = Visibility.Collapsed;
@@ -119,13 +120,16 @@ namespace Lemon_App
             }
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            if (await Lemon_Updata.IsLemonNew(He.KMS))
+                new UpdataWindow().Show();
+                ZX.BeginAnimation(OpacityProperty, new DoubleAnimation(0.3, 1, TimeSpan.FromSeconds(1)) { AutoReverse = true });
             if (!Uuuhh.Lalala("www.mi.com"))
                 ZX.Background = MIN.Background;
             else ZX.Background = MAX.Background;
             if (System.IO.File.Exists(AppDomain.CurrentDomain.BaseDirectory + "UserImage.bmp"))
-            { tx.Background = new ImageBrush(new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "UserImage.bmp", UriKind.Absolute)));}
+            { tx.Background = new ImageBrush(new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "UserImage.bmp", UriKind.Absolute))); }
             DateTime tmCur = DateTime.Now;
             if (tmCur.Hour > 18 && tmCur.Hour < 24)
                 Toast.SetToastNotion("晚上好:", "欢迎回来" + Settings.Default.RobotName, "------早睡早起身体好").Show();
@@ -170,6 +174,9 @@ namespace Lemon_App
             All.Visibility = Visibility.Collapsed;
             Music.Visibility = Visibility.Collapsed;
             User.Visibility = Visibility.Visible;
+            Mus.Fill = new SolidColorBrush(Color.FromArgb(255, 180, 180, 193));
+            ALL.Fill = new SolidColorBrush(Color.FromArgb(255, 180, 180, 193));
+            Rbt.Fill = new SolidColorBrush(Color.FromArgb(255, 180, 180, 193));
             BackgroundPage.Background = User.TXIMAGE;
             BackgroundPage.Effect = new BlurEffect() { Radius = 80 };
         }
