@@ -122,9 +122,9 @@ namespace Lemon_App
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            ZX.BeginAnimation(OpacityProperty, new DoubleAnimation(0.3, 1, TimeSpan.FromSeconds(1)) { AutoReverse = true });
             if (await Lemon_Updata.IsLemonNew(He.KMS))
                 new UpdataWindow().Show();
-                ZX.BeginAnimation(OpacityProperty, new DoubleAnimation(0.3, 1, TimeSpan.FromSeconds(1)) { AutoReverse = true });
             if (!Uuuhh.Lalala("www.mi.com"))
                 ZX.Background = MIN.Background;
             else ZX.Background = MAX.Background;

@@ -5,10 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lemon_App"
         mc:Ignorable="d"
-        Title="lemon" Height="610" Width="855" MinWidth="310" MinHeight="410" BorderThickness="10" Background="{x:Null}" WindowStyle="None" AllowsTransparency="True" MouseLeftButtonDown="Window_MouseLeftButtonDown" ResizeMode="CanResizeWithGrip" SizeChanged="Window_SizeChanged" Loaded="Window_Loaded" Icon="Lemon App Ico.ico" Style="{DynamicResource WindowStyle}">
-    <Window.Effect>
-        <DropShadowEffect Color="#FF2D2D30" Opacity="0.4"/>
-    </Window.Effect>
+        Title="Lemon App" Height="600" Width="845" MinWidth="310" MinHeight="410" Background="{x:Null}" WindowStyle="None" AllowsTransparency="True" MouseLeftButtonDown="Window_MouseLeftButtonDown" ResizeMode="CanResizeWithGrip" SizeChanged="Window_SizeChanged" Loaded="Window_Loaded" Icon="Lemon App Ico.ico" Style="{DynamicResource WindowStyle}" WindowStartupLocation="CenterScreen">
     <Window.Resources>
 
         <ControlTemplate x:Key="WindowTemplateKey" TargetType="{x:Type Window}">
@@ -56,7 +53,7 @@
         <Grid.Clip>
             <RectangleGeometry RadiusX="3" RadiusY="3">
                 <RectangleGeometry.Rect>
-                    <Rect Width="835" Height="590"/>
+                    <Rect Width="845" Height="600"/>
                 </RectangleGeometry.Rect>
             </RectangleGeometry>
         </Grid.Clip>
@@ -83,7 +80,7 @@
 	S76.514,8.188,50,8.188z" Stretch="Uniform"/>
                     </Border>
                     <Border BorderThickness="1" MouseDown="Border_MouseDown" Margin="0,0,10,0" Width="30" Height="30" HorizontalAlignment="Left" Background="#00000000" ToolTip="小萌音乐">
-                        <Path x:Name="Mus" StrokeThickness="0" Fill="#FFB4B4C1" Margin="0"  ToolTip="小萌机器人" Data="M22,11c0-6.075-4.925-11-11-11C4.925,0,0,4.925,0,11c0,6.075,4.925,11,11,11
+                        <Path x:Name="Mus" StrokeThickness="0" Fill="#FF1FB7F5" Margin="0"  ToolTip="" Data="M22,11c0-6.075-4.925-11-11-11C4.925,0,0,4.925,0,11c0,6.075,4.925,11,11,11
 	C17.075,22,22,17.075,22,11z M9.215,14.451c0,0.269-0.075,0.647-0.162,0.841c-0.248,0.539-1.035,1.002-1.67,1.002
 	c-0.388,0-0.69-0.108-0.873-0.312c-0.14-0.172-0.237-0.42-0.237-0.647c0-0.485,0.366-0.927,0.959-1.164
 	c0.237-0.097,0.453-0.14,0.657-0.14c0.334,0,0.636,0.054,0.851,0.151V7.629l6.262-1.52v6.811c0,0.539-0.183,0.97-0.539,1.304
@@ -104,7 +101,7 @@
             <Grid x:Name="IContentPage" Margin="0,50,0,0">
                 <local:uSeRhOmE x:Name="User" Visibility="Collapsed"  />
                 <local:IMBOX x:Name="Robot" Visibility="Collapsed" />
-                <local:MusicControl x:Name="Music" Visibility="Collapsed"/>
+                <local:MusicControl x:Name="Music"/>
                 <local:AllControl x:Name="All" Visibility="Collapsed" />
             </Grid>
         </Grid>

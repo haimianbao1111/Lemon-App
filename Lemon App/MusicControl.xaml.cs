@@ -86,21 +86,24 @@ namespace Lemon_App
                 string ioo = Uuuhh.GetWeb($"http://59.37.96.220/base/fcgi-bin/fcg_musicexpress2.fcg?version=12&miniversion=92&key=19914AA57A96A9135541562F16DAD6B885AC8B8B5420AC567A0561D04540172E&guid={guid}");
                 string vkey = He.Text(ioo, "key=\"", "\" speedrpttype", 0);
                 musicurl = $"http://182.247.250.19/streamoc.music.tc.qq.com/M500{musicid}.mp3?vkey={vkey}&guid={guid}";
-                WebClient dc = new WebClient()
-                {
-                    Proxy = He.proxy
-                };
-                dc.DownloadFileCompleted += Fis;
-                dc.DownloadFileAsync(new Uri(musicurl), AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{i}.mp3");
-                ///等待播放
-                loading.Visibility = Visibility.Visible;
-   //         }
-      //      else
-         //   {
+            player.Open(new Uri(musicurl));
+            player.Play();
+            t.Start();
+            //WebClient dc = new WebClient()
+            //{
+            //    Proxy = He.proxy
+            //};
+            //dc.DownloadFileCompleted += Fis;
+            //dc.DownloadFileAsync(new Uri(musicurl), AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{i}.mp3");
+            /////等待播放
+            //loading.Visibility = Visibility.Visible;
+            //         }
+            //      else
+            //   {
             //    player.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{i}.mp3"));
-               // player.Play();
-                //t.Start();
-           // }
+            // player.Play();
+            //t.Start();
+            // }
             if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc"))
             {
                 string lrc = ((listBox.SelectedItem as MusicItemControl).Music as string[])[0];
@@ -226,7 +229,7 @@ namespace Lemon_App
             {
                 isR = true;
                 s.Data = Geometry.Parse("M2.432,11.997L13.69,1.714c0.393-0.392,0.393-1.028,0-1.42c-0.393-0.392-1.031-0.392-1.424,0L0.286,11.236c-0.21,0.209-0.299,0.487-0.285,0.76c-0.014,0.274,0.075,0.551,0.285,0.76l11.98,10.942c0.393,0.392,1.031,0.392,1.424,0c0.393-0.392,0.393-1.028,0-1.42L2.432,11.997z");
-                string i = (listBox.SelectedItem as MusicItemControl).Content;
+                string i = (listBox.SelectedItem as MusicItemControl).Content;//获取显示的内容
                 textBlock1.Text = i;
                 lrcname.Text = ((listBox.SelectedItem as MusicItemControl).Music as string[])[1];
                 zk.Text = ((listBox.SelectedItem as MusicItemControl).Music as string[])[3];
@@ -234,26 +237,29 @@ namespace Lemon_App
                 He.on = $"https://y.gtimg.cn/music/photo_new/T002R300x300M000{img}.jpg";
                 tx.Background = new ImageBrush(new BitmapImage(new Uri(He.on)));
                 musicid = ((listBox.SelectedItem as MusicItemControl).Music as string[])[20];
-                if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.mp3"))
-                {
+                //if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.mp3"))
+                //{
                     // musicurl = $"http://cc.stream.qqmusic.qq.com/C100{musicid}.m4a?fromtag=52";
                     string guid = "20D919A4D7700FBC424740E8CED80C6F";
                     string ioo = Uuuhh.GetWeb($"http://59.37.96.220/base/fcgi-bin/fcg_musicexpress2.fcg?version=12&miniversion=92&key=19914AA57A96A9135541562F16DAD6B885AC8B8B5420AC567A0561D04540172E&guid={guid}");
                     string vkey = He.Text(ioo, "key=\"", "\" speedrpttype", 0);
                     musicurl = $"http://182.247.250.19/streamoc.music.tc.qq.com/M500{musicid}.mp3?vkey={vkey}&guid={guid}";
-                    WebClient dc = new WebClient();
-                    dc.Proxy = He.proxy;
-                    dc.DownloadFileCompleted += Fi;
-                    dc.DownloadFileAsync(new Uri(musicurl), AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.mp3");
-                    ///等待播放
-                    loading.Visibility = Visibility.Visible;
-                }
-                else
-                {
-                    player.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.mp3"));
-                    player.Play();
-                    t.Start();
-                }
+                player.Open(new Uri(musicurl));
+                player.Play();
+                t.Start();
+                //    WebClient dc = new WebClient();
+                //    dc.Proxy = He.proxy;
+                //    dc.DownloadFileCompleted += Fi;
+                //    dc.DownloadFileAsync(new Uri(musicurl), AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.mp3");
+                //    ///等待播放
+                //    loading.Visibility = Visibility.Visible;
+                //}
+                //else
+                //{
+                //    player.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.mp3"));
+                //    player.Play();
+                //    t.Start();
+                //}
                 if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc"))
                 {
                     string lrc = ((listBox.SelectedItem as MusicItemControl).Music as string[])[0];

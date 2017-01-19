@@ -40,11 +40,14 @@ namespace Lemon_App
         {//V5
             //Now实况天气
             try
-            {
+            {//空气质量
+                JObject p = JObject.Parse(await Uuuhh.GetWebAsync($"https://route.showapi.com/104-29?showapi_sign=cfa206656db244c089be2d1499735bb5&showapi_appid=29086&city={Uri.EscapeUriString(i)}"));
+                kqzl.Text = "空气质量: "+p["showapi_res_body"]["pm"]["quality"]+"    "+ p["showapi_res_body"]["pm"]["aqi"];
+
                 JObject obj = JObject.Parse(await Uuuhh.GetWebAsync($"https://api.heweather.com/v5/now?city={Uri.EscapeUriString(i)}&key=f97e6a6ad4cd49babd0538747c86b88d"));
                 Biaoti.Text = "天气预报•" + obj["HeWeather5"][0]["basic"]["city"];
                 Qiwen.Text = obj["HeWeather5"][0]["now"]["tmp"] + "°";
-                Tianqi.Text = obj["HeWeather5"][0]["now"]["cond"]["txt"] + "    相对湿度 " + obj["HeWeather5"][0]["now"]["tmp"] + "%";
+                Tianqi.Text = obj["HeWeather5"][0]["now"]["cond"]["txt"] + "    相对湿度 " + obj["HeWeather5"][0]["now"]["hum"] + "%   体感:"+ obj["HeWeather5"][0]["now"]["fl"]+"°";
                 fengsu.Text = obj["HeWeather5"][0]["now"]["wind"]["dir"] + "    " + obj["HeWeather5"][0]["now"]["wind"]["sc"] + "级";
                 allqiyanjd.Text = "气压:" + obj["HeWeather5"][0]["now"]["pres"] + "    能见度" + obj["HeWeather5"][0]["now"]["vis"];
                 Icon.Source = new BitmapImage(new Uri($"http://files.heweather.com/cond_icon/{obj["HeWeather5"][0]["now"]["cond"]["code"]}.png"));
