@@ -47,5 +47,8 @@
     <Setting Name="Hatop" Type="System.Windows.Rect" Scope="User">
       <Value Profile="(Default)">0,0,0,0</Value>
     </Setting>
+    <Setting Name="UserImage" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

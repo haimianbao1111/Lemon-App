@@ -202,5 +202,17 @@ namespace Lemon_App.Properties {
                 this["Hatop"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public string UserImage {
+            get {
+                return ((string)(this["UserImage"]));
+            }
+            set {
+                this["UserImage"] = value;
+            }
+        }
     }
 }

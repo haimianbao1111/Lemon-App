@@ -23,19 +23,20 @@ namespace Lemon_App
     /// </summary>
     public partial class lemon : Window
     {
-        Timer t = new Timer();
+        System.Windows.Forms.Timer t = new System.Windows.Forms.Timer();
         public lemon()
         {
             InitializeComponent();
-            t.BeginInit();
-            t.Elapsed += T_Elapsed;
+            t.Tick += T_Elapsed;
             t.Interval = 1000;
             t.Start();
         }
 
-        private void T_Elapsed(object sender, ElapsedEventArgs e)
+        private void T_Elapsed(object sender, EventArgs e)
         {
             GC.Collect();
+            if (System.IO.File.Exists(Settings.Default.UserImage))
+            { tx.Background = new ImageBrush(new BitmapImage(new Uri(Settings.Default.UserImage, UriKind.Absolute))); }
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -122,14 +123,14 @@ namespace Lemon_App
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            ZX.BeginAnimation(OpacityProperty, new DoubleAnimation(0.3, 1, TimeSpan.FromSeconds(1)) { AutoReverse = true });
+   //         ZX.BeginAnimation(OpacityProperty, new DoubleAnimation(0.3, 1, TimeSpan.FromSeconds(1)) { AutoReverse = true });
             if (await Lemon_Updata.IsLemonNew(He.KMS))
                 new UpdataWindow().Show();
             if (!Uuuhh.Lalala("www.mi.com"))
                 ZX.Background = MIN.Background;
             else ZX.Background = MAX.Background;
-            if (System.IO.File.Exists(AppDomain.CurrentDomain.BaseDirectory + "UserImage.bmp"))
-            { tx.Background = new ImageBrush(new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "UserImage.bmp", UriKind.Absolute))); }
+            if (System.IO.File.Exists(Settings.Default.UserImage))
+            { tx.Background = new ImageBrush(new BitmapImage(new Uri(Settings.Default.UserImage, UriKind.Absolute))); }
             DateTime tmCur = DateTime.Now;
             if (tmCur.Hour > 18 && tmCur.Hour < 24)
                 Toast.SetToastNotion("晚上好:", "欢迎回来" + Settings.Default.RobotName, "------早睡早起身体好").Show();

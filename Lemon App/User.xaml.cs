@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lemon_App.Properties;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,8 +33,8 @@ namespace Lemon_App
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            if (System.IO.File.Exists(AppDomain.CurrentDomain.BaseDirectory + "UserImage.bmp"))
-                bd.Background = new ImageBrush(new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "UserImage.bmp", UriKind.Absolute)));
+            if (System.IO.File.Exists(Settings.Default.UserImage))
+                bd.Background = new ImageBrush(new BitmapImage(new Uri(Settings.Default.UserImage, UriKind.Absolute)));
         }
     }
 }
