@@ -47,7 +47,7 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-        <SolidColorBrush x:Key="ResizeGripperForeground" Color="#FF3F3F46"/>
+        <SolidColorBrush x:Key="ResizeGripperForeground" Color="#FFF0EFF1"/>
         <Style x:Key="ResizeGripStyle" TargetType="{x:Type ResizeGrip}">
             <Setter Property="MinWidth" Value="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}"/>
             <Setter Property="MinHeight" Value="{DynamicResource {x:Static SystemParameters.HorizontalScrollBarHeightKey}}"/>
