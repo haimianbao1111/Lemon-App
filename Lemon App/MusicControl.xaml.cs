@@ -60,7 +60,7 @@ namespace Lemon_App
         private async void io(object sender, EventArgs e)
         {
                try {
-            player.Stop();
+        //    player.Stop();
             s.Data = Geometry.Parse("M2.432,11.997L13.69,1.714c0.393-0.392,0.393-1.028,0-1.42c-0.393-0.392-1.031-0.392-1.424,0L0.286,11.236c-0.21,0.209-0.299,0.487-0.285,0.76c-0.014,0.274,0.075,0.551,0.285,0.76l11.98,10.942c0.393,0.392,1.031,0.392,1.424,0c0.393-0.392,0.393-1.028,0-1.42L2.432,11.997z");
             string i = "";
             if (listBox.SelectedIndex != listBox.Items.Count)
@@ -185,6 +185,7 @@ namespace Lemon_App
             {
                 try
                 {
+                    jz.Visibility = Visibility.Visible;
                     DOWN.Visibility = Visibility.Collapsed;
                     listBox.Visibility = Visibility.Visible;
                     listBox.Items.Clear();
@@ -201,6 +202,7 @@ namespace Lemon_App
                         listBox.Items.Add(new MusicItemControl() { BorderThickness = new Thickness(0), MusicGS = Gs, MusicName = songname, MusicZJ = Zhj, Music = ContentLines });
                         i++;
                     }
+                    jz.Visibility = Visibility.Collapsed;
                 }
                 catch { }
             }
@@ -521,6 +523,7 @@ namespace Lemon_App
                 ioi--;
                 try
                 {
+                    jz.Visibility = Visibility.Visible;
                     listBox.Items.Clear();
                     JObject o = JObject.Parse(await Uuuhh.GetWebAsync($"http://s.music.qq.com/fcgi-bin/music_search_new_platform?t=0&n=50&aggr=1&cr=1&loginUin={Settings.Default.RobotName}&format=json&inCharset=GB2312&outCharset=utf-8&notice=0&platform=jqminiframe.json&needNewCode=0&p={ioi.ToString()}&catZhida=0&remoteplace=sizer.newclient.next_song&w={Uri.EscapeDataString(textBox.Text)}"));
                     int i = 0;
@@ -535,6 +538,7 @@ namespace Lemon_App
                         listBox.Items.Add(new MusicItemControl() { BorderThickness = new Thickness(0), MusicGS = Gs, MusicName = songname, MusicZJ = Zhj, Music = ContentLines });
                         i++;
                     }
+                    jz.Visibility = Visibility.Collapsed;
                 }
                 catch { }
             }
@@ -544,6 +548,7 @@ namespace Lemon_App
         {
             try
             {
+                jz.Visibility = Visibility.Visible;
                 h.Visibility = Visibility.Visible;
                 G.Visibility = Visibility.Hidden;
                 ZjImAgE.Visibility = Visibility.Collapsed;
@@ -562,6 +567,7 @@ namespace Lemon_App
                     listBox.Items.Add(new MusicItemControl() { BorderThickness = new Thickness(0), MusicGS = Gs, MusicName = songname, MusicZJ = Zhj, Music = ContentLines });
                     i++;
                 }
+                jz.Visibility = Visibility.Collapsed;
             }
             catch { }
         }
@@ -633,6 +639,7 @@ namespace Lemon_App
 
         private void Border_MouseDown_2(object sender, MouseButtonEventArgs e)
         {
+            jz.Visibility = Visibility.Visible;
             listBox.Items.Clear();
             ListJson lj = new Lemon_App.ListJson();
             lj = JsonToObject(Settings.Default.MusicList, lj) as ListJson;
@@ -640,6 +647,7 @@ namespace Lemon_App
             {
                 listBox.Items.Add(new MusicItemControl() { MusicGS = lj.List[i].ItemText[3], MusicName = lj.List[i].ItemText[1], MusicZJ = lj.List[i].ItemText[5], Music = lj.List[i].ItemText });
             }
+            jz.Visibility = Visibility.Collapsed;
         }
 
         private void Grid_MouseDown(object sender, MouseEventArgs e)

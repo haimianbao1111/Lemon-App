@@ -79,8 +79,6 @@ namespace Lemon_App
         {
             if((sender as Border).ToolTip.ToString()== "小萌机器人")
             {
-                BackgroundPage.Background = new SolidColorBrush(Color.FromArgb(255,253,253,253));
-                BackgroundPage.Effect = new BlurEffect() { Radius = 0 };
                 Robot.Visibility = Visibility.Visible;
                 Music.Visibility = Visibility.Collapsed;
                 User.Visibility = Visibility.Collapsed;
@@ -93,8 +91,7 @@ namespace Lemon_App
             }
             else if((sender as Border).ToolTip.ToString() == "小萌音乐")
             {
-                BackgroundPage.Background = new SolidColorBrush(Color.FromArgb(255, 253, 253, 253));
-                BackgroundPage.Effect = new BlurEffect() { Radius = 0 };
+
                 Robot.Visibility = Visibility.Collapsed;
                 All.Visibility = Visibility.Collapsed;
                 User.Visibility = Visibility.Collapsed;
@@ -107,8 +104,6 @@ namespace Lemon_App
             }
             else if ((sender as Border).ToolTip.ToString() == "其他")
             {
-                BackgroundPage.Background = new SolidColorBrush(Color.FromArgb(255, 253, 253, 253));
-                BackgroundPage.Effect = new BlurEffect() { Radius = 0 };
                 Robot.Visibility = Visibility.Collapsed;
                 Music.Visibility = Visibility.Collapsed;
                 User.Visibility = Visibility.Collapsed;
@@ -175,11 +170,10 @@ namespace Lemon_App
             All.Visibility = Visibility.Collapsed;
             Music.Visibility = Visibility.Collapsed;
             User.Visibility = Visibility.Visible;
+            User.NM.Text = Settings.Default.RobotName;
             Mus.Fill = new SolidColorBrush(Color.FromArgb(255, 180, 180, 193));
             ALL.Fill = new SolidColorBrush(Color.FromArgb(255, 180, 180, 193));
             Rbt.Fill = new SolidColorBrush(Color.FromArgb(255, 180, 180, 193));
-            BackgroundPage.Background = User.TXIMAGE;
-            BackgroundPage.Effect = new BlurEffect() { Radius = 80 };
         }
     }
 }

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Lemon_App"
              mc:Ignorable="d" Loaded="UserControl_Loaded" >
     <ScrollViewer x:Name="scrollViewer" Style="{DynamicResource for_scrollviewer}">
-        <Grid Width="{Binding ActualWidth, ElementName=scrollViewer, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=scrollViewer, Mode=OneWay}">
+        <Grid Width="{Binding ActualWidth, ElementName=scrollViewer, Mode=OneWay}" >
             <Label x:Name="label" Content="设置 Settings" HorizontalAlignment="Left" Height="65" Margin="10,0,0,0" VerticalAlignment="Top" Width="188" Foreground="#FF252526" FontSize="24" Background="{x:Null}"/>
             <Label x:Name="label2" Content="搜索引擎Url:" HorizontalAlignment="Left" Height="24" Margin="10,41,0,0" VerticalAlignment="Top" Width="108" Foreground="#FF333337"/>
             <Border BorderThickness="1" Margin="10,70,10,0" Background="#FFF1F2F6" CornerRadius="5" Height="30" VerticalAlignment="Top">
@@ -22,8 +22,7 @@
             <Label Margin="11,167,207,0" Foreground="#FF333337" Content="天气地区 WeatherInfo:" Height="29" VerticalAlignment="Top"/>
             <Grid Height="59" VerticalAlignment="Top" Margin="0,362,0,0">
                 <Label x:Name="label4" Content="关于 About:" HorizontalAlignment="Left" Height="24" Margin="10,0,0,0" VerticalAlignment="Top" Width="78" Foreground="#FF333337"/>
-                <Label x:Name="label3_Copy" Content="©2016 Twilight all rights reserved." Margin="10,24,0,0" Foreground="#FF1B1B1C" HorizontalAlignment="Left" Width="219" Height="31" VerticalAlignment="Top"/>
-                <Label x:Name="label3_Copy1" Content="QQ:2728578956    Lemon App Professional" Margin="0,24,10,0" Foreground="#FF1B1B1C" HorizontalAlignment="Right" Width="327" Height="31" VerticalAlignment="Top"/>
+                <Label x:Name="label3_Copy" Content="©2016 Twilight all rights reserved. QQ:2728578956    Lemon App Professional" Margin="10,24,0,0" Foreground="#FF1B1B1C" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             </Grid>
             <CheckBox x:Name="checkBox" Content="加入开机自启动" HorizontalAlignment="Left" Height="19" Margin="11,338,0,0" VerticalAlignment="Top" Width="153" Foreground="#FF1B1B1C" Click="checkBox_Click"/>
             <Label Margin="11,309,494,0" Foreground="#FF333337" Content="其他设置" Height="29" VerticalAlignment="Top"/>

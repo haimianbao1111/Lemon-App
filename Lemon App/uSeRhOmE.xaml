@@ -4,8 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Lemon_App"
-             mc:Ignorable="d" Loaded="UserControl_Loaded" >
+             mc:Ignorable="d" Loaded="UserControl_Loaded">
     <Grid>
+        <Grid Background="{Binding Background, ElementName=TX}" >
+            <Grid.Effect>
+                <BlurEffect Radius="80"/>
+            </Grid.Effect>
+        </Grid>
         <Grid Width="200" Height="200" VerticalAlignment="Top" Margin="0,100,0,0">
             <Border x:Name="TX" BorderThickness="5" Height="125" Margin="0" VerticalAlignment="Top" Width="125" BorderBrush="#66FFFFFF" CornerRadius="125" Background="#FF16537E" MouseDown="TX_MouseDown"/>
             <TextBlock x:Name="NM" Height="26" Margin="0,130,0,0" TextWrapping="Wrap" Text="Lemon User" VerticalAlignment="Top" Foreground="#FF2D2D30" FontSize="20" TextAlignment="Center"/>

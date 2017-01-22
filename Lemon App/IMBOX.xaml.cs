@@ -57,7 +57,7 @@ namespace Lemon_App
                 Robot.Children.Add(Uu);
                 Robot.Children.Add(Rbu);
             }
-        //    textBox1.Text = "";
+            textBox1.Text = "";
         }
 
         private async void textBox1_KeyDown(object sender, KeyEventArgs e)
@@ -81,7 +81,7 @@ namespace Lemon_App
                     Robot.Children.Add(Uu);
                     Robot.Children.Add(Rbu);
                 }
-             //   textBox1.Text = "";
+                textBox1.Text = "";
             }
         }
 

@@ -117,7 +117,7 @@ namespace Lemon_App
                 YD.Text = "感冒指数:" + b["HeWeather5"][0]["suggestion"]["sport"]["brf"];
                 YD1.ToolTip = b["HeWeather5"][0]["suggestion"]["sport"]["txt"].ToString();
             }
-            catch { }
+            catch { Erro.BeginAnimation(HeightProperty, new DoubleAnimation(0, 37, TimeSpan.FromSeconds(0.2))); }
         }
         private void GetAndSetWeather(string i)
         {
