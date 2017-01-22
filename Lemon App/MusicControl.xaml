@@ -189,7 +189,7 @@
             <Border BorderBrush="#33FFFFFF" BorderThickness="1" HorizontalAlignment="Left" Margin="10,0,0,5" Width="39" Background="#33FFFFFF" CornerRadius="100" Height="39" VerticalAlignment="Bottom" MouseDown="textBlock_MouseDown">
                 <Path x:Name="s" Data="M40.2,3.8C36.4,0,30,2.7,30,8v112c0,5.3,6.4,8,10.2,4.2l56-56c2.3-2.3,2.3-6.1,0-8.4L40.2,3.8z" Stretch="Fill" Fill="White" Margin="12,10,10,10"/>
             </Border>
-            <Slider x:Name="jd" Height="13" Margin="99,22,10,0" VerticalAlignment="Top" Style="{DynamicResource SimpleSlider}" MouseMove="jd_MouseMove" BorderBrush="{x:Null}" Foreground="{x:Null}"/>
+            <Slider x:Name="jd" Height="14" Margin="99,22,10,0" VerticalAlignment="Top" Style="{DynamicResource SimpleSlider}" MouseMove="jd_MouseMove" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FFF0F0F0"/>
             <Border BorderBrush="#4C000000" BorderThickness="1" HorizontalAlignment="Right" Height="20" Margin="0,5,30,0" VerticalAlignment="Top" Width="20" Background="#33FFFFFF" CornerRadius="5" MouseDown="Border_MouseDown" ToolTip="上一页">
                 <Path Data="M53.696,30.254l32.099,32.1c2.042,2.042,2.042,5.352,0,7.393c-2.041,2.041-5.352,2.041-7.393,0L50,41.344L21.598,69.746  c-2.042,2.041-5.352,2.041-7.393,0c-2.042-2.041-2.042-5.351,0-7.393l32.099-32.1c1.021-1.02,2.358-1.53,3.696-1.53  S52.676,29.234,53.696,30.254z" Fill="White" Stretch="Uniform" StrokeThickness="0" Margin="3"/>
             </Border>

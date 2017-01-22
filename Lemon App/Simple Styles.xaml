@@ -945,7 +945,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
                     <Grid>
-                        <Ellipse x:Name="Ellipse" Fill="{DynamicResource NormalBrush}" Stroke="{DynamicResource NormalBorderBrush}" StrokeThickness="1"/>
+                        <Ellipse x:Name="Ellipse" Fill="#FF3399FF" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
@@ -983,10 +983,10 @@
                         <!-- The Track lays out the repeat buttons and thumb -->
                         <Track Grid.Row="1" x:Name="PART_Track">
                             <Track.Thumb>
-                                <Thumb Style="{DynamicResource SimpleSliderThumb}"/>
+                                <Thumb Style="{DynamicResource SimpleSliderThumb}" Width="10" Height="10"/>
                             </Track.Thumb>
                             <Track.IncreaseRepeatButton>
-                                <RepeatButton Style="{DynamicResource SimpleScrollRepeatButtonStyle}" Command="Slider.IncreaseLarge"/>
+                                <RepeatButton Style="{DynamicResource SimpleScrollRepeatButtonStyle}" Command="Slider.IncreaseLarge" BorderBrush="{x:Null}"/>
                             </Track.IncreaseRepeatButton>
                             <Track.DecreaseRepeatButton>
                                 <RepeatButton Style="{DynamicResource SimpleScrollRepeatButtonStyle}" Command="Slider.DecreaseLarge"/>
