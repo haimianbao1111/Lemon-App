@@ -11,15 +11,6 @@
     <Setting Name="WeatherInfo" Type="System.String" Scope="User">
       <Value Profile="(Default)">北京</Value>
     </Setting>
-    <Setting Name="NoteText" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="Font" Type="System.String" Scope="User">
-      <Value Profile="(Default)">微软雅黑</Value>
-    </Setting>
-    <Setting Name="LemonAreeunIts" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="Qianmin" Type="System.String" Scope="User">
       <Value Profile="(Default)">个人签名</Value>
     </Setting>
@@ -49,6 +40,9 @@
     </Setting>
     <Setting Name="UserImage" Type="System.String" Scope="User">
       <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="LemonAreeunIts" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>
