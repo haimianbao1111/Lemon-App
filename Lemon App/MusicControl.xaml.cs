@@ -675,7 +675,7 @@ namespace Lemon_App
                 {
                     jz.Visibility = Visibility.Visible;
                     listBox.Items.Clear();
-                    JObject o = JObject.Parse(await Uuuhh.GetWebAsync($"http://59.37.96.220/soso/fcgi-bin/client_search_logic_cp?format=json&t=10&inCharset=GB2312&outCharset=utf-8&w={textBox.Text}&p={ioi}"));
+                    JObject o = JObject.Parse(await Uuuhh.GetWebAsync($"http://59.37.96.220/soso/fcgi-bin/client_search_logic_cp?format=json&t=50&inCharset=GB2312&outCharset=utf-8&w={textBox.Text}&p={ioi}"));
                     int i = 0;
                     while (i < o["data"]["song"]["list"].Count())
                     {
@@ -715,7 +715,7 @@ namespace Lemon_App
                 ZjImAgE.Visibility = Visibility.Collapsed;
                 ioi++;
                 listBox.Items.Clear();
-                JObject o = JObject.Parse(await Uuuhh.GetWebAsync($"http://59.37.96.220/soso/fcgi-bin/client_search_logic_cp?format=json&t=10&inCharset=GB2312&outCharset=utf-8&w={textBox.Text}&p={ioi}"));
+                JObject o = JObject.Parse(await Uuuhh.GetWebAsync($"http://59.37.96.220/soso/fcgi-bin/client_search_logic_cp?format=json&t=50&inCharset=GB2312&outCharset=utf-8&w={textBox.Text}&p={ioi}"));
                 int i = 0;
                 while (i < o["data"]["song"]["list"].Count())
                 {
@@ -853,7 +853,9 @@ namespace Lemon_App
             lj = JsonToObject(Settings.Default.MusicList, lj) as ListJson;
             for (int i = 0; i < lj.List.Count; i++)
             {
-                listBox.Items.Add(new MusicItemControl() { MusicGS = lj.List[i].ItemText.Singer, MusicName = lj.List[i].ItemText.MusicName, MusicZJ = lj.List[i].ItemText.ZJ, Music = lj.List[i].ItemText });
+                string os = "";
+                if (lj.List[i].ItemText.Fotmat != "0") { os = "SQ"; }
+                listBox.Items.Add(new MusicItemControl() { MusicGS = lj.List[i].ItemText.Singer, MusicName = lj.List[i].ItemText.MusicName, MusicZJ = lj.List[i].ItemText.ZJ, Music = lj.List[i].ItemText,Qt=os });
             }
         }
 
