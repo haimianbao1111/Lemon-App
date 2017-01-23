@@ -12,9 +12,14 @@
             <ColumnDefinition Width="20*"/>
             <ColumnDefinition Width="20*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock x:Name="Nm" TextWrapping="Wrap" Text="MusicName" Foreground="#FF686868" FontSize="14" Margin="5,15,0,15" HorizontalAlignment="Left"/>
         <TextBlock x:Name="GS" TextWrapping="Wrap" Foreground="#FFCFCFCF" FontSize="14" Margin="5,15,0,15" Grid.Column="1" HorizontalAlignment="Left" Text="MusicSinger"/>
         <TextBlock x:Name="ZJ" HorizontalAlignment="Left" TextWrapping="Wrap" Foreground="#FFCFCFCF" FontSize="14" Margin="5,15,0,15" Grid.Column="2" Text="MusicAlbum"/>
+        <WrapPanel Margin="10,15,0,15">
+            <TextBlock x:Name="Nm" TextWrapping="Wrap" Text="MusicName" Foreground="#FF686868" FontSize="14" HorizontalAlignment="Left" Height="20"/>
+            <Border x:Name="RS" BorderBrush="#FFFE7418" BorderThickness="1" HorizontalAlignment="Left" Width="25" Height="18" CornerRadius="3" Margin="5,0,0,0" Visibility="Collapsed">
+                <TextBlock x:Name="Q" Foreground="#FFFE7418" Text="SQ" TextAlignment="Center"/>
+            </Border>
+        </WrapPanel>
 
     </Grid>
 </UserControl>

@@ -41,6 +41,11 @@ namespace Lemon_App
             get { return ZJ.Text; }
             set { ZJ.Text = value; }
         }
+        public string Qt
+        {
+          get { return Q.Text; }
+            set { if (value != "") { Q.Text = value; RS.Visibility = Visibility.Visible; } }
+        }
         public Object M;
         public object Music { get { return M; } set { M = value; } }
     }

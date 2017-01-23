@@ -359,6 +359,7 @@ namespace Lemon_App
         public static async System.Threading.Tasks.Task<string> GetWebAsync(string url)
         {
             HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(url);
+            hwr.Timeout = 10000;
             if(Settings.Default.isWebProxy) hwr.Proxy = He.proxy;
             var o = await hwr.GetResponseAsync();
             StreamReader sr = new StreamReader(o.GetResponseStream(),Encoding.UTF8);
@@ -369,6 +370,7 @@ namespace Lemon_App
         public static async System.Threading.Tasks.Task<string> GetWebUAsync(string url)
         {
             HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(url);
+            hwr.Timeout = 10000;
             if (Settings.Default.isWebProxy) hwr.Proxy = He.proxy;
             var o = await hwr.GetResponseAsync();
             StreamReader sr = new StreamReader(o.GetResponseStream(), Encoding.Default);
@@ -380,19 +382,11 @@ namespace Lemon_App
         public static async System.Threading.Tasks.Task<string> GetWebAsync(string url,Encoding c)
         {
             HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(url);
+            hwr.Timeout = 10000;
             if (Settings.Default.isWebProxy) hwr.Proxy = He.proxy;
             var o = await hwr.GetResponseAsync();
             StreamReader sr = new StreamReader(o.GetResponseStream(), c);
             var st = await sr.ReadToEndAsync();
-            sr.Dispose();
-            return st;
-        }
-        public static string GetWeb(string url)
-        {
-            HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(url);
-            if (Settings.Default.isWebProxy) hwr.Proxy = He.proxy;
-            StreamReader sr = new StreamReader(hwr.GetResponse().GetResponseStream(), Encoding.Default);
-            var st = sr.ReadToEnd();
             sr.Dispose();
             return st;
         }
@@ -413,11 +407,42 @@ namespace Lemon_App
     }
     public class ListItem
     {
-        public string[] ItemText { get; set; }
+        public Music ItemText { get; set; }
     }
 
     public class ListJson
     {
         public List<ListItem> List { get; set; }
+    }
+
+    public class Music
+    {/// <summary>
+    /// 歌曲名称
+    /// </summary>
+        public string MusicName { set; get; }
+        /// <summary>
+        /// 歌手
+        /// </summary>
+        public string Singer { set; get; }
+        /// <summary>
+        /// 用于播放的音乐ID
+        /// </summary>
+        public string MusicID { set; get; }
+        /// <summary>
+        /// 用于获取图像的ID
+        /// </summary>
+        public string ImageID { set; get; }
+        /// <summary>
+        /// 专辑名称
+        /// </summary>
+        public string   ZJ { set; get; }
+        /// <summary>
+        /// 品质
+        /// </summary>
+        public string Fotmat { set; get; }
+        /// <summary>
+        /// 歌词ID
+        /// </summary>
+        public string GC { set; get; }
     }
 }

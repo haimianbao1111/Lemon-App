@@ -73,15 +73,14 @@ namespace Lemon_App
                 listBox.SelectedItem = listBox.Items[0];
             }
             isR = true;
-            textBlock1.Text = i;
-            lrcname.Text = ((listBox.SelectedItem as MusicItemControl).Music as string[])[1];
-            zk.Text = ((listBox.SelectedItem as MusicItemControl).Music as string[])[3];
-            img = ((listBox.SelectedItem as MusicItemControl).Music as string[])[22];
-            He.on = $"https://y.gtimg.cn/music/photo_new/T002R300x300M000{img}.jpg";
-            tx.Background = new ImageBrush(new BitmapImage(new Uri(He.on)));
-            musicid = ((listBox.SelectedItem as MusicItemControl).Music as string[])[20];
+                lrcname.Text = ((listBox.SelectedItem as MusicItemControl).Music as Music).MusicName;
+                zk.Text = ((listBox.SelectedItem as MusicItemControl).Music as Music).ZJ;
+                img = ((listBox.SelectedItem as MusicItemControl).Music as Music).ImageID;
+                He.on = $"https://y.gtimg.cn/music/photo_new/T002R300x300M000{img}.jpg";
+                tx.Background = new ImageBrush(new BitmapImage(new Uri(He.on)));
+                musicid = ((listBox.SelectedItem as MusicItemControl).Music as Music).MusicID;
                 string guid = "20D919A4D7700FBC424740E8CED80C6F";
-                string ioo = Uuuhh.GetWeb($"http://59.37.96.220/base/fcgi-bin/fcg_musicexpress2.fcg?version=12&miniversion=92&key=19914AA57A96A9135541562F16DAD6B885AC8B8B5420AC567A0561D04540172E&guid={guid}");
+                string ioo =await Uuuhh.GetWebAsync($"http://59.37.96.220/base/fcgi-bin/fcg_musicexpress2.fcg?version=12&miniversion=92&key=19914AA57A96A9135541562F16DAD6B885AC8B8B5420AC567A0561D04540172E&guid={guid}");
                 string vkey = He.Text(ioo, "key=\"", "\" speedrpttype", 0);
                 musicurl = $"http://182.247.250.19/streamoc.music.tc.qq.com/M500{musicid}.mp3?vkey={vkey}&guid={guid}";
             player.Open(new Uri(musicurl));
@@ -89,7 +88,7 @@ namespace Lemon_App
             t.Start();
             if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc"))
             {
-                string lrc = ((listBox.SelectedItem as MusicItemControl).Music as string[])[0];
+                    string lrc = ((listBox.SelectedItem as MusicItemControl).Music as Music).GC;
                 string lrcid = lrc.Substring(lrc.Length - 2, 2);
                 //     MessageBox.Show(He.Text(sr.ReadToEnd(), @"<lyric><![CDATA[", "]]></lyric>", 0));
                 FileStream fs = new FileStream(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{i}.lrc", FileMode.Create);
@@ -171,17 +170,28 @@ namespace Lemon_App
                     DOWN.Visibility = Visibility.Collapsed;
                     listBox.Visibility = Visibility.Visible;
                     listBox.Items.Clear();
-                    JObject o = JObject.Parse(await Uuuhh.GetWebAsync($"http://s.music.qq.com/fcgi-bin/music_search_new_platform?t=0&n=50&aggr=1&cr=1&loginUin={Settings.Default.RobotName}&format=json&inCharset=GB2312&outCharset=utf-8&notice=0&platform=jqminiframe.json&needNewCode=0&p={ioi.ToString()}&catZhida=0&remoteplace=sizer.newclient.next_song&w={Uri.EscapeDataString(textBox.Text)}"));
+                    JObject o = JObject.Parse(await Uuuhh.GetWebAsync($"http://59.37.96.220/soso/fcgi-bin/client_search_logic_cp?format=json&t=50&inCharset=GB2312&outCharset=utf-8&w={textBox.Text}&p=1",Encoding.UTF8));
                     int i = 0;
                     while (i < o["data"]["song"]["list"].Count())
                     {
-                        string f = o["data"]["song"]["list"][i]["f"].ToString().Replace("|", "\r\n");
-                        string[] ContentLines = f.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-                        string Gs = o["data"]["song"]["list"][i]["fsinger"].ToString();
-                        string songname = o["data"]["song"]["list"][i]["fsong"].ToString();
-                        string Zhj = o["data"]["song"]["list"][i]["albumName_hilight"].ToString();
+                        //string f = o["data"]["song"]["list"][i]["f"].ToString().Replace("|", "\r\n");
+                        //string[] ContentLines = f.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+                        //string Gs = o["data"]["song"]["list"][i]["fsinger"].ToString();
+                        //string songname = o["data"]["song"]["list"][i]["fsong"].ToString();
+                        //string Zhj = o["data"]["song"]["list"][i]["albumName_hilight"].ToString();
                         //    img = ContentLines[22];
-                        listBox.Items.Add(new MusicItemControl() { BorderThickness = new Thickness(0), MusicGS = Gs, MusicName = songname, MusicZJ = Zhj, Music = ContentLines });
+                        Music m = new Music();
+                        m.MusicName = o["data"]["song"]["list"][i]["songname"].ToString();
+                        m.Singer = o["data"]["song"]["list"][i]["singer"][0]["name"].ToString();
+                        m.ZJ = o["data"]["song"]["list"][i]["albumname"].ToString();
+                        m.MusicID = o["data"]["song"]["list"][i]["media_mid"].ToString();
+                        m.ImageID= o["data"]["song"]["list"][i]["albummid"].ToString();
+                        m.GC= o["data"]["song"]["list"][i]["songid"].ToString();
+                        m.Fotmat= o["data"]["song"]["list"][i]["sizeflac"].ToString();
+                        string Q = "";
+                        if (m.Fotmat != "0")
+                            Q = "SQ";
+                        listBox.Items.Add(new MusicItemControl() { BorderThickness = new Thickness(0), MusicGS = m.Singer, MusicName =m.MusicName, MusicZJ = m.ZJ, Music = m,Qt=Q });
                         i++;
                     }
                     jz.Visibility = Visibility.Collapsed;
@@ -211,14 +221,14 @@ namespace Lemon_App
                 player.Stop();
                 isR = true;
                 s.Data = Geometry.Parse("M2.432,11.997L13.69,1.714c0.393-0.392,0.393-1.028,0-1.42c-0.393-0.392-1.031-0.392-1.424,0L0.286,11.236c-0.21,0.209-0.299,0.487-0.285,0.76c-0.014,0.274,0.075,0.551,0.285,0.76l11.98,10.942c0.393,0.392,1.031,0.392,1.424,0c0.393-0.392,0.393-1.028,0-1.42L2.432,11.997z");
-                string i = (listBox.SelectedItem as MusicItemControl).Content;//获取显示的内容
+                string i = (listBox.SelectedItem as MusicItemControl).Content;
                 textBlock1.Text = i;
-                lrcname.Text = ((listBox.SelectedItem as MusicItemControl).Music as string[])[1];
-                zk.Text = ((listBox.SelectedItem as MusicItemControl).Music as string[])[3];
-                img = ((listBox.SelectedItem as MusicItemControl).Music as string[])[22];
+                lrcname.Text = ((listBox.SelectedItem as MusicItemControl).Music as Music).MusicName;
+                zk.Text = ((listBox.SelectedItem as MusicItemControl).Music as Music).ZJ;
+                img = ((listBox.SelectedItem as MusicItemControl).Music as Music).ImageID;
                 He.on = $"https://y.gtimg.cn/music/photo_new/T002R300x300M000{img}.jpg";
                 tx.Background = new ImageBrush(new BitmapImage(new Uri(He.on)));
-                musicid = ((listBox.SelectedItem as MusicItemControl).Music as string[])[20];
+                musicid = ((listBox.SelectedItem as MusicItemControl).Music as Music).MusicID;
                 if (pz.Text == "标准")
                 {
                     if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.m4a"))
@@ -239,7 +249,7 @@ namespace Lemon_App
                     }
                     if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc"))
                     {
-                        string lrc = ((listBox.SelectedItem as MusicItemControl).Music as string[])[0];
+                        string lrc = ((listBox.SelectedItem as MusicItemControl).Music as Music).GC;
                         string lrcid = lrc.Substring(lrc.Length - 2, 2);
                         //     MessageBox.Show(He.Text(sr.ReadToEnd(), @"<lyric><![CDATA[", "]]></lyric>", 0));
                         FileStream fs = new FileStream(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc", FileMode.Create);
@@ -295,7 +305,7 @@ namespace Lemon_App
                     {
                         // musicurl = $"http://cc.stream.qqmusic.qq.com/C100{musicid}.m4a?fromtag=52";
                         string guid = "20D919A4D7700FBC424740E8CED80C5F";
-                        string ioo = Uuuhh.GetWeb($"http://59.37.96.220/base/fcgi-bin/fcg_musicexpress2.fcg?version=12&miniversion=92&key=19914AA57A96A9135541562F16DAD6B885AC8B8B5420AC567A0561D04540172E&guid={guid}");
+                        string ioo =await Uuuhh.GetWebAsync($"http://59.37.96.220/base/fcgi-bin/fcg_musicexpress2.fcg?version=12&miniversion=92&key=19914AA57A96A9135541562F16DAD6B885AC8B8B5420AC567A0561D04540172E&guid={guid}");
                         string vkey = He.Text(ioo, "key=\"", "\" speedrpttype", 0);
                         musicurl = $"http://182.247.250.19/streamoc.music.tc.qq.com/M500{musicid}.mp3?vkey={vkey}&guid={guid}";
                         //player.Open(new Uri(musicurl));
@@ -316,7 +326,7 @@ namespace Lemon_App
                     }
                     if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc"))
                     {
-                        string lrc = ((listBox.SelectedItem as MusicItemControl).Music as string[])[0];
+                        string lrc = ((listBox.SelectedItem as MusicItemControl).Music as Music).GC;
                         string lrcid = lrc.Substring(lrc.Length - 2, 2);
                         //     MessageBox.Show(He.Text(sr.ReadToEnd(), @"<lyric><![CDATA[", "]]></lyric>", 0));
                         FileStream fs = new FileStream(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc", FileMode.Create);
@@ -372,7 +382,7 @@ namespace Lemon_App
                     {
                         // musicurl = $"http://cc.stream.qqmusic.qq.com/C100{musicid}.m4a?fromtag=52";
                         string guid = "20D919A4D7700FBC424740E8CED80C5F";//2,6
-                        string ioo = Uuuhh.GetWeb($"http://59.37.96.220/base/fcgi-bin/fcg_musicexpress2.fcg?version=12&miniversion=92&key=19914AA57A96A9135541562F16DAD6B885AC8B8B5420AC567A0561D04540172E&guid={guid}");
+                        string ioo =await Uuuhh.GetWebAsync($"http://59.37.96.220/base/fcgi-bin/fcg_musicexpress2.fcg?version=12&miniversion=92&key=19914AA57A96A9135541562F16DAD6B885AC8B8B5420AC567A0561D04540172E&guid={guid}");
                         string vkey = He.Text(ioo, "key=\"", "\" speedrpttype", 0);
                         musicurl = $"http://116.55.235.12/streamoc.music.tc.qq.com/F000{musicid}.flac?vkey={vkey}&guid={guid}";
                         //player.Open(new Uri(musicurl));
@@ -393,7 +403,7 @@ namespace Lemon_App
                     }
                     if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc"))
                     {
-                        string lrc = ((listBox.SelectedItem as MusicItemControl).Music as string[])[0];
+                        string lrc = ((listBox.SelectedItem as MusicItemControl).Music as Music).GC;
                         string lrcid = lrc.Substring(lrc.Length - 2, 2);
                         //     MessageBox.Show(He.Text(sr.ReadToEnd(), @"<lyric><![CDATA[", "]]></lyric>", 0));
                         FileStream fs = new FileStream(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc", FileMode.Create);
@@ -665,17 +675,28 @@ namespace Lemon_App
                 {
                     jz.Visibility = Visibility.Visible;
                     listBox.Items.Clear();
-                    JObject o = JObject.Parse(await Uuuhh.GetWebAsync($"http://s.music.qq.com/fcgi-bin/music_search_new_platform?t=0&n=50&aggr=1&cr=1&loginUin={Settings.Default.RobotName}&format=json&inCharset=GB2312&outCharset=utf-8&notice=0&platform=jqminiframe.json&needNewCode=0&p={ioi.ToString()}&catZhida=0&remoteplace=sizer.newclient.next_song&w={Uri.EscapeDataString(textBox.Text)}"));
+                    JObject o = JObject.Parse(await Uuuhh.GetWebAsync($"http://59.37.96.220/soso/fcgi-bin/client_search_logic_cp?format=json&t=10&inCharset=GB2312&outCharset=utf-8&w={textBox.Text}&p={ioi}"));
                     int i = 0;
                     while (i < o["data"]["song"]["list"].Count())
                     {
-                        string f = o["data"]["song"]["list"][i]["f"].ToString().Replace("|", "\r\n");
-                        string[] ContentLines = f.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-                        string Gs = o["data"]["song"]["list"][i]["fsinger"].ToString();
-                        string songname = o["data"]["song"]["list"][i]["fsong"].ToString();
-                        string Zhj = o["data"]["song"]["list"][i]["albumName_hilight"].ToString();
+                        //string f = o["data"]["song"]["list"][i]["f"].ToString().Replace("|", "\r\n");
+                        //string[] ContentLines = f.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+                        //string Gs = o["data"]["song"]["list"][i]["fsinger"].ToString();
+                        //string songname = o["data"]["song"]["list"][i]["fsong"].ToString();
+                        //string Zhj = o["data"]["song"]["list"][i]["albumName_hilight"].ToString();
                         //    img = ContentLines[22];
-                        listBox.Items.Add(new MusicItemControl() { BorderThickness = new Thickness(0), MusicGS = Gs, MusicName = songname, MusicZJ = Zhj, Music = ContentLines });
+                        Music m = new Music();
+                        m.MusicName = o["data"]["song"]["list"][i]["songname"].ToString();
+                        m.Singer = o["data"]["song"]["list"][i]["singer"][0]["name"].ToString();
+                        m.ZJ = o["data"]["song"]["list"][i]["albumname"].ToString();
+                        m.MusicID = o["data"]["song"]["list"][i]["media_mid"].ToString();
+                        m.ImageID = o["data"]["song"]["list"][i]["albummid"].ToString();
+                        m.GC = o["data"]["song"]["list"][i]["songid"].ToString();
+                        m.Fotmat = o["data"]["song"]["list"][i]["sizeflac"].ToString();
+                        string Q = "";
+                        if (m.Fotmat != "0")
+                            Q = "SQ";
+                        listBox.Items.Add(new MusicItemControl() { BorderThickness = new Thickness(0), MusicGS = m.Singer, MusicName = m.MusicName, MusicZJ = m.ZJ, Music = m,Qt=Q });
                         i++;
                     }
                     jz.Visibility = Visibility.Collapsed;
@@ -694,17 +715,28 @@ namespace Lemon_App
                 ZjImAgE.Visibility = Visibility.Collapsed;
                 ioi++;
                 listBox.Items.Clear();
-                JObject o = JObject.Parse(await Uuuhh.GetWebAsync($"http://s.music.qq.com/fcgi-bin/music_search_new_platform?t=0&n=50&aggr=1&cr=1&loginUin={Settings.Default.RobotName}&format=json&inCharset=GB2312&outCharset=utf-8&notice=0&platform=jqminiframe.json&needNewCode=0&p={ioi.ToString()}&catZhida=0&remoteplace=sizer.newclient.next_song&w={Uri.EscapeDataString(textBox.Text)}"));
+                JObject o = JObject.Parse(await Uuuhh.GetWebAsync($"http://59.37.96.220/soso/fcgi-bin/client_search_logic_cp?format=json&t=10&inCharset=GB2312&outCharset=utf-8&w={textBox.Text}&p={ioi}"));
                 int i = 0;
                 while (i < o["data"]["song"]["list"].Count())
                 {
-                    string f = o["data"]["song"]["list"][i]["f"].ToString().Replace("|", "\r\n");
-                    string[] ContentLines = f.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-                    string Gs = o["data"]["song"]["list"][i]["fsinger"].ToString();
-                    string songname = o["data"]["song"]["list"][i]["fsong"].ToString();
-                    string Zhj = o["data"]["song"]["list"][i]["albumName_hilight"].ToString();
+                    //string f = o["data"]["song"]["list"][i]["f"].ToString().Replace("|", "\r\n");
+                    //string[] ContentLines = f.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+                    //string Gs = o["data"]["song"]["list"][i]["fsinger"].ToString();
+                    //string songname = o["data"]["song"]["list"][i]["fsong"].ToString();
+                    //string Zhj = o["data"]["song"]["list"][i]["albumName_hilight"].ToString();
                     //    img = ContentLines[22];
-                    listBox.Items.Add(new MusicItemControl() { BorderThickness = new Thickness(0), MusicGS = Gs, MusicName = songname, MusicZJ = Zhj, Music = ContentLines });
+                    Music m = new Music();
+                    m.MusicName = o["data"]["song"]["list"][i]["songname"].ToString();
+                    m.Singer = o["data"]["song"]["list"][i]["singer"][0]["name"].ToString();
+                    m.ZJ = o["data"]["song"]["list"][i]["albumname"].ToString();
+                    m.MusicID = o["data"]["song"]["list"][i]["media_mid"].ToString();
+                    m.ImageID = o["data"]["song"]["list"][i]["albummid"].ToString();
+                    m.GC = o["data"]["song"]["list"][i]["songid"].ToString();
+                    m.Fotmat = o["data"]["song"]["list"][i]["sizeflac"].ToString();
+                    string Q = "";
+                    if (m.Fotmat != "0")
+                        Q = "SQ";
+                    listBox.Items.Add(new MusicItemControl() { BorderThickness = new Thickness(0), MusicGS = m.Singer, MusicName = m.MusicName, MusicZJ = m.ZJ, Music = m ,Qt=Q});
                     i++;
                 }
                 jz.Visibility = Visibility.Collapsed;
@@ -772,7 +804,7 @@ namespace Lemon_App
         {
             ListJson lj = new ListJson();
             if (Settings.Default.MusicList != "") lj = JsonToObject(Settings.Default.MusicList, lj) as ListJson;
-            lj.List.Add(new ListItem() { ItemText = ((listBox.SelectedItem as MusicItemControl).Music as string[]) });
+            lj.List.Add(new ListItem() { ItemText = ((listBox.SelectedItem as MusicItemControl).Music as Music) });
             Settings.Default.MusicList = ToJSON(lj);
             Settings.Default.Save();
         }
@@ -785,7 +817,7 @@ namespace Lemon_App
             lj = JsonToObject(Settings.Default.MusicList, lj) as ListJson;
             for (int i = 0; i < lj.List.Count; i++)
             {
-                listBox.Items.Add(new MusicItemControl() { MusicGS = lj.List[i].ItemText[3], MusicName = lj.List[i].ItemText[1], MusicZJ = lj.List[i].ItemText[5], Music = lj.List[i].ItemText });
+                listBox.Items.Add(new MusicItemControl() { MusicGS =lj.List[i].ItemText.Singer, MusicName = lj.List[i].ItemText.MusicName, MusicZJ = lj.List[i].ItemText.ZJ, Music = lj.List[i].ItemText });
             }
             jz.Visibility = Visibility.Collapsed;
         }
@@ -821,7 +853,7 @@ namespace Lemon_App
             lj = JsonToObject(Settings.Default.MusicList, lj) as ListJson;
             for (int i = 0; i < lj.List.Count; i++)
             {
-                listBox.Items.Add(new MusicItemControl() { MusicGS = lj.List[i].ItemText[3], MusicName = lj.List[i].ItemText[1], MusicZJ = lj.List[i].ItemText[5], Music = lj.List[i].ItemText });
+                listBox.Items.Add(new MusicItemControl() { MusicGS = lj.List[i].ItemText.Singer, MusicName = lj.List[i].ItemText.MusicName, MusicZJ = lj.List[i].ItemText.ZJ, Music = lj.List[i].ItemText });
             }
         }
 
@@ -834,14 +866,14 @@ namespace Lemon_App
                     player.Stop();
                     isR = true;
                     s.Data = Geometry.Parse("M2.432,11.997L13.69,1.714c0.393-0.392,0.393-1.028,0-1.42c-0.393-0.392-1.031-0.392-1.424,0L0.286,11.236c-0.21,0.209-0.299,0.487-0.285,0.76c-0.014,0.274,0.075,0.551,0.285,0.76l11.98,10.942c0.393,0.392,1.031,0.392,1.424,0c0.393-0.392,0.393-1.028,0-1.42L2.432,11.997z");
-                    string i = (listBox.SelectedItem as MusicItemControl).Content;//获取显示的内容
+                    string i = (listBox.SelectedItem as MusicItemControl).Content;
                     textBlock1.Text = i;
-                    lrcname.Text = ((listBox.SelectedItem as MusicItemControl).Music as string[])[1];
-                    zk.Text = ((listBox.SelectedItem as MusicItemControl).Music as string[])[3];
-                    img = ((listBox.SelectedItem as MusicItemControl).Music as string[])[22];
+                    lrcname.Text = ((listBox.SelectedItem as MusicItemControl).Music as Music).MusicName;
+                    zk.Text = ((listBox.SelectedItem as MusicItemControl).Music as Music).ZJ;
+                    img = ((listBox.SelectedItem as MusicItemControl).Music as Music).ImageID;
                     He.on = $"https://y.gtimg.cn/music/photo_new/T002R300x300M000{img}.jpg";
                     tx.Background = new ImageBrush(new BitmapImage(new Uri(He.on)));
-                    musicid = ((listBox.SelectedItem as MusicItemControl).Music as string[])[20];
+                    musicid = ((listBox.SelectedItem as MusicItemControl).Music as Music).MusicID;
                     if (pz.Text == "标准")
                     {
                         if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.m4a"))
@@ -862,7 +894,7 @@ namespace Lemon_App
                         }
                         if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc"))
                         {
-                            string lrc = ((listBox.SelectedItem as MusicItemControl).Music as string[])[0];
+                            string lrc = ((listBox.SelectedItem as MusicItemControl).Music as Music).GC;
                             string lrcid = lrc.Substring(lrc.Length - 2, 2);
                             //     MessageBox.Show(He.Text(sr.ReadToEnd(), @"<lyric><![CDATA[", "]]></lyric>", 0));
                             FileStream fs = new FileStream(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc", FileMode.Create);
@@ -918,7 +950,7 @@ namespace Lemon_App
                         {
                             // musicurl = $"http://cc.stream.qqmusic.qq.com/C100{musicid}.m4a?fromtag=52";
                             string guid = "20D919A4D7700FBC424740E8CED80C5F";
-                            string ioo = Uuuhh.GetWeb($"http://59.37.96.220/base/fcgi-bin/fcg_musicexpress2.fcg?version=12&miniversion=92&key=19914AA57A96A9135541562F16DAD6B885AC8B8B5420AC567A0561D04540172E&guid={guid}");
+                            string ioo =await Uuuhh.GetWebAsync($"http://59.37.96.220/base/fcgi-bin/fcg_musicexpress2.fcg?version=12&miniversion=92&key=19914AA57A96A9135541562F16DAD6B885AC8B8B5420AC567A0561D04540172E&guid={guid}");
                             string vkey = He.Text(ioo, "key=\"", "\" speedrpttype", 0);
                             musicurl = $"http://182.247.250.19/streamoc.music.tc.qq.com/M500{musicid}.mp3?vkey={vkey}&guid={guid}";
                             //player.Open(new Uri(musicurl));
@@ -939,7 +971,7 @@ namespace Lemon_App
                         }
                         if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc"))
                         {
-                            string lrc = ((listBox.SelectedItem as MusicItemControl).Music as string[])[0];
+                            string lrc = ((listBox.SelectedItem as MusicItemControl).Music as Music).GC;
                             string lrcid = lrc.Substring(lrc.Length - 2, 2);
                             //     MessageBox.Show(He.Text(sr.ReadToEnd(), @"<lyric><![CDATA[", "]]></lyric>", 0));
                             FileStream fs = new FileStream(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc", FileMode.Create);
@@ -995,7 +1027,7 @@ namespace Lemon_App
                         {
                             // musicurl = $"http://cc.stream.qqmusic.qq.com/C100{musicid}.m4a?fromtag=52";
                             string guid = "20D919A4D7700FBC424740E8CED80C5F";
-                            string ioo = Uuuhh.GetWeb($"http://59.37.96.220/base/fcgi-bin/fcg_musicexpress2.fcg?version=12&miniversion=92&key=19914AA57A96A9135541562F16DAD6B885AC8B8B5420AC567A0561D04540172E&guid={guid}");
+                            string ioo =await Uuuhh.GetWebAsync($"http://59.37.96.220/base/fcgi-bin/fcg_musicexpress2.fcg?version=12&miniversion=92&key=19914AA57A96A9135541562F16DAD6B885AC8B8B5420AC567A0561D04540172E&guid={guid}");
                             string vkey = He.Text(ioo, "key=\"", "\" speedrpttype", 0);
                             musicurl = $"http://116.55.235.12/streamoc.music.tc.qq.com/F000{musicid}.flac?vkey={vkey}&guid={guid}";
                             //player.Open(new Uri(musicurl));
@@ -1016,7 +1048,7 @@ namespace Lemon_App
                         }
                         if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc"))
                         {
-                            string lrc = ((listBox.SelectedItem as MusicItemControl).Music as string[])[0];
+                            string lrc = ((listBox.SelectedItem as MusicItemControl).Music as Music).GC;
                             string lrcid = lrc.Substring(lrc.Length - 2, 2);
                             //     MessageBox.Show(He.Text(sr.ReadToEnd(), @"<lyric><![CDATA[", "]]></lyric>", 0));
                             FileStream fs = new FileStream(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc", FileMode.Create);
