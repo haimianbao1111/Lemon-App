@@ -1057,7 +1057,6 @@ namespace Lemon_App
                             dc.Proxy = He.proxy;
                             dc.DownloadFileCompleted += FiSQ;
                             dc.DownloadFileAsync(new Uri(musicurl), AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.flac");
-                            ///等待播放
                             loading.Visibility = Visibility.Visible;
                         }
                         else
