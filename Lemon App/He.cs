@@ -437,9 +437,13 @@ namespace Lemon_App
         /// </summary>
         public string   ZJ { set; get; }
         /// <summary>
-        /// 品质
+        /// SQ品质
         /// </summary>
         public string Fotmat { set; get; }
+        /// <summary>
+        /// HQ品质
+        /// </summary>
+        public string HQFOTmat { set; get; }
         /// <summary>
         /// 歌词ID
         /// </summary>

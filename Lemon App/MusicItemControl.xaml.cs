@@ -44,7 +44,7 @@ namespace Lemon_App
         public string Qt
         {
           get { return Q.Text; }
-            set { if (value != "") { Q.Text = value; RS.Visibility = Visibility.Visible; } }
+            set { if (value != "") if (value == "SQ") { Q.Text = value; RS.Visibility = Visibility.Visible; } else if (value == "HQ") { QC.Text = value; RC.Visibility = Visibility.Visible; } }
         }
         public Object M;
         public object Music { get { return M; } set { M = value; } }

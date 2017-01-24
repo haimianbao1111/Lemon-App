@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Lemon_App"
              xmlns:MetroStyleBusyIndicator="clr-namespace:Transvalue.MetroStyleBusyIndicator" xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="Lemon_App.MusicControl"
              mc:Ignorable="d" 
-              Width="Auto" Height="Auto" Loaded="UserControl_Loaded" >
+              Width="Auto" Height="Auto" Loaded="UserControl_Loaded" SizeChanged="UserControl_SizeChanged" >
     <UserControl.Resources>
         <Style  TargetType="{x:Type ComboBox}">
             <Setter Property="Margin" Value="5"></Setter>

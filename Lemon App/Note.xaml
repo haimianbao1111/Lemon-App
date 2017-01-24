@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Lemon_App"
              xmlns:MetroStyleBusyIndicator="clr-namespace:Transvalue.MetroStyleBusyIndicator" x:Class="Lemon_App.Note"
              mc:Ignorable="d" 
-             Loaded="UserControl_Loaded" d:DesignWidth="573" d:DesignHeight="130">
+             Loaded="UserControl_Loaded" d:DesignWidth="573" d:DesignHeight="130" SizeChanged="UserControl_SizeChanged">
     <UserControl.Resources>
         <Style  TargetType="{x:Type ComboBox}">
             <Setter Property="Margin" Value="5"/>

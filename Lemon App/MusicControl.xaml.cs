@@ -188,10 +188,14 @@ namespace Lemon_App
                         m.ImageID= o["data"]["song"]["list"][i]["albummid"].ToString();
                         m.GC= o["data"]["song"]["list"][i]["songid"].ToString();
                         m.Fotmat= o["data"]["song"]["list"][i]["sizeflac"].ToString();
+                        m.HQFOTmat= o["data"]["song"]["list"][i]["size320"].ToString();
                         string Q = "";
                         if (m.Fotmat != "0")
                             Q = "SQ";
-                        listBox.Items.Add(new MusicItemControl() { BorderThickness = new Thickness(0), MusicGS = m.Singer, MusicName =m.MusicName, MusicZJ = m.ZJ, Music = m,Qt=Q });
+                        if (m.HQFOTmat != "0")
+                            if (m.Fotmat == "0")
+                                Q = "HQ";
+                        listBox.Items.Add(new MusicItemControl() {Width=this.ActualWidth, BorderThickness = new Thickness(0), MusicGS = m.Singer, MusicName =m.MusicName, MusicZJ = m.ZJ, Music = m,Qt=Q });
                         i++;
                     }
                     jz.Visibility = Visibility.Collapsed;
@@ -696,7 +700,10 @@ namespace Lemon_App
                         string Q = "";
                         if (m.Fotmat != "0")
                             Q = "SQ";
-                        listBox.Items.Add(new MusicItemControl() { BorderThickness = new Thickness(0), MusicGS = m.Singer, MusicName = m.MusicName, MusicZJ = m.ZJ, Music = m,Qt=Q });
+                        if (m.HQFOTmat != "0")
+                            if (m.Fotmat == "0")
+                                Q = "HQ";
+                        listBox.Items.Add(new MusicItemControl() { Width = this.ActualWidth, BorderThickness = new Thickness(0), MusicGS = m.Singer, MusicName = m.MusicName, MusicZJ = m.ZJ, Music = m,Qt=Q });
                         i++;
                     }
                     jz.Visibility = Visibility.Collapsed;
@@ -736,7 +743,10 @@ namespace Lemon_App
                     string Q = "";
                     if (m.Fotmat != "0")
                         Q = "SQ";
-                    listBox.Items.Add(new MusicItemControl() { BorderThickness = new Thickness(0), MusicGS = m.Singer, MusicName = m.MusicName, MusicZJ = m.ZJ, Music = m ,Qt=Q});
+                    if (m.HQFOTmat != "0")
+                        if (m.Fotmat == "0")
+                            Q = "HQ";
+                    listBox.Items.Add(new MusicItemControl() { Width = this.ActualWidth, BorderThickness = new Thickness(0), MusicGS = m.Singer, MusicName = m.MusicName, MusicZJ = m.ZJ, Music = m ,Qt=Q});
                     i++;
                 }
                 jz.Visibility = Visibility.Collapsed;
@@ -817,7 +827,12 @@ namespace Lemon_App
             lj = JsonToObject(Settings.Default.MusicList, lj) as ListJson;
             for (int i = 0; i < lj.List.Count; i++)
             {
-                listBox.Items.Add(new MusicItemControl() { MusicGS =lj.List[i].ItemText.Singer, MusicName = lj.List[i].ItemText.MusicName, MusicZJ = lj.List[i].ItemText.ZJ, Music = lj.List[i].ItemText });
+                string os = "";
+                if (lj.List[i].ItemText.Fotmat != "0") { os = "SQ"; }
+                if (lj.List[i].ItemText.HQFOTmat != "0")
+                    if (lj.List[i].ItemText.Fotmat == "0")
+                        os = "HQ";
+                listBox.Items.Add(new MusicItemControl() {Width=this.ActualWidth , MusicGS =lj.List[i].ItemText.Singer, MusicName = lj.List[i].ItemText.MusicName, MusicZJ = lj.List[i].ItemText.ZJ,Qt=os, Music = lj.List[i].ItemText });
             }
             jz.Visibility = Visibility.Collapsed;
         }
@@ -855,7 +870,10 @@ namespace Lemon_App
             {
                 string os = "";
                 if (lj.List[i].ItemText.Fotmat != "0") { os = "SQ"; }
-                listBox.Items.Add(new MusicItemControl() { MusicGS = lj.List[i].ItemText.Singer, MusicName = lj.List[i].ItemText.MusicName, MusicZJ = lj.List[i].ItemText.ZJ, Music = lj.List[i].ItemText,Qt=os });
+                if (lj.List[i].ItemText.HQFOTmat != "0")
+                    if (lj.List[i].ItemText.Fotmat == "0")
+                        os = "HQ";
+                listBox.Items.Add(new MusicItemControl() {Width=this.ActualWidth, MusicGS = lj.List[i].ItemText.Singer, MusicName = lj.List[i].ItemText.MusicName, MusicZJ = lj.List[i].ItemText.ZJ, Music = lj.List[i].ItemText,Qt=os });
             }
         }
 
@@ -1111,6 +1129,14 @@ namespace Lemon_App
             player.Play();
             t.Start();
             loading.Visibility = Visibility.Collapsed;
+        }
+
+        private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            foreach (var o in listBox.Items)
+            {
+                (o as UserControl).Width = this.ActualWidth;
+            }
         }
     }
 }
