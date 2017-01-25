@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Lemon_App"
              xmlns:MetroStyleBusyIndicator="clr-namespace:Transvalue.MetroStyleBusyIndicator" xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="Lemon_App.MusicControl"
              mc:Ignorable="d" 
-              Width="Auto" Height="Auto" Loaded="UserControl_Loaded" SizeChanged="UserControl_SizeChanged" >
+              Width="Auto" Height="Auto" Loaded="UserControl_Loaded" SizeChanged="UserControl_SizeChanged" d:DesignWidth="526" d:DesignHeight="424" >
     <UserControl.Resources>
         <Style  TargetType="{x:Type ComboBox}">
             <Setter Property="Margin" Value="5"></Setter>
@@ -504,26 +504,26 @@
             <TextBlock Height="19" Margin="0,30,10,0" TextWrapping="Wrap" Text="{Binding Text, ElementName=zk}" VerticalAlignment="Top" Foreground="#FF828282" FontSize="14" TextAlignment="Center"/>
             <Border x:Name="os" MaxWidth="250" MaxHeight="250"  Margin="0,54,0,0" CornerRadius="235" Background="{Binding Background, ElementName=tx}" RenderTransformOrigin="0.5,0.5" Height="{Binding ActualWidth, ElementName=os, Mode=OneWay}"/>
         </Grid>
-        <Grid x:Name="G" Margin="0,0,0,49" Background="#00000000" Visibility="Collapsed">
+        <Grid x:Name="G" Margin="0,0,0,49" Background="#00000000">
             <Grid Margin="0,60,0,0" Background="#00000000">
                 <Canvas  x:Name="CanvasLyric" ClipToBounds="True" Background="#00000000">
                     <StackPanel x:Name="StackPanelCommonLyric"  Canvas.Left="0" Canvas.Top="300" Width="{Binding ActualWidth, ElementName=CanvasLyric, Mode=OneWay}" OpacityMask="Black" Background="#00000000" />
-                    <Canvas x:Name="CanvasFocusLyric"  Height="36"  Canvas.Left="0" Canvas.Top="253" Width="{Binding ActualWidth, ElementName=CanvasLyric, Mode=OneWay}" Background="#00000000" OpacityMask="Black" ClipToBounds="True">
-                        <TextBlock x:Name="TBFocusLyricBack" Text="柠檬Music" Height="{Binding Height, ElementName=CanvasFocusLyric}" Width="{Binding ActualWidth, ElementName=CanvasLyric, Mode=OneWay}" FontSize="22" TextAlignment="Center" Foreground="White" OpacityMask="Black" Background="#00000000" />
+                    <Canvas x:Name="CanvasFocusLyric"  Height="72"  Canvas.Left="0" Canvas.Top="190" Width="{Binding ActualWidth, ElementName=CanvasLyric, Mode=OneWay}" Background="#00000000" OpacityMask="Black" ClipToBounds="True">
+                        <TextBlock x:Name="TBFocusLyricBack" Text="小萌Music" Height="Auto" Width="{Binding ActualWidth, ElementName=CanvasLyric, Mode=OneWay}" FontSize="22" TextAlignment="Center" Foreground="White" OpacityMask="Black" Background="#00000000" TextWrapping="Wrap"/>
                         <Canvas x:Name="CanvasFocusLyricFore" Height="{Binding Height, ElementName=CanvasFocusLyric}" Width="30" ClipToBounds="True" OpacityMask="Black" Background="#00000000">
-                            <TextBlock x:Name="TBFocusLyricFore" Text="{Binding Text, ElementName=TBFocusLyricBack}" Height="{Binding Height, ElementName=CanvasFocusLyric}" FontSize="{Binding FontSize, ElementName=TBFocusLyricBack}" TextAlignment="{Binding TextAlignment, ElementName=TBFocusLyricBack}" Foreground="Yellow" FontFamily="{Binding FontFamily, ElementName=TBFocusLyricBack}" Width="{Binding ActualWidth, ElementName=CanvasLyric, Mode=OneWay}" Visibility="{Binding Visibility, ElementName=TBFocusLyricBack}" TextWrapping="{Binding TextWrapping, ElementName=TBFocusLyricBack}" TextTrimming="{Binding TextTrimming, ElementName=TBFocusLyricBack}" OpacityMask="Black" Background="#00000000" />
+                            <TextBlock x:Name="TBFocusLyricFore" Text="{Binding Text, ElementName=TBFocusLyricBack}" Height="{Binding Height, ElementName=CanvasFocusLyric}" FontSize="{Binding FontSize, ElementName=TBFocusLyricBack}" TextAlignment="{Binding TextAlignment, ElementName=TBFocusLyricBack}" Foreground="#FF007ACC" FontFamily="{Binding FontFamily, ElementName=TBFocusLyricBack}" Width="{Binding ActualWidth, ElementName=CanvasLyric, Mode=OneWay}" Visibility="{Binding Visibility, ElementName=TBFocusLyricBack}" TextWrapping="{Binding TextWrapping, ElementName=TBFocusLyricBack}" TextTrimming="{Binding TextTrimming, ElementName=TBFocusLyricBack}" OpacityMask="Black" Background="#00000000" />
                         </Canvas>
                     </Canvas>
                 </Canvas>
                 <StackPanel Margin="28,254.024,23,2" x:Name="BaseLineSP" Background="#00000000">
                     <Line Stroke="#FF007ACC" StrokeThickness="2" StrokeDashArray="4,2" X1="0" X2="{Binding ActualWidth, ElementName=CanvasLyric}" Y2="0" x:Name="BaseLine" Visibility="Collapsed" Fill="#00000000" OpacityMask="{x:Null}" Y1="0" Grid.ColumnSpan="2" Height="4" />
-                    <TextBlock x:Name="tbDragTime" Text="0.00.00" TextAlignment="Left" Foreground="#FF007ACC" FontSize="18" Visibility="Collapsed" Width="{Binding ActualWidth, ElementName=CanvasLyric}" Background="#00000000" />
+                    <TextBlock x:Name="tbDragTime" TextWrapping="Wrap" Text="0.00.00" TextAlignment="Left" Foreground="#FF007ACC" FontSize="18" Visibility="Collapsed" Width="{Binding ActualWidth, ElementName=CanvasLyric}" Background="#00000000" />
                 </StackPanel>
             </Grid>
             <TextBlock x:Name="lrcname" HorizontalAlignment="Left" Height="Auto" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="Auto" Margin="10,10,0,0" Foreground="#FF686868" FontSize="22"/>
             <TextBlock x:Name="zk" HorizontalAlignment="Left" Height="Auto" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="Auto" Margin="10,35,0,0" Foreground="#FF969696" FontSize="16"/>
         </Grid>
-        <Grid x:Name="h" Margin="0,0,0,49">
+        <Grid x:Name="h" Margin="0,0,0,49" Visibility="Collapsed">
             <ListBox x:Name="listBox" Margin="0,43,0,0" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEEEEEE" SelectionChanged="listBox_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Visible" Style="{DynamicResource ListBoxStyle}"/>
             <Grid Height="41" VerticalAlignment="Top">
                 <Border HorizontalAlignment="Right" Height="27" Margin="0,7,9,0" VerticalAlignment="Top" Width="194" Background="#FFF1F3F7" CornerRadius="10">

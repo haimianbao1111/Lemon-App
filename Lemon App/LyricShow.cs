@@ -1315,12 +1315,14 @@ namespace Lemon_App
             foreach (string txt in TimeAndLyricDictionary.Values)
             {
                 TextBlock tb = new TextBlock();
+                tb.TextWrapping = TextWrapping.Wrap;
                 tb.TextAlignment = TextAlignment.Center;
                 tb.FontSize = fontSmallA;
                 tb.FontFamily = CFontFamily;
                 tb.Foreground = new SolidColorBrush(Color.FromArgb(CA, CR, CG, CB));
                 tb.Background = null;
-                tb.Height = lyricTextBlockHeight;
+                tb.Margin = new Thickness(0, 10, 0, 10);
+         //       tb.Height = lyricTextBlockHeight;
                 tb.Text = txt;
                 commonLyricStackPanel.Children.Add(tb);
             }
