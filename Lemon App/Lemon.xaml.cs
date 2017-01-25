@@ -1,57 +1,41 @@
 ﻿using Lemon_App.Properties;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
-namespace Lemon_App
-{
+namespace Lemon_App { 
     /// <summary>
     /// lemon.xaml 的交互逻辑
     /// </summary>
-    public partial class lemon : Window
-    {
+    public partial class lemon : Window { 
         System.Windows.Forms.Timer t = new System.Windows.Forms.Timer();
-        public lemon()
-        {
+        public lemon() { 
             InitializeComponent();
             t.Tick += T_Elapsed;
-            t.Interval = 1000;
+            t.Interval = 5000;
             t.Start();
         }
 
-        private void T_Elapsed(object sender, EventArgs e)
-        {
+        private void T_Elapsed(object sender, EventArgs e) {
             GC.Collect();
             if (System.IO.File.Exists(Settings.Default.UserImage))
             { tx.Background = new ImageBrush(new BitmapImage(new Uri(Settings.Default.UserImage, UriKind.Absolute))); }
         }
 
-        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) { 
             if (e.LeftButton == MouseButtonState.Pressed)
                 this.DragMove();
         }
 
-        private void CLOSE_MouseDown(object sender, MouseButtonEventArgs e)
-        {
+        private void CLOSE_MouseDown(object sender, MouseButtonEventArgs e) { 
             Environment.Exit(0);
         }
         Boolean isopen = false;
-        private void SSPath_Copy_MouseDown(object sender, MouseButtonEventArgs e)
-        {
+        private void SSPath_Copy_MouseDown(object sender, MouseButtonEventArgs e) { 
             if (!isopen)
             {
                 Litt.Data = Geometry.Parse("M10.85,8.145L7.607,4.902C7.412,4.707 7.095,4.707 6.9,4.902 6.705,5.097 6.705,5.414 6.9,5.609L9.791,8.5 6.9,11.391C6.705,11.586 6.705,11.903 6.9,12.098 7.095,12.293 7.412,12.293 7.607,12.098L10.85,8.856C10.949,8.757 10.997,8.628 10.996,8.501 10.996,8.371 10.948,8.243 10.85,8.145z");

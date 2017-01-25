@@ -31,6 +31,6 @@
                 </Border>
             </WrapPanel>
         </ScrollViewer>
-        <Grid x:Name="ContentPage" Background="White" Margin="0,40,0,0"/>
+        <Grid x:Name="ContentPage" Margin="0,40,0,0"/>
     </Grid>
 </UserControl>

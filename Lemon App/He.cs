@@ -98,7 +98,7 @@ namespace Lemon_App
         }
         public static WebProxy proxy = new WebProxy();
         public static string Url = "";
-        public static string KMS = "3.4.9";
+        public static string KMS = "3.5.2";
         public static int MS = 0;
         public static string on = "";
         public static string EmailUFMsg = @"<table dir=""ltr"">
@@ -370,7 +370,7 @@ namespace Lemon_App
         public static async System.Threading.Tasks.Task<string> GetWebUAsync(string url)
         {
             HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(url);
-            hwr.Timeout = 10000;
+            hwr.Timeout = 20000;
             if (Settings.Default.isWebProxy) hwr.Proxy = He.proxy;
             var o = await hwr.GetResponseAsync();
             StreamReader sr = new StreamReader(o.GetResponseStream(), Encoding.Default);
@@ -382,7 +382,7 @@ namespace Lemon_App
         public static async System.Threading.Tasks.Task<string> GetWebAsync(string url,Encoding c)
         {
             HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(url);
-            hwr.Timeout = 10000;
+            hwr.Timeout = 20000;
             if (Settings.Default.isWebProxy) hwr.Proxy = He.proxy;
             var o = await hwr.GetResponseAsync();
             StreamReader sr = new StreamReader(o.GetResponseStream(), c);
