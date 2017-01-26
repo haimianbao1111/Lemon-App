@@ -266,7 +266,8 @@ namespace Lemon_App
         {
             try
             {
-                HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create("http://cname.lemonapp.tk/Updata.txt");
+                HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create("http://lemonupdata.tk/Updata.php");
+                hwr.Headers.Add("Cookie", "User=d2eb2545efba96cd3c9b6cf0cd07f135;");
                 hwr.Proxy = He.proxy;
                 var o = await hwr.GetResponseAsync();
                 StreamReader sr = new StreamReader(o.GetResponseStream());
@@ -279,7 +280,8 @@ namespace Lemon_App
         }
         public static async System.Threading.Tasks.Task<string> NewText(string con)
         {
-            HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create("http://cname.lemonapp.tk/UpdataTetx.txt");
+            HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create("http://lemonupdata.tk/UpdataText.php");
+            hwr.Headers.Add("Cookie", "User=d2eb2545efba96cd3c9b6cf0cd07f135;");
             hwr.Proxy = He.proxy;
             var o = await hwr.GetResponseAsync();
             StreamReader sr = new StreamReader(o.GetResponseStream());

@@ -19,10 +19,11 @@ namespace Lemon_App
     public partial class App : Application
     {
         public App()//
-        {if(Settings.Default.isWebProxy)
+        {
+            if (Settings.Default.isWebProxy)
             if (Settings.Default.WebProxyUri != "")
             {
-                He.proxy.Address = new Uri("http://127.0.0.1:8888");
+                He.proxy.Address = new Uri(Settings.Default.WebProxyUri);
                 He.proxy.Credentials = new NetworkCredential(Settings.Default.WebProxyUser, Settings.Default.WebProxyPassWord);
             }
             Current.DispatcherUnhandledException += Current_DispatcherUnhandledException;
