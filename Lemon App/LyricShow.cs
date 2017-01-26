@@ -1321,8 +1321,8 @@ namespace Lemon_App
                 tb.FontFamily = CFontFamily;
                 tb.Foreground = new SolidColorBrush(Color.FromArgb(CA, CR, CG, CB));
                 tb.Background = null;
-                tb.Margin = new Thickness(0, 10, 0, 10);
-         //       tb.Height = lyricTextBlockHeight;
+      //          tb.Margin = new Thickness(0, 15, 0, 15);
+                tb.Height = lyricTextBlockHeight;
                 tb.Text = txt;
                 commonLyricStackPanel.Children.Add(tb);
             }
