@@ -1,4 +1,6 @@
 ﻿using Lemon_App.Properties;
+using static Lemon_App.Uuuhh;
+using static Lemon_App.He;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -63,25 +65,33 @@ namespace Lemon_App
         //    player.Stop();
             s.Data = Geometry.Parse("M2.432,11.997L13.69,1.714c0.393-0.392,0.393-1.028,0-1.42c-0.393-0.392-1.031-0.392-1.424,0L0.286,11.236c-0.21,0.209-0.299,0.487-0.285,0.76c-0.014,0.274,0.075,0.551,0.285,0.76l11.98,10.942c0.393,0.392,1.031,0.392,1.424,0c0.393-0.392,0.393-1.028,0-1.42L2.432,11.997z");
             string i = "";
-            if (listBox.SelectedIndex != listBox.Items.Count)
-            {
-                i = (listBox.Items[listBox.SelectedIndex + 1] as MusicItemControl).Content;
-                listBox.SelectedItem = listBox.Items[listBox.SelectedIndex + 1];
-            }
-            else {
-                i = (listBox.Items[0] as MusicItemControl).Content;
-                listBox.SelectedItem = listBox.Items[0];
-            }
+                if (Move.Text == "循环")
+                {
+                    if (listBox.SelectedIndex != listBox.Items.Count)
+                    {
+                        i = (listBox.Items[listBox.SelectedIndex + 1] as MusicItemControl).Content;
+                        listBox.SelectedItem = listBox.Items[listBox.SelectedIndex + 1];
+                    }
+                    else
+                    {
+                        i = (listBox.Items[0] as MusicItemControl).Content;
+                        listBox.SelectedItem = listBox.Items[0];
+                    }
+                } else if (Move.Text == "单曲")
+                {
+                    i = (listBox.Items[listBox.SelectedIndex] as MusicItemControl).Content;
+                    listBox.SelectedItem = listBox.Items[listBox.SelectedIndex];
+                }
             isR = true;
                 lrcname.Text = ((listBox.SelectedItem as MusicItemControl).Music as Music).MusicName;
                 zk.Text = ((listBox.SelectedItem as MusicItemControl).Music as Music).ZJ;
                 img = ((listBox.SelectedItem as MusicItemControl).Music as Music).ImageID;
-                He.on = $"https://y.gtimg.cn/music/photo_new/T002R300x300M000{img}.jpg";
-                tx.Background = new ImageBrush(new BitmapImage(new Uri(He.on)));
+                on = $"https://y.gtimg.cn/music/photo_new/T002R300x300M000{img}.jpg";
+                tx.Background = new ImageBrush(new BitmapImage(new Uri(on)));
                 musicid = ((listBox.SelectedItem as MusicItemControl).Music as Music).MusicID;
                 string guid = "20D919A4D7700FBC424740E8CED80C6F";
-                string ioo =await Uuuhh.GetWebAsync($"http://59.37.96.220/base/fcgi-bin/fcg_musicexpress2.fcg?version=12&miniversion=92&key=19914AA57A96A9135541562F16DAD6B885AC8B8B5420AC567A0561D04540172E&guid={guid}");
-                string vkey = He.Text(ioo, "key=\"", "\" speedrpttype", 0);
+                string ioo =await GetWebAsync($"http://59.37.96.220/base/fcgi-bin/fcg_musicexpress2.fcg?version=12&miniversion=92&key=19914AA57A96A9135541562F16DAD6B885AC8B8B5420AC567A0561D04540172E&guid={guid}");
+                string vkey = Text(ioo, "key=\"", "\" speedrpttype", 0);
                 musicurl = $"http://182.247.250.19/streamoc.music.tc.qq.com/M500{musicid}.mp3?vkey={vkey}&guid={guid}";
             player.Open(new Uri(musicurl));
             player.Play();
@@ -94,7 +104,7 @@ namespace Lemon_App
                     StreamWriter sw = new StreamWriter(fs);
                     string h = await Uuuhh.GetWebAsync($"http://route.showapi.com/213-2?showapi_sign=cfa206656db244c089be2d1499735bb5&showapi_appid=29086&musicid={lrc}");
                     JObject o = JObject.Parse(h);
-                    string ijo = o["showapi_res_body"]["lyric"].ToString().Replace("&#58;", ":").Replace("&#10;", "\r\n").Replace("&#40;", "(").Replace("&#41;", ")").Replace("&#46;", ".").Replace("&#32;", " ").Replace("&#45;", "-");
+                    string ijo = o["showapi_res_body"]["lyric"].ToString().Replace("&#58;", ":").Replace("&#10;", "\r\n").Replace("&#40;", "(").Replace("&#41;", ")").Replace("&#46;", ".").Replace("&#32;", " ").Replace("&#45;", "-").Replace("&#39;", "'"); ;
                     if (ijo != "")
                 {
                     await sw.WriteAsync(ijo);
@@ -171,7 +181,7 @@ namespace Lemon_App
                     DOWN.Visibility = Visibility.Collapsed;
                     listBox.Visibility = Visibility.Visible;
                     listBox.Items.Clear();
-                    JObject o = JObject.Parse(await Uuuhh.GetWebAsync($"http://59.37.96.220/soso/fcgi-bin/client_search_logic_cp?format=json&t=50&inCharset=GB2312&outCharset=utf-8&w={textBox.Text}&p=1",Encoding.UTF8));
+                    JObject o = JObject.Parse(await GetWebAsync($"http://59.37.96.220/soso/fcgi-bin/client_search_logic_cp?format=json&t=50&inCharset=GB2312&outCharset=utf-8&w={textBox.Text}&p=1",Encoding.UTF8));
                     int i = 0;
                     while (i < o["data"]["song"]["list"].Count())
                     {
@@ -260,7 +270,7 @@ namespace Lemon_App
                         StreamWriter sw = new StreamWriter(fs);
                         string h = await Uuuhh.GetWebAsync($"https://route.showapi.com/213-2?showapi_sign=cfa206656db244c089be2d1499735bb5&showapi_appid=29086&musicid={lrc}");
                         JObject o = JObject.Parse(h);
-                        string ijo = o["showapi_res_body"]["lyric"].ToString().Replace("&#58;", ":").Replace("&#10;", "\r\n").Replace("&#40;", "(").Replace("&#41;", ")").Replace("&#46;", ".").Replace("&#32;", " ").Replace("&#45;", "-");
+                        string ijo = o["showapi_res_body"]["lyric"].ToString().Replace("&#58;", ":").Replace("&#10;", "\r\n").Replace("&#40;", "(").Replace("&#41;", ")").Replace("&#46;", ".").Replace("&#32;", " ").Replace("&#45;", "-").Replace("&#39;", "'");
                         if (ijo != "")
                         {
                             await sw.WriteAsync(ijo);
@@ -338,7 +348,7 @@ namespace Lemon_App
                         StreamWriter sw = new StreamWriter(fs);
                         string h = await Uuuhh.GetWebAsync($"https://route.showapi.com/213-2?showapi_sign=cfa206656db244c089be2d1499735bb5&showapi_appid=29086&musicid={lrc}");
                         JObject o = JObject.Parse(h);
-                        string ijo = o["showapi_res_body"]["lyric"].ToString().Replace("&#58;", ":").Replace("&#10;", "\r\n").Replace("&#40;", "(").Replace("&#41;",")").Replace("&#46;", ".").Replace("&#32;"," ").Replace("&#45;", "-");
+                        string ijo = o["showapi_res_body"]["lyric"].ToString().Replace("&#58;", ":").Replace("&#10;", "\r\n").Replace("&#40;", "(").Replace("&#41;",")").Replace("&#46;", ".").Replace("&#32;"," ").Replace("&#45;", "-").Replace("&#39;", "'");
                         if (ijo != "")
                         {
                             await sw.WriteAsync(ijo);
@@ -415,7 +425,7 @@ namespace Lemon_App
                         StreamWriter sw = new StreamWriter(fs);
                         string h = await Uuuhh.GetWebAsync($"https://route.showapi.com/213-2?showapi_sign=cfa206656db244c089be2d1499735bb5&showapi_appid=29086&musicid={lrc}");
                         JObject o = JObject.Parse(h);
-                        string ijo = o["showapi_res_body"]["lyric"].ToString().Replace("&#58;", ":").Replace("&#10;", "\r\n").Replace("&#40;", "(").Replace("&#41;", ")").Replace("&#46;", ".").Replace("&#32;", " ").Replace("&#45;", "-");
+                        string ijo = o["showapi_res_body"]["lyric"].ToString().Replace("&#58;", ":").Replace("&#10;", "\r\n").Replace("&#40;", "(").Replace("&#41;", ")").Replace("&#46;", ".").Replace("&#32;", " ").Replace("&#45;", "-").Replace("&#39;", "'");
                         if (ijo != "")
                         {
                             await sw.WriteAsync(ijo);
@@ -923,7 +933,7 @@ namespace Lemon_App
                             StreamWriter sw = new StreamWriter(fs);
                             string h = await Uuuhh.GetWebAsync($"https://route.showapi.com/213-2?showapi_sign=cfa206656db244c089be2d1499735bb5&showapi_appid=29086&musicid={lrc}");
                             JObject o = JObject.Parse(h);
-                            string ijo = o["showapi_res_body"]["lyric"].ToString().Replace("&#58;", ":").Replace("&#10;", "\r\n").Replace("&#40;", "(").Replace("&#41;", ")").Replace("&#46;", ".").Replace("&#32;", " ").Replace("&#45;", "-");
+                            string ijo = o["showapi_res_body"]["lyric"].ToString().Replace("&#58;", ":").Replace("&#10;", "\r\n").Replace("&#40;", "(").Replace("&#41;", ")").Replace("&#46;", ".").Replace("&#32;", " ").Replace("&#45;", "-").Replace("&#39;", "'");
                             if (ijo != "")
                             {
                                 await sw.WriteAsync(ijo);
@@ -1001,7 +1011,7 @@ namespace Lemon_App
                             StreamWriter sw = new StreamWriter(fs);
                             string h = await Uuuhh.GetWebAsync($"https://route.showapi.com/213-2?showapi_sign=cfa206656db244c089be2d1499735bb5&showapi_appid=29086&musicid={lrc}");
                             JObject o = JObject.Parse(h);
-                            string ijo = o["showapi_res_body"]["lyric"].ToString().Replace("&#58;", ":").Replace("&#10;", "\r\n").Replace("&#40;", "(").Replace("&#41;", ")").Replace("&#46;", ".").Replace("&#32;", " ").Replace("&#45;", "-");
+                            string ijo = o["showapi_res_body"]["lyric"].ToString().Replace("&#58;", ":").Replace("&#10;", "\r\n").Replace("&#40;", "(").Replace("&#41;", ")").Replace("&#46;", ".").Replace("&#32;", " ").Replace("&#45;", "-").Replace("&#39;", "'");
                             if (ijo != "")
                             {
                                 await sw.WriteAsync(ijo);
@@ -1053,11 +1063,11 @@ namespace Lemon_App
                             var time = ((DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000000).ToString();
                             musicurl = $"http://cc.stream.qqmusic.qq.com/C100{musicid}.m4a?fromtag=52";
                             string guid = "20D919A4D7701FBC424740E8CED80C6F";//2,6
-                            string ioo = await Uuuhh.GetWebAsync($"http://59.37.96.220/base/fcgi-bin/fcg_musicexpress2.fcg?version=12&miniversion=97&uin=2728578957&key=F9540A5619CCBB2EA0124B9F55790D933E5FC106A721B4DE8A71DF65C963C624&guid=20D919A4D7701FBC424740E8CED80C6F&musicfile=F000{musicid}.flac&checklimit=0&ctx=1&mediafile=F000{musicid}.flac&pcachetime={time}");
+                            string ioo = await Uuuhh.GetWebAsync($"http://59.37.96.220/base/fcgi-bin/fcg_musicexpress2.fcg?version=12&miniversion=97&key=F9540A5619CCBB2EA0124B9F55790D933E5FC106A721B4DE8A71DF65C963C624&guid=20D919A4D7701FBC424740E8CED80C6F&musicfile=F000{musicid}.flac&checklimit=0&ctx=1&mediafile=F000{musicid}.flac&pcachetime={time}");
                             string vkey = He.Text(ioo, "key=\"", "\" speedrpttype", 0);
                             musicurl = $"http://116.55.235.12/streamoc.music.tc.qq.com/F000{musicid}.flac?vkey={vkey}&guid={guid}";
                             WebClient dc = new WebClient();
-                            dc.Headers.Add(HttpRequestHeader.Cookie, "qqmusic_fromtag=80;qqmusic_uin=2728578957;qqmusic_key=CABBBA37AF0F0D6B238C06BB9E9E8E41D5265689574DC133E01EE39F75C9CFE3;wxopenid= ;wxrefresh_token= ;");
+                            dc.Headers.Add(HttpRequestHeader.Cookie, "qqmusic_fromtag=80;qqmusic_key=CABBBA37AF0F0D6B238C06BB9E9E8E41D5265689574DC133E01EE39F75C9CFE3;wxopenid= ;wxrefresh_token= ;");
                             dc.Headers.Add(HttpRequestHeader.UserAgent, "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)");
                             dc.Proxy = He.proxy;
                             dc.DownloadFileCompleted += FiSQ;
@@ -1078,7 +1088,7 @@ namespace Lemon_App
                             StreamWriter sw = new StreamWriter(fs);
                             string h = await Uuuhh.GetWebAsync($"https://route.showapi.com/213-2?showapi_sign=cfa206656db244c089be2d1499735bb5&showapi_appid=29086&musicid={lrc}");
                             JObject o = JObject.Parse(h);
-                            string ijo = o["showapi_res_body"]["lyric"].ToString().Replace("&#58;", ":").Replace("&#10;", "\r\n").Replace("&#40;", "(").Replace("&#41;", ")").Replace("&#46;", ".").Replace("&#32;", " ").Replace("&#45;", "-");
+                            string ijo = o["showapi_res_body"]["lyric"].ToString().Replace("&#58;", ":").Replace("&#10;", "\r\n").Replace("&#40;", "(").Replace("&#41;", ")").Replace("&#46;", ".").Replace("&#32;", " ").Replace("&#45;", "-").Replace("&#39;","'");
                             if (ijo != "")
                             {
                                 await sw.WriteAsync(ijo);
@@ -1142,6 +1152,46 @@ namespace Lemon_App
             {
                 (o as UserControl).Width = this.ActualWidth;
             }
+        }
+
+        private async void Border_MouseDown_3(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                if (textBox.Text != "")
+                {
+                    listBox.Items.Clear();
+                    jz.Visibility = Visibility.Visible;
+                    var s = await Uuuhh.GetWebAsync($"https://y.qq.com/portal/playlist/{textBox.Text}.html");
+                    var json = "{\"list\":" + He.Text(s, "var getSongInfo = ", ";", 0) + "}";
+                    JObject o = JObject.Parse(json);
+                    int i = 0;
+                    while (i != o["list"].Count())
+                    {
+                        Music m = new Music()
+                        {
+                            MusicName = o["list"][i]["songname"].ToString(),
+                            Singer = o["list"][i]["singer"][0]["name"].ToString(),
+                            ZJ = o["list"][i]["albumdesc"].ToString(),
+                            GC = o["list"][i]["songid"].ToString(),
+                            Fotmat = o["list"][i]["sizeflac"].ToString(),
+                            HQFOTmat = o["list"][i]["size320"].ToString(),
+                            MusicID = o["list"][i]["songmid"].ToString(),
+                            ImageID = o["list"][i]["albummid"].ToString()
+                        };
+                        string Q = "";
+                        if (m.Fotmat != "0")
+                            Q = "SQ";
+                        if (m.HQFOTmat != "0")
+                            if (m.Fotmat == "0")
+                                Q = "HQ";
+                        listBox.Items.Add(new MusicItemControl() { Width = this.ActualWidth, BorderThickness = new Thickness(0), MusicGS = m.Singer, MusicName = m.MusicName, MusicZJ = m.ZJ, Music = m, Qt = Q });
+                        i++;
+                    }
+                    jz.Visibility = Visibility.Collapsed;
+                }
+            }
+            catch { jz.Visibility = Visibility.Collapsed; }
         }
     }
 }
