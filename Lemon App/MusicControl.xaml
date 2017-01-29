@@ -4,10 +4,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Lemon_App"
-             xmlns:MetroStyleBusyIndicator="clr-namespace:Transvalue.MetroStyleBusyIndicator" xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="Lemon_App.MusicControl"
+             xmlns:MetroStyleBusyIndicator="clr-namespace:Transvalue.MetroStyleBusyIndicator" xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"
+    xmlns:system="clr-namespace:System;assembly=mscorlib" x:Class="Lemon_App.MusicControl"
              mc:Ignorable="d" 
-              Width="Auto" Height="Auto" Loaded="UserControl_Loaded" SizeChanged="UserControl_SizeChanged" >
+              Width="Auto" Height="Auto" Loaded="UserControl_Loaded" SizeChanged="UserControl_SizeChanged">
     <UserControl.Resources>
+        <Style TargetType="ListBoxItem" x:Key="S">
+            <Style.Resources>
+                <!--ListBox 选中一项时背景颜色-->
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
+                <!--选中项失去焦点后的颜色-->
+                <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Transparent" />
+            </Style.Resources>
+        </Style>
         <Style  TargetType="{x:Type ComboBox}">
             <Setter Property="Margin" Value="5"></Setter>
             <Setter Property="Width" Value="120"></Setter>
@@ -164,6 +173,12 @@
         <SolidColorBrush x:Key="ListBox.Disabled.Background" Color="#FFFFFFFF"/>
         <SolidColorBrush x:Key="ListBox.Disabled.Border" Color="#FFD9D9D9"/>
         <Style x:Key="ListBoxStyle" TargetType="{x:Type ListBox}">
+            <Style.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Pink"/>
+                <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Gray"/>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Red"/>
+                <SolidColorBrush x:Key="{x:Static SystemColors.ControlTextBrushKey}" Color="Green"/>
+            </Style.Resources>
             <Setter Property="Background" Value="{StaticResource ListBox.Static.Background}"/>
             <Setter Property="BorderBrush" Value="{StaticResource ListBox.Static.Border}"/>
             <Setter Property="BorderThickness" Value="1"/>
@@ -178,7 +193,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ListBox}">
                         <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="1" SnapsToDevicePixels="true">
-                            <ScrollViewer Focusable="false" Padding="{TemplateBinding Padding}" Style="{DynamicResource for_scrollviewer}">
+                            <ScrollViewer Focusable="false" Padding="{TemplateBinding Padding}" Template="{DynamicResource SCS}">
                                 <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Style="{DynamicResource ItemsPresenterStyle}"/>
                             </ScrollViewer>
                         </Border>
@@ -582,7 +597,31 @@
             <TextBlock x:Name="zk" HorizontalAlignment="Left" Height="Auto" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="Auto" Margin="10,35,0,0" Foreground="#FF969696" FontSize="16"/>
         </Grid>
         <Grid x:Name="h" Margin="0,0,0,49">
-            <ListBox x:Name="listBox" Margin="0,43,0,0" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEEEEEE" SelectionChanged="listBox_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Visible" Style="{DynamicResource ListBoxStyle}"/>
+            <ListBox x:Name="listBox" Margin="0,43,0,0" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEEEEEE" SelectionChanged="listBox_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Visible" Style="{DynamicResource ListBoxStyle}">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListBoxItem">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              TextBlock.Foreground="{TemplateBinding Foreground}"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="true">
+                                <Setter Property="Background" Value="#0C000000"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" Value="#19000000"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListBox>
             <Grid Height="41" VerticalAlignment="Top">
                 <Border HorizontalAlignment="Right" Height="27" Margin="0,7,9,0" VerticalAlignment="Top" Width="194" Background="#FFF1F3F7" CornerRadius="10">
                     <TextBox x:Name="textBox" Margin="9,5,9,3" BorderThickness="0" TextWrapping="Wrap" Text="搜索" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" KeyDown="textBox_KeyDown" Foreground="#FF3F3F46"/>
@@ -590,7 +629,7 @@
                 <Border HorizontalAlignment="Right" Height="25" Margin="0,8,208,0" VerticalAlignment="Top" Width="25" Background="#FFF1F3F7" CornerRadius="5" MouseDown="Border_MouseDown_2" ToolTip="我的收藏">
                     <Path Data="M92.361,35.955L67.95,30.352L52.814,7.012c-1.554-2.397-4.074-2.397-5.628,0L32.05,30.352   L7.639,35.955c-2.784,0.639-3.523,2.906-1.651,5.063l18.019,20.759l-2.757,25.916c-0.302,2.841,1.669,4.471,4.402,3.641L50,83.945   l24.347,7.39c2.733,0.83,4.704-0.801,4.402-3.641l-2.757-25.916l18.019-20.759C95.884,38.861,95.145,36.594,92.361,35.955z" Fill="#FFB4B4C1" Stretch="Uniform" StrokeThickness="0" Margin="4"/>
                 </Border>
-                <TextBlock x:Name="jz" HorizontalAlignment="Right" Height="20" TextWrapping="Wrap" Text="加载中" VerticalAlignment="Top" Width="54" Margin="-24,10,270,0" Foreground="#FF252526" FontSize="14" TextAlignment="Right"/>
+                <TextBlock x:Name="jz" HorizontalAlignment="Right" Height="20" TextWrapping="Wrap" Text="加载中" VerticalAlignment="Top" Width="54" Margin="0,10,270,0" Foreground="#FF252526" FontSize="14" TextAlignment="Right" Visibility="Collapsed"/>
                 <Border HorizontalAlignment="Right" Height="25" Margin="0,8,240,0" VerticalAlignment="Top" Width="25" Background="#FFF1F3F7" CornerRadius="5" MouseDown="Border_MouseDown_3" ToolTip="我的收藏">
                     <Path Data="M50.174,83.543L48.313,57.16C48.208,55.665,47.051,54.441,45.563,54.252L21.266,51.14 74.52,27.426 50.174,83.543z" Fill="#FFB4B4C1" Stretch="Uniform" StrokeThickness="0" Margin="4"/>
                 </Border>

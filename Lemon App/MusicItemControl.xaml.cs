@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,7 +47,18 @@ namespace Lemon_App
           get { return Q.Text; }
             set { if (value != "") if (value == "SQ") { Q.Text = value; RS.Visibility = Visibility.Visible; } else if (value == "HQ") { QC.Text = value; RC.Visibility = Visibility.Visible; } }
         }
+        public string mvid = "";
+        public string ismv
+        {
+            get { return MC.Text; }
+            set { if (value != "") { mv.Visibility = Visibility.Visible; mvid = value; } }
+        }
         public Object M;
         public object Music { get { return M; } set { M = value; } }
+
+        private void mv_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Process.Start($"https://y.qq.com/portal/mv/v/{mvid}.html");
+        }
     }
 }

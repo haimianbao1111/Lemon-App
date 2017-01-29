@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Lemon_App"
              mc:Ignorable="d" Loaded="UserControl_Loaded" >
-    <ScrollViewer x:Name="scrollViewer" Style="{DynamicResource for_scrollviewer}">
+    <ScrollViewer x:Name="scrollViewer" Template="{DynamicResource SCS}">
         <Grid Width="{Binding ActualWidth, ElementName=scrollViewer, Mode=OneWay}" >
             <Label x:Name="label" Content="设置 Settings" HorizontalAlignment="Left" Height="65" Margin="10,0,0,0" VerticalAlignment="Top" Width="188" Foreground="#FF252526" FontSize="24" Background="{x:Null}"/>
             <Label x:Name="label2" Content="搜索引擎Url:" HorizontalAlignment="Left" Height="24" Margin="10,41,0,0" VerticalAlignment="Top" Width="108" Foreground="#FF333337"/>

@@ -159,5 +159,17 @@ namespace Lemon_App {
             ALL.Fill = new SolidColorBrush(Color.FromArgb(255, 180, 180, 193));
             Rbt.Fill = new SolidColorBrush(Color.FromArgb(255, 180, 180, 193));
         }
+
+        private void MIN_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (this.WindowState == WindowState.Normal)
+            { this.WindowState = WindowState.Maximized; Page.Clip = new RectangleGeometry() { RadiusX = 0, RadiusY = 0, Rect = new Rect() { Width = Page.ActualWidth, Height = Page.ActualHeight } }; }
+            else { this.WindowState = WindowState.Normal; Page.Clip = new RectangleGeometry() { RadiusX = 3, RadiusY = 3, Rect = new Rect() { Width = Page.ActualWidth, Height = Page.ActualHeight } }; }
+        }
+
+        private void MAX_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
     }
 }

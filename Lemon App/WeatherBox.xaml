@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Lemon_App"
              xmlns:Forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" x:Class="Lemon_App.WeatherBox"
              mc:Ignorable="d" Loaded="UserControl_Loaded" >
-    <ScrollViewer x:Name="scrollViewer" Style="{DynamicResource for_scrollviewer}" >
+    <ScrollViewer x:Name="scrollViewer" Template="{DynamicResource SCS}">
         <Grid x:Name="grid" Width="{Binding ActualWidth, ElementName=scrollViewer}" Height="Auto">
             <Grid Margin="0" Height="32" VerticalAlignment="Top">
                 <Grid.ColumnDefinitions>

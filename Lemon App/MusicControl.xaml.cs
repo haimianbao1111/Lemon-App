@@ -55,10 +55,6 @@ namespace Lemon_App
         /// 自定义的解析歌词类
         /// </summary>
         GetLyricAndLyricTime getLT;
-        /// <summary>
-        /// 桌面歌词窗体
-        /// </summary>
-        DeskLyricWin deskLyricWin;
         private async void io(object sender, EventArgs e)
         {
                try {
@@ -113,9 +109,9 @@ namespace Lemon_App
                     fs.Close();
                     if (LyricShow.IsOpenDeskLyric == false)
                     {
-                        deskLyricWin = new DeskLyricWin();
-                        deskLyricWin.Show();
-                        LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
+                        //deskLyricWin = new DeskLyricWin();
+                        //deskLyricWin.Show();
+                        //LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
                         LyricShow.HB = 204;
                         LyricShow.HG = 122;
                         LyricShow.HR = 0;
@@ -127,15 +123,15 @@ namespace Lemon_App
                     getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{i}.lrc");
                     LyricShow.initializeLyricUI(getLT.LyricAndTimeDictionary);//解析歌词->得到歌词时间和歌词       
                 }
-                else { deskLyricWin.Close(); LyricShow.backInitial(); LyricShow.initializeLyricUI(null); LyricShow.IsPauseLyricShow = true; }
+                else {}
             }
             else
             {
                 if (LyricShow.IsOpenDeskLyric == false)
                 {
-                    deskLyricWin = new DeskLyricWin();
-                    deskLyricWin.Show();
-                    LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
+                    //deskLyricWin = new DeskLyricWin();
+                    //deskLyricWin.Show();
+                    //LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
                     LyricShow.HB = 204;
                     LyricShow.HG = 122;
                     LyricShow.HR = 0;
@@ -149,7 +145,7 @@ namespace Lemon_App
 
             }
              }
-                catch { deskLyricWin.Close(); LyricShow.backInitial(); LyricShow.initializeLyricUI(null); LyricShow.IsPauseLyricShow = true; }
+                catch {}
         }
 
         private void Fis(object sender, AsyncCompletedEventArgs e)
@@ -200,13 +196,14 @@ namespace Lemon_App
                         m.GC= o["data"]["song"]["list"][i]["songid"].ToString();
                         m.Fotmat= o["data"]["song"]["list"][i]["sizeflac"].ToString();
                         m.HQFOTmat= o["data"]["song"]["list"][i]["size320"].ToString();
+                        m.MV= o["data"]["song"]["list"][i]["vid"].ToString();
                         string Q = "";
                         if (m.Fotmat != "0")
                             Q = "SQ";
                         if (m.HQFOTmat != "0")
                             if (m.Fotmat == "0")
                                 Q = "HQ";
-                        listBox.Items.Add(new MusicItemControl() {Width=this.ActualWidth, BorderThickness = new Thickness(0), MusicGS = m.Singer, MusicName =m.MusicName, MusicZJ = m.ZJ, Music = m,Qt=Q });
+                        listBox.Items.Add(new MusicItemControl() {Width=this.ActualWidth, BorderThickness = new Thickness(0), MusicGS = m.Singer, MusicName =m.MusicName, MusicZJ = m.ZJ, Music = m,Qt=Q,ismv =m.MV });
                         i++;
                     }
                     jz.Visibility = Visibility.Collapsed;
@@ -279,9 +276,9 @@ namespace Lemon_App
                             fs.Close();
                             if (LyricShow.IsOpenDeskLyric == false)
                             {
-                                deskLyricWin = new DeskLyricWin();
-                                deskLyricWin.Show();
-                                LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
+                                //deskLyricWin = new DeskLyricWin();
+                                //deskLyricWin.Show();
+                                //LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
                                 LyricShow.HB = 204;
                                 LyricShow.HG = 122;
                                 LyricShow.HR = 0;
@@ -293,15 +290,15 @@ namespace Lemon_App
                             getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc");
                             LyricShow.initializeLyricUI(getLT.LyricAndTimeDictionary);//解析歌词->得到歌词时间和歌词       
                         }
-                        else { deskLyricWin.Close(); LyricShow.backInitial(); LyricShow.initializeLyricUI(null); LyricShow.IsPauseLyricShow = true; }
+                        else { }
                     }
                     else
                     {
                         if (LyricShow.IsOpenDeskLyric == false)
                         {
-                            deskLyricWin = new DeskLyricWin();
-                            deskLyricWin.Show();
-                            LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
+                            //deskLyricWin = new DeskLyricWin();
+                            //deskLyricWin.Show();
+                            //LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
                             LyricShow.HB = 204;
                             LyricShow.HG = 122;
                             LyricShow.HR = 0;
@@ -321,7 +318,7 @@ namespace Lemon_App
                     {
                         // musicurl = $"http://cc.stream.qqmusic.qq.com/C100{musicid}.m4a?fromtag=52";
                         string guid = "20D919A4D7700FBC424740E8CED80C5F";
-                        string ioo =await Uuuhh.GetWebAsync($"http://59.37.96.220/base/fcgi-bin/fcg_musicexpress2.fcg?version=12&miniversion=92&key=19914AA57A96A9135541562F16DAD6B885AC8B8B5420AC567A0561D04540172E&guid={guid}");
+                        string ioo = await Uuuhh.GetWebAsync($"http://59.37.96.220/base/fcgi-bin/fcg_musicexpress2.fcg?version=12&miniversion=92&key=19914AA57A96A9135541562F16DAD6B885AC8B8B5420AC567A0561D04540172E&guid={guid}");
                         string vkey = He.Text(ioo, "key=\"", "\" speedrpttype", 0);
                         musicurl = $"http://182.247.250.19/streamoc.music.tc.qq.com/M500{musicid}.mp3?vkey={vkey}&guid={guid}";
                         //player.Open(new Uri(musicurl));
@@ -348,7 +345,7 @@ namespace Lemon_App
                         StreamWriter sw = new StreamWriter(fs);
                         string h = await Uuuhh.GetWebAsync($"https://route.showapi.com/213-2?showapi_sign=cfa206656db244c089be2d1499735bb5&showapi_appid=29086&musicid={lrc}");
                         JObject o = JObject.Parse(h);
-                        string ijo = o["showapi_res_body"]["lyric"].ToString().Replace("&#58;", ":").Replace("&#10;", "\r\n").Replace("&#40;", "(").Replace("&#41;",")").Replace("&#46;", ".").Replace("&#32;"," ").Replace("&#45;", "-").Replace("&#39;", "'");
+                        string ijo = o["showapi_res_body"]["lyric"].ToString().Replace("&#58;", ":").Replace("&#10;", "\r\n").Replace("&#40;", "(").Replace("&#41;", ")").Replace("&#46;", ".").Replace("&#32;", " ").Replace("&#45;", "-").Replace("&#39;", "'");
                         if (ijo != "")
                         {
                             await sw.WriteAsync(ijo);
@@ -357,9 +354,9 @@ namespace Lemon_App
                             fs.Close();
                             if (LyricShow.IsOpenDeskLyric == false)
                             {
-                                deskLyricWin = new DeskLyricWin();
-                                deskLyricWin.Show();
-                                LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
+                                //deskLyricWin = new DeskLyricWin();
+                                //deskLyricWin.Show();
+                                //LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
                                 LyricShow.HB = 204;
                                 LyricShow.HG = 122;
                                 LyricShow.HR = 0;
@@ -371,15 +368,15 @@ namespace Lemon_App
                             getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc");
                             LyricShow.initializeLyricUI(getLT.LyricAndTimeDictionary);//解析歌词->得到歌词时间和歌词       
                         }
-                        else { deskLyricWin.Close(); LyricShow.backInitial(); LyricShow.initializeLyricUI(null); LyricShow.IsPauseLyricShow = true; }
+                        else { }
                     }
                     else
                     {
                         if (LyricShow.IsOpenDeskLyric == false)
                         {
-                            deskLyricWin = new DeskLyricWin();
-                            deskLyricWin.Show();
-                            LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
+                            //deskLyricWin = new DeskLyricWin();
+                            //deskLyricWin.Show();
+                            //LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
                             LyricShow.HB = 204;
                             LyricShow.HG = 122;
                             LyricShow.HR = 0;
@@ -397,7 +394,8 @@ namespace Lemon_App
                 {
                     //  Toast.SetToastNotion("小萌:", "SQ品质的歌曲工程师正在努力争取哦，先听听HQ吧~", "------来自小萌工程师").Show();
                     if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.flac"))
-                    { var time = ((DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000000).ToString();
+                    {
+                        var time = ((DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000000).ToString();
                         musicurl = $"http://cc.stream.qqmusic.qq.com/C100{musicid}.m4a?fromtag=52";
                         string guid = "20D919A4D7701FBC424740E8CED80C6F";//2,6
                         string ioo = await Uuuhh.GetWebAsync($"http://59.37.96.220/base/fcgi-bin/fcg_musicexpress2.fcg?version=12&miniversion=97&uin=2728578956&key=F9540A5619CCBB2EA0124B9F55790D933E5FC106A721B4DE8A71DF65C963C624&guid=20D919A4D7701FBC424740E8CED80C6F&musicfile=F000{musicid}.flac&checklimit=0&ctx=1&mediafile=F000{musicid}.flac&pcachetime={time}");
@@ -434,9 +432,9 @@ namespace Lemon_App
                             fs.Close();
                             if (LyricShow.IsOpenDeskLyric == false)
                             {
-                                deskLyricWin = new DeskLyricWin();
-                                deskLyricWin.Show();
-                                LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
+                                //deskLyricWin = new DeskLyricWin();
+                                //deskLyricWin.Show();
+                                //LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
                                 LyricShow.HB = 204;
                                 LyricShow.HG = 122;
                                 LyricShow.HR = 0;
@@ -448,15 +446,15 @@ namespace Lemon_App
                             getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc");
                             LyricShow.initializeLyricUI(getLT.LyricAndTimeDictionary);//解析歌词->得到歌词时间和歌词       
                         }
-                        else { deskLyricWin.Close(); LyricShow.backInitial(); LyricShow.initializeLyricUI(null); LyricShow.IsPauseLyricShow = true; }
+                        else { }
                     }
                     else
                     {
                         if (LyricShow.IsOpenDeskLyric == false)
                         {
-                            deskLyricWin = new DeskLyricWin();
-                            deskLyricWin.Show();
-                            LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
+                            //deskLyricWin = new DeskLyricWin();
+                            //deskLyricWin.Show();
+                            //LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
                             LyricShow.HB = 204;
                             LyricShow.HG = 122;
                             LyricShow.HR = 0;
@@ -471,7 +469,7 @@ namespace Lemon_App
                     }
                 }
             }
-            catch { deskLyricWin.Close(); LyricShow.backInitial(); LyricShow.initializeLyricUI(null); LyricShow.IsPauseLyricShow = true; }
+            catch { }
         }
 
         private void Fi_BZ(object sender, AsyncCompletedEventArgs e)
@@ -710,13 +708,14 @@ namespace Lemon_App
                         m.ImageID = o["data"]["song"]["list"][i]["albummid"].ToString();
                         m.GC = o["data"]["song"]["list"][i]["songid"].ToString();
                         m.Fotmat = o["data"]["song"]["list"][i]["sizeflac"].ToString();
+                        m.MV = o["data"]["song"]["list"][i]["vid"].ToString();
                         string Q = "";
                         if (m.Fotmat != "0")
                             Q = "SQ";
                         if (m.HQFOTmat != "0")
                             if (m.Fotmat == "0")
                                 Q = "HQ";
-                        listBox.Items.Add(new MusicItemControl() { Width = this.ActualWidth, BorderThickness = new Thickness(0), MusicGS = m.Singer, MusicName = m.MusicName, MusicZJ = m.ZJ, Music = m,Qt=Q });
+                        listBox.Items.Add(new MusicItemControl() { Width = this.ActualWidth, BorderThickness = new Thickness(0), MusicGS = m.Singer, MusicName = m.MusicName, MusicZJ = m.ZJ, Music = m,Qt=Q,ismv=m.MV });
                         i++;
                     }
                     jz.Visibility = Visibility.Collapsed;
@@ -753,13 +752,14 @@ namespace Lemon_App
                     m.ImageID = o["data"]["song"]["list"][i]["albummid"].ToString();
                     m.GC = o["data"]["song"]["list"][i]["songid"].ToString();
                     m.Fotmat = o["data"]["song"]["list"][i]["sizeflac"].ToString();
+                    m.MV = o["data"]["song"]["list"][i]["vid"].ToString();
                     string Q = "";
                     if (m.Fotmat != "0")
                         Q = "SQ";
                     if (m.HQFOTmat != "0")
                         if (m.Fotmat == "0")
                             Q = "HQ";
-                    listBox.Items.Add(new MusicItemControl() { Width = this.ActualWidth, BorderThickness = new Thickness(0), MusicGS = m.Singer, MusicName = m.MusicName, MusicZJ = m.ZJ, Music = m ,Qt=Q});
+                    listBox.Items.Add(new MusicItemControl() { Width = this.ActualWidth, BorderThickness = new Thickness(0), MusicGS = m.Singer, MusicName = m.MusicName, MusicZJ = m.ZJ, Music = m ,Qt=Q,ismv=m.MV});
                     i++;
                 }
                 jz.Visibility = Visibility.Collapsed;
@@ -845,7 +845,7 @@ namespace Lemon_App
                 if (lj.List[i].ItemText.HQFOTmat != "0")
                     if (lj.List[i].ItemText.Fotmat == "0")
                         os = "HQ";
-                listBox.Items.Add(new MusicItemControl() {Width=this.ActualWidth , MusicGS =lj.List[i].ItemText.Singer, MusicName = lj.List[i].ItemText.MusicName, MusicZJ = lj.List[i].ItemText.ZJ,Qt=os, Music = lj.List[i].ItemText });
+                listBox.Items.Add(new MusicItemControl() {Width=this.ActualWidth , MusicGS =lj.List[i].ItemText.Singer, MusicName = lj.List[i].ItemText.MusicName, MusicZJ = lj.List[i].ItemText.ZJ,Qt=os, Music = lj.List[i].ItemText , ismv = lj.List[i].ItemText.MV });
             }
             jz.Visibility = Visibility.Collapsed;
         }
@@ -877,17 +877,47 @@ namespace Lemon_App
             rtf.BeginAnimation(RotateTransform.AngleProperty, dbAscending);
 
             listBox.Items.Clear();
-            ListJson lj = new Lemon_App.ListJson();
-            lj = JsonToObject(Settings.Default.MusicList, lj) as ListJson;
-            for (int i = 0; i < lj.List.Count; i++)
+            if(Settings.Default.ZJid!=string.Empty)
             {
-                string os = "";
-                if (lj.List[i].ItemText.Fotmat != "0") { os = "SQ"; }
-                if (lj.List[i].ItemText.HQFOTmat != "0")
-                    if (lj.List[i].ItemText.Fotmat == "0")
-                        os = "HQ";
-                listBox.Items.Add(new MusicItemControl() {Width=this.ActualWidth, MusicGS = lj.List[i].ItemText.Singer, MusicName = lj.List[i].ItemText.MusicName, MusicZJ = lj.List[i].ItemText.ZJ, Music = lj.List[i].ItemText,Qt=os });
+                var s = await Uuuhh.GetWebAsync($"https://y.qq.com/portal/playlist/{Settings.Default.ZJid}.html");
+                var j= "{\"list\":" + He.Text(s, "var getSongInfo = ", ";", 0) + "}";
+                JObject o = JObject.Parse(j);
+                int i = 0;
+                while (i != o["list"].Count())
+                {
+                    Music m = new Music()
+                    {
+                        MusicName = o["list"][i]["songname"].ToString(),
+                        Singer = o["list"][i]["singer"][0]["name"].ToString(),
+                        ZJ = o["list"][i]["albumdesc"].ToString(),
+                        GC = o["list"][i]["songid"].ToString(),
+                        Fotmat = o["list"][i]["sizeflac"].ToString(),
+                        HQFOTmat = o["list"][i]["size320"].ToString(),
+                        MusicID = o["list"][i]["songmid"].ToString(),
+                        ImageID = o["list"][i]["albummid"].ToString(),
+                        MV = o["list"][i]["vid"].ToString()
+                    };
+                    string Q = "";
+                    if (m.Fotmat != "0")
+                        Q = "SQ";
+                    if (m.HQFOTmat != "0")
+                        if (m.Fotmat == "0")
+                            Q = "HQ";
+                    listBox.Items.Add(new MusicItemControl() { Width = this.ActualWidth, BorderThickness = new Thickness(0), MusicGS = m.Singer, MusicName = m.MusicName, MusicZJ = m.ZJ, Music = m, Qt = Q, ismv = m.MV });
+                    i++;
+                }
             }
+            //ListJson lj = new Lemon_App.ListJson();
+            //lj = JsonToObject(Settings.Default.MusicList, lj) as ListJson;
+            //for (int i = 0; i < lj.List.Count; i++)
+            //{
+            //    string os = "";
+            //    if (lj.List[i].ItemText.Fotmat != "0") { os = "SQ"; }
+            //    if (lj.List[i].ItemText.HQFOTmat != "0")
+            //        if (lj.List[i].ItemText.Fotmat == "0")
+            //            os = "HQ";
+            //    listBox.Items.Add(new MusicItemControl() {Width=this.ActualWidth, MusicGS = lj.List[i].ItemText.Singer, MusicName = lj.List[i].ItemText.MusicName, MusicZJ = lj.List[i].ItemText.ZJ, Music = lj.List[i].ItemText,Qt=os,ismv = lj.List[i].ItemText.MV});
+            //}
         }
 
         private async void pz_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -942,9 +972,9 @@ namespace Lemon_App
                                 fs.Close();
                                 if (LyricShow.IsOpenDeskLyric == false)
                                 {
-                                    deskLyricWin = new DeskLyricWin();
-                                    deskLyricWin.Show();
-                                    LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
+                                    //deskLyricWin = new DeskLyricWin();
+                                    //deskLyricWin.Show();
+                                    //LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
                                     LyricShow.HB = 204;
                                     LyricShow.HG = 122;
                                     LyricShow.HR = 0;
@@ -956,15 +986,15 @@ namespace Lemon_App
                                 getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc");
                                 LyricShow.initializeLyricUI(getLT.LyricAndTimeDictionary);//解析歌词->得到歌词时间和歌词       
                             }
-                            else { deskLyricWin.Close(); LyricShow.backInitial(); LyricShow.initializeLyricUI(null); LyricShow.IsPauseLyricShow = true; }
+                            else { }
                         }
                         else
                         {
                             if (LyricShow.IsOpenDeskLyric == false)
                             {
-                                deskLyricWin = new DeskLyricWin();
-                                deskLyricWin.Show();
-                                LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
+                                //deskLyricWin = new DeskLyricWin();
+                                //deskLyricWin.Show();
+                                //LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
                                 LyricShow.HB = 204;
                                 LyricShow.HG = 122;
                                 LyricShow.HR = 0;
@@ -1020,9 +1050,9 @@ namespace Lemon_App
                                 fs.Close();
                                 if (LyricShow.IsOpenDeskLyric == false)
                                 {
-                                    deskLyricWin = new DeskLyricWin();
-                                    deskLyricWin.Show();
-                                    LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
+                                    //deskLyricWin = new DeskLyricWin();
+                                    //deskLyricWin.Show();
+                                    //LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
                                     LyricShow.HB = 204;
                                     LyricShow.HG = 122;
                                     LyricShow.HR = 0;
@@ -1034,15 +1064,15 @@ namespace Lemon_App
                                 getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc");
                                 LyricShow.initializeLyricUI(getLT.LyricAndTimeDictionary);//解析歌词->得到歌词时间和歌词       
                             }
-                            else { deskLyricWin.Close(); LyricShow.backInitial(); LyricShow.initializeLyricUI(null); LyricShow.IsPauseLyricShow = true; }
+                            else { }
                         }
                         else
                         {
                             if (LyricShow.IsOpenDeskLyric == false)
                             {
-                                deskLyricWin = new DeskLyricWin();
-                                deskLyricWin.Show();
-                                LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
+                                //deskLyricWin = new DeskLyricWin();
+                                //deskLyricWin.Show();
+                                //LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
                                 LyricShow.HB = 204;
                                 LyricShow.HG = 122;
                                 LyricShow.HR = 0;
@@ -1097,9 +1127,9 @@ namespace Lemon_App
                                 fs.Close();
                                 if (LyricShow.IsOpenDeskLyric == false)
                                 {
-                                    deskLyricWin = new DeskLyricWin();
-                                    deskLyricWin.Show();
-                                    LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
+                                    //deskLyricWin = new DeskLyricWin();
+                                    //deskLyricWin.Show();
+                                    //LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
                                     LyricShow.HB = 204;
                                     LyricShow.HG = 122;
                                     LyricShow.HR = 0;
@@ -1111,15 +1141,15 @@ namespace Lemon_App
                                 getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc");
                                 LyricShow.initializeLyricUI(getLT.LyricAndTimeDictionary);//解析歌词->得到歌词时间和歌词       
                             }
-                            else { deskLyricWin.Close(); LyricShow.backInitial(); LyricShow.initializeLyricUI(null); LyricShow.IsPauseLyricShow = true; }
+                            else { }
                         }
                         else
                         {
                             if (LyricShow.IsOpenDeskLyric == false)
                             {
-                                deskLyricWin = new DeskLyricWin();
-                                deskLyricWin.Show();
-                                LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
+                               // deskLyricWin = new DeskLyricWin();
+                                //deskLyricWin.Show();
+                               // LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
                                 LyricShow.HB = 204;
                                 LyricShow.HG = 122;
                                 LyricShow.HR = 0;
@@ -1134,7 +1164,7 @@ namespace Lemon_App
                         }
                     }
                 }
-                catch { deskLyricWin.Close(); LyricShow.backInitial(); LyricShow.initializeLyricUI(null); LyricShow.IsPauseLyricShow = true; }
+                catch {  }
             }
         }
 
@@ -1158,9 +1188,10 @@ namespace Lemon_App
         {
             try
             {
-                if (textBox.Text != "")
-                {
-                    listBox.Items.Clear();
+                long ox = 0;
+                if (Settings.Default.ZJid != "null"&&textBox.Text==string.Empty)  { textBox.Text = Settings.Default.ZJid; }
+                    else { if (long.TryParse(textBox.Text, out ox)) { Settings.Default.ZJid = textBox.Text; Settings.Default.Save(); } else { textBox.Text = Settings.Default.ZJid; } }
+                listBox.Items.Clear();
                     jz.Visibility = Visibility.Visible;
                     var s = await Uuuhh.GetWebAsync($"https://y.qq.com/portal/playlist/{textBox.Text}.html");
                     var json = "{\"list\":" + He.Text(s, "var getSongInfo = ", ";", 0) + "}";
@@ -1177,7 +1208,8 @@ namespace Lemon_App
                             Fotmat = o["list"][i]["sizeflac"].ToString(),
                             HQFOTmat = o["list"][i]["size320"].ToString(),
                             MusicID = o["list"][i]["songmid"].ToString(),
-                            ImageID = o["list"][i]["albummid"].ToString()
+                            ImageID = o["list"][i]["albummid"].ToString(),
+                            MV = o["list"][i]["vid"].ToString()
                         };
                         string Q = "";
                         if (m.Fotmat != "0")
@@ -1185,11 +1217,10 @@ namespace Lemon_App
                         if (m.HQFOTmat != "0")
                             if (m.Fotmat == "0")
                                 Q = "HQ";
-                        listBox.Items.Add(new MusicItemControl() { Width = this.ActualWidth, BorderThickness = new Thickness(0), MusicGS = m.Singer, MusicName = m.MusicName, MusicZJ = m.ZJ, Music = m, Qt = Q });
+                        listBox.Items.Add(new MusicItemControl() { Width = this.ActualWidth, BorderThickness = new Thickness(0), MusicGS = m.Singer, MusicName = m.MusicName, MusicZJ = m.ZJ, Music = m, Qt = Q,ismv=m.MV });
                         i++;
                     }
                     jz.Visibility = Visibility.Collapsed;
-                }
             }
             catch { jz.Visibility = Visibility.Collapsed; }
         }

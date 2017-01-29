@@ -450,5 +450,9 @@ namespace Lemon_App
         /// 歌词ID
         /// </summary>
         public string GC { set; get; }
+        /// <summary>
+        /// mv ID
+        /// </summary>
+        public string MV { set; get; }
     }
 }

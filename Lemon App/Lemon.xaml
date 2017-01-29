@@ -130,8 +130,8 @@
             </Border>
             <Grid x:Name="TopPage" Background="#FFF6F7F9" MinHeight="50" Grid.RowSpan="1" Height="50" Margin="0" VerticalAlignment="Top">
                 <Border x:Name="CLOSE"  HorizontalAlignment="Left" Margin="20,0,0,0" Width="13" Height="13" Background="#FFFC6762" CornerRadius="13" MouseDown="CLOSE_MouseDown"/>
-                <Border x:Name="MIN"  HorizontalAlignment="Left" Margin="40,0,0,0" Width="13" Height="13" Background="#FFFDBC40" CornerRadius="13"/>
-                <Border x:Name="MAX"  HorizontalAlignment="Left" Margin="60,0,0,0" Width="13" Height="13" Background="#FF41DB2A" CornerRadius="13"/>
+                <Border x:Name="MIN"  HorizontalAlignment="Left" Margin="40,0,0,0" Width="13" Height="13" Background="#FFFDBC40" CornerRadius="13" MouseDown="MIN_MouseDown"/>
+                <Border x:Name="MAX"  HorizontalAlignment="Left" Margin="60,0,0,0" Width="13" Height="13" Background="#FF41DB2A" CornerRadius="13" MouseDown="MAX_MouseDown"/>
                 <Border x:Name="tx" HorizontalAlignment="Right" Margin="0,10,43,10" Width="30" Height="30" Background="#FF007ACC" CornerRadius="100" MouseDown="tx_MouseDown">
                     <Border x:Name="ZX"  HorizontalAlignment="Right" Height="10" VerticalAlignment="Bottom" Width="10" Background="#FF41DB2A" CornerRadius="100"/>
                 </Border>
