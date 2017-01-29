@@ -39,7 +39,7 @@
                 </Grid>
             </Border>
             <TextBlock x:Name="allqiyanjd" Margin="10,120,10,0" TextWrapping="Wrap" Foreground="#FF333337" FontSize="14" TextAlignment="Center" Height="21" VerticalAlignment="Top"><Run Text="气压:"/><Run Text="N/N"/><Run Text="     ，"/></TextBlock>
-            <ScrollViewer Height="118" Margin="0,172,0,0" VerticalAlignment="Top" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto" Template="{DynamicResource SCS}">
+            <ScrollViewer Height="118" Margin="0,172,0,0" VerticalAlignment="Top" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto" Style="{DynamicResource for_scrollviewer}">
                 <Grid Height="Auto" Width="Auto">
                     <Grid HorizontalAlignment="Left" Margin="27,10,0,0" Width="97" Height="108" VerticalAlignment="Top">
                         <TextBlock x:Name="shijianw" Height="16.669" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF252526" Margin="9,3,9,0"><Run Text="/N"/><Run Text="-"/><Run Text="N/N"/><Run Text="-"/><Run Text="N/N"/></TextBlock>
