@@ -72,7 +72,7 @@
     </UserControl.Resources>
     <Grid>
         <Label x:Name="label" Content="新闻" HorizontalAlignment="Left" Height="29" Margin="5,6,0,0" VerticalAlignment="Top" Width="40" Foreground="#FF3F3F46" FontSize="14"/>
-        <ScrollViewer x:Name="O" PanningMode="Both" Margin="0,36,0,0" Template="{DynamicResource SCS}" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <ScrollViewer x:Name="O" PanningMode="Both" Margin="0,36,0,0" Template="{DynamicResource SCS}" HorizontalScrollBarVisibility="Visible">
             <WrapPanel x:Name="WP" HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="574"/>
         </ScrollViewer>
         <Border BorderThickness="1" Height="32" Margin="50,4,10,0" VerticalAlignment="Top" CornerRadius="7" Background="#FFF1F3F7">
