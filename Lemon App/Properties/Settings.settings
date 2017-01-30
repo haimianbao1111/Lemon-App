@@ -45,7 +45,7 @@
       <Value Profile="(Default)">Lemon User</Value>
     </Setting>
     <Setting Name="ZJid" Type="System.String" Scope="User">
-      <Value Profile="(Default)">null</Value>
+      <Value Profile="(Default)">2591355982</Value>
     </Setting>
   </Settings>
 </SettingsFile>
