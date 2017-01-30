@@ -32,7 +32,9 @@ namespace Lemon_App
             if (textBlock1.Text != "下载更新中...")
             {
                 WebClient dc = new WebClient();
-                dc.DownloadFileAsync(new Uri("http://cname.lemonapp.tk/Setup.exe"), AppDomain.CurrentDomain.BaseDirectory + @"Setup.exe");
+                dc.DownloadFileAsync(new Uri("http://api.lemonapp.tk/Main/Setup.exe"), AppDomain.CurrentDomain.BaseDirectory + @"Setup.exe");
+             //   dc.Headers.Add(HttpRequestHeader.Cookie, "User=d2eb2545efba96cd3c9b6cf0cd07f135;");
+                dc.Proxy = He.proxy;
                 dc.DownloadFileCompleted += OK;
                 dc.DownloadProgressChanged += DownloadFileCompleted;
                 textBlock1.Text = "下载更新中...";

@@ -55,7 +55,8 @@ namespace Lemon_App
         }
         public Object M;
         public object Music { get { return M; } set { M = value; } }
-
+        public object t = "";
+     //   public new object ToolTip{get { return t; }set { t = value; if (t.ToString() == "True") { IsOpen.Visibility = Visibility.Visible; } else IsOpen.Visibility = Visibility.Collapsed;  } }
         private void mv_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Process.Start($"https://y.qq.com/portal/mv/v/{mvid}.html");
