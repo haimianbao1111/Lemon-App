@@ -100,7 +100,7 @@ namespace Lemon_App
                     StreamWriter sw = new StreamWriter(fs);
                     string h = await Uuuhh.GetWebAsync($"http://route.showapi.com/213-2?showapi_sign=cfa206656db244c089be2d1499735bb5&showapi_appid=29086&musicid={lrc}");
                     JObject o = JObject.Parse(h);
-                    string ijo = o["showapi_res_body"]["lyric"].ToString().Replace("&#58;", ":").Replace("&#10;", "\r\n").Replace("&#40;", "(").Replace("&#41;", ")").Replace("&#46;", ".").Replace("&#32;", " ").Replace("&#45;", "-").Replace("&#39;", "'"); ;
+                    string ijo = System.Web.HttpUtility.HtmlDecode(o["showapi_res_body"]["lyric"].ToString());
                     if (ijo != "")
                 {
                     await sw.WriteAsync(ijo);
@@ -267,7 +267,7 @@ namespace Lemon_App
                         StreamWriter sw = new StreamWriter(fs);
                         string h = await Uuuhh.GetWebAsync($"https://route.showapi.com/213-2?showapi_sign=cfa206656db244c089be2d1499735bb5&showapi_appid=29086&musicid={lrc}");
                         JObject o = JObject.Parse(h);
-                        string ijo = o["showapi_res_body"]["lyric"].ToString().Replace("&#58;", ":").Replace("&#10;", "\r\n").Replace("&#40;", "(").Replace("&#41;", ")").Replace("&#46;", ".").Replace("&#32;", " ").Replace("&#45;", "-").Replace("&#39;", "'");
+                        string ijo = System.Web.HttpUtility.HtmlDecode(o["showapi_res_body"]["lyric"].ToString());
                         if (ijo != "")
                         {
                             await sw.WriteAsync(ijo);
@@ -345,7 +345,7 @@ namespace Lemon_App
                         StreamWriter sw = new StreamWriter(fs);
                         string h = await Uuuhh.GetWebAsync($"https://route.showapi.com/213-2?showapi_sign=cfa206656db244c089be2d1499735bb5&showapi_appid=29086&musicid={lrc}");
                         JObject o = JObject.Parse(h);
-                        string ijo = o["showapi_res_body"]["lyric"].ToString().Replace("&#58;", ":").Replace("&#10;", "\r\n").Replace("&#40;", "(").Replace("&#41;", ")").Replace("&#46;", ".").Replace("&#32;", " ").Replace("&#45;", "-").Replace("&#39;", "'");
+                        string ijo = System.Web.HttpUtility.HtmlDecode(o["showapi_res_body"]["lyric"].ToString());
                         if (ijo != "")
                         {
                             await sw.WriteAsync(ijo);
@@ -423,7 +423,7 @@ namespace Lemon_App
                         StreamWriter sw = new StreamWriter(fs);
                         string h = await Uuuhh.GetWebAsync($"https://route.showapi.com/213-2?showapi_sign=cfa206656db244c089be2d1499735bb5&showapi_appid=29086&musicid={lrc}");
                         JObject o = JObject.Parse(h);
-                        string ijo = o["showapi_res_body"]["lyric"].ToString().Replace("&#58;", ":").Replace("&#10;", "\r\n").Replace("&#40;", "(").Replace("&#41;", ")").Replace("&#46;", ".").Replace("&#32;", " ").Replace("&#45;", "-").Replace("&#39;", "'");
+                        string ijo = System.Web.HttpUtility.HtmlDecode(o["showapi_res_body"]["lyric"].ToString());
                         if (ijo != "")
                         {
                             await sw.WriteAsync(ijo);
@@ -963,7 +963,7 @@ namespace Lemon_App
                             StreamWriter sw = new StreamWriter(fs);
                             string h = await Uuuhh.GetWebAsync($"https://route.showapi.com/213-2?showapi_sign=cfa206656db244c089be2d1499735bb5&showapi_appid=29086&musicid={lrc}");
                             JObject o = JObject.Parse(h);
-                            string ijo = o["showapi_res_body"]["lyric"].ToString().Replace("&#58;", ":").Replace("&#10;", "\r\n").Replace("&#40;", "(").Replace("&#41;", ")").Replace("&#46;", ".").Replace("&#32;", " ").Replace("&#45;", "-").Replace("&#39;", "'");
+                            string ijo = System.Web.HttpUtility.HtmlDecode(o["showapi_res_body"]["lyric"].ToString());
                             if (ijo != "")
                             {
                                 await sw.WriteAsync(ijo);
@@ -1041,7 +1041,7 @@ namespace Lemon_App
                             StreamWriter sw = new StreamWriter(fs);
                             string h = await Uuuhh.GetWebAsync($"https://route.showapi.com/213-2?showapi_sign=cfa206656db244c089be2d1499735bb5&showapi_appid=29086&musicid={lrc}");
                             JObject o = JObject.Parse(h);
-                            string ijo = o["showapi_res_body"]["lyric"].ToString().Replace("&#58;", ":").Replace("&#10;", "\r\n").Replace("&#40;", "(").Replace("&#41;", ")").Replace("&#46;", ".").Replace("&#32;", " ").Replace("&#45;", "-").Replace("&#39;", "'");
+                            string ijo = System.Web.HttpUtility.HtmlDecode(o["showapi_res_body"]["lyric"].ToString());
                             if (ijo != "")
                             {
                                 await sw.WriteAsync(ijo);
@@ -1118,7 +1118,7 @@ namespace Lemon_App
                             StreamWriter sw = new StreamWriter(fs);
                             string h = await Uuuhh.GetWebAsync($"https://route.showapi.com/213-2?showapi_sign=cfa206656db244c089be2d1499735bb5&showapi_appid=29086&musicid={lrc}");
                             JObject o = JObject.Parse(h);
-                            string ijo = o["showapi_res_body"]["lyric"].ToString().Replace("&#58;", ":").Replace("&#10;", "\r\n").Replace("&#40;", "(").Replace("&#41;", ")").Replace("&#46;", ".").Replace("&#32;", " ").Replace("&#45;", "-").Replace("&#39;","'");
+                            string ijo = System.Web.HttpUtility.HtmlDecode(o["showapi_res_body"]["lyric"].ToString());
                             if (ijo != "")
                             {
                                 await sw.WriteAsync(ijo);
