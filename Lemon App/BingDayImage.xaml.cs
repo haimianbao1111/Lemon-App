@@ -37,7 +37,7 @@ namespace Lemon_App
             {
                 JObject obj = JObject.Parse(await Uuuhh.GetWebAsync("http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=zh-CN"));
                 string url = "http://cn.bing.com" + obj["images"][0]["url"].ToString();
-                bingDailyPicture.Source = new BitmapImage(new Uri(url));
+                bingDailyPicture.Background =new ImageBrush( new BitmapImage(new Uri(url)));
                 textBlock.Text = obj["images"][0]["copyright"].ToString();
                 downuri = obj["images"][0]["copyrightlink"].ToString();
                 BingimageMS = 0;
@@ -53,7 +53,7 @@ namespace Lemon_App
                     BingimageMS++;
                     JObject obj = JObject.Parse(await Uuuhh.GetWebAsync("http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=zh-CN"));
                     string url = "http://cn.bing.com" + obj["images"][0]["url"].ToString();
-                    bingDailyPicture.Source = new BitmapImage(new Uri(url));
+                    bingDailyPicture.Background = new ImageBrush(new BitmapImage(new Uri(url)));
                     textBlock.Text = obj["images"][0]["copyright"].ToString();
                     downuri = obj["images"][0]["copyrightlink"].ToString();
                 }
@@ -70,7 +70,7 @@ namespace Lemon_App
                     BingimageMS--;
                     JObject obj = JObject.Parse(await Uuuhh.GetWebAsync("http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=zh-CN"));
                     string url = "http://cn.bing.com" + obj["images"][0]["url"].ToString();
-                    bingDailyPicture.Source = new BitmapImage(new Uri(url));
+                    bingDailyPicture.Background = new ImageBrush(new BitmapImage(new Uri(url)));
                     textBlock.Text = obj["images"][0]["copyright"].ToString();
                     downuri = obj["images"][0]["copyrightlink"].ToString();
                 }
@@ -88,7 +88,7 @@ namespace Lemon_App
         {
             try
             {
-                BitmapImage image = (BitmapImage)bingDailyPicture.Source;
+                BitmapImage image =(BitmapImage) ((bingDailyPicture.Background as ImageBrush).ImageSource);
                 BmpBitmapEncoder encoder = new BmpBitmapEncoder();
                 encoder.Frames.Add(BitmapFrame.Create(image));
                 FileStream fileStream = new FileStream(AppDomain.CurrentDomain.BaseDirectory+@"BingImage.bmp", FileMode.Create, FileAccess.ReadWrite);

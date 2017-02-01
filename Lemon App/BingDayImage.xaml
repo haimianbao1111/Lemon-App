@@ -5,9 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Lemon_App"
              mc:Ignorable="d"  >
-    <Border>
+    <Border Background="{Binding Background, ElementName=bingDailyPicture}">
         <Grid Loaded="Grid_Loaded">
-            <Image x:Name="bingDailyPicture" Margin="0,0,0,35"/>
+            <Grid  Background="{Binding Background, ElementName=bingDailyPicture}">
+                <Grid.Effect>
+                    <BlurEffect Radius="20"/>
+                </Grid.Effect>
+            </Grid>
+            <Border x:Name="bingDailyPicture" Margin="0,0,0,35"/>
             <Grid Height="35" VerticalAlignment="Bottom">
                 <TextBlock x:Name="label" Text="设为桌面壁纸"  MouseDown="label_MouseDown" Foreground="#FF333337" TextAlignment="Center" Background="#00000000" Width="70" Height="20"/>
                 <Label x:Name="label1" Content="◀" HorizontalAlignment="Left" Height="35" Margin="10,0,0,0" VerticalAlignment="Top" Width="37" FontSize="20" MouseDown="Border_MouseDown_1" Foreground="#FF333337" Background="#00000000"/>

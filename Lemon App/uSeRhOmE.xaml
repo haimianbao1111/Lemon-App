@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:Lemon_App"
              mc:Ignorable="d" Loaded="UserControl_Loaded">
     <Grid>
+        <Grid  Background="#66FFFFFF"/>
         <Grid Background="{Binding Background, ElementName=TX}" >
             <Grid.Effect>
                 <BlurEffect Radius="80"/>
