@@ -241,7 +241,7 @@ namespace Lemon_App
                 request = (System.Net.HttpWebRequest)WebRequest.Create(strURL);
                 request.Method = "GET";
                 request.Proxy = He.proxy;
-                // 添加header
+           
                 request.Headers.Add("apikey", "d2eb2545efba96cd3c9b6cf0cd07f135");
                 System.Net.HttpWebResponse response;
                 response = (System.Net.HttpWebResponse)request.GetResponse();

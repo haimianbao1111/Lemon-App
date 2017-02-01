@@ -177,7 +177,7 @@ namespace Lemon_App
                     DOWN.Visibility = Visibility.Collapsed;
                     listBox.Visibility = Visibility.Visible;
                     listBox.Items.Clear();
-                    JObject o = JObject.Parse(await GetWebAsync($"http://59.37.96.220/soso/fcgi-bin/client_search_logic_cp?format=json&t=50&inCharset=GB2312&outCharset=utf-8&w={textBox.Text}&p=1",Encoding.UTF8));
+                    JObject o = JObject.Parse(await GetWebAsync($"http://59.37.96.220/soso/fcgi-bin/client_search_logic_cp?format=json&t=20&inCharset=GB2312&outCharset=utf-8&w={textBox.Text}&p=1",Encoding.UTF8));
                     int i = 0;
                     while (i < o["data"]["song"]["list"].Count())
                     {

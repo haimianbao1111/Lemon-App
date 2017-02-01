@@ -51,7 +51,7 @@ namespace Lemon_App
             }
 
         }
-        public string DecodeUtf8(string sourceStr)
+        public static string DecodeUtf8(string sourceStr)
         {
             Regex regex = new Regex(@"\\u(\w{4})");
             string result = regex.Replace(sourceStr, delegate (Match m)

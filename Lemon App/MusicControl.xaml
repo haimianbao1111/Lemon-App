@@ -643,11 +643,11 @@
                 </Border>
             </Grid>
         </Grid>
-        <Border Height="49" VerticalAlignment="Bottom" BorderBrush="WhiteSmoke" BorderThickness="0,2,0,0">
+        <Border Height="49" VerticalAlignment="Bottom" BorderBrush="#FFE6E6E6" BorderThickness="0,2,0,0">
             <Grid>
                 <Border x:Name="tx" BorderBrush="#FF31C27C" BorderThickness="1" HorizontalAlignment="Left" Margin="55,5,0,5" Width="39" CornerRadius="5" MouseDown="tx_MouseDown" Background="White"/>
                 <TextBlock x:Name="textBlock1" Height="Auto" Margin="99,6,201,27" TextWrapping="Wrap" Foreground="#FF686868" Text="柠萌音乐" MouseLeave="tx_MouseLeave" MouseMove="Grid_MouseDown"/>
-                <Border BorderThickness="2" HorizontalAlignment="Left" Margin="10,0,0,5" Width="39" CornerRadius="100" Height="39" VerticalAlignment="Bottom" MouseDown="textBlock_MouseDown" BorderBrush="#FF31C27C">
+                <Border BorderThickness="2" HorizontalAlignment="Left" Margin="10,0,0,5" Width="39" CornerRadius="100" Height="39" VerticalAlignment="Bottom" MouseDown="textBlock_MouseDown" BorderBrush="#FF31C27C" Background="#00000000">
                     <Path x:Name="s" Data="M40.2,3.8C36.4,0,30,2.7,30,8v112c0,5.3,6.4,8,10.2,4.2l56-56c2.3-2.3,2.3-6.1,0-8.4L40.2,3.8z" Stretch="Fill" Fill="#FF31C27C" Margin="12,10,10,10"/>
                 </Border>
                 <Slider x:Name="jd" Height="14" Margin="99,22,10,0" VerticalAlignment="Top" Style="{DynamicResource SliderStyle1}" MouseMove="jd_MouseMove" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}"/>

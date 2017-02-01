@@ -87,7 +87,7 @@
                         </Grid.RowDefinitions>
                         <TickBar x:Name="TopTick" Fill="{TemplateBinding Foreground}" Height="4" Margin="0,0,0,2" Placement="Top" Grid.Row="0" Visibility="Collapsed"/>
                         <TickBar x:Name="BottomTick" Fill="{TemplateBinding Foreground}" Height="4" Margin="0,2,0,0" Placement="Bottom" Grid.Row="2" Visibility="Collapsed"/>
-                        <Border x:Name="TrackBackground" BorderThickness="0" Background="#FFF0F0F0" Height="4.0" Margin="5,0" Grid.Row="1" VerticalAlignment="center" CornerRadius="2">
+                        <Border x:Name="TrackBackground" BorderThickness="0" Background="#FFE6E6E6" Height="4.0" Margin="5,0" Grid.Row="1" VerticalAlignment="center" CornerRadius="2">
                             <Canvas Margin="-6,-1">
                                 <Rectangle x:Name="PART_SelectionRange" Fill="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Height="4.0" Visibility="Hidden"/>
                             </Canvas>
