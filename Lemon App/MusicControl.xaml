@@ -9,6 +9,102 @@
              mc:Ignorable="d" 
               Width="Auto" Height="Auto" Loaded="UserControl_Loaded" SizeChanged="UserControl_SizeChanged">
     <UserControl.Resources>
+        <!--笔刷-->
+        <LinearGradientBrush x:Key="SliderBackground"  StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Offset="0" Color="#59ccfc"/>
+            <GradientStop Offset="0.5" Color="#00b3fe"/>
+            <GradientStop Offset="1" Color="#59ccfc"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="SliderThumb"  StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Offset="0" Color="#FFD9D3E8"/>
+            <!--<GradientStop Offset="1" Color="#dfdfdf"/>-->
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="SliderText"  StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Offset="0" Color="#7cce45"/>
+            <GradientStop Offset="1" Color="#4ea017"/>
+        </LinearGradientBrush>
+
+        <!--Slider模板-->
+        <Style x:Key="Slider_RepeatButton" TargetType="RepeatButton">
+            <Setter Property="Focusable" Value="false" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RepeatButton">
+                        <Border Background="{StaticResource SliderBackground}" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="Slider_RepeatButton1" TargetType="RepeatButton">
+            <Setter Property="Focusable" Value="false" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RepeatButton">
+                        <Border Background="Transparent" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="Slider_Thumb" TargetType="Thumb">
+            <Setter Property="Focusable" Value="false" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Thumb">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Border Background="{StaticResource SliderBackground}"/>
+                            <Border Grid.ColumnSpan="2" CornerRadius="4"  Background="{StaticResource SliderThumb}" Width="15">
+                                <!--<TextBlock Text="||" HorizontalAlignment="Center" VerticalAlignment="Center"/>-->
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="Slider_CustomStyle" TargetType="Slider">
+            <Setter Property="Focusable" Value="false" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Slider">
+                        <Grid>
+                            <!--<Grid.ColumnDefinitions>  
+                                <ColumnDefinition Width="80"/>  
+                                <ColumnDefinition/>  
+                                <ColumnDefinition Width="40"/>  
+                            </Grid.ColumnDefinitions>-->
+                            <Grid.Effect>
+                                <DropShadowEffect BlurRadius="10" ShadowDepth="1" />
+                            </Grid.Effect>
+                            <!--<Border HorizontalAlignment="Right" BorderBrush="Gray" BorderThickness="1,1,0,1" Background="{StaticResource SliderText}" Width="80" CornerRadius="8,0,0,8"/>-->
+                            <!--<Border Grid.Column="2" HorizontalAlignment="Right" BorderBrush="Gray" BorderThickness="0,1,1,1" Background="{StaticResource SliderText}" Width="40" CornerRadius="0,8,8,0"/>-->
+                            <!--<TextBlock Text="{Binding RelativeSource={RelativeSource TemplatedParent},Path=Tag}" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14"/>-->
+                            <!--<TextBlock Grid.Column="2" Text="{Binding ElementName=PART_Track,Path=Value,StringFormat=\{0:N0\}}" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" DataContext="{Binding}" />-->
+                            <Border Grid.Column="1" BorderBrush="Gray" BorderThickness="1" CornerRadius="8,0,0,8">
+                                <Track Grid.Column="1" Name="PART_Track">
+                                    <Track.DecreaseRepeatButton>
+                                        <RepeatButton Style="{StaticResource Slider_RepeatButton}"  
+                                Command="Slider.DecreaseLarge"/>
+                                    </Track.DecreaseRepeatButton>
+                                    <Track.IncreaseRepeatButton>
+                                        <RepeatButton Style="{StaticResource Slider_RepeatButton1}"  
+                                Command="Slider.IncreaseLarge"/>
+                                    </Track.IncreaseRepeatButton>
+                                    <Track.Thumb>
+                                        <Thumb Style="{StaticResource Slider_Thumb}"/>
+                                    </Track.Thumb>
+                                </Track>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <Style TargetType="ListBoxItem" x:Key="S">
             <Style.Resources>
                 <!--ListBox 选中一项时背景颜色-->
@@ -77,93 +173,6 @@
                                 </Popup>
                             </Grid>
                         </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <LinearGradientBrush x:Key="SliderBackground"  StartPoint="0,0" EndPoint="0,1">
-            <GradientStop Offset="0" Color="#59ccfc"/>
-            <GradientStop Offset="0.5" Color="#00b3fe"/>
-            <GradientStop Offset="1" Color="#59ccfc"/>
-        </LinearGradientBrush>
-        <LinearGradientBrush x:Key="SliderThumb"  StartPoint="0,0" EndPoint="0,1">
-            <GradientStop Offset="0" Color="#FFD9D3E8"/>
-            <!--<GradientStop Offset="1" Color="#dfdfdf"/>-->
-        </LinearGradientBrush>
-        <LinearGradientBrush x:Key="SliderText"  StartPoint="0,0" EndPoint="0,1">
-            <GradientStop Offset="0" Color="#7cce45"/>
-            <GradientStop Offset="1" Color="#4ea017"/>
-        </LinearGradientBrush>
-
-        <!--Slider模板-->
-        <Style x:Key="Slider_RepeatButton" TargetType="{x:Type RepeatButton}">
-            <Setter Property="Focusable" Value="false" />
-
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type RepeatButton}">
-                        <Border Background="{StaticResource SliderBackground}" />
-
-                    </ControlTemplate>
-
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style x:Key="Slider_RepeatButton1" TargetType="{x:Type RepeatButton}">
-            <Setter Property="Focusable" Value="false" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type RepeatButton}">
-                        <Border Background="Transparent" />
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style x:Key="Slider_Thumb" TargetType="{x:Type Thumb}">
-            <Setter Property="Focusable" Value="false" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Thumb}">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Border Background="{StaticResource SliderBackground}"/>
-                            <Border Grid.ColumnSpan="2" CornerRadius="4"  Background="Black" Width="15">
-                                <!--<TextBlock Text="||" HorizontalAlignment="Center" VerticalAlignment="Center"/>-->
-                            </Border>
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style x:Key="Slider_CustomStyle" TargetType="{x:Type Slider}">
-            <Setter Property="Focusable" Value="false" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Slider}">
-                        <Grid>
-                            <Border Grid.Column="1" BorderBrush="Gray" BorderThickness="1" CornerRadius="8,0,0,8">
-                                <Track Grid.Column="1" x:Name="PART_Track">
-                                    <Track.DecreaseRepeatButton>
-                                        <RepeatButton Style="{StaticResource Slider_RepeatButton}"
-                                Command="Slider.DecreaseLarge"/>
-                                    </Track.DecreaseRepeatButton>
-                                    <Track.IncreaseRepeatButton>
-                                        <RepeatButton Style="{StaticResource Slider_RepeatButton1}"
-                                Command="Slider.IncreaseLarge"/>
-                                    </Track.IncreaseRepeatButton>
-                                    <Track.Thumb>
-                                        <Thumb Style="{StaticResource Slider_Thumb}"/>
-                                    </Track.Thumb>
-                                </Track>
-                            </Border>
-                        </Grid>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -650,7 +659,7 @@
                 <Border BorderThickness="2" HorizontalAlignment="Left" Margin="10,0,0,5" Width="39" CornerRadius="100" Height="39" VerticalAlignment="Bottom" MouseDown="textBlock_MouseDown" BorderBrush="#FF31C27C" Background="#00000000">
                     <Path x:Name="s" Data="M40.2,3.8C36.4,0,30,2.7,30,8v112c0,5.3,6.4,8,10.2,4.2l56-56c2.3-2.3,2.3-6.1,0-8.4L40.2,3.8z" Stretch="Fill" Fill="#FF31C27C" Margin="12,10,10,10"/>
                 </Border>
-                <Slider x:Name="jd" Height="14" Margin="99,22,10,0" VerticalAlignment="Top" Style="{DynamicResource SliderStyle1}" MouseMove="jd_MouseMove" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}"/>
+                <Slider x:Name="jd" Height="14" Margin="99,22,10,0" VerticalAlignment="Top" Style="{DynamicResource SliderStyle1}" MouseMove="jd_MouseMove" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" />
                 <Border  HorizontalAlignment="Right" Height="20" Margin="0,5,30,0" VerticalAlignment="Top" Width="20" Background="#00F1F3F7" CornerRadius="5" MouseDown="Border_MouseDown" ToolTip="上一页" BorderBrush="#FF31C27C" BorderThickness="1">
                     <Path Data="M53.696,30.254l32.099,32.1c2.042,2.042,2.042,5.352,0,7.393c-2.041,2.041-5.352,2.041-7.393,0L50,41.344L21.598,69.746  c-2.042,2.041-5.352,2.041-7.393,0c-2.042-2.041-2.042-5.351,0-7.393l32.099-32.1c1.021-1.02,2.358-1.53,3.696-1.53  S52.676,29.234,53.696,30.254z" Fill="#FF31C27C" Stretch="Uniform" StrokeThickness="0" Margin="3"/>
                 </Border>
