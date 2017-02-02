@@ -59,7 +59,7 @@
             <SolidColorBrush x:Key="SliderThumb.Track.Background" Color="#FFE7EAEA"/>
             <ControlTemplate x:Key="SliderThumbHorizontalDefault" TargetType="{x:Type Thumb}">
                 <Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
-                    <Border Width="10" Height="10" Background="#FF31C27C" CornerRadius="100"/>
+                    <Border Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="#FF31C27C" CornerRadius="100"/>
                     <Path x:Name="grip" Data="{x:Null}" Fill="{StaticResource SliderThumb.Static.Background}" Stretch="Fill" SnapsToDevicePixels="True" Stroke="{StaticResource SliderThumb.Static.Border}" StrokeThickness="1" UseLayoutRounding="True" VerticalAlignment="Center"/>
                 </Grid>
                 <ControlTemplate.Triggers>
@@ -87,20 +87,20 @@
                         </Grid.RowDefinitions>
                         <TickBar x:Name="TopTick" Fill="{TemplateBinding Foreground}" Height="4" Margin="0,0,0,2" Placement="Top" Grid.Row="0" Visibility="Collapsed"/>
                         <TickBar x:Name="BottomTick" Fill="{TemplateBinding Foreground}" Height="4" Margin="0,2,0,0" Placement="Bottom" Grid.Row="2" Visibility="Collapsed"/>
-                        <Border x:Name="TrackBackground" BorderThickness="0" Background="#FFE6E6E6" Height="5" Margin="0" Grid.Row="1" VerticalAlignment="center" CornerRadius="2">
+                        <Border x:Name="TrackBackground" BorderThickness="0" Background="#FFE6E6E6" Height="3" Margin="0" Grid.Row="1" VerticalAlignment="center" CornerRadius="2">
                             <Canvas Margin="-6,-1">
                                 <Rectangle x:Name="PART_SelectionRange" Fill="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Height="4.0" Visibility="Hidden"/>
                             </Canvas>
                         </Border>
                         <Track x:Name="PART_Track" Grid.Row="1">
                             <Track.DecreaseRepeatButton>
-                                <RepeatButton x:Name="repeatButton" Command="{x:Static Slider.DecreaseLarge}" Style="{StaticResource RepeatButtonTransparent}" Height="5" Margin="0,0,-5,0" Background="#FF31C27C"/>
+                                <RepeatButton x:Name="repeatButton" Command="{x:Static Slider.DecreaseLarge}" Style="{StaticResource RepeatButtonTransparent}" Height="3" Margin="0,0,-5,0" Background="#FF31C27C"/>
                             </Track.DecreaseRepeatButton>
                             <Track.IncreaseRepeatButton>
                                 <RepeatButton Command="{x:Static Slider.IncreaseLarge}" Style="{StaticResource RepeatButtonTransparent}"/>
                             </Track.IncreaseRepeatButton>
                             <Track.Thumb>
-                                <Thumb x:Name="Thumb" Focusable="False" Height="18" OverridesDefaultStyle="True" Template="{StaticResource SliderThumbHorizontalDefault}" VerticalAlignment="Center" Width="11"/>
+                                <Thumb x:Name="Thumb" Focusable="False" Height="8" OverridesDefaultStyle="True" Template="{StaticResource SliderThumbHorizontalDefault}" VerticalAlignment="Center" Width="8" Margin="0"/>
                             </Track.Thumb>
                         </Track>
                     </Grid>
