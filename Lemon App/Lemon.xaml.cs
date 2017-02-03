@@ -41,7 +41,7 @@ namespace Lemon_App {
                 Litt.Data = Geometry.Parse("M10.85,8.145L7.607,4.902C7.412,4.707 7.095,4.707 6.9,4.902 6.705,5.097 6.705,5.414 6.9,5.609L9.791,8.5 6.9,11.391C6.705,11.586 6.705,11.903 6.9,12.098 7.095,12.293 7.412,12.293 7.607,12.098L10.85,8.856C10.949,8.757 10.997,8.628 10.996,8.501 10.996,8.371 10.948,8.243 10.85,8.145z");
                 isopen = true;
                 Width = 310;
-                Height = 410;
+                Height = 430;
                 Page.Clip = new RectangleGeometry() { RadiusX = 3, RadiusY = 3, Rect = new Rect() { Width = Page.ActualWidth, Height = Page.ActualHeight } };
             }else
             {

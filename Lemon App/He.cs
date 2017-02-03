@@ -288,7 +288,6 @@ namespace Lemon_App
             var st= await sr.ReadToEndAsync();
             return st.Replace(".", "\r\n");
         }
-
     }
     public class ToastNotion
     {

@@ -850,21 +850,6 @@ namespace Lemon_App
             jz.Visibility = Visibility.Collapsed;
         }
 
-        private void Grid_MouseDown(object sender, MouseEventArgs e)
-        { 
-            h.Visibility = Visibility.Collapsed;
-            G.Visibility = Visibility.Collapsed;
-            ZjImAgE.Visibility = Visibility.Visible;
-            //   ZjImAgE.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 0, 0, 49), new Thickness(0, 299, 591, 49), TimeSpan.FromSeconds(0.1)));
-        }
-
-        private void tx_MouseLeave(object sender, MouseEventArgs e)
-        {
-            h.Visibility = Visibility.Visible;
-            G.Visibility = Visibility.Collapsed;
-            ZjImAgE.Visibility = Visibility.Collapsed;
-        }
-
         private async void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             JObject json = JObject.Parse(await Uuuhh.GetWebAsync("http://59.37.96.220/soso/fcgi-bin/dynamic_content?format=json&outCharset=utf-8", Encoding.UTF8));
@@ -1182,6 +1167,15 @@ namespace Lemon_App
             {
                 (o as UserControl).Width = this.ActualWidth;
             }
+            if (this.ActualWidth < 400)
+            {
+                H.Visibility = Visibility.Collapsed;
+                Q.Visibility = Visibility.Collapsed;
+            }else
+            {
+                H.Visibility = Visibility.Visible;
+                Q.Visibility = Visibility.Visible;
+            }
         }
 
         private async void Border_MouseDown_3(object sender, MouseButtonEventArgs e)
@@ -1223,6 +1217,40 @@ namespace Lemon_App
                     jz.Visibility = Visibility.Collapsed;
             }
             catch { jz.Visibility = Visibility.Collapsed; }
+        }int hs = 0;
+        private void textBlock1_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if(hs==0)
+            {
+                h.Visibility = Visibility.Collapsed;
+                G.Visibility = Visibility.Collapsed;
+                ZjImAgE.Visibility = Visibility.Visible;
+                hs = 1;
+            }else if (hs == 1)
+            {
+                hs = 0;
+                h.Visibility = Visibility.Visible;
+                G.Visibility = Visibility.Collapsed;
+                ZjImAgE.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void Border_MouseDown_4(object sender, MouseButtonEventArgs e)
+        {
+            if (listBox.SelectedIndex != 0)
+            {
+                listBox.SelectedItem = listBox.Items[listBox.SelectedIndex - 1];
+                listBox_SelectionChanged(null, null);
+            }
+        }
+
+        private void Border_MouseDown_6(object sender, MouseButtonEventArgs e)
+        {
+            if (listBox.SelectedIndex != listBox.Items.Count)
+            {
+                listBox.SelectedItem = listBox.Items[listBox.SelectedIndex + 1];
+                listBox_SelectionChanged(null, null);
+            }
         }
     }
 }

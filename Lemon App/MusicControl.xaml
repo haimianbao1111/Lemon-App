@@ -653,37 +653,54 @@
                 </Border>
             </Grid>
         </Grid>
-        <Border Height="49" VerticalAlignment="Bottom" BorderBrush="#FFE6E6E6" BorderThickness="0,2,0,0">
+        <Border Height="47" VerticalAlignment="Bottom" BorderBrush="#FFE6E6E6" BorderThickness="0,2,0,0">
             <Grid>
-                <Border x:Name="tx" BorderBrush="#FF31C27C" BorderThickness="1" HorizontalAlignment="Left" Margin="55,5,0,5" Width="39" CornerRadius="5" MouseDown="tx_MouseDown" Background="White"/>
-                <TextBlock x:Name="textBlock1" Height="Auto" Margin="99,7,201,26" TextWrapping="Wrap" Foreground="#FF686868" Text="柠萌音乐" MouseLeave="tx_MouseLeave" MouseMove="Grid_MouseDown"/>
-                <Border BorderThickness="2" HorizontalAlignment="Left" Margin="10,0,0,5" Width="39" CornerRadius="100" Height="39" VerticalAlignment="Bottom" MouseDown="textBlock_MouseDown" BorderBrush="#FF31C27C" Background="#00000000">
-                    <Path x:Name="s" Data="M40.2,3.8C36.4,0,30,2.7,30,8v112c0,5.3,6.4,8,10.2,4.2l56-56c2.3-2.3,2.3-6.1,0-8.4L40.2,3.8z" Stretch="Fill" Fill="#FF31C27C" Margin="12,10,10,10"/>
-                </Border>
-                <Slider x:Name="jd" Height="10" Margin="99,25,10,0" VerticalAlignment="Top" Style="{DynamicResource SliderStyle1}" MouseMove="jd_MouseMove" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" />
-                <Border  HorizontalAlignment="Right" Height="20" Margin="0,5,30,0" VerticalAlignment="Top" Width="20" Background="#00F1F3F7" CornerRadius="5" MouseDown="Border_MouseDown" ToolTip="上一页" BorderBrush="#FF31C27C" BorderThickness="1">
-                    <Path Data="M53.696,30.254l32.099,32.1c2.042,2.042,2.042,5.352,0,7.393c-2.041,2.041-5.352,2.041-7.393,0L50,41.344L21.598,69.746  c-2.042,2.041-5.352,2.041-7.393,0c-2.042-2.041-2.042-5.351,0-7.393l32.099-32.1c1.021-1.02,2.358-1.53,3.696-1.53  S52.676,29.234,53.696,30.254z" Fill="#FF31C27C" Stretch="Uniform" StrokeThickness="0" Margin="3"/>
-                </Border>
-                <Border HorizontalAlignment="Right" Margin="0,5,5,0" Width="20" Background="#00F1F3F7" CornerRadius="5" ToolTip="下一页" MouseDown="textBlock2_MouseDown" Height="20" VerticalAlignment="Top" BorderBrush="#FF31C27C" BorderThickness="1">
-                    <Path Data="M50,71.276c-1.338,0-2.676-0.511-3.696-1.53l-32.099-32.1c-2.042-2.042-2.042-5.352,0-7.393  c2.041-2.041,5.351-2.041,7.393,0L50,58.656l28.402-28.402c2.042-2.041,5.352-2.041,7.393,0c2.042,2.041,2.042,5.351,0,7.393  l-32.099,32.1C52.676,70.766,51.338,71.276,50,71.276z" Fill="#FF31C27C" Stretch="Uniform" StrokeThickness="0" Margin="3" ToolTip="下一页"/>
-                </Border>
-                <Border HorizontalAlignment="Right" Margin="0,5,55,0" Width="20" MouseDown="textBlock4_MouseDown" Height="20" Background="#00F1F3F7" CornerRadius="3" VerticalAlignment="Top" BorderBrush="#FF31C27C" BorderThickness="1">
-                    <Path StrokeThickness="0" Margin="3" Fill="#FF31C27C" Data="M405,254c-10-10-24-10-34,0l-92,91V41c0-14-10-24-24-24s-25,10-25,24v304l-91-91c-10-10-24-10-34,0s-10,25,0,35l133,133  c5,5,10,7,17,7s12-2,17-7l133-133c5-5,8-12,8-18S410,259,405,254z" Stretch="Fill" ToolTip="下载"/>
-                </Border>
-                <Border HorizontalAlignment="Right" Margin="0,5,80,0" Width="20" MouseDown="Border_MouseDown_1" Height="20" Background="#00F1F3F7" CornerRadius="3" ToolTip="添加到收藏" VerticalAlignment="Top" BorderBrush="#FF31C27C" BorderThickness="1">
-                    <Path StrokeThickness="0" Margin="2" Fill="#FF31C27C" Data="M56.14,28.375H35.274V7.506c0-1.809-1.462-3.271-3.274-3.271c-1.811,0-3.274,1.463-3.274,3.271v20.869H7.862  c-1.813,0-3.274,1.464-3.274,3.272c0,1.807,1.462,3.27,3.274,3.27h20.863v20.869c0,1.809,1.464,3.272,3.274,3.272  c1.813,0,3.274-1.464,3.274-3.272V34.918H56.14c1.811,0,3.272-1.463,3.272-3.27C59.412,29.839,57.95,28.375,56.14,28.375z" Stretch="Fill" ToolTip="添加到收藏"/>
-                </Border>
-                <TextBlock x:Name="loading" HorizontalAlignment="Left" Height="18" Margin="110,32,0,0" TextWrapping="Wrap" Text="加载中..." VerticalAlignment="Top" Width="80" Foreground="#FF31C27C" Visibility="Collapsed"/>
-                <ComboBox x:Name="pz" HorizontalAlignment="Right" Height="20" Margin="0,5,105,0" VerticalAlignment="Top" Width="43" Background="{x:Null}" BorderBrush="{x:Null}" SelectedIndex="1" Foreground="#FF31C27C" FontSize="10" SelectionChanged="pz_SelectionChanged">
-                    <ComboBoxItem Content="标准" Foreground="#FF252526"/>
-                    <ComboBoxItem Content="HQ" Foreground="#FF252526"/>
-                    <!--ComboBoxItem Content="SQ" Foreground="#FF252526"/-->
-                </ComboBox>
-                <ComboBox x:Name="Move" HorizontalAlignment="Right" Height="20" Margin="0,5,153,0" VerticalAlignment="Top" Width="43" Background="{x:Null}" BorderBrush="{x:Null}" SelectedIndex="1" Foreground="#FF31C27C" FontSize="10">
-                    <ComboBoxItem Content="循环" Foreground="#FF252526"/>
-                    <ComboBoxItem Content="单曲" Foreground="#FF252526"/>
-                    <!--ComboBoxItem Content="SQ" Foreground="#FF252526"/-->
-                </ComboBox>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="296*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid Width="Auto" Height="47" Margin="5,0">
+                    <Border BorderThickness="2" CornerRadius="100" MouseDown="textBlock_MouseDown" BorderBrush="#FF31C27C" Background="#00000000" Height="30" Width="30">
+                        <Path x:Name="s" Data="M40.2,3.8C36.4,0,30,2.7,30,8v112c0,5.3,6.4,8,10.2,4.2l56-56c2.3-2.3,2.3-6.1,0-8.4L40.2,3.8z" Stretch="Fill" Fill="#FF31C27C" Margin="6"/>
+                    </Border>
+                    <Border x:Name="H" BorderThickness="2" HorizontalAlignment="Left" Margin="0,12,0,10" Width="25" CornerRadius="100" MouseDown="Border_MouseDown_4" BorderBrush="#FF31C27C" Background="#00000000" Height="25">
+                        <Path x:Name="s1" Data="M29,2L17,2C13.7,2,11,4.7,11,8L11,120C11,123.3,13.7,126,17,126L29,126C32.3,126,35,123.3,35,120L35,8C35,4.7,32.3,2,29,2z M117,120V8c0-5.3-6.6-8-10.4-4.2l-56.1,56c-2.3,2.3-2.4,6.1,0,8.4l56.2,56C110.4,128,117,125.3,117,120z" Stretch="Fill" Fill="#FF31C27C" Margin="5"/>
+                    </Border>
+                    <Border x:Name="Q" BorderThickness="2" HorizontalAlignment="Left" Margin="65,12,0,10" Width="25" CornerRadius="100" MouseDown="Border_MouseDown_6" BorderBrush="#FF31C27C" Background="#00000000" Height="25">
+                        <Path x:Name="s2" Data="M111,2H99c-3.3,0-6,2.7-6,6v112c0,3.3,2.7,6,6,6h12c3.3,0,6-2.7,6-6V8C117,4.7,114.3,2,111,2z M77.6,68.2c2.3-2.3,2.3-6.1,0-8.4l-56.2-56C17.6,0,11,2.7,11,8v112c0,5.3,6.6,8,10.4,4.2L77.6,68.2z" Stretch="Fill" Fill="#FF31C27C" Margin="5"/>
+                    </Border>
+                </Grid>
+                <Grid Margin="0,0,5,0" Height="25" Grid.Column="2">
+                    <Border  HorizontalAlignment="Right" Margin="0,0,25,0" Width="20" Background="#00F1F3F7" CornerRadius="5" MouseDown="Border_MouseDown" ToolTip="上一页" BorderBrush="#FF31C27C" BorderThickness="1" Height="20">
+                        <Path Data="M53.696,30.254l32.099,32.1c2.042,2.042,2.042,5.352,0,7.393c-2.041,2.041-5.352,2.041-7.393,0L50,41.344L21.598,69.746  c-2.042,2.041-5.352,2.041-7.393,0c-2.042-2.041-2.042-5.351,0-7.393l32.099-32.1c1.021-1.02,2.358-1.53,3.696-1.53  S52.676,29.234,53.696,30.254z" Fill="#FF31C27C" Stretch="Uniform" StrokeThickness="0" Margin="3"/>
+                    </Border>
+                    <Border HorizontalAlignment="Right" Margin="0" Width="20" Background="#00F1F3F7" CornerRadius="5" ToolTip="下一页" MouseDown="textBlock2_MouseDown" BorderBrush="#FF31C27C" BorderThickness="1" Height="20">
+                        <Path Data="M50,71.276c-1.338,0-2.676-0.511-3.696-1.53l-32.099-32.1c-2.042-2.042-2.042-5.352,0-7.393  c2.041-2.041,5.351-2.041,7.393,0L50,58.656l28.402-28.402c2.042-2.041,5.352-2.041,7.393,0c2.042,2.041,2.042,5.351,0,7.393  l-32.099,32.1C52.676,70.766,51.338,71.276,50,71.276z" Fill="#FF31C27C" Stretch="Uniform" StrokeThickness="0" Margin="3" ToolTip="下一页"/>
+                    </Border>
+                    <Border HorizontalAlignment="Right" Margin="0,0,50,0" Width="20" MouseDown="textBlock4_MouseDown" Background="#00F1F3F7" CornerRadius="3" BorderBrush="#FF31C27C" BorderThickness="1" Height="20">
+                        <Path StrokeThickness="0" Margin="3" Fill="#FF31C27C" Data="M405,254c-10-10-24-10-34,0l-92,91V41c0-14-10-24-24-24s-25,10-25,24v304l-91-91c-10-10-24-10-34,0s-10,25,0,35l133,133  c5,5,10,7,17,7s12-2,17-7l133-133c5-5,8-12,8-18S410,259,405,254z" Stretch="Fill" ToolTip="下载"/>
+                    </Border>
+                    <Border HorizontalAlignment="Right" Margin="0,0,75,0" Width="20" MouseDown="Border_MouseDown_1" Background="#00F1F3F7" CornerRadius="3" ToolTip="添加到收藏" BorderBrush="#FF31C27C" BorderThickness="1" Height="20">
+                        <Path StrokeThickness="0" Margin="2" Fill="#FF31C27C" Data="M56.14,28.375H35.274V7.506c0-1.809-1.462-3.271-3.274-3.271c-1.811,0-3.274,1.463-3.274,3.271v20.869H7.862  c-1.813,0-3.274,1.464-3.274,3.272c0,1.807,1.462,3.27,3.274,3.27h20.863v20.869c0,1.809,1.464,3.272,3.274,3.272  c1.813,0,3.274-1.464,3.274-3.272V34.918H56.14c1.811,0,3.272-1.463,3.272-3.27C59.412,29.839,57.95,28.375,56.14,28.375z" Stretch="Fill" ToolTip="添加到收藏"/>
+                    </Border>
+                    <ComboBox x:Name="pz" HorizontalAlignment="Right" Margin="0,0,100,0" Width="35" Background="{x:Null}" BorderBrush="{x:Null}" SelectedIndex="1" Foreground="#FF31C27C" FontSize="10" SelectionChanged="pz_SelectionChanged" Height="20">
+                        <ComboBoxItem Content="标准" Foreground="#FF252526"/>
+                        <ComboBoxItem Content="HQ" Foreground="#FF252526"/>
+                        <!--ComboBoxItem Content="SQ" Foreground="#FF252526"/-->
+                    </ComboBox>
+                    <ComboBox x:Name="Move" HorizontalAlignment="Right" Margin="0,0,140,0" Width="35" Background="{x:Null}" BorderBrush="{x:Null}" SelectedIndex="0" Foreground="#FF31C27C" FontSize="10" Height="20">
+                        <ComboBoxItem Content="循环" Foreground="#FF252526"/>
+                        <ComboBoxItem Content="单曲" Foreground="#FF252526"/>
+                        <!--ComboBoxItem Content="SQ" Foreground="#FF252526"/-->
+                    </ComboBox>
+                </Grid>
+                <Grid Margin="0,0,5,0" Grid.Column="1">
+                    <Border x:Name="tx" BorderBrush="#FF31C27C" BorderThickness="1" HorizontalAlignment="Left" Margin="1,2,0,0" Width="40" CornerRadius="5" MouseDown="tx_MouseDown" Background="White" Height="40" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="textBlock1" Margin="51,4,0,24" TextWrapping="Wrap" Foreground="#FF686868" Text="柠萌音乐" MouseDown="textBlock1_MouseDown"/>
+                    <Slider x:Name="jd" Margin="51,22,0,13" Style="{DynamicResource SliderStyle1}" MouseMove="jd_MouseMove" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" />
+                    <TextBlock x:Name="loading" HorizontalAlignment="Left" Height="18" Margin="51,0,0,0" Visibility="Collapsed" TextWrapping="Wrap" Text="加载中..." VerticalAlignment="Bottom" Width="51" Foreground="#FF31C27C"/>
+                </Grid>
 
             </Grid>
         </Border>
