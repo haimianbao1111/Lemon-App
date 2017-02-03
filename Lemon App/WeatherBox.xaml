@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Lemon_App"
              xmlns:Forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" x:Class="Lemon_App.WeatherBox"
-             mc:Ignorable="d" Loaded="UserControl_Loaded" >
+             mc:Ignorable="d" Loaded="UserControl_Loaded"  Width="Auto" Height="Auto">
     <ScrollViewer x:Name="scrollViewer" Template="{DynamicResource SCS}">
         <Grid x:Name="grid" Width="{Binding ActualWidth, ElementName=scrollViewer}" Height="Auto">
             <Grid Margin="0" Height="32" VerticalAlignment="Top">
@@ -40,7 +40,7 @@
             </Border>
             <TextBlock x:Name="allqiyanjd" Margin="10,120,10,0" TextWrapping="Wrap" Foreground="#FF333337" FontSize="14" TextAlignment="Center" Height="21" VerticalAlignment="Top"><Run Text="气压:"/><Run Text="N/N"/><Run Text="     ，"/></TextBlock>
             <ScrollViewer Height="118" Margin="0,172,0,0" VerticalAlignment="Top" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto" Style="{DynamicResource for_scrollviewer}">
-                <Grid Height="Auto" Width="Auto">
+                <Grid Height="118" Width="735">
                     <Grid HorizontalAlignment="Left" Margin="27,10,0,0" Width="97" Height="108" VerticalAlignment="Top">
                         <TextBlock x:Name="shijianw" Height="16.669" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF252526" Margin="9,3,9,0"><Run Text="/N"/><Run Text="-"/><Run Text="N/N"/><Run Text="-"/><Run Text="N/N"/></TextBlock>
                         <Image x:Name="iconw" Margin="18,20,29,43" Source="http://www.heweather.com/weather/images/icon/306.png" Height="45"/>
@@ -85,7 +85,7 @@
                     </Grid>
                 </Grid>
             </ScrollViewer>
-            <WrapPanel Height="332" Margin="0,295,0,0" VerticalAlignment="Top">
+            <WrapPanel Height="332" Margin="0,295,0,0" VerticalAlignment="Top" MaxWidth="830">
                 <WrapPanel Height="Auto" VerticalAlignment="Top">
                     <Border x:Name="CY1" BorderThickness="0" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="40" CornerRadius="100" Background="#FF3399FF">
                         <TextBlock Foreground="White" Text="👕" FontSize="24" TextAlignment="Center" Margin="0,5"/>
@@ -112,7 +112,7 @@
                     </Border>
                     <TextBlock x:Name="YD" Height="Auto" Width="98" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF333337" HorizontalAlignment="Left" Margin="0,10,0,0"><Run Text="运动指数:"/><Run Text="N/N"/></TextBlock>
                 </WrapPanel>
-                <WrapPanel Height="Auto" VerticalAlignment="Top" Width="Auto">
+                <WrapPanel Height="Auto" VerticalAlignment="Top" Width="Auto" MaxHeight="300">
                     <Grid HorizontalAlignment="Right" Height="Auto" VerticalAlignment="Top" Width="Auto">
                         <Label x:Name="hourlyTimew" Content="N/N./N/N./N/N" HorizontalAlignment="Left" Height="28" Margin="26,1,0,0" VerticalAlignment="Top" Width="123" Foreground="#FF333337"/>
                         <Label x:Name="hourlyQww" Content="N/N℃" HorizontalAlignment="Left" Height="36" Margin="37,24,0,0" VerticalAlignment="Top" Width="102" Foreground="#FF333337" FontSize="24"/>
