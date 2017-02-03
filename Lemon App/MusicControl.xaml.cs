@@ -851,7 +851,7 @@ namespace Lemon_App
         }
 
         private void Grid_MouseDown(object sender, MouseEventArgs e)
-        {
+        { 
             h.Visibility = Visibility.Collapsed;
             G.Visibility = Visibility.Collapsed;
             ZjImAgE.Visibility = Visibility.Visible;

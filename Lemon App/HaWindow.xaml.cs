@@ -21,19 +21,17 @@ namespace Lemon_App
     /// </summary>
     public partial class HaWindow : Window
     {
-        public HaWindow(Window w)
+        public HaWindow()
         {
             InitializeComponent();
-            this.w = w;
         }
-        Window w;
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (System.IO.File.Exists(AppDomain.CurrentDomain.BaseDirectory + "UserImage.bmp"))
-            { TX.Background = new ImageBrush(new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "UserImage.bmp", UriKind.Absolute)));}
-            NM.Text = Settings.Default.RobotName;
+            if (System.IO.File.Exists(Settings.Default.UserImage))
+            { TX.Background = new ImageBrush(new BitmapImage(new Uri(Settings.Default.UserImage, UriKind.Absolute)));}
             DoubleAnimation da = new DoubleAnimation(0.2, 1, TimeSpan.FromSeconds(1));
             da.AutoReverse = true;
+            NM.Text = Settings.Default.RobotName;
             da.RepeatBehavior = RepeatBehavior.Forever;
             Js.BeginAnimation(OpacityProperty, da);
             Rect bounds = Properties.Settings.Default.Hatop;
@@ -52,18 +50,25 @@ namespace Lemon_App
             Environment.Exit(0);
         }
 
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            w.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.3)));
-            w.BeginAnimation(HeightProperty, new DoubleAnimation(0, 441, TimeSpan.FromSeconds(0.3)));
-            ShowInTaskbar = true;
-            this.Activate();
-        }
+       
 
         private void Window_MouseMove(object sender, MouseEventArgs e)
         {
             Settings.Default.Hatop = this.RestoreBounds;
             Settings.Default.Save();
+        }
+
+        private void TX_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (XT.Width == 85)
+                XT.BeginAnimation(WidthProperty, new DoubleAnimation(85, 0, TimeSpan.FromSeconds(0.2)));
+            else if (XT.Width == 0)
+            {
+                NM.Text = Settings.Default.RobotName;
+                if (System.IO.File.Exists(Settings.Default.UserImage))
+                { TX.Background = new ImageBrush(new BitmapImage(new Uri(Settings.Default.UserImage, UriKind.Absolute))); }
+                XT.BeginAnimation(WidthProperty, new DoubleAnimation(0, 85, TimeSpan.FromSeconds(0.2)));
+            }
         }
     }
 }
