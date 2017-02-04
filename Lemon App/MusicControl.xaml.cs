@@ -57,10 +57,11 @@ namespace Lemon_App
         GetLyricAndLyricTime getLT;
         private async void io(object sender, EventArgs e)
         {
-               try {
-        //    player.Stop();
-            s.Data = Geometry.Parse("M118.2,125.9c3.3,0,6-2.7,6-6V7.4c0-3.3-2.7-6-6-6h-36c-3.3,0-6,2.7-6,6v112.5c0,3.3,2.7,6,6,6H118.2z M46,125.9c3.3,0,6-2.7,6-6V7.4c0-3.3-2.7-6-6-6H10c-3.3,0-6,2.7-6,6v112.5c0,3.3,2.7,6,6,6H46z");
-            string i = "";
+            try
+            {
+                //    player.Stop();
+                s.Data = Geometry.Parse("M118.2,125.9c3.3,0,6-2.7,6-6V7.4c0-3.3-2.7-6-6-6h-36c-3.3,0-6,2.7-6,6v112.5c0,3.3,2.7,6,6,6H118.2z M46,125.9c3.3,0,6-2.7,6-6V7.4c0-3.3-2.7-6-6-6H10c-3.3,0-6,2.7-6,6v112.5c0,3.3,2.7,6,6,6H46z");
+                string i = "";
                 if (Move.Text == "循环")
                 {
                     if (listBox.SelectedIndex != listBox.Items.Count)
@@ -73,79 +74,15 @@ namespace Lemon_App
                         i = (listBox.Items[0] as MusicItemControl).Content;
                         listBox.SelectedItem = listBox.Items[0];
                     }
-                } else if (Move.Text == "单曲")
+                }
+                else if (Move.Text == "单曲")
                 {
                     i = (listBox.Items[listBox.SelectedIndex] as MusicItemControl).Content;
                     listBox.SelectedItem = listBox.Items[listBox.SelectedIndex];
                 }
-            isR = true;
-                lrcname.Text = ((listBox.SelectedItem as MusicItemControl).Music as Music).MusicName;
-                zk.Text = ((listBox.SelectedItem as MusicItemControl).Music as Music).ZJ;
-                img = ((listBox.SelectedItem as MusicItemControl).Music as Music).ImageID;
-                on = $"https://y.gtimg.cn/music/photo_new/T002R300x300M000{img}.jpg";
-                tx.Background = new ImageBrush(new BitmapImage(new Uri(on)));
-                musicid = ((listBox.SelectedItem as MusicItemControl).Music as Music).MusicID;
-                string guid = "20D919A4D7700FBC424740E8CED80C6F";
-                string ioo =await GetWebAsync($"http://59.37.96.220/base/fcgi-bin/fcg_musicexpress2.fcg?version=12&miniversion=92&key=19914AA57A96A9135541562F16DAD6B885AC8B8B5420AC567A0561D04540172E&guid={guid}");
-                string vkey = Text(ioo, "key=\"", "\" speedrpttype", 0);
-                musicurl = $"http://182.247.250.19/streamoc.music.tc.qq.com/M500{musicid}.mp3?vkey={vkey}&guid={guid}";
-            player.Open(new Uri(musicurl));
-            player.Play();
-            t.Start();
-            if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc"))
-            {
-                    string lrc = ((listBox.SelectedItem as MusicItemControl).Music as Music).GC;
-                    //     MessageBox.Show(He.Text(sr.ReadToEnd(), @"<lyric><![CDATA[", "]]></lyric>", 0));
-                    FileStream fs = new FileStream(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc", FileMode.Create);
-                    StreamWriter sw = new StreamWriter(fs);
-                    string h = await Uuuhh.GetWebAsync($"http://route.showapi.com/213-2?showapi_sign=cfa206656db244c089be2d1499735bb5&showapi_appid=29086&musicid={lrc}");
-                    JObject o = JObject.Parse(h);
-                    string ijo = System.Web.HttpUtility.HtmlDecode(o["showapi_res_body"]["lyric"].ToString());
-                    if (ijo != "")
-                {
-                    await sw.WriteAsync(ijo);
-                    await sw.FlushAsync();
-                    sw.Close();
-                    fs.Close();
-                    if (LyricShow.IsOpenDeskLyric == false)
-                    {
-                        //deskLyricWin = new DeskLyricWin();
-                        //deskLyricWin.Show();
-                        //LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
-                        LyricShow.HB = 204;
-                        LyricShow.HG = 122;
-                        LyricShow.HR = 0;
-                        LyricShow.CB = 193;
-                        LyricShow.CG = 180;
-                        LyricShow.CR = 180;
-                    }
-                    LyricShow.IsPauseLyricShow = false;
-                    getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{i}.lrc");
-                    LyricShow.initializeLyricUI(getLT.LyricAndTimeDictionary);//解析歌词->得到歌词时间和歌词       
-                }
-                else {}
+              //  listBox_SelectionChanged(null, null);
             }
-            else
-            {
-                if (LyricShow.IsOpenDeskLyric == false)
-                {
-                    //deskLyricWin = new DeskLyricWin();
-                    //deskLyricWin.Show();
-                    //LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
-                    LyricShow.HB = 204;
-                    LyricShow.HG = 122;
-                    LyricShow.HR = 0;
-                    LyricShow.CB = 193;
-                    LyricShow.CG = 180;
-                    LyricShow.CR = 180;
-                }
-                LyricShow.IsPauseLyricShow = false;
-                getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc");
-                LyricShow.initializeLyricUI(getLT.LyricAndTimeDictionary);//解析歌词->得到歌词时间和歌词        }
-
-            }
-             }
-                catch {}
+            catch { }
         }
 
         private void Fis(object sender, AsyncCompletedEventArgs e)
@@ -1240,7 +1177,7 @@ namespace Lemon_App
             if (listBox.SelectedIndex != 0)
             {
                 listBox.SelectedItem = listBox.Items[listBox.SelectedIndex - 1];
-                listBox_SelectionChanged(null, null);
+               // listBox_SelectionChanged(null, null);
             }
         }
 
@@ -1249,7 +1186,7 @@ namespace Lemon_App
             if (listBox.SelectedIndex != listBox.Items.Count)
             {
                 listBox.SelectedItem = listBox.Items[listBox.SelectedIndex + 1];
-                listBox_SelectionChanged(null, null);
+              //  listBox_SelectionChanged(null, null);
             }
         }
     }

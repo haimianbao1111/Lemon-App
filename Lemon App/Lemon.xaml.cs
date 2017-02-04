@@ -40,15 +40,17 @@ namespace Lemon_App {
             {
                 Litt.Data = Geometry.Parse("M10.85,8.145L7.607,4.902C7.412,4.707 7.095,4.707 6.9,4.902 6.705,5.097 6.705,5.414 6.9,5.609L9.791,8.5 6.9,11.391C6.705,11.586 6.705,11.903 6.9,12.098 7.095,12.293 7.412,12.293 7.607,12.098L10.85,8.856C10.949,8.757 10.997,8.628 10.996,8.501 10.996,8.371 10.948,8.243 10.85,8.145z");
                 isopen = true;
-                Width = 310;
-                Height = 430;
+                BeginAnimation(WidthProperty, new DoubleAnimation(855,310, TimeSpan.FromSeconds(0.1)));
+                BeginAnimation(HeightProperty, new DoubleAnimation(610,430, TimeSpan.FromSeconds(0.2)));
                 Page.Clip = new RectangleGeometry() { RadiusX = 3, RadiusY = 3, Rect = new Rect() { Width = Page.ActualWidth, Height = Page.ActualHeight } };
             }else
             {
                 Litt.Data = Geometry.Parse("M7.209,8.5L10.1,5.609C10.295,5.414 10.295,5.097 10.1,4.902 9.905,4.707 9.588,4.707 9.393,4.902L6.15,8.145C6.052,8.243 6.004,8.371 6.004,8.5 6.004,8.629 6.052,8.757 6.15,8.855L9.393,12.097C9.588,12.292 9.905,12.292 10.1,12.097 10.295,11.902 10.295,11.585 10.1,11.39L7.209,8.5z");
                 isopen = false;
-                Width = 855;
-                Height = 610;
+              //  Width = 855;
+                //Height = 610;
+                BeginAnimation(WidthProperty, new DoubleAnimation(310,855, TimeSpan.FromSeconds(0.1)));
+                BeginAnimation(HeightProperty, new DoubleAnimation(430,610, TimeSpan.FromSeconds(0.2)));
                 Page.Clip = new RectangleGeometry() { RadiusX = 3, RadiusY = 3, Rect = new Rect() { Width = Page.ActualWidth, Height = Page.ActualHeight } };
             }
         }
