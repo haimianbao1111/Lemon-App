@@ -1113,7 +1113,7 @@ namespace Lemon_App
 
         private async void DF_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (DF.Text != "巅峰榜")
+            if ((DF.SelectedItem as ComboBoxItem).ToolTip.ToString() != "巅峰榜")
             {
                 jz.Visibility = Visibility.Hidden;
                 listBox.Items.Clear();
