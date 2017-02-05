@@ -22,7 +22,7 @@
             <Label Margin="11,167,207,0" Foreground="#FF333337" Content="天气地区 WeatherInfo:" Height="29" VerticalAlignment="Top"/>
             <Grid Height="59" VerticalAlignment="Top" Margin="0,362,0,0">
                 <Label x:Name="label4" Content="关于 About:" HorizontalAlignment="Left" Height="24" Margin="10,0,0,0" VerticalAlignment="Top" Width="78" Foreground="#FF333337"/>
-                <Label x:Name="label3_Copy" Content="©2016 Twilight all rights reserved. QQ:2728578956    Lemon App Professional" Margin="10,24,0,0" Foreground="#FF1B1B1C" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Label x:Name="label3_Copy" Content="©2016 Twilight all rights reserved. QQ:2728578956    Lemon App Professional" Margin="10,24,0,0" Foreground="#FF252526" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}"/>
             </Grid>
             <CheckBox x:Name="checkBox" Content="加入开机自启动" HorizontalAlignment="Left" Height="19" Margin="11,338,0,0" VerticalAlignment="Top" Width="153" Foreground="#FF1B1B1C" Click="checkBox_Click"/>
             <Label Margin="11,309,494,0" Foreground="#FF333337" Content="其他设置" Height="29" VerticalAlignment="Top"/>

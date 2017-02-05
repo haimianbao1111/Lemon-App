@@ -383,7 +383,7 @@ namespace Lemon_App
         public static async System.Threading.Tasks.Task<string> GetWebAsync(string url,Encoding c)
         {
             HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(url);
-            hwr.Timeout = 20000;
+       //     hwr.Timeout = 20000;
             if (Settings.Default.isWebProxy) hwr.Proxy = He.proxy;
             var o = await hwr.GetResponseAsync();
             StreamReader sr = new StreamReader(o.GetResponseStream(), c);
@@ -453,5 +453,17 @@ namespace Lemon_App
         /// mv ID
         /// </summary>
         public string MV { set; get; }
+        /// <summary>
+        /// 是否为排行榜歌单
+        /// </summary>
+        public Boolean IsDF { set; get; }
+        /// <summary>
+        /// 排行榜歌单的标准品质uri
+        /// </summary>
+        public string DFSONGURI { set; get; }
+        /// <summary>
+        /// 排行榜歌HQ
+        /// </summary>
+        public string DFSONGURI_HQ { set; get; }
     }
 }
