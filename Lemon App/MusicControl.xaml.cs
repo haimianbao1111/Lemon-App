@@ -259,12 +259,14 @@ namespace Lemon_App
                         string ioo = await Uuuhh.GetWebAsync($"http://59.37.96.220/base/fcgi-bin/fcg_musicexpress2.fcg?version=12&miniversion=92&key=19914AA57A96A9135541562F16DAD6B885AC8B8B5420AC567A0561D04540172E&guid={guid}");
                         string vkey = He.Text(ioo, "key=\"", "\" speedrpttype", 0);
                         musicurl = $"http://182.247.250.19/streamoc.music.tc.qq.com/M500{musicid}.mp3?vkey={vkey}&guid={guid}";
-                        //player.Open(new Uri(musicurl));
-                        //player.Play();
-                        //t.Start();
-                        WebClient dc = new WebClient();
-                        dc.Proxy = He.proxy;
-                        dc.DownloadFileCompleted += Fi;
+                            //player.Open(new Uri(musicurl));
+                            //player.Play();
+                            //t.Start();
+                            WebClient dc = new WebClient()
+                            {
+                                Proxy = He.proxy
+                            };
+                            dc.DownloadFileCompleted += Fi;
                         dc.DownloadFileAsync(new Uri(musicurl), AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.mp3");
                         ///等待播放
                         loading.Visibility = Visibility.Visible;
@@ -414,8 +416,10 @@ namespace Lemon_App
                         if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.m4a"))
                         {
                             musicurl = ((listBox.SelectedItem as MusicItemControl).Music as Music).DFSONGURI;
-                            WebClient dc = new WebClient();
-                            dc.Proxy = He.proxy;
+                            WebClient dc = new WebClient()
+                            {
+                                Proxy = proxy
+                            };
                             dc.DownloadFileCompleted += Fi_BZ;
                             dc.Headers.Add(HttpRequestHeader.UserAgent, "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36");
                             dc.Headers.Add(HttpRequestHeader.Accept, "ext/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");
@@ -489,16 +493,11 @@ namespace Lemon_App
                     {
                         if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.mp3"))
                         {
-                            //// musicurl = $"http://cc.stream.qqmusic.qq.com/C100{musicid}.m4a?fromtag=52";
-                            //string guid = "20D919A4D7700FBC424740E8CED80C5F";
-                            //string ioo = await Uuuhh.GetWebAsync($"http://59.37.96.220/base/fcgi-bin/fcg_musicexpress2.fcg?version=12&miniversion=92&key=19914AA57A96A9135541562F16DAD6B885AC8B8B5420AC567A0561D04540172E&guid={guid}");
-                            //string vkey = He.Text(ioo, "key=\"", "\" speedrpttype", 0);
-                            musicurl = ((listBox.SelectedItem as MusicItemControl).Music as Music).DFSONGURI_HQ;//$"http://182.247.250.19/streamoc.music.tc.qq.com/M500{musicid}.mp3?vkey={vkey}&guid={guid}";
-                                                                                                                //player.Open(new Uri(musicurl));
-                                                                                                                //player.Play();
-                                                                                                                //t.Start();
-                            WebClient dc = new WebClient();
-                            dc.Proxy = He.proxy;
+                           musicurl = ((listBox.SelectedItem as MusicItemControl).Music as Music).DFSONGURI_HQ;
+                            WebClient dc = new WebClient()
+                            {
+                                Proxy = proxy
+                            };
                             dc.Headers.Add(HttpRequestHeader.UserAgent, "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36");
                             dc.Headers.Add(HttpRequestHeader.Accept, "ext/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");
                             dc.Headers.Add(HttpRequestHeader.AcceptEncoding, "gzip, deflate, sdch");
@@ -506,7 +505,6 @@ namespace Lemon_App
                             dc.Headers.Add(HttpRequestHeader.Cookie, "tvfe_boss_uuid=308e152dbaa0bd6b; eas_sid=h1D4k7n7h7G3g1N6A6c2a812e7; pac_uid=1_2728578956; _ga=GA1.2.889488099.1474016943; luin=o2728578956; lskey=000100005f25e44c67a9f6af47159fd54f9e23ed418536b3cbe8cfacebfa495259d109938019c06a0f2f9314; pgv_pvi=9043384320; RK=oLOObi2e0M; o_cookie=2728578956; pgv_pvid=9806437357; ptui_loginuin=2728578956; ptcz=92e59f3e2a0a260c0597ef023e0044edb543a10592392101aa43e8640241b28f; pt2gguin=o2728578956; pgv_si=s8448803840; qqmusic_uin=12345678; qqmusic_key=12345678; qqmusic_fromtag=30");
                             dc.DownloadFileCompleted += Fi;
                             dc.DownloadFileAsync(new Uri(musicurl), AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.mp3");
-                            ///等待播放
                             loading.Visibility = Visibility.Visible;
                         }
                         else
@@ -801,15 +799,17 @@ namespace Lemon_App
                         //string songname = o["data"]["song"]["list"][i]["fsong"].ToString();
                         //string Zhj = o["data"]["song"]["list"][i]["albumName_hilight"].ToString();
                         //    img = ContentLines[22];
-                        Music m = new Music();
-                        m.MusicName = o["data"]["song"]["list"][i]["songname"].ToString();
-                        m.Singer = o["data"]["song"]["list"][i]["singer"][0]["name"].ToString();
-                        m.ZJ = o["data"]["song"]["list"][i]["albumname"].ToString();
-                        m.MusicID = o["data"]["song"]["list"][i]["media_mid"].ToString();
-                        m.ImageID = o["data"]["song"]["list"][i]["albummid"].ToString();
-                        m.GC = o["data"]["song"]["list"][i]["songid"].ToString();
-                        m.Fotmat = o["data"]["song"]["list"][i]["sizeflac"].ToString();
-                        m.MV = o["data"]["song"]["list"][i]["vid"].ToString();
+                        Music m = new Music()
+                        {
+                            MusicName = o["data"]["song"]["list"][i]["songname"].ToString(),
+                            Singer = o["data"]["song"]["list"][i]["singer"][0]["name"].ToString(),
+                            ZJ = o["data"]["song"]["list"][i]["albumname"].ToString(),
+                            MusicID = o["data"]["song"]["list"][i]["media_mid"].ToString(),
+                            ImageID = o["data"]["song"]["list"][i]["albummid"].ToString(),
+                            GC = o["data"]["song"]["list"][i]["songid"].ToString(),
+                            Fotmat = o["data"]["song"]["list"][i]["sizeflac"].ToString(),
+                            MV = o["data"]["song"]["list"][i]["vid"].ToString()
+                        };
                         string Q = "";
                         if (m.Fotmat != "0")
                             Q = "SQ";
@@ -845,15 +845,17 @@ namespace Lemon_App
                     //string songname = o["data"]["song"]["list"][i]["fsong"].ToString();
                     //string Zhj = o["data"]["song"]["list"][i]["albumName_hilight"].ToString();
                     //    img = ContentLines[22];
-                    Music m = new Music();
-                    m.MusicName = o["data"]["song"]["list"][i]["songname"].ToString();
-                    m.Singer = o["data"]["song"]["list"][i]["singer"][0]["name"].ToString();
-                    m.ZJ = o["data"]["song"]["list"][i]["albumname"].ToString();
-                    m.MusicID = o["data"]["song"]["list"][i]["media_mid"].ToString();
-                    m.ImageID = o["data"]["song"]["list"][i]["albummid"].ToString();
-                    m.GC = o["data"]["song"]["list"][i]["songid"].ToString();
-                    m.Fotmat = o["data"]["song"]["list"][i]["sizeflac"].ToString();
-                    m.MV = o["data"]["song"]["list"][i]["vid"].ToString();
+                    Music m = new Music()
+                    {
+                        MusicName = o["data"]["song"]["list"][i]["songname"].ToString(),
+                        Singer = o["data"]["song"]["list"][i]["singer"][0]["name"].ToString(),
+                        ZJ = o["data"]["song"]["list"][i]["albumname"].ToString(),
+                        MusicID = o["data"]["song"]["list"][i]["media_mid"].ToString(),
+                        ImageID = o["data"]["song"]["list"][i]["albummid"].ToString(),
+                        GC = o["data"]["song"]["list"][i]["songid"].ToString(),
+                        Fotmat = o["data"]["song"]["list"][i]["sizeflac"].ToString(),
+                        MV = o["data"]["song"]["list"][i]["vid"].ToString()
+                    };
                     string Q = "";
                     if (m.Fotmat != "0")
                         Q = "SQ";
@@ -876,8 +878,10 @@ namespace Lemon_App
             if (pz.Text == "标准") { op = "m4a"; }
             if (pz.Text == "HQ") { op = "mp3"; }
             if (pz.Text == "SQ") { op = "flac"; }
-            WebClient dc = new WebClient();
-            dc.Proxy = He.proxy;
+            WebClient dc = new WebClient()
+            {
+                Proxy = proxy
+            };
             dc.DownloadFileAsync(new Uri(musicurl), AppDomain.CurrentDomain.BaseDirectory + $@"MusicDownload/{textBlock1.Text}.{op}");
             dc.DownloadFileCompleted += OK;
             dc.DownloadProgressChanged += DownloadFileCompleted;

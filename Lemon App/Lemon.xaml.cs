@@ -69,6 +69,7 @@ namespace Lemon_App {
                 Music.Visibility = Visibility.Collapsed;
                 User.Visibility = Visibility.Collapsed;
                 All.Visibility = Visibility.Collapsed;
+                Robot.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-50,0,50,0), new Thickness(0), TimeSpan.FromSeconds(0.2)));
                 //IContentPage.Children.Clear();
                 //IContentPage.Children.Add(new IMBOX());
                 Mus.Fill = new SolidColorBrush(Color.FromArgb(255, 180, 180, 193));
@@ -82,6 +83,7 @@ namespace Lemon_App {
                 All.Visibility = Visibility.Collapsed;
                 User.Visibility = Visibility.Collapsed;
                 Music.Visibility = Visibility.Visible;
+                Music.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-50,0,50,0), new Thickness(0), TimeSpan.FromSeconds(0.2)));
                 //IContentPage.Children.Clear();
                 //   IContentPage.Children.Add(new MusicControl());
                 Mus.Fill = new SolidColorBrush(Color.FromArgb(255, 31, 183, 245));
@@ -94,6 +96,7 @@ namespace Lemon_App {
                 Music.Visibility = Visibility.Collapsed;
                 User.Visibility = Visibility.Collapsed;
                 All.Visibility = Visibility.Visible;
+                All.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-50,0,50,0), new Thickness(0), TimeSpan.FromSeconds(0.2)));
                 //  IContentPage.Children.Clear();
                 //IContentPage.Children.Add(new AllControl());
                 Mus.Fill = new SolidColorBrush(Color.FromArgb(255, 180, 180, 193));

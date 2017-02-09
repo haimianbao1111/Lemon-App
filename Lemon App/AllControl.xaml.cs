@@ -10,6 +10,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -33,29 +34,40 @@ namespace Lemon_App
             {
                 ContentPage.Children.Clear();
                 ContentPage.Children.Add(new Note());
-            }else if (Sende=="天气")
+                ContentPage.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-50, 40, 50, 0), new Thickness(0, 40, 0, 0), TimeSpan.FromSeconds(0.2)));
+            }
+            else if (Sende=="天气")
             {
                 ContentPage.Children.Clear();
                 ContentPage.Children.Add(new WeatherBox());
-            }else if(Sende == "美图")
+                ContentPage.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-50, 40, 50, 0), new Thickness(0, 40, 0, 0), TimeSpan.FromSeconds(0.2)));
+            }
+            else if(Sende == "美图")
             {
                 ContentPage.Children.Clear();
                 ContentPage.Children.Add(new BingDayImage());
-            }else if(Sende == "翻译")
+                ContentPage.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-50, 40, 50, 0), new Thickness(0, 40, 0, 0), TimeSpan.FromSeconds(0.2)));
+            }
+            else if(Sende == "翻译")
             {
                 ContentPage.Children.Clear();
                 ContentPage.Children.Add(new FanyiBox());
-            }else if (Sende == "便签")
+                ContentPage.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-50, 40, 50, 0), new Thickness(0, 40, 0, 0), TimeSpan.FromSeconds(0.2)));
+            }
+            else if (Sende == "便签")
             {
                 Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"/Note.exe");
             }else if (Sende == "搜索")
             {
                 ContentPage.Children.Clear();
                 ContentPage.Children.Add(new SearchBox());
-            }else if (Sende == "设置")
+                ContentPage.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-50, 40, 50, 0), new Thickness(0, 40, 0, 0), TimeSpan.FromSeconds(0.2)));
+            }
+            else if (Sende == "设置")
             {
                 ContentPage.Children.Clear();
                 ContentPage.Children.Add(new SettingsControl());
+                ContentPage.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-50, 40, 50, 0), new Thickness(0,40,0,0), TimeSpan.FromSeconds(0.2)));
             }
         }
 

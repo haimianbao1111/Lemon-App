@@ -66,7 +66,7 @@ namespace Lemon_App
                         listBox.Items.Clear();
                         foreach (var item in aa)
                         {
-                            listBox.Items.Add(item);
+                            listBox.Items.Add(new ListBoxItem() { Content=item,Height =35});
                         }
                     }
                 }
@@ -74,8 +74,9 @@ namespace Lemon_App
             catch { }
         }
 
-        private void UserControl_SizeChanged(object sender, System.Windows.SizeChangedEventArgs e)
+        private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            textBox1.Text = (listBox.SelectedItem as ListBoxItem).Content.ToString();
         }
     }
 }
