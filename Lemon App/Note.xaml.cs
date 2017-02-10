@@ -67,7 +67,7 @@ namespace Lemon_App
 
         private async void Border_MouseDown_1(object sender, MouseButtonEventArgs e)
         {
-            await LoadapisAsync(textBox.Text, Ipage);
+            Ipage++;  await LoadapisAsync(textBox.Text, Ipage);
         }
     }
 }
