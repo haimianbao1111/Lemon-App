@@ -1050,33 +1050,33 @@ namespace Lemon_App
                 listBox.Items.Clear();
                     jz.Visibility = Visibility.Visible;
                     var s = await Uuuhh.GetWebAsync($"https://y.qq.com/portal/playlist/{textBox.Text}.html");
-                    var json = "{\"list\":" + He.Text(s, "var getSongInfo = ", ";", 0) + "}";
-                    JObject o = JObject.Parse(json);
-                    int i = 0;
-                    while (i != o["list"].Count())
+                var j = "{\"list\":" + He.Text(s, "var getSongInfo = ", ";", 0) + "}";
+                JObject o = JObject.Parse(j);
+                int i = 0;
+                while (i != o["list"].Count())
+                {
+                    Music m = new Music()
                     {
-                        Music m = new Music()
-                        {
-                            MusicName = o["list"][i]["songname"].ToString(),
-                            Singer = o["list"][i]["singer"][0]["name"].ToString(),
-                            ZJ = o["list"][i]["albumdesc"].ToString(),
-                            GC = o["list"][i]["songid"].ToString(),
-                            Fotmat = o["list"][i]["sizeflac"].ToString(),
-                            HQFOTmat = o["list"][i]["size320"].ToString(),
-                            MusicID = o["list"][i]["songmid"].ToString(),
-                            ImageID = o["list"][i]["albummid"].ToString(),
-                            MV = o["list"][i]["vid"].ToString()
-                        };
-                        string Q = "";
-                        if (m.Fotmat != "0")
-                            Q = "SQ";
-                        if (m.HQFOTmat != "0")
-                            if (m.Fotmat == "0")
-                                Q = "HQ";
-                        listBox.Items.Add(new MusicItemControl() { Width = this.ActualWidth, BorderThickness = new Thickness(0), MusicGS = m.Singer, MusicName = m.MusicName, MusicZJ = m.ZJ, Music = m, Qt = Q,ismv=m.MV });
-                        i++;
-                    }
-                    jz.Visibility = Visibility.Collapsed;
+                        MusicName = o["list"][i]["songname"].ToString(),
+                        Singer = o["list"][i]["singer"][0]["name"].ToString(),
+                        ZJ = o["list"][i]["albumdesc"].ToString(),
+                        GC = o["list"][i]["songid"].ToString(),
+                        Fotmat = o["list"][i]["sizeflac"].ToString(),
+                        HQFOTmat = o["list"][i]["size320"].ToString(),
+                        MusicID = o["list"][i]["songmid"].ToString(),
+                        ImageID = o["list"][i]["albummid"].ToString(),
+                        MV = o["list"][i]["vid"].ToString()
+                    };
+                    string Q = "";
+                    if (m.Fotmat != "0")
+                        Q = "SQ";
+                    if (m.HQFOTmat != "0")
+                        if (m.Fotmat == "0")
+                            Q = "HQ";
+                    listBox.Items.Add(new MusicItemControl() { Width = this.ActualWidth, BorderThickness = new Thickness(0), MusicGS = m.Singer, MusicName = m.MusicName, MusicZJ = m.ZJ, Music = m, Qt = Q, ismv = m.MV });
+                    i++;
+                }
+                jz.Visibility = Visibility.Collapsed;
             }
             catch { jz.Visibility = Visibility.Collapsed; }
         }int hs = 0;

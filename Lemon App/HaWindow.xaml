@@ -14,19 +14,19 @@
         </Grid.ContextMenu>
         <Border x:Name="XT" BorderThickness="0" HorizontalAlignment="Left" Margin="15,0,0,0" Width="85" CornerRadius="17" Background="#E5F7F7F7" BorderBrush="#FFE7E7E7" Height="35">
             <Grid >
-                <TextBlock x:Name="NM" Height="12" Margin="25,3,0,0" TextWrapping="Wrap" Text="Lemon App" VerticalAlignment="Top" Foreground="#FFADADAD" FontSize="10" TextAlignment="Center" HorizontalAlignment="Left" Width="56"/>
+                <TextBlock x:Name="NM" Height="12" Margin="25,3,4,0" TextWrapping="Wrap" Text="Lemon User" VerticalAlignment="Top" Foreground="#FFADADAD" FontSize="10" TextAlignment="Center"/>
                 <TextBlock x:Name="Js" Height="17" Margin="22.25,18,7,-2" TextWrapping="Wrap" Text="Online" VerticalAlignment="Top" Foreground="#FF7DCA81" FontSize="11" TextAlignment="Center"/>
             </Grid>
         </Border>
-        <Border x:Name="TX" BorderThickness="1" HorizontalAlignment="Left" Width="43" CornerRadius="100" Background="#FF3399FF" Height="43" BorderBrush="#19333337" VerticalAlignment="Top" MouseDown="TX_MouseDown">
+        <Border x:Name="TX" BorderThickness="1" HorizontalAlignment="Left" Width="43" CornerRadius="100" Height="43" BorderBrush="#19333337" VerticalAlignment="Top" MouseDown="TX_MouseDown" Background="#FF007ACC">
             <Border.Effect>
                 <DropShadowEffect Color="#FF2D2D30" Direction="340" Opacity="0.1"/>
             </Border.Effect>
-            <Border CornerRadius="100">
+            <Border CornerRadius="100" >
                 <Border.Background>
-                    <RadialGradientBrush>
+                    <RadialGradientBrush GradientOrigin="0.2,0" Center="0.5,0.5">
                         <GradientStop Color="#0CFFFFFF"/>
-                        <GradientStop Color="#19000000" Offset="1"/>
+                        <GradientStop Color="#33000000" Offset="1"/>
                     </RadialGradientBrush>
                 </Border.Background>
             </Border>
