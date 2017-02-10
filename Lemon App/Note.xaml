@@ -71,16 +71,21 @@
         </Style>
     </UserControl.Resources>
     <Grid>
-        <Label x:Name="label" Content="新闻" HorizontalAlignment="Left" Height="29" Margin="5,6,0,0" VerticalAlignment="Top" Width="40" Foreground="#FF3F3F46" FontSize="14"/>
         <ScrollViewer x:Name="O" PanningMode="Both" Margin="0,36,0,0" Template="{DynamicResource SCS}" HorizontalScrollBarVisibility="Visible">
             <WrapPanel x:Name="WP" HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="574"/>
         </ScrollViewer>
-        <Border BorderThickness="1" Height="32" Margin="50,4,10,0" VerticalAlignment="Top" CornerRadius="7" Background="#FFF1F3F7">
+        <Border BorderThickness="1" Height="32" Margin="70,4,10,0" VerticalAlignment="Top" CornerRadius="7" Background="#FFF1F3F7">
             <Grid>
                 <TextBox x:Name="textBox" Margin="27,7,0,0" TextWrapping="Wrap" Text="最新" KeyDown="textBox_KeyDown" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Background="{x:Null}" Foreground="#FF686868" BorderThickness="0"/>
                 <Path x:Name="SSPath" StrokeThickness="0" Fill="#FFB4B4C1" Margin="8" Data="M31.689,30.252l-8.26-8.128c2.163-2.35,3.492-5.458,3.492-8.878    C26.92,5.93,20.894,0,13.46,0C6.026,0,0,5.93,0,13.246s6.026,13.246,13.46,13.246c3.212,0,6.158-1.111,8.472-2.958l8.292,8.16    c0.404,0.398,1.06,0.398,1.464,0C32.093,31.296,32.093,30.65,31.689,30.252z M13.46,24.454c-6.29,0-11.389-5.018-11.389-11.208    S7.17,2.038,13.46,2.038c6.29,0,11.389,5.018,11.389,11.208S19.75,24.454,13.46,24.454z" Stretch="Uniform"  ToolTip="搜索" HorizontalAlignment="Left" Width="19"/>
             </Grid>
         </Border>
         <TextBlock x:Name="jz" TextWrapping="Wrap" Text="加载中" Width="50" Height="25" Foreground="#FF252526" FontSize="14" TextAlignment="Center"/>
+        <Border  HorizontalAlignment="Left" Margin="10,10,0,0" Width="20" Background="#FFF1F3F7" CornerRadius="5" ToolTip="上一页" Height="20" VerticalAlignment="Top" MouseDown="Border_MouseDown">
+            <Path Data="M53.696,30.254l32.099,32.1c2.042,2.042,2.042,5.352,0,7.393c-2.041,2.041-5.352,2.041-7.393,0L50,41.344L21.598,69.746  c-2.042,2.041-5.352,2.041-7.393,0c-2.042-2.041-2.042-5.351,0-7.393l32.099-32.1c1.021-1.02,2.358-1.53,3.696-1.53  S52.676,29.234,53.696,30.254z" Fill="#FF686868" Stretch="Uniform" StrokeThickness="0" Margin="3"/>
+        </Border>
+        <Border HorizontalAlignment="Left" Margin="40,10,0,0" Width="20" Background="#FFF1F3F7" CornerRadius="5" ToolTip="下一页" Height="20" VerticalAlignment="Top" MouseDown="Border_MouseDown_1">
+            <Path Data="M50,71.276c-1.338,0-2.676-0.511-3.696-1.53l-32.099-32.1c-2.042-2.042-2.042-5.352,0-7.393  c2.041-2.041,5.351-2.041,7.393,0L50,58.656l28.402-28.402c2.042-2.041,5.352-2.041,7.393,0c2.042,2.041,2.042,5.351,0,7.393  l-32.099,32.1C52.676,70.766,51.338,71.276,50,71.276z" Fill="#FF686868" Stretch="Uniform" StrokeThickness="0" Margin="3" ToolTip="下一页"/>
+        </Border>
     </Grid>
 </UserControl>

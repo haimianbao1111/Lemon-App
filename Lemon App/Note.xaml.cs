@@ -29,11 +29,11 @@ namespace Lemon_App
         {
             InitializeComponent();
         }
-        private async Task LoadapisAsync(string ha="最新")
+        private async Task LoadapisAsync(string ha="最新",int page=1)
         {
             jz.Visibility = Visibility.Visible;
             WP.Children.Clear();
-            JObject o = JObject.Parse(await Uuuhh.GetWebAsync($"https://route.showapi.com/109-35?&page=1&showapi_sign=cfa206656db244c089be2d1499735bb5&showapi_appid=29086&maxResult=100&channelName={ha}"));
+            JObject o = JObject.Parse(await Uuuhh.GetWebAsync($"https://route.showapi.com/109-35?&page={page}&showapi_sign=cfa206656db244c089be2d1499735bb5&showapi_appid=29086&maxResult=100&channelName={ha}"));
             int i = 0;
             while (i != 100)
             {
@@ -58,6 +58,16 @@ namespace Lemon_App
             {
                 (o as UserControl).Width = this.ActualWidth;
             }
+        }
+        int Ipage = 1;
+        private async void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (Ipage > 1) { Ipage--; await LoadapisAsync(textBox.Text, Ipage); }
+        }
+
+        private async void Border_MouseDown_1(object sender, MouseButtonEventArgs e)
+        {
+            await LoadapisAsync(textBox.Text, Ipage);
         }
     }
 }
