@@ -181,6 +181,18 @@ namespace Lemon_App.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2591355982")]
+        public string ZJid {
+            get {
+                return ((string)(this["ZJid"]));
+            }
+            set {
+                this["ZJid"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Lemon User")]
         public string LemonAreeunIts {
             get {
@@ -193,13 +205,13 @@ namespace Lemon_App.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2591355982")]
-        public string ZJid {
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int sx {
             get {
-                return ((string)(this["ZJid"]));
+                return ((int)(this["sx"]));
             }
             set {
-                this["ZJid"] = value;
+                this["sx"] = value;
             }
         }
     }

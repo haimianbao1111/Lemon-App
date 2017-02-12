@@ -1,0 +1,51 @@
+﻿<Window x:Class="Lemon_App.LoadWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lemon_App"
+        mc:Ignorable="d"
+        Title="LoadWindow" Height="325" MouseLeftButtonDown="Window_MouseLeftButtonDown" Width="428" Background="{x:Null}" AllowsTransparency="True" WindowStyle="None" ResizeMode="NoResize" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.Clip>
+            <RectangleGeometry RadiusX="3" RadiusY="3">
+                <RectangleGeometry.Rect>
+                    <Rect Width="428" Height="325"/>
+                </RectangleGeometry.Rect>
+            </RectangleGeometry>
+        </Grid.Clip>
+        <Grid.Background>
+            <ImageBrush ImageSource="http://f.hiphotos.baidu.com/zhidao/pic/item/dc54564e9258d109cedcbe39d758ccbf6c814d79.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <TextBlock HorizontalAlignment="Right" Height="20" TextWrapping="Wrap" Text="❌" VerticalAlignment="Top" Width="15" Foreground="White" Margin="0,6,5,0"/>
+        <Grid Height="199" VerticalAlignment="Bottom" Background="#CCFFFFFF">
+            <Border x:Name="OS" BorderBrush="#FFB1B1B1" BorderThickness="1" Width="260" CornerRadius="5" Background="White" Height="60">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Border Height="1"  VerticalAlignment="Bottom" Background="#FFB1B1B1"/>
+                    <TextBox x:Name="Email" Height="19" Margin="5,5,22,0" TextWrapping="Wrap" Text="你的邮箱" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" BorderThickness="0"/>
+                    <Border  HorizontalAlignment="Right" Margin="0,7,5,7" Width="12" CornerRadius="5" Height="15" MouseDown="Border_MouseDown">
+                        <Border.Background>
+                            <VisualBrush Stretch="UniformToFill">
+                                <VisualBrush.Visual>
+                                    <Path Data="M77.218,38.902L27.397,6.384c-3.47-2.264-8.117-1.289-10.38,2.182
+		c-2.265,3.469-1.288,8.116,2.181,10.38L66.778,50l-47.58,31.055c-3.469,2.264-4.445,6.911-2.181,10.38
+		c1.438,2.203,3.838,3.401,6.287,3.401c1.405,0,2.828-0.395,4.093-1.221l49.82-32.518c4.443-2.616,6.985-6.648,6.985-11.098
+		S81.661,41.518,77.218,38.902z" Fill="#FFB1B1B1" Margin="5" Stretch="Uniform"/>
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Border.Background>
+                    </Border>
+                    <PasswordBox x:Name="PSW" Margin="5,0,5,7" Grid.Row="1" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" BorderThickness="0" Height="15" VerticalAlignment="Bottom" PasswordChanged="PSW_PasswordChanged"/>
+                </Grid>
+            </Border>
+            <CheckBox x:Name="RM" Content="记住我" HorizontalAlignment="Left" Height="18" Margin="84,134,0,0" VerticalAlignment="Top" Width="111"/>
+            <Border x:Name="TX" BorderThickness="1" Margin="0,-45,0,0" Background="#FF007ACC" Height="100" CornerRadius="100" VerticalAlignment="Top" Width="100">
+                <Border Height="10" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="10" HorizontalAlignment="Right" Background="#FF70ED3A" CornerRadius="10"/>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

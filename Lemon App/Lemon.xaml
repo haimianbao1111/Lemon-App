@@ -85,7 +85,7 @@
         <Border x:Name="BackgroundPage" CornerRadius="3" Background="#FFFDFDFD" BorderThickness="1" BorderBrush="#FFF6F7F9">
            
         </Border>
-        <Grid x:Name="ContentPage">
+        <Grid x:Name="ContentPage" >
             <Grid x:Name="TopPage" Background="#FFF6F7F9" MinHeight="50" Grid.RowSpan="1" Height="50" Margin="0" VerticalAlignment="Top">
                 <Border x:Name="CLOSE"  HorizontalAlignment="Left" Margin="20,0,0,0" Width="13" Height="13" Background="#FFFC6762" CornerRadius="13" MouseDown="CLOSE_MouseDown"/>
                 <Border x:Name="MIN"  HorizontalAlignment="Left" Margin="40,0,0,0" Width="13" Height="13" Background="#FFFDBC40" CornerRadius="13" MouseDown="MIN_MouseDown"/>

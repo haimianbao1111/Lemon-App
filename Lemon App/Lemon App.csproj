@@ -167,6 +167,12 @@
     <Compile Include="Lemon.xaml.cs">
       <DependentUpon>Lemon.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LoadWindow.xaml.cs">
+      <DependentUpon>LoadWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LoginCxaml.xaml.cs">
+      <DependentUpon>LoginCxaml.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LyricShow.cs" />
     <Compile Include="MetroLoadControl.xaml.cs">
       <DependentUpon>MetroLoadControl.xaml</DependentUpon>
@@ -269,6 +275,14 @@
     <Page Include="Lemon.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="LoadWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoginCxaml.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MetroLoadControl.xaml">
       <SubType>Designer</SubType>
@@ -416,7 +430,9 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\0.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Robot.jpg" />
   </ItemGroup>

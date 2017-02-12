@@ -961,6 +961,8 @@ namespace Lemon_App
 
         private async void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
+            Move.SelectedIndex = Settings.Default.sx;
+
             JObject json = JObject.Parse(await Uuuhh.GetWebAsync("http://59.37.96.220/soso/fcgi-bin/dynamic_content?format=json&outCharset=utf-8", Encoding.UTF8));
             textBox.Text = json["data"]["search_content"].ToString();
 
@@ -1153,6 +1155,12 @@ namespace Lemon_App
                 jz.Visibility = Visibility.Collapsed;
                 listBox.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 93, 0, 0), new Thickness(0, 43, 0, 0), TimeSpan.FromSeconds(0.2)));
             }
+        }
+
+        private void Move_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Settings.Default.sx = Move.SelectedIndex;
+            Settings.Default.Save();
         }
     }
 }

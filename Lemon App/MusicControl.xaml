@@ -763,7 +763,7 @@
                         <ComboBoxItem Content="HQ" Foreground="#FF252526"/>
                         <!--ComboBoxItem Content="SQ" Foreground="#FF252526"/-->
                     </ComboBox>
-                    <ComboBox x:Name="Move" HorizontalAlignment="Right" Margin="0,0,140,0" Width="35" Background="{x:Null}" BorderBrush="{x:Null}" SelectedIndex="0" Foreground="#FF31C27C" FontSize="10" Height="20">
+                    <ComboBox x:Name="Move" HorizontalAlignment="Right" Margin="0,0,140,0" Width="35" Background="{x:Null}" BorderBrush="{x:Null}" SelectedIndex="0" Foreground="#FF31C27C" FontSize="10" Height="20" SelectionChanged="Move_SelectionChanged">
                         <ComboBoxItem Content="循环" Foreground="#FF252526"/>
                         <ComboBoxItem Content="单曲" Foreground="#FF252526"/>
                         <!--ComboBoxItem Content="SQ" Foreground="#FF252526"/-->

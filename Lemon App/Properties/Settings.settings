@@ -41,11 +41,14 @@
     <Setting Name="UserImage" Type="System.String" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
+    <Setting Name="ZJid" Type="System.String" Scope="User">
+      <Value Profile="(Default)">2591355982</Value>
+    </Setting>
     <Setting Name="LemonAreeunIts" Type="System.String" Scope="User">
       <Value Profile="(Default)">Lemon User</Value>
     </Setting>
-    <Setting Name="ZJid" Type="System.String" Scope="User">
-      <Value Profile="(Default)">2591355982</Value>
+    <Setting Name="sx" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>
 </SettingsFile>
