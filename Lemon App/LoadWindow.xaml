@@ -17,7 +17,7 @@
         <Grid.Background>
             <ImageBrush ImageSource="http://f.hiphotos.baidu.com/zhidao/pic/item/dc54564e9258d109cedcbe39d758ccbf6c814d79.jpg" Stretch="UniformToFill"/>
         </Grid.Background>
-        <TextBlock HorizontalAlignment="Right" Height="20" TextWrapping="Wrap" Text="❌" VerticalAlignment="Top" Width="15" Foreground="White" Margin="0,6,5,0"/>
+        <TextBlock HorizontalAlignment="Right" Height="20" TextWrapping="Wrap" Text="❌" VerticalAlignment="Top" Width="15" Foreground="White" Margin="0,6,5,0" MouseDown="TextBlock_MouseDown"/>
         <Grid Height="199" VerticalAlignment="Bottom" Background="#CCFFFFFF">
             <Border x:Name="OS" BorderBrush="#FFB1B1B1" BorderThickness="1" Width="260" CornerRadius="5" Background="White" Height="60">
                 <Grid>

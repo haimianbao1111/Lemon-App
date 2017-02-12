@@ -36,6 +36,8 @@ namespace Lemon_App
         {
             new lemon().Show();
             this.Close();
+            tr.Stop();
+            tr.Dispose();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -45,9 +47,12 @@ namespace Lemon_App
                 new lemon().Show();
                 this.Close();
             }
-            if (System.IO.File.Exists(Settings.Default.UserImage))
-            { TX.Background = new ImageBrush(new BitmapImage(new Uri(Settings.Default.UserImage, UriKind.Absolute))); }
-            RM.IsChecked = Settings.Default.RNBM;
+            else
+            {
+                if (System.IO.File.Exists(Settings.Default.UserImage))
+                { TX.Background = new ImageBrush(new BitmapImage(new Uri(Settings.Default.UserImage, UriKind.Absolute))); }
+                RM.IsChecked = Settings.Default.RNBM;
+            }
         }
         string ini = "";
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -93,13 +98,18 @@ namespace Lemon_App
                     t.KeyFrames.Add(new LinearThicknessKeyFrame(new Thickness(0, 50, 0, 0), TimeSpan.FromSeconds(3)));
                     TX.BeginAnimation(MarginProperty,t);
                     tr.Start();
-                }
+                }else { Toast.SetToastNotion("小萌:", "啦啦啦！验证码错误", "----啊哦").Show(); }
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
                 this.DragMove();
+        }
+
+        private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }
