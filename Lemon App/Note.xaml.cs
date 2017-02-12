@@ -1,22 +1,10 @@
-﻿using Lemon_App.Properties;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Media.Animation;
 
 namespace Lemon_App
 {
@@ -41,6 +29,7 @@ namespace Lemon_App
                 i++;
             }
             jz.Visibility = Visibility.Collapsed;
+            O.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0,86,0,0),new Thickness(0,36,0,0),TimeSpan.FromSeconds(0.5)));
         }
         private async void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
@@ -53,18 +42,13 @@ namespace Lemon_App
         }
 
         private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            foreach (var o in WP.Children)
-            {
-                (o as UserControl).Width = this.ActualWidth;
-            }
-        }
+        {foreach (var o in WP.Children){(o as UserControl).Width = this.ActualWidth;}}
         int Ipage = 1;
         private async void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (Ipage > 1) { Ipage--; await LoadapisAsync(textBox.Text, Ipage); }
         }
-
+    
         private async void Border_MouseDown_1(object sender, MouseButtonEventArgs e)
         {
             Ipage++;  await LoadapisAsync(textBox.Text, Ipage);

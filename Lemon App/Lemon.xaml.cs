@@ -78,7 +78,6 @@ namespace Lemon_App {
             }
             else if((sender as Border).ToolTip.ToString() == "小萌音乐")
             {
-
                 Robot.Visibility = Visibility.Collapsed;
                 All.Visibility = Visibility.Collapsed;
                 User.Visibility = Visibility.Collapsed;
@@ -176,6 +175,11 @@ namespace Lemon_App {
         private void MAX_MouseDown(object sender, MouseButtonEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
+        }
+
+        private void ZX_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            new UFWindow().ShowDialog();
         }
     }
 }

@@ -144,6 +144,7 @@ namespace Lemon_App
                         i++;
                     }
                     jz.Visibility = Visibility.Collapsed;
+                    listBox.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 93, 0, 0), new Thickness(0, 43, 0, 0), TimeSpan.FromSeconds(0.2)));
                 }
                 catch { }
             }
@@ -820,6 +821,7 @@ namespace Lemon_App
                         i++;
                     }
                     jz.Visibility = Visibility.Collapsed;
+                    listBox.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 93, 0, 0), new Thickness(0, 43, 0, 0), TimeSpan.FromSeconds(0.2)));
                 }
                 catch { }
             }
@@ -866,6 +868,7 @@ namespace Lemon_App
                     i++;
                 }
                 jz.Visibility = Visibility.Collapsed;
+                listBox.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 93, 0, 0), new Thickness(0, 43, 0, 0), TimeSpan.FromSeconds(0.2)));
             }
             catch { }
         }
@@ -953,6 +956,7 @@ namespace Lemon_App
                 listBox.Items.Add(new MusicItemControl() {Width=this.ActualWidth , MusicGS =lj.List[i].ItemText.Singer, MusicName = lj.List[i].ItemText.MusicName, MusicZJ = lj.List[i].ItemText.ZJ,Qt=os, Music = lj.List[i].ItemText , ismv = lj.List[i].ItemText.MV });
             }
             jz.Visibility = Visibility.Collapsed;
+            listBox.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 93, 0, 0), new Thickness(0, 43, 0, 0), TimeSpan.FromSeconds(0.2)));
         }
 
         private async void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -996,6 +1000,7 @@ namespace Lemon_App
                     listBox.Items.Add(new MusicItemControl() { Width = this.ActualWidth, BorderThickness = new Thickness(0), MusicGS = m.Singer, MusicName = m.MusicName, MusicZJ = m.ZJ, Music = m, Qt = Q, ismv = m.MV });
                     i++;
                 }
+                listBox.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 93, 0, 0), new Thickness(0, 43, 0, 0), TimeSpan.FromSeconds(0.2)));
             }
             //ListJson lj = new Lemon_App.ListJson();
             //lj = JsonToObject(Settings.Default.MusicList, lj) as ListJson;
@@ -1077,6 +1082,7 @@ namespace Lemon_App
                     i++;
                 }
                 jz.Visibility = Visibility.Collapsed;
+                listBox.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 93, 0, 0), new Thickness(0, 43, 0, 0), TimeSpan.FromSeconds(0.2)));
             }
             catch { jz.Visibility = Visibility.Collapsed; }
         }int hs = 0;
@@ -1145,6 +1151,7 @@ namespace Lemon_App
                     i++;
                 }
                 jz.Visibility = Visibility.Collapsed;
+                listBox.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 93, 0, 0), new Thickness(0, 43, 0, 0), TimeSpan.FromSeconds(0.2)));
             }
         }
     }

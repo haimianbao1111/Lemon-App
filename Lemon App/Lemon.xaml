@@ -91,7 +91,7 @@
                 <Border x:Name="MIN"  HorizontalAlignment="Left" Margin="40,0,0,0" Width="13" Height="13" Background="#FFFDBC40" CornerRadius="13" MouseDown="MIN_MouseDown"/>
                 <Border x:Name="MAX"  HorizontalAlignment="Left" Margin="60,0,0,0" Width="13" Height="13" Background="#FF41DB2A" CornerRadius="13" MouseDown="MAX_MouseDown"/>
                 <Border x:Name="tx" HorizontalAlignment="Right" Margin="0,10,43,10" Width="30" Height="30" Background="#FF007ACC" CornerRadius="100" MouseDown="tx_MouseDown">
-                    <Border x:Name="ZX"  HorizontalAlignment="Right" Height="10" VerticalAlignment="Bottom" Width="10" Background="#FF41DB2A" CornerRadius="100"/>
+                    <Border x:Name="ZX"  HorizontalAlignment="Right" Height="10" VerticalAlignment="Bottom" Width="10" Background="#FF41DB2A" CornerRadius="100" MouseDown="ZX_MouseDown"/>
                 </Border>
                 <Border BorderThickness="1" HorizontalAlignment="Right" Margin="0,0,20,0" Width="15" Height="15" Background="#00000000" MouseDown="SSPath_Copy_MouseDown">
                     <Path x:Name="Litt" StrokeThickness="0" Fill="#FFBABCC7" Margin="0"  ToolTip="极简模式" Data="M7.209,8.5L10.1,5.609c0.195-0.195,0.195-0.512,0-0.707c-0.195-0.195-0.512-0.195-0.707,0L6.15,8.145  C6.052,8.243,6.004,8.371,6.004,8.5S6.052,8.757,6.15,8.855l3.243,3.242c0.195,0.195,0.512,0.195,0.707,0s0.195-0.512,0-0.707  L7.209,8.5z" Stretch="Uniform"/>
