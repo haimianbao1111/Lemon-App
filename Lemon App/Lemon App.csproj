@@ -170,9 +170,6 @@
     <Compile Include="LoadWindow.xaml.cs">
       <DependentUpon>LoadWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LoginCxaml.xaml.cs">
-      <DependentUpon>LoginCxaml.xaml</DependentUpon>
-    </Compile>
     <Compile Include="LyricShow.cs" />
     <Compile Include="MetroLoadControl.xaml.cs">
       <DependentUpon>MetroLoadControl.xaml</DependentUpon>
@@ -277,10 +274,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="LoadWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="LoginCxaml.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -429,9 +422,6 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\0.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Robot.jpg" />

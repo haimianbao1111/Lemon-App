@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -49,6 +50,7 @@ namespace Lemon_App
             }
             else
             {
+                Email.Text = Settings.Default.LemonAreeunIts;
                 if (System.IO.File.Exists(Settings.Default.UserImage))
                 { TX.Background = new ImageBrush(new BitmapImage(new Uri(Settings.Default.UserImage, UriKind.Absolute))); }
                 RM.IsChecked = Settings.Default.RNBM;
@@ -110,6 +112,12 @@ namespace Lemon_App
         private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void PSW_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex re = new Regex("[^0-9.-]+");
+            e.Handled = re.IsMatch(e.Text);
         }
     }
 }

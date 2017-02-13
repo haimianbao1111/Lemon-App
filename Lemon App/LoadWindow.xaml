@@ -39,7 +39,7 @@
                             </VisualBrush>
                         </Border.Background>
                     </Border>
-                    <PasswordBox x:Name="PSW" Margin="5,0,5,7" Grid.Row="1" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" BorderThickness="0" Height="15" VerticalAlignment="Bottom" PasswordChanged="PSW_PasswordChanged"/>
+                    <PasswordBox x:Name="PSW" PreviewTextInput="PSW_PreviewTextInput" Margin="5,0,5,7" Grid.Row="1" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" BorderThickness="0" Height="15" VerticalAlignment="Bottom" PasswordChanged="PSW_PasswordChanged" MaxLength="4"/>
                 </Grid>
             </Border>
             <CheckBox x:Name="RM" Content="记住我" HorizontalAlignment="Left" Height="18" Margin="84,134,0,0" VerticalAlignment="Top" Width="111"/>
