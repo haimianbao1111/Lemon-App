@@ -43,7 +43,7 @@ namespace Lemon_App
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (Settings.Default.RNBM)
+            if (Settings.Default.RNBM&&Settings.Default.LemonAreeunIts!=string.Empty)
             {
                 new lemon().Show();
                 this.Close();
