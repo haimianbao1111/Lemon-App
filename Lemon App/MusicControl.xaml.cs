@@ -79,6 +79,7 @@ namespace Lemon_App
                 {
                     i = (listBox.Items[listBox.SelectedIndex] as MusicItemControl).Content;
                     listBox.SelectedItem = listBox.Items[listBox.SelectedIndex];
+                    listBox_SelectionChanged(null, null);
                 }
               //  listBox_SelectionChanged(null, null);
             }
