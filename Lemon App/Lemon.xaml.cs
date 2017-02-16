@@ -63,7 +63,7 @@ namespace Lemon_App {
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            var ContentText = ((sender as Border).ToolTip as DeveloperControl).Text;
+            var ContentText = ((sender as Border).ToolTip as String);
             if(ContentText== "小萌机器人")
             {
                 Robot.Visibility = Visibility.Visible;
