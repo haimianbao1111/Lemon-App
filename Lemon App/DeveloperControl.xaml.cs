@@ -16,13 +16,18 @@ using System.Windows.Shapes;
 namespace Lemon_App
 {
     /// <summary>
-    /// CuteControl.xaml 的交互逻辑
+    /// DeveloperControl.xaml 的交互逻辑
     /// </summary>
-    public partial class CuteControl : UserControl
+    public partial class DeveloperControl : UserControl
     {
-        public CuteControl()
+        public DeveloperControl()
         {
             InitializeComponent();
+        }
+        public string Text
+        {
+            get { return Tn.Text; }
+            set { Tn.Text = value; }
         }
     }
 }

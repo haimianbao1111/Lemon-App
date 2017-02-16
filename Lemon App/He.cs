@@ -13,9 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using Windows.UI.Notifications;
 using System.Drawing;
-using ZXing;
-using ZXing.QrCode;
-using ZXing.Common;
 using System.Runtime.Serialization.Json;
 using System.Web.Script.Serialization;
 using System.Text.RegularExpressions;
@@ -98,7 +95,7 @@ namespace Lemon_App
         }
         public static WebProxy proxy = new WebProxy();
         public static string Url = "";
-        public static string KMS = "3.5.2.8";
+        public static string KMS = "3.5.3.1";
         public static int MS = 0;
         public static string on = "";
         public static string EmailUFMsg = @"<table dir=""ltr"">
@@ -325,35 +322,6 @@ namespace Lemon_App
         }
     }
 
-    public class QRCode
-    {
-        [DllImport("gdi32")]
-        static extern int DeleteObject(IntPtr o);
-        public static ImageSource GetQRCode(String content, int width, int height, System.Drawing.Color c, BarcodeFormat BF= BarcodeFormat.QR_CODE )
-        {
-            EncodingOptions options;
-            BarcodeWriter write = null;
-            options = new QrCodeEncodingOptions
-            {
-                DisableECI = true,
-                CharacterSet = "UTF-8",
-                Width = width,
-                Height = height,
-                Margin = 0
-            };
-            write = new BarcodeWriter();
-            write.Renderer = new ZXing.Rendering.BitmapRenderer { Background = System.Drawing.Color.Transparent, Foreground =c };
-            write.Format = BF;
-            write.Options = options;
-            Bitmap bitmap = write.Write(content);
-            IntPtr ip = bitmap.GetHbitmap();
-            BitmapSource bitmapSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(ip, IntPtr.Zero, Int32Rect.Empty,
-            BitmapSizeOptions.FromEmptyOptions());
-            DeleteObject(ip);
-            return bitmapSource;
-        }
-        
-    }
 
     public class Uuuhh
     {

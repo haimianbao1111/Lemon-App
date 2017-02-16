@@ -63,7 +63,8 @@ namespace Lemon_App {
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if((sender as Border).ToolTip.ToString()== "小萌机器人")
+            var ContentText = ((sender as Border).ToolTip as DeveloperControl).Text;
+            if(ContentText== "小萌机器人")
             {
                 Robot.Visibility = Visibility.Visible;
                 Music.Visibility = Visibility.Collapsed;
@@ -76,7 +77,7 @@ namespace Lemon_App {
                 ALL.Fill = new SolidColorBrush(Color.FromArgb(255, 180, 180, 193));
                 Rbt.Fill = new SolidColorBrush(Color.FromArgb(255, 31, 183, 245));
             }
-            else if((sender as Border).ToolTip.ToString() == "小萌音乐")
+            else if(ContentText == "小萌音乐")
             {
                 Robot.Visibility = Visibility.Collapsed;
                 All.Visibility = Visibility.Collapsed;
@@ -89,7 +90,7 @@ namespace Lemon_App {
                 ALL.Fill = new SolidColorBrush(Color.FromArgb(255, 180, 180, 193));
                 Rbt.Fill = new SolidColorBrush(Color.FromArgb(255, 180, 180, 193));
             }
-            else if ((sender as Border).ToolTip.ToString() == "其他")
+            else if (ContentText == "其他")
             {
                 Robot.Visibility = Visibility.Collapsed;
                 Music.Visibility = Visibility.Collapsed;

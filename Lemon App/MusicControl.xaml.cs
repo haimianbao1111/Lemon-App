@@ -261,9 +261,7 @@ namespace Lemon_App
                         string ioo = await Uuuhh.GetWebAsync($"http://59.37.96.220/base/fcgi-bin/fcg_musicexpress2.fcg?version=12&miniversion=92&key=19914AA57A96A9135541562F16DAD6B885AC8B8B5420AC567A0561D04540172E&guid={guid}");
                         string vkey = He.Text(ioo, "key=\"", "\" speedrpttype", 0);
                         musicurl = $"http://182.247.250.19/streamoc.music.tc.qq.com/M500{musicid}.mp3?vkey={vkey}&guid={guid}";
-                            //player.Open(new Uri(musicurl));
-                            //player.Play();
-                            //t.Start();
+
                             WebClient dc = new WebClient()
                             {
                                 Proxy = He.proxy

@@ -49,7 +49,7 @@
         </Storyboard>
     </UserControl.Resources>
     <Canvas>
-        <Ellipse x:Name="el" Width="10" Height="10" Fill="White" Canvas.Left="73" Canvas.Top="57" >
+        <Ellipse x:Name="el" Width="10" Height="10" Fill="#FF007ACC" Canvas.Left="73" Canvas.Top="57" >
             <Ellipse.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -59,7 +59,7 @@
                 </TransformGroup>
             </Ellipse.RenderTransform>
         </Ellipse>
-        <Ellipse x:Name="el2" Width="10" Height="10" Fill="White" Canvas.Left="73" Canvas.Top="57" Opacity="0" >
+        <Ellipse x:Name="el2" Width="10" Height="10" Fill="#FF007ACC" Canvas.Left="73" Canvas.Top="57" Opacity="0" >
             <Ellipse.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -69,7 +69,7 @@
                 </TransformGroup>
             </Ellipse.RenderTransform>
         </Ellipse>
-        <Ellipse x:Name="el3" Width="10" Height="10" Fill="White" Canvas.Left="73" Canvas.Top="57" Opacity="0">
+        <Ellipse x:Name="el3" Width="10" Height="10" Fill="#FF007ACC" Canvas.Left="73" Canvas.Top="57" Opacity="0">
             <Ellipse.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -79,7 +79,7 @@
                 </TransformGroup>
             </Ellipse.RenderTransform>
         </Ellipse>
-        <Ellipse x:Name="el4" Width="10" Height="10" Fill="White" Canvas.Left="73" Canvas.Top="57" Opacity="0">
+        <Ellipse x:Name="el4" Width="10" Height="10" Fill="#FF007ACC" Canvas.Left="73" Canvas.Top="57" Opacity="0">
             <Ellipse.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -89,7 +89,7 @@
                 </TransformGroup>
             </Ellipse.RenderTransform>
         </Ellipse>
-        <Ellipse x:Name="el5" Width="10" Height="10" Fill="White" Canvas.Left="73" Canvas.Top="57" Opacity="0">
+        <Ellipse x:Name="el5" Width="10" Height="10" Fill="#FF007ACC" Canvas.Left="73" Canvas.Top="57" Opacity="0">
             <Ellipse.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -99,7 +99,7 @@
                 </TransformGroup>
             </Ellipse.RenderTransform>
         </Ellipse>
-        <Ellipse x:Name="el6" Width="10" Height="10" Fill="White" Canvas.Left="73" Canvas.Top="57" Opacity="0">
+        <Ellipse x:Name="el6" Width="10" Height="10" Fill="#FF007ACC" Canvas.Left="73" Canvas.Top="57" Opacity="0">
             <Ellipse.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

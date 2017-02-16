@@ -668,6 +668,7 @@
             <ListBox x:Name="listBox" Margin="0,43,0,0" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEEEEEE" SelectionChanged="listBox_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Visible" Style="{DynamicResource ListBoxStyle}">
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="ListBoxItem">
+                        <Setter Property="BorderThickness" Value="0"/>
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="ListBoxItem">
@@ -761,7 +762,6 @@
                     <ComboBox x:Name="pz" HorizontalAlignment="Right" Margin="0,0,100,0" Width="35" Background="{x:Null}" BorderBrush="{x:Null}" SelectedIndex="1" Foreground="#FF31C27C" FontSize="10" SelectionChanged="pz_SelectionChanged" Height="20">
                         <ComboBoxItem Content="标准" Foreground="#FF252526"/>
                         <ComboBoxItem Content="HQ" Foreground="#FF252526"/>
-                        <!--ComboBoxItem Content="SQ" Foreground="#FF252526"/-->
                     </ComboBox>
                     <ComboBox x:Name="Move" HorizontalAlignment="Right" Margin="0,0,140,0" Width="35" Background="{x:Null}" BorderBrush="{x:Null}" SelectedIndex="0" Foreground="#FF31C27C" FontSize="10" Height="20" SelectionChanged="Move_SelectionChanged">
                         <ComboBoxItem Content="循环" Foreground="#FF252526"/>

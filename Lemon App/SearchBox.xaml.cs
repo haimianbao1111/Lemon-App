@@ -77,6 +77,7 @@ namespace Lemon_App
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             textBox1.Text = (listBox.SelectedItem as ListBoxItem).Content.ToString();
+            Process.Start(Uri.EscapeUriString(Settings.Default.SearchUrl.Replace("%2a", textBox1.Text)));
         }
     }
 }
