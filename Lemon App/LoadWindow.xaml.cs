@@ -70,10 +70,10 @@ namespace Lemon_App
         string ini = "";
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (Email.Text != "")
+            if (Email.Text != "" && IsValidEmail(Email.Text))
             {
                 Random ra = new Random();
-                ini = ra.Next(9999).ToString();
+                ini = ra.Next(1000,9999).ToString();
                 MailMessage m = new MailMessage()
                 {
                     From = new MailAddress("lemon.app@qq.com", "Lemon团队")
@@ -140,6 +140,58 @@ namespace Lemon_App
         {
             Regex re = new Regex("[^0-9.-]+");
             e.Handled = re.IsMatch(e.Text);
+        }
+
+        private void Email_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                if (Email.Text != ""&&IsValidEmail(Email.Text))
+                {
+                    Random ra = new Random();
+                    ini = ra.Next(1000, 9999).ToString();
+                    MailMessage m = new MailMessage()
+                    {
+                        From = new MailAddress("lemon.app@qq.com", "Lemon团队")
+                    };
+                    m.To.Add(new MailAddress(Email.Text));
+                    m.Subject = "Lemon App";
+                    m.SubjectEncoding = Encoding.UTF8;
+                    m.Body = He.EmailMessage.Replace("{ninini}", ini);
+                    m.BodyEncoding = Encoding.UTF8;
+                    m.IsBodyHtml = true;
+                    SmtpClient s = new SmtpClient()
+                    {
+                        Host = "smtp.qq.com",
+                        Port = 587,
+                        EnableSsl = true,
+                        Credentials = new NetworkCredential("lemon.app@qq.com", "qtmiqibczofmddbi")
+                    };
+                    s.Send(m);
+                }
+            }
+        }
+        private bool IsValidEmail(string strIn)
+        {
+            return Regex.IsMatch(strIn, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)" + @"|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
+        }
+        private void TextBlock_MouseDown_1(object sender, MouseButtonEventArgs e)
+        {
+            if(Email.Text!=""&& IsValidEmail(Email.Text))
+            {
+                Settings.Default.RNBM = (Boolean)RM.IsChecked;
+                Settings.Default.LemonAreeunIts = Email.Text;
+                Settings.Default.Save();
+                OS.Visibility = Visibility.Collapsed;
+                RM.Visibility = Visibility.Collapsed;
+                ThicknessAnimationUsingKeyFrames t = new ThicknessAnimationUsingKeyFrames();
+                t.KeyFrames.Add(new LinearThicknessKeyFrame(new Thickness(0, -45, 0, 0), TimeSpan.FromSeconds(0)));
+                t.KeyFrames.Add(new LinearThicknessKeyFrame(new Thickness(0, 50, 0, 0), TimeSpan.FromSeconds(0.3)));
+                t.KeyFrames.Add(new LinearThicknessKeyFrame(new Thickness(0, 50, 0, 0), TimeSpan.FromSeconds(3)));
+                TX.BeginAnimation(MarginProperty, t);
+                tr.Start();
+            }
+            else { rk.Text = "游客访问必须输入你的邮箱"; }
         }
     }
 }

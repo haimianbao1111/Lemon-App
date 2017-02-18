@@ -1,23 +1,13 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Net.NetworkInformation;
-using System.Runtime.InteropServices;
 using System.Text;
-using System.Windows;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Threading;
 //using Windows.UI.Notifications;
-using System.Drawing;
-using System.Runtime.Serialization.Json;
-using System.Web.Script.Serialization;
-using System.Text.RegularExpressions;
 using Lemon_App.Properties;
-using System.Windows.Controls;
 
 //🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂
 //                                                                                          🙂
