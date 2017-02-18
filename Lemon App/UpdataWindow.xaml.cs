@@ -50,7 +50,7 @@ namespace Lemon_App
         {
             if (System.IO.File.Exists(AppDomain.CurrentDomain.BaseDirectory + @"Setup.exe"))
             { Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"Setup.exe"); Environment.Exit(0); }
-            else Toast.SetToastNotion("Lemon App:", "啊哦 下载更新失败了", "-----来自Lemon Updata").Show();
+            else MessageBox.Show("下载失败");
         }
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)

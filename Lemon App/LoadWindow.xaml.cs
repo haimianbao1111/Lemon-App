@@ -26,11 +26,22 @@ namespace Lemon_App
     public partial class LoadWindow : Window
     {
         System.Windows.Forms.Timer tr = new System.Windows.Forms.Timer();
+        System.Windows.Forms.Timer trs = new System.Windows.Forms.Timer();
         public LoadWindow()
         {
             InitializeComponent();
             tr.Interval = 4000;
             tr.Tick += T;
+            trs.Interval = 4000;
+            trs.Tick += Trs;
+        }
+
+        private void Trs(object sender, EventArgs e)
+        {
+            OS.Visibility = Visibility.Visible;
+            RM.Visibility = Visibility.Visible;
+            rk.Text = "验证码错误";
+            trs.Stop();
         }
 
         private void T(object sender, EventArgs e)
@@ -100,7 +111,18 @@ namespace Lemon_App
                     t.KeyFrames.Add(new LinearThicknessKeyFrame(new Thickness(0, 50, 0, 0), TimeSpan.FromSeconds(3)));
                     TX.BeginAnimation(MarginProperty,t);
                     tr.Start();
-                }else { Toast.SetToastNotion("小萌:", "啦啦啦！验证码错误", "----啊哦").Show(); }
+                }else
+                {
+                    OS.Visibility = Visibility.Collapsed;
+                    RM.Visibility = Visibility.Collapsed;
+                    ThicknessAnimationUsingKeyFrames t = new ThicknessAnimationUsingKeyFrames();
+                    t.KeyFrames.Add(new LinearThicknessKeyFrame(new Thickness(0, -45, 0, 0), TimeSpan.FromSeconds(0)));
+                    t.KeyFrames.Add(new LinearThicknessKeyFrame(new Thickness(0, 50, 0, 0), TimeSpan.FromSeconds(0.3)));
+                    t.KeyFrames.Add(new LinearThicknessKeyFrame(new Thickness(0, 50, 0, 0), TimeSpan.FromSeconds(2)));
+                    t.AutoReverse = true;
+                    TX.BeginAnimation(MarginProperty, t);
+                    trs.Start();
+                }
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

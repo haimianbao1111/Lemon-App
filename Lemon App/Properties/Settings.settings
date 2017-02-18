@@ -45,7 +45,7 @@
       <Value Profile="(Default)">2591355982</Value>
     </Setting>
     <Setting Name="LemonAreeunIts" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Lemon User</Value>
+      <Value Profile="(Default)">你的邮箱</Value>
     </Setting>
     <Setting Name="sx" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>

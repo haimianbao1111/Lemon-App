@@ -32,7 +32,7 @@ namespace Lemon_App
         private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {try
             {
-                Toast.SetToastNotion("Lemon App:", ":( 噢！柠萌似乎遇到了一个异常：" + ((Exception)e.ExceptionObject).Message, "如果遇到不能使用请到用户反馈提出你的问题。").Show();
+                //Toast.SetToastNotion("Lemon App:", ":( 噢！柠萌似乎遇到了一个异常：" + ((Exception)e.ExceptionObject).Message, "如果遇到不能使用请到用户反馈提出你的问题。").Show();
                 //MailMessage m = new MailMessage()
                 //{
                 //    From = new MailAddress("lemon.app@qq.com", "Lemon团队")
@@ -58,7 +58,7 @@ namespace Lemon_App
         private void Current_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {try
             {
-                Toast.SetToastNotion("Lemon App:", ":( 噢！柠萌似乎遇到了一个异常：" + e.Exception.Message, "如果遇到不能使用请到用户反馈提出你的问题。").Show();
+                //Toast.SetToastNotion("Lemon App:", ":( 噢！柠萌似乎遇到了一个异常：" + e.Exception.Message, "如果遇到不能使用请到用户反馈提出你的问题。").Show();
                 e.Handled = true;
                 //MailMessage m = new MailMessage()
                 //{

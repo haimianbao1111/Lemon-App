@@ -896,8 +896,12 @@ namespace Lemon_App
         //
         private void OK(object sender, AsyncCompletedEventArgs e)
         {
-            if (!System.IO.File.Exists(AppDomain.CurrentDomain.BaseDirectory + ((listBox.SelectedItem as ListBoxItem).Content as string) + ".m4a"))
-                Toast.SetToastNotion("Lemon App:", "啊哦 下载失败了", "-----来自Lemon Updata").Show();
+            string op = "";
+            if (pz.Text == "标准") { op = "m4a"; }
+            if (pz.Text == "HQ") { op = "mp3"; }
+            if (pz.Text == "SQ") { op = "flac"; }
+            if (!System.IO.File.Exists(AppDomain.CurrentDomain.BaseDirectory + ((listBox.SelectedItem as ListBoxItem).Content as string) + op))
+                textBlock6.Text = "下载失败";
         }
 
         private void tx_MouseDown(object sender, MouseButtonEventArgs e)

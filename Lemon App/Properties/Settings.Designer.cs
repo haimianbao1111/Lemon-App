@@ -193,7 +193,7 @@ namespace Lemon_App.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Lemon User")]
+        [global::System.Configuration.DefaultSettingValueAttribute("你的邮箱")]
         public string LemonAreeunIts {
             get {
                 return ((string)(this["LemonAreeunIts"]));

@@ -28,16 +28,12 @@ namespace Lemon_App
             if(e.Key==Key.Enter)
                 if (textBox1.Text != "")
                     Process.Start(Uri.EscapeUriString(Settings.Default.SearchUrl.Replace("%2a", textBox1.Text)));
-                else
-                    Toast.SetToastNotion("Lemon提示:", "尚未输入搜索内容", "-----来自Lemon Toast").Show();
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (textBox1.Text != "")
                 Process.Start(Uri.EscapeUriString(Settings.Default.SearchUrl.Replace("%2a", textBox1.Text)));
-            else
-                Toast.SetToastNotion("Lemon提示:", "尚未输入搜索内容", "-----来自Lemon Toast").Show();
         }
 
         private void UserControl_Loaded(object sender, System.Windows.RoutedEventArgs e)

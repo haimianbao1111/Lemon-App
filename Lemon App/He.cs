@@ -11,7 +11,7 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
-using Windows.UI.Notifications;
+//using Windows.UI.Notifications;
 using System.Drawing;
 using System.Runtime.Serialization.Json;
 using System.Web.Script.Serialization;
@@ -286,45 +286,45 @@ namespace Lemon_App
             return st.Replace(".", "\r\n");
         }
     }
-    public class ToastNotion
-    {
-        private string doc = "";
-        public ToastNotion(string I)
-        {
-            doc = I;
-        }
-        public void Show()
-        {
-            string os = Environment.OSVersion.Version.Major.ToString() +"."+ Environment.OSVersion.Version.Minor.ToString();
-            if (os == "10.0" || os == "6.3" || os == "6.2")
-            {
-                Windows.Data.Xml.Dom.XmlDocument xml = new Windows.Data.Xml.Dom.XmlDocument();
-                xml.LoadXml(doc);
-                ToastNotification toast = new ToastNotification(xml);
-                ToastNotificationManager.CreateToastNotifier("Lemon App").Show(toast);
-            }
-        } 
-        public override string ToString()
-        {
-            return doc;
-        }
-    }
-    public class Toast
-    {
-        public static ToastNotion SetToastNotion(string i, string ii, string iii)
-        {
-            string doc = "<toast lang=\"zh-CN\">" +
-              "<visual>" +
-                  "<binding template=\"ToastGeneric\">" +
-                      "<text>" + i + "</text>" +
-                      "<text>" + ii + "</text>" +
-                      "<text>" + iii + "</text>" +
-                  "</binding>" +
-              "</visual>" +
-           "</toast>";
-            return new ToastNotion(doc);
-        }
-    }
+    //public class ToastNotion
+    //{
+    //    private string doc = "";
+    //    public ToastNotion(string I)
+    //    {
+    //        doc = I;
+    //    }
+    //    public void Show()
+    //    {
+    //        string os = Environment.OSVersion.Version.Major.ToString() +"."+ Environment.OSVersion.Version.Minor.ToString();
+    //        if (os == "10.0" || os == "6.3" || os == "6.2")
+    //        {
+    //            Windows.Data.Xml.Dom.XmlDocument xml = new Windows.Data.Xml.Dom.XmlDocument();
+    //            xml.LoadXml(doc);
+    //            ToastNotification toast = new ToastNotification(xml);
+    //            ToastNotificationManager.CreateToastNotifier("Lemon App").Show(toast);
+    //        }
+    //    } 
+    //    public override string ToString()
+    //    {
+    //        return doc;
+    //    }
+    //}
+    //public class Toast
+    //{
+    //    public static ToastNotion SetToastNotion(string i, string ii, string iii)
+    //    {
+    //        string doc = "<toast lang=\"zh-CN\">" +
+    //          "<visual>" +
+    //              "<binding template=\"ToastGeneric\">" +
+    //                  "<text>" + i + "</text>" +
+    //                  "<text>" + ii + "</text>" +
+    //                  "<text>" + iii + "</text>" +
+    //              "</binding>" +
+    //          "</visual>" +
+    //       "</toast>";
+    //        return new ToastNotion(doc);
+    //    }
+    //}
 
 
     public class Uuuhh
