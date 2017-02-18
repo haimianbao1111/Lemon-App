@@ -119,7 +119,7 @@
                 <ComboBoxItem BorderBrush="{x:Null}" Content="自动"/>
                 <ComboBoxItem  BorderBrush="{x:Null}" Content="中文"/>
             </ComboBox>
-            <ComboBox x:Name="HyycomboBox" HorizontalAlignment="Right" Height="31" Margin="0,10,70,0" VerticalAlignment="Top" Width="70" BorderBrush="{x:Null}" SelectedIndex="20" FontSize="14" Text="英语" Background="#FFF1F2F6" Foreground="#FF1B1B1C" Grid.Column="1">
+            <ComboBox x:Name="HyycomboBox" HorizontalAlignment="Right" Height="31" Margin="0,10,70,0" VerticalAlignment="Top" Width="70" BorderBrush="{x:Null}" FontSize="14" Text="英语" Background="#FFF1F2F6" Foreground="#FF1B1B1C" Grid.Column="1">
                 <ComboBoxItem  BorderBrush="{x:Null}" Content="阿拉伯语"/>
                 <ComboBoxItem BorderBrush="{x:Null}" Content="爱沙尼亚语"/>
                 <ComboBoxItem BorderBrush="{x:Null}" Content="保加利亚语"/>
