@@ -295,10 +295,14 @@ namespace Lemon_App
         }
         public void Show()
         {
+            string os = Environment.OSVersion.Version.Major.ToString() +"."+ Environment.OSVersion.Version.Minor.ToString();
+            if (os == "10.0" || os == "6.3" || os == "6.2")
+            {
                 Windows.Data.Xml.Dom.XmlDocument xml = new Windows.Data.Xml.Dom.XmlDocument();
                 xml.LoadXml(doc);
                 ToastNotification toast = new ToastNotification(xml);
                 ToastNotificationManager.CreateToastNotifier("Lemon App").Show(toast);
+            }
         } 
         public override string ToString()
         {
