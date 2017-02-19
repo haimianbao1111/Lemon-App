@@ -15,6 +15,9 @@
         <Grid Width="200" Height="200" VerticalAlignment="Top" Margin="0,100,0,0">
             <Border x:Name="TX" BorderThickness="5" Height="125" Margin="0" VerticalAlignment="Top" Width="125" BorderBrush="#66FFFFFF" CornerRadius="125" Background="#FF16537E" MouseDown="TX_MouseDown"/>
             <TextBlock x:Name="NM" Height="26" Margin="0,130,0,0" TextWrapping="Wrap" Text="Lemon User" VerticalAlignment="Top" Foreground="#FF2D2D30" FontSize="20" TextAlignment="Center"/>
+            <Border Height="30" VerticalAlignment="Bottom" Background="#FFF1F2F3" CornerRadius="5" Margin="10,0,10,10" Width="180" BorderBrush="#FF818181" BorderThickness="2">
+                <TextBox x:Name="Title" Margin="0" MaxLength="4" TextWrapping="Wrap" Height="20" Width="120" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Foreground="#FF2D2D30" Text="么么哒" TextAlignment="Center" KeyDown="Title_KeyDown" BorderThickness="0"/>
+            </Border>
         </Grid>
 
     </Grid>

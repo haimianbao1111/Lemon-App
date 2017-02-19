@@ -36,6 +36,7 @@ namespace Lemon_App
             if (System.IO.File.Exists(Settings.Default.UserImage))
             { TX.Background = new ImageBrush(new BitmapImage(new Uri(Settings.Default.UserImage, UriKind.Absolute))); }
             NM.Text = Settings.Default.RobotName;
+            Title.Text = Settings.Default.title;
         }
 
         private void TX_MouseDown(object sender, MouseButtonEventArgs e)
@@ -47,6 +48,16 @@ namespace Lemon_App
                 Settings.Default.UserImage = o.FileName;
                 Settings.Default.Save();
             }
+        }
+
+        private void Title_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                if (Title.Text != string.Empty)
+                {
+                    Settings.Default.title = Title.Text;
+                    Settings.Default.Save();
+                }
         }
     }
 }

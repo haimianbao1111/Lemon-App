@@ -35,6 +35,8 @@ namespace Lemon_App
         {
             if (System.IO.File.Exists(Settings.Default.UserImage))
                 bd.Background = new ImageBrush(new BitmapImage(new Uri(Settings.Default.UserImage, UriKind.Absolute)));
+            UName.Text = Settings.Default.RobotName;
+            title.Text = Settings.Default.title;
         }
     }
 }

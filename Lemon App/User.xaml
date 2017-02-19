@@ -8,27 +8,30 @@
              mc:Ignorable="d" Height="Auto" Width="Auto" Loaded="UserControl_Loaded">
     <Grid>
 
-        <Border x:Name="bd" BorderThickness="0" HorizontalAlignment="Right" Margin="0,10,10,0" Width="50" CornerRadius="50" Height="50" VerticalAlignment="Top">
-            <Border.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF00FFDC" Offset="0"/>
-                    <GradientStop Color="#FF3399FF" Offset="1"/>
-                </LinearGradientBrush>
-            </Border.Background>
-        </Border>
-        <Border Width="Auto" Height="Auto" Margin="0,19.24,76,0" CornerRadius="5" VerticalAlignment="Top" HorizontalAlignment="Right" Background="#FF3399FF">
+        <Border x:Name="bd" BorderThickness="0" HorizontalAlignment="Right" Margin="0,12,12,0" Width="30" CornerRadius="50" Height="30" VerticalAlignment="Top" Background="#FF007ACC"/>
+        <Border Width="Auto" Height="Auto" Margin="0,35,55,0" CornerRadius="5" VerticalAlignment="Top" HorizontalAlignment="Right" Background="#FF3399FF">
             <TextBlock x:Name="Te" Height="Auto" TextWrapping="Wrap" Width="Auto" d:LayoutOverrides="LeftPosition, RightPosition" Cursor="" Margin="6" Foreground="White" FontSize="14" Text="啦啦啦"/>
         </Border>
-        <ed:RegularPolygon Fill="#FF3399FF" HorizontalAlignment="Right" Height="9.24" InnerRadius="1" Margin="0,30,65,0" PointCount="3" Stretch="Fill" VerticalAlignment="Top" Width="14" RenderTransformOrigin="0.5,0.5">
+        <ed:RegularPolygon Fill="#FF3399FF" HorizontalAlignment="Right" Height="9" InnerRadius="1" Margin="0,46,44,0" PointCount="3" Stretch="Fill" VerticalAlignment="Top" Width="14" RenderTransformOrigin="0.5,0.5">
             <ed:RegularPolygon.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
-                    <RotateTransform Angle="90.368"/>
+                    <RotateTransform Angle="90"/>
                     <TranslateTransform/>
                 </TransformGroup>
             </ed:RegularPolygon.RenderTransform>
         </ed:RegularPolygon>
+        <Grid HorizontalAlignment="Right" Height="16" Margin="0,16,45,0" VerticalAlignment="Top" Width="Auto">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Border HorizontalAlignment="Right" Height="15" VerticalAlignment="Top" Width="38" Background="#FF00FF80" CornerRadius="5" Grid.Column="1">
+                <TextBlock x:Name="title" TextWrapping="Wrap" Text="么么哒" Foreground="#FFF1F2F3" TextAlignment="Center"/>
+            </Border>
+            <TextBlock x:Name="UName" Height="14" Margin="0,0,1.636,0" TextWrapping="Wrap" Text="小萌机器人" VerticalAlignment="Top" Foreground="#FF2D2D30" HorizontalAlignment="Right" Width="Auto"/>
+        </Grid>
 
     </Grid>
 </UserControl>

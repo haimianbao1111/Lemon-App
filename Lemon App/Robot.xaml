@@ -8,25 +8,29 @@
              mc:Ignorable="d" Height="Auto" Width="Auto">
     <Grid>
 
-        <Border x:Name="Image" BorderThickness="0" HorizontalAlignment="Left" Margin="11,12.24,0,0" Width="50" CornerRadius="50" Height="50" VerticalAlignment="Top">
+        <Border x:Name="Image" BorderThickness="0" HorizontalAlignment="Left" Margin="12,12,0,0" Width="30" CornerRadius="50" Height="30" VerticalAlignment="Top">
             <Border.Background>
                 <ImageBrush ImageSource="Images/Robot.jpg"/>
             </Border.Background>
             <!--ed:RegularPolygon Fill="White" InnerRadius="0.47211" Margin="5" PointCount="5" Stretch="Fill"/!-->
         </Border>
-        <Border Width="Auto" Height="Auto" Margin="78,23.24,0,0" CornerRadius="5" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF3399FF">
+        <Border Width="Auto" Height="Auto" Margin="55,35,0,0" CornerRadius="5" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF3399FF">
             <TextBlock x:Name="Te" Height="Auto" TextWrapping="Wrap" Width="Auto" d:LayoutOverrides="LeftPosition, RightPosition" Cursor="" Margin="6" Foreground="White" FontSize="14" Text="欢迎回来"/>
         </Border>
-        <ed:RegularPolygon Fill="#FF3399FF" HorizontalAlignment="Left" Height="9.24" InnerRadius="1" Margin="67,32,0,0" PointCount="3" Stretch="Fill" VerticalAlignment="Top" Width="14" RenderTransformOrigin="0.5,0.5">
+        <ed:RegularPolygon Fill="#FF3399FF" HorizontalAlignment="Left" Height="9" InnerRadius="1" Margin="45,44,0,0" PointCount="3" Stretch="Fill" VerticalAlignment="Top" Width="14" RenderTransformOrigin="0.5,0.5">
             <ed:RegularPolygon.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
-                    <RotateTransform Angle="-91.529"/>
+                    <RotateTransform Angle="-90"/>
                     <TranslateTransform/>
                 </TransformGroup>
             </ed:RegularPolygon.RenderTransform>
         </ed:RegularPolygon>
+        <Border HorizontalAlignment="Left" Height="15" Margin="45,15,0,0" VerticalAlignment="Top" Width="38" Background="#FFFF9700" CornerRadius="5">
+            <TextBlock TextWrapping="Wrap" Text="帅帅哒" Foreground="#FFF1F2F3" TextAlignment="Center"/>
+        </Border>
+        <TextBlock Height="14" Margin="83,15,0,0" TextWrapping="Wrap" Text="小萌机器人" VerticalAlignment="Top" Foreground="#FF2D2D30"/>
 
     </Grid>
 </UserControl>

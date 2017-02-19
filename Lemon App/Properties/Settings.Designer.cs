@@ -214,5 +214,17 @@ namespace Lemon_App.Properties {
                 this["sx"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("么么哒")]
+        public string title {
+            get {
+                return ((string)(this["title"]));
+            }
+            set {
+                this["title"] = value;
+            }
+        }
     }
 }
