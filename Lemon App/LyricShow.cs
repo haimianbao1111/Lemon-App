@@ -1315,6 +1315,7 @@ namespace Lemon_App
             foreach (string txt in TimeAndLyricDictionary.Values)
             {
                 TextBlock tb = new TextBlock();
+                tb.FontSize = 18;
                 tb.TextWrapping = TextWrapping.Wrap;
                 tb.TextAlignment = TextAlignment.Center;
                 tb.FontSize = fontSmallA;
