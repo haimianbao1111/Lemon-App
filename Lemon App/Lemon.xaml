@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lemon_App"
         mc:Ignorable="d"
-        Title="Lemon App" Height="600" Width="845" MinWidth="310" MinHeight="430" Background="{x:Null}" WindowStyle="None" AllowsTransparency="True" MouseLeftButtonDown="Window_MouseLeftButtonDown" ResizeMode="CanResizeWithGrip" SizeChanged="Window_SizeChanged" Loaded="Window_Loaded" Icon="Lemon App Ico.ico" Style="{DynamicResource WindowStyle}" WindowStartupLocation="CenterScreen">
+        Title="Lemon App" Height="600" Width="845" MinWidth="310" MinHeight="430" Background="{x:Null}" WindowStyle="None" AllowsTransparency="True" MouseLeftButtonDown="Window_MouseLeftButtonDown" ResizeMode="CanResizeWithGrip" SizeChanged="Window_SizeChanged" Loaded="Window_Loaded" Icon="Lemon App Ico.ico" Style="{DynamicResource WindowStyle}" WindowStartupLocation="CenterScreen" >
     <Window.Resources>
 
         <ControlTemplate x:Key="WindowTemplateKey" TargetType="{x:Type Window}">
@@ -83,7 +83,7 @@
             </RectangleGeometry>
         </Grid.Clip>
         <Border x:Name="BackgroundPage" CornerRadius="3" Background="#FFFDFDFD" BorderThickness="1" BorderBrush="#FFF6F7F9">
-           
+            <WrapPanel x:Name="BP"/>
         </Border>
         <Grid x:Name="ContentPage" >
             <Grid x:Name="TopPage" Background="#FFF6F7F9" MinHeight="50" Grid.RowSpan="1" Height="50" Margin="0" VerticalAlignment="Top">

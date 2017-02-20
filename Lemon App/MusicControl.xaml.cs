@@ -964,6 +964,8 @@ namespace Lemon_App
 
         private async void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
+            LyricShow.CFontFamily = this.FontFamily;
+            LyricShow.HFontFamily = this.FontFamily;
             Move.SelectedIndex = Settings.Default.sx;
 
             JObject json = JObject.Parse(await Uuuhh.GetWebAsync("http://59.37.96.220/soso/fcgi-bin/dynamic_content?format=json&outCharset=utf-8", Encoding.UTF8));

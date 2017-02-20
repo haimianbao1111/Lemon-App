@@ -1,5 +1,7 @@
 ﻿using Lemon_App.Properties;
 using System;
+using System.IO;
+using System.Net;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -107,6 +109,7 @@ namespace Lemon_App {
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
+           // FontFamily = new FontFamily(".PingFang SC");
             new HaWindow().Show();
    //         ZX.BeginAnimation(OpacityProperty, new DoubleAnimation(0.3, 1, TimeSpan.FromSeconds(1)) { AutoReverse = true });
             if (await Lemon_Updata.IsLemonNew(He.KMS))
