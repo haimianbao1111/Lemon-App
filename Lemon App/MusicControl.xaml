@@ -658,10 +658,10 @@
                 </Canvas>
                 <StackPanel Margin="28,254.024,23,2" x:Name="BaseLineSP" Background="#00000000">
                     <Line Stroke="#FF007ACC" StrokeThickness="2" StrokeDashArray="4,2" X1="0" X2="{Binding ActualWidth, ElementName=CanvasLyric}" Y2="0" x:Name="BaseLine" Visibility="Collapsed" Fill="#00000000" OpacityMask="{x:Null}" Y1="0" Grid.ColumnSpan="2" Height="4" />
-                    <TextBlock x:Name="tbDragTime" TextWrapping="Wrap" Text="0.00.00" TextAlignment="Left" Foreground="#FF007ACC" FontSize="18" Visibility="Collapsed" Width="{Binding ActualWidth, ElementName=CanvasLyric}" Background="#00000000" />
+                    <!--TextBlock x:Name="tbDragTime" TextWrapping="Wrap" Text="0.00.00" TextAlignment="Left" Foreground="#FF007ACC" FontSize="18" Visibility="Collapsed" Width="{Binding ActualWidth, ElementName=CanvasLyric}" Background="#00000000" /-->
                 </StackPanel>
             </Grid>
-            <TextBlock x:Name="lrcname" HorizontalAlignment="Left" Height="Auto" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="Auto" Margin="10,10,0,0" Foreground="#FF686868" FontSize="22"/>
+            <TextBlock x:Name="lrcname" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="Auto" Margin="10,10,0,0" Foreground="#FF686868" FontSize="22"/>
             <TextBlock x:Name="zk" HorizontalAlignment="Left" Height="Auto" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="Auto" Margin="10,35,0,0" Foreground="#FF969696" FontSize="16"/>
         </Grid>
         <Grid x:Name="h" Margin="0,0,0,49">

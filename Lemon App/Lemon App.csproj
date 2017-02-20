@@ -192,6 +192,7 @@
     </Compile>
     <Compile Include="UpdataWindow.xaml.cs">
       <DependentUpon>UpdataWindow.xaml</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="User.xaml.cs">
       <DependentUpon>User.xaml</DependentUpon>
@@ -308,6 +309,7 @@
     <Page Include="UpdataWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Page>
     <Page Include="User.xaml">
       <SubType>Designer</SubType>

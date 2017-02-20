@@ -1350,17 +1350,18 @@ namespace Lemon_App
                         {
                             TextBlock LastTB = commonLyricStackPanel.Children[LyricShow.LastLyricIndex] as TextBlock;
                             LastTB.Visibility = Visibility.Visible;
-                            fontSizeToSmall(LastTB);//把上一句的歌词字体由大渐变到小
+                            LastTB.Foreground = new SolidColorBrush(Color.FromArgb(HA, CR, CG, CB));
+                            //         fontSizeToSmall(LastTB);//把上一句的歌词字体由大渐变到小
                         }                                                                  
                         TextBlock CurrentTB = commonLyricStackPanel.Children[LyricShow.CurrentLyricIndex] as TextBlock;
                         tBFocusLyricBack.Visibility = Visibility.Hidden;
-                        canvasFocusLyricForeMove.Visibility = Visibility.Hidden;
-                        CurrentTB.Foreground = new SolidColorBrush(Color.FromArgb(HA, CR, CG, CB));
+                        //canvasFocusLyricForeMove.Visibility = Visibility.Hidden;
+                        CurrentTB.Foreground = new SolidColorBrush(Color.FromArgb(HA, 0, 112, 204));
                         CurrentTB.FontFamily = HFontFamily;
                         tBFocusLyricBack.Text = CurrentTB.Text;                                 
                         if (isOpenDeskLyric == true)
                         {
-                            canvasDeskLyricForeMove.Visibility = Visibility.Hidden;
+                           // canvasDeskLyricForeMove.Visibility = Visibility.Hidden;
                             if (string.IsNullOrWhiteSpace(CurrentTB.Text))
                             {
                                 tBDeskLyricBack.Text = "......";
@@ -1372,7 +1373,7 @@ namespace Lemon_App
                         }
                         LyricShow.LastLyricIndex = LyricShow.CurrentLyricIndex;
                         scrollLyric(LyricShow.CurrentLyricIndex);//滚动歌词                                               
-                        fontSizeToBig(CurrentTB);//高亮歌词(当前歌词)字体由小到大渐变                        
+                   //     fontSizeToBig(CurrentTB);//高亮歌词(当前歌词)字体由小到大渐变                        
                     }
                     catch { }
                     #endregion

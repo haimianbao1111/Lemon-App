@@ -10,7 +10,7 @@
 
         <Border x:Name="Image" BorderThickness="0" HorizontalAlignment="Left" Margin="12,12,0,0" Width="30" CornerRadius="50" Height="30" VerticalAlignment="Top">
             <Border.Background>
-                <ImageBrush ImageSource="Images/Robot.jpg"/>
+                <ImageBrush ImageSource="/Lemon App Ico.ico"/>
             </Border.Background>
             <!--ed:RegularPolygon Fill="White" InnerRadius="0.47211" Margin="5" PointCount="5" Stretch="Fill"/!-->
         </Border>
