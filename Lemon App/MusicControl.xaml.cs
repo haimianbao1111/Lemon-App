@@ -874,6 +874,7 @@ namespace Lemon_App
 
         private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
         {
+            LyricShow.refreshLyricShowUIWhenChangeWINOrFontSize();
             foreach (var o in listBox.Items)
             {
                 (o as UserControl).Width = this.ActualWidth;
