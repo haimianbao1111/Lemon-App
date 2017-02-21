@@ -21,9 +21,9 @@ namespace Lemon_App
         {
             jz.Visibility = Visibility.Visible;
             WP.Children.Clear();
-            JObject o = JObject.Parse(await Uuuhh.GetWebAsync($"https://route.showapi.com/109-35?&page={page}&showapi_sign=cfa206656db244c089be2d1499735bb5&showapi_appid=29086&maxResult=100&channelName={ha}"));
+            JObject o = JObject.Parse(await Uuuhh.GetWebAsync($"https://route.showapi.com/109-35?&page={page}&showapi_sign=cfa206656db244c089be2d1499735bb5&showapi_appid=29086&maxResult=10&channelName={ha}"));
             int i = 0;
-            while (i != 100)
+            while (i != 9)
             {
                 WP.Children.Add(new NewsList(o["showapi_res_body"]["pagebean"]["contentlist"][i]["title"].ToString(), o["showapi_res_body"]["pagebean"]["contentlist"][i]["pubDate"].ToString(), o["showapi_res_body"]["pagebean"]["contentlist"][i]["source"].ToString(), "", o["showapi_res_body"]["pagebean"]["contentlist"][i]["link"].ToString()) { Width=this.ActualWidth});
                 i++;

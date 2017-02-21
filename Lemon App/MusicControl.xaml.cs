@@ -931,6 +931,8 @@ namespace Lemon_App
             }
             catch { jz.Visibility = Visibility.Collapsed; }
         }int hs = 0;
+        private DeskLyricWin deskLyricWin;
+
         private void textBlock1_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if(hs==0)
@@ -1004,6 +1006,30 @@ namespace Lemon_App
         {
             Settings.Default.sx = Move.SelectedIndex;
             Settings.Default.Save();
+        }
+
+        private void Border_MouseDown_5(object sender, MouseButtonEventArgs e)
+        {
+            if (!LyricShow.IsOpenDeskLyric)
+            {
+                RotateTransform rtf = new RotateTransform();
+                (sender as Border).RenderTransform = rtf;
+                (sender as Border).RenderTransformOrigin = new Point(0.5,0.5);
+                DoubleAnimation dbAscending = new DoubleAnimation(0, 90, new Duration(TimeSpan.FromSeconds(0.2)));
+                rtf.BeginAnimation(RotateTransform.AngleProperty, dbAscending);
+                deskLyricWin = new DeskLyricWin();
+                deskLyricWin.Show();
+                LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
+            }else
+            {
+                RotateTransform rtf = new RotateTransform();
+                (sender as Border).RenderTransform = rtf;
+                (sender as Border).RenderTransformOrigin = new Point(0.5, 0.5);
+                DoubleAnimation dbAscending = new DoubleAnimation(90, 0, new Duration(TimeSpan.FromSeconds(0.2)));
+                rtf.BeginAnimation(RotateTransform.AngleProperty, dbAscending);
+                deskLyricWin.Close();
+                LyricShow.IsOpenDeskLyric = false;
+            }
         }
     }
 }

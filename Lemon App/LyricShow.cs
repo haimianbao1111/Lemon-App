@@ -22,8 +22,8 @@ namespace Lemon_App
             LyricShow.canvasFocusLyricForeMove = canvasFocusLyricForeMove;
             LyricShow.tBFocusLyricFore = tBFocusLyricFore;
             fontSizeChangeSmallA.Completed += fontSizeChangeSmallA_Completed;
-            fontSizeChangeBigA.Completed += fontSizeChangeBigA_Completed;          
-        }         
+            fontSizeChangeBigA.Completed += fontSizeChangeBigA_Completed;
+        }
         /// <summary>
         /// 是否暂停了歌词秀(默认false，没有暂停歌词秀)
         /// </summary>
@@ -50,7 +50,7 @@ namespace Lemon_App
         public static short RefreshType
         {
             get
-            { return LyricShow.refreshType; }                      
+            { return LyricShow.refreshType; }
             set { LyricShow.refreshType = value; }
         }
         /// <summary>
@@ -62,7 +62,7 @@ namespace Lemon_App
         /// </summary>
         public static int CurrentLyricIndex
         {
-            get 
+            get
             {
                 if (LyricShow.currentLyricIndex <= -1)
                 {
@@ -80,7 +80,7 @@ namespace Lemon_App
                         LyricShow.currentLyricIndex = -1;
                     }
                 }
-                return LyricShow.currentLyricIndex; 
+                return LyricShow.currentLyricIndex;
             }
             set { LyricShow.currentLyricIndex = value; }
         }
@@ -113,7 +113,7 @@ namespace Lemon_App
                 return LyricShow.lastLyricIndex;
             }
             set { LyricShow.lastLyricIndex = value; }
-        } 
+        }
         /// <summary>
         /// 当前歌词和下一句歌词的时间间隔长度(初始0)
         /// </summary>
@@ -170,10 +170,10 @@ namespace Lemon_App
                 TextBlock CurrentTBBack = commonLyricStackPanel.Children[LyricShow.CurrentLyricIndex] as TextBlock;
                 CurrentTBBack.Visibility = Visibility.Hidden;
                 switch (RefreshType)
-                { 
+                {
                     case 1:
                         #region 刷新情况不是在跳播放的前提下
-                        currentLyricWalkedPersent = 0;                               
+                        currentLyricWalkedPersent = 0;
                         //高亮歌词
                         focusLyricTextFontTotalWidth = MeasureTextWidth(tBFocusLyricBack.Text, tBFocusLyricBack.FontSize, tBFocusLyricBack.FontFamily.ToString());
                         focusLyricTextBlockLeftSpaceWidth = (tBFocusLyricBack.ActualWidth - focusLyricTextFontTotalWidth) / 2;
@@ -214,13 +214,13 @@ namespace Lemon_App
                             }
                         }
                         break;
-                        #endregion
+                    #endregion
                     case 2:
                         //不做任何操作,但2一定要存在
                         break;
                     default:
                         #region 刷新情况不是在跳播放的前提下
-                        currentLyricWalkedPersent = 0;                               
+                        currentLyricWalkedPersent = 0;
                         //高亮歌词
                         focusLyricTextFontTotalWidth = MeasureTextWidth(tBFocusLyricBack.Text, tBFocusLyricBack.FontSize, tBFocusLyricBack.FontFamily.ToString());
                         focusLyricTextBlockLeftSpaceWidth = (tBFocusLyricBack.ActualWidth - focusLyricTextFontTotalWidth) / 2;
@@ -262,7 +262,7 @@ namespace Lemon_App
                         }
                         break;
                         #endregion                       
-                }              
+                }
             }
             catch { }
         }
@@ -275,13 +275,13 @@ namespace Lemon_App
         /// </summary>
         public static SortedDictionary<Double, string> TimeAndLyricDictionary
         {
-            get 
+            get
             {
                 if (LyricShow.timeAndLyricDictionary == null)
                 {
                     LyricShow.timeAndLyricDictionary = new SortedDictionary<double, string>();
                 }
-                return LyricShow.timeAndLyricDictionary; 
+                return LyricShow.timeAndLyricDictionary;
             }
             set
             { LyricShow.timeAndLyricDictionary = value; }
@@ -301,11 +301,11 @@ namespace Lemon_App
         /// <summary>
         /// 高亮歌词前景移动画布，从而体现从左往右刷的效果
         /// </summary>
-        public static Canvas canvasFocusLyricForeMove;   
+        public static Canvas canvasFocusLyricForeMove;
         /// <summary>
         /// 高亮歌词前景文本TextBlock
         /// </summary>
-        public static TextBlock tBFocusLyricFore;       
+        public static TextBlock tBFocusLyricFore;
         /// <summary>
         /// 高亮歌词背景文本TextBlock
         /// </summary>
@@ -361,7 +361,7 @@ namespace Lemon_App
         /// <summary>
         /// 歌词文本TextBlock的高度(默认36)
         /// </summary>
-        private static double lyricTextBlockHeight=40;
+        private static double lyricTextBlockHeight = 45; 
         /// <summary>
         /// 歌词文本TextBlock的高度(默认36)
         /// </summary>
@@ -1295,7 +1295,7 @@ namespace Lemon_App
         /// <summary>
         /// 初始化歌词界面(非桌面歌词),每次更换一首歌要显示它的歌词秀时，此方法是必须要第一调用的
         /// </summary>
-        public static async void initializeLyricUI(SortedDictionary<Double, string> TimeAndLyricDictionary)
+        public static  void initializeLyricUI(SortedDictionary<Double, string> TimeAndLyricDictionary)
         {
             stopLyricShow();//停止上次的歌词秀,接下去再重新开始初始化
             LyricShow.TimeAndLyricDictionary.Clear();
