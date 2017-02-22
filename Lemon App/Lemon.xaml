@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lemon_App"
         mc:Ignorable="d"
-        Title="Lemon App" Height="600" Width="845" MinWidth="310" MinHeight="430" Background="{x:Null}" WindowStyle="None" AllowsTransparency="True" MouseLeftButtonDown="Window_MouseLeftButtonDown" ResizeMode="CanResizeWithGrip" SizeChanged="Window_SizeChanged" Loaded="Window_Loaded" Icon="Lemon App Ico.ico" Style="{DynamicResource WindowStyle}" WindowStartupLocation="CenterScreen" FontFamily=".PingFang SC">
+        Title="Lemon App" Height="600" Width="845" MinWidth="310" MinHeight="430" Background="{x:Null}" WindowStyle="None" AllowsTransparency="True" MouseLeftButtonDown="Window_MouseLeftButtonDown" ResizeMode="CanResizeWithGrip" SizeChanged="Window_SizeChanged" Loaded="Window_Loaded" Icon="Lemon App Ico.ico" Style="{DynamicResource WindowStyle}" WindowStartupLocation="CenterScreen">
     <Window.Resources>
 
         <ControlTemplate x:Key="WindowTemplateKey" TargetType="{x:Type Window}">

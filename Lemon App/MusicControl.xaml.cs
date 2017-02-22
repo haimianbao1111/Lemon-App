@@ -207,7 +207,7 @@ namespace Lemon_App
                         StreamWriter sw = new StreamWriter(fs);
                         string h = await Uuuhh.GetWebAsync($"https://route.showapi.com/213-2?showapi_sign=cfa206656db244c089be2d1499735bb5&showapi_appid=29086&musicid={lrc}");
                         JObject o = JObject.Parse(h);
-                        string ijo = System.Web.HttpUtility.HtmlDecode(o["showapi_res_body"]["lyric"].ToString());
+                        string ijo = System.Web.HttpUtility.HtmlDecode(o["showapi_res_body"]["lyric"].ToString()).Replace("&apos;", "'");
                         if (ijo != "")
                         {
                             await sw.WriteAsync(ijo);
@@ -219,9 +219,9 @@ namespace Lemon_App
                                 //deskLyricWin = new DeskLyricWin();
                                 //deskLyricWin.Show();
                                 //LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
-                                LyricShow.HB = 204;
-                                LyricShow.HG = 122;
-                                LyricShow.HR = 0;
+                                LyricShow.HB = 124;
+                                LyricShow.HG = 194;
+                                LyricShow.HR = 49;
                                 LyricShow.CB = 193;
                                 LyricShow.CG = 180;
                                 LyricShow.CR = 180;
@@ -236,13 +236,13 @@ namespace Lemon_App
                     {
                         if (LyricShow.IsOpenDeskLyric == false)
                         {
-                            //deskLyricWin = new DeskLyricWin();
-                            //deskLyricWin.Show();
-                            //LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
-                            LyricShow.HB = 204;
-                            LyricShow.HG = 122;
-                            LyricShow.HR = 0;
-                            LyricShow.CB = 193;
+                                //deskLyricWin = new DeskLyricWin();
+                                //deskLyricWin.Show();
+                                //LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
+                                LyricShow.HB = 124;
+                                LyricShow.HG = 194;
+                                LyricShow.HR = 49;
+                                LyricShow.CB = 193;
                             LyricShow.CG = 180;
                             LyricShow.CR = 180;
                         }
@@ -285,8 +285,8 @@ namespace Lemon_App
                         StreamWriter sw = new StreamWriter(fs);
                         string h = await Uuuhh.GetWebAsync($"https://route.showapi.com/213-2?showapi_sign=cfa206656db244c089be2d1499735bb5&showapi_appid=29086&musicid={lrc}");
                         JObject o = JObject.Parse(h);
-                        string ijo = System.Web.HttpUtility.HtmlDecode(o["showapi_res_body"]["lyric"].ToString());
-                        if (ijo != "")
+                        string ijo = System.Web.HttpUtility.HtmlDecode(o["showapi_res_body"]["lyric"].ToString()).Replace("&apos;", "'");
+                            if (ijo != "")
                         {
                             await sw.WriteAsync(ijo);
                             await sw.FlushAsync();
@@ -294,13 +294,13 @@ namespace Lemon_App
                             fs.Close();
                             if (LyricShow.IsOpenDeskLyric == false)
                             {
-                                //deskLyricWin = new DeskLyricWin();
-                                //deskLyricWin.Show();
-                                //LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
-                                LyricShow.HB = 204;
-                                LyricShow.HG = 122;
-                                LyricShow.HR = 0;
-                                LyricShow.CB = 193;
+                                    //deskLyricWin = new DeskLyricWin();
+                                    //deskLyricWin.Show();
+                                    //LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
+                                    LyricShow.HB = 124;
+                                    LyricShow.HG = 194;
+                                    LyricShow.HR = 49;
+                                    LyricShow.CB = 193;
                                 LyricShow.CG = 180;
                                 LyricShow.CR = 180;
                             }
@@ -314,13 +314,13 @@ namespace Lemon_App
                     {
                         if (LyricShow.IsOpenDeskLyric == false)
                         {
-                            //deskLyricWin = new DeskLyricWin();
-                            //deskLyricWin.Show();
-                            //LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
-                            LyricShow.HB = 204;
-                            LyricShow.HG = 122;
-                            LyricShow.HR = 0;
-                            LyricShow.CB = 193;
+                                //deskLyricWin = new DeskLyricWin();
+                                //deskLyricWin.Show();
+                                //LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
+                                LyricShow.HB = 124;
+                                LyricShow.HG = 194;
+                                LyricShow.HR = 49;
+                                LyricShow.CB = 193;
                             LyricShow.CG = 180;
                             LyricShow.CR = 180;
                         }
@@ -363,8 +363,8 @@ namespace Lemon_App
                         StreamWriter sw = new StreamWriter(fs);
                         string h = await Uuuhh.GetWebAsync($"https://route.showapi.com/213-2?showapi_sign=cfa206656db244c089be2d1499735bb5&showapi_appid=29086&musicid={lrc}");
                         JObject o = JObject.Parse(h);
-                        string ijo = System.Web.HttpUtility.HtmlDecode(o["showapi_res_body"]["lyric"].ToString());
-                        if (ijo != "")
+                        string ijo = System.Web.HttpUtility.HtmlDecode(o["showapi_res_body"]["lyric"].ToString()).Replace("&apos;", "'");
+                            if (ijo != "")
                         {
                             await sw.WriteAsync(ijo);
                             await sw.FlushAsync();

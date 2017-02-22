@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lemon_App"
         mc:Ignorable="d"
-        Title="登录到小萌" Height="325" MouseLeftButtonDown="Window_MouseLeftButtonDown" Width="428" Background="{x:Null}" AllowsTransparency="True" WindowStyle="None" ResizeMode="NoResize" Loaded="Window_Loaded" FontFamily=".PingFang SC">
+        Title="登录到小萌" Height="325" MouseLeftButtonDown="Window_MouseLeftButtonDown" Width="428" Background="{x:Null}" AllowsTransparency="True" WindowStyle="None" ResizeMode="NoResize" Loaded="Window_Loaded">
     <Window.Resources>
         <SolidColorBrush x:Key="OptionMark.Static.Background" Color="#FFFFFFFF"/>
         <SolidColorBrush x:Key="OptionMark.Static.Border" Color="#FF707070"/>

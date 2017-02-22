@@ -909,7 +909,7 @@ namespace Lemon_App
             dBB = B;
             if (IsOpenDeskLyric == true)
             {               
-                tBDeskLyricBack.Foreground = new SolidColorBrush(Color.FromArgb(A, R, G, B));
+                tBDeskLyricBack.Foreground = new SolidColorBrush(Color.FromArgb(A, 49,194,124));
             }
         }
         /// <summary>
@@ -951,8 +951,8 @@ namespace Lemon_App
             }
             tBDeskLyricBack.FontFamily = DeskLyricFontFamily;
             tBDeskLyricBack.FontSize = DeskLyricFontSize;
-            tbDeskLyricBack.Foreground = new SolidColorBrush(Color.FromArgb(dBA, dBR, dBG, dBB));
-            tBDeskLyricFore.Foreground = new SolidColorBrush(Color.FromArgb(dFA, dFR, dFG, dFB));
+            tbDeskLyricBack.Foreground = new SolidColorBrush(Color.FromArgb(dBA, 49, 194, 124));
+            tBDeskLyricFore.Foreground = new SolidColorBrush(Color.FromArgb(dFA, 49, 194, 124));
             //计算刷过的距离
             try
             {
@@ -1362,7 +1362,7 @@ namespace Lemon_App
                         tBFocusLyricBack.Visibility = Visibility.Hidden;
                         CurrentTB.FontSize = 16;
                         //canvasFocusLyricForeMove.Visibility = Visibility.Hidden;
-                        CurrentTB.Foreground = new SolidColorBrush(Color.FromArgb(HA, 0, 112, 204));
+                        CurrentTB.Foreground = new SolidColorBrush(Color.FromArgb(HA, 49, 194, 124));
                         CurrentTB.FontFamily = HFontFamily;
                         tBFocusLyricBack.Text = CurrentTB.Text;                                 
                         if (isOpenDeskLyric == true)
