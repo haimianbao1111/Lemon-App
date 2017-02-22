@@ -175,7 +175,11 @@ namespace Lemon_App
                 string i = (listBox.SelectedItem as MusicItemControl).Content;
                 textBlock1.Text = i;
                 lrcname.Text = ((listBox.SelectedItem as MusicItemControl).Music as Music).MusicName;
-                zk.Text = ((listBox.SelectedItem as MusicItemControl).Music as Music).ZJ;
+                zk.Inlines.Clear();
+                zk.Inlines.Add(new Run("歌手:") { Foreground = new SolidColorBrush(Color.FromArgb(255, 189, 189, 189)) });
+                zk.Inlines.Add(new Run(((listBox.SelectedItem as MusicItemControl).Music as Music).Singer));
+                zk.Inlines.Add(new Run("专辑:") { Foreground = new SolidColorBrush(Color.FromArgb(255, 189, 189, 189)) });
+                zk.Inlines.Add(new Run(((listBox.SelectedItem as MusicItemControl).Music as Music).ZJ));
                 img = ((listBox.SelectedItem as MusicItemControl).Music as Music).ImageID;
                 He.on = $"https://y.gtimg.cn/music/photo_new/T002R300x300M000{img}.jpg";
                 tx.Background = new ImageBrush(new BitmapImage(new Uri(He.on)));

@@ -1364,7 +1364,7 @@ namespace Lemon_App
                         //canvasFocusLyricForeMove.Visibility = Visibility.Hidden;
                         CurrentTB.Foreground = new SolidColorBrush(Color.FromArgb(HA, 49, 194, 124));
                         CurrentTB.FontFamily = HFontFamily;
-                        tBFocusLyricBack.Text = CurrentTB.Text;                                 
+                        tBFocusLyricBack.Text = CurrentTB.Text;
                         if (isOpenDeskLyric == true)
                         {
                            // canvasDeskLyricForeMove.Visibility = Visibility.Hidden;
