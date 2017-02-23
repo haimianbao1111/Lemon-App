@@ -7,7 +7,7 @@
              xmlns:MetroStyleBusyIndicator="clr-namespace:Transvalue.MetroStyleBusyIndicator" xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"
     xmlns:system="clr-namespace:System;assembly=mscorlib" x:Class="Lemon_App.MusicControl"
              mc:Ignorable="d" 
-              Width="Auto" Height="Auto" Loaded="UserControl_Loaded" SizeChanged="UserControl_SizeChanged" >
+              Width="Auto" Height="Auto" Loaded="UserControl_Loaded" SizeChanged="UserControl_SizeChanged">
     <UserControl.Resources>
         <!--笔刷-->
         <LinearGradientBrush x:Key="SliderBackground"  StartPoint="0,0" EndPoint="0,1">
@@ -638,7 +638,7 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    <Grid>
+    <Grid x:Name="Cip">
         <Grid x:Name="BackgroundContent"/>
         <Grid x:Name="ZjImAgE" Margin="0,0,0,49" Visibility="Collapsed">
             <TextBlock Height="25" Margin="0,5,10,0" TextWrapping="Wrap" Text="{Binding Text, ElementName=lrcname}" VerticalAlignment="Top" Foreground="#FF686868" FontSize="20" TextAlignment="Center"/>
@@ -691,33 +691,35 @@
                     </Style>
                 </ListBox.ItemContainerStyle>
             </ListBox>
-            <Grid Height="41" VerticalAlignment="Top">
-                <Border HorizontalAlignment="Right" Height="27" Margin="0,7,9,0" VerticalAlignment="Top" Width="194" Background="#FFF1F3F7" CornerRadius="10">
-                    <TextBox x:Name="textBox" Margin="9,5,9,3" BorderThickness="0" TextWrapping="Wrap" Text="搜索" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" KeyDown="textBox_KeyDown" Foreground="#FF3F3F46"/>
-                </Border>
-                <Border HorizontalAlignment="Right" Height="25" Margin="0,8,208,0" VerticalAlignment="Top" Width="25" Background="#FFF1F3F7" CornerRadius="5" MouseDown="Border_MouseDown_2" ToolTip="我的收藏">
-                    <Path Data="M92.361,35.955L67.95,30.352L52.814,7.012c-1.554-2.397-4.074-2.397-5.628,0L32.05,30.352   L7.639,35.955c-2.784,0.639-3.523,2.906-1.651,5.063l18.019,20.759l-2.757,25.916c-0.302,2.841,1.669,4.471,4.402,3.641L50,83.945   l24.347,7.39c2.733,0.83,4.704-0.801,4.402-3.641l-2.757-25.916l18.019-20.759C95.884,38.861,95.145,36.594,92.361,35.955z" Fill="#FFB4B4C1" Stretch="Uniform" StrokeThickness="0" Margin="4"/>
-                </Border>
-                <TextBlock x:Name="jz" HorizontalAlignment="Right" Height="20" TextWrapping="Wrap" Text="加载中" VerticalAlignment="Top" Width="42" Margin="0,10,338,0" Foreground="#FF252526" FontSize="14" TextAlignment="Right" Visibility="Collapsed"/>
-                <Border HorizontalAlignment="Right" Margin="0,8,240,0" Width="25" Background="#FFF1F3F7" CornerRadius="5" MouseDown="Border_MouseDown_3" ToolTip="我的收藏" Height="25" VerticalAlignment="Top">
-                    <Path Data="M50.174,83.543L48.313,57.16C48.208,55.665,47.051,54.441,45.563,54.252L21.266,51.14 74.52,27.426 50.174,83.543z" Fill="#FFB4B4C1" Stretch="Uniform" StrokeThickness="0" Margin="4"/>
-                </Border>
-                <ComboBox x:Name="DF" HorizontalAlignment="Right" Margin="0,8,270,8" Width="63" Background="{x:Null}" BorderBrush="{x:Null}" SelectedIndex="0" Foreground="#FFB4B4C1" Style="{DynamicResource C}" FontSize="14" SelectionChanged="DF_SelectionChanged">
-                    <ComboBoxItem Content="巅峰榜" ToolTip="巅峰榜" Foreground="#FF252526"/>
-                    <ComboBoxItem Content="流行" ToolTip="4" Foreground="#FF252526"/>
-                    <ComboBoxItem Content="热歌" ToolTip="26" Foreground="#FF252526"/>
-                    <ComboBoxItem Content="歌手" ToolTip="33" Foreground="#FF252526"/>
-                    <ComboBoxItem Content="Nova" ToolTip="30" Foreground="#FF252526"/>
-                    <ComboBoxItem Content="新歌" ToolTip="27" Foreground="#FF252526"/>
-                    <ComboBoxItem Content="流行" ToolTip="4" Foreground="#FF252526"/>
-                    <ComboBoxItem Content="内地" ToolTip="5" Foreground="#FF252526"/>
-                    <ComboBoxItem Content="港台" ToolTip="6" Foreground="#FF252526"/>
-                    <ComboBoxItem Content="欧美" ToolTip="3" Foreground="#FF252526"/>
-                    <ComboBoxItem Content="韩国" ToolTip="16" Foreground="#FF252526"/>
-                    <ComboBoxItem Content="日本" ToolTip="17" Foreground="#FF252526"/>
-                    <ComboBoxItem Content="音乐人" ToolTip="32" Foreground="#FF252526"/>
-                    <ComboBoxItem Content="K歌" ToolTip="36" Foreground="#FF252526"/>
-                </ComboBox>
+            <Grid Height="40" VerticalAlignment="Top">
+                <Grid HorizontalAlignment="Right" Width="310">
+                    <Border Height="27" Margin="179,8,0,6" VerticalAlignment="Stretch" Background="#FFF1F3F7" CornerRadius="10">
+                        <TextBox x:Name="textBox" Margin="9,5,9,3" BorderThickness="0" Text="搜索" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" KeyDown="textBox_KeyDown" Foreground="#FF3F3F46"/>
+                    </Border>
+                    <Border HorizontalAlignment="Left" Height="26" Margin="150,8,0,0" VerticalAlignment="Top" Width="25" Background="#FFF1F3F7" CornerRadius="5" MouseDown="Border_MouseDown_2" ToolTip="我的收藏">
+                        <Path Data="M92.361,35.955L67.95,30.352L52.814,7.012c-1.554-2.397-4.074-2.397-5.628,0L32.05,30.352   L7.639,35.955c-2.784,0.639-3.523,2.906-1.651,5.063l18.019,20.759l-2.757,25.916c-0.302,2.841,1.669,4.471,4.402,3.641L50,83.945   l24.347,7.39c2.733,0.83,4.704-0.801,4.402-3.641l-2.757-25.916l18.019-20.759C95.884,38.861,95.145,36.594,92.361,35.955z" Fill="#FFB4B4C1" Stretch="Uniform" StrokeThickness="0" Margin="4"/>
+                    </Border>
+                    <TextBlock x:Name="jz" Visibility="Collapsed" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Text="加载中" VerticalAlignment="Top" Width="42" Margin="7,10,0,0" Foreground="#FF252526" FontSize="14" TextAlignment="Right"/>
+                    <Border HorizontalAlignment="Left" Margin="117,8,0,0" Width="25" Background="#FFF1F3F7" CornerRadius="5" MouseDown="Border_MouseDown_3" ToolTip="我的收藏" Height="26" VerticalAlignment="Top">
+                        <Path Data="M50.174,83.543L48.313,57.16C48.208,55.665,47.051,54.441,45.563,54.252L21.266,51.14 74.52,27.426 50.174,83.543z" Fill="#FFB4B4C1" Stretch="Uniform" StrokeThickness="0" Margin="4"/>
+                    </Border>
+                    <ComboBox x:Name="DF" HorizontalAlignment="Left" Margin="49,8,0,8" Width="63" Background="{x:Null}" BorderBrush="{x:Null}" SelectedIndex="0" Foreground="#FFB4B4C1" Style="{DynamicResource C}" FontSize="14" SelectionChanged="DF_SelectionChanged">
+                        <ComboBoxItem Content="巅峰榜" ToolTip="巅峰榜" Foreground="#FF252526"/>
+                        <ComboBoxItem Content="流行" ToolTip="4" Foreground="#FF252526"/>
+                        <ComboBoxItem Content="热歌" ToolTip="26" Foreground="#FF252526"/>
+                        <ComboBoxItem Content="歌手" ToolTip="33" Foreground="#FF252526"/>
+                        <ComboBoxItem Content="Nova" ToolTip="30" Foreground="#FF252526"/>
+                        <ComboBoxItem Content="新歌" ToolTip="27" Foreground="#FF252526"/>
+                        <ComboBoxItem Content="流行" ToolTip="4" Foreground="#FF252526"/>
+                        <ComboBoxItem Content="内地" ToolTip="5" Foreground="#FF252526"/>
+                        <ComboBoxItem Content="港台" ToolTip="6" Foreground="#FF252526"/>
+                        <ComboBoxItem Content="欧美" ToolTip="3" Foreground="#FF252526"/>
+                        <ComboBoxItem Content="韩国" ToolTip="16" Foreground="#FF252526"/>
+                        <ComboBoxItem Content="日本" ToolTip="17" Foreground="#FF252526"/>
+                        <ComboBoxItem Content="音乐人" ToolTip="32" Foreground="#FF252526"/>
+                        <ComboBoxItem Content="K歌" ToolTip="36" Foreground="#FF252526"/>
+                    </ComboBox>
+                </Grid>
             </Grid>
             <Grid x:Name="DOWN" Margin="0,41,0,0" Visibility="Collapsed">
                 <Border BorderThickness="1" Margin="69,42,70,148" Background="#33FFFFFF" CornerRadius="5">
@@ -753,27 +755,24 @@
                     <Border HorizontalAlignment="Right" Margin="0" Width="20" Background="#00F1F3F7" CornerRadius="5" ToolTip="下一页" MouseDown="textBlock2_MouseDown" BorderBrush="#FF31C27C" BorderThickness="1" Height="20">
                         <Path Data="M50,71.276c-1.338,0-2.676-0.511-3.696-1.53l-32.099-32.1c-2.042-2.042-2.042-5.352,0-7.393  c2.041-2.041,5.351-2.041,7.393,0L50,58.656l28.402-28.402c2.042-2.041,5.352-2.041,7.393,0c2.042,2.041,2.042,5.351,0,7.393  l-32.099,32.1C52.676,70.766,51.338,71.276,50,71.276z" Fill="#FF31C27C" Stretch="Uniform" StrokeThickness="0" Margin="3" ToolTip="下一页"/>
                     </Border>
-                    <Border HorizontalAlignment="Right" Margin="0,0,50,0" Width="20" MouseDown="textBlock4_MouseDown" Background="#00F1F3F7" CornerRadius="3" BorderBrush="#FF31C27C" BorderThickness="1" Height="20">
-                        <Path StrokeThickness="0" Margin="3" Fill="#FF31C27C" Data="M405,254c-10-10-24-10-34,0l-92,91V41c0-14-10-24-24-24s-25,10-25,24v304l-91-91c-10-10-24-10-34,0s-10,25,0,35l133,133  c5,5,10,7,17,7s12-2,17-7l133-133c5-5,8-12,8-18S410,259,405,254z" Stretch="Fill" ToolTip="下载"/>
-                    </Border>
-                    <Border HorizontalAlignment="Right" Margin="0,0,75,0" Width="20" MouseDown="Border_MouseDown_1" Background="#00F1F3F7" CornerRadius="3" ToolTip="添加到收藏" BorderBrush="#FF31C27C" BorderThickness="1" Height="20">
-                        <Path StrokeThickness="0" Margin="2" Fill="#FF31C27C" Data="M56.14,28.375H35.274V7.506c0-1.809-1.462-3.271-3.274-3.271c-1.811,0-3.274,1.463-3.274,3.271v20.869H7.862  c-1.813,0-3.274,1.464-3.274,3.272c0,1.807,1.462,3.27,3.274,3.27h20.863v20.869c0,1.809,1.464,3.272,3.274,3.272  c1.813,0,3.274-1.464,3.274-3.272V34.918H56.14c1.811,0,3.272-1.463,3.272-3.27C59.412,29.839,57.95,28.375,56.14,28.375z" Stretch="Fill" ToolTip="添加到收藏"/>
-                    </Border>
-                    <ComboBox x:Name="pz" HorizontalAlignment="Right" Margin="0,2,125,3" Width="35" Background="{x:Null}" BorderBrush="{x:Null}" SelectedIndex="1" Foreground="#FF31C27C" FontSize="10" SelectionChanged="pz_SelectionChanged" Height="20">
+                    <ComboBox x:Name="pz" HorizontalAlignment="Right" Margin="0,2,100,3" Width="35" Background="{x:Null}" BorderBrush="{x:Null}" SelectedIndex="1" Foreground="#FF31C27C" FontSize="10" SelectionChanged="pz_SelectionChanged" Height="20">
                         <ComboBoxItem Content="标准" Foreground="#FF252526"/>
                         <ComboBoxItem Content="HQ" Foreground="#FF252526"/>
                     </ComboBox>
-                    <ComboBox x:Name="Move" HorizontalAlignment="Right" Margin="0,2,165,3" Width="35" Background="{x:Null}" BorderBrush="{x:Null}" SelectedIndex="0" Foreground="#FF31C27C" FontSize="10" Height="20" SelectionChanged="Move_SelectionChanged">
+                    <ComboBox x:Name="Move" HorizontalAlignment="Right" Margin="0,2,140,3" Width="35" Background="{x:Null}" BorderBrush="{x:Null}" SelectedIndex="0" Foreground="#FF31C27C" FontSize="10" Height="20" SelectionChanged="Move_SelectionChanged">
                         <ComboBoxItem Content="循环" Foreground="#FF252526"/>
                         <ComboBoxItem Content="单曲" Foreground="#FF252526"/>
                         <!--ComboBoxItem Content="SQ" Foreground="#FF252526"/-->
                     </ComboBox>
-                    <Border  HorizontalAlignment="Right" Margin="0,2.5,100,2.5" Width="20" Background="#00F1F3F7" CornerRadius="5" ToolTip="桌面歌词" BorderBrush="#FF31C27C" BorderThickness="1" Height="20" MouseDown="Border_MouseDown_5">
+                    <Border  HorizontalAlignment="Right" Margin="0,2,50,3" Width="20" Background="#00F1F3F7" CornerRadius="5" ToolTip="桌面歌词" BorderBrush="#FF31C27C" BorderThickness="1" Height="20" MouseDown="Border_MouseDown_5">
                         <Path Data="M60.101,2.007c-0.59-0.127-1.205,0.023-1.673,0.403c-0.468,0.38-0.74,0.951-0.74,1.554v8.225
 	c0,0.911,0.616,1.708,1.498,1.936C75.297,18.3,86.549,32.842,86.549,49.488c0,20.153-16.396,36.549-36.549,36.549
 	S13.451,69.642,13.451,49.488c0-16.646,11.252-31.188,27.363-35.363c0.882-0.229,1.498-1.025,1.498-1.936V3.964
 	c0-0.603-0.272-1.174-0.74-1.554s-1.082-0.528-1.673-0.403C17.621,6.716,1.451,26.685,1.451,49.488
 	c0,26.77,21.779,48.549,48.549,48.549s48.549-21.779,48.549-48.549C98.549,26.685,82.379,6.716,60.101,2.007z" Fill="#FF31C27C" Stretch="Uniform" StrokeThickness="0" Margin="3"/>
+                    </Border>
+                    <Border HorizontalAlignment="Right" Width="20" Height="20" Background="#00F1F3F7" CornerRadius="3" ToolTip="添加到收藏" BorderBrush="#FF31C27C" BorderThickness="1" Margin="0,2,75,3" MouseDown="Border_MouseDown_1">
+                        <Path StrokeThickness="0" Margin="2" Fill="#FF31C27C" Data="M56.14,28.375H35.274V7.506c0-1.809-1.462-3.271-3.274-3.271c-1.811,0-3.274,1.463-3.274,3.271v20.869H7.862  c-1.813,0-3.274,1.464-3.274,3.272c0,1.807,1.462,3.27,3.274,3.27h20.863v20.869c0,1.809,1.464,3.272,3.274,3.272  c1.813,0,3.274-1.464,3.274-3.272V34.918H56.14c1.811,0,3.272-1.463,3.272-3.27C59.412,29.839,57.95,28.375,56.14,28.375z" Stretch="Fill" ToolTip="添加到收藏"/>
                     </Border>
                 </Grid>
                 <Grid Margin="0,0,5,0" Grid.Column="1">

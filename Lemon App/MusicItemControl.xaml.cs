@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lemon_App.Properties;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -60,6 +61,15 @@ namespace Lemon_App
         private void mv_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Process.Start($"https://y.qq.com/portal/mv/v/{mvid}.html");
+        }
+
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ListJson lj = new ListJson();
+            if (Settings.Default.MusicList != "") lj = MusicControl.JsonToObject(Settings.Default.MusicList, lj) as ListJson;
+            lj.List.Add(new ListItem() { ItemText = (this.Music as Music) });
+            Settings.Default.MusicList = MusicControl.ToJSON(lj);
+            Settings.Default.Save();
         }
     }
 }

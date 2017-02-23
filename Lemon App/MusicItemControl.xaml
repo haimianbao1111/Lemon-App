@@ -14,18 +14,26 @@
         </Grid.ColumnDefinitions>
         <TextBlock x:Name="GS" TextWrapping="Wrap" Foreground="#FFCFCFCF" FontSize="14" Margin="5,0,0,0" Grid.Column="1" HorizontalAlignment="Left" Text="MusicSinger" Height="18"/>
         <TextBlock x:Name="ZJ" HorizontalAlignment="Left" TextWrapping="Wrap" Foreground="#FFCFCFCF" FontSize="14" Margin="5,0,0,0" Grid.Column="2" Text="MusicAlbum" Height="18"/>
-        <WrapPanel Margin="10,0,0,0" Height="18">
-            <TextBlock x:Name="Nm" TextWrapping="Wrap" Text="MusicName" Foreground="#FF686868" FontSize="14" HorizontalAlignment="Left" Height="20"/>
-            <Border x:Name="RS" BorderBrush="#FFFE7418" BorderThickness="1" HorizontalAlignment="Left" Width="25" Height="18" CornerRadius="3" Margin="5,0,0,0" Visibility="Collapsed">
-                <TextBlock x:Name="Q" Foreground="#FFFE7418" Text="SQ" TextAlignment="Center"/>
-            </Border>
-            <Border x:Name="RC" BorderBrush="#FF31C27C" BorderThickness="1" HorizontalAlignment="Left" Width="25" Height="18" CornerRadius="3" Margin="5,0,0,0" Visibility="Collapsed">
-                <TextBlock x:Name="QC" Foreground="#FF31C27C" Text="HQ" TextAlignment="Center"/>
-            </Border>
-            <Border x:Name="mv" BorderBrush="#FF31C27C" BorderThickness="1" HorizontalAlignment="Left" Width="25" Height="18" CornerRadius="3" Margin="5,0,0,0" Visibility="Collapsed" MouseDown="mv_MouseDown" Background="#00000000">
-                <TextBlock x:Name="MC" Foreground="#FF31C27C" Text="MV" TextAlignment="Center"/>
-            </Border>
-        </WrapPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <WrapPanel Margin="10,0,0,0" Height="20" Width="Auto" Grid.ColumnSpan="1">
+                <TextBlock x:Name="Nm" TextWrapping="Wrap" Text="MusicName" Foreground="#FF686868" FontSize="14" HorizontalAlignment="Left" Height="20"/>
+            </WrapPanel>
+            <WrapPanel Margin="0" Height="20" Grid.Column="1">
+                <Border x:Name="RS" BorderBrush="#FFFE7418" BorderThickness="1" HorizontalAlignment="Left" Width="25" Height="18" CornerRadius="3" Margin="5,0,0,0" Visibility="Collapsed">
+                    <TextBlock x:Name="Q" Foreground="#FFFE7418" Text="SQ" TextAlignment="Center"/>
+                </Border>
+                <Border x:Name="RC" BorderBrush="#FF31C27C" BorderThickness="1" HorizontalAlignment="Left" Width="25" Height="18" CornerRadius="3" Margin="5,0,0,0" Visibility="Collapsed">
+                    <TextBlock x:Name="QC" Foreground="#FF31C27C" Text="HQ" TextAlignment="Center"/>
+                </Border>
+                <Border x:Name="mv" BorderBrush="#FF31C27C" BorderThickness="1" HorizontalAlignment="Left" Width="25" Height="18" CornerRadius="3" Margin="5,0,0,0" MouseDown="mv_MouseDown" Background="#00000000" Visibility="Collapsed">
+                    <TextBlock x:Name="MC" Foreground="#FF31C27C" Text="MV" TextAlignment="Center"/>
+                </Border>
+            </WrapPanel>
+        </Grid>
 
     </Grid>
 </UserControl>
