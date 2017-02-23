@@ -206,8 +206,8 @@ namespace Lemon_App {
 
         void win_SourceInitialized(object sender, EventArgs e)
         {
-            System.IntPtr handle = (new WinInterop.WindowInteropHelper(this)).Handle;
-            WinInterop.HwndSource.FromHwnd(handle).AddHook(new WinInterop.HwndSourceHook(WindowProc));
+            IntPtr handle = (new WindowInteropHelper(this)).Handle;
+            HwndSource.FromHwnd(handle).AddHook(new HwndSourceHook(WindowProc));
         }
 
         private static System.IntPtr WindowProc(
@@ -232,8 +232,6 @@ namespace Lemon_App {
         {
 
             MINMAXINFO mmi = (MINMAXINFO)Marshal.PtrToStructure(lParam, typeof(MINMAXINFO));
-
-            // Adjust the maximized size and position to fit the work area of the correct monitor
             int MONITOR_DEFAULTTONEAREST = 0x00000002;
             System.IntPtr monitor = MonitorFromWindow(hwnd, MONITOR_DEFAULTTONEAREST);
 
@@ -248,6 +246,8 @@ namespace Lemon_App {
                 mmi.ptMaxPosition.y = Math.Abs(rcWorkArea.top - rcMonitorArea.top);
                 mmi.ptMaxSize.x = Math.Abs(rcWorkArea.right - rcWorkArea.left);
                 mmi.ptMaxSize.y = Math.Abs(rcWorkArea.bottom - rcWorkArea.top);
+                mmi.ptMinTrackSize.x = 310;
+                mmi.ptMinTrackSize.y = 430;
             }
 
             Marshal.StructureToPtr(mmi, lParam, true);
