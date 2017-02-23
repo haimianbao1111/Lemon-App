@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -56,6 +57,7 @@ namespace Lemon_App
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             this.K.Text = await Lemon_Updata.NewText(He.KMS);
+            if(File.Exists(AppDomain.CurrentDomain.BaseDirectory + @"Setup.exe")) { File.Delete(AppDomain.CurrentDomain.BaseDirectory + @"Setup.exe"); }
         }
 
         private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

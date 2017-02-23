@@ -45,11 +45,14 @@ namespace Lemon_App
         }
 
         private void T(object sender, EventArgs e)
-        {
-            new lemon().Show();
-            this.Close();
-            tr.Stop();
-            tr.Dispose();
+        {try
+            {
+                new lemon().Show();
+                this.Close();
+                tr.Stop();
+                tr.Dispose();
+            }
+            catch { }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -143,34 +146,36 @@ namespace Lemon_App
         }
 
         private void Email_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                if (Email.Text != ""&&IsValidEmail(Email.Text))
+        { try {
+                if (e.Key == Key.Enter)
                 {
-                    Random ra = new Random();
-                    ini = ra.Next(1000, 9999).ToString();
-                    MailMessage m = new MailMessage()
+                    if (Email.Text != "" && IsValidEmail(Email.Text))
                     {
-                        From = new MailAddress("lemon.app@qq.com", "Lemon团队")
-                    };
-                    m.To.Add(new MailAddress(Email.Text));
-                    m.Subject = "Lemon App";
-                    m.SubjectEncoding = Encoding.UTF8;
-                    m.Body = He.EmailMessage.Replace("{ninini}", ini);
-                    m.BodyEncoding = Encoding.UTF8;
-                    m.IsBodyHtml = true;
-                    SmtpClient s = new SmtpClient()
-                    {
-                        Host = "smtp.qq.com",
-                        Port = 587,
-                        EnableSsl = true,
-                        Credentials = new NetworkCredential("lemon.app@qq.com", "qtmiqibczofmddbi")
-                    };
-                    s.Send(m);
+                        Random ra = new Random();
+                        ini = ra.Next(1000, 9999).ToString();
+                        MailMessage m = new MailMessage()
+                        {
+                            From = new MailAddress("lemon.app@qq.com", "Lemon团队")
+                        };
+                        m.To.Add(new MailAddress(Email.Text));
+                        m.Subject = "Lemon App";
+                        m.SubjectEncoding = Encoding.UTF8;
+                        m.Body = He.EmailMessage.Replace("{ninini}", ini);
+                        m.BodyEncoding = Encoding.UTF8;
+                        m.IsBodyHtml = true;
+                        SmtpClient s = new SmtpClient()
+                        {
+                            Host = "smtp.qq.com",
+                            Port = 587,
+                            EnableSsl = true,
+                            Credentials = new NetworkCredential("lemon.app@qq.com", "qtmiqibczofmddbi")
+                        };
+                        s.Send(m);
+                    }
                 }
             }
-        }
+            catch { }
+         }
         private bool IsValidEmail(string strIn)
         {
             return Regex.IsMatch(strIn, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)" + @"|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
