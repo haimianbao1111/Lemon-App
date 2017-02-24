@@ -361,7 +361,7 @@ namespace Lemon_App
         /// <summary>
         /// 歌词文本TextBlock的高度(默认36)
         /// </summary>
-        private static double lyricTextBlockHeight = 45; 
+        private static double lyricTextBlockHeight = 60; 
         /// <summary>
         /// 歌词文本TextBlock的高度(默认36)
         /// </summary>
@@ -1319,7 +1319,7 @@ namespace Lemon_App
               //  string ok= FanyiBox.DecodeUtf8(obj["trans_result"][0]["dst"].ToString());
                 TextBlock tb = new TextBlock();
                 tb.FontSize = 18;
-                //      tb.Margin = new Thickness(0, 0, 0, 20);
+               //       tb.Margin = new Thickness(0, 0, 0, 30);
                 tb.TextWrapping = TextWrapping.Wrap;
                 tb.TextAlignment = TextAlignment.Center;
                 tb.FontSize = fontSmallA;

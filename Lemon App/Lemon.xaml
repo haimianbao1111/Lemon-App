@@ -61,7 +61,7 @@
                                     <DrawingBrush TileMode="Tile" Viewbox="0,0,3,3" Viewport="0,0,3,3" ViewportUnits="Absolute" ViewboxUnits="Absolute">
                                         <DrawingBrush.Drawing>
                                             <DrawingGroup>
-                                                <GeometryDrawing Brush="{StaticResource ResizeGripperForeground}" Geometry="M 0,0 L 2,0 L 2,2 L 0,2 z "/>
+                                                <GeometryDrawing Brush="#FFF2F5F9" Geometry="M 0,0 L 2,0 L 2,2 L 0,2 z "/>
                                             </DrawingGroup>
                                         </DrawingBrush.Drawing>
                                     </DrawingBrush>
@@ -82,9 +82,7 @@
                 </RectangleGeometry.Rect>
             </RectangleGeometry>
         </Grid.Clip>
-        <Border x:Name="BackgroundPage" CornerRadius="3" Background="#FFFDFDFD" BorderThickness="1" BorderBrush="#FFF6F7F9">
-
-        </Border>
+        <Border x:Name="BackgroundPage" CornerRadius="3" Background="#FFFDFDFD"/>
         <Grid x:Name="ContentPage" >
             <Grid x:Name="TopPage" Background="#FFF2F5F9" MinHeight="50" Grid.RowSpan="1" Height="55" Margin="0" VerticalAlignment="Top">
                 <Border x:Name="CLOSE"  HorizontalAlignment="Left" Margin="20,0,0,0" Width="13" Height="13" Background="#FFFC6762" CornerRadius="13" MouseDown="CLOSE_MouseDown"/>
