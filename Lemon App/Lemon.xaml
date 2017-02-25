@@ -74,9 +74,6 @@
         </Style>
 
     </Window.Resources>
-    <WindowChrome.WindowChrome>
-        <WindowChrome GlassFrameThickness="0" ResizeBorderThickness="5" CaptionHeight="28" CornerRadius="0" />
-    </WindowChrome.WindowChrome>
     <Grid x:Name="Page">
         <Grid.Clip>
             <RectangleGeometry RadiusX="5" RadiusY="5">
