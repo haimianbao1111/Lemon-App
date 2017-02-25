@@ -887,10 +887,13 @@ namespace Lemon_App
             {
                 H.Visibility = Visibility.Collapsed;
                 Q.Visibility = Visibility.Collapsed;
-            }else
+                __PAGE.Visibility = Visibility.Collapsed;
+            }
+            else
             {
                 H.Visibility = Visibility.Visible;
                 Q.Visibility = Visibility.Visible;
+                __PAGE.Visibility = Visibility.Visible;
             }
         }
 
