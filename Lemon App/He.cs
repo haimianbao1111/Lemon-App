@@ -379,7 +379,9 @@ namespace Lemon_App
     }
 
     public class Music
-    {/// <summary>
+    {
+        public Music() { }
+     /// <summary>
     /// 歌曲名称
     /// </summary>
         public string MusicName { set; get; }
