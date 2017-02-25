@@ -202,7 +202,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ListBox}">
                         <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="1" SnapsToDevicePixels="true">
-                            <ScrollViewer Focusable="false" Padding="{TemplateBinding Padding}" Template="{DynamicResource SCS}">
+                            <ScrollViewer Focusable="false" Padding="{TemplateBinding Padding}" Template="{DynamicResource SCS}" ScrollChanged="ScrollViewer_ScrollChanged">
                                 <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Style="{DynamicResource ItemsPresenterStyle}"/>
                             </ScrollViewer>
                         </Border>
@@ -749,29 +749,23 @@
                     </Border>
                 </Grid>
                 <Grid x:Name="__PAGE" Margin="0,0,5,0" Height="25" Grid.Column="2">
-                    <Border  HorizontalAlignment="Right" Margin="0,0,25,0" Width="20" Background="#00F1F3F7" CornerRadius="5" MouseDown="Border_MouseDown" ToolTip="上一页" BorderBrush="#FF31C27C" BorderThickness="1" Height="20">
-                        <Path Data="M53.696,30.254l32.099,32.1c2.042,2.042,2.042,5.352,0,7.393c-2.041,2.041-5.352,2.041-7.393,0L50,41.344L21.598,69.746  c-2.042,2.041-5.352,2.041-7.393,0c-2.042-2.041-2.042-5.351,0-7.393l32.099-32.1c1.021-1.02,2.358-1.53,3.696-1.53  S52.676,29.234,53.696,30.254z" Fill="#FF31C27C" Stretch="Uniform" StrokeThickness="0" Margin="3"/>
-                    </Border>
-                    <Border HorizontalAlignment="Right" Margin="0" Width="20" Background="#00F1F3F7" CornerRadius="5" ToolTip="下一页" MouseDown="textBlock2_MouseDown" BorderBrush="#FF31C27C" BorderThickness="1" Height="20">
-                        <Path Data="M50,71.276c-1.338,0-2.676-0.511-3.696-1.53l-32.099-32.1c-2.042-2.042-2.042-5.352,0-7.393  c2.041-2.041,5.351-2.041,7.393,0L50,58.656l28.402-28.402c2.042-2.041,5.352-2.041,7.393,0c2.042,2.041,2.042,5.351,0,7.393  l-32.099,32.1C52.676,70.766,51.338,71.276,50,71.276z" Fill="#FF31C27C" Stretch="Uniform" StrokeThickness="0" Margin="3" ToolTip="下一页"/>
-                    </Border>
-                    <ComboBox x:Name="pz" HorizontalAlignment="Right" Margin="0,2,100,3" Width="35" Background="{x:Null}" BorderBrush="{x:Null}" SelectedIndex="1" Foreground="#FF31C27C" FontSize="10" SelectionChanged="pz_SelectionChanged" Height="20">
+                    <ComboBox x:Name="pz" HorizontalAlignment="Left" Margin="40,2,0,3" Width="35" Background="{x:Null}" BorderBrush="{x:Null}" SelectedIndex="1" Foreground="#FF31C27C" FontSize="10" SelectionChanged="pz_SelectionChanged" Height="20">
                         <ComboBoxItem Content="标准" Foreground="#FF252526"/>
                         <ComboBoxItem Content="HQ" Foreground="#FF252526"/>
                     </ComboBox>
-                    <ComboBox x:Name="Move" HorizontalAlignment="Right" Margin="0,2,140,3" Width="35" Background="{x:Null}" BorderBrush="{x:Null}" SelectedIndex="0" Foreground="#FF31C27C" FontSize="10" Height="20" SelectionChanged="Move_SelectionChanged">
+                    <ComboBox x:Name="Move" HorizontalAlignment="Left" Margin="0,2,0,3" Width="35" Background="{x:Null}" BorderBrush="{x:Null}" SelectedIndex="0" Foreground="#FF31C27C" FontSize="10" Height="20" SelectionChanged="Move_SelectionChanged">
                         <ComboBoxItem Content="循环" Foreground="#FF252526"/>
                         <ComboBoxItem Content="单曲" Foreground="#FF252526"/>
                         <!--ComboBoxItem Content="SQ" Foreground="#FF252526"/-->
                     </ComboBox>
-                    <Border  HorizontalAlignment="Right" Margin="0,2,50,3" Width="20" Background="#00F1F3F7" CornerRadius="5" ToolTip="桌面歌词" BorderBrush="#FF31C27C" BorderThickness="1" Height="20" MouseDown="Border_MouseDown_5">
+                    <Border  HorizontalAlignment="Left" Margin="105,2,0,3" Width="20" Background="#00F1F3F7" CornerRadius="5" ToolTip="桌面歌词" BorderBrush="#FF31C27C" BorderThickness="1" Height="20" MouseDown="Border_MouseDown_5">
                         <Path Data="M60.101,2.007c-0.59-0.127-1.205,0.023-1.673,0.403c-0.468,0.38-0.74,0.951-0.74,1.554v8.225
 	c0,0.911,0.616,1.708,1.498,1.936C75.297,18.3,86.549,32.842,86.549,49.488c0,20.153-16.396,36.549-36.549,36.549
 	S13.451,69.642,13.451,49.488c0-16.646,11.252-31.188,27.363-35.363c0.882-0.229,1.498-1.025,1.498-1.936V3.964
 	c0-0.603-0.272-1.174-0.74-1.554s-1.082-0.528-1.673-0.403C17.621,6.716,1.451,26.685,1.451,49.488
 	c0,26.77,21.779,48.549,48.549,48.549s48.549-21.779,48.549-48.549C98.549,26.685,82.379,6.716,60.101,2.007z" Fill="#FF31C27C" Stretch="Uniform" StrokeThickness="0" Margin="3"/>
                     </Border>
-                    <Border HorizontalAlignment="Right" Width="20" Height="20" Background="#00F1F3F7" CornerRadius="3" ToolTip="添加到收藏" BorderBrush="#FF31C27C" BorderThickness="1" Margin="0,2,75,3" MouseDown="Border_MouseDown_1">
+                    <Border HorizontalAlignment="Left" Width="20" Height="20" Background="#00F1F3F7" CornerRadius="3" ToolTip="添加到收藏" BorderBrush="#FF31C27C" BorderThickness="1" Margin="80,2,0,3" MouseDown="Border_MouseDown_1">
                         <Path StrokeThickness="0" Margin="2" Fill="#FF31C27C" Data="M56.14,28.375H35.274V7.506c0-1.809-1.462-3.271-3.274-3.271c-1.811,0-3.274,1.463-3.274,3.271v20.869H7.862  c-1.813,0-3.274,1.464-3.274,3.272c0,1.807,1.462,3.27,3.274,3.27h20.863v20.869c0,1.809,1.464,3.272,3.274,3.272  c1.813,0,3.274-1.464,3.274-3.272V34.918H56.14c1.811,0,3.272-1.463,3.272-3.27C59.412,29.839,57.95,28.375,56.14,28.375z" Stretch="Fill" ToolTip="添加到收藏"/>
                     </Border>
                 </Grid>
