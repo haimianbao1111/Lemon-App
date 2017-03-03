@@ -127,6 +127,7 @@ namespace Lemon_App {
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             // FontFamily = new FontFamily(".PingFang SC");
+            new WelcomeWindow().Show();
             new HaWindow().Show();
             //         ZX.BeginAnimation(OpacityProperty, new DoubleAnimation(0.3, 1, TimeSpan.FromSeconds(1)) { AutoReverse = true });
             if (await Lemon_Updata.IsLemonNew(He.KMS))
@@ -136,19 +137,6 @@ namespace Lemon_App {
             else ZX.Background = MAX.Background;
             if (System.IO.File.Exists(Settings.Default.UserImage))
             { tx.Background = new ImageBrush(new BitmapImage(new Uri(Settings.Default.UserImage, UriKind.Absolute))); }
-            //DateTime tmCur = DateTime.Now;
-            //if (tmCur.Hour > 18 && tmCur.Hour < 24)
-            //    Toast.SetToastNotion("晚上好:", "欢迎回来" + Settings.Default.RobotName, "------早睡早起身体好").Show();
-            //else if (tmCur.Hour >= 11 && tmCur.Hour < 12)
-            //    Toast.SetToastNotion("中午好:", "欢迎回来" + Settings.Default.RobotName, "------中午啦~吃饭饭了~~").Show();
-            //else if (tmCur.Hour > 1 && tmCur.Hour < 5)
-            //    Toast.SetToastNotion("凌晨好:", "欢迎回来" + Settings.Default.RobotName, "-----不乖哦，还没有睡觉~").Show();
-            //else if (tmCur.Hour > 6 && tmCur.Hour < 11)
-            //    Toast.SetToastNotion("早上好:", "欢迎回来" + Settings.Default.RobotName, "-----一日之计在于晨，早上是最宝贵的时间哦~").Show();
-            //else if (tmCur.Hour > 13 && tmCur.Hour < 17)
-            //    Toast.SetToastNotion("下午好:", "欢迎回来" + Settings.Default.RobotName, "------祝你今天好运！").Show();
-            //LemonWeather w = new LemonWeather(Settings.Default.WeatherInfo);
-            //Toast.SetToastNotion($"今日{w.WeatherName}天气", w.WeatherMessage, "-----来自柠檬天气Toast").Show();
         }
 
         private void tx_MouseDown(object sender, MouseButtonEventArgs e)

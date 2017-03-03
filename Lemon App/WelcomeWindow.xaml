@@ -1,0 +1,24 @@
+﻿<Window x:Class="Lemon_App.WelcomeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lemon_App"
+        mc:Ignorable="d"
+        Title="欢迎" Height="350" Opacity="1" IsVisibleChanged="Window_IsVisibleChanged" Width="270" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True" Background="{x:Null}" ShowInTaskbar="False" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush Stretch="UniformToFill" ImageSource="http://i9.download.fd.pchome.net/t_960x600/g1/M00/10/15/ooYBAFWoU_mIZ8UZAAL0iXuHXcgAACmNwIIMlcAAvSh377.jpg"/>
+        </Grid.Background>
+        <Grid.Clip>
+            <RectangleGeometry RadiusX="5" RadiusY="5">
+                <RectangleGeometry.Rect>
+                    <Rect Width="270" Height="350"/>
+                </RectangleGeometry.Rect>
+            </RectangleGeometry>
+        </Grid.Clip>
+        <Border x:Name="CLOSE"  HorizontalAlignment="Left" Margin="10,10,0,0" Width="13" Height="13" Background="#FF686868" CornerRadius="13" MouseDown="CLOSE_MouseDown" VerticalAlignment="Top"/>
+        <TextBlock x:Name="Welcome" Height="Auto"  VerticalAlignment="Bottom" Foreground="#FFE7E0DF" FontSize="24" Margin="10,0,10,20"><Run Text="早呀，NaN"/><LineBreak/><Run FontSize="14" Text="新的一天开始啦"/></TextBlock>
+        <TextBlock x:Name="Weather" Margin="10,28,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFFDFDFD" FontSize="24"><Run Text="今日NaN天气"/><LineBreak/><Run Text="NaN℃ NaN"/></TextBlock>
+    </Grid>
+</Window>
