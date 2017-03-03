@@ -20,7 +20,6 @@ namespace Lemon_App
         private async Task LoadapisAsync(string ha="最新",int page=1)
         {
             jz.Visibility = Visibility.Visible;
-            WP.Children.Clear();
             JObject o = JObject.Parse(await Uuuhh.GetWebAsync($"https://route.showapi.com/109-35?&page={page}&showapi_sign=cfa206656db244c089be2d1499735bb5&showapi_appid=29086&maxResult=10&channelName={ha}"));
             int i = 0;
             while (i != 10)
@@ -35,7 +34,43 @@ namespace Lemon_App
         {
             await LoadapisAsync();
         }
+        public bool IsVerticalScrollBarAtButtom(ScrollViewer o)
+        {
+            bool isAtButtom = false;
 
+            // get the vertical scroll position
+            double dVer = o.VerticalOffset;
+
+            //get the vertical size of the scrollable content area
+            double dViewport = o.ViewportHeight;
+
+            //get the vertical size of the visible content area
+            double dExtent = o.ExtentHeight;
+
+            if (dVer != 0)
+            {
+                if (dVer + dViewport == dExtent)
+                {
+                    isAtButtom = true;
+                }
+                else
+                {
+                    isAtButtom = false;
+                }
+            }
+            else
+            {
+                isAtButtom = false;
+            }
+
+            if (o.VerticalScrollBarVisibility == ScrollBarVisibility.Disabled
+                || o.VerticalScrollBarVisibility == ScrollBarVisibility.Hidden)
+            {
+                isAtButtom = true;
+            }
+
+            return isAtButtom;
+        }
         private async void textBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter) if (textBox.Text != "") await LoadapisAsync(textBox.Text);
@@ -52,6 +87,12 @@ namespace Lemon_App
         private async void Border_MouseDown_1(object sender, MouseButtonEventArgs e)
         {
             Ipage++;  await LoadapisAsync(textBox.Text, Ipage);
+        }
+
+        private async void O_ScrollChanged(object sender, ScrollChangedEventArgs e)
+        {
+            if (IsVerticalScrollBarAtButtom(O))
+            { Ipage++; await LoadapisAsync(textBox.Text, Ipage); }
         }
     }
 }

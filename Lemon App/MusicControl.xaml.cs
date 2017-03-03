@@ -956,10 +956,6 @@ namespace Lemon_App
                 LyricShow.IsOpenDeskLyric = false;
             }
         }
-        /// <summary>
-        /// Get a bool value indicate whether is the VerticalScrollBar at buttom
-        /// </summary>
-        /// <returns>A bool value indicate whether is the VerticalScrollBar at buttom</returns>
         public bool IsVerticalScrollBarAtButtom(ScrollViewer o)
         {
                 bool isAtButtom = false;

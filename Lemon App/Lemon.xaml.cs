@@ -189,8 +189,8 @@ namespace Lemon_App {
         private void MIN_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (this.WindowState == WindowState.Normal)
-            { this.WindowState = WindowState.Maximized; Page.Clip = new RectangleGeometry() { RadiusX = 0, RadiusY = 0, Rect = new Rect() { Width = Page.ActualWidth, Height = Page.ActualHeight } }; }
-            else { this.WindowState = WindowState.Normal; Page.Clip = new RectangleGeometry() { RadiusX = 3, RadiusY = 3, Rect = new Rect() { Width = Page.ActualWidth, Height = Page.ActualHeight } }; }
+            { BorderThickness = new Thickness(0); this.WindowState = WindowState.Maximized; Page.Clip = new RectangleGeometry() { RadiusX = 0, RadiusY = 0, Rect = new Rect() { Width = Page.ActualWidth, Height = Page.ActualHeight } }; }
+            else { BorderThickness = new Thickness(10); this.WindowState = WindowState.Normal; Page.Clip = new RectangleGeometry() { RadiusX = 3, RadiusY = 3, Rect = new Rect() { Width = Page.ActualWidth, Height = Page.ActualHeight } }; }
         }
 
         private void MAX_MouseDown(object sender, MouseButtonEventArgs e)

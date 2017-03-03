@@ -17,20 +17,20 @@
         <Border Width="Auto" Height="Auto" Margin="55,35,0,0" CornerRadius="5" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF3399FF">
             <TextBlock x:Name="Te" Height="Auto" TextWrapping="Wrap" Width="Auto" d:LayoutOverrides="LeftPosition, RightPosition" Cursor="" Margin="6" Foreground="White" FontSize="14" Text="欢迎回来"/>
         </Border>
-        <ed:RegularPolygon Fill="#FF3399FF" HorizontalAlignment="Left" Height="9" InnerRadius="1" Margin="45,44,0,0" PointCount="3" Stretch="Fill" VerticalAlignment="Top" Width="14" RenderTransformOrigin="0.5,0.5">
+        <ed:RegularPolygon Fill="#FF3399FF" HorizontalAlignment="Left" Height="15" InnerRadius="1" Margin="47.682,40,0,0" PointCount="3" Stretch="Fill" VerticalAlignment="Top" Width="9" RenderTransformOrigin="0.5,0.5">
             <ed:RegularPolygon.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
-                    <RotateTransform Angle="-90"/>
+                    <RotateTransform Angle="-60"/>
                     <TranslateTransform/>
                 </TransformGroup>
             </ed:RegularPolygon.RenderTransform>
         </ed:RegularPolygon>
-        <Border HorizontalAlignment="Left" Height="15" Margin="45,15,0,0" VerticalAlignment="Top" Width="38" Background="#FFFF9700" CornerRadius="5">
-            <TextBlock TextWrapping="Wrap" Text="帅帅哒" Foreground="#FFF1F2F3" TextAlignment="Center"/>
+        <TextBlock Margin="95,15,-5,35.78" TextWrapping="Wrap" Text="小萌机器人" Foreground="#FF2D2D30"/>
+        <Border HorizontalAlignment="Left" Height="18" Margin="45,15,0,0" VerticalAlignment="Top" Width="50" Background="#991B1B1C" CornerRadius="5">
+            <TextBlock TextWrapping="Wrap" Text="帅帅哒" Foreground="#99F1F2F3" TextAlignment="Center" Margin="5,0" Height="15"/>
         </Border>
-        <TextBlock Height="14" Margin="83,15,0,0" TextWrapping="Wrap" Text="小萌机器人" VerticalAlignment="Top" Foreground="#FF2D2D30"/>
 
     </Grid>
 </UserControl>
