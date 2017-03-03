@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lemon_App"
         mc:Ignorable="d"
-        Title="欢迎" Height="350" Opacity="1" IsVisibleChanged="Window_IsVisibleChanged" Width="270" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True" Background="{x:Null}" ShowInTaskbar="False" Loaded="Window_Loaded">
+        Title="欢迎" Height="350" Opacity="1" Width="270" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True" Background="{x:Null}" ShowInTaskbar="False" Loaded="Window_Loaded">
     <Grid>
         <Grid.Background>
             <ImageBrush Stretch="UniformToFill" ImageSource="http://i9.download.fd.pchome.net/t_960x600/g1/M00/10/15/ooYBAFWoU_mIZ8UZAAL0iXuHXcgAACmNwIIMlcAAvSh377.jpg"/>

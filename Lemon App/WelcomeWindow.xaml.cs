@@ -91,17 +91,12 @@ namespace Lemon_App
 
         private void S(object sender, EventArgs e)
         {
-            Visibility = Visibility.Collapsed;
+            Close();
         }
 
         private void CLOSE_MouseDown(object sender, MouseButtonEventArgs e)
         {
             BeginAnimation(OpacityProperty, new DoubleAnimation(1, 0, TimeSpan.FromSeconds(0.2)));
-        }
-
-        private void Window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            if((sender as Window).Visibility == Visibility.Collapsed) { this.Close(); }
         }
     }
 }
