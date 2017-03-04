@@ -40,11 +40,14 @@ namespace Lemon_App
             Weather.Inlines.Clear();
             DateTime tmCur = DateTime.Now;
             if (tmCur.Hour > 18 && tmCur.Hour < 24)
-            { Welcome.Inlines.Add(new Run($"晚上好呀，{Settings.Default.RobotName}"));
+            {
+                b.Background = new ImageBrush(new BitmapImage(new Uri("https://a-ssl.duitang.com/uploads/item/201208/12/20120812230254_czPMZ.thumb.700_0.jpeg")));
+                Welcome.Inlines.Add(new Run($"晚上好呀，{Settings.Default.RobotName}"));
                 Welcome.Inlines.Add(new LineBreak());
                 Welcome.Inlines.Add(new Run("早睡早起身体好") { FontSize = 14 }); }
-            else if (tmCur.Hour >= 11 && tmCur.Hour < 12)
+            else if (tmCur.Hour >= 11 && tmCur.Hour <= 12)
             {
+                b.Background = new ImageBrush(new BitmapImage(new Uri("http://img.kutoo8.com//upload/image/34922581/001%20(1)_320x480.jpg")));
                 Welcome.Inlines.Add(new Run($"中午好呀，{Settings.Default.RobotName}"));
                 Welcome.Inlines.Add(new LineBreak());
                 Welcome.Inlines.Add(new Run("中午啦~吃饭饭惹~") { FontSize = 14
@@ -52,6 +55,7 @@ namespace Lemon_App
         }
         else if (tmCur.Hour > 1 && tmCur.Hour < 5)
             {
+                b.Background = new ImageBrush(new BitmapImage(new Uri("http://img.kutoo8.com//upload/thumb/012066/f36a5eff700ba80a626fe54eb1bce043_320x480.jpg")));
                 Welcome.Inlines.Add(new Run($"凌晨好呀，{Settings.Default.RobotName}"));
                 Welcome.Inlines.Add(new LineBreak());
                 Welcome.Inlines.Add(new Run("不乖哦~还没有睡觉惹~")
@@ -61,6 +65,7 @@ namespace Lemon_App
             }
         else if (tmCur.Hour > 6 && tmCur.Hour < 11)
             {
+                b.Background = new ImageBrush(new BitmapImage(new Uri("http://img.kutoo8.com//upload/thumb/583419/e47164658e5c23cf2424bbb72ef56b65_320x480.jpg")));
                 Welcome.Inlines.Add(new Run($"早呀，{Settings.Default.RobotName}"));
                 Welcome.Inlines.Add(new LineBreak());
                 Welcome.Inlines.Add(new Run("一日之计在于晨，早上是最宝贵的时间哦~")
@@ -70,6 +75,7 @@ namespace Lemon_App
             }
         else if (tmCur.Hour > 13 && tmCur.Hour < 17)
             {
+                b.Background = new ImageBrush(new BitmapImage(new Uri("http://img.pconline.com.cn/images/upload/upc/tx/wallpaper/1207/30/c1/12613028_1343631802292.jpg")));
                 Welcome.Inlines.Add(new Run($"下午呀，{Settings.Default.RobotName}"));
                 Welcome.Inlines.Add(new LineBreak());
                 Welcome.Inlines.Add(new Run("有什么新鲜事吗？")
@@ -83,8 +89,8 @@ namespace Lemon_App
             Weather.Inlines.Add(new Run(w.WeatherMessage));
             DoubleAnimationUsingKeyFrames d = new DoubleAnimationUsingKeyFrames();
             d.KeyFrames.Add(new LinearDoubleKeyFrame(1,TimeSpan.FromSeconds(0.2)));
-            d.KeyFrames.Add(new LinearDoubleKeyFrame(1, TimeSpan.FromSeconds(5)));
-            d.KeyFrames.Add(new LinearDoubleKeyFrame(0, TimeSpan.FromSeconds(5.2)));
+            d.KeyFrames.Add(new LinearDoubleKeyFrame(1, TimeSpan.FromSeconds(10)));
+            d.KeyFrames.Add(new LinearDoubleKeyFrame(0, TimeSpan.FromSeconds(10.2)));
             BeginAnimation(OpacityProperty, d);
             d.Completed += S;
         }
@@ -96,7 +102,10 @@ namespace Lemon_App
 
         private void CLOSE_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            BeginAnimation(OpacityProperty, new DoubleAnimation(1, 0, TimeSpan.FromSeconds(0.2)));
+            DoubleAnimationUsingKeyFrames d = new DoubleAnimationUsingKeyFrames();
+            d.KeyFrames.Add(new LinearDoubleKeyFrame(0, TimeSpan.FromSeconds(0.2)));
+            BeginAnimation(OpacityProperty, d);
+            d.Completed += S;
         }
     }
 }

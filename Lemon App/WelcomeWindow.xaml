@@ -5,15 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lemon_App"
         mc:Ignorable="d"
-        Title="欢迎" Height="350" Opacity="1" Width="270" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True" Background="{x:Null}" ShowInTaskbar="False" Loaded="Window_Loaded">
-    <Grid>
+        Title="欢迎" Height="350" Opacity="1" Width="280" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True" Background="{x:Null}" ShowInTaskbar="False" Loaded="Window_Loaded" Topmost="True">
+    <Grid x:Name="b">
         <Grid.Background>
             <ImageBrush Stretch="UniformToFill" ImageSource="http://i9.download.fd.pchome.net/t_960x600/g1/M00/10/15/ooYBAFWoU_mIZ8UZAAL0iXuHXcgAACmNwIIMlcAAvSh377.jpg"/>
         </Grid.Background>
         <Grid.Clip>
             <RectangleGeometry RadiusX="5" RadiusY="5">
                 <RectangleGeometry.Rect>
-                    <Rect Width="270" Height="350"/>
+                    <Rect Width="280" Height="350"/>
                 </RectangleGeometry.Rect>
             </RectangleGeometry>
         </Grid.Clip>

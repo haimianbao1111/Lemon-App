@@ -188,7 +188,7 @@ namespace Lemon_App {
 
         private void ZX_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            new UFWindow().ShowDialog();
+            new WelcomeWindow().Show();
         }
         #region 最大化显示任务栏
 
