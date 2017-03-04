@@ -17,7 +17,7 @@
                 </RectangleGeometry.Rect>
             </RectangleGeometry>
         </Grid.Clip>
-        <Border x:Name="CLOSE"  HorizontalAlignment="Left" Margin="10,10,0,0" Width="13" Height="13" Background="#FF686868" CornerRadius="13" MouseDown="CLOSE_MouseDown" VerticalAlignment="Top"/>
+        <Border x:Name="CLOSE"  HorizontalAlignment="Left" Margin="10,10,0,0" Width="13" Height="13" Background="#662D2D30" CornerRadius="13" MouseDown="CLOSE_MouseDown" VerticalAlignment="Top"/>
         <TextBlock x:Name="Welcome" Height="Auto"  VerticalAlignment="Bottom" Foreground="#FFE7E0DF" FontSize="24" Margin="10,0,10,20"><Run Text="早呀，NaN"/><LineBreak/><Run FontSize="14" Text="新的一天开始啦"/></TextBlock>
         <TextBlock x:Name="Weather" Margin="10,28,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFFDFDFD" FontSize="24"><Run Text="今日NaN天气"/><LineBreak/><Run Text="NaN℃ NaN"/></TextBlock>
     </Grid>

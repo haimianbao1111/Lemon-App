@@ -39,7 +39,7 @@ namespace Lemon_App
             Welcome.Inlines.Clear();
             Weather.Inlines.Clear();
             DateTime tmCur = DateTime.Now;
-            if (tmCur.Hour > 18 && tmCur.Hour < 24)
+            if (tmCur.Hour >= 18 && tmCur.Hour <= 24)
             {
                 b.Background = new ImageBrush(new BitmapImage(new Uri("https://a-ssl.duitang.com/uploads/item/201208/12/20120812230254_czPMZ.thumb.700_0.jpeg")));
                 Welcome.Inlines.Add(new Run($"晚上好呀，{Settings.Default.RobotName}"));
@@ -53,7 +53,7 @@ namespace Lemon_App
                 Welcome.Inlines.Add(new Run("中午啦~吃饭饭惹~") { FontSize = 14
             });
         }
-        else if (tmCur.Hour > 1 && tmCur.Hour < 5)
+        else if (tmCur.Hour >= 1 && tmCur.Hour <= 5)
             {
                 b.Background = new ImageBrush(new BitmapImage(new Uri("http://img.kutoo8.com//upload/thumb/012066/f36a5eff700ba80a626fe54eb1bce043_320x480.jpg")));
                 Welcome.Inlines.Add(new Run($"凌晨好呀，{Settings.Default.RobotName}"));
@@ -63,7 +63,7 @@ namespace Lemon_App
                     FontSize = 14
                 });
             }
-        else if (tmCur.Hour > 6 && tmCur.Hour < 11)
+        else if (tmCur.Hour >= 6 && tmCur.Hour <= 11)
             {
                 b.Background = new ImageBrush(new BitmapImage(new Uri("http://img.kutoo8.com//upload/thumb/583419/e47164658e5c23cf2424bbb72ef56b65_320x480.jpg")));
                 Welcome.Inlines.Add(new Run($"早呀，{Settings.Default.RobotName}"));
@@ -73,7 +73,7 @@ namespace Lemon_App
                     FontSize = 14
                 });
             }
-        else if (tmCur.Hour > 13 && tmCur.Hour < 17)
+        else if (tmCur.Hour >= 13 && tmCur.Hour <= 17)
             {
                 b.Background = new ImageBrush(new BitmapImage(new Uri("http://img.pconline.com.cn/images/upload/upc/tx/wallpaper/1207/30/c1/12613028_1343631802292.jpg")));
                 Welcome.Inlines.Add(new Run($"下午呀，{Settings.Default.RobotName}"));
