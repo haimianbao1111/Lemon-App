@@ -41,7 +41,7 @@ namespace Lemon_App
         public string MusicZJ
         {
             get { return k; }
-            set { GS.Text =MusicGS+ value; }
+            set { GS.Text =MusicGS+ "  "+value; }
         }
         public string Qt
         {

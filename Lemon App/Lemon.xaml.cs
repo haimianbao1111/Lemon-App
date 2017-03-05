@@ -12,6 +12,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using WinInterop = System.Windows.Interop;
 using System.Windows.Shell;
+using System.Windows.Forms;
 
 namespace Lemon_App {
     /// <summary>
@@ -23,6 +24,7 @@ namespace Lemon_App {
         public lemon()
         {
             InitializeComponent();
+            this.FontFamily = new FontFamily(Settings.Default.FontFamilly);
             this.SourceInitialized += new EventHandler(win_SourceInitialized);
             t.Tick += T_Elapsed;
             t.Interval = 5000;
@@ -112,6 +114,11 @@ namespace Lemon_App {
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             // FontFamily = new FontFamily(".PingFang SC");
+            Font.Items.Clear();
+            foreach (FontFamily font in Fonts.SystemFontFamilies)
+            {
+                Font.Items.Add(new ListBoxItem() { Content = font.Source, FontFamily = font });
+            }
             new WelcomeWindow().Show();
             new HaWindow().Show();
             //         ZX.BeginAnimation(OpacityProperty, new DoubleAnimation(0.3, 1, TimeSpan.FromSeconds(1)) { AutoReverse = true });
@@ -391,5 +398,10 @@ namespace Lemon_App {
         internal static extern IntPtr MonitorFromWindow(IntPtr handle, int flags);
 
         #endregion
+        private void Font_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            FontFamily = (Font.SelectedItem as ListBoxItem).FontFamily;
+            Settings.Default.FontFamilly = (Font.SelectedItem as ListBoxItem).FontFamily.Source;
+        }
     }
 }

@@ -214,5 +214,17 @@ namespace Lemon_App.Properties {
                 this["sx"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Microsoft Yahei UI")]
+        public string FontFamilly {
+            get {
+                return ((string)(this["FontFamilly"]));
+            }
+            set {
+                this["FontFamilly"] = value;
+            }
+        }
     }
 }

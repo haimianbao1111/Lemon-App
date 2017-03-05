@@ -50,5 +50,8 @@
     <Setting Name="sx" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
+    <Setting Name="FontFamilly" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Microsoft Yahei UI</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
