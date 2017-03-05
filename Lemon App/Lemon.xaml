@@ -126,7 +126,7 @@
 
     </Window.Resources>
     <Window.Triggers>
-        <EventTrigger RoutedEvent="UIElement.MouseDown" SourceName="path">
+        <EventTrigger RoutedEvent="UIElement.MouseMove" SourceName="path">
             <BeginStoryboard Storyboard="{StaticResource OnMouseDown1}"/>
         </EventTrigger>
         <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="popup">
