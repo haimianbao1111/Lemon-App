@@ -36,12 +36,12 @@ namespace Lemon_App
         }
         public string MusicGS
         {
-            get { return GS.Text; } set { GS.Text = value+K; }
+            get { return GS.Text; } set { GS.Text = value+MusicZJ; }
         }
         public string MusicZJ
         {
-            get { return K; }
-            set { GS.Text = K; }
+            get { return k; }
+            set { GS.Text =MusicGS+ value; }
         }
         public string Qt
         {
@@ -62,7 +62,7 @@ namespace Lemon_App
         {
             Process.Start($"https://y.qq.com/portal/mv/v/{mvid}.html");
         }
-        string K = "";
+        string k = "";
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
             ListJson lj = new ListJson();
