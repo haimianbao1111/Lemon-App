@@ -27,10 +27,7 @@
                 </TransformGroup>
             </ed:RegularPolygon.RenderTransform>
         </ed:RegularPolygon>
-        <TextBlock Margin="95,15,-5,35.78" TextWrapping="Wrap" Text="小萌机器人" Foreground="#FF2D2D30"/>
-        <Border HorizontalAlignment="Left" Height="18" Margin="45,15,0,0" VerticalAlignment="Top" Width="50" Background="#991B1B1C" CornerRadius="5">
-            <TextBlock TextWrapping="Wrap" Text="帅帅哒" Foreground="#99F1F2F3" TextAlignment="Center" Margin="5,0" Height="15"/>
-        </Border>
+        <TextBlock Margin="50,15,40,35.78" TextWrapping="Wrap" Text="小萌机器人" Foreground="#FF2D2D30"/>
 
     </Grid>
 </UserControl>

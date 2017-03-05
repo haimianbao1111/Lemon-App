@@ -50,8 +50,5 @@
     <Setting Name="sx" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="title" Type="System.String" Scope="User">
-      <Value Profile="(Default)">么么哒</Value>
-    </Setting>
   </Settings>
 </SettingsFile>
