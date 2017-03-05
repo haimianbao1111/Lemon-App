@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Lemon_App"
              mc:Ignorable="d"  Height="Auto">
-    <Border Height="Auto" MouseDown="Border_MouseDown" Background="#33FFFFFF" CornerRadius="5" BorderThickness="1">
+    <Border Height="Auto" MouseDown="Border_MouseDown" CornerRadius="5" BorderThickness="1">
         <Grid>
             <Grid.ColumnDefinitions>
                 <!--ColumnDefinition Width="25*"/-->

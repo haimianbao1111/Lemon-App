@@ -36,12 +36,12 @@ namespace Lemon_App
         }
         public string MusicGS
         {
-            get { return GS.Text; } set { GS.Text = value; }
+            get { return GS.Text; } set { GS.Text = value+MusicZJ; }
         }
         public string MusicZJ
         {
-            get { return ZJ.Text; }
-            set { ZJ.Text = value; }
+            get { return GS.Text; }
+            set { GS.Text =MusicGS+ value; }
         }
         public string Qt
         {

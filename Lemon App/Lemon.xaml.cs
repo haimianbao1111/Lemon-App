@@ -47,31 +47,7 @@ namespace Lemon_App {
             Environment.Exit(0);
         }
         Boolean isopen = false;
-        private void SSPath_Copy_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (!isopen)
-            {
-                TopPage.Height = 50;
-                IContentPage.Margin = new Thickness(0, 50, 0, 0);
-                Litt.Data = Geometry.Parse("M10.85,8.145L7.607,4.902C7.412,4.707 7.095,4.707 6.9,4.902 6.705,5.097 6.705,5.414 6.9,5.609L9.791,8.5 6.9,11.391C6.705,11.586 6.705,11.903 6.9,12.098 7.095,12.293 7.412,12.293 7.607,12.098L10.85,8.856C10.949,8.757 10.997,8.628 10.996,8.501 10.996,8.371 10.948,8.243 10.85,8.145z");
-                isopen = true;
-                BeginAnimation(WidthProperty, new DoubleAnimation(855, 310, TimeSpan.FromSeconds(0.1)));
-                BeginAnimation(HeightProperty, new DoubleAnimation(610, 430, TimeSpan.FromSeconds(0.2)));
-                Page.Clip = new RectangleGeometry() { RadiusX = 5, RadiusY = 5, Rect = new Rect() { Width = Page.ActualWidth, Height = Page.ActualHeight } };
-            }
-            else
-            {
-                TopPage.Height = 55;
-                IContentPage.Margin = new Thickness(0, 55, 0, 0);
-                Litt.Data = Geometry.Parse("M7.209,8.5L10.1,5.609C10.295,5.414 10.295,5.097 10.1,4.902 9.905,4.707 9.588,4.707 9.393,4.902L6.15,8.145C6.052,8.243 6.004,8.371 6.004,8.5 6.004,8.629 6.052,8.757 6.15,8.855L9.393,12.097C9.588,12.292 9.905,12.292 10.1,12.097 10.295,11.902 10.295,11.585 10.1,11.39L7.209,8.5z");
-                isopen = false;
-                //  Width = 855;
-                //Height = 610;
-                BeginAnimation(WidthProperty, new DoubleAnimation(310, 855, TimeSpan.FromSeconds(0.1)));
-                BeginAnimation(HeightProperty, new DoubleAnimation(430, 610, TimeSpan.FromSeconds(0.2)));
-                Page.Clip = new RectangleGeometry() { RadiusX = 5, RadiusY = 5, Rect = new Rect() { Width = Page.ActualWidth, Height = Page.ActualHeight } };
-            }
-        }
+      
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
@@ -89,12 +65,15 @@ namespace Lemon_App {
                 Music.Visibility = Visibility.Collapsed;
                 User.Visibility = Visibility.Collapsed;
                 All.Visibility = Visibility.Collapsed;
-                Robot.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-50, 0, 50, 0), new Thickness(0), TimeSpan.FromSeconds(0.2)));
+                Robot.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 50, 0, 0), new Thickness(0), TimeSpan.FromSeconds(0.2)));
                 //IContentPage.Children.Clear();
                 //IContentPage.Children.Add(new IMBOX());
-                Mus.Fill = new SolidColorBrush(Color.FromArgb(255, 180, 180, 193));
-                ALL.Fill = new SolidColorBrush(Color.FromArgb(255, 180, 180, 193));
-                Rbt.Fill = new SolidColorBrush(Color.FromArgb(255, 31, 183, 245));
+                Mus.Fill = new SolidColorBrush(Color.FromArgb(0, 255,255, 255));
+                ALL.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255,255));
+                Rbt.Fill = new SolidColorBrush(Color.FromArgb(200, 242, 248, 250));
+                Mus.StrokeThickness = 1;
+                ALL.StrokeThickness = 1;
+                Rbt.StrokeThickness = 0;
             }
             else if (ContentText == "小萌音乐")
             {
@@ -102,12 +81,15 @@ namespace Lemon_App {
                 All.Visibility = Visibility.Collapsed;
                 User.Visibility = Visibility.Collapsed;
                 Music.Visibility = Visibility.Visible;
-                Music.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-50, 0, 50, 0), new Thickness(0), TimeSpan.FromSeconds(0.2)));
+                Music.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 50, 0, 0), new Thickness(0), TimeSpan.FromSeconds(0.2)));
                 //IContentPage.Children.Clear();
                 //   IContentPage.Children.Add(new MusicControl());
-                Mus.Fill = new SolidColorBrush(Color.FromArgb(255, 31, 183, 245));
-                ALL.Fill = new SolidColorBrush(Color.FromArgb(255, 180, 180, 193));
-                Rbt.Fill = new SolidColorBrush(Color.FromArgb(255, 180, 180, 193));
+                Mus.Fill = new SolidColorBrush(Color.FromArgb(200, 242, 248, 250));
+                ALL.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
+                Rbt.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
+                Mus.StrokeThickness = 0;
+                ALL.StrokeThickness = 1;
+                Rbt.StrokeThickness = 1;
             }
             else if (ContentText == "其他")
             {
@@ -115,12 +97,15 @@ namespace Lemon_App {
                 Music.Visibility = Visibility.Collapsed;
                 User.Visibility = Visibility.Collapsed;
                 All.Visibility = Visibility.Visible;
-                All.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-50, 0, 50, 0), new Thickness(0), TimeSpan.FromSeconds(0.2)));
+                All.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 50, 0, 0), new Thickness(0), TimeSpan.FromSeconds(0.2)));
                 //  IContentPage.Children.Clear();
                 //IContentPage.Children.Add(new AllControl());
-                Mus.Fill = new SolidColorBrush(Color.FromArgb(255, 180, 180, 193));
-                ALL.Fill = new SolidColorBrush(Color.FromArgb(255, 31, 183, 245));
-                Rbt.Fill = new SolidColorBrush(Color.FromArgb(255, 180, 180, 193));
+                Mus.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
+                ALL.Fill = new SolidColorBrush(Color.FromArgb(200, 242, 248, 250));
+                Rbt.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
+                Mus.StrokeThickness = 1;
+                ALL.StrokeThickness = 0;
+                Rbt.StrokeThickness = 1;
             }
         }
 
@@ -169,9 +154,12 @@ namespace Lemon_App {
             Music.Visibility = Visibility.Collapsed;
             User.Visibility = Visibility.Visible;
             User.NM.Text = Settings.Default.RobotName;
-            Mus.Fill = new SolidColorBrush(Color.FromArgb(255, 180, 180, 193));
-            ALL.Fill = new SolidColorBrush(Color.FromArgb(255, 180, 180, 193));
-            Rbt.Fill = new SolidColorBrush(Color.FromArgb(255, 180, 180, 193));
+            Mus.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
+            ALL.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
+            Rbt.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
+            Mus.StrokeThickness = 1;
+            ALL.StrokeThickness = 1;
+            Rbt.StrokeThickness = 1;
         }
 
         private void MIN_MouseDown(object sender, MouseButtonEventArgs e)
@@ -234,8 +222,8 @@ namespace Lemon_App {
                 mmi.ptMaxPosition.y = Math.Abs(rcWorkArea.top - rcMonitorArea.top);
                 mmi.ptMaxSize.x = Math.Abs(rcWorkArea.right - rcWorkArea.left);
                 mmi.ptMaxSize.y = Math.Abs(rcWorkArea.bottom - rcWorkArea.top);
-                mmi.ptMinTrackSize.x = 310;
-                mmi.ptMinTrackSize.y = 430;
+                mmi.ptMinTrackSize.x = 400;
+                mmi.ptMinTrackSize.y = 600;
             }
 
             Marshal.StructureToPtr(mmi, lParam, true);
