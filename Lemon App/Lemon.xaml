@@ -61,7 +61,7 @@
                                     <DrawingBrush TileMode="Tile" Viewbox="0,0,3,3" Viewport="0,0,3,3" ViewportUnits="Absolute" ViewboxUnits="Absolute">
                                         <DrawingBrush.Drawing>
                                             <DrawingGroup>
-                                                <GeometryDrawing Brush="#FFF2F5F9" Geometry="M 0,0 L 2,0 L 2,2 L 0,2 z "/>
+                                                <GeometryDrawing Brush="#FF31C27C" Geometry="M 0,0 L 2,0 L 2,2 L 0,2 z "/>
                                             </DrawingGroup>
                                         </DrawingBrush.Drawing>
                                     </DrawingBrush>
