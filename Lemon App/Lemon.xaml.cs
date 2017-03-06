@@ -12,7 +12,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using WinInterop = System.Windows.Interop;
 using System.Windows.Shell;
-using System.Windows.Forms;
+
 
 namespace Lemon_App {
     /// <summary>
@@ -30,8 +30,7 @@ namespace Lemon_App {
             t.Interval = 5000;
             t.Start();
         }
-
-        private void T_Elapsed(object sender, EventArgs e)
+    private void T_Elapsed(object sender, EventArgs e)
         {
             GC.Collect();
             if (System.IO.File.Exists(Settings.Default.UserImage))
@@ -48,9 +47,6 @@ namespace Lemon_App {
         {
             Environment.Exit(0);
         }
-        Boolean isopen = false;
-      
-
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             Page.Clip = new RectangleGeometry() { RadiusX = 5, RadiusY = 5, Rect = new Rect() { Width = Page.ActualWidth, Height = Page.ActualHeight } };
@@ -114,8 +110,7 @@ namespace Lemon_App {
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             IntPtr handle = new WindowInteropHelper(this).Handle;
-            int id = 124;
-            bool r = RegisterHotKey(handle, id, (uint)4, (uint)System.Windows.Forms.Keys.Z);
+            bool r = RegisterHotKey(handle, 124, (uint)4, (uint)System.Windows.Forms.Keys.Z);
             InstallHotKeyHook(this);
             // FontFamily = new FontFamily(".PingFang SC");
             Font.Items.Clear();

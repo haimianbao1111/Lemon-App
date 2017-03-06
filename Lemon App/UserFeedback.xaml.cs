@@ -32,7 +32,7 @@ namespace Lemon_App
             try
             {
                 MailMessage m = new MailMessage();
-                m.From = new MailAddress("2728578956@qq.com");
+                m.From = new MailAddress("lemon.app@qq.com","小萌反馈");
                 m.To.Add(new MailAddress("cz241126@live.com"));
                 m.Subject = "Lemon App用户反馈";
                 m.SubjectEncoding = Encoding.UTF8;
@@ -51,13 +51,14 @@ namespace Lemon_App
                 s.Host = "smtp.qq.com";
                 s.Port = 587;
                 s.EnableSsl = true;
-                s.Credentials = new NetworkCredential("2728578956@qq.com", "qtmiqibczofmddbi");
+                s.Credentials = new NetworkCredential("lemon.app@qq.com", "qtmiqibczofmddbi");
                 s.Send(m);
                 label.Content = "成功发送你的反馈！";
             }
             catch (Exception ex)
             {
                 textBox.Text = ex.Message;
+                label.Content = "发送失败";
             }
         }
     }

@@ -15,7 +15,7 @@
                     <AdornerDecorator>
                         <ContentPresenter/>
                     </AdornerDecorator>
-                    <ResizeGrip x:Name="WindowResizeGrip" HorizontalAlignment="Right" IsTabStop="false" Visibility="Collapsed" VerticalAlignment="Bottom" Background="Transparent" Style="{DynamicResource ResizeGripStyle}"/>
+                    <ResizeGrip x:Name="WindowResizeGrip" HorizontalAlignment="Right" IsTabStop="false" Visibility="Visible" VerticalAlignment="Bottom" Background="Transparent" Style="{DynamicResource ResizeGripStyle}"/>
                 </Grid>
             </Border>
             <ControlTemplate.Triggers>
@@ -62,7 +62,7 @@
                                     <DrawingBrush TileMode="Tile" Viewbox="0,0,3,3" Viewport="0,0,3,3" ViewportUnits="Absolute" ViewboxUnits="Absolute">
                                         <DrawingBrush.Drawing>
                                             <DrawingGroup>
-                                                <GeometryDrawing Brush="#FF31C27C" Geometry="M 0,0 L 2,0 L 2,2 L 0,2 z "/>
+                                                <GeometryDrawing Brush="#FFE4E4E4" Geometry="M 0,0 L 2,0 L 2,2 L 0,2 z "/>
                                             </DrawingGroup>
                                         </DrawingBrush.Drawing>
                                     </DrawingBrush>
@@ -123,6 +123,16 @@
                 <DiscreteBooleanKeyFrame KeyTime="0" Value="False"/>
             </BooleanAnimationUsingKeyFrames>
         </Storyboard>
+        <Storyboard x:Key="OnMouseMove1">
+            <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(Popup.IsOpen)" Storyboard.TargetName="ufp">
+                <DiscreteBooleanKeyFrame KeyTime="0" Value="True"/>
+            </BooleanAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="OnMouseDown2">
+            <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(Popup.IsOpen)" Storyboard.TargetName="ufp">
+                <DiscreteBooleanKeyFrame KeyTime="0" Value="False"/>
+            </BooleanAnimationUsingKeyFrames>
+        </Storyboard>
 
     </Window.Resources>
     <Window.Triggers>
@@ -131,6 +141,12 @@
         </EventTrigger>
         <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="popup">
             <BeginStoryboard x:Name="OnMouseMove2_BeginStoryboard" Storyboard="{StaticResource OnMouseMove2}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseMove" SourceName="uf">
+            <BeginStoryboard x:Name="OnMouseMove1_BeginStoryboard" Storyboard="{StaticResource OnMouseMove1}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseDown" SourceName="border">
+            <BeginStoryboard x:Name="OnMouseDown2_BeginStoryboard" Storyboard="{StaticResource OnMouseDown2}"/>
         </EventTrigger>
     </Window.Triggers>
     <Grid x:Name="Page">
@@ -186,6 +202,30 @@
                                     </TransformGroup>
                                 </ed:RegularPolygon.RenderTransform>
                             </ed:RegularPolygon>
+                        </Grid>
+                    </Popup>
+                </Grid>
+                <Grid Width="20" Height="20" Margin="0,0,0,45" VerticalAlignment="Bottom" Background="#00000000">
+                    <Path x:Name="uf" StrokeThickness="2" Fill="#CCF2F8FA" Stretch="Uniform" Stroke="#CCF2F8FA" Width="20" Height="20" VerticalAlignment="Bottom" Data="M21.759,19.639c2.557-2.014,4.205-5.131,4.205-8.639    c0-6.075-4.925-11-11-11s-11,4.925-11,11c0,3.508,1.648,6.625,4.205,8.639C3.584,21.976,0.357,26.592,0,32h2.003    c0.386-5.064,3.678-9.308,8.209-11.091C11.652,21.601,13.26,22,14.964,22c1.705,0,3.312-0.399,4.752-1.091    c4.531,1.783,7.823,6.027,8.209,11.091h2.003C29.572,26.592,26.344,21.976,21.759,19.639z M14.964,20c-4.971,0-9-4.029-9-9    c0-4.971,4.029-9,9-9c4.971,0,9,4.029,9,9C23.964,15.971,19.935,20,14.964,20z"/>
+                    <Popup x:Name="ufp" AllowsTransparency="True" PopupAnimation="Fade" Placement="Top" HorizontalOffset="-120">
+                        <Grid Width="260" Height="340">
+                            <Border Background="White" CornerRadius="5" Margin="0,0,10,10">
+                                <Border.Effect>
+                                    <DropShadowEffect Color="#FF2D2D30" BlurRadius="10" Opacity="0.3"/>
+                                </Border.Effect>
+                                <local:UserFeedback/>
+                            </Border>
+                            <ed:RegularPolygon Fill="White" Height="10" InnerRadius="1" Margin="0" PointCount="3" Stretch="Fill" Stroke="#CCF2F8FA" StrokeThickness="0" VerticalAlignment="Bottom" Width="20" RenderTransformOrigin="0.5,0.5">
+                                <ed:RegularPolygon.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="180"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </ed:RegularPolygon.RenderTransform>
+                            </ed:RegularPolygon>
+                            <Border x:Name="border"  HorizontalAlignment="Left" Margin="10,10,0,0" Width="13" Height="13" Background="#FFFE5E56" CornerRadius="13" VerticalAlignment="Top"/>
                         </Grid>
                     </Popup>
                 </Grid>

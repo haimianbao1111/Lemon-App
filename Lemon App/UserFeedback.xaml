@@ -6,10 +6,10 @@
              xmlns:local="clr-namespace:Lemon_App"
              mc:Ignorable="d" >
     <Grid>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="31" Margin="10,10,0,0" TextWrapping="Wrap" Text="提交反馈" VerticalAlignment="Top" Width="101" Foreground="#FF252526" FontSize="24"/>
-        <RadioButton x:Name="r" Content="喜欢" HorizontalAlignment="Left" Height="18" Margin="12,46,0,0" VerticalAlignment="Top" Width="53" BorderBrush="{x:Null}" IsChecked="True" Foreground="#FF252526"/>
-        <RadioButton x:Name="rr" Content="建议" HorizontalAlignment="Left" Height="18" Margin="86,46,0,0" VerticalAlignment="Top" Width="53" Foreground="#FF252526" BorderBrush="{x:Null}" Background="White"/>
-        <RadioButton x:Name="rrr" Content="不喜欢" HorizontalAlignment="Left" Height="18" Margin="164,46,0,0" VerticalAlignment="Top" Width="66" Foreground="#FF252526" BorderBrush="{x:Null}" Background="White"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="31" Margin="30,0,0,0" TextWrapping="Wrap" Text="提交反馈" VerticalAlignment="Top" Width="101" Foreground="#FF252526" FontSize="24"/>
+        <RadioButton x:Name="r" Content="喜欢" HorizontalAlignment="Left" Height="18" Margin="12,46,0,0" VerticalAlignment="Top" Width="53" BorderBrush="#FF212121" IsChecked="True" Foreground="#FF252526"/>
+        <RadioButton x:Name="rr" Content="建议" HorizontalAlignment="Left" Height="18" Margin="86,46,0,0" VerticalAlignment="Top" Width="53" Foreground="#FF252526" BorderBrush="#FF212121" Background="White"/>
+        <RadioButton x:Name="rrr" Content="不喜欢" HorizontalAlignment="Left" Height="18" Margin="164,46,0,0" VerticalAlignment="Top" Width="66" Foreground="#FF252526" BorderBrush="#FF212121" Background="White"/>
         <Border BorderThickness="1" Margin="10,102,10,52" CornerRadius="3" Background="#FFF2F3F4">
             <TextBox x:Name="textBox" TextWrapping="Wrap" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Foreground="#FF1B1B1C" BorderThickness="0"/>
         </Border>
@@ -19,7 +19,7 @@
         <Label x:Name="label" Content="" Height="25" Margin="0,0,107,15" VerticalAlignment="Bottom" Foreground="White"/>
         <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Height="18" Margin="17,69,0,0" TextWrapping="Wrap" Text="你的邮箱:" VerticalAlignment="Top" Width="62" Foreground="#FF252526"/>
         <Border BorderThickness="1" Height="28" Margin="84,66,12,0" VerticalAlignment="Top" Background="#FFF2F3F4" CornerRadius="5">
-            <TextBox x:Name="textBox1" Margin="9,2,9,1" TextWrapping="Wrap" BorderThickness="1" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF1B1B1C" SelectionBrush="{x:Null}"/>
+            <TextBox x:Name="textBox1" Margin="9,2,9,1" TextWrapping="Wrap" BorderThickness="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF1B1B1C" SelectionBrush="{x:Null}"/>
         </Border>
 
     </Grid>
