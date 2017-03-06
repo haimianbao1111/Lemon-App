@@ -14,9 +14,9 @@
             <TextBox x:Name="textBox" TextWrapping="Wrap" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Foreground="#FF1B1B1C" BorderThickness="0"/>
         </Border>
         <Border BorderThickness="1" Height="37" Margin="0,0,10,10" VerticalAlignment="Bottom" Background="#FFF2F3F4" CornerRadius="5" HorizontalAlignment="Right" Width="92">
-            <TextBlock x:Name="textBlock1" TextWrapping="Wrap" Text="发送" Margin="0,9,0,0" Foreground="#FF252526" FontSize="14" TextAlignment="Center" MouseDown="textBlock1_MouseDown"/>
+            <TextBlock x:Name="textBlock1" TextWrapping="Wrap" Text="发送" Margin="0,9,0,0" Foreground="#FF252526" FontSize="14" TextAlignment="Center" MouseDown="textBlock1_MouseDown" Background="#00000000"/>
         </Border>
-        <Label x:Name="label" Content="" Height="25" Margin="0,0,107,15" VerticalAlignment="Bottom" Foreground="White"/>
+        <Label x:Name="label" Content="" Height="25" Margin="0,0,107,15" VerticalAlignment="Bottom" Foreground="#FF2D2D30"/>
         <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Height="18" Margin="17,69,0,0" TextWrapping="Wrap" Text="你的邮箱:" VerticalAlignment="Top" Width="62" Foreground="#FF252526"/>
         <Border BorderThickness="1" Height="28" Margin="84,66,12,0" VerticalAlignment="Top" Background="#FFF2F3F4" CornerRadius="5">
             <TextBox x:Name="textBox1" Margin="9,2,9,1" TextWrapping="Wrap" BorderThickness="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF1B1B1C" SelectionBrush="{x:Null}"/>
