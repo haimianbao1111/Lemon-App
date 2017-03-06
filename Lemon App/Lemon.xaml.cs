@@ -113,6 +113,10 @@ namespace Lemon_App {
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            IntPtr handle = new WindowInteropHelper(this).Handle;
+            int id = 1000;
+            bool r = RegisterHotKey(handle, id, (uint)4, (uint)System.Windows.Forms.Keys.Z);
+            InstallHotKeyHook(this);
             // FontFamily = new FontFamily(".PingFang SC");
             Font.Items.Clear();
             foreach (FontFamily font in Fonts.SystemFontFamilies)
@@ -403,5 +407,70 @@ namespace Lemon_App {
             FontFamily = (Font.SelectedItem as ListBoxItem).FontFamily;
             Settings.Default.FontFamilly = (Font.SelectedItem as ListBoxItem).FontFamily.Source;
         }
+
+        /// <summary>
+        /// 注册热键处理函数
+        /// </summary>
+        /// <param name="hWnd">用于处理热键消息的窗体句柄</param>
+        /// <param name="id">热键的编号</param>
+        /// <param name="controlKey">控制键</param>
+        /// <param name="virtualKey">热键的虚键编码</param>
+        /// <returns>
+        ///     <c>true</c>：注册成功<br/>
+        ///     <c>false</c>：注册失败
+        /// </returns>
+        /// <remarks></remarks>
+        /// <history>
+        /// [ZengE]               2009-7-8 22:28    创建
+        /// </history>
+        [System.Runtime.InteropServices.DllImport("user32")]
+        public static extern bool RegisterHotKey(IntPtr hWnd, int id, uint controlKey, uint virtualKey);
+
+        [System.Runtime.InteropServices.DllImport("user32")]
+        public static extern bool UnregisterHotKey(IntPtr hWnd, int id);
+        public bool InstallHotKeyHook(Window window)
+        {
+            //判断组件是否有效
+            if ( null == window )
+            {
+                //如果无效，则直接返回
+                return false;
+            }
+
+            //获得窗体的句柄
+            System.Windows.Interop.WindowInteropHelper helper = new System.Windows.Interop.WindowInteropHelper(window);
+
+            //判断窗体句柄是否有效
+            if (IntPtr.Zero == helper.Handle )
+            {
+                //如果句柄无效，则直接返回
+                return false;
+            }
+
+            //获得消息源
+            System.Windows.Interop.HwndSource source = System.Windows.Interop.HwndSource.FromHwnd(helper.Handle);
+
+            //判断消息源是否有效
+            if ( null == source )
+            {
+                //如果消息源无效，则直接返回
+                return false;
+            }
+
+            //挂接事件
+            source.AddHook(this.HotKeyHook );
+            return true;
+        }
+        private IntPtr HotKeyHook(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+            if (msg == WM_HOTKEY )
+            {
+          //      System.Windows.MessageBox.Show("OK");
+                this.WindowState = WindowState.Normal;
+                this.Activate();
+            }
+            return IntPtr.Zero;
+        }
+        private const int WM_HOTKEY = 0x0312;
     }
 }

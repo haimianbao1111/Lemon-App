@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Media.Imaging;
 //using Windows.UI.Notifications;
 using Lemon_App.Properties;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 //🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂
 //                                                                                          🙂
@@ -17,25 +19,6 @@ using Lemon_App.Properties;
 
 namespace Lemon_App
 {
-    public class Theme
-    {
-        public string ThemeName { get; set; }
-        public string ThemeImageUri { get; set; }
-        public string ThemeFont { get; set; }
-        public string A { get; set; }
-        public string WeatherIcon { get; set; }
-        public string BingIcon { get; set; }
-        public string FanyiIcon { get; set; }
-        public string QRIcon { get; set; }
-        public string UFIcon { get; set; }
-        public string RobotImage { get; set; }
-        public string CMDIcon { get; set; }
-        public string MusicIcon { get; set; }
-        public string SSIcon { get; set; }
-        public string RBTIcon { get; set; }
-        public string NEWSIcon { get; set; }
-        public string STIcon { set; get; }
-    }
 
     public class LemonWeather
     {
