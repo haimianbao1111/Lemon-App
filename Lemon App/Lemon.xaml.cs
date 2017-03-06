@@ -114,7 +114,7 @@ namespace Lemon_App {
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             IntPtr handle = new WindowInteropHelper(this).Handle;
-            int id = 1000;
+            int id = 124;
             bool r = RegisterHotKey(handle, id, (uint)4, (uint)System.Windows.Forms.Keys.Z);
             InstallHotKeyHook(this);
             // FontFamily = new FontFamily(".PingFang SC");
@@ -408,21 +408,6 @@ namespace Lemon_App {
             Settings.Default.FontFamilly = (Font.SelectedItem as ListBoxItem).FontFamily.Source;
         }
 
-        /// <summary>
-        /// 注册热键处理函数
-        /// </summary>
-        /// <param name="hWnd">用于处理热键消息的窗体句柄</param>
-        /// <param name="id">热键的编号</param>
-        /// <param name="controlKey">控制键</param>
-        /// <param name="virtualKey">热键的虚键编码</param>
-        /// <returns>
-        ///     <c>true</c>：注册成功<br/>
-        ///     <c>false</c>：注册失败
-        /// </returns>
-        /// <remarks></remarks>
-        /// <history>
-        /// [ZengE]               2009-7-8 22:28    创建
-        /// </history>
         [System.Runtime.InteropServices.DllImport("user32")]
         public static extern bool RegisterHotKey(IntPtr hWnd, int id, uint controlKey, uint virtualKey);
 
@@ -465,9 +450,12 @@ namespace Lemon_App {
         {
             if (msg == WM_HOTKEY )
             {
-          //      System.Windows.MessageBox.Show("OK");
-                this.WindowState = WindowState.Normal;
-                this.Activate();
+                if (wParam.ToInt32() == 124)
+                {
+                    //      System.Windows.MessageBox.Show("OK");
+                    this.WindowState = WindowState.Normal;
+                    this.Activate();
+                }
             }
             return IntPtr.Zero;
         }
