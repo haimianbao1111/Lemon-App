@@ -54,8 +54,8 @@
                                 <ContentPresenter  IsHitTestVisible="False" Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" VerticalAlignment="Center" Margin="3" HorizontalAlignment="Stretch" />
                                 <TextBox x:Name="PART_EditableTextBox" HorizontalAlignment="Stretch" Focusable="True" Visibility="Collapsed" IsReadOnly="False"/>
                                 <!--下拉显示面板HorizontalOffset:设置下拉面板的相对位置-->
-                                <Popup HorizontalOffset="-1" Width="{TemplateBinding ActualWidth}"
-                                       IsOpen="{TemplateBinding IsDropDownOpen}" Focusable="False"    PopupAnimation="Slide">
+                                <Popup HorizontalOffset="-5" Width="80"
+                                       IsOpen="{TemplateBinding IsDropDownOpen}" Focusable="False"    PopupAnimation="Slide" AllowsTransparency="True" Height="120">
                                     <Grid  SnapsToDevicePixels="True" HorizontalAlignment="Stretch">
                                         <Border  BorderThickness="1,1,1,1" BorderBrush="#4C000000" HorizontalAlignment="Stretch" CornerRadius="5">
                                             <Border.Background>
@@ -119,7 +119,7 @@
                 <ComboBoxItem BorderBrush="{x:Null}" Content="自动"/>
                 <ComboBoxItem  BorderBrush="{x:Null}" Content="中文"/>
             </ComboBox>
-            <ComboBox x:Name="HyycomboBox" HorizontalAlignment="Right" Height="31" Margin="0,10,70,0" VerticalAlignment="Top" Width="70" BorderBrush="{x:Null}" FontSize="14" Text="英语" Background="#FFF1F2F6" Foreground="#FF1B1B1C" Grid.Column="1">
+            <ComboBox x:Name="HyycomboBox" HorizontalAlignment="Right" Height="31" Margin="0,10,70,0" VerticalAlignment="Top" Width="70" BorderBrush="{x:Null}" FontSize="14"  Background="#FFF1F2F6" Foreground="#FF1B1B1C" Grid.Column="1" SelectedIndex="24">
                 <ComboBoxItem  BorderBrush="{x:Null}" Content="阿拉伯语"/>
                 <ComboBoxItem BorderBrush="{x:Null}" Content="爱沙尼亚语"/>
                 <ComboBoxItem BorderBrush="{x:Null}" Content="保加利亚语"/>

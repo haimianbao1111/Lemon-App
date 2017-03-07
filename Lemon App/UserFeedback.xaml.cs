@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -31,13 +32,17 @@ namespace Lemon_App
         {
             return Regex.IsMatch(strIn, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)" + @"|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
         }
-        private void textBlock1_MouseDown(object sender, MouseButtonEventArgs e)
+        private async void textBlock1_MouseDown(object sender, MouseButtonEventArgs e)
         {
             try
             {
-                if (textBox1.Text != string.Empty && IsValidEmail(textBox1.Text)&&textBox.Text!=string.Empty)
+                if (textBox1.Text != string.Empty && IsValidEmail(textBox1.Text) && textBox.Text != string.Empty)
                 {
                     MailMessage m = new MailMessage();
+                    if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + @"Log.log"))
+                    {
+                        m.Attachments.Add(new Attachment(AppDomain.CurrentDomain.BaseDirectory + @"Log.log"));
+                    }
                     m.From = new MailAddress("lemon.app@qq.com", "小萌反馈");
                     m.To.Add(new MailAddress("cz241126@live.com"));
                     m.Subject = "Lemon App用户反馈";
@@ -58,7 +63,7 @@ namespace Lemon_App
                     s.Port = 587;
                     s.EnableSsl = true;
                     s.Credentials = new NetworkCredential("lemon.app@qq.com", "qtmiqibczofmddbi");
-                    s.Send(m);
+                    await s.SendMailAsync(m);
                     label.Content = "成功发送你的反馈！";
                 }
                 else { label.Content = "请输入合法的Email地址"; }

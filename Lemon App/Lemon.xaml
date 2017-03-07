@@ -133,6 +133,11 @@
                 <DiscreteBooleanKeyFrame KeyTime="0" Value="False"/>
             </BooleanAnimationUsingKeyFrames>
         </Storyboard>
+        <Storyboard x:Key="OnMouseLeave1">
+            <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(Popup.IsOpen)" Storyboard.TargetName="ufp">
+                <DiscreteBooleanKeyFrame KeyTime="0" Value="False"/>
+            </BooleanAnimationUsingKeyFrames>
+        </Storyboard>
 
     </Window.Resources>
     <Window.Triggers>
@@ -145,8 +150,8 @@
         <EventTrigger RoutedEvent="UIElement.MouseMove" SourceName="uf">
             <BeginStoryboard x:Name="OnMouseMove1_BeginStoryboard" Storyboard="{StaticResource OnMouseMove1}"/>
         </EventTrigger>
-        <EventTrigger RoutedEvent="UIElement.MouseDown" SourceName="border">
-            <BeginStoryboard x:Name="OnMouseDown2_BeginStoryboard" Storyboard="{StaticResource OnMouseDown2}"/>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="ufp">
+            <BeginStoryboard x:Name="OnMouseLeave1_BeginStoryboard" Storyboard="{StaticResource OnMouseLeave1}"/>
         </EventTrigger>
     </Window.Triggers>
     <Grid x:Name="Page">
@@ -225,7 +230,6 @@
                                     </TransformGroup>
                                 </ed:RegularPolygon.RenderTransform>
                             </ed:RegularPolygon>
-                            <Border x:Name="border"  HorizontalAlignment="Left" Margin="10,10,0,0" Width="13" Height="13" Background="#FFFE5E56" CornerRadius="13" VerticalAlignment="Top"/>
                         </Grid>
                     </Popup>
                 </Grid>

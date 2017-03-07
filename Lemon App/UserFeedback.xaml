@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Lemon_App"
              mc:Ignorable="d" >
     <Grid>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="31" Margin="30,0,0,0" TextWrapping="Wrap" Text="提交反馈" VerticalAlignment="Top" Width="101" Foreground="#FF252526" FontSize="24"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="31" Margin="10,0,0,0" TextWrapping="Wrap" Text="提交反馈" VerticalAlignment="Top" Width="101" Foreground="#FF252526" FontSize="24"/>
         <RadioButton x:Name="r" Content="喜欢" HorizontalAlignment="Left" Height="18" Margin="12,46,0,0" VerticalAlignment="Top" Width="53" BorderBrush="#FF212121" IsChecked="True" Foreground="#FF252526"/>
         <RadioButton x:Name="rr" Content="建议" HorizontalAlignment="Left" Height="18" Margin="86,46,0,0" VerticalAlignment="Top" Width="53" Foreground="#FF252526" BorderBrush="#FF212121" Background="White"/>
         <RadioButton x:Name="rrr" Content="不喜欢" HorizontalAlignment="Left" Height="18" Margin="164,46,0,0" VerticalAlignment="Top" Width="66" Foreground="#FF252526" BorderBrush="#FF212121" Background="White"/>
