@@ -305,37 +305,34 @@ namespace Lemon_App
     {
         public static async System.Threading.Tasks.Task<string> GetWebAsync(string url)
         {
-            HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(url);
-            hwr.Timeout = 10000;
-            if(Settings.Default.isWebProxy) hwr.Proxy = He.proxy;
-            var o = await hwr.GetResponseAsync();
-            StreamReader sr = new StreamReader(o.GetResponseStream(),Encoding.UTF8);
-            var st = await sr.ReadToEndAsync();
-            sr.Dispose();
-            return st;
-        }
-        public static async System.Threading.Tasks.Task<string> GetWebUAsync(string url)
-        {
-            HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(url);
-            hwr.Timeout = 20000;
-            if (Settings.Default.isWebProxy) hwr.Proxy = He.proxy;
-            var o = await hwr.GetResponseAsync();
-            StreamReader sr = new StreamReader(o.GetResponseStream(), Encoding.Default);
-            var st = await sr.ReadToEndAsync();
-            sr.Dispose();
-            return st;
+            try
+            {
+                HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(url);
+                hwr.Timeout = 10000;
+                if (Settings.Default.isWebProxy) hwr.Proxy = He.proxy;
+                var o = await hwr.GetResponseAsync();
+                StreamReader sr = new StreamReader(o.GetResponseStream(), Encoding.UTF8);
+                var st = await sr.ReadToEndAsync();
+                sr.Dispose();
+                return st;
+            }
+            catch { return ""; }
         }
 
         public static async System.Threading.Tasks.Task<string> GetWebAsync(string url,Encoding c)
         {
-            HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(url);
-       //     hwr.Timeout = 20000;
-            if (Settings.Default.isWebProxy) hwr.Proxy = He.proxy;
-            var o = await hwr.GetResponseAsync();
-            StreamReader sr = new StreamReader(o.GetResponseStream(), c);
-            var st = await sr.ReadToEndAsync();
-            sr.Dispose();
-            return st;
+            try
+            {
+                HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(url);
+                //     hwr.Timeout = 20000;
+                if (Settings.Default.isWebProxy) hwr.Proxy = He.proxy;
+                var o = await hwr.GetResponseAsync();
+                StreamReader sr = new StreamReader(o.GetResponseStream(), c);
+                var st = await sr.ReadToEndAsync();
+                sr.Dispose();
+                return st;
+            }
+            catch { return ""; }
         }
         public static string PingErrorMsg = "";
         public static bool Lalala(string ip)

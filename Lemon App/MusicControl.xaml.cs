@@ -108,54 +108,59 @@ namespace Lemon_App
         int ioi = 1;
         private async void textBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter)
+            try
             {
-                int i = 0;
-                try
+                if (e.Key == Key.Enter)
                 {
-                    IslistBoxInfo = 0;
-                    jz.Visibility = Visibility.Visible;
-                    DOWN.Visibility = Visibility.Collapsed;
-                    listBox.Visibility = Visibility.Visible;
-                    listBox.Items.Clear();
-                    int osx = 1;
-                    while (osx!=3) {
-                        JObject o = JObject.Parse(await GetWebAsync($"http://59.37.96.220/soso/fcgi-bin/client_search_logic_cp?format=json&t=20&inCharset=GB2312&outCharset=utf-8&w={textBox.Text}&p={osx}", Encoding.UTF8));
-                        while (i < o["data"]["song"]["list"].Count())
+                    int i = 0;
+                    try
+                    {
+                        IslistBoxInfo = 0;
+                        jz.Visibility = Visibility.Visible;
+                        DOWN.Visibility = Visibility.Collapsed;
+                        listBox.Visibility = Visibility.Visible;
+                        listBox.Items.Clear();
+                        int osx = 1;
+                        while (osx != 3)
                         {
-                            //string f = o["data"]["song"]["list"][i]["f"].ToString().Replace("|", "\r\n");
-                            //string[] ContentLines = f.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-                            //string Gs = o["data"]["song"]["list"][i]["fsinger"].ToString();
-                            //string songname = o["data"]["song"]["list"][i]["fsong"].ToString();
-                            //string Zhj = o["data"]["song"]["list"][i]["albumName_hilight"].ToString();
-                            //    img = ContentLines[22];
-                            Music m = new Music();
-                            m.MusicName = o["data"]["song"]["list"][i]["songname"].ToString();
-                            m.Singer = o["data"]["song"]["list"][i]["singer"][0]["name"].ToString();
-                            m.ZJ = o["data"]["song"]["list"][i]["albumname"].ToString();
-                            m.MusicID = o["data"]["song"]["list"][i]["media_mid"].ToString();
-                            m.ImageID = o["data"]["song"]["list"][i]["albummid"].ToString();
-                            m.GC = o["data"]["song"]["list"][i]["songid"].ToString();
-                            m.Fotmat = o["data"]["song"]["list"][i]["sizeflac"].ToString();
-                            m.HQFOTmat = o["data"]["song"]["list"][i]["size320"].ToString();
-                            m.MV = o["data"]["song"]["list"][i]["vid"].ToString();
-                            string Q = "";
-                            if (m.Fotmat != "0")
-                                Q = "SQ";
-                            if (m.HQFOTmat != "0")
-                                if (m.Fotmat == "0")
-                                    Q = "HQ";
-                            listBox.Items.Add(new MusicItemControl() { Width = this.ActualWidth, BorderThickness = new Thickness(0), MusicGS = m.Singer, MusicName = m.MusicName, MusicZJ = m.ZJ, Music = m, Qt = Q, ismv = m.MV });
-                            i++;
+                            JObject o = JObject.Parse(await GetWebAsync($"http://59.37.96.220/soso/fcgi-bin/client_search_logic_cp?format=json&t=20&inCharset=GB2312&outCharset=utf-8&w={textBox.Text}&p={osx}", Encoding.UTF8));
+                            while (i < o["data"]["song"]["list"].Count())
+                            {
+                                //string f = o["data"]["song"]["list"][i]["f"].ToString().Replace("|", "\r\n");
+                                //string[] ContentLines = f.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+                                //string Gs = o["data"]["song"]["list"][i]["fsinger"].ToString();
+                                //string songname = o["data"]["song"]["list"][i]["fsong"].ToString();
+                                //string Zhj = o["data"]["song"]["list"][i]["albumName_hilight"].ToString();
+                                //    img = ContentLines[22];
+                                Music m = new Music();
+                                m.MusicName = o["data"]["song"]["list"][i]["songname"].ToString();
+                                m.Singer = o["data"]["song"]["list"][i]["singer"][0]["name"].ToString();
+                                m.ZJ = o["data"]["song"]["list"][i]["albumname"].ToString();
+                                m.MusicID = o["data"]["song"]["list"][i]["media_mid"].ToString();
+                                m.ImageID = o["data"]["song"]["list"][i]["albummid"].ToString();
+                                m.GC = o["data"]["song"]["list"][i]["songid"].ToString();
+                                m.Fotmat = o["data"]["song"]["list"][i]["sizeflac"].ToString();
+                                m.HQFOTmat = o["data"]["song"]["list"][i]["size320"].ToString();
+                                m.MV = o["data"]["song"]["list"][i]["vid"].ToString();
+                                string Q = "";
+                                if (m.Fotmat != "0")
+                                    Q = "SQ";
+                                if (m.HQFOTmat != "0")
+                                    if (m.Fotmat == "0")
+                                        Q = "HQ";
+                                listBox.Items.Add(new MusicItemControl() { Width = this.ActualWidth, BorderThickness = new Thickness(0), MusicGS = m.Singer, MusicName = m.MusicName, MusicZJ = m.ZJ, Music = m, Qt = Q, ismv = m.MV });
+                                i++;
+                            }
+                            osx++;
+                            i = 0;
                         }
-                        osx++;
-                        i = 0;
+                        jz.Visibility = Visibility.Collapsed;
+                        listBox.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 93, 0, 0), new Thickness(0, 43, 0, 0), TimeSpan.FromSeconds(0.2)));
                     }
-                    jz.Visibility = Visibility.Collapsed;
-                    listBox.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 93, 0, 0), new Thickness(0, 43, 0, 0), TimeSpan.FromSeconds(0.2)));
+                    catch { }
                 }
-                catch { }
             }
+            catch { }
         }
         string img = "";
         public TimeSpan GetMusicDurationTime()

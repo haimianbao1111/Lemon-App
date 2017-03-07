@@ -447,7 +447,7 @@ namespace Lemon_App {
             {
                 if (wParam.ToInt32() == 124)
                 {
-                    //      System.Windows.MessageBox.Show("OK");
+                    new WelcomeWindow().Show();
                     this.WindowState = WindowState.Normal;
                     this.Activate();
                 }
