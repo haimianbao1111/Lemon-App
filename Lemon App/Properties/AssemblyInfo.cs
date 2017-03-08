@@ -12,7 +12,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Twilight./Lemon")]
 [assembly: AssemblyProduct("Lemon App")]
-[assembly: AssemblyCopyright("© Twilight 2016 all rights reserved.")]
+[assembly: AssemblyCopyright("© Twilight 2017 all rights reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
