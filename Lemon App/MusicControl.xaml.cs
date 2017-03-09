@@ -148,7 +148,7 @@ namespace Lemon_App
                                 if (m.HQFOTmat != "0")
                                     if (m.Fotmat == "0")
                                         Q = "HQ";
-                                listBox.Items.Add(new MusicItemControl() { Width = this.ActualWidth, BorderThickness = new Thickness(0), MusicGS = m.Singer, MusicName = m.MusicName, MusicZJ = m.ZJ, Music = m, Qt = Q, ismv = m.MV });
+                                listBox.Items.Add(new MusicItemControl() { Width = this.ActualWidth-10, BorderThickness = new Thickness(0), MusicGS = m.Singer, MusicName = m.MusicName, MusicZJ = m.ZJ, Music = m, Qt = Q, ismv = m.MV });
                                 i++;
                             }
                             osx++;
@@ -717,7 +717,7 @@ namespace Lemon_App
                 if (lj.List[i].ItemText.HQFOTmat != "0")
                     if (lj.List[i].ItemText.Fotmat == "0")
                         os = "HQ";
-                listBox.Items.Add(new MusicItemControl() {Width=this.ActualWidth , MusicGS =lj.List[i].ItemText.Singer, MusicName = lj.List[i].ItemText.MusicName, MusicZJ = lj.List[i].ItemText.ZJ,Qt=os, Music = lj.List[i].ItemText , ismv = lj.List[i].ItemText.MV });
+                listBox.Items.Add(new MusicItemControl() {Width=this.ActualWidth-10 , MusicGS =lj.List[i].ItemText.Singer, MusicName = lj.List[i].ItemText.MusicName, MusicZJ = lj.List[i].ItemText.ZJ,Qt=os, Music = lj.List[i].ItemText , ismv = lj.List[i].ItemText.MV });
             }
             jz.Visibility = Visibility.Collapsed;
             listBox.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 93, 0, 0), new Thickness(0, 43, 0, 0), TimeSpan.FromSeconds(0.2)));
@@ -766,7 +766,7 @@ namespace Lemon_App
                     if (m.HQFOTmat != "0")
                         if (m.Fotmat == "0")
                             Q = "HQ";
-                    listBox.Items.Add(new MusicItemControl() { Width = this.ActualWidth, BorderThickness = new Thickness(0), MusicGS = m.Singer, MusicName = m.MusicName, MusicZJ = m.ZJ, Music = m, Qt = Q, ismv = m.MV });
+                    listBox.Items.Add(new MusicItemControl() { Width = this.ActualWidth-10, BorderThickness = new Thickness(0), MusicGS = m.Singer, MusicName = m.MusicName, MusicZJ = m.ZJ, Music = m, Qt = Q, ismv = m.MV });
                     i++;
                 }
                 listBox.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 93, 0, 0), new Thickness(0, 43, 0, 0), TimeSpan.FromSeconds(0.2)));
@@ -802,7 +802,7 @@ namespace Lemon_App
             LyricShow.refreshLyricShowUIWhenChangeWINOrFontSize();
             foreach (var o in listBox.Items)
             {
-                (o as UserControl).Width = this.ActualWidth;
+                (o as UserControl).Width = this.ActualWidth-10;
             }
             if (this.ActualWidth < 400)
             {
@@ -852,7 +852,7 @@ namespace Lemon_App
                     if (m.HQFOTmat != "0")
                         if (m.Fotmat == "0")
                             Q = "HQ";
-                    listBox.Items.Add(new MusicItemControl() { Width = this.ActualWidth, BorderThickness = new Thickness(0), MusicGS = m.Singer, MusicName = m.MusicName, MusicZJ = m.ZJ, Music = m, Qt = Q, ismv = m.MV });
+                    listBox.Items.Add(new MusicItemControl() { Width = this.ActualWidth-10, BorderThickness = new Thickness(0), MusicGS = m.Singer, MusicName = m.MusicName, MusicZJ = m.ZJ, Music = m, Qt = Q, ismv = m.MV });
                     i++;
                 }
                 jz.Visibility = Visibility.Collapsed;
@@ -924,7 +924,7 @@ namespace Lemon_App
                         MV =""
                     };
                     string Q = "";
-                    listBox.Items.Add(new MusicItemControl() { Width = this.ActualWidth, BorderThickness = new Thickness(0), MusicGS = m.Singer, MusicName = m.MusicName, MusicZJ = m.ZJ, Music = m, Qt = Q, ismv = m.MV });
+                    listBox.Items.Add(new MusicItemControl() { Width = this.ActualWidth-10, BorderThickness = new Thickness(0), MusicGS = m.Singer, MusicName = m.MusicName, MusicZJ = m.ZJ, Music = m, Qt = Q, ismv = m.MV });
                     i++;
                 }
                 jz.Visibility = Visibility.Collapsed;
@@ -1031,7 +1031,7 @@ namespace Lemon_App
                         if (m.HQFOTmat != "0")
                             if (m.Fotmat == "0")
                                 Q = "HQ";
-                        listBox.Items.Add(new MusicItemControl() { Width = this.ActualWidth, BorderThickness = new Thickness(0), MusicGS = m.Singer, MusicName = m.MusicName, MusicZJ = m.ZJ, Music = m, Qt = Q, ismv = m.MV });
+                        listBox.Items.Add(new MusicItemControl() { Width = this.ActualWidth-10, BorderThickness = new Thickness(0), MusicGS = m.Singer, MusicName = m.MusicName, MusicZJ = m.ZJ, Music = m, Qt = Q, ismv = m.MV });
                         i++;
                     }
                     jz.Visibility = Visibility.Collapsed;
