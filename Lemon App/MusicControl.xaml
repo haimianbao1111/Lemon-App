@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Lemon_App"
              xmlns:MetroStyleBusyIndicator="clr-namespace:Transvalue.MetroStyleBusyIndicator" xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"
-    xmlns:system="clr-namespace:System;assembly=mscorlib" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" x:Class="Lemon_App.MusicControl"
+    xmlns:system="clr-namespace:System;assembly=mscorlib" x:Class="Lemon_App.MusicControl"
              mc:Ignorable="d" 
               Width="Auto" Height="Auto" Loaded="UserControl_Loaded" SizeChanged="UserControl_SizeChanged">
     <UserControl.Resources>
@@ -25,33 +25,33 @@
         </LinearGradientBrush>
 
         <!--Slider模板-->
-        <Style x:Key="Slider_RepeatButton" TargetType="{x:Type RepeatButton}">
+        <Style x:Key="Slider_RepeatButton" TargetType="RepeatButton">
             <Setter Property="Focusable" Value="false" />
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type RepeatButton}">
+                    <ControlTemplate TargetType="RepeatButton">
                         <Border Background="{StaticResource SliderBackground}" />
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
 
-        <Style x:Key="Slider_RepeatButton1" TargetType="{x:Type RepeatButton}">
+        <Style x:Key="Slider_RepeatButton1" TargetType="RepeatButton">
             <Setter Property="Focusable" Value="false" />
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type RepeatButton}">
+                    <ControlTemplate TargetType="RepeatButton">
                         <Border Background="Transparent" />
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
 
-        <Style x:Key="Slider_Thumb" TargetType="{x:Type Thumb}">
+        <Style x:Key="Slider_Thumb" TargetType="Thumb">
             <Setter Property="Focusable" Value="false" />
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Thumb}">
+                    <ControlTemplate TargetType="Thumb">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
@@ -67,11 +67,11 @@
             </Setter>
         </Style>
 
-        <Style x:Key="Slider_CustomStyle" TargetType="{x:Type Slider}">
+        <Style x:Key="Slider_CustomStyle" TargetType="Slider">
             <Setter Property="Focusable" Value="false" />
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Slider}">
+                    <ControlTemplate TargetType="Slider">
                         <Grid>
                             <!--<Grid.ColumnDefinitions>  
                                 <ColumnDefinition Width="80"/>  
@@ -86,7 +86,7 @@
                             <!--<TextBlock Text="{Binding RelativeSource={RelativeSource TemplatedParent},Path=Tag}" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14"/>-->
                             <!--<TextBlock Grid.Column="2" Text="{Binding ElementName=PART_Track,Path=Value,StringFormat=\{0:N0\}}" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" DataContext="{Binding}" />-->
                             <Border Grid.Column="1" BorderBrush="Gray" BorderThickness="1" CornerRadius="8,0,0,8">
-                                <Track Grid.Column="1" x:Name="PART_Track">
+                                <Track Grid.Column="1" Name="PART_Track">
                                     <Track.DecreaseRepeatButton>
                                         <RepeatButton Style="{StaticResource Slider_RepeatButton}"  
                                 Command="Slider.DecreaseLarge"/>
@@ -105,7 +105,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <Style TargetType="{x:Type ListBoxItem}" x:Key="S">
+        <Style TargetType="ListBoxItem" x:Key="S">
             <Style.Resources>
                 <!--ListBox 选中一项时背景颜色-->
                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
@@ -114,9 +114,9 @@
             </Style.Resources>
         </Style>
         <Style  TargetType="{x:Type ComboBox}">
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="Width" Value="120"/>
-            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="Margin" Value="5"></Setter>
+            <Setter Property="Width" Value="120"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ComboBox}">
@@ -132,6 +132,14 @@
                                 </BooleanAnimationUsingKeyFrames>
                             </Storyboard>
                         </ControlTemplate.Resources>
+                        <ControlTemplate.Triggers>
+                            <EventTrigger RoutedEvent="UIElement.MouseMove" SourceName="path">
+                                <BeginStoryboard Storyboard="{StaticResource OnMouseDown1}"/>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="popup">
+                                <BeginStoryboard x:Name="OnMouseMove2_BeginStoryboard" Storyboard="{StaticResource OnMouseMove2}"/>
+                            </EventTrigger>
+                        </ControlTemplate.Triggers>
                         <Border  BorderBrush="#FF31C27C" CornerRadius="5" Background="Transparent" BorderThickness="1">
                             <Grid>
                                 <ToggleButton x:Name="path" ClickMode="Press" Focusable="False" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Margin="2" MinWidth="0" MinHeight="0" Width="Auto" Foreground="#FF31C27C" Background="Transparent">
@@ -153,7 +161,9 @@
                                                             </Border>
                                                         </DockPanel>
                                                         <ControlTemplate.Triggers>
-                                                            <Trigger Property="IsChecked" Value="True"/>
+                                                            <Trigger Property="IsChecked" Value="True">
+
+                                                            </Trigger>
                                                         </ControlTemplate.Triggers>
                                                     </ControlTemplate>
                                                 </Setter.Value>
@@ -170,7 +180,11 @@
                                 <TextBox x:Name="PART_EditableTextBox" HorizontalAlignment="Stretch" Focusable="True" Visibility="Collapsed" IsReadOnly="False"/>
                                 <Popup x:Name="popup" HorizontalOffset="-1" Width="{TemplateBinding ActualWidth}" Focusable="False"    PopupAnimation="Slide" AllowsTransparency="True" Placement="Top">
                                     <Grid  SnapsToDevicePixels="True" HorizontalAlignment="Stretch">
-                                        <Border  BorderThickness="1,1,1,1" BorderBrush="#FF31C27C" HorizontalAlignment="Stretch" CornerRadius="5" Background="#FFF1F2F6"/>
+                                        <Border  BorderThickness="1,1,1,1" BorderBrush="#FF31C27C" HorizontalAlignment="Stretch" CornerRadius="5">
+                                            <Border.Background>
+                                                <SolidColorBrush Color="#FFF1F2F6" />
+                                            </Border.Background>
+                                        </Border>
                                         <ScrollViewer  Style="{StaticResource for_scrollviewer}" SnapsToDevicePixels="True" HorizontalAlignment="Stretch" >
                                             <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" HorizontalAlignment="Stretch" />
                                         </ScrollViewer>
@@ -178,14 +192,6 @@
                                 </Popup>
                             </Grid>
                         </Border>
-                        <ControlTemplate.Triggers>
-                            <EventTrigger RoutedEvent="UIElement.MouseMove" SourceName="path">
-                                <BeginStoryboard Storyboard="{StaticResource OnMouseDown1}"/>
-                            </EventTrigger>
-                            <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="popup">
-                                <BeginStoryboard x:Name="OnMouseMove2_BeginStoryboard" Storyboard="{StaticResource OnMouseMove2}"/>
-                            </EventTrigger>
-                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -215,12 +221,8 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ListBox}">
                         <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="1" SnapsToDevicePixels="true">
-                            <ScrollViewer CanContentScroll="True" Focusable="false" Padding="{TemplateBinding Padding}" Template="{DynamicResource SCS}" ScrollChanged="ScrollViewer_ScrollChanged">
-                                <VirtualizingStackPanel IsItemsHost="True">
-                                    <i:Interaction.Behaviors>
-                                        <ei:FluidMoveBehavior AppliesTo="Children" Duration="0:0:0.2"/>
-                                    </i:Interaction.Behaviors>
-                                </VirtualizingStackPanel>
+                            <ScrollViewer Focusable="false" Padding="{TemplateBinding Padding}" Template="{DynamicResource SCS}" ScrollChanged="ScrollViewer_ScrollChanged">
+                                <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Style="{DynamicResource ItemsPresenterStyle}"/>
                             </ScrollViewer>
                         </Border>
                         <ControlTemplate.Triggers>
@@ -417,7 +419,9 @@
                                     </Border>
                                 </DockPanel>
                                 <ControlTemplate.Triggers>
-                                    <Trigger Property="IsChecked" Value="True"/>
+                                    <Trigger Property="IsChecked" Value="True">
+
+                                    </Trigger>
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>
                         </Setter.Value>
@@ -682,11 +686,11 @@
         <Grid x:Name="h" Margin="0,0,0,49">
             <ListBox x:Name="listBox" Margin="0,43,0,0" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEEEEEE" SelectionChanged="listBox_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Visible" Style="{DynamicResource ListBoxStyle}">
                 <ListBox.ItemContainerStyle>
-                    <Style TargetType="{x:Type ListBoxItem}">
+                    <Style TargetType="ListBoxItem">
                         <Setter Property="BorderThickness" Value="0"/>
                         <Setter Property="Template">
                             <Setter.Value>
-                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                <ControlTemplate TargetType="ListBoxItem">
                                     <Border Background="{TemplateBinding Background}">
                                         <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -773,7 +777,11 @@
                         <!--ComboBoxItem Content="SQ" Foreground="#FF252526"/-->
                     </ComboBox>
                     <Border  HorizontalAlignment="Left" Margin="105,2,0,3" Width="20" Background="#00F1F3F7" CornerRadius="5" ToolTip="桌面歌词" BorderBrush="#FF31C27C" BorderThickness="1" Height="20" MouseDown="Border_MouseDown_5">
-                        <Path Data="M60.101,2.007c-0.59-0.127-1.205,0.023-1.673,0.403c-0.468,0.38-0.74,0.951-0.74,1.554v8.225  c0,0.911,0.616,1.708,1.498,1.936C75.297,18.3,86.549,32.842,86.549,49.488c0,20.153-16.396,36.549-36.549,36.549  S13.451,69.642,13.451,49.488c0-16.646,11.252-31.188,27.363-35.363c0.882-0.229,1.498-1.025,1.498-1.936V3.964  c0-0.603-0.272-1.174-0.74-1.554s-1.082-0.528-1.673-0.403C17.621,6.716,1.451,26.685,1.451,49.488  c0,26.77,21.779,48.549,48.549,48.549s48.549-21.779,48.549-48.549C98.549,26.685,82.379,6.716,60.101,2.007z" Fill="#FF31C27C" Stretch="Uniform" StrokeThickness="0" Margin="3"/>
+                        <Path Data="M60.101,2.007c-0.59-0.127-1.205,0.023-1.673,0.403c-0.468,0.38-0.74,0.951-0.74,1.554v8.225
+	c0,0.911,0.616,1.708,1.498,1.936C75.297,18.3,86.549,32.842,86.549,49.488c0,20.153-16.396,36.549-36.549,36.549
+	S13.451,69.642,13.451,49.488c0-16.646,11.252-31.188,27.363-35.363c0.882-0.229,1.498-1.025,1.498-1.936V3.964
+	c0-0.603-0.272-1.174-0.74-1.554s-1.082-0.528-1.673-0.403C17.621,6.716,1.451,26.685,1.451,49.488
+	c0,26.77,21.779,48.549,48.549,48.549s48.549-21.779,48.549-48.549C98.549,26.685,82.379,6.716,60.101,2.007z" Fill="#FF31C27C" Stretch="Uniform" StrokeThickness="0" Margin="3"/>
                     </Border>
                     <Border HorizontalAlignment="Left" Width="20" Height="20" Background="#00F1F3F7" CornerRadius="3" ToolTip="添加到收藏" BorderBrush="#FF31C27C" BorderThickness="1" Margin="80,2,0,3" MouseDown="Border_MouseDown_1">
                         <Path StrokeThickness="0" Margin="2" Fill="#FF31C27C" Data="M56.14,28.375H35.274V7.506c0-1.809-1.462-3.271-3.274-3.271c-1.811,0-3.274,1.463-3.274,3.271v20.869H7.862  c-1.813,0-3.274,1.464-3.274,3.272c0,1.807,1.462,3.27,3.274,3.27h20.863v20.869c0,1.809,1.464,3.272,3.274,3.272  c1.813,0,3.274-1.464,3.274-3.272V34.918H56.14c1.811,0,3.272-1.463,3.272-3.27C59.412,29.839,57.95,28.375,56.14,28.375z" Stretch="Fill" ToolTip="添加到收藏"/>
