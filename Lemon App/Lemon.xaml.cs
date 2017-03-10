@@ -68,7 +68,7 @@ namespace Lemon_App {
                 //IContentPage.Children.Add(new IMBOX());
                 Mus.Fill = new SolidColorBrush(Color.FromArgb(0, 255,255, 255));
                 ALL.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255,255));
-                Rbt.Fill = new SolidColorBrush(Color.FromArgb(200, 242, 248, 250));
+                Rbt.Fill = new SolidColorBrush(Color.FromArgb(200,157, 159, 167));
                 Mus.StrokeThickness = 1;
                 ALL.StrokeThickness = 1;
                 Rbt.StrokeThickness = 0;
@@ -82,7 +82,7 @@ namespace Lemon_App {
                 Music.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 50, 0, 0), new Thickness(0), TimeSpan.FromSeconds(0.2)));
                 //IContentPage.Children.Clear();
                 //   IContentPage.Children.Add(new MusicControl());
-                Mus.Fill = new SolidColorBrush(Color.FromArgb(200, 242, 248, 250));
+                Mus.Fill = new SolidColorBrush(Color.FromArgb(200, 157, 159, 167));
                 ALL.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
                 Rbt.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
                 Mus.StrokeThickness = 0;
@@ -99,7 +99,7 @@ namespace Lemon_App {
                 //  IContentPage.Children.Clear();
                 //IContentPage.Children.Add(new AllControl());
                 Mus.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
-                ALL.Fill = new SolidColorBrush(Color.FromArgb(200, 242, 248, 250));
+                ALL.Fill = new SolidColorBrush(Color.FromArgb(200, 157, 159, 167));
                 Rbt.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
                 Mus.StrokeThickness = 1;
                 ALL.StrokeThickness = 0;
