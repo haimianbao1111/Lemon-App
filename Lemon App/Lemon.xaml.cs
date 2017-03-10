@@ -110,7 +110,8 @@ namespace Lemon_App {
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             IntPtr handle = new WindowInteropHelper(this).Handle;
-            bool r = RegisterHotKey(handle, 124, (uint)4, (uint)System.Windows.Forms.Keys.Z);
+            RegisterHotKey(handle, 124, (uint)4, (uint)System.Windows.Forms.Keys.Z);
+            RegisterHotKey(handle, 125, (uint)4, (uint)System.Windows.Forms.Keys.S);
             InstallHotKeyHook(this);
             // FontFamily = new FontFamily(".PingFang SC");
             Font.Items.Clear();
@@ -450,6 +451,10 @@ namespace Lemon_App {
                     new WelcomeWindow().Show();
                     this.WindowState = WindowState.Normal;
                     this.Activate();
+                }
+                else if (wParam.ToInt32() == 125)
+                {
+                    new SaerchWindow().Show();
                 }
             }
             return IntPtr.Zero;

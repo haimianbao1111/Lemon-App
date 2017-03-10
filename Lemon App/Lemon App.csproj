@@ -184,6 +184,9 @@
     <Compile Include="Robot.xaml.cs">
       <DependentUpon>Robot.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SaerchWindow.xaml.cs">
+      <DependentUpon>SaerchWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SearchBox.xaml.cs">
       <DependentUpon>SearchBox.xaml</DependentUpon>
     </Compile>
@@ -298,6 +301,10 @@
       <ContainsDesignTimeResources>true</ContainsDesignTimeResources>
     </Page>
     <Page Include="Robot.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SaerchWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
