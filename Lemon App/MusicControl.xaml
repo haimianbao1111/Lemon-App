@@ -796,6 +796,6 @@
 
             </Grid>
         </Border>
-        <TextBlock x:Name="jz"  Width="100" Text="加载中..." Height="20" Foreground="#FFB4B4C1" FontSize="14" TextAlignment="Center" Visibility="Collapsed"/>
+        <TextBlock x:Name="jz"  Width="100" Text="" Height="20" Foreground="#FFB4B4C1" FontSize="14" TextAlignment="Center" Visibility="Collapsed"/>
     </Grid>
 </UserControl>

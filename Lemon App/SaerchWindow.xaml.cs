@@ -25,6 +25,7 @@ namespace Lemon_App
     {
         public SaerchWindow()
         {
+            this.FontFamily = new FontFamily(Settings.Default.FontFamilly);
             InitializeComponent();
         }
         private void textBox1_TextChanged(object sender, TextChangedEventArgs e)

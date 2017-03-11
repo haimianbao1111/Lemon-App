@@ -520,6 +520,8 @@ namespace Lemon_App
 
         private async void Fi_BZAsync(object sender, AsyncCompletedEventArgs e)
         {
+            LyricShow.backInitial();
+            jz.Visibility = Visibility.Collapsed;
             loading.Visibility = Visibility.Collapsed;
             string fz = textBlock1.Text;
             if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.m4a"))
@@ -589,11 +591,13 @@ namespace Lemon_App
 
         private async void FiAsync(object sender, AsyncCompletedEventArgs e)
         {
+            LyricShow.backInitial();
+            jz.Visibility = Visibility.Collapsed;
             loading.Visibility = Visibility.Collapsed;
             string fz = textBlock1.Text.Replace(@"\", ",");
-            if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.mp3"))
+            if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{fz}.mp3"))
             {
-                player.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.mp3"));
+                player.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{fz}.mp3"));
                 player.Play();
                 t.Start();
             }
