@@ -1319,14 +1319,14 @@ namespace Lemon_App
               //  string ok= FanyiBox.DecodeUtf8(obj["trans_result"][0]["dst"].ToString());
                 TextBlock tb = new TextBlock();
                 tb.FontSize = 18;
-                tb.Margin = new Thickness(0, 0, 0, 20);
+                tb.Margin = new Thickness(0, 0, 0, 10);
                 tb.TextWrapping = TextWrapping.Wrap;
                 tb.TextAlignment = TextAlignment.Center;
                 tb.FontSize = fontSmallA;
                 tb.FontFamily = CFontFamily;
                 tb.Foreground = new SolidColorBrush(Color.FromArgb(CA, CR, CG, CB));
                 tb.Background = null;
-                lyricTextBlockHeight = tb.ActualHeight+40;
+                lyricTextBlockHeight = tb.ActualHeight+32.5;
             //    tb.Height = lyricTextBlockHeight;
                 tb.Text = txt;
                 commonLyricStackPanel.Children.Add(tb);
