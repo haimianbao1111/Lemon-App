@@ -361,7 +361,7 @@ namespace Lemon_App
         /// <summary>
         /// 歌词文本TextBlock的高度(默认36)
         /// </summary>
-        private static double lyricTextBlockHeight = 60; 
+        private static double lyricTextBlockHeight = 80; 
         /// <summary>
         /// 歌词文本TextBlock的高度(默认36)
         /// </summary>
@@ -1319,15 +1319,16 @@ namespace Lemon_App
               //  string ok= FanyiBox.DecodeUtf8(obj["trans_result"][0]["dst"].ToString());
                 TextBlock tb = new TextBlock();
                 tb.FontSize = 18;
-               //       tb.Margin = new Thickness(0, 0, 0, 30);
+                tb.Margin = new Thickness(0, 0, 0, 20);
                 tb.TextWrapping = TextWrapping.Wrap;
                 tb.TextAlignment = TextAlignment.Center;
                 tb.FontSize = fontSmallA;
                 tb.FontFamily = CFontFamily;
                 tb.Foreground = new SolidColorBrush(Color.FromArgb(CA, CR, CG, CB));
                 tb.Background = null;
-                tb.Height = lyricTextBlockHeight;
-                tb.Text = txt;//txt
+                lyricTextBlockHeight = tb.ActualHeight+40;
+            //    tb.Height = lyricTextBlockHeight;
+                tb.Text = txt;
                 commonLyricStackPanel.Children.Add(tb);
             }
             //初始化高亮歌词的样式(高亮歌词的'背景色'是和普通歌词一样的,只是'前景'画刷色不一样)
