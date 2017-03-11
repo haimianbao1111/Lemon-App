@@ -21,6 +21,10 @@ namespace Lemon_App
     {
         public App()//
         {
+            if (!Settings.Default.RNBM)
+                StartupUri = new Uri("LoadWindow.xaml", UriKind.Relative);
+        else
+                StartupUri = new Uri("Lemon.xaml", UriKind.Relative);
             if (Settings.Default.isWebProxy)
             if (Settings.Default.WebProxyUri != "")
             {
@@ -30,7 +34,7 @@ namespace Lemon_App
             Current.DispatcherUnhandledException += Current_DispatcherUnhandledException;
            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
         }
-        private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+       private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {try
             {
                 string i = "\r\n柠萌账号:" + Settings.Default.RobotName + "\r\n柠萌版本:" + He.KMS + ((Exception)e.ExceptionObject).Message + "\r\n 导致错误的对象名称:" + ((Exception)e.ExceptionObject).Source + "\r\n 引发异常的方法:" + ((Exception)e.ExceptionObject).TargetSite + "\r\n  帮助链接:" + ((Exception)e.ExceptionObject).HelpLink + "\r\n 调用堆:" + ((Exception)e.ExceptionObject).StackTrace;

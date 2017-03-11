@@ -229,8 +229,8 @@ namespace Lemon_App {
                 mmi.ptMaxPosition.y = Math.Abs(rcWorkArea.top - rcMonitorArea.top);
                 mmi.ptMaxSize.x = Math.Abs(rcWorkArea.right - rcWorkArea.left);
                 mmi.ptMaxSize.y = Math.Abs(rcWorkArea.bottom - rcWorkArea.top);
-                mmi.ptMinTrackSize.x = 400;
-                mmi.ptMinTrackSize.y = 500;
+                mmi.ptMinTrackSize.x = 450;
+                mmi.ptMinTrackSize.y = 600;
             }
 
             Marshal.StructureToPtr(mmi, lParam, true);

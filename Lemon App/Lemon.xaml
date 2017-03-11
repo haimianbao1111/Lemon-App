@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Lemon_App"
         xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" x:Class="Lemon_App.lemon"
         mc:Ignorable="d"
-        Title="Lemon App" Height="600" Width="845" MinWidth="400" MinHeight="500" Background="{x:Null}" WindowStyle="None" AllowsTransparency="True" MouseLeftButtonDown="Window_MouseLeftButtonDown" ResizeMode="CanResizeWithGrip" SizeChanged="Window_SizeChanged" Loaded="Window_Loaded" Icon="Lemon App Ico.ico" Style="{DynamicResource WindowStyle}" WindowStartupLocation="CenterScreen" BorderThickness="10">
+        Title="Lemon App" Height="600" Width="845" MinWidth="450" MinHeight="600" Background="{x:Null}" WindowStyle="None" AllowsTransparency="True" MouseLeftButtonDown="Window_MouseLeftButtonDown" ResizeMode="CanResizeWithGrip" SizeChanged="Window_SizeChanged" Loaded="Window_Loaded" Icon="Lemon App Ico.ico" Style="{DynamicResource WindowStyle}" WindowStartupLocation="CenterScreen" BorderThickness="10">
     <Window.Resources>
 
         <ControlTemplate x:Key="WindowTemplateKey" TargetType="{x:Type Window}">

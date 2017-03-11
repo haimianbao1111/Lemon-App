@@ -1319,14 +1319,13 @@ namespace Lemon_App
               //  string ok= FanyiBox.DecodeUtf8(obj["trans_result"][0]["dst"].ToString());
                 TextBlock tb = new TextBlock();
                 tb.FontSize = 18;
-                tb.Margin = new Thickness(0, 0, 0, 10);
+               tb.Margin = new Thickness(0, 0, 0, 20);
                 tb.TextWrapping = TextWrapping.Wrap;
                 tb.TextAlignment = TextAlignment.Center;
                 tb.FontSize = fontSmallA;
                 tb.FontFamily = CFontFamily;
                 tb.Foreground = new SolidColorBrush(Color.FromArgb(CA, CR, CG, CB));
                 tb.Background = null;
-                lyricTextBlockHeight = tb.ActualHeight+32.5;
             //    tb.Height = lyricTextBlockHeight;
                 tb.Text = txt;
                 commonLyricStackPanel.Children.Add(tb);
@@ -1355,13 +1354,12 @@ namespace Lemon_App
                         {
                             TextBlock LastTB = commonLyricStackPanel.Children[LyricShow.LastLyricIndex] as TextBlock;
                             LastTB.Visibility = Visibility.Visible;
-                            LastTB.FontSize = 16;
                             LastTB.Foreground = new SolidColorBrush(Color.FromArgb(HA, CR, CG, CB));
                             //         fontSizeToSmall(LastTB);//把上一句的歌词字体由大渐变到小
                         }                                                                  
                         TextBlock CurrentTB = commonLyricStackPanel.Children[LyricShow.CurrentLyricIndex] as TextBlock;
                         tBFocusLyricBack.Visibility = Visibility.Hidden;
-                        CurrentTB.FontSize = 16;
+                        LyricTextBlockHeight = CurrentTB.ActualHeight + 20;
                         //canvasFocusLyricForeMove.Visibility = Visibility.Hidden;
                         CurrentTB.Foreground = new SolidColorBrush(Color.FromArgb(HA, 49, 194, 124));
                         CurrentTB.FontFamily = HFontFamily;
