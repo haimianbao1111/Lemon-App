@@ -226,5 +226,28 @@ namespace Lemon_App.Properties {
                 this["FontFamilly"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::Lemon_App.EX EX {
+            get {
+                return ((global::Lemon_App.EX)(this["EX"]));
+            }
+            set {
+                this["EX"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("{\"List\":[]}")]
+        public string MusicGD {
+            get {
+                return ((string)(this["MusicGD"]));
+            }
+            set {
+                this["MusicGD"] = value;
+            }
+        }
     }
 }

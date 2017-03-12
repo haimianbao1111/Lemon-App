@@ -20,11 +20,9 @@ namespace Lemon_App
     public partial class App : Application
     {
         public App()//
-        {
-            if (!Settings.Default.RNBM)
-                StartupUri = new Uri("LoadWindow.xaml", UriKind.Relative);
-        else
-                StartupUri = new Uri("Lemon.xaml", UriKind.Relative);
+        {if (!Settings.Default.RNBM)
+                StartupUri = new Uri("LoadWindow.xaml",UriKind.Relative);
+            else StartupUri = new Uri("Lemon.xaml", UriKind.Relative);
             if (Settings.Default.isWebProxy)
             if (Settings.Default.WebProxyUri != "")
             {
@@ -34,10 +32,41 @@ namespace Lemon_App
             Current.DispatcherUnhandledException += Current_DispatcherUnhandledException;
            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
         }
-       private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {try
             {
-                string i = "\r\n柠萌账号:" + Settings.Default.RobotName + "\r\n柠萌版本:" + He.KMS + ((Exception)e.ExceptionObject).Message + "\r\n 导致错误的对象名称:" + ((Exception)e.ExceptionObject).Source + "\r\n 引发异常的方法:" + ((Exception)e.ExceptionObject).TargetSite + "\r\n  帮助链接:" + ((Exception)e.ExceptionObject).HelpLink + "\r\n 调用堆:" + ((Exception)e.ExceptionObject).StackTrace;
+                //string i = "";
+                //if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + @"Log.log"))
+                //{
+                //    var a = (EX)JSON.JsonToObject(File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"Log.log"), new EX());
+                //    a.Exception.Add(new ExceptionItem()
+                //    {
+                //        UserName = Settings.Default.RobotName,
+                //        KMS = He.KMS,
+                //        Message = ((Exception)e.ExceptionObject).Message,
+                //        Source = ((Exception)e.ExceptionObject).Source,
+                //        TargetSite = ((Exception)e.ExceptionObject).TargetSite.ToString(),
+                //        HelpLink = ((Exception)e.ExceptionObject).HelpLink,
+                //        StackTrace = ((Exception)e.ExceptionObject).Message
+                //    });
+                //    i = JSON.ToJSON(a);
+                //}
+                //else
+                //{
+                //    var a = new EX();
+                //    a.Exception.Add(new ExceptionItem()
+                //    {
+                //        UserName = Settings.Default.RobotName,
+                //        KMS = He.KMS,
+                //        Message = ((Exception)e.ExceptionObject).Message,
+                //        Source = ((Exception)e.ExceptionObject).Source,
+                //        TargetSite = ((Exception)e.ExceptionObject).TargetSite.ToString(),
+                //        HelpLink = ((Exception)e.ExceptionObject).HelpLink,
+                //        StackTrace = ((Exception)e.ExceptionObject).Message
+                //    });
+                //    i = JSON.ToJSON(a);
+                //}
+                string i = "\r\n柠萌账号:" + Settings.Default.RobotName + "\r\n柠萌版本:" + He.KMS +"\r\n"+ ((Exception)e.ExceptionObject).Message + "\r\n 导致错误的对象名称:" + ((Exception)e.ExceptionObject).Source + "\r\n 引发异常的方法:" + ((Exception)e.ExceptionObject).TargetSite + "\r\n  帮助链接:" + ((Exception)e.ExceptionObject).HelpLink + "\r\n 调用堆:" + ((Exception)e.ExceptionObject).StackTrace;
                 FileStream fs = new FileStream(AppDomain.CurrentDomain.BaseDirectory+@"Log.log", FileMode.Append);
                 StreamWriter sw = new StreamWriter(fs);
                 sw.Write(i);
@@ -51,7 +80,38 @@ namespace Lemon_App
         {try
             {
                 e.Handled = true;
-                string i = "\r\n柠萌账号:" + Settings.Default.RobotName + "\r\n柠萌版本:" + He.KMS + ((Exception)e.Exception).Message + "\r\n 导致错误的对象名称:" + ((Exception)e.Exception).Source + "\r\n 引发异常的方法:" + ((Exception)e.Exception).TargetSite + "\r\n  帮助链接:" + ((Exception)e.Exception).HelpLink + "\r\n 调用堆:" + ((Exception)e.Exception).StackTrace;
+                //string i = "";
+                //if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + @"Log.log"))
+                //{
+                //    var a = (EX)JSON.JsonToObject(File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"Log.log"), new EX());
+                //    a.Exception.Add(new ExceptionItem()
+                //    {
+                //        UserName = Settings.Default.RobotName,
+                //        KMS = He.KMS,
+                //        Message = ((Exception)e.Exception).Message,
+                //        Source = ((Exception)e.Exception).Source,
+                //        TargetSite = ((Exception)e.Exception).TargetSite.ToString(),
+                //        HelpLink = ((Exception)e.Exception).HelpLink,
+                //        StackTrace = ((Exception)e.Exception).Message
+                //    });
+                //    i = JSON.ToJSON(a);
+                //}
+                //else
+                //{
+                //    var a = new EX();
+                //    a.Exception.Add(new ExceptionItem()
+                //    {
+                //        UserName = Settings.Default.RobotName,
+                //        KMS = He.KMS,
+                //        Message = ((Exception)e.Exception).Message,
+                //        Source = ((Exception)e.Exception).Source,
+                //        TargetSite = ((Exception)e.Exception).TargetSite.ToString(),
+                //        HelpLink = ((Exception)e.Exception).HelpLink,
+                //        StackTrace = ((Exception)e.Exception).Message
+                //    });
+                //    i = JSON.ToJSON(a);
+                //}
+                string i = "\r\n柠萌账号:" + Settings.Default.RobotName + "\r\n柠萌版本:" + He.KMS +"\r\n"+ ((Exception)e.Exception).Message + "\r\n 导致错误的对象名称:" + ((Exception)e.Exception).Source + "\r\n 引发异常的方法:" + ((Exception)e.Exception).TargetSite + "\r\n  帮助链接:" + ((Exception)e.Exception).HelpLink + "\r\n 调用堆:" + ((Exception)e.Exception).StackTrace;
                 FileStream fs = new FileStream(AppDomain.CurrentDomain.BaseDirectory + @"Log.log", FileMode.Append);
                 StreamWriter sw = new StreamWriter(fs);
                 sw.Write(i);

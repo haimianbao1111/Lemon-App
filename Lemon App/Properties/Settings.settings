@@ -53,5 +53,11 @@
     <Setting Name="FontFamilly" Type="System.String" Scope="User">
       <Value Profile="(Default)">Microsoft Yahei UI</Value>
     </Setting>
+    <Setting Name="EX" Type="Lemon_App.EX" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="MusicGD" Type="System.String" Scope="User">
+      <Value Profile="(Default)">{"List":[]}</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

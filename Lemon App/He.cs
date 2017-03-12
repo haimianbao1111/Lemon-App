@@ -14,6 +14,8 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Runtime.Serialization.Json;
+using System.Web.Script.Serialization;
 
 //🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂
 //                                                                                          🙂
@@ -23,7 +25,62 @@ using System.Windows.Controls.Primitives;
 
 namespace Lemon_App
 {
+    public class ExceptionItem
+    {
+        /// <summary>
+        /// 名称
+        /// </summary>
+        public string UserName { get; set; }
+        /// <summary>
+        /// 版本号
+        /// </summary>
+        public string KMS { get; set; }
+        /// <summary>
+        /// 描述
+        /// </summary>
+        public string Message { get; set; }
+        /// <summary>
+        /// 对象
+        /// </summary>
+        public string Source { get; set; }
+        /// <summary>
+        /// 方法
+        /// </summary>
+        public string TargetSite { get; set; }
+        /// <summary>
+        /// 链接
+        /// </summary>
+        public string HelpLink { get; set; }
+        /// <summary>
+        /// 堆
+        /// </summary>
+        public string StackTrace { get; set; }
+    }
 
+    public class EX
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        public List<ExceptionItem> Exception { get; set; }
+    }
+    public class JSON
+    {
+        public static object JsonToObject(string jsonString, object obj)
+        {
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(obj.GetType());
+            MemoryStream mStream = new MemoryStream(Encoding.UTF8.GetBytes(jsonString));
+            return serializer.ReadObject(mStream);
+        }
+
+        public static string ToJSON(object obj)
+        {
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            serializer.MaxJsonLength = Int32.MaxValue;
+            return serializer.Serialize(obj);
+
+        }
+    }
     public class LemonWeather
     {
 
