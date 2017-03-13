@@ -810,7 +810,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type RepeatButton}">
-                        <Border BorderBrush="{x:Null}" Height="{TemplateBinding ActualHeight}" VerticalAlignment="Top" Width="4" CornerRadius="2" Background="#FF31C27C" Margin="0,-4,0,0"/>
+                        <Border BorderBrush="{x:Null}" Height="{TemplateBinding ActualHeight}" VerticalAlignment="Top" Width="4" CornerRadius="2" Background="#FF31C27C" Margin="7,-4,8,0"/>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -1140,7 +1140,7 @@
                                     </Border.Effect>
                                     <Grid>
                                         <Slider x:Name="audio" ToolTip="音量" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" Maximum="1" Orientation="Vertical" Width="20" MouseMove="audio_MouseMove" Style="{DynamicResource s}" Margin="28,10,10,4" />
-                                        <Slider x:Name="hsq" ToolTip="倍速" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" Orientation="Vertical" Width="20" Style="{DynamicResource s}" Minimum="1" Maximum="2" Margin="9,10,29,4" MouseLeave="hsq_MouseLeave" />
+                                        <Slider x:Name="hsq" ToolTip="倍速" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" Orientation="Vertical" Width="20" Style="{DynamicResource s}" Minimum="1" Maximum="2" Margin="9,10,29,4" MouseLeave="hsq_MouseLeave" Value="1.5" />
                                     </Grid>
                                 </Border>
                             </Popup>
