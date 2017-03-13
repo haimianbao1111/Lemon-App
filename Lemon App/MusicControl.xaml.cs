@@ -852,6 +852,7 @@ namespace Lemon_App
                     listBox.Items.Clear();
                     jz.Visibility = Visibility.Visible;
                     var s = await Uuuhh.GetWebAsync($"https://y.qq.com/portal/playlist/{textBox.Text}.html");
+
                     var j = "{\"list\":" + He.Text(s, "var getSongInfo = ", ";", 0) + "}";
                     JObject o = JObject.Parse(j);
                     int i = 0;
@@ -1094,7 +1095,9 @@ namespace Lemon_App
 
         private void hs_MouseMove(object sender, MouseEventArgs e)
         {
+            player.Pause();
             player.SpeedRatio = hsq.Value;
+            player.Play();
         }
     }
 }

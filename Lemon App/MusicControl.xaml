@@ -991,16 +991,8 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-        <Storyboard x:Key="OnMouseMove2">
-            <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(Popup.IsOpen)" Storyboard.TargetName="up">
-                <DiscreteBooleanKeyFrame KeyTime="0:0:0.1" Value="True"/>
-            </BooleanAnimationUsingKeyFrames>
-        </Storyboard>
-        <Storyboard x:Key="OnMouseLeave2">
-            <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(Popup.IsOpen)" Storyboard.TargetName="up">
-                <DiscreteBooleanKeyFrame KeyTime="0" Value="False"/>
-            </BooleanAnimationUsingKeyFrames>
-        </Storyboard>
+        <Storyboard x:Key="OnMouseMove2"/>
+        <Storyboard x:Key="OnMouseLeave2"/>
     </UserControl.Resources>
     <UserControl.Triggers>
         <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="popup">
@@ -1008,12 +1000,6 @@
         </EventTrigger>
         <EventTrigger RoutedEvent="UIElement.MouseMove" SourceName="border">
             <BeginStoryboard x:Name="OnMouseMove1_BeginStoryboard" Storyboard="{StaticResource OnMouseMove1}"/>
-        </EventTrigger>
-        <EventTrigger RoutedEvent="UIElement.MouseMove" SourceName="textBlock1">
-            <BeginStoryboard x:Name="OnMouseMove2_BeginStoryboard" Storyboard="{StaticResource OnMouseMove2}"/>
-        </EventTrigger>
-        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="up">
-            <BeginStoryboard x:Name="OnMouseLeave2_BeginStoryboard" Storyboard="{StaticResource OnMouseLeave2}"/>
         </EventTrigger>
     </UserControl.Triggers>
     <Grid x:Name="Cip">
@@ -1153,7 +1139,8 @@
                                         <DropShadowEffect BlurRadius="10" Color="#FF2D2D30" Opacity="0.4"/>
                                     </Border.Effect>
                                     <Grid>
-                                        <Slider x:Name="audio" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" Maximum="1" Orientation="Vertical" Width="20" Height="100" MouseMove="audio_MouseMove" Style="{DynamicResource s}" />
+                                        <Slider x:Name="audio" ToolTip="音量" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" Maximum="1" Orientation="Vertical" Width="20" MouseMove="audio_MouseMove" Style="{DynamicResource s}" Margin="28,10,10,4" />
+                                        <Slider x:Name="hsq" ToolTip="倍速" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" Orientation="Vertical" Width="20" MouseMove="hs_MouseMove" Style="{DynamicResource s}" Minimum="1" Maximum="2" Margin="9,10,29,4" />
                                     </Grid>
                                 </Border>
                             </Popup>
@@ -1163,7 +1150,7 @@
 		s2.781,6.809,6.375,7.299v5.904h2v-5.904C67.344,67.809,70.125,64.727,70.125,61z M62.75,66.375c-2.964,0-5.375-2.411-5.375-5.375
 		s2.411-5.375,5.375-5.375s5.375,2.411,5.375,5.375S65.714,66.375,62.75,66.375z M44.625,39c0-3.727-2.781-6.809-6.375-7.299v-4.822h-2v4.822c-3.594,0.49-6.375,3.572-6.375,7.299s2.781,6.809,6.375,7.299
 		v27.904h2V46.299C41.844,45.809,44.625,42.727,44.625,39z M37.25,44.375c-2.964,0-5.375-2.411-5.375-5.375s2.411-5.375,5.375-5.375
-		s5.375,2.411,5.375,5.375S40.214,44.375,37.25,44.375z" Stretch="Fill" ToolTip="添加到收藏" Stroke="#FF31C27C"/>
+		s5.375,2.411,5.375,5.375S40.214,44.375,37.25,44.375z" Stretch="Fill" Stroke="#FF31C27C"/>
                         </Grid>
                     </Border>
                 </Grid>
@@ -1172,16 +1159,6 @@
                     <TextBlock x:Name="textBlock1" Margin="51,4,0,24" TextWrapping="Wrap" Foreground="#FF686868" Text="柠萌音乐" MouseDown="textBlock1_MouseDown"/>
                     <Slider x:Name="jd"  Margin="51,22,0,13" Style="{DynamicResource SliderStyle1}" MouseMove="jd_MouseMove" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" />
                     <TextBlock x:Name="loading" HorizontalAlignment="Left" Height="18" Margin="51,0,0,0" Visibility="Collapsed" TextWrapping="Wrap" Text="加载中..." VerticalAlignment="Bottom" Width="51" Foreground="#FF31C27C"/>
-                    <Popup x:Name="up" Placement="Top" Width="70" Height="120" AllowsTransparency="True" Margin="0,0,29,-75" HorizontalOffset="40" IsOpen="True">
-                        <Border BorderThickness="1" Background="White" Margin="0,0,10,10" CornerRadius="5">
-                            <Border.Effect>
-                                <DropShadowEffect BlurRadius="10" Color="#FF2D2D30" Opacity="0.4"/>
-                            </Border.Effect>
-                            <Grid>
-                                <Slider x:Name="hsq" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" Orientation="Vertical" Width="20" Height="100" MouseMove="hs_MouseMove" Style="{DynamicResource s}" Minimum="1" Maximum="2" />
-                            </Grid>
-                        </Border>
-                    </Popup>
                 </Grid>
 
             </Grid>
