@@ -729,6 +729,7 @@ namespace Lemon_App
 
         private async void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
+            audio.Value = player.Volume;
             LyricShow.CFontFamily = this.FontFamily;
             LyricShow.HFontFamily = this.FontFamily;
             Move.SelectedIndex = Settings.Default.sx;
@@ -1084,6 +1085,16 @@ namespace Lemon_App
                     listBox.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 93, 0, 0), new Thickness(0, 43, 0, 0), TimeSpan.FromSeconds(0.2)));
                 }
             }
+        }
+
+        private void audio_MouseMove(object sender, MouseEventArgs e)
+        {
+            player.Volume = audio.Value;
+        }
+
+        private void hs_MouseMove(object sender, MouseEventArgs e)
+        {
+            player.SpeedRatio = hsq.Value;
         }
     }
 }
