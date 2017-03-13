@@ -851,8 +851,7 @@ namespace Lemon_App
                     else { if (long.TryParse(textBox.Text, out ox)) { Settings.Default.ZJid = textBox.Text; Settings.Default.Save(); } else { textBox.Text = Settings.Default.ZJid; } }
                     listBox.Items.Clear();
                     jz.Visibility = Visibility.Visible;
-                    var s = await Uuuhh.GetWebAsync($"https://y.qq.com/portal/playlist/{textBox.Text}.html");
-
+                    var s = await Uuuhh.GetWebAsync($"https://y.qq.com/portal/playlist/{Settings.Default.ZJid}.html");
                     var j = "{\"list\":" + He.Text(s, "var getSongInfo = ", ";", 0) + "}";
                     JObject o = JObject.Parse(j);
                     int i = 0;
@@ -879,8 +878,8 @@ namespace Lemon_App
                         listBox.Items.Add(new MusicItemControl() { Width = this.ActualWidth - 10, BorderThickness = new Thickness(0), MusicGS = m.Singer, MusicName = m.MusicName, MusicZJ = m.ZJ, Music = m, Qt = Q, ismv = m.MV });
                         i++;
                     }
-                    jz.Visibility = Visibility.Collapsed;
                     listBox.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 93, 0, 0), new Thickness(0, 43, 0, 0), TimeSpan.FromSeconds(0.2)));
+
                     List<Music> l = new List<Music>();
                     int ic = 0;
                     while (ic != listBox.Items.Count)
@@ -1093,7 +1092,7 @@ namespace Lemon_App
             player.Volume = audio.Value;
         }
 
-        private void hs_MouseMove(object sender, MouseEventArgs e)
+        private void hsq_MouseLeave(object sender, MouseEventArgs e)
         {
             player.Pause();
             player.SpeedRatio = hsq.Value;

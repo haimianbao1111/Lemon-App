@@ -1140,7 +1140,7 @@
                                     </Border.Effect>
                                     <Grid>
                                         <Slider x:Name="audio" ToolTip="音量" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" Maximum="1" Orientation="Vertical" Width="20" MouseMove="audio_MouseMove" Style="{DynamicResource s}" Margin="28,10,10,4" />
-                                        <Slider x:Name="hsq" ToolTip="倍速" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" Orientation="Vertical" Width="20" MouseMove="hs_MouseMove" Style="{DynamicResource s}" Minimum="1" Maximum="2" Margin="9,10,29,4" />
+                                        <Slider x:Name="hsq" ToolTip="倍速" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" Orientation="Vertical" Width="20" Style="{DynamicResource s}" Minimum="1" Maximum="2" Margin="9,10,29,4" MouseLeave="hsq_MouseLeave" />
                                     </Grid>
                                 </Border>
                             </Popup>
