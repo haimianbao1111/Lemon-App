@@ -1139,8 +1139,9 @@
                                         <DropShadowEffect BlurRadius="10" Color="#FF2D2D30" Opacity="0.4"/>
                                     </Border.Effect>
                                     <Grid>
-                                        <Slider x:Name="audio" ToolTip="音量" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" Maximum="1" Orientation="Vertical" Width="20" MouseMove="audio_MouseMove" Style="{DynamicResource s}" Margin="28,10,10,4" />
-                                        <Slider x:Name="hsq" ToolTip="倍速" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" Orientation="Vertical" Width="20" Style="{DynamicResource s}" Minimum="1" Maximum="2" Margin="9,10,29,4" MouseLeave="hsq_MouseLeave" Value="1.5" />
+                                        <Slider x:Name="audio" ToolTip="音量" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" Maximum="1" Orientation="Vertical" Width="20" MouseMove="audio_MouseMove" Style="{DynamicResource s}" Margin="28,20,10,4" MouseLeave="audio_MouseLeave" />
+                                        <Slider x:Name="hsq" ToolTip="倍速" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" Orientation="Vertical" Width="20" Style="{DynamicResource s}" Minimum="1" Maximum="2" Margin="9,20,29,4" MouseLeave="hsq_MouseLeave" Value="1" MouseMove="hsq_MouseMove" />
+                                        <TextBlock x:Name="txl" Height="15" Margin="0,5,0,0" TextWrapping="Wrap" Text="倍速/音量" VerticalAlignment="Top" Foreground="#FF2D2D30" TextAlignment="Center"/>
                                     </Grid>
                                 </Border>
                             </Popup>

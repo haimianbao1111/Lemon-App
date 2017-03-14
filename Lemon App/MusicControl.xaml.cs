@@ -1089,14 +1089,31 @@ namespace Lemon_App
 
         private void audio_MouseMove(object sender, MouseEventArgs e)
         {
+            txl.Text = audio.Value*100 + "%";
             player.Volume = audio.Value;
         }
 
         private void hsq_MouseLeave(object sender, MouseEventArgs e)
         {
+            txl.Text = "倍速/音量";
             player.Pause();
             player.SpeedRatio = hsq.Value;
             player.Play();
+        }
+
+        private void hsq_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (hsq.Value <= 1)
+                txl.Text = "正常";
+            else if (hsq.Value <= 1.5 && hsq.Value > 1)
+                txl.Text = "滑稽";
+            else if (hsq.Value <= 2)
+                txl.Text = "鬼畜";
+        }
+
+        private void audio_MouseLeave(object sender, MouseEventArgs e)
+        {
+            txl.Text = "倍速/音量";
         }
     }
 }
