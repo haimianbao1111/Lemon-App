@@ -1105,9 +1105,9 @@ namespace Lemon_App
         {
             if (hsq.Value <= 1)
                 txl.Text = "正常";
-            else if (hsq.Value <= 1.5 && hsq.Value > 1)
+            else if (hsq.Value <= 2.25 && hsq.Value > 1)
                 txl.Text = "滑稽";
-            else if (hsq.Value <= 2)
+            else if (hsq.Value <= 3)
                 txl.Text = "鬼畜";
         }
 
