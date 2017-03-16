@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Lemon_App"
              xmlns:MetroStyleBusyIndicator="clr-namespace:Transvalue.MetroStyleBusyIndicator" xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"
-    xmlns:system="clr-namespace:System;assembly=mscorlib" x:Class="Lemon_App.MusicControl"
+    xmlns:system="clr-namespace:System;assembly=mscorlib" x:Name="user" x:Class="Lemon_App.MusicControl"
              mc:Ignorable="d" 
               Width="Auto" Height="Auto" Loaded="UserControl_Loaded" SizeChanged="UserControl_SizeChanged">
     <UserControl.Resources>
@@ -178,7 +178,7 @@
                                 </ToggleButton>
                                 <ContentPresenter  IsHitTestVisible="False" Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" VerticalAlignment="Center" Margin="3" HorizontalAlignment="Stretch" />
                                 <TextBox x:Name="PART_EditableTextBox" HorizontalAlignment="Stretch" Focusable="True" Visibility="Collapsed" IsReadOnly="False"/>
-                                <Popup x:Name="popup" HorizontalOffset="-1" Width="{TemplateBinding ActualWidth}" Focusable="False"    PopupAnimation="Slide" AllowsTransparency="True" Placement="Top">
+                                <Popup x:Name="popup" HorizontalOffset="-1" Width="{TemplateBinding ActualWidth}" Focusable="False"    PopupAnimation="Slide" AllowsTransparency="True" Placement="Top" local:PopopHelper.PopupPlacementTarget="{Binding ElementName=path}">
                                     <Grid  SnapsToDevicePixels="True" HorizontalAlignment="Stretch">
                                         <Border  BorderThickness="1,1,1,1" BorderBrush="#FF31C27C" HorizontalAlignment="Stretch" CornerRadius="5">
                                             <Border.Background>
@@ -1132,7 +1132,14 @@
                         <Path StrokeThickness="0" Margin="2" Fill="#FF31C27C" Data="M56.14,28.375H35.274V7.506c0-1.809-1.462-3.271-3.274-3.271c-1.811,0-3.274,1.463-3.274,3.271v20.869H7.862  c-1.813,0-3.274,1.464-3.274,3.272c0,1.807,1.462,3.27,3.274,3.27h20.863v20.869c0,1.809,1.464,3.272,3.274,3.272  c1.813,0,3.274-1.464,3.274-3.272V34.918H56.14c1.811,0,3.272-1.463,3.272-3.27C59.412,29.839,57.95,28.375,56.14,28.375z" Stretch="Fill" ToolTip="添加到收藏"/>
                     </Border>
                     <Border x:Name="border" HorizontalAlignment="Left" Width="20" Height="20" CornerRadius="3" BorderBrush="#FF31C27C" BorderThickness="1" Margin="78,2,0,3" MouseDown="Border_MouseDown_1">
-                        <Grid>
+                        <Grid x:Name="CB">
+                            <Path x:Name="path" Margin="2" Data="M57.375,52c0-3.727-2.781-6.809-6.375-7.299V26.879h-2v17.822c-3.594,0.49-6.375,3.572-6.375,7.299
+		s2.781,6.809,6.375,7.299v14.904h2V59.299C54.594,58.809,57.375,55.727,57.375,52z M50,57.375c-2.964,0-5.375-2.411-5.375-5.375
+		s2.411-5.375,5.375-5.375s5.375,2.411,5.375,5.375S52.964,57.375,50,57.375z M70.125,61c0-3.727-2.781-6.809-6.375-7.299V26.879h-2v26.822c-3.594,0.49-6.375,3.572-6.375,7.299
+		s2.781,6.809,6.375,7.299v5.904h2v-5.904C67.344,67.809,70.125,64.727,70.125,61z M62.75,66.375c-2.964,0-5.375-2.411-5.375-5.375
+		s2.411-5.375,5.375-5.375s5.375,2.411,5.375,5.375S65.714,66.375,62.75,66.375z M44.625,39c0-3.727-2.781-6.809-6.375-7.299v-4.822h-2v4.822c-3.594,0.49-6.375,3.572-6.375,7.299s2.781,6.809,6.375,7.299
+		v27.904h2V46.299C41.844,45.809,44.625,42.727,44.625,39z M37.25,44.375c-2.964,0-5.375-2.411-5.375-5.375s2.411-5.375,5.375-5.375
+		s5.375,2.411,5.375,5.375S40.214,44.375,37.25,44.375z" Stretch="Fill" Stroke="#FF31C27C"/>
                             <Popup x:Name="popup" Placement="Top" Width="70" Height="120" HorizontalOffset="-15" AllowsTransparency="True">
                                 <Border BorderThickness="1" Background="White" Margin="0,0,10,10" CornerRadius="5">
                                     <Border.Effect>
@@ -1145,13 +1152,6 @@
                                     </Grid>
                                 </Border>
                             </Popup>
-                            <Path x:Name="path" Margin="2" Data="M57.375,52c0-3.727-2.781-6.809-6.375-7.299V26.879h-2v17.822c-3.594,0.49-6.375,3.572-6.375,7.299
-		s2.781,6.809,6.375,7.299v14.904h2V59.299C54.594,58.809,57.375,55.727,57.375,52z M50,57.375c-2.964,0-5.375-2.411-5.375-5.375
-		s2.411-5.375,5.375-5.375s5.375,2.411,5.375,5.375S52.964,57.375,50,57.375z M70.125,61c0-3.727-2.781-6.809-6.375-7.299V26.879h-2v26.822c-3.594,0.49-6.375,3.572-6.375,7.299
-		s2.781,6.809,6.375,7.299v5.904h2v-5.904C67.344,67.809,70.125,64.727,70.125,61z M62.75,66.375c-2.964,0-5.375-2.411-5.375-5.375
-		s2.411-5.375,5.375-5.375s5.375,2.411,5.375,5.375S65.714,66.375,62.75,66.375z M44.625,39c0-3.727-2.781-6.809-6.375-7.299v-4.822h-2v4.822c-3.594,0.49-6.375,3.572-6.375,7.299s2.781,6.809,6.375,7.299
-		v27.904h2V46.299C41.844,45.809,44.625,42.727,44.625,39z M37.25,44.375c-2.964,0-5.375-2.411-5.375-5.375s2.411-5.375,5.375-5.375
-		s5.375,2.411,5.375,5.375S40.214,44.375,37.25,44.375z" Stretch="Fill" Stroke="#FF31C27C"/>
                         </Grid>
                     </Border>
                 </Grid>

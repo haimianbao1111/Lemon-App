@@ -30,6 +30,7 @@ namespace Lemon_App
         public LoadWindow()
         {
             InitializeComponent();
+            this.FontFamily = new FontFamily(Settings.Default.FontFamilly);
             tr.Interval = 4000;
             tr.Tick += T;
             trs.Interval = 4000;

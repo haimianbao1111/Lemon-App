@@ -24,6 +24,7 @@ namespace Lemon_App
         public WelcomeWindow()
         {
             InitializeComponent();
+            this.FontFamily = new FontFamily(Settings.Default.FontFamilly);
             this.Left = SystemParameters.WorkArea.Width - this.Width-10;
             this.EndTop = SystemParameters.WorkArea.Height - this.Height-10;
             this.Top = SystemParameters.WorkArea.Height;
@@ -47,7 +48,7 @@ namespace Lemon_App
                 Welcome.Inlines.Add(new Run("早睡早起身体好") { FontSize = 14 }); }
             else if (tmCur.Hour >= 11 && tmCur.Hour <= 12)
             {
-                b.Background = new ImageBrush(new BitmapImage(new Uri("http://img.kutoo8.com//upload/image/34922581/001%20(1)_320x480.jpg")));
+                b.Background = new ImageBrush(new BitmapImage(new Uri("http://i9.download.fd.pchome.net/t_960x600/g1/M00/10/15/ooYBAFWoU_mIZ8UZAAL0iXuHXcgAACmNwIIMlcAAvSh377.jpg")));
                 Welcome.Inlines.Add(new Run($"中午好呀，{Settings.Default.RobotName}"));
                 Welcome.Inlines.Add(new LineBreak());
                 Welcome.Inlines.Add(new Run("中午啦~吃饭饭惹~") { FontSize = 14

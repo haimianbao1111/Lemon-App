@@ -729,6 +729,12 @@ namespace Lemon_App
 
         private async void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
+            Window.GetWindow(this).LocationChanged += delegate
+            {
+                var offset = popup.HorizontalOffset;
+                popup.HorizontalOffset = offset + 1;
+                popup.HorizontalOffset = offset;
+            };
             audio.Value = player.Volume;
             LyricShow.CFontFamily = this.FontFamily;
             LyricShow.HFontFamily = this.FontFamily;
