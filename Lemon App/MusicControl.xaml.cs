@@ -735,6 +735,7 @@ namespace Lemon_App
                 popup.HorizontalOffset = offset + 1;
                 popup.HorizontalOffset = offset;
             };
+
             audio.Value = player.Volume;
             LyricShow.CFontFamily = this.FontFamily;
             LyricShow.HFontFamily = this.FontFamily;
