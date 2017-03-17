@@ -1,8 +1,5 @@
 ﻿using Lemon_App.Properties;
 using System;
-using System.IO;
-using System.Net;
-using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -10,11 +7,10 @@ using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
-using WinInterop = System.Windows.Interop;
-using System.Windows.Shell;
 
 
-namespace Lemon_App {
+namespace Lemon_App
+{
     /// <summary>
     /// lemon.xaml 的交互逻辑
     /// </summary>
