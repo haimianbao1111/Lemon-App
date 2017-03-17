@@ -193,7 +193,7 @@ namespace Lemon_App {
             HwndSource.FromHwnd(handle).AddHook(new HwndSourceHook(WindowProc));
         }
 
-        private static System.IntPtr WindowProc(
+        private  System.IntPtr WindowProc(
               System.IntPtr hwnd,
               int msg,
               System.IntPtr wParam,
@@ -211,7 +211,7 @@ namespace Lemon_App {
             return (System.IntPtr)0;
         }
 
-        private static void WmGetMinMaxInfo(System.IntPtr hwnd, System.IntPtr lParam)
+        private void WmGetMinMaxInfo(System.IntPtr hwnd, System.IntPtr lParam)
         {
 
             MINMAXINFO mmi = (MINMAXINFO)Marshal.PtrToStructure(lParam, typeof(MINMAXINFO));
@@ -229,8 +229,8 @@ namespace Lemon_App {
                 mmi.ptMaxPosition.y = Math.Abs(rcWorkArea.top - rcMonitorArea.top);
                 mmi.ptMaxSize.x = Math.Abs(rcWorkArea.right - rcWorkArea.left);
                 mmi.ptMaxSize.y = Math.Abs(rcWorkArea.bottom - rcWorkArea.top);
-                mmi.ptMinTrackSize.x = 450;
-                mmi.ptMinTrackSize.y = 600;
+                mmi.ptMinTrackSize.x = Math.Abs((int)MinWidth);
+                mmi.ptMinTrackSize.y = Math.Abs((int)MinHeight);
             }
 
             Marshal.StructureToPtr(mmi, lParam, true);
