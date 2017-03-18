@@ -25,33 +25,23 @@ namespace Lemon_App
             t.Interval = 5000;
             t.Start();
         }
-        bool ismax = false;
         /// <summary>
         /// 最大化
         /// </summary>
         private void MaxEX()
         {
-            BorderThickness = new Thickness(15,15,0,0);
-            Page.Clip = new RectangleGeometry() { RadiusX = 0, RadiusY = 0, Rect = new Rect() { Width = ActualWidth, Height = ActualHeight } };
+            Page.Margin = new Thickness(5, 5, 0, 0);
+            Page.Clip = new RectangleGeometry() { RadiusX = 0, RadiusY = 0, Rect = new Rect() { Width = Page.ActualWidth, Height = Page.ActualHeight } };
             this.WindowState = WindowState.Maximized;
-            this.Left = 0;
-            this.Top = 0;
-    //        Rect rc = SystemParameters.WorkArea;
-    //        this.Width = rc.Width;
-     //       this.Height = rc.Height;
         }
         /// <summary>
         /// 还原
         /// </summary>
         private void EX()
         {
-            BorderThickness = new Thickness(10);
+            Page.Margin = new Thickness(10);
             Page.Clip = new RectangleGeometry() { RadiusX = 3, RadiusY = 3, Rect = new Rect() { Width = Page.ActualWidth, Height = Page.ActualHeight } };
             this.WindowState = WindowState.Normal;
-            //this.Left = rcnormal.Left;
-            //this.Top = rcnormal.Top;
-            // this.Width = rcnormal.Width;
-            //   this.Height = rcnormal.Height;
         }
         private void T_Elapsed(object sender, EventArgs e)
         {
@@ -201,12 +191,11 @@ namespace Lemon_App
 
         private void MIN_MouseDown(object sender, MouseButtonEventArgs e)
         {
-           if (ismax)
+            if (WindowState == WindowState.Maximized)
             {
-                ismax = !ismax;
                 EX();
             }
-            else { MaxEX(); ismax = !ismax; }
+            else { MaxEX(); }
             }
 
         private void MAX_MouseDown(object sender, MouseButtonEventArgs e)
