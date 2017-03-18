@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Lemon_App"
         xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" x:Class="Lemon_App.lemon"
         mc:Ignorable="d"
-        Title="Lemon App" Height="600" Width="845" MinWidth="450" MinHeight="600" Background="{x:Null}" WindowStyle="None" AllowsTransparency="True" MouseLeftButtonDown="Window_MouseLeftButtonDown" ResizeMode="CanResizeWithGrip" SizeChanged="Window_SizeChanged" Loaded="Window_Loaded" Icon="Lemon App Ico.ico" Style="{DynamicResource WindowStyle}" WindowStartupLocation="CenterScreen" MouseDown="Window_MouseDown">
+        Title="Lemon App" Height="600" BorderThickness="10" Width="845" MinWidth="450" MinHeight="600" Background="{x:Null}" WindowStyle="None" AllowsTransparency="True" MouseLeftButtonDown="Window_MouseLeftButtonDown" ResizeMode="CanResizeWithGrip" SizeChanged="Window_SizeChanged" Loaded="Window_Loaded" Icon="Lemon App Ico.ico" Style="{DynamicResource WindowStyle}" WindowStartupLocation="CenterScreen" MouseDown="Window_MouseDown">
     <WindowChrome.WindowChrome>
         <WindowChrome GlassFrameThickness="0" ResizeBorderThickness="4" CaptionHeight="0" CornerRadius="0" />
     </WindowChrome.WindowChrome>
@@ -160,7 +160,7 @@
             <BeginStoryboard x:Name="OnMouseLeave1_BeginStoryboard" Storyboard="{StaticResource OnMouseLeave1}"/>
         </EventTrigger>
     </Window.Triggers>
-    <Grid x:Name="Page" Margin="10">
+    <Grid x:Name="Page" >
         <Grid.Clip>
             <RectangleGeometry RadiusX="5" RadiusY="5">
                 <RectangleGeometry.Rect>
