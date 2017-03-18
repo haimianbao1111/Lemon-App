@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="Lemon App" Height="600" BorderThickness="10" Width="845" MinWidth="450" MinHeight="600" Background="{x:Null}" WindowStyle="None" AllowsTransparency="True" MouseLeftButtonDown="Window_MouseLeftButtonDown" ResizeMode="CanResizeWithGrip" SizeChanged="Window_SizeChanged" Loaded="Window_Loaded" Icon="Lemon App Ico.ico" Style="{DynamicResource WindowStyle}" WindowStartupLocation="CenterScreen" MouseDown="Window_MouseDown">
     <WindowChrome.WindowChrome>
-        <WindowChrome GlassFrameThickness="0" ResizeBorderThickness="4" CaptionHeight="0" CornerRadius="0" />
+        <WindowChrome GlassFrameThickness="0" ResizeBorderThickness="12" CaptionHeight="0" CornerRadius="0" />
     </WindowChrome.WindowChrome>
     <Window.Resources>
 
