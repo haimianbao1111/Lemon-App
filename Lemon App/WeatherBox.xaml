@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Lemon_App"
              xmlns:Forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" x:Class="Lemon_App.WeatherBox"
-             mc:Ignorable="d" Loaded="UserControl_Loaded" Width="600" Height="500">
+             mc:Ignorable="d" Loaded="UserControl_Loaded" >
     <Grid x:Name="grid" Height="Auto">
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
