@@ -219,34 +219,14 @@ namespace Lemon_App
         public static extern bool UnregisterHotKey(IntPtr hWnd, int id);
         public bool InstallHotKeyHook(Window window)
         {
-            //判断组件是否有效
-            if ( null == window )
-            {
-                //如果无效，则直接返回
+            if (window==null)
                 return false;
-            }
-
-            //获得窗体的句柄
             System.Windows.Interop.WindowInteropHelper helper = new System.Windows.Interop.WindowInteropHelper(window);
-
-            //判断窗体句柄是否有效
             if (IntPtr.Zero == helper.Handle )
-            {
-                //如果句柄无效，则直接返回
                 return false;
-            }
-
-            //获得消息源
             System.Windows.Interop.HwndSource source = System.Windows.Interop.HwndSource.FromHwnd(helper.Handle);
-
-            //判断消息源是否有效
-            if ( null == source )
-            {
-                //如果消息源无效，则直接返回
+            if ( source==null )
                 return false;
-            }
-
-            //挂接事件
             source.AddHook(this.HotKeyHook );
             return true;
         }
