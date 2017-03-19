@@ -28,24 +28,24 @@
             </Border>
         </Grid>
 
-        <Border x:Name="Icon" Margin="0,43,150,0" Height="50" VerticalAlignment="Top" Width="50">
+        <Border x:Name="Icon" Margin="0,37,150,0" Height="50" VerticalAlignment="Top" Width="50">
             <Border.Background>
                 <ImageBrush Stretch="UniformToFill" ImageSource="http://files.heweather.com/cond_icon/999.png"/>
             </Border.Background>
         </Border>
-        <TextBlock x:Name="Qiwen" Margin="0,43,0,0" TextWrapping="Wrap" FontSize="36" Foreground="#FF252526" TextAlignment="Center" Height="50" VerticalAlignment="Top"><Run Text="N/N"/><Run Text="°"/></TextBlock>
-        <TextBlock x:Name="Tianqi" Margin="0,98,0,0" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" Height="18" VerticalAlignment="Top">
+        <TextBlock x:Name="Qiwen" Margin="0,37,0,0" TextWrapping="Wrap" FontSize="36" Foreground="#FF252526" TextAlignment="Center" Height="50" VerticalAlignment="Top"><Run Text="N/N"/><Run Text="°"/></TextBlock>
+        <TextBlock x:Name="Tianqi" Margin="0,92,0,0" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" Height="18" VerticalAlignment="Top">
             <TextBlock.Foreground>
                 <SolidColorBrush Color="#99333337" />
             </TextBlock.Foreground><Run Text="N/N"/><Run Text="    相对湿度 "/><Run Text="N/N"/><Run Text="%"/></TextBlock>
-        <TextBlock x:Name="fengsu" Margin="10,121,10,0" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" Foreground="#99333337" Height="18" VerticalAlignment="Top"><Run Text="N/N"/><Run Text="风    "/><Run Text="N/N"/><Run Text="级"/></TextBlock>
+        <TextBlock x:Name="fengsu" Margin="10,115,10,0" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" Foreground="#99333337" Height="18" VerticalAlignment="Top"><Run Text="N/N"/><Run Text="风    "/><Run Text="N/N"/><Run Text="级"/></TextBlock>
         <Border x:Name="Erro" BorderThickness="0" Height="0" VerticalAlignment="Top" Background="#FF3399FF" Visibility="Collapsed">
             <Grid Margin="0" Background="#FF3399FF">
                 <Label x:Name="label2" Content="❌" HorizontalAlignment="Right" Height="26" VerticalAlignment="Top" Width="25" Foreground="White" FontSize="10" MouseDown="label2_MouseDown" Margin="0,0,549,0"/>
                 <Label x:Name="label1" Content="不支持所填写城市,或查询失败" Foreground="White" FontSize="16" Margin="24,3,25,2" Width="229" Height="32"/>
             </Grid>
         </Border>
-        <TextBlock x:Name="allqiyanjd" Margin="10,144,10,0" TextWrapping="Wrap" Foreground="#99333337" FontSize="14" TextAlignment="Center" Height="21" VerticalAlignment="Top"><Run Text="气压:"/><Run Text="N/N"/><Run Text="     ，"/></TextBlock>
+        <TextBlock x:Name="allqiyanjd" Margin="10,137,10,0" TextWrapping="Wrap" Foreground="#99333337" FontSize="14" TextAlignment="Center" Height="21" VerticalAlignment="Top"><Run Text="气压:"/><Run Text="N/N"/><Run Text="     ，"/></TextBlock>
         <Grid x:Name="wrapPanel" Margin="0,15,0,0" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
@@ -117,6 +117,6 @@
                 <TextBlock x:Name="qiwenwwwwwww" TextWrapping="Wrap" Foreground="#FFAEAEAE" Margin="0,0,10,0" TextAlignment="Center" HorizontalAlignment="Right" Height="15" FontSize="14"><Run Text="N/N"/><Run Text="°  "/><Run Text="N/N"/><Run Text="°"/></TextBlock>
             </Grid>
         </Grid>
-        <TextBlock x:Name="kqzl" Margin="10,170,10,0" TextWrapping="Wrap" Foreground="#99333337" FontSize="14" TextAlignment="Center" Height="21" VerticalAlignment="Top"><Run Text="气压:"/><Run Text="N/N"/><Run Text="     ，"/></TextBlock>
+        <TextBlock x:Name="kqzl" Margin="10,158,10,0" TextWrapping="Wrap" Foreground="#99333337" FontSize="14" TextAlignment="Center" Height="21" VerticalAlignment="Top"><Run Text="气压:"/><Run Text="N/N"/><Run Text="     ，"/></TextBlock>
     </Grid>
 </UserControl>
