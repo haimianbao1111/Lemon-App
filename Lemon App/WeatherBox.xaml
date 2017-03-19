@@ -17,7 +17,7 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <TextBlock x:Name="Biaoti" TextWrapping="Wrap" TextAlignment="Center" Margin="10,7,0,5" Foreground="#FF686868" Height="20"><Run Text="天气预报•临沧"/></TextBlock>
-            <Border BorderThickness="1" Height="25" Margin="40,4,30,0" VerticalAlignment="Top" CornerRadius="7" Background="#FFF1F2F6" Grid.Column="1">
+            <Border BorderThickness="1" Height="25" Margin="40,4,10,0" VerticalAlignment="Top" CornerRadius="7" Background="#FFF1F2F6" Grid.Column="1">
                 <TextBox x:Name="textBox" Margin="9,3,-1,1" TextWrapping="Wrap" Text="地区" KeyDown="textBox_KeyDown" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Background="{x:Null}" Foreground="#FF2D2D30" BorderThickness="0"/>
             </Border>
             <Border BorderThickness="1" Margin="10,4,0,3" Width="25" Height="25" HorizontalAlignment="Left" MouseDown="textBlock2_MouseDown" Grid.Column="1">
@@ -28,7 +28,7 @@
             </Border>
         </Grid>
 
-        <Border x:Name="Icon" Margin="200,43,350,0" Height="50" VerticalAlignment="Top" Width="50">
+        <Border x:Name="Icon" Margin="0,43,150,0" Height="50" VerticalAlignment="Top" Width="50">
             <Border.Background>
                 <ImageBrush Stretch="UniformToFill" ImageSource="http://files.heweather.com/cond_icon/999.png"/>
             </Border.Background>

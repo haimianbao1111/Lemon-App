@@ -40,7 +40,9 @@ namespace Lemon_App
         {//V5
             //Now实况天气
             try
-            {//空气质量
+            {
+                grid.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 20, 0, -20), new Thickness(0), TimeSpan.FromSeconds(0.2)));
+                //空气质量
                 JObject p = JObject.Parse(await Uuuhh.GetWebAsync($"https://route.showapi.com/104-29?showapi_sign=cfa206656db244c089be2d1499735bb5&showapi_appid=29086&city={Uri.EscapeUriString(i)}"));
                 kqzl.Text = "空气质量: "+p["showapi_res_body"]["pm"]["quality"]+"    "+ p["showapi_res_body"]["pm"]["aqi"];
 
