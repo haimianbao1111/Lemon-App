@@ -29,8 +29,8 @@ namespace Lemon_App
                 He.proxy.Address = new Uri(Settings.Default.WebProxyUri);
                 He.proxy.Credentials = new NetworkCredential(Settings.Default.WebProxyUser, Settings.Default.WebProxyPassWord);
             }
-            Current.DispatcherUnhandledException += Current_DispatcherUnhandledException;
-           AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+    //        Current.DispatcherUnhandledException += Current_DispatcherUnhandledException;
+       //    AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
         }
         private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {try
