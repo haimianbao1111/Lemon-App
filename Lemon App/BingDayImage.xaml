@@ -9,7 +9,7 @@
         <Grid Loaded="Grid_Loaded">
             <Grid  Background="{Binding Background, ElementName=bingDailyPicture}">
                 <Grid.Effect>
-                    <BlurEffect Radius="20"/>
+                    <BlurEffect Radius="20" RenderingBias="Quality"/>
                 </Grid.Effect>
             </Grid>
             <Border x:Name="bingDailyPicture" Margin="0,0,0,35"/>

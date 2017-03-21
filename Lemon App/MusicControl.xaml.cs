@@ -1110,7 +1110,9 @@ namespace Lemon_App
 
         private void hsq_MouseMove(object sender, MouseEventArgs e)
         {
-            if (hsq.Value <= 1)
+            if (hsq.Value >= 0.5 && hsq.Value < 1)
+                txl.Text = "滑大稽";
+            else if (hsq.Value <= 1)
                 txl.Text = "正常";
             else if (hsq.Value <= 2.25 && hsq.Value > 1)
                 txl.Text = "滑稽";
@@ -1120,6 +1122,13 @@ namespace Lemon_App
 
         private void audio_MouseLeave(object sender, MouseEventArgs e)
         {
+            txl.Text = "倍速/音量";
+        }
+
+        private void txl_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            hsq.Value = 1;
+            audio.Value = 0.5;
             txl.Text = "倍速/音量";
         }
     }
