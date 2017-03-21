@@ -113,6 +113,7 @@ namespace Lemon_App
                 {
                     bitmap.Save(dialog.FileName, ImageFormat.Png);
                 }
+                System.Windows.Forms.Clipboard.SetImage(bitmap);
             }
         }
 
