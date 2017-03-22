@@ -41,63 +41,63 @@ namespace Lemon_App
             x = e.GetPosition(null).X;
             y = e.GetPosition(null).Y;
         }
-
+        bool canmove = true;
         private void CaptureWindow_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
         {
             if (isMouseDown)
             {
-                var rect = new Border();
-                double dx = e.GetPosition(null).X;
-                double dy = e.GetPosition(null).Y;
-                double rectWidth = Math.Abs(dx - x);
-                double rectHeight = Math.Abs(dy - y);
-                SolidColorBrush brush = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255,0,122,204));
-                rect.Width = rectWidth;
-                rect.Height = rectHeight;
-                rect.BorderBrush = brush;
-                rect.BorderThickness = new Thickness(2);
-                if (dx < x)
+                if (canmove==true)
                 {
-                    Canvas.SetLeft(rect, dx);
-                    Canvas.SetTop(rect, dy);
-                }
-                else
-                {
-                    Canvas.SetLeft(rect, x);
-                    Canvas.SetTop(rect, y);
-                }
-
-                CaptureCanvas.Children.Clear();
-                CaptureCanvas.Children.Add(rect);
-
-                if (e.LeftButton == MouseButtonState.Released)
-                {
-                    CaptureCanvas.Children.Clear();
-                    CaptureCanvas.Visibility = Visibility.Collapsed;
-                    this.Background = null;
-                    width = Math.Abs(e.GetPosition(null).X - x);
-                    height = Math.Abs(e.GetPosition(null).Y - y);
-
-                    if (e.GetPosition(null).X > x)
+                    var rect = new Border();
+                    double dx = e.GetPosition(null).X;
+                    double dy = e.GetPosition(null).Y;
+                    double rectWidth = Math.Abs(dx - x);
+                    double rectHeight = Math.Abs(dy - y);
+                    SolidColorBrush brush = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 0, 122, 204));
+                    rect.Width = rectWidth;
+                    rect.Height = rectHeight;
+                    rect.BorderBrush = brush;
+                    rect.BorderThickness = new Thickness(2);
+                    if (dx < x)
                     {
-                        CaptureCanvas.Children.Clear();
-                        CaptureCanvas.Visibility = Visibility.Collapsed;
-                        this.Background = null;
-                        S(x, y, width, height);
+                        Canvas.SetLeft(rect, dx);
+                        Canvas.SetTop(rect, dy);
                     }
                     else
                     {
-                        CaptureCanvas.Children.Clear();
-                        CaptureCanvas.Visibility = Visibility.Collapsed;
-                        this.Background = null;
-                        S(e.GetPosition(null).X, e.GetPosition(null).Y, width, height);
+                        Canvas.SetLeft(rect, x);
+                        Canvas.SetTop(rect, y);
                     }
 
+                    CaptureCanvas.Children.Clear();
+                    CaptureCanvas.Children.Add(rect);
+                }
+                if (e.LeftButton == MouseButtonState.Released)
+                {
+                    width = Math.Abs(e.GetPosition(null).X - x);
+                    height = Math.Abs(e.GetPosition(null).Y - y);
+                    p.IsOpen = true;
+                    canmove = false;
+                    //if (e.GetPosition(null).X > x)
+                    //{
+                    //    CaptureCanvas.Children.Clear();
+                    //    CaptureCanvas.Visibility = Visibility.Collapsed;
+                    //    this.Background = null;
+                    //    S(x, y, width, height);
+                    //}
+                    //else
+                    //{
+                    //    CaptureCanvas.Children.Clear();
+                    //    CaptureCanvas.Visibility = Visibility.Collapsed;
+                    //    this.Background = null;
+                    //    S(e.GetPosition(null).X, e.GetPosition(null).Y, width, height);
+                    //}
 
-                    isMouseDown = false;
-                    x = 0.0;
-                    y = 0.0;
-                    this.Close();
+
+                    //isMouseDown = false;
+                    //x = 0.0;
+                    //y = 0.0;
+                    //this.Close();
                 }
             }
         }
@@ -149,6 +149,36 @@ namespace Lemon_App
                 graphics.CopyFromScreen(ix, iy, 0, 0, new System.Drawing.Size(iw, ih));
                 this.Background = new ImageBrush(bitmap.ToBitmapImage());
             }
+        }
+
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            canmove = true;
+            if (e.GetPosition(null).X > x)
+            {
+                CaptureCanvas.Children.Clear();
+                CaptureCanvas.Visibility = Visibility.Collapsed;
+                this.Background = null;
+                S(x, y, width, height);
+            }
+            else
+            {
+                CaptureCanvas.Children.Clear();
+                CaptureCanvas.Visibility = Visibility.Collapsed;
+                this.Background = null;
+                S(e.GetPosition(null).X, e.GetPosition(null).Y, width, height);
+            }
+
+
+            isMouseDown = false;
+            x = 0.0;
+            y = 0.0;
+            this.Close();
+        }
+
+        private void Border_MouseDown_1(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
         }
     }
 }
