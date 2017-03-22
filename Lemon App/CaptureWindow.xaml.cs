@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -72,15 +73,23 @@ namespace Lemon_App
                 if (e.LeftButton == MouseButtonState.Released)
                 {
                     CaptureCanvas.Children.Clear();
-                    width = Math.Abs(e.GetPosition(null).X - x)-10;
-                    height = Math.Abs(e.GetPosition(null).Y - y)-10;
+                    CaptureCanvas.Visibility = Visibility.Collapsed;
+                    this.Background = null;
+                    width = Math.Abs(e.GetPosition(null).X - x);
+                    height = Math.Abs(e.GetPosition(null).Y - y);
 
                     if (e.GetPosition(null).X > x)
                     {
+                        CaptureCanvas.Children.Clear();
+                        CaptureCanvas.Visibility = Visibility.Collapsed;
+                        this.Background = null;
                         S(x, y, width, height);
                     }
                     else
                     {
+                        CaptureCanvas.Children.Clear();
+                        CaptureCanvas.Visibility = Visibility.Collapsed;
+                        this.Background = null;
                         S(e.GetPosition(null).X, e.GetPosition(null).Y, width, height);
                     }
 
@@ -96,11 +105,13 @@ namespace Lemon_App
         private void S(double x, double y, double width, double height)
         {
             CaptureCanvas.Children.Clear();
+            CaptureCanvas.Visibility = Visibility.Collapsed;
             this.Background = null;
-            int ix = Convert.ToInt32(x);
-            int iy = Convert.ToInt32(y);
-            int iw = Convert.ToInt32(width);
-            int ih = Convert.ToInt32(height);
+
+            int ix = Convert.ToInt32(x+2);
+            int iy = Convert.ToInt32(y+2);
+            int iw = Convert.ToInt32(width-4);
+            int ih = Convert.ToInt32(height-4);
 
             System.Drawing.Bitmap bitmap = new Bitmap(iw, ih);
             using (System.Drawing.Graphics graphics = Graphics.FromImage(bitmap))
