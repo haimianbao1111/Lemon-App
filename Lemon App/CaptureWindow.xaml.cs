@@ -117,12 +117,16 @@ namespace Lemon_App
             using (System.Drawing.Graphics graphics = Graphics.FromImage(bitmap))
             {
                 graphics.CopyFromScreen(ix, iy, 0, 0, new System.Drawing.Size(iw, ih));
-
                 SaveFileDialog dialog = new SaveFileDialog();
-                dialog.Filter = "Png Files|*.png";
+                dialog.Filter = "Png files (*.png)|*.txt|Bmp files (*.bmp)|*.bmp|Jpeg files (*.jpg)|*.jpg";
                 if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    bitmap.Save(dialog.FileName, ImageFormat.Png);
+                    if(System.IO.Path.GetExtension(dialog.FileName)==".png"|| System.IO.Path.GetExtension(dialog.FileName) == ".PNG")
+                        bitmap.Save(dialog.FileName, ImageFormat.Png);
+                    else if (System.IO.Path.GetExtension(dialog.FileName) == ".bmp" || System.IO.Path.GetExtension(dialog.FileName) == ".BMP")
+                        bitmap.Save(dialog.FileName, ImageFormat.Bmp);
+                    else if (System.IO.Path.GetExtension(dialog.FileName) == ".jpg" || System.IO.Path.GetExtension(dialog.FileName) == ".JPG")
+                        bitmap.Save(dialog.FileName, ImageFormat.Jpeg);
                 }
                 System.Windows.Forms.Clipboard.SetImage(bitmap);
             }
@@ -130,10 +134,21 @@ namespace Lemon_App
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            this.Height= SystemParameters.PrimaryScreenHeight;
+            this.Height = SystemParameters.PrimaryScreenHeight;
             this.Width = SystemParameters.PrimaryScreenWidth;
             this.Left = 0;
             this.Top = 0;
+            int ix = 0;
+            int iy = 0;
+            int iw = (int)SystemParameters.PrimaryScreenWidth;
+            int ih = (int)SystemParameters.PrimaryScreenHeight;
+
+            System.Drawing.Bitmap bitmap = new Bitmap(iw, ih);
+            using (System.Drawing.Graphics graphics = Graphics.FromImage(bitmap))
+            {
+                graphics.CopyFromScreen(ix, iy, 0, 0, new System.Drawing.Size(iw, ih));
+                this.Background = new ImageBrush(bitmap.ToBitmapImage());
+            }
         }
     }
 }
