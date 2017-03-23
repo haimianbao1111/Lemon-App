@@ -29,8 +29,6 @@
                 </Grid>
             </Border>
         </Popup>
-        <Canvas x:Name="CaptureCanvas">
-            <Border Width="{Binding ActualWidth, ElementName=CaptureCanvas, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=CaptureCanvas, Mode=OneWay}" BorderThickness="2" BorderBrush="#FF007ACC"/>
-        </Canvas>
+        <Canvas x:Name="CaptureCanvas"/>
     </Grid>
 </Window>

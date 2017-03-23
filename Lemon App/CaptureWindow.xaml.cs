@@ -78,57 +78,36 @@ namespace Lemon_App
                     height = Math.Abs(e.GetPosition(null).Y - y);
                     p.IsOpen = true;
                     canmove = false;
-                    //if (e.GetPosition(null).X > x)
-                    //{
-                    //    CaptureCanvas.Children.Clear();
-                    //    CaptureCanvas.Visibility = Visibility.Collapsed;
-                    //    this.Background = null;
-                    //    S(x, y, width, height);
-                    //}
-                    //else
-                    //{
-                    //    CaptureCanvas.Children.Clear();
-                    //    CaptureCanvas.Visibility = Visibility.Collapsed;
-                    //    this.Background = null;
-                    //    S(e.GetPosition(null).X, e.GetPosition(null).Y, width, height);
-                    //}
+                    if (e.GetPosition(null).X > x)
+                    {
+                        this.Background = null;
+                        S(x, y, width, height);
+                    }
+                    else
+                    {
+                        this.Background = null;
+                        S(e.GetPosition(null).X, e.GetPosition(null).Y, width, height);
+                    }
 
-
-                    //isMouseDown = false;
-                    //x = 0.0;
-                    //y = 0.0;
-                    //this.Close();
+                    isMouseDown = false;
+                    x = 0.0;
+                    y = 0.0;
+                 //   this.Close();
                 }
             }
         }
-
+        System.Drawing.Bitmap bitmap = null;
         private void S(double x, double y, double width, double height)
         {
-            CaptureCanvas.Children.Clear();
-            CaptureCanvas.Visibility = Visibility.Collapsed;
-            this.Background = null;
-
             int ix = Convert.ToInt32(x+2);
             int iy = Convert.ToInt32(y+2);
             int iw = Convert.ToInt32(width-4);
             int ih = Convert.ToInt32(height-4);
 
-            System.Drawing.Bitmap bitmap = new Bitmap(iw, ih);
+            bitmap = new Bitmap(iw, ih);
             using (System.Drawing.Graphics graphics = Graphics.FromImage(bitmap))
             {
                 graphics.CopyFromScreen(ix, iy, 0, 0, new System.Drawing.Size(iw, ih));
-                SaveFileDialog dialog = new SaveFileDialog();
-                dialog.Filter = "Png files (*.png)|*.txt|Bmp files (*.bmp)|*.bmp|Jpeg files (*.jpg)|*.jpg";
-                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    if(System.IO.Path.GetExtension(dialog.FileName)==".png"|| System.IO.Path.GetExtension(dialog.FileName) == ".PNG")
-                        bitmap.Save(dialog.FileName, ImageFormat.Png);
-                    else if (System.IO.Path.GetExtension(dialog.FileName) == ".bmp" || System.IO.Path.GetExtension(dialog.FileName) == ".BMP")
-                        bitmap.Save(dialog.FileName, ImageFormat.Bmp);
-                    else if (System.IO.Path.GetExtension(dialog.FileName) == ".jpg" || System.IO.Path.GetExtension(dialog.FileName) == ".JPG")
-                        bitmap.Save(dialog.FileName, ImageFormat.Jpeg);
-                }
-                System.Windows.Forms.Clipboard.SetImage(bitmap);
             }
         }
 
@@ -154,22 +133,22 @@ namespace Lemon_App
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
             canmove = true;
-            if (e.GetPosition(null).X > x)
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.Filter = "Png files (*.png)|*.png|Bmp files (*.bmp)|*.bmp|Jpeg files (*.jpg)|*.jpg";
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                CaptureCanvas.Children.Clear();
-                CaptureCanvas.Visibility = Visibility.Collapsed;
-                this.Background = null;
-                S(x, y, width, height);
+                if (System.IO.Path.GetExtension(dialog.FileName) == ".png" || System.IO.Path.GetExtension(dialog.FileName) == ".PNG")
+                    bitmap.Save(dialog.FileName, ImageFormat.Png);
+                else if (System.IO.Path.GetExtension(dialog.FileName) == ".bmp" || System.IO.Path.GetExtension(dialog.FileName) == ".BMP")
+                    bitmap.Save(dialog.FileName, ImageFormat.Bmp);
+                else if (System.IO.Path.GetExtension(dialog.FileName) == ".jpg" || System.IO.Path.GetExtension(dialog.FileName) == ".JPG")
+                    bitmap.Save(dialog.FileName, ImageFormat.Jpeg);
+                else bitmap.Save(dialog.FileName, ImageFormat.Png);
             }
-            else
-            {
-                CaptureCanvas.Children.Clear();
-                CaptureCanvas.Visibility = Visibility.Collapsed;
-                this.Background = null;
-                S(e.GetPosition(null).X, e.GetPosition(null).Y, width, height);
-            }
+            System.Windows.Forms.Clipboard.SetImage(bitmap);
 
-
+            CaptureCanvas.Children.Clear();
+            CaptureCanvas.Visibility = Visibility.Collapsed;
             isMouseDown = false;
             x = 0.0;
             y = 0.0;
