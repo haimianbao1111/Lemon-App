@@ -59,5 +59,8 @@
     <Setting Name="MusicGD" Type="System.String" Scope="User">
       <Value Profile="(Default)">{"List":[]}</Value>
     </Setting>
+    <Setting Name="IsFistRun" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

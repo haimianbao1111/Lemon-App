@@ -20,9 +20,11 @@ namespace Lemon_App
     public partial class App : Application
     {
         public App()//
-        {if (!Settings.Default.RNBM)
+        {if(Settings.Default.IsFistRun)
+            if (!Settings.Default.RNBM)
                 StartupUri = new Uri("LoadWindow.xaml",UriKind.Relative);
             else StartupUri = new Uri("Lemon.xaml", UriKind.Relative);
+        else StartupUri = new Uri("FistRun.xaml", UriKind.Relative);
             if (Settings.Default.isWebProxy)
             if (Settings.Default.WebProxyUri != "")
             {

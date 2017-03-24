@@ -147,6 +147,9 @@
     <Compile Include="DeveloperControl.xaml.cs">
       <DependentUpon>DeveloperControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FistRun.xaml.cs">
+      <DependentUpon>FistRun.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GetLyricAndLyricTime.cs" />
     <Compile Include="HaWindow.xaml.cs">
       <DependentUpon>HaWindow.xaml</DependentUpon>
@@ -240,6 +243,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FanyiBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FistRun.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

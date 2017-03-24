@@ -249,5 +249,17 @@ namespace Lemon_App.Properties {
                 this["MusicGD"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsFistRun {
+            get {
+                return ((bool)(this["IsFistRun"]));
+            }
+            set {
+                this["IsFistRun"] = value;
+            }
+        }
     }
 }
