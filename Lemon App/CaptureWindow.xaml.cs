@@ -145,7 +145,6 @@ namespace Lemon_App
                     bitmap.Save(dialog.FileName, ImageFormat.Jpeg);
                 else bitmap.Save(dialog.FileName, ImageFormat.Png);
             }
-            System.Windows.Forms.Clipboard.SetImage(bitmap);
 
             CaptureCanvas.Children.Clear();
             CaptureCanvas.Visibility = Visibility.Collapsed;
@@ -157,6 +156,12 @@ namespace Lemon_App
 
         private void Border_MouseDown_1(object sender, MouseButtonEventArgs e)
         {
+            this.Close();
+        }
+
+        private void Border_MouseDown_2(object sender, MouseButtonEventArgs e)
+        {
+            System.Windows.Forms.Clipboard.SetImage(bitmap);
             this.Close();
         }
     }
