@@ -24,7 +24,7 @@ namespace Lemon_App
         public FistRun()
         {
             InitializeComponent();
-            t.Interval = 2000;
+            t.Interval = 2500;
             t.Tick += Tick;
         }
 
