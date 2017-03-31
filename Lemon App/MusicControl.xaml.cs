@@ -134,7 +134,10 @@ namespace Lemon_App
                                 //    img = ContentLines[22];
                                 Music m = new Music();
                                 m.MusicName = o["data"]["song"]["list"][i]["name"].ToString();
-                                m.Singer = o["data"]["song"]["list"][i]["singer"][0]["name"].ToString();
+                                string Singer = "";
+                                for (int osxc = 0; osxc != o["data"]["song"]["list"][i]["singer"].Count(); osxc++)
+                                { Singer += o["data"]["song"]["list"][i]["singer"][osxc]["name"] + "/"; }
+                                m.Singer = Singer.Substring(0, Singer.LastIndexOf("/"));
                                 m.ZJ = o["data"]["song"]["list"][i]["album"]["name"].ToString();
                                 m.MusicID = o["data"]["song"]["list"][i]["mid"].ToString();
                                 m.ImageID = o["data"]["song"]["list"][i]["album"]["mid"].ToString();
@@ -1070,7 +1073,10 @@ namespace Lemon_App
                         //    img = ContentLines[22];
                         Music m = new Music();
                         m.MusicName = o["data"]["song"]["list"][i]["name"].ToString();
-                        m.Singer = o["data"]["song"]["list"][i]["singer"][0]["name"].ToString();
+                        string Singer = "";
+                        for (int osxc = 0; osxc != o["data"]["song"]["list"][i]["singer"].Count(); osxc++)
+                        { Singer += o["data"]["song"]["list"][i]["singer"][osxc]["name"] + "/"; }
+                        m.Singer = Singer.Substring(0, Singer.LastIndexOf("/"));
                         m.ZJ = o["data"]["song"]["list"][i]["album"]["name"].ToString();
                         m.MusicID = o["data"]["song"]["list"][i]["mid"].ToString();
                         m.ImageID = o["data"]["song"]["list"][i]["album"]["mid"].ToString();
