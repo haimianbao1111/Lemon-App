@@ -37,25 +37,48 @@ namespace Lemon_App
         private async void label_MouseDown(object sender, MouseButtonEventArgs e)
         {
             JObject obj = JObject.Parse(await Uuuhh.GetWebAsync("http://www.tuling123.com/openapi/api?key=0651b32a3a6c8f54c7869b9e62872796&info=" + Uri.EscapeUriString(textBox1.Text) + "&userid=" + Uri.EscapeUriString(Settings.Default.LemonAreeunIts)));
-            User U = new User(textBox1.Text)
+            if ((string)obj["code"] == "100000"&&obj["code"].ToString()== "40002")
             {
-                Width = Robot.ActualWidth
-            };
-            Robot Rb = new Robot((string)obj["text"])
-            {
-                Width = Robot.ActualWidth
-            };
-            Robot.Children.Add(U);
-            Robot.Children.Add(Rb);
-            if ((string)obj["code"] == "200000")
+                User U = new User(textBox1.Text)
+                {
+                    Width = Robot.ActualWidth
+                };
+                Robot Rb = new Robot((string)obj["text"])
+                {
+                    Width = Robot.ActualWidth
+                };
+                Robot.Children.Add(U);
+                Robot.Children.Add(Rb);
+            }
+            else if ((string)obj["code"] == "200000")
             {
                 string i = (string)obj["text"];
                 User Uu = new User(textBox1.Text);
-                U.Width = Robot.ActualWidth;
+                Uu.Width = Robot.ActualWidth;
                 Lemon_App.Robot Rbu = new Lemon_App.Robot((string)obj["url"] + i);
-                Rb.Width = Robot.ActualWidth;
+                Rbu.Width = Robot.ActualWidth;
                 Robot.Children.Add(Uu);
                 Robot.Children.Add(Rbu);
+            }
+            else if ((string)obj["code"] == "308000")
+            {
+                User Uu = new User(textBox1.Text);
+                Uu.Width = Robot.ActualWidth;
+                Robot.Children.Add(Uu);
+                int i=0;
+                var s = new List<string>();
+                var f = new List<string>();
+                var u = new List<string>();
+                while (i != 5)
+                {
+                    s.Add(obj["list"][i]["name"].ToString());
+                    f.Add(obj["list"][i]["info"].ToString());
+                    u.Add(obj["list"][i]["detailurl"].ToString());
+                    i++;
+                }
+                var c = new RobotHrSp(s, f, u);
+                c.Width = Robot.ActualWidth;
+                Robot.Children.Add(c);
             }
             textBox1.Text = "";
         }
