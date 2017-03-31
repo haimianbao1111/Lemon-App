@@ -28,7 +28,7 @@ namespace Lemon_App
                 i++;
             }
             jz.Visibility = Visibility.Collapsed;
-            O.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0,86,0,0),new Thickness(0,36,0,0),TimeSpan.FromSeconds(0.5)));
+            O.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0,86,0,0),new Thickness(0,36,0,0),TimeSpan.FromSeconds(0.2)));
         }
         private async void UserControl_Loaded(object sender, RoutedEventArgs e)
         {

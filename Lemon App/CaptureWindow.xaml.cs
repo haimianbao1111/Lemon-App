@@ -33,6 +33,21 @@ namespace Lemon_App
         public CaptureWindow()
         {
             InitializeComponent();
+            this.Height = SystemParameters.PrimaryScreenHeight;
+            this.Width = SystemParameters.PrimaryScreenWidth;
+            this.Left = 0;
+            this.Top = 0;
+            int ix = 0;
+            int iy = 0;
+            int iw = (int)SystemParameters.PrimaryScreenWidth;
+            int ih = (int)SystemParameters.PrimaryScreenHeight;
+
+            System.Drawing.Bitmap bitmap = new Bitmap(iw, ih);
+            using (System.Drawing.Graphics graphics = Graphics.FromImage(bitmap))
+            {
+                graphics.CopyFromScreen(ix, iy, 0, 0, new System.Drawing.Size(iw, ih));
+                this.Background = new ImageBrush(bitmap.ToBitmapImage());
+            }
         }
 
         private void CaptureWindow_MouseDown(object sender, MouseButtonEventArgs e)
@@ -109,25 +124,12 @@ namespace Lemon_App
             {
                 graphics.CopyFromScreen(ix, iy, 0, 0, new System.Drawing.Size(iw, ih));
             }
+            (CaptureCanvas.Children[0] as Border).Background = new ImageBrush(bitmap.ToBitmapImage());
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            this.Height = SystemParameters.PrimaryScreenHeight;
-            this.Width = SystemParameters.PrimaryScreenWidth;
-            this.Left = 0;
-            this.Top = 0;
-            int ix = 0;
-            int iy = 0;
-            int iw = (int)SystemParameters.PrimaryScreenWidth;
-            int ih = (int)SystemParameters.PrimaryScreenHeight;
 
-            System.Drawing.Bitmap bitmap = new Bitmap(iw, ih);
-            using (System.Drawing.Graphics graphics = Graphics.FromImage(bitmap))
-            {
-                graphics.CopyFromScreen(ix, iy, 0, 0, new System.Drawing.Size(iw, ih));
-                this.Background = new ImageBrush(bitmap.ToBitmapImage());
-            }
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)

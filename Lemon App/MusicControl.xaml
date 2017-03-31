@@ -221,7 +221,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ListBox}">
                         <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="1" SnapsToDevicePixels="true">
-                            <ScrollViewer Focusable="false" Padding="{TemplateBinding Padding}" Template="{DynamicResource SCS}" ScrollChanged="ScrollViewer_ScrollChanged">
+                            <ScrollViewer PanningMode="Both" Focusable="false" Padding="{TemplateBinding Padding}" Template="{DynamicResource SCS}" ScrollChanged="ScrollViewer_ScrollChanged">
                                 <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Style="{DynamicResource ItemsPresenterStyle}" Margin="0,0,5,0"/>
                             </ScrollViewer>
                         </Border>
