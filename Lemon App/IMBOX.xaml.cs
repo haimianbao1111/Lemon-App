@@ -38,7 +38,7 @@ namespace Lemon_App
         private async void label_MouseDown(object sender, MouseButtonEventArgs e)
         {
             JObject obj = JObject.Parse(await Uuuhh.GetWebAsync("http://www.tuling123.com/openapi/api?key=0651b32a3a6c8f54c7869b9e62872796&info=" + Uri.EscapeUriString(textBox1.Text) + "&userid=" + Uri.EscapeUriString(Settings.Default.LemonAreeunIts)));
-            if ((string)obj["code"] == "100000"&&obj["code"].ToString()== "40002")
+            if ((string)obj["code"] == "100000"||obj["code"].ToString()== "40002")
             {
                 User U = new User(textBox1.Text)
                 {
@@ -96,7 +96,7 @@ namespace Lemon_App
             if (e.Key == Key.Enter)
             {
                 JObject obj = JObject.Parse(await Uuuhh.GetWebAsync("http://www.tuling123.com/openapi/api?key=0651b32a3a6c8f54c7869b9e62872796&info=" + Uri.EscapeUriString(textBox1.Text) + "&userid=" + Uri.EscapeUriString(Settings.Default.LemonAreeunIts)));
-                if ((string)obj["code"] == "100000" && obj["code"].ToString() == "40002")
+                if ((string)obj["code"] == "100000" || obj["code"].ToString() == "40002")
                 {
                     User U = new User(textBox1.Text)
                     {
