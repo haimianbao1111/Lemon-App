@@ -105,7 +105,7 @@ namespace Lemon_App
             }
             catch { }
         }
-        int ioi = 1;
+        int ioi = 3;
         private async void textBox_KeyDown(object sender, KeyEventArgs e)
         {
             try
@@ -123,7 +123,7 @@ namespace Lemon_App
                         int osx = 1;
                         while (osx != 3)
                         {
-                            JObject o = JObject.Parse(await GetWebAsync($"http://59.37.96.220/soso/fcgi-bin/client_search_logic_cp?format=json&t=20&inCharset=GB2312&outCharset=utf-8&w={textBox.Text}&p={osx}", Encoding.UTF8));
+                            JObject o = JObject.Parse(await GetWebAsync($"http://59.37.96.220/soso/fcgi-bin/client_search_cp?format=json&t=0&inCharset=GB2312&outCharset=utf-8&qqmusic_ver=1302&catZhida=0&p={osx}&n=20&w={textBox.Text}&flag_qc=0&remoteplace=sizer.newclient.song&new_json=1&lossless=0&aggr=1&cr=1&sem=0&force_zonghe=0", Encoding.UTF8));
                             while (i < o["data"]["song"]["list"].Count())
                             {
                                 //string f = o["data"]["song"]["list"][i]["f"].ToString().Replace("|", "\r\n");
@@ -133,15 +133,15 @@ namespace Lemon_App
                                 //string Zhj = o["data"]["song"]["list"][i]["albumName_hilight"].ToString();
                                 //    img = ContentLines[22];
                                 Music m = new Music();
-                                m.MusicName = o["data"]["song"]["list"][i]["songname"].ToString();
+                                m.MusicName = o["data"]["song"]["list"][i]["name"].ToString();
                                 m.Singer = o["data"]["song"]["list"][i]["singer"][0]["name"].ToString();
-                                m.ZJ = o["data"]["song"]["list"][i]["albumname"].ToString();
-                                m.MusicID = o["data"]["song"]["list"][i]["media_mid"].ToString();
-                                m.ImageID = o["data"]["song"]["list"][i]["albummid"].ToString();
-                                m.GC = o["data"]["song"]["list"][i]["songid"].ToString();
-                                m.Fotmat = o["data"]["song"]["list"][i]["sizeflac"].ToString();
-                                m.HQFOTmat = o["data"]["song"]["list"][i]["size320"].ToString();
-                                m.MV = o["data"]["song"]["list"][i]["vid"].ToString();
+                                m.ZJ = o["data"]["song"]["list"][i]["album"]["name"].ToString();
+                                m.MusicID = o["data"]["song"]["list"][i]["mid"].ToString();
+                                m.ImageID = o["data"]["song"]["list"][i]["album"]["mid"].ToString();
+                                m.GC = o["data"]["song"]["list"][i]["id"].ToString();
+                                m.Fotmat = o["data"]["song"]["list"][i]["file"]["size_flac"].ToString();
+                                m.HQFOTmat = o["data"]["song"]["list"][i]["file"]["size_320"].ToString();
+                                m.MV = o["data"]["song"]["list"][i]["mv"]["id"].ToString();
                                 string Q = "";
                                 if (m.Fotmat != "0")
                                     Q = "SQ";
@@ -1058,7 +1058,7 @@ namespace Lemon_App
                 if (IsVerticalScrollBarAtButtom(sender as ScrollViewer))
                 {
                     ioi++;
-                    JObject o = JObject.Parse(await Uuuhh.GetWebAsync($"http://59.37.96.220/soso/fcgi-bin/client_search_logic_cp?format=json&t=50&inCharset=GB2312&outCharset=utf-8&w={textBox.Text}&p={ioi}"));
+                    JObject o = JObject.Parse(await GetWebAsync($"http://59.37.96.220/soso/fcgi-bin/client_search_cp?format=json&t=0&inCharset=GB2312&outCharset=utf-8&qqmusic_ver=1302&catZhida=0&p={ioi}&n=20&w={textBox.Text}&flag_qc=0&remoteplace=sizer.newclient.song&new_json=1&lossless=0&aggr=1&cr=1&sem=0&force_zonghe=0", Encoding.UTF8));
                     int i = 0;
                     while (i < o["data"]["song"]["list"].Count())
                     {
@@ -1068,17 +1068,16 @@ namespace Lemon_App
                         //string songname = o["data"]["song"]["list"][i]["fsong"].ToString();
                         //string Zhj = o["data"]["song"]["list"][i]["albumName_hilight"].ToString();
                         //    img = ContentLines[22];
-                        Music m = new Music()
-                        {
-                            MusicName = o["data"]["song"]["list"][i]["songname"].ToString(),
-                            Singer = o["data"]["song"]["list"][i]["singer"][0]["name"].ToString(),
-                            ZJ = o["data"]["song"]["list"][i]["albumname"].ToString(),
-                            MusicID = o["data"]["song"]["list"][i]["media_mid"].ToString(),
-                            ImageID = o["data"]["song"]["list"][i]["albummid"].ToString(),
-                            GC = o["data"]["song"]["list"][i]["songid"].ToString(),
-                            Fotmat = o["data"]["song"]["list"][i]["sizeflac"].ToString(),
-                            MV = o["data"]["song"]["list"][i]["vid"].ToString()
-                        };
+                        Music m = new Music();
+                        m.MusicName = o["data"]["song"]["list"][i]["name"].ToString();
+                        m.Singer = o["data"]["song"]["list"][i]["singer"][0]["name"].ToString();
+                        m.ZJ = o["data"]["song"]["list"][i]["album"]["name"].ToString();
+                        m.MusicID = o["data"]["song"]["list"][i]["mid"].ToString();
+                        m.ImageID = o["data"]["song"]["list"][i]["album"]["mid"].ToString();
+                        m.GC = o["data"]["song"]["list"][i]["id"].ToString();
+                        m.Fotmat = o["data"]["song"]["list"][i]["file"]["size_flac"].ToString();
+                        m.HQFOTmat = o["data"]["song"]["list"][i]["file"]["size_320"].ToString();
+                        m.MV = o["data"]["song"]["list"][i]["mv"]["id"].ToString();
                         string Q = "";
                         if (m.Fotmat != "0")
                             Q = "SQ";
