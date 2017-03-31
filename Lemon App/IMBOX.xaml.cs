@@ -116,6 +116,8 @@ namespace Lemon_App
                     Uu.Width = Robot.ActualWidth;
                     Lemon_App.Robot Rbu = new Lemon_App.Robot((string)obj["url"] + i);
                     Rbu.Width = Robot.ActualWidth;
+                    Rbu.ToolTip = (string)obj["url"].ToString();
+                    Rbu.MouseDown += Rbu_MouseDown;
                     Robot.Children.Add(Uu);
                     Robot.Children.Add(Rbu);
                 }
