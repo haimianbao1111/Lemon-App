@@ -134,6 +134,7 @@ namespace Lemon_App
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            Visibility = Visibility.Collapsed;
             canmove = true;
             SaveFileDialog dialog = new SaveFileDialog();
             dialog.Filter = "Png files (*.png)|*.png|Bmp files (*.bmp)|*.bmp|Jpeg files (*.jpg)|*.jpg";
@@ -147,6 +148,7 @@ namespace Lemon_App
                     bitmap.Save(dialog.FileName, ImageFormat.Jpeg);
                 else bitmap.Save(dialog.FileName, ImageFormat.Png);
             }
+            else Visibility = Visibility.Visible;
 
             CaptureCanvas.Children.Clear();
             CaptureCanvas.Visibility = Visibility.Collapsed;
