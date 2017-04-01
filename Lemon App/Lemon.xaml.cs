@@ -29,7 +29,8 @@ namespace Lemon_App
         /// </summary>
         private void MaxEX()
         {
-            BorderThickness = new Thickness(5, 5, 0, 0);
+               BorderThickness = new Thickness(5, 5, 0, 0);
+          //  BorderThickness = new Thickness(0);
             Page.Clip = new RectangleGeometry() { RadiusX = 0, RadiusY = 0, Rect = new Rect() { Width = Page.ActualWidth, Height = Page.ActualHeight } };
             this.WindowState = WindowState.Maximized;
         }
