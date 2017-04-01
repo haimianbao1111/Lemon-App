@@ -150,6 +150,7 @@
     <Compile Include="FistRun.xaml.cs">
       <DependentUpon>FistRun.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FX.cs" />
     <Compile Include="GetLyricAndLyricTime.cs" />
     <Compile Include="HaWindow.xaml.cs">
       <DependentUpon>HaWindow.xaml</DependentUpon>
