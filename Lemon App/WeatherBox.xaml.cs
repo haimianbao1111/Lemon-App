@@ -4,6 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
 using System.Net;
+using System.Speech.Synthesis;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -107,6 +108,15 @@ namespace Lemon_App
             DoubleAnimation dbAscending = new DoubleAnimation(0, 360, new Duration(TimeSpan.FromSeconds(0.3)));
             rtf.BeginAnimation(RotateTransform.AngleProperty, dbAscending);
             GetWeather(Settings.Default.WeatherInfo);
+        }
+
+        private void Biaoti_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            SpeechSynthesizer synth = new SpeechSynthesizer();
+            synth.Volume = 100;
+            synth.Rate = 0;
+            synth.SpeakAsync($"小萌天气为你播报，{Biaoti.Text},{Qiwen.Text},{Tianqi.Text},{fengsu.Text},{allqiyanjd.Text},{kqzl.Text}");
+            synth.Dispose();
         }
     }
 }

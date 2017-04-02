@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.ComponentModel;
 
 namespace Lemon_App
 {
@@ -31,31 +32,47 @@ namespace Lemon_App
             InitializeComponent();
         }
         string downuri = "";
+        JObject obj = null;
         private async void Grid_Loaded(object sender, RoutedEventArgs e)
         {
             try
             {
-                JObject obj = JObject.Parse(await Uuuhh.GetWebAsync("http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=zh-CN"));
+                obj = JObject.Parse(await Uuuhh.GetWebAsync("http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=zh-CN"));
                 string url = "http://cn.bing.com" + obj["images"][0]["url"].ToString();
-                bingDailyPicture.Background =new ImageBrush( new BitmapImage(new Uri(url)));
-                textBlock.Text = obj["images"][0]["copyright"].ToString();
-                downuri = obj["images"][0]["copyrightlink"].ToString();
+                WebClient dc = new WebClient()
+                {
+                    Proxy = He.proxy
+                };
+                dc.DownloadFileCompleted += Fi;
+                dc.DownloadFileAsync(new Uri(url), AppDomain.CurrentDomain.BaseDirectory + System.IO.Path.GetFileNameWithoutExtension(url));
                 BingimageMS = 0;
             }
             catch { }
         }
+
+        private void Fi(object sender, AsyncCompletedEventArgs e)
+        {
+            bingDailyPicture.Background =new ImageBrush( new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + System.IO.Path.GetFileNameWithoutExtension(obj["images"][0]["url"].ToString()), UriKind.Absolute)));
+            textBlock.Text = obj["images"][0]["copyright"].ToString();
+            downuri = obj["images"][0]["copyrightlink"].ToString();
+        }
+
         private async void Border_MouseDown_1(object sender, MouseButtonEventArgs e)
         {
             try
             {
-                if (BingimageMS < 17)
+                if (BingimageMS < 9)
                 {
                     BingimageMS++;
-                    JObject obj = JObject.Parse(await Uuuhh.GetWebAsync("http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=zh-CN"));
+                    obj = JObject.Parse(await Uuuhh.GetWebAsync($"http://www.bing.com/HPImageArchive.aspx?format=js&idx={BingimageMS}&n=1&mkt=zh-CN"));
                     string url = "http://cn.bing.com" + obj["images"][0]["url"].ToString();
-                    bingDailyPicture.Background = new ImageBrush(new BitmapImage(new Uri(url)));
-                    textBlock.Text = obj["images"][0]["copyright"].ToString();
-                    downuri = obj["images"][0]["copyrightlink"].ToString();
+                    WebClient dc = new WebClient()
+                    {
+                        Proxy = He.proxy
+                    };
+                    dc.DownloadFileCompleted += Fi;
+                    dc.DownloadFileAsync(new Uri(url), AppDomain.CurrentDomain.BaseDirectory + System.IO.Path.GetFileNameWithoutExtension(url));
+                    //  bingDailyPicture.Background = new ImageBrush(new BitmapImage(new Uri(url)));
                 }
             }
             catch { }
@@ -68,11 +85,15 @@ namespace Lemon_App
                 if (BingimageMS > 0)
                 {
                     BingimageMS--;
-                    JObject obj = JObject.Parse(await Uuuhh.GetWebAsync("http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=zh-CN"));
+                    obj = JObject.Parse(await Uuuhh.GetWebAsync($"http://www.bing.com/HPImageArchive.aspx?format=js&idx={BingimageMS}&n=1&mkt=zh-CN"));
                     string url = "http://cn.bing.com" + obj["images"][0]["url"].ToString();
-                    bingDailyPicture.Background = new ImageBrush(new BitmapImage(new Uri(url)));
-                    textBlock.Text = obj["images"][0]["copyright"].ToString();
-                    downuri = obj["images"][0]["copyrightlink"].ToString();
+                    WebClient dc = new WebClient()
+                    {
+                        Proxy = He.proxy
+                    };
+                    dc.DownloadFileCompleted += Fi;
+                    dc.DownloadFileAsync(new Uri(url), AppDomain.CurrentDomain.BaseDirectory + System.IO.Path.GetFileNameWithoutExtension(url));
+                    // bingDailyPicture.Background = new ImageBrush(new BitmapImage(new Uri(url)));
                 }
             }
             catch { }
