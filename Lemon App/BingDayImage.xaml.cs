@@ -39,12 +39,16 @@ namespace Lemon_App
             {
                 obj = JObject.Parse(await Uuuhh.GetWebAsync("http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=zh-CN"));
                 string url = "http://cn.bing.com" + obj["images"][0]["url"].ToString();
-                WebClient dc = new WebClient()
+                if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + System.IO.Path.GetFileNameWithoutExtension(url)))
                 {
-                    Proxy = He.proxy
-                };
-                dc.DownloadFileCompleted += Fi;
-                dc.DownloadFileAsync(new Uri(url), AppDomain.CurrentDomain.BaseDirectory + System.IO.Path.GetFileNameWithoutExtension(url));
+                    WebClient dc = new WebClient()
+                    {
+                        Proxy = He.proxy
+                    };
+                    dc.DownloadFileCompleted += Fi;
+                    dc.DownloadFileAsync(new Uri(url), AppDomain.CurrentDomain.BaseDirectory + System.IO.Path.GetFileNameWithoutExtension(url));
+                }
+                else Fi(null, null);
                 BingimageMS = 0;
             }
             catch { }
@@ -66,13 +70,17 @@ namespace Lemon_App
                     BingimageMS++;
                     obj = JObject.Parse(await Uuuhh.GetWebAsync($"http://www.bing.com/HPImageArchive.aspx?format=js&idx={BingimageMS}&n=1&mkt=zh-CN"));
                     string url = "http://cn.bing.com" + obj["images"][0]["url"].ToString();
-                    WebClient dc = new WebClient()
+                    if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + System.IO.Path.GetFileNameWithoutExtension(url)))
                     {
-                        Proxy = He.proxy
-                    };
-                    dc.DownloadFileCompleted += Fi;
-                    dc.DownloadFileAsync(new Uri(url), AppDomain.CurrentDomain.BaseDirectory + System.IO.Path.GetFileNameWithoutExtension(url));
-                    //  bingDailyPicture.Background = new ImageBrush(new BitmapImage(new Uri(url)));
+                        WebClient dc = new WebClient()
+                        {
+                            Proxy = He.proxy
+                        };
+                        dc.DownloadFileCompleted += Fi;
+                        dc.DownloadFileAsync(new Uri(url), AppDomain.CurrentDomain.BaseDirectory + System.IO.Path.GetFileNameWithoutExtension(url));
+                        //  bingDailyPicture.Background = new ImageBrush(new BitmapImage(new Uri(url)));
+                    }
+                    else Fi(null, null);
                 }
             }
             catch { }
@@ -87,13 +95,17 @@ namespace Lemon_App
                     BingimageMS--;
                     obj = JObject.Parse(await Uuuhh.GetWebAsync($"http://www.bing.com/HPImageArchive.aspx?format=js&idx={BingimageMS}&n=1&mkt=zh-CN"));
                     string url = "http://cn.bing.com" + obj["images"][0]["url"].ToString();
-                    WebClient dc = new WebClient()
+                    if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + System.IO.Path.GetFileNameWithoutExtension(url)))
                     {
-                        Proxy = He.proxy
-                    };
-                    dc.DownloadFileCompleted += Fi;
-                    dc.DownloadFileAsync(new Uri(url), AppDomain.CurrentDomain.BaseDirectory + System.IO.Path.GetFileNameWithoutExtension(url));
-                    // bingDailyPicture.Background = new ImageBrush(new BitmapImage(new Uri(url)));
+                        WebClient dc = new WebClient()
+                        {
+                            Proxy = He.proxy
+                        };
+                        dc.DownloadFileCompleted += Fi;
+                        dc.DownloadFileAsync(new Uri(url), AppDomain.CurrentDomain.BaseDirectory + System.IO.Path.GetFileNameWithoutExtension(url));
+                        // bingDailyPicture.Background = new ImageBrush(new BitmapImage(new Uri(url)));
+                    }
+                    else Fi(null, null);
                 }
             }
             catch { }
