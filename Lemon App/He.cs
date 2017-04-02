@@ -405,7 +405,7 @@ namespace Lemon_App
             try
             {
                 HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(url);
-                hwr.Timeout = 10000;
+                hwr.Timeout = 20000;
                 if (Settings.Default.isWebProxy) hwr.Proxy = He.proxy;
                 var o = await hwr.GetResponseAsync();
                 StreamReader sr = new StreamReader(o.GetResponseStream(), Encoding.UTF8);
@@ -415,16 +415,35 @@ namespace Lemon_App
             }
             catch { return ""; }
         }
-
         public static async System.Threading.Tasks.Task<string> GetWebAsync(string url,Encoding c)
         {
             try
             {
                 HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(url);
-                //     hwr.Timeout = 20000;
+                hwr.Timeout = 20000;
                 if (Settings.Default.isWebProxy) hwr.Proxy = He.proxy;
                 var o = await hwr.GetResponseAsync();
                 StreamReader sr = new StreamReader(o.GetResponseStream(), c);
+                var st = await sr.ReadToEndAsync();
+                sr.Dispose();
+                return st;
+            }
+            catch { return ""; }
+        }
+        public static async System.Threading.Tasks.Task<string> GetWebAsync(string url, bool isOpen)
+        {
+            try
+            {
+                HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(url);
+                hwr.Headers.Add(HttpRequestHeader.UserAgent, "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36");
+                hwr.Headers.Add(HttpRequestHeader.Accept, "ext/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");
+                hwr.Headers.Add(HttpRequestHeader.AcceptEncoding, "gzip, deflate, sdch");
+                hwr.Headers.Add(HttpRequestHeader.AcceptLanguage, "zh-CN,zh;q=0.8");
+                hwr.Headers.Add(HttpRequestHeader.Cookie, "tvfe_boss_uuid=308e152dbaa0bd6b; eas_sid=h1D4k7n7h7G3g1N6A6c2a812e7; pac_uid=1_2728578956; _ga=GA1.2.889488099.1474016943; luin=o2728578956; lskey=000100005f25e44c67a9f6af47159fd54f9e23ed418536b3cbe8cfacebfa495259d109938019c06a0f2f9314; pgv_pvi=9043384320; RK=oLOObi2e0M; o_cookie=2728578956; pgv_pvid=9806437357; ptui_loginuin=2728578956; ptcz=92e59f3e2a0a260c0597ef023e0044edb543a10592392101aa43e8640241b28f; pt2gguin=o2728578956; pgv_si=s8448803840; qqmusic_uin=12345678; qqmusic_key=12345678; qqmusic_fromtag=30");
+                hwr.Timeout = 20000;
+                if (Settings.Default.isWebProxy) hwr.Proxy = He.proxy;
+                var o = await hwr.GetResponseAsync();
+                StreamReader sr = new StreamReader(o.GetResponseStream());
                 var st = await sr.ReadToEndAsync();
                 sr.Dispose();
                 return st;

@@ -209,7 +209,6 @@
     </Compile>
     <Compile Include="UpdataWindow.xaml.cs">
       <DependentUpon>UpdataWindow.xaml</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="User.xaml.cs">
       <DependentUpon>User.xaml</DependentUpon>
