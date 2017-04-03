@@ -1,0 +1,13 @@
+﻿<Window x:Class="Lemon_App.QQLogin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lemon_App"
+        xmlns:Forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        mc:Ignorable="d"
+        Title="登录到小萌" Height="350" Width="525" WindowStyle="ToolWindow" ResizeMode="NoResize">
+    <WindowsFormsHost >
+        <Forms:WebBrowser x:Name="web" Navigated="web_Navigated_1"/>
+    </WindowsFormsHost>
+</Window>

@@ -199,5 +199,11 @@ namespace Lemon_App
             }
             else { rk.Text = "游客访问必须输入你的邮箱"; }
         }
+
+        private void TextBlock_MouseDown_2(object sender, MouseButtonEventArgs e)
+        {
+            new QQLogin().Show();
+            Close();
+        }
     }
 }

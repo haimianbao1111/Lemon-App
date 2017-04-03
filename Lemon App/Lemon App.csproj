@@ -188,6 +188,9 @@
     <Compile Include="Note.xaml.cs">
       <DependentUpon>Note.xaml</DependentUpon>
     </Compile>
+    <Compile Include="QQLogin.xaml.cs">
+      <DependentUpon>QQLogin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Robot.xaml.cs">
       <DependentUpon>Robot.xaml</DependentUpon>
     </Compile>
@@ -316,6 +319,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <ContainsDesignTimeResources>true</ContainsDesignTimeResources>
+    </Page>
+    <Page Include="QQLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Robot.xaml">
       <SubType>Designer</SubType>

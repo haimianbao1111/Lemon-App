@@ -115,7 +115,6 @@ namespace Lemon_App
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             serializer.MaxJsonLength = Int32.MaxValue;
             return serializer.Serialize(obj);
-
         }
     }
     public class LemonWeather
