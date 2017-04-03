@@ -202,6 +202,7 @@ namespace Lemon_App
 
         private void TextBlock_MouseDown_2(object sender, MouseButtonEventArgs e)
         {
+            Settings.Default.RNBM = (bool)RM.IsChecked;
             new QQLogin().Show();
             Close();
         }
