@@ -9,7 +9,7 @@
     <Grid>
         <Border x:Name="Image" BorderThickness="0" HorizontalAlignment="Left" Margin="12,12,0,0" Width="30" CornerRadius="50" Height="30" VerticalAlignment="Top">
             <Border.Background>
-                <ImageBrush ImageSource="Lemon App Ico.ico"/>
+                <ImageBrush ImageSource="/Lemon App;component/Page/Lemon App Ico.ico"/>
             </Border.Background>
             <!--ed:RegularPolygon Fill="White" InnerRadius="0.47211" Margin="5" PointCount="5" Stretch="Fill"/!-->
         </Border>
