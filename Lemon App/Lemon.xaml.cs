@@ -214,6 +214,7 @@ namespace Lemon_App
         {
             FontFamily = (Font.SelectedItem as ListBoxItem).FontFamily;
             Settings.Default.FontFamilly = (Font.SelectedItem as ListBoxItem).FontFamily.Source;
+            Settings.Default.Save();
         }
 
         [System.Runtime.InteropServices.DllImport("user32")]
