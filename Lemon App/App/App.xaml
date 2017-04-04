@@ -5,7 +5,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Onvvl.xaml"/>
+                <ResourceDictionary Source="/Lemon App;component/Other/Onvvl.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <SolidColorBrush x:Key="SliderThumb.Static.Foreground" Color="#FFE5E5E5"/>
             <SolidColorBrush x:Key="SliderThumb.MouseOver.Background" Color="#FFDCECFC"/>

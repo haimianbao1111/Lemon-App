@@ -25,11 +25,11 @@ namespace Lemon_App
             {
                 if (Settings.Default.IsFistRun)
                     if (!Settings.Default.RNBM)
-                        StartupUri = new Uri("LoadWindow.xaml", UriKind.Relative);
-                    else StartupUri = new Uri("Lemon.xaml", UriKind.Relative);
-                else StartupUri = new Uri("FistRun.xaml", UriKind.Relative);
+                        StartupUri = new Uri("/Lemon App;component/Page/LoadWindow.xaml", UriKind.Relative);
+                    else StartupUri = new Uri("/Lemon App;component/Page/Lemon.xaml", UriKind.Relative);
+                else StartupUri = new Uri("/Lemon App;component/Page/FistRun.xaml", UriKind.Relative);
             }
-            else StartupUri = new Uri("InInternet.xaml", UriKind.Relative);
+            else StartupUri = new Uri("/Lemon App;component/Page/InInternet.xaml", UriKind.Relative);
             if (Settings.Default.isWebProxy)
             if (Settings.Default.WebProxyUri != "")
             {
