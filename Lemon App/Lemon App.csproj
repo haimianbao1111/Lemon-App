@@ -75,7 +75,7 @@
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
-    <ApplicationIcon>Lemon App Ico.ico</ApplicationIcon>
+    <ApplicationIcon>Images\Lemon App Ico.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>0A03A053B10D0691947B4BEB131F8EB4F8C2EB1F</ManifestCertificateThumbprint>
@@ -131,194 +131,173 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
+    <ApplicationDefinition Include="App\App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AllControl.xaml.cs">
+    <Compile Include="IApps\User\AllControl.xaml.cs">
       <DependentUpon>AllControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CaptureWindow.xaml.cs">
+    <Compile Include="IApps\Captrue\CaptureWindow.xaml.cs">
       <DependentUpon>CaptureWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DeskLyricWin.xaml.cs">
+    <Compile Include="Music\DeskLyricWin.xaml.cs">
       <DependentUpon>DeskLyricWin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DeveloperControl.xaml.cs">
-      <DependentUpon>DeveloperControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="FistRun.xaml.cs">
+    <Compile Include="Page\FistRun.xaml.cs">
       <DependentUpon>FistRun.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FX.cs" />
-    <Compile Include="GetLyricAndLyricTime.cs" />
-    <Compile Include="HaWindow.xaml.cs">
+    <Compile Include="Other\FX.cs" />
+    <Compile Include="Music\GetLyricAndLyricTime.cs" />
+    <Compile Include="Page\HaWindow.xaml.cs">
       <DependentUpon>HaWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ImageHelper.cs" />
-    <Compile Include="IMBOX.xaml.cs">
+    <Compile Include="Images\ImageHelper.cs" />
+    <Compile Include="IApps\Robot\IMBOX.xaml.cs">
       <DependentUpon>IMBOX.xaml</DependentUpon>
     </Compile>
-    <Compile Include="InInternet.xaml.cs">
+    <Compile Include="Page\InInternet.xaml.cs">
       <DependentUpon>InInternet.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Lemon.xaml.cs">
+    <Compile Include="Page\Lemon.xaml.cs">
       <DependentUpon>Lemon.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LoadWindow.xaml.cs">
+    <Compile Include="Page\LoadWindow.xaml.cs">
       <DependentUpon>LoadWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LyricShow.cs" />
-    <Compile Include="MetroLoadControl.xaml.cs">
-      <DependentUpon>MetroLoadControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MetroRotaionIndicator.xaml.cs">
-      <DependentUpon>MetroRotaionIndicator.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MusicControl.xaml.cs">
+    <Compile Include="Music\LyricShow.cs" />
+    <Compile Include="Music\MusicControl.xaml.cs">
       <DependentUpon>MusicControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MusicInfo.cs" />
-    <Compile Include="MusicItemControl.xaml.cs">
+    <Compile Include="Music\MusicInfo.cs" />
+    <Compile Include="Music\MusicItemControl.xaml.cs">
       <DependentUpon>MusicItemControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MusicSZ.xaml.cs">
+    <Compile Include="Music\MusicSZ.xaml.cs">
       <DependentUpon>MusicSZ.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NewsList.xaml.cs">
+    <Compile Include="IApps\News\NewsList.xaml.cs">
       <DependentUpon>NewsList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Note.xaml.cs">
+    <Compile Include="IApps\News\Note.xaml.cs">
       <DependentUpon>Note.xaml</DependentUpon>
     </Compile>
-    <Compile Include="QQLogin.xaml.cs">
+    <Compile Include="Page\QQLogin.xaml.cs">
       <DependentUpon>QQLogin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Robot.xaml.cs">
+    <Compile Include="IApps\Robot\Robot.xaml.cs">
       <DependentUpon>Robot.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RobotHrSp.xaml.cs">
+    <Compile Include="IApps\Robot\RobotHrSp.xaml.cs">
       <DependentUpon>RobotHrSp.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SaerchWindow.xaml.cs">
+    <Compile Include="IApps\Search\SaerchWindow.xaml.cs">
       <DependentUpon>SaerchWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SearchBox.xaml.cs">
+    <Compile Include="IApps\Search\SearchBox.xaml.cs">
       <DependentUpon>SearchBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Settings.cs" />
-    <Compile Include="SettingsControl.xaml.cs">
+    <Compile Include="IApps\Settings\Settings.cs" />
+    <Compile Include="IApps\Settings\SettingsControl.xaml.cs">
       <DependentUpon>SettingsControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UFWindow.xaml.cs">
+    <Compile Include="IApps\User\UFWindow.xaml.cs">
       <DependentUpon>UFWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UpdataWindow.xaml.cs">
+    <Compile Include="Page\UpdataWindow.xaml.cs">
       <DependentUpon>UpdataWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="User.xaml.cs">
+    <Compile Include="IApps\Robot\User.xaml.cs">
       <DependentUpon>User.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserFeedback.xaml.cs">
+    <Compile Include="IApps\User\UserFeedback.xaml.cs">
       <DependentUpon>UserFeedback.xaml</DependentUpon>
     </Compile>
-    <Compile Include="uSeRhOmE.xaml.cs">
+    <Compile Include="IApps\User\uSeRhOmE.xaml.cs">
       <DependentUpon>uSeRhOmE.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WeatherBox.xaml.cs">
+    <Compile Include="IApps\Weather\WeatherBox.xaml.cs">
       <DependentUpon>WeatherBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WelcomeWindow.xaml.cs">
+    <Compile Include="Page\WelcomeWindow.xaml.cs">
       <DependentUpon>WelcomeWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="AllControl.xaml">
+    <Page Include="IApps\User\AllControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="BingDayImage.xaml">
+    <Page Include="IApps\Bing\BingDayImage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CaptureWindow.xaml">
+    <Page Include="IApps\Captrue\CaptureWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DeskLyricWin.xaml">
+    <Page Include="Music\DeskLyricWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DeveloperControl.xaml">
+    <Page Include="IApps\Fanyi\FanyiBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FanyiBox.xaml">
+    <Page Include="Page\FistRun.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FistRun.xaml">
+    <Page Include="Page\HaWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="HaWindow.xaml">
+    <Page Include="IApps\Robot\IMBOX.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="IMBOX.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Compile Include="App.xaml.cs">
+    <Compile Include="App\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BingDayImage.xaml.cs">
+    <Compile Include="IApps\Bing\BingDayImage.xaml.cs">
       <DependentUpon>BingDayImage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FanyiBox.xaml.cs">
+    <Compile Include="IApps\Fanyi\FanyiBox.xaml.cs">
       <DependentUpon>FanyiBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="He.cs" />
-    <Page Include="InInternet.xaml">
+    <Compile Include="Other\He.cs" />
+    <Page Include="Page\InInternet.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Lemon.xaml">
+    <Page Include="Page\Lemon.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="LoadWindow.xaml">
+    <Page Include="Page\LoadWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MetroLoadControl.xaml">
+    <Page Include="Music\MusicControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MetroRotaionIndicator.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MusicControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MusicItemControl.xaml">
+    <Page Include="Music\MusicItemControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="MusicSZ.xaml">
+    <Page Include="Music\MusicSZ.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="NewsList.xaml">
+    <Page Include="IApps\News\NewsList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Note.xaml">
+    <Page Include="IApps\News\Note.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Onvvl.xaml">
+    <Page Include="Other\Onvvl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -327,60 +306,60 @@
       <Generator>MSBuild:Compile</Generator>
       <ContainsDesignTimeResources>true</ContainsDesignTimeResources>
     </Page>
-    <Page Include="QQLogin.xaml">
+    <Page Include="Page\QQLogin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Robot.xaml">
+    <Page Include="IApps\Robot\Robot.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="RobotHrSp.xaml">
+    <Page Include="IApps\Robot\RobotHrSp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SaerchWindow.xaml">
+    <Page Include="IApps\Search\SaerchWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SearchBox.xaml">
+    <Page Include="IApps\Search\SearchBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SettingsControl.xaml">
+    <Page Include="IApps\Settings\SettingsControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UFWindow.xaml">
+    <Page Include="IApps\User\UFWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UpdataWindow.xaml">
+    <Page Include="Page\UpdataWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Page>
-    <Page Include="User.xaml">
+    <Page Include="IApps\Robot\User.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserFeedback.xaml">
+    <Page Include="IApps\User\UserFeedback.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="uSeRhOmE.xaml">
+    <Page Include="IApps\User\uSeRhOmE.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WeatherBox.xaml">
+    <Page Include="IApps\Weather\WeatherBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WelcomeWindow.xaml">
+    <Page Include="Page\WelcomeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WSllv.xaml">
+    <Page Include="Other\WSllv.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -394,7 +373,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="packages.config" />
+    <None Include="App\packages.config" />
     <None Include="Properties\app.manifest">
       <SubType>Designer</SubType>
     </None>
@@ -406,7 +385,7 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App\App.config" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6">
@@ -421,7 +400,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Lemon App Ico.ico" />
+    <Resource Include="Images\Lemon App Ico.ico" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="stdole">
@@ -437,6 +416,7 @@
   <ItemGroup>
     <Resource Include="Images\Robot.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

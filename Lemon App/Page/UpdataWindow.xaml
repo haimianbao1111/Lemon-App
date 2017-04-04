@@ -3,8 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Lemon_App"
-        xmlns:MetroStyleBusyIndicator="clr-namespace:Transvalue.MetroStyleBusyIndicator" x:Class="Lemon_App.UpdataWindow"
+        x:Class="Lemon_App.UpdataWindow"
         mc:Ignorable="d"
         Title="UpdataWindow" Height="222" Width="342" WindowStyle="None" ResizeMode="NoResize" Background="{x:Null}" Loaded="Window_Loaded" AllowsTransparency="True">
     <Border CornerRadius="3" BorderBrush="#FF3399FF" BorderThickness="1,3,1,1" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
