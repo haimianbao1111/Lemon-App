@@ -35,7 +35,7 @@ namespace Lemon_App
                 web.Dispose();
                 var sl = He.Text(await Uuuhh.GetWebAsync("http://r.pengyou.com/fcg-bin/cgi_get_portrait.fcg?uins=" + qq,Encoding.Default), "portraitCallBack(", ")", 0);
                 JObject o = JObject.Parse(sl);
-                if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + "\\" + qq + ".jpg"))
+                if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + qq + ".jpg"))
                 {
                     System.Net.WebClient x = new System.Net.WebClient();
                     x.DownloadFileAsync(new Uri($"http://q2.qlogo.cn/headimg_dl?bs=qq&dst_uin={qq}&spec=100"), AppDomain.CurrentDomain.BaseDirectory + qq + ".jpg");

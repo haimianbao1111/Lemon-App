@@ -753,55 +753,7 @@ namespace Lemon_App
             DoubleAnimation dbAscending = new DoubleAnimation(0, 360, new Duration(TimeSpan.FromSeconds(5))) { RepeatBehavior = RepeatBehavior.Forever };
             rtf.BeginAnimation(RotateTransform.AngleProperty, dbAscending);
 
-            listBox.Items.Clear();
-            IslistBoxInfo = 1;
-            if (Uuuhh.Lalala("www.mi.com"))
-                if (Settings.Default.ZJid != string.Empty)
-                {
-                    var s = await Uuuhh.GetWebAsync($"https://y.qq.com/portal/playlist/{Settings.Default.ZJid}.html",true);
-                    var j = "{\"list\":" + He.Text(s, "var getSongInfo = ", ";", 0) + "}";
-                    JObject o = JObject.Parse(j);
-                    int i = 0;
-                    while (i != o["list"].Count())
-                    {
-                        Music m = new Music()
-                        {
-                            MusicName = o["list"][i]["songname"].ToString(),
-                            Singer = o["list"][i]["singer"][0]["name"].ToString(),
-                            ZJ = o["list"][i]["albumdesc"].ToString(),
-                            GC = o["list"][i]["songid"].ToString(),
-                            Fotmat = o["list"][i]["sizeflac"].ToString(),
-                            HQFOTmat = o["list"][i]["size320"].ToString(),
-                            MusicID = o["list"][i]["songmid"].ToString(),
-                            ImageID = o["list"][i]["albummid"].ToString(),
-                            MV = o["list"][i]["vid"].ToString()
-                        };
-                        string Q = "";
-                        if (m.Fotmat != "0")
-                            Q = "SQ";
-                        if (m.HQFOTmat != "0")
-                            if (m.Fotmat == "0")
-                                Q = "HQ";
-                        listBox.Items.Add(new MusicItemControl() { Width = this.ActualWidth - 10, BorderThickness = new Thickness(0), MusicGS = m.Singer, MusicName = m.MusicName, MusicZJ = m.ZJ, Music = m, Qt = Q, ismv = m.MV });
-                        i++;
-                    }
-                    listBox.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 93, 0, 0), new Thickness(0, 43, 0, 0), TimeSpan.FromSeconds(0.2)));
-                }
-                else
-                {
-
-                    List<Music> lj = new List<Music>();
-                    lj = JsonToObject(Settings.Default.MusicGD, lj) as List<Music>;
-                    for (int i = 0; i < lj.Count; i++)
-                    {
-                        string os = "";
-                        if (lj[i].Fotmat != "0") { os = "SQ"; }
-                        if (lj[i].HQFOTmat != "0")
-                            if (lj[i].Fotmat == "0")
-                                os = "HQ";
-                        listBox.Items.Add(new MusicItemControl() { Width = this.ActualWidth, MusicGS = lj[i].Singer, MusicName = lj[i].MusicName, MusicZJ = lj[i].ZJ, Music = lj[i], Qt = os, ismv = lj[i].MV });
-                    }
-                }
+            Border_MouseDown_3(null, null);
                     //ListJson lj = new Lemon_App.ListJson();
                     //lj = JsonToObject(Settings.Default.MusicList, lj) as ListJson;
                     //for (int i = 0; i < lj.List.Count; i++)
@@ -813,7 +765,7 @@ namespace Lemon_App
                     //            os = "HQ";
                     //    listBox.Items.Add(new MusicItemControl() {Width=this.ActualWidth, MusicGS = lj.List[i].ItemText.Singer, MusicName = lj.List[i].ItemText.MusicName, MusicZJ = lj.List[i].ItemText.ZJ, Music = lj.List[i].ItemText,Qt=os,ismv = lj.List[i].ItemText.MV});
                     //}
-                }
+        }
 
         private void pz_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -861,7 +813,7 @@ namespace Lemon_App
                     else { if (long.TryParse(textBox.Text, out ox)) { Settings.Default.ZJid = textBox.Text; Settings.Default.Save(); } else { textBox.Text = Settings.Default.ZJid; } }
                     listBox.Items.Clear();
                     jz.Visibility = Visibility.Visible;
-                    var s = await Uuuhh.GetWebAsync($"https://y.qq.com/portal/playlist/{Settings.Default.ZJid}.html",true);
+                    var s = await Uuuhh.GetWebAsync($"https://y.qq.com/portal/playlist/{textBox.Text}.html");
                     var j = "{\"list\":" + He.Text(s, "var getSongInfo = ", ";", 0) + "}";
                     JObject o = JObject.Parse(j);
                     int i = 0;
@@ -915,7 +867,18 @@ namespace Lemon_App
                     }
                  }
                 }
-            catch { jz.Visibility = Visibility.Collapsed; }
+            catch { jz.Visibility = Visibility.Collapsed; List<Music> lj = new List<Music>();
+                lj = JsonToObject(Settings.Default.MusicGD, lj) as List<Music>;
+                for (int i = 0; i < lj.Count; i++)
+                {
+                    string os = "";
+                    if (lj[i].Fotmat != "0") { os = "SQ"; }
+                    if (lj[i].HQFOTmat != "0")
+                        if (lj[i].Fotmat == "0")
+                            os = "HQ";
+                    listBox.Items.Add(new MusicItemControl() { Width = this.ActualWidth, MusicGS = lj[i].Singer, MusicName = lj[i].MusicName, MusicZJ = lj[i].ZJ, Music = lj[i], Qt = os, ismv = lj[i].MV });
+                }
+            }
         }int hs = 0;
         private DeskLyricWin deskLyricWin;
 
