@@ -58,6 +58,8 @@ namespace Lemon_App
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            var c = new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.3));
+            this.BeginAnimation(OpacityProperty, c);
             if (Settings.Default.RNBM&&Settings.Default.LemonAreeunIts!=string.Empty)
             {
                 new lemon().Show();
@@ -137,7 +139,9 @@ namespace Lemon_App
 
         private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Environment.Exit(0);
+            var c = new DoubleAnimation(1, 0, TimeSpan.FromSeconds(0.3));
+            c.Completed += delegate { Environment.Exit(0); };
+            this.BeginAnimation(OpacityProperty, c);
         }
 
         private void PSW_PreviewTextInput(object sender, TextCompositionEventArgs e)

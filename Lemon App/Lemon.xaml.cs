@@ -20,6 +20,8 @@ namespace Lemon_App
         public lemon()
         {
             InitializeComponent();
+            var c = new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.3));
+            this.BeginAnimation(OpacityProperty, c);
             FullScreenManager.RepairWpfWindowFullScreenBehavior(this);
             this.FontFamily = new FontFamily(Settings.Default.FontFamilly);
             t.Tick += T_Elapsed;
@@ -59,7 +61,9 @@ namespace Lemon_App
 
         private void CLOSE_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Environment.Exit(0);
+            var c = new DoubleAnimation(1, 0, TimeSpan.FromSeconds(0.3));
+            c.Completed += delegate { Environment.Exit(0); };
+            this.BeginAnimation(OpacityProperty, c);
         }
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {

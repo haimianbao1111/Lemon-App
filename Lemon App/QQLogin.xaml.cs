@@ -12,6 +12,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -26,6 +27,8 @@ namespace Lemon_App
         {
             InitializeComponent();
             web.Navigate("http://ui.ptlogin2.qq.com/cgi-bin/login?appid=1006102&s_url=http://id.qq.com/index.html&hide_close_icon=1");
+            var c = new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.3));
+            this.BeginAnimation(OpacityProperty, c);
         }
         private async void web_Navigated_1(object sender, System.Windows.Forms.WebBrowserNavigatedEventArgs e)
         {
@@ -45,13 +48,17 @@ namespace Lemon_App
                 Settings.Default.LemonAreeunIts = qq + "@qq.com";
                 Settings.Default.Save();
                 new lemon().Show();
-                this.Close();
+                var c = new DoubleAnimation(1, 0, TimeSpan.FromSeconds(0.3));
+                c.Completed += delegate { Close(); };
+                this.BeginAnimation(OpacityProperty, c);
             }
         }
 
         private void CLOSE_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Environment.Exit(0);
+            var c = new DoubleAnimation(1, 0, TimeSpan.FromSeconds(0.3));
+            c.Completed += delegate { Environment.Exit(0); };
+            this.BeginAnimation(OpacityProperty, c);
         }
 
         private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
