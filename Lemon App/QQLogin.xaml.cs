@@ -25,7 +25,7 @@ namespace Lemon_App
         public QQLogin()
         {
             InitializeComponent();
-            web.Navigate("http://ui.ptlogin2.qq.com/cgi-bin/login?appid=1006102&s_url=http://id.qq.com/index.html");
+            web.Navigate("http://ui.ptlogin2.qq.com/cgi-bin/login?appid=1006102&s_url=http://id.qq.com/index.html&hide_close_icon=1");
         }
         private async void web_Navigated_1(object sender, System.Windows.Forms.WebBrowserNavigatedEventArgs e)
         {
@@ -52,6 +52,12 @@ namespace Lemon_App
         private void CLOSE_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+                this.DragMove();
         }
     }
 }
