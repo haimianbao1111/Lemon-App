@@ -46,14 +46,11 @@ namespace Lemon_App
         }
 
         private void T(object sender, EventArgs e)
-        {try
-            {
+        {
                 new lemon().Show();
                 this.Close();
                 tr.Stop();
                 tr.Dispose();
-            }
-            catch { }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

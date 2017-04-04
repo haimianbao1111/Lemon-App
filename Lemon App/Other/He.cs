@@ -293,7 +293,6 @@ namespace Lemon_App
         </tr>
     </tbody>
 </table>";
-        public static BitmapImage RobotImage = null;
         /// <summary>
         /// 发送HTTP请求
         /// </summary>

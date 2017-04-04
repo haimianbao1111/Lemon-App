@@ -75,7 +75,7 @@
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
-    <ApplicationIcon>Images\Lemon App Ico.ico</ApplicationIcon>
+    <ApplicationIcon>Page\Lemon App Ico.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>0A03A053B10D0691947B4BEB131F8EB4F8C2EB1F</ManifestCertificateThumbprint>
@@ -144,6 +144,7 @@
     <Compile Include="Music\DeskLyricWin.xaml.cs">
       <DependentUpon>DeskLyricWin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Other\ImageHelper.cs" />
     <Compile Include="Page\FistRun.xaml.cs">
       <DependentUpon>FistRun.xaml</DependentUpon>
     </Compile>
@@ -152,7 +153,6 @@
     <Compile Include="Page\HaWindow.xaml.cs">
       <DependentUpon>HaWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Images\ImageHelper.cs" />
     <Compile Include="IApps\Robot\IMBOX.xaml.cs">
       <DependentUpon>IMBOX.xaml</DependentUpon>
     </Compile>
@@ -400,7 +400,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Lemon App Ico.ico" />
+    <Resource Include="Page\Lemon App Ico.ico" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="stdole">
@@ -412,9 +412,6 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Robot.jpg" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

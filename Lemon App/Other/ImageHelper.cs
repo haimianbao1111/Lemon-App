@@ -199,9 +199,9 @@ namespace Lemon_App
         public static BitmapImage ToBitmapImage(this byte[] byteArray)
         {
             BitmapImage bmp = new BitmapImage();
-                bmp.BeginInit();
-                bmp.StreamSource = new MemoryStream(byteArray);
-                bmp.EndInit();
+            bmp.BeginInit();
+            bmp.StreamSource = new MemoryStream(byteArray);
+            bmp.EndInit();
             return bmp;
         }
         /// <summary>
@@ -212,16 +212,16 @@ namespace Lemon_App
         public static byte[] ToBytes(this BitmapImage bmp)
         {
             byte[] byteArray = null;
-                Stream sMarket = bmp.StreamSource;
-                if (sMarket != null && sMarket.Length > 0)
-                {
-                    //很重要，因为Position经常位于Stream的末尾，导致下面读取到的长度为0。 
-                    sMarket.Position = 0;
+            Stream sMarket = bmp.StreamSource;
+            if (sMarket != null && sMarket.Length > 0)
+            {
+                //很重要，因为Position经常位于Stream的末尾，导致下面读取到的长度为0。 
+                sMarket.Position = 0;
 
-                    using (BinaryReader br = new BinaryReader(sMarket))
-                    {
-                        byteArray = br.ReadBytes((int)sMarket.Length);
-                    }
+                using (BinaryReader br = new BinaryReader(sMarket))
+                {
+                    byteArray = br.ReadBytes((int)sMarket.Length);
+                }
             }
             return byteArray;
         }

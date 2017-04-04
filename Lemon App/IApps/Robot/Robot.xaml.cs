@@ -28,8 +28,6 @@ namespace Lemon_App
         {
             InitializeComponent();
             Te.Text = Text;
-            if(He.RobotImage!=null)
-               Image.Background = new ImageBrush(He.RobotImage);
         }
     }
 }
