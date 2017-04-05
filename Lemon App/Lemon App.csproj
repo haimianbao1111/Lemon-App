@@ -373,6 +373,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="app.config" />
     <None Include="App\packages.config" />
     <None Include="Properties\app.manifest">
       <SubType>Designer</SubType>
