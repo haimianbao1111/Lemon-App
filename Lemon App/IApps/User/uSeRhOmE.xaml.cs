@@ -38,9 +38,9 @@ namespace Lemon_App
             if (System.IO.File.Exists(Settings.Default.UserImage))
             { TX.Background = new ImageBrush(new BitmapImage(new Uri(Settings.Default.UserImage, UriKind.Absolute))); }
             NM.Text = Settings.Default.RobotName;
-            if (File.Exists(AppDomain.CurrentDomain.BaseDirectory+Settings.Default.LemonAreeunIts+".data"))
+            if (Settings.Default.LZone!="null")
             {
-                data = (List<string>)JSON.JsonToObject(File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + Settings.Default.LemonAreeunIts + ".data"), data);
+                data = (List<string>)JSON.JsonToObject(Settings.Default.LZone, data);
                 for (int i = 0; i != data.Count; i++)
                 {
                     var co = new LZoneItemControl();
@@ -63,12 +63,17 @@ namespace Lemon_App
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            var co = new LZoneItemControl();
-            co.QZoneData = so.Text;
-            this.QzoneDataContent.Children.Insert(0, co);
-            data.Add(so.Text);
-            //   MessageBox.Show(JSON.ToJSON(data));
-            File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + Settings.Default.LemonAreeunIts + ".data", JSON.ToJSON(data));
+            if (so.Text != string.Empty)
+            {
+                var co = new LZoneItemControl();
+                co.QZoneData = so.Text;
+                this.QzoneDataContent.Children.Insert(0, co);
+                data.Add(so.Text);
+                //   MessageBox.Show(JSON.ToJSON(data));
+                Settings.Default.LZone = JSON.ToJSON(data);
+                Settings.Default.Save();
+                so.Text = "";
+            }
          }
     }
 }

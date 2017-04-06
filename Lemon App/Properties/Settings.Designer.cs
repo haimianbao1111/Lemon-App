@@ -249,5 +249,17 @@ namespace Lemon_App.Properties {
                 this["IsFistRun"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("null")]
+        public string LZone {
+            get {
+                return ((string)(this["LZone"]));
+            }
+            set {
+                this["LZone"] = value;
+            }
+        }
     }
 }
