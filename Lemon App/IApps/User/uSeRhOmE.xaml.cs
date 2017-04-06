@@ -1,4 +1,5 @@
-﻿using Lemon_App.Properties;
+﻿using Lemon_App.IApps.User;
+using Lemon_App.Properties;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -31,11 +32,22 @@ namespace Lemon_App
             get { return TX.Background; }
             set { TX.Background = value; }
         }
+        List<string> data = new List<string>();
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             if (System.IO.File.Exists(Settings.Default.UserImage))
             { TX.Background = new ImageBrush(new BitmapImage(new Uri(Settings.Default.UserImage, UriKind.Absolute))); }
             NM.Text = Settings.Default.RobotName;
+            if (File.Exists(AppDomain.CurrentDomain.BaseDirectory+Settings.Default.LemonAreeunIts+".data"))
+            {
+                data = (List<string>)JSON.JsonToObject(File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + Settings.Default.LemonAreeunIts + ".data"), data);
+                for (int i = 0; i != data.Count; i++)
+                {
+                    var co = new LZoneItemControl();
+                    co.QZoneData = data[i];
+                    this.QzoneDataContent.Children.Insert(0, co);
+                }
+            }
         }
 
         private void TX_MouseDown(object sender, MouseButtonEventArgs e)
@@ -48,5 +60,15 @@ namespace Lemon_App
                 Settings.Default.Save();
             }
         }
+
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var co = new LZoneItemControl();
+            co.QZoneData = so.Text;
+            this.QzoneDataContent.Children.Insert(0, co);
+            data.Add(so.Text);
+            //   MessageBox.Show(JSON.ToJSON(data));
+            File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + Settings.Default.LemonAreeunIts + ".data", JSON.ToJSON(data));
+         }
     }
 }

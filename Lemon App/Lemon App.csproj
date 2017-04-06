@@ -141,6 +141,10 @@
     <Compile Include="IApps\Captrue\CaptureWindow.xaml.cs">
       <DependentUpon>CaptureWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="IApps\User\LZoneHelper.cs" />
+    <Compile Include="IApps\User\LZoneItemControl.xaml.cs">
+      <DependentUpon>LZoneItemControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Music\DeskLyricWin.xaml.cs">
       <DependentUpon>DeskLyricWin.xaml</DependentUpon>
     </Compile>
@@ -231,6 +235,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="IApps\Captrue\CaptureWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="IApps\User\LZoneItemControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -373,7 +381,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="app.config" />
     <None Include="App\packages.config" />
     <None Include="Properties\app.manifest">
       <SubType>Designer</SubType>

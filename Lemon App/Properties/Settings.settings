@@ -11,9 +11,6 @@
     <Setting Name="WeatherInfo" Type="System.String" Scope="User">
       <Value Profile="(Default)">北京</Value>
     </Setting>
-    <Setting Name="Qianmin" Type="System.String" Scope="User">
-      <Value Profile="(Default)">个人签名</Value>
-    </Setting>
     <Setting Name="RNBM" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>

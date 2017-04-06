@@ -61,18 +61,6 @@ namespace Lemon_App.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("个人签名")]
-        public string Qianmin {
-            get {
-                return ((string)(this["Qianmin"]));
-            }
-            set {
-                this["Qianmin"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool RNBM {
             get {
