@@ -5,12 +5,33 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Lemon_App.IApps.User"
              mc:Ignorable="d" >
-    <Grid>
+    <UserControl.Resources>
+        <Storyboard x:Key="OnMouseLeave1">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="S">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="OnMouseMove1">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="S">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="grid">
+            <BeginStoryboard Storyboard="{StaticResource OnMouseLeave1}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseMove" SourceName="grid">
+            <BeginStoryboard x:Name="OnMouseMove1_BeginStoryboard" Storyboard="{StaticResource OnMouseMove1}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
+    <Grid x:Name="grid">
         <Border Margin="10" Background="White" CornerRadius="5">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="0.3"/>
             </Border.Effect>
             <TextBlock x:Name="CA" TextWrapping="Wrap" Margin="10" TextAlignment="Center"/>
         </Border>
+        <Border x:Name="S" HorizontalAlignment="Left" Height="14" VerticalAlignment="Top" Width="14" Background="#FFF92C4D" CornerRadius="10" Margin="5,5,0,0" Opacity="0" MouseDown="S_MouseDown"/>
     </Grid>
 </UserControl>

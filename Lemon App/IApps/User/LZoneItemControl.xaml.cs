@@ -24,6 +24,16 @@ namespace Lemon_App.IApps.User
         {
             InitializeComponent();
         }
-        public string QZoneData { set { CA.Text = value; } get { return CA.Text; } }
+        public string QZoneData { set { CA.Text = value; S.ToolTip = CA.Text; } get { return CA.Text; } }
+
+        private void S_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var da = new System.Windows.Media.Animation.DoubleAnimation(1, 0, TimeSpan.FromSeconds(0.2));
+            da.Completed += delegate
+            {
+                Visibility = Visibility.Collapsed;
+            };
+            BeginAnimation(OpacityProperty, da);
+        }
     }
 }

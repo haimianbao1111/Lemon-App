@@ -14,7 +14,7 @@
                     <DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="0.3"/>
                 </Border.Effect>
                 <Grid>
-                    <TextBox x:Name="so" BorderThickness="0" TextWrapping="Wrap" Margin="10" Foreground="#FF1B1B1C"/>
+                    <TextBox x:Name="so" AcceptsReturn="True"  BorderThickness="0" TextWrapping="Wrap" Margin="10" Foreground="#FF1B1B1C" SelectionBrush="#FF31C27C"/>
                     <Border  HorizontalAlignment="Right" Margin="0,0,10,10" Width="15" CornerRadius="100" Height="15" MouseDown="Border_MouseDown" Background="#FF3399FF" VerticalAlignment="Bottom"/>
                 </Grid>
             </Border>

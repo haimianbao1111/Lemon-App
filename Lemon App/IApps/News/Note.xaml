@@ -75,7 +75,7 @@
         </ScrollViewer>
         <Border BorderThickness="1" Height="32" Margin="10,4,10,0" VerticalAlignment="Top" CornerRadius="7" Background="#FFF1F3F7">
             <Grid>
-                <TextBox x:Name="textBox" Margin="27,7,0,0" TextWrapping="Wrap" Text="最新" KeyDown="textBox_KeyDown" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Background="{x:Null}" Foreground="#FF686868" BorderThickness="0"/>
+                <TextBox x:Name="textBox" Margin="27,7,0,0" TextWrapping="Wrap" Text="最新" KeyDown="textBox_KeyDown" BorderBrush="{x:Null}" SelectionBrush="#FF31C27C" Background="{x:Null}" Foreground="#FF686868" BorderThickness="0"/>
                 <Path x:Name="SSPath" StrokeThickness="0" Fill="#FFB4B4C1" Margin="8" Data="M31.689,30.252l-8.26-8.128c2.163-2.35,3.492-5.458,3.492-8.878    C26.92,5.93,20.894,0,13.46,0C6.026,0,0,5.93,0,13.246s6.026,13.246,13.46,13.246c3.212,0,6.158-1.111,8.472-2.958l8.292,8.16    c0.404,0.398,1.06,0.398,1.464,0C32.093,31.296,32.093,30.65,31.689,30.252z M13.46,24.454c-6.29,0-11.389-5.018-11.389-11.208    S7.17,2.038,13.46,2.038c6.29,0,11.389,5.018,11.389,11.208S19.75,24.454,13.46,24.454z" Stretch="Uniform"  ToolTip="搜索" HorizontalAlignment="Left" Width="19"/>
             </Grid>
         </Border>

@@ -8,7 +8,7 @@
     <Grid>
         <Border x:Name="S" BorderThickness="1" MinWidth="200" MaxWidth="400" Height="Auto"  VerticalAlignment="Top" CornerRadius="5" Background="#FFF1F2F6" Grid.Column="1" Margin="0,50,0,0">
             <Grid Width="Auto" Height="Auto">
-                <TextBox x:Name="textBox1" Margin="10,15,35,15" TextWrapping="Wrap" Text="搜索" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Foreground="#FF1B1B1C" FontSize="18" KeyDown="textBox1_KeyDown" BorderThickness=" 0,0,0,0" TextChanged="textBox1_TextChanged"/>
+                <TextBox x:Name="textBox1" Margin="10,15,35,15" TextWrapping="Wrap" Text="搜索" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="#FF31C27C" Foreground="#FF1B1B1C" FontSize="18" KeyDown="textBox1_KeyDown" BorderThickness=" 0,0,0,0" TextChanged="textBox1_TextChanged"/>
                 <Border Margin="0,16,10,0" CornerRadius="20" MouseDown="Border_MouseDown" Background="#FF007ACC" HorizontalAlignment="Right" Width="20" Height="20" VerticalAlignment="Top"/>
                 <ListBox x:Name="listBox" Height="Auto" Margin="10,50,10,0" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF252526" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden" BorderThickness="0" SelectionChanged="listBox_SelectionChanged">
                     <ListBox.ItemContainerStyle>

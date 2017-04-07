@@ -8,7 +8,7 @@
              mc:Ignorable="d" Loaded="UserControl_Loaded"  SizeChanged="UserControl_SizeChanged">
     <Grid>
         <Border Height="1" VerticalAlignment="Bottom" Background="#FFE6E6E6" Margin="0,0,0,90"/>
-        <TextBox x:Name="textBox1" TextWrapping="Wrap" FontSize="14" BorderThickness="0" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" KeyDown="textBox1_KeyDown" Height="90" VerticalAlignment="Bottom" Background="{x:Null}"/>
+        <TextBox x:Name="textBox1" TextWrapping="Wrap" FontSize="14" BorderThickness="0" BorderBrush="{x:Null}" SelectionBrush="#FF31C27C" KeyDown="textBox1_KeyDown" Height="90" VerticalAlignment="Bottom" Background="{x:Null}"/>
         <Border BorderThickness="1" Background="#B2007ACC" CornerRadius="5" HorizontalAlignment="Right" Width="57" Height="30" VerticalAlignment="Bottom">
             <Label x:Name="label" Content="发送" Margin="9.919,1.833,4.331,-1" Foreground="White" MouseDown="label_MouseDown" Height="27.167" VerticalAlignment="Top"/>
         </Border>

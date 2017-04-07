@@ -10,14 +10,14 @@
             <Label x:Name="label" Content="设置 Settings" HorizontalAlignment="Left" Height="65" Margin="10,0,0,0" VerticalAlignment="Top" Width="188" Foreground="#FF252526" FontSize="24" Background="{x:Null}"/>
             <Label x:Name="label2" Content="搜索引擎Url:" HorizontalAlignment="Left" Height="24" Margin="10,41,0,0" VerticalAlignment="Top" Width="108" Foreground="#FF333337"/>
             <Border BorderThickness="1" Margin="10,70,10,0" Background="#FFF1F2F6" CornerRadius="5" Height="30" VerticalAlignment="Top">
-                <TextBox x:Name="UrlBox" Margin="9,4,9,0" TextWrapping="Wrap" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Foreground="#FF1B1B1C" Background="{x:Null}" BorderThickness="0" IsHitTestVisible="True" KeyDown="UrlBox_KeyDown" Height="21" VerticalAlignment="Top"/>
+                <TextBox x:Name="UrlBox" Margin="9,4,9,0" TextWrapping="Wrap" BorderBrush="{x:Null}" SelectionBrush="#FF31C27C" Foreground="#FF1B1B1C" Background="{x:Null}" BorderThickness="0" IsHitTestVisible="True" KeyDown="UrlBox_KeyDown" Height="21" VerticalAlignment="Top"/>
             </Border>
             <Label x:Name="label3" Content="用户名 UserName:" HorizontalAlignment="Left" Height="24" Margin="11,103,0,0" VerticalAlignment="Top" Width="116" Foreground="#FF333337"/>
             <Border BorderThickness="1" Margin="11,132,10,0" Background="#FFF1F2F6" CornerRadius="5" Height="30" VerticalAlignment="Top">
-                <TextBox x:Name="UserNameBox" Margin="9,4,9,0" TextWrapping="Wrap" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Foreground="#FF1B1B1C" Background="{x:Null}" BorderThickness="0" IsHitTestVisible="True" KeyDown="UserNameBox_KeyDown" Height="21" VerticalAlignment="Top"/>
+                <TextBox x:Name="UserNameBox" Margin="9,4,9,0" TextWrapping="Wrap" BorderBrush="{x:Null}" SelectionBrush="#FF31C27C" Foreground="#FF1B1B1C" Background="{x:Null}" BorderThickness="0" IsHitTestVisible="True" KeyDown="UserNameBox_KeyDown" Height="21" VerticalAlignment="Top"/>
             </Border>
             <Border BorderThickness="1" Margin="11,201,10,0" Background="#FFF1F2F6" CornerRadius="5" Height="30" VerticalAlignment="Top">
-                <TextBox x:Name="WeatherInfo" Margin="9,4,9,0" TextWrapping="Wrap" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Foreground="#FF1B1B1C" Background="{x:Null}" BorderThickness="0" IsHitTestVisible="True" KeyDown="WeatherInfo_KeyDown" Height="21" VerticalAlignment="Top"/>
+                <TextBox x:Name="WeatherInfo" Margin="9,4,9,0" TextWrapping="Wrap" BorderBrush="{x:Null}" SelectionBrush="#FF31C27C" Foreground="#FF1B1B1C" Background="{x:Null}" BorderThickness="0" IsHitTestVisible="True" KeyDown="WeatherInfo_KeyDown" Height="21" VerticalAlignment="Top"/>
             </Border>
             <Label Margin="11,167,207,0" Foreground="#FF333337" Content="天气地区 WeatherInfo:" Height="29" VerticalAlignment="Top"/>
             <Grid Height="59" VerticalAlignment="Top" Margin="0,362,0,0">
@@ -28,7 +28,7 @@
             <Label Margin="11,309,494,0" Foreground="#FF333337" Content="其他设置" Height="29" VerticalAlignment="Top"/>
             <TextBlock HorizontalAlignment="Left" Height="19" Margin="10,242,0,0" TextWrapping="Wrap" Text="代理服务器:" VerticalAlignment="Top" Width="67" Foreground="#FF333337"/>
             <Border BorderThickness="1" Margin="78,236,10,0" Background="#FFF1F2F6" CornerRadius="5" Height="30" VerticalAlignment="Top">
-                <TextBox x:Name="xyuri" Margin="9,4,9,0" TextWrapping="Wrap" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Foreground="#FF1B1B1C" Background="{x:Null}" BorderThickness="0" IsHitTestVisible="True" KeyDown="WeatherInfo_KeyDown" Height="21" VerticalAlignment="Top"/>
+                <TextBox x:Name="xyuri" Margin="9,4,9,0" TextWrapping="Wrap" BorderBrush="{x:Null}" SelectionBrush="#FF31C27C" Foreground="#FF1B1B1C" Background="{x:Null}" BorderThickness="0" IsHitTestVisible="True" KeyDown="WeatherInfo_KeyDown" Height="21" VerticalAlignment="Top"/>
             </Border>
             <Border BorderThickness="1" HorizontalAlignment="Right" Height="30" Margin="0,273,27,0" VerticalAlignment="Top" Width="74" Background="#FFF1F2F6" CornerRadius="5">
                 <TextBlock TextWrapping="Wrap" Text="保存" Margin="0,7,0,0" Foreground="#FF1B1B1C" TextAlignment="Center" Background="#00000000" MouseDown="TextBlock_MouseDown"/>
@@ -40,11 +40,11 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock HorizontalAlignment="Left" Height="21" TextWrapping="Wrap" Text="代理用户名:" VerticalAlignment="Top" Width="66" Foreground="#FF333337" Margin="0,5,0,0"/>
                 <Border BorderThickness="1" Background="#FFF1F2F6" CornerRadius="5" Height="30" VerticalAlignment="Top" Margin="70,0,10,0">
-                    <TextBox x:Name="xpuser" Margin="9,4,9,0" TextWrapping="Wrap" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Foreground="#FF1B1B1C" Background="{x:Null}" BorderThickness="0" IsHitTestVisible="True" KeyDown="WeatherInfo_KeyDown" Height="21" VerticalAlignment="Top"/>
+                    <TextBox x:Name="xpuser" Margin="9,4,9,0" TextWrapping="Wrap" BorderBrush="{x:Null}" SelectionBrush="#FF31C27C" Foreground="#FF1B1B1C" Background="{x:Null}" BorderThickness="0" IsHitTestVisible="True" KeyDown="WeatherInfo_KeyDown" Height="21" VerticalAlignment="Top"/>
                 </Border>
                 <TextBlock HorizontalAlignment="Left" Height="21" Margin="11,5,0,0" TextWrapping="Wrap" Text="代理密码:" VerticalAlignment="Top" Width="54" Foreground="#FF333337" Grid.Column="1"/>
                 <Border BorderThickness="1" Margin="65,0,10,0" Background="#FFF1F2F6" CornerRadius="5" Height="30" VerticalAlignment="Top" Grid.Column="1">
-                    <TextBox x:Name="xypsw" Margin="9,4,9,0" TextWrapping="Wrap" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Foreground="#FF1B1B1C" Background="{x:Null}" BorderThickness="0" IsHitTestVisible="True" KeyDown="WeatherInfo_KeyDown" Height="21" VerticalAlignment="Top"/>
+                    <TextBox x:Name="xypsw" Margin="9,4,9,0" TextWrapping="Wrap" BorderBrush="{x:Null}" SelectionBrush="#FF31C27C" Foreground="#FF1B1B1C" Background="{x:Null}" BorderThickness="0" IsHitTestVisible="True" KeyDown="WeatherInfo_KeyDown" Height="21" VerticalAlignment="Top"/>
                 </Border>
             </Grid>
         </Grid>

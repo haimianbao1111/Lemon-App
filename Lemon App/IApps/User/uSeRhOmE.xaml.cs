@@ -44,6 +44,7 @@ namespace Lemon_App
                 for (int i = 0; i != data.Count; i++)
                 {
                     var co = new LZoneItemControl();
+                    co.S.MouseDown += Mou;
                     co.QZoneData = data[i];
                     this.QzoneDataContent.Children.Insert(0, co);
                 }
@@ -66,7 +67,9 @@ namespace Lemon_App
             if (so.Text != string.Empty)
             {
                 var co = new LZoneItemControl();
+                co.S.MouseDown += Mou;
                 co.QZoneData = so.Text;
+                co.BeginAnimation(OpacityProperty, new System.Windows.Media.Animation.DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.2)));
                 this.QzoneDataContent.Children.Insert(0, co);
                 data.Add(so.Text);
                 //   MessageBox.Show(JSON.ToJSON(data));
@@ -75,5 +78,13 @@ namespace Lemon_App
                 so.Text = "";
             }
          }
+
+        private void Mou(object sender, MouseButtonEventArgs e)
+        {
+            data.Remove((sender as Border).ToolTip as string);
+            Settings.Default.LZone = JSON.ToJSON(data);
+            Settings.Default.Save();
+           // MessageBox.Show(JSON.ToJSON(data));
+        }
     }
 }
