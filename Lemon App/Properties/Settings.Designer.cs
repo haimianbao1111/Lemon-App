@@ -261,5 +261,17 @@ namespace Lemon_App.Properties {
                 this["LZone"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("个人签名")]
+        public string qm {
+            get {
+                return ((string)(this["qm"]));
+            }
+            set {
+                this["qm"] = value;
+            }
+        }
     }
 }

@@ -22,9 +22,10 @@ namespace Lemon_App
         public DeskLyricWin()
         {
             InitializeComponent();
-            MouseDown += delegate
+            MouseDown += delegate(object sender, MouseButtonEventArgs e)
              {
-                 Clipboard.SetText(textBlockDeskLyricFore.Text);
+                 if(e.ClickCount>=2)
+                    Clipboard.SetText(textBlockDeskLyricFore.Text);
              };
         }
         /// <summary>

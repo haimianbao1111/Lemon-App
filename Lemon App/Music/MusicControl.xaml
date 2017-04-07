@@ -1088,17 +1088,17 @@
         </Grid>
         <Grid x:Name="G" Margin="20,0,20,49" Background="#00000000" Visibility="Collapsed">
             <Grid Margin="0,60,0,0" Background="#00000000" >
-                <Canvas  x:Name="CanvasLyric" ClipToBounds="True" Background="#00000000">
-                    <StackPanel x:Name="StackPanelCommonLyric"  Canvas.Left="0" Canvas.Top="300" Width="{Binding ActualWidth, ElementName=CanvasLyric, Mode=OneWay}" OpacityMask="Black" Background="#00000000" />
-                    <Canvas x:Name="CanvasFocusLyric"  Height="72"  Canvas.Left="0" Canvas.Top="235" Width="{Binding ActualWidth, ElementName=CanvasLyric, Mode=OneWay}" Background="#00000000" OpacityMask="Black" ClipToBounds="True">
-                        <TextBlock x:Name="TBFocusLyricBack" Text="小萌Music" Height="Auto" Width="{Binding ActualWidth, ElementName=CanvasLyric, Mode=OneWay}" FontSize="22" TextAlignment="Center" Foreground="White" OpacityMask="Black" Background="#00000000" TextWrapping="Wrap"/>
-                        <Canvas x:Name="CanvasFocusLyricFore" Height="{Binding Height, ElementName=CanvasFocusLyric}" Width="30" ClipToBounds="True" OpacityMask="Black" Background="#00000000">
-                            <TextBlock x:Name="TBFocusLyricFore" Text="{Binding Text, ElementName=TBFocusLyricBack}" Height="{Binding Height, ElementName=CanvasFocusLyric}" FontSize="{Binding FontSize, ElementName=TBFocusLyricBack}" TextAlignment="{Binding TextAlignment, ElementName=TBFocusLyricBack}" Foreground="#FF007ACC" FontFamily="{Binding FontFamily, ElementName=TBFocusLyricBack}" Width="{Binding ActualWidth, ElementName=CanvasLyric, Mode=OneWay}" Visibility="{Binding Visibility, ElementName=TBFocusLyricBack}" TextWrapping="{Binding TextWrapping, ElementName=TBFocusLyricBack}" TextTrimming="{Binding TextTrimming, ElementName=TBFocusLyricBack}" OpacityMask="Black" Background="#00000000" />
+                <Canvas  x:Name="CanvasLyric" ClipToBounds="True">
+                    <StackPanel x:Name="StackPanelCommonLyric"  Canvas.Left="0" Canvas.Top="300" Width="{Binding ActualWidth, ElementName=CanvasLyric, Mode=OneWay}" OpacityMask="Black" />
+                    <Canvas x:Name="CanvasFocusLyric"  Height="72"  Canvas.Left="0" Canvas.Top="235" Width="{Binding ActualWidth, ElementName=CanvasLyric, Mode=OneWay}" OpacityMask="Black" ClipToBounds="True">
+                        <TextBlock x:Name="TBFocusLyricBack" Text="小萌Music" Height="Auto" Width="{Binding ActualWidth, ElementName=CanvasLyric, Mode=OneWay}" FontSize="22" TextAlignment="Center" Foreground="White" OpacityMask="Black" TextWrapping="Wrap"/>
+                        <Canvas x:Name="CanvasFocusLyricFore" Height="{Binding Height, ElementName=CanvasFocusLyric}" Width="30" ClipToBounds="True" OpacityMask="Black">
+                            <TextBlock x:Name="TBFocusLyricFore" Text="{Binding Text, ElementName=TBFocusLyricBack}" Height="{Binding Height, ElementName=CanvasFocusLyric}" FontSize="{Binding FontSize, ElementName=TBFocusLyricBack}" TextAlignment="{Binding TextAlignment, ElementName=TBFocusLyricBack}" Foreground="#FF007ACC" FontFamily="{Binding FontFamily, ElementName=TBFocusLyricBack}" Width="{Binding ActualWidth, ElementName=CanvasLyric, Mode=OneWay}" Visibility="{Binding Visibility, ElementName=TBFocusLyricBack}" TextWrapping="{Binding TextWrapping, ElementName=TBFocusLyricBack}" TextTrimming="{Binding TextTrimming, ElementName=TBFocusLyricBack}" OpacityMask="Black" />
                         </Canvas>
                     </Canvas>
                 </Canvas>
-                <StackPanel Margin="28,254.024,23,2" x:Name="BaseLineSP" Background="#00000000">
-                    <Line Stroke="#FF007ACC" StrokeThickness="2" StrokeDashArray="4,2" X1="0" X2="{Binding ActualWidth, ElementName=CanvasLyric}" Y2="0" x:Name="BaseLine" Visibility="Collapsed" Fill="#00000000" OpacityMask="{x:Null}" Y1="0" Grid.ColumnSpan="2" Height="4" />
+                <StackPanel Margin="28,254.024,23,2" x:Name="BaseLineSP">
+                    <Line Stroke="#FF007ACC" StrokeThickness="2" StrokeDashArray="4,2" X1="0" X2="{Binding ActualWidth, ElementName=CanvasLyric}" Y2="0" x:Name="BaseLine" Visibility="Collapsed" OpacityMask="{x:Null}" Y1="0" Grid.ColumnSpan="2" Height="4" />
                     <!--TextBlock x:Name="tbDragTime" TextWrapping="Wrap" Text="0.00.00" TextAlignment="Left" Foreground="#FF007ACC" FontSize="18" Visibility="Collapsed" Width="{Binding ActualWidth, ElementName=CanvasLyric}" Background="#00000000" /-->
                 </StackPanel>
             </Grid>

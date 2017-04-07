@@ -62,5 +62,8 @@
     <Setting Name="LZone" Type="System.String" Scope="User">
       <Value Profile="(Default)">null</Value>
     </Setting>
+    <Setting Name="qm" Type="System.String" Scope="User">
+      <Value Profile="(Default)">个人签名</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

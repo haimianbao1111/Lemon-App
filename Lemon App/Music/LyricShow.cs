@@ -1321,8 +1321,8 @@ namespace Lemon_App
                 TextBlock tb = new TextBlock();
                 tb.MouseDown += delegate
                 {
-                    Clipboard.SetText(tb.Text);
-                    MessageBox.Show("s");
+                   Clipboard.SetText(tb.Text);
+                  //  MessageBox.Show("s");
                 };
                 tb.FontSize = 18;
                tb.Margin = new Thickness(0, 0, 0, 20);

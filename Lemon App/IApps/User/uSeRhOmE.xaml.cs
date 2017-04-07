@@ -35,6 +35,7 @@ namespace Lemon_App
         List<string> data = new List<string>();
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
+            qm.Text = Settings.Default.qm;
             if (System.IO.File.Exists(Settings.Default.UserImage))
             { TX.Background = new ImageBrush(new BitmapImage(new Uri(Settings.Default.UserImage, UriKind.Absolute))); }
             NM.Text = Settings.Default.RobotName;
@@ -85,6 +86,15 @@ namespace Lemon_App
             Settings.Default.LZone = JSON.ToJSON(data);
             Settings.Default.Save();
            // MessageBox.Show(JSON.ToJSON(data));
+        }
+
+        private void qm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Settings.Default.qm = qm.Text;
+                Settings.Default.Save();
+            }
         }
     }
 }
