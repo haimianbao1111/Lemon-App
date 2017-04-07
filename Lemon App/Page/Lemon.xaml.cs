@@ -265,19 +265,5 @@ namespace Lemon_App
         }
         private const int WM_HOTKEY = 0x0312;
 
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ClickCount == 2)
-            {
-                if (this.ActualWidth == SystemParameters.WorkArea.Width)
-                {
-                    EX();
-                }
-                else
-                {
-                    MaxEX();
-                }
-            }
-        }
     }
 }

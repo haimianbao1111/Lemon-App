@@ -1319,9 +1319,10 @@ namespace Lemon_App
            //     JObject obj = JObject.Parse(await Uuuhh.GetWebAsync("http://api.fanyi.baidu.com/api/trans/vip/translate?q=" + Uri.EscapeDataString(txt) + "&from=" +"auto" + "&to=" + "zh" + "&appid=20151231000008489&salt=2004112629" + "&sign=" + FanyiBox.MD5.EncryptToMD5string("20151231000008489" + txt + "2004112629Q3EQP1ay2cLKAMxs2gqa")));
               //  string ok= FanyiBox.DecodeUtf8(obj["trans_result"][0]["dst"].ToString());
                 TextBlock tb = new TextBlock();
-                tb.MouseDown += delegate
+                tb.MouseDown += delegate (object sender, MouseButtonEventArgs e)
                 {
-                   Clipboard.SetText(tb.Text);
+                    if (e.ClickCount >= 2)
+                        Clipboard.SetText(tb.Text);
                   //  MessageBox.Show("s");
                 };
                 tb.FontSize = 18;
