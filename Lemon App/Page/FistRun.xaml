@@ -151,14 +151,14 @@
         <TextBlock x:Name="textBlock_Copy" TextWrapping="Wrap" Foreground="#00F5F5F5" FontSize="36" TextAlignment="Center" Height="50" Margin="0,60,0,390"/>
         <Grid x:Name="grid" Width="200" Height="200" Opacity="0">
             <Border x:Name="TX" BorderThickness="5" Height="125" Margin="0" VerticalAlignment="Top" Width="125" BorderBrush="#66FFFFFF" CornerRadius="125" Background="#FF16537E" MouseDown="TX_MouseDown"/>
-            <TextBox x:Name="NM" Height="26" Margin="0,130,0,0" TextWrapping="Wrap" Text="Lemon User" VerticalAlignment="Top" Foreground="#FFE2E2E2" FontSize="20" TextAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" BorderThickness="0" TextChanged="NM_TextChanged"/>
+            <TextBox x:Name="NM" Height="26" Margin="0,130,0,0" TextWrapping="Wrap" Text="Lemon User" VerticalAlignment="Top" Foreground="#FFE2E2E2" FontSize="20" TextAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="#FF31C27C" BorderThickness="0" TextChanged="NM_TextChanged"/>
         </Grid>
         <Border x:Name="border" HorizontalAlignment="Right" Height="30" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="30" Background="#FFE2E2E2" CornerRadius="5" Opacity="0">
             <Path Data="M494,52c-13-13-33-13-46,0L176,324L62,211c-13-13-33-13-46,0s-13,33,0,46l137,136c6,6,15,10,23,10s17-4,23-10L494,99
 	C507,86,507,65,494,52z" Fill="#FF3399FF" Stretch="Uniform" Margin="8"/>
         </Border>
         <Border x:Name="border1" BorderThickness="1" Background="#FFF1F2F6" CornerRadius="5" Height="30" Margin="10,0" Opacity="0">
-            <TextBox x:Name="UrlBox" Margin="9,4,9,0" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Foreground="#FF1B1B1C" Background="{x:Null}" BorderThickness="0" IsHitTestVisible="True" Height="21" VerticalAlignment="Top" Text="https://www.baidu.com/s?tn=mswin_oem_dg&amp;ie=utf-16&amp;word=%2a" TextChanged="UrlBox_TextChanged"/>
+            <TextBox x:Name="UrlBox" Margin="9,4,9,0" BorderBrush="{x:Null}" SelectionBrush="#FF31C27C" Foreground="#FF1B1B1C" Background="{x:Null}" BorderThickness="0" IsHitTestVisible="True" Height="21" VerticalAlignment="Top" Text="https://www.baidu.com/s?tn=mswin_oem_dg&amp;ie=utf-16&amp;word=%2a" TextChanged="UrlBox_TextChanged"/>
         </Border>
         <Border x:Name="border_Copy" MouseDown="border_Copy_MouseDown" HorizontalAlignment="Right" Height="30" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="30" Background="#FFE2E2E2" CornerRadius="5" Opacity="0" Visibility="Collapsed">
             <Path Data="M494,52c-13-13-33-13-46,0L176,324L62,211c-13-13-33-13-46,0s-13,33,0,46l137,136c6,6,15,10,23,10s17-4,23-10L494,99  C507,86,507,65,494,52z" Fill="#FF3399FF" Stretch="Uniform" Margin="8"/>

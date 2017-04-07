@@ -22,6 +22,10 @@ namespace Lemon_App
         public DeskLyricWin()
         {
             InitializeComponent();
+            MouseDown += delegate
+             {
+                 Clipboard.SetText(textBlockDeskLyricFore.Text);
+             };
         }
         /// <summary>
         /// 鼠标进入窗体显示背景矩形框

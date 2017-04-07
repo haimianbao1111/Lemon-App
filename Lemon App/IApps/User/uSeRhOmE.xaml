@@ -7,7 +7,7 @@
              xmlns:User="clr-namespace:Lemon_App.IApps.User" x:Name="userControl" x:Class="Lemon_App.uSeRhOmE"
              mc:Ignorable="d" Loaded="UserControl_Loaded" d:DesignWidth="416" d:DesignHeight="410.4">
     <Grid>
-        <Grid Margin="0,53,0,0" Background="#FFF0F0F0">
+        <Grid Margin="0,53,0,0" Background="#00000000">
             <Border x:Name="TX" Height="75" Margin="10,-38,0,0" VerticalAlignment="Top" Width="75" CornerRadius="125" Background="#FF16537E" MouseDown="TX_MouseDown" HorizontalAlignment="Left"/>
             <Border Margin="10,42,10,0" Background="White" CornerRadius="5" Height="65.24" VerticalAlignment="Top">
                 <Border.Effect>
