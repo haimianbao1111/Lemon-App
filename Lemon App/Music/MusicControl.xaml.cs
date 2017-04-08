@@ -958,11 +958,15 @@ namespace Lemon_App
             Settings.Default.Save();
         }
         int downloadindex = 0;
+        string datadlwo = "";
         private async void Border_MouseDown_5(object sender, MouseButtonEventArgs e)
         {
                 if (e.ClickCount >= 2)
-                {
-                    downloadindex = 0;
+            {
+                datadlwo = textBox.Text;
+                if (Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + datadlwo) == false)
+                    Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + datadlwo);
+                downloadindex = 0;
                     popupop.IsOpen = true;
                     download_name.Text = (listBox.Items[downloadindex] as MusicItemControl).Content;
                     string guid = "20D919A4D7700FBC424740E8CED80C5F";
@@ -975,7 +979,7 @@ namespace Lemon_App
                 };
                 dc.DownloadFileCompleted += OsAsync;
                     dc.DownloadProgressChanged += As;
-                    dc.DownloadFileAsync(new Uri(musicurl), AppDomain.CurrentDomain.BaseDirectory + $@"DownLoad/{(listBox.Items[downloadindex] as MusicItemControl).Content.Replace("\\", ",").Replace("/", ",")}.mp3");
+                    dc.DownloadFileAsync(new Uri(musicurl), AppDomain.CurrentDomain.BaseDirectory + $@"{datadlwo}/{(listBox.Items[downloadindex] as MusicItemControl).Content.Replace("\\", ",").Replace("/", ",")}.mp3");
                 }
             if (e.ClickCount == 1)
             {
@@ -1013,7 +1017,7 @@ namespace Lemon_App
 
         private async void OsAsync(object sender, AsyncCompletedEventArgs e)
         {
-            if (downloadindex != listBox.Items.Count)
+            if (downloadindex <= listBox.Items.Count)
             {
                 downloadindex++;
                     download_name.Text = (listBox.Items[downloadindex] as MusicItemControl).Content;
@@ -1021,7 +1025,7 @@ namespace Lemon_App
                     string ioo = await Uuuhh.GetWebAsync($"http://59.37.96.220/base/fcgi-bin/fcg_musicexpress2.fcg?version=12&miniversion=92&key=19914AA57A96A9135541562F16DAD6B885AC8B8B5420AC567A0561D04540172E&guid={guid}");
                     string vkey = He.Text(ioo, "key=\"", "\" speedrpttype", 0);
                     musicurl = $"http://182.247.250.19/streamoc.music.tc.qq.com/M500{((listBox.Items[downloadindex] as MusicItemControl).Music as Music).MusicID}.mp3?vkey={vkey}&guid={guid}";
-                    dc.DownloadFileAsync(new Uri(musicurl), AppDomain.CurrentDomain.BaseDirectory + $@"DownLoad/{(listBox.Items[downloadindex] as MusicItemControl).Content.Replace("\\", ",").Replace("/", ",")}.mp3");
+                    dc.DownloadFileAsync(new Uri(musicurl), AppDomain.CurrentDomain.BaseDirectory + $@"{datadlwo}/{(listBox.Items[downloadindex] as MusicItemControl).Content.Replace("\\", ",").Replace("/", ",")}.mp3");
                 }
                 else { popupop.IsOpen = false; MessageBox.Show("成功下载全部"); dc.Dispose(); }
         }
