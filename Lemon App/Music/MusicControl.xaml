@@ -1080,6 +1080,15 @@
         </EventTrigger>
     </UserControl.Triggers>
     <Grid x:Name="Cip">
+        <Popup x:Name="popupop" Width="180" Height="100" AllowsTransparency="True" PopupAnimation="Fade" Placement="Right">
+            <Border Background="White" CornerRadius="5">
+                <Grid>
+                    <TextBlock x:Name="download_name" Margin="10,10,10,60" TextWrapping="Wrap" Text="Name" Foreground="#FF1B1B1C" TextAlignment="Center"/>
+                    <ProgressBar x:Name="p" Height="10" Margin="10,0" BorderBrush="#FF31C27C" Foreground="#FF31C27C" Background="White"/>
+                    <Border x:Name="CLOSE" ToolTip="关闭" Height="13" Background="#FFFE5E56" CornerRadius="13" MouseDown="CLOSE_MouseDown" VerticalAlignment="Bottom" Width="13" Margin="0,0,0,10"/>
+                </Grid>
+            </Border>
+        </Popup>
         <Grid x:Name="BackgroundContent"/>
         <Grid x:Name="ZjImAgE" Margin="0,0,0,49" Visibility="Collapsed">
             <TextBlock Height="25" Margin="0,5,10,0" TextWrapping="Wrap" Text="{Binding Text, ElementName=lrcname}" VerticalAlignment="Top" Foreground="#FF686868" FontSize="20" TextAlignment="Center"/>
@@ -1204,7 +1213,7 @@
                     <Border HorizontalAlignment="Left" Width="20" Height="20" Background="#00F1F3F7" CornerRadius="3" ToolTip="添加到收藏" BorderBrush="#FF31C27C" BorderThickness="1" Margin="95,2,0,3" MouseDown="Border_MouseDown_1">
                         <Path StrokeThickness="0" Margin="2" Fill="#FF31C27C" Data="M56.14,28.375H35.274V7.506c0-1.809-1.462-3.271-3.274-3.271c-1.811,0-3.274,1.463-3.274,3.271v20.869H7.862  c-1.813,0-3.274,1.464-3.274,3.272c0,1.807,1.462,3.27,3.274,3.27h20.863v20.869c0,1.809,1.464,3.272,3.274,3.272  c1.813,0,3.274-1.464,3.274-3.272V34.918H56.14c1.811,0,3.272-1.463,3.272-3.27C59.412,29.839,57.95,28.375,56.14,28.375z" Stretch="Fill" ToolTip="添加到收藏"/>
                     </Border>
-                    <Border x:Name="border" HorizontalAlignment="Left" Width="20" Height="20" CornerRadius="3" BorderBrush="#FF31C27C" BorderThickness="1" Margin="70,2,0,3" MouseDown="Border_MouseDown_1">
+                    <Border x:Name="border" HorizontalAlignment="Left" Width="20" Height="20" CornerRadius="3" BorderBrush="#FF31C27C" BorderThickness="1" Margin="70,2,0,3">
                         <Grid x:Name="CB">
                             <Path x:Name="path" Margin="2" Data="M57.375,52c0-3.727-2.781-6.809-6.375-7.299V26.879h-2v17.822c-3.594,0.49-6.375,3.572-6.375,7.299
 		s2.781,6.809,6.375,7.299v14.904h2V59.299C54.594,58.809,57.375,55.727,57.375,52z M50,57.375c-2.964,0-5.375-2.411-5.375-5.375

@@ -43,8 +43,8 @@ namespace Lemon_App
             t.Tick += Tick;
             if (Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache") == false)
                 Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache");
-            if (Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicDownload") == false)
-                Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + $@"MusicDownload");
+            if (Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"Download") == false)
+                Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + $@"Download");
             getLT = new GetLyricAndLyricTime();
             lyricShow = new LyricShow(CanvasLyric, StackPanelCommonLyric, CanvasFocusLyric, TBFocusLyricBack, CanvasFocusLyricFore, TBFocusLyricFore);
         }
@@ -957,30 +957,75 @@ namespace Lemon_App
             Settings.Default.sx = Move.SelectedIndex;
             Settings.Default.Save();
         }
-
-        private void Border_MouseDown_5(object sender, MouseButtonEventArgs e)
+        int downloadindex = 0;
+        private async void Border_MouseDown_5(object sender, MouseButtonEventArgs e)
         {
-            if (!LyricShow.IsOpenDeskLyric)
+                if (e.ClickCount >= 2)
+                {
+                    downloadindex = 0;
+                    popupop.IsOpen = true;
+                    download_name.Text = (listBox.Items[downloadindex] as MusicItemControl).Content;
+                    string guid = "20D919A4D7700FBC424740E8CED80C5F";
+                    string ioo = await Uuuhh.GetWebAsync($"http://59.37.96.220/base/fcgi-bin/fcg_musicexpress2.fcg?version=12&miniversion=92&key=19914AA57A96A9135541562F16DAD6B885AC8B8B5420AC567A0561D04540172E&guid={guid}");
+                    string vkey = He.Text(ioo, "key=\"", "\" speedrpttype", 0);
+                    musicurl = $"http://182.247.250.19/streamoc.music.tc.qq.com/M500{((listBox.Items[downloadindex] as MusicItemControl).Music as Music).MusicID}.mp3?vkey={vkey}&guid={guid}";
+                dc = new WebClient()
+                {
+                    Proxy = He.proxy
+                };
+                dc.DownloadFileCompleted += OsAsync;
+                    dc.DownloadProgressChanged += As;
+                    dc.DownloadFileAsync(new Uri(musicurl), AppDomain.CurrentDomain.BaseDirectory + $@"DownLoad/{(listBox.Items[downloadindex] as MusicItemControl).Content.Replace("\\", ",").Replace("/", ",")}.mp3");
+                }
+            if (e.ClickCount == 1)
             {
-                RotateTransform rtf = new RotateTransform();
-                (sender as Border).RenderTransform = rtf;
-                (sender as Border).RenderTransformOrigin = new Point(0.5,0.5);
-                DoubleAnimation dbAscending = new DoubleAnimation(0, 90, new Duration(TimeSpan.FromSeconds(0.2)));
-                rtf.BeginAnimation(RotateTransform.AngleProperty, dbAscending);
-                deskLyricWin = new DeskLyricWin();
-                deskLyricWin.Show();
-                LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
-            }else
-            {
-                RotateTransform rtf = new RotateTransform();
-                (sender as Border).RenderTransform = rtf;
-                (sender as Border).RenderTransformOrigin = new Point(0.5, 0.5);
-                DoubleAnimation dbAscending = new DoubleAnimation(90, 0, new Duration(TimeSpan.FromSeconds(0.2)));
-                rtf.BeginAnimation(RotateTransform.AngleProperty, dbAscending);
-                deskLyricWin.Close();
-                LyricShow.IsOpenDeskLyric = false;
+                if (!LyricShow.IsOpenDeskLyric)
+                {
+                    RotateTransform rtf = new RotateTransform();
+                    (sender as Border).RenderTransform = rtf;
+                    (sender as Border).RenderTransformOrigin = new Point(0.5, 0.5);
+                    DoubleAnimation dbAscending = new DoubleAnimation(0, 90, new Duration(TimeSpan.FromSeconds(0.2)));
+                    rtf.BeginAnimation(RotateTransform.AngleProperty, dbAscending);
+                    deskLyricWin = new DeskLyricWin();
+                    deskLyricWin.Show();
+                    LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
+                }
+                else
+                {
+                    RotateTransform rtf = new RotateTransform();
+                    (sender as Border).RenderTransform = rtf;
+                    (sender as Border).RenderTransformOrigin = new Point(0.5, 0.5);
+                    DoubleAnimation dbAscending = new DoubleAnimation(90, 0, new Duration(TimeSpan.FromSeconds(0.2)));
+                    rtf.BeginAnimation(RotateTransform.AngleProperty, dbAscending);
+                    deskLyricWin.Close();
+                    LyricShow.IsOpenDeskLyric = false;
+                }
             }
         }
+        WebClient dc = new WebClient()
+        {
+            Proxy = He.proxy
+        };
+        private void As(object sender, DownloadProgressChangedEventArgs e)
+        {
+            p.Value = e.ProgressPercentage;
+        }
+
+        private async void OsAsync(object sender, AsyncCompletedEventArgs e)
+        {
+            if (downloadindex != listBox.Items.Count)
+            {
+                downloadindex++;
+                    download_name.Text = (listBox.Items[downloadindex] as MusicItemControl).Content;
+                    string guid = "20D919A4D7700FBC424740E8CED80C5F";
+                    string ioo = await Uuuhh.GetWebAsync($"http://59.37.96.220/base/fcgi-bin/fcg_musicexpress2.fcg?version=12&miniversion=92&key=19914AA57A96A9135541562F16DAD6B885AC8B8B5420AC567A0561D04540172E&guid={guid}");
+                    string vkey = He.Text(ioo, "key=\"", "\" speedrpttype", 0);
+                    musicurl = $"http://182.247.250.19/streamoc.music.tc.qq.com/M500{((listBox.Items[downloadindex] as MusicItemControl).Music as Music).MusicID}.mp3?vkey={vkey}&guid={guid}";
+                    dc.DownloadFileAsync(new Uri(musicurl), AppDomain.CurrentDomain.BaseDirectory + $@"DownLoad/{(listBox.Items[downloadindex] as MusicItemControl).Content.Replace("\\", ",").Replace("/", ",")}.mp3");
+                }
+                else { popupop.IsOpen = false; MessageBox.Show("成功下载全部"); dc.Dispose(); }
+        }
+
         public bool IsVerticalScrollBarAtButtom(ScrollViewer o)
         {
                 bool isAtButtom = false;
@@ -1018,6 +1063,7 @@ namespace Lemon_App
 
                 return isAtButtom;
         }
+
         private async void ScrollViewer_ScrollChanged(object sender, ScrollChangedEventArgs e)
         {if (IslistBoxInfo == 0)
             {
@@ -1026,6 +1072,7 @@ namespace Lemon_App
                     ioi++;
                     JObject o = JObject.Parse(await GetWebAsync($"http://59.37.96.220/soso/fcgi-bin/client_search_cp?format=json&t=0&inCharset=GB2312&outCharset=utf-8&qqmusic_ver=1302&catZhida=0&p={ioi}&n=20&w={textBox.Text}&flag_qc=0&remoteplace=sizer.newclient.song&new_json=1&lossless=0&aggr=1&cr=1&sem=0&force_zonghe=0", Encoding.UTF8));
                     int i = 0;
+                    if (o["code"].ToString() == "0") IslistBoxInfo = -1;
                     while (i < o["data"]["song"]["list"].Count())
                     {
                         //string f = o["data"]["song"]["list"][i]["f"].ToString().Replace("|", "\r\n");
@@ -1098,6 +1145,12 @@ namespace Lemon_App
             hsq.Value = 1;
             audio.Value = 0.5;
             txl.Text = "倍速/音量";
+        }
+
+        private void CLOSE_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            dc.Dispose();
+            popupop.IsOpen = false;
         }
     }
 }
