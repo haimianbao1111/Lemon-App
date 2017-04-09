@@ -774,6 +774,12 @@ namespace Lemon_App
                 var offset = popup.HorizontalOffset;
                 popup.HorizontalOffset = offset + 1;
                 popup.HorizontalOffset = offset;
+                var offset1 = popup1.HorizontalOffset;
+                popup1.HorizontalOffset = offset1 + 1;
+                popup1.HorizontalOffset = offset1;
+                var offsetetet = popup1.HorizontalOffset;
+                popupop.HorizontalOffset = offsetetet + 1;
+                popupop.HorizontalOffset = offsetetet;
             };
 
             audio.Value = player.Volume;
@@ -1167,13 +1173,13 @@ namespace Lemon_App
         private void hsq_MouseMove(object sender, MouseEventArgs e)
         {
             if (hsq.Value >= 0.5 && hsq.Value < 1)
-                txl.Text = "滑大稽";
+                txl.Text = "滑稽";
             else if (hsq.Value <= 1)
                 txl.Text = "正常";
             else if (hsq.Value <= 2.25 && hsq.Value > 1)
-                txl.Text = "滑稽";
-            else if (hsq.Value <= 3)
                 txl.Text = "鬼畜";
+            else if (hsq.Value <= 3)
+                txl.Text = "鬼大畜";
         }
 
         private void audio_MouseLeave(object sender, MouseEventArgs e)
