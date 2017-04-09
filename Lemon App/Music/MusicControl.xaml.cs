@@ -24,6 +24,7 @@ using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Lemon_App.IApps.User;
 
 namespace Lemon_App
 {
@@ -106,12 +107,32 @@ namespace Lemon_App
             catch { }
         }
         int ioi = 3;
+        List<string> data = new List<string>();
+        private void Mou(object sender, MouseButtonEventArgs e)
+        {
+            data.Remove((sender as Border).ToolTip as string);
+            Settings.Default.MusicSearch = JSON.ToJSON(data);
+            Settings.Default.Save();
+            // MessageBox.Show(JSON.ToJSON(data));
+        }
         private async void textBox_KeyDown(object sender, KeyEventArgs e)
         {
             try
             {
                 if (e.Key == Key.Enter)
-                {
+                {           
+                    if(!data.Contains(textBox.Text))
+                    {
+                        var co = new LZoneItemControl();
+                        co.S.MouseDown += Mou;
+                        co.QZoneData = textBox.Text;
+                        co.BeginAnimation(OpacityProperty, new System.Windows.Media.Animation.DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.2)));
+                        this.SearchDataContent.Children.Insert(0, co);
+                        data.Add(textBox.Text);
+                        //   MessageBox.Show(JSON.ToJSON(data));
+                        Settings.Default.MusicSearch = JSON.ToJSON(data);
+                        Settings.Default.Save();
+                    }
                     int i = 0;
                     try
                     {
@@ -732,6 +753,22 @@ namespace Lemon_App
 
         private async void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
+            if (Settings.Default.MusicSearch!= "null")
+            {
+                data = (List<string>)JSON.JsonToObject(Settings.Default.MusicSearch, data);
+                for (int i = 0; i != data.Count; i++)
+                {
+                    var co = new LZoneItemControl();
+                    co.S.MouseDown += Mou;
+                    co.grid.MouseDown += delegate (object senders, MouseButtonEventArgs es)
+                     {
+                         textBox.Text = (senders as Grid).ToolTip.ToString();
+                     };
+                    co.QZoneData = data[i];
+                    this.SearchDataContent.Children.Insert(0, co);
+                }
+            }
+
             Window.GetWindow(this).LocationChanged += delegate
             {
                 var offset = popup.HorizontalOffset;

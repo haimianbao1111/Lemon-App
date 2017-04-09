@@ -168,95 +168,8 @@ namespace Lemon_App
         public static string KMS = "3.5.5.6";
         public static int MS = 0;
         public static string on = "";
-        public static string EmailUFMsg = @"<table dir=""ltr"">
-    <tbody>
-        <tr>
-            <td id = ""i1"" style=""padding:0; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:17px; color:#707070;"">
-                Lemon App 用户反馈
-            </td>
-        </tr>
-        <tr>
-            <td id = ""i2"" style=""padding:0; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:41px; color:#2672ec;"">
-                用户反馈
-            </td>
-        </tr>
-        <tr>
-            <td id = ""i3"" style=""padding:0; padding-top:25px; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;"">
-                新的Lemon App用户反馈
-            </td>
-        </tr>
-        <tr>
-            <td id = ""i4"" style= ""padding:0; padding-top:25px; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;"" >
-                状态：
-                <b>
-                    {ninini} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;邮箱</b></td><td id = ""i4"" style=""padding:0; padding-top:25px; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;"">：
-                <b>
-                    {nihaoyouxiang}
-                </b>
-            </td>
-        </tr>
-        <tr>
-            <td id = ""i5"" style=""padding:0; padding-top:25px; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;"">
-                {lalalala}
-            </td>
-        </tr>
-        <tr>
-            <td id = ""i6"" style=""padding:0; padding-top:25px; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;"">
-                谢谢!
-            </td>
-        </tr>
-        <tr>
-            <td id = ""i7"" style=""padding:0; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;"">
-                Lemon App 用户反馈团队
-            </td>
-        </tr>
-    </tbody>
-</table>";
-        public static string EmailMessage = @"<table dir=""ltr"">
-    <tbody>
-        <tr>
-            <td id = ""i1"" style=""padding:0; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:17px; color:#707070;"">
-                Lemon App 帐户
-            </td>
-        </tr>
-        <tr>
-            <td id = ""i2"" style=""padding:0; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:41px; color:#2672ec;"">
-                验证码
-            </td>
-        </tr>
-        <tr>
-            <td id = ""i3"" style=""padding:0; padding-top:25px; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;"">
-                请为 Lemon App 帐户
-                使用以下验证码登录。
-            </td>
-        </tr>
-        <tr>
-            <td id = ""i4"" style=""padding:0; padding-top:25px; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;"">
-                验证码：
-                <b>
-                    {ninini}
-                </b>
-            </td>
-        </tr>
-        <tr>
-            <td id = ""i5"" style=""padding:0; padding-top:25px; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;"">
-                如果你无法识别此Lemon App 帐户，可以忽略此电子邮件
-            </td>
-        </tr>
-        <tr>
-            <td id = ""i6"" style=""padding:0; padding-top:25px; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;"">
-                谢谢!
-            </td>
-        </tr>
-        <tr>
-            <td id = ""i7"" style=""padding:0; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;"">
-                Lemon App 帐户团队
-            </td>
-        </tr>
-    </tbody>
-</table>";
 
-        public static string EmailEorre = @"<table dir=""ltr"">
+       /* public static string EmailEorre = @"<table dir=""ltr"">
     <tbody>
         <tr>
             <td id = ""i1"" style=""padding:0; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:17px; color:#707070;"">
@@ -292,7 +205,7 @@ namespace Lemon_App
             </td>
         </tr>
     </tbody>
-</table>";
+</table>";*/
         /// <summary>
         /// 发送HTTP请求
         /// </summary>

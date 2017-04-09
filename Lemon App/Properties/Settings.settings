@@ -65,5 +65,8 @@
     <Setting Name="qm" Type="System.String" Scope="User">
       <Value Profile="(Default)">个人签名</Value>
     </Setting>
+    <Setting Name="MusicSearch" Type="System.String" Scope="User">
+      <Value Profile="(Default)">null</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -54,8 +54,50 @@ namespace Lemon_App
                         body = "建议";
                     else if (rrr.IsChecked == true)
                         body = "不喜欢";
-                    He.EmailUFMsg.Replace("{ninini}", body).Replace("{nihaoyouxiang}", textBox1.Text).Replace("{lalalala}", textBox.Text);
-                    m.Body = He.EmailUFMsg.Replace("{ninini}", body).Replace("{nihaoyouxiang}", textBox1.Text).Replace("{lalalala}", textBox.Text);
+                    m.Body = @"<table dir=""ltr"">
+    <tbody>
+        <tr>
+            <td id = ""i1"" style=""padding:0; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:17px; color:#707070;"">
+                Lemon App 用户反馈
+            </td>
+        </tr>
+        <tr>
+            <td id = ""i2"" style=""padding:0; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:41px; color:#2672ec;"">
+                用户反馈
+            </td>
+        </tr>
+        <tr>
+            <td id = ""i3"" style=""padding:0; padding-top:25px; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;"">
+                新的Lemon App用户反馈
+            </td>
+        </tr>
+        <tr>
+            <td id = ""i4"" style= ""padding:0; padding-top:25px; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;"" >
+                状态：
+                <b>
+                    {ninini} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;邮箱</b></td><td id = ""i4"" style=""padding:0; padding-top:25px; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;"">：
+                <b>
+                    {nihaoyouxiang}
+                </b>
+            </td>
+        </tr>
+        <tr>
+            <td id = ""i5"" style=""padding:0; padding-top:25px; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;"">
+                {lalalala}
+            </td>
+        </tr>
+        <tr>
+            <td id = ""i6"" style=""padding:0; padding-top:25px; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;"">
+                谢谢!
+            </td>
+        </tr>
+        <tr>
+            <td id = ""i7"" style=""padding:0; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;"">
+                Lemon App 用户反馈团队
+            </td>
+        </tr>
+    </tbody>
+</table>".Replace("{ninini}", body).Replace("{nihaoyouxiang}", textBox1.Text).Replace("{lalalala}", textBox.Text);
                     m.BodyEncoding = Encoding.UTF8;
                     m.IsBodyHtml = true;
                     SmtpClient s = new SmtpClient();

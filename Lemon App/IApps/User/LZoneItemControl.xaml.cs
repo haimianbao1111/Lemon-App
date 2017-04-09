@@ -23,8 +23,13 @@ namespace Lemon_App.IApps.User
         public LZoneItemControl()
         {
             InitializeComponent();
+            this.MouseDown += delegate (object sender, MouseButtonEventArgs e)
+            {
+                if (e.ClickCount >= 2)
+                    Clipboard.SetText(CA.Text);
+            };
         }
-        public string QZoneData { set { CA.Text = value; S.ToolTip = CA.Text; } get { return CA.Text; } }
+        public string QZoneData { set { CA.Text = value;grid.ToolTip = CA.Text; S.ToolTip = CA.Text; } get { return CA.Text; } }
 
         private void S_MouseDown(object sender, MouseButtonEventArgs e)
         {

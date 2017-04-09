@@ -30,6 +30,8 @@ namespace Lemon_App
         public LoadWindow()
         {
             InitializeComponent();
+            var c = new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.3));
+            this.BeginAnimation(OpacityProperty, c);
             this.FontFamily = new FontFamily(Settings.Default.FontFamilly);
             tr.Interval = 4000;
             tr.Tick += T;
@@ -55,8 +57,6 @@ namespace Lemon_App
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var c = new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.3));
-            this.BeginAnimation(OpacityProperty, c);
             if (Settings.Default.RNBM&&Settings.Default.LemonAreeunIts!=string.Empty)
             {
                 new lemon().Show();
@@ -73,28 +73,89 @@ namespace Lemon_App
         string ini = "";
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (Email.Text != "" && IsValidEmail(Email.Text))
+            try
             {
-                Random ra = new Random();
-                ini = ra.Next(1000,9999).ToString();
-                MailMessage m = new MailMessage()
+                if (Email.Text != "" && IsValidEmail(Email.Text))
                 {
-                    From = new MailAddress("lemon.app@qq.com", "Lemon团队")
-                };
-                m.To.Add(new MailAddress(Email.Text));
-                m.Subject = "Lemon App";
-                m.SubjectEncoding = Encoding.UTF8;
-                m.Body = He.EmailMessage.Replace("{ninini}", ini);
-                m.BodyEncoding = Encoding.UTF8;
-                m.IsBodyHtml = true;
-                SmtpClient s = new SmtpClient()
-                {
-                    Host = "smtp.qq.com",
-                    Port = 587,
-                    EnableSsl = true,
-                    Credentials = new NetworkCredential("lemon.app@qq.com", "qtmiqibczofmddbi")
-                };
-                s.Send(m);
+                    Random ra = new Random();
+                    ini = ra.Next(1000, 9999).ToString();
+                    MailMessage m = new MailMessage()
+                    {
+                        From = new MailAddress("lemon.app@qq.com", "Lemon团队")
+                    };
+                    m.To.Add(new MailAddress(Email.Text));
+                    m.Subject = "Lemon App";
+                    m.SubjectEncoding = Encoding.UTF8;
+                    m.Body = @"<table dir=""ltr"">
+    <tbody>
+        <tr>
+            <td id = ""i1"" style=""padding:0; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:17px; color:#707070;"">
+                Lemon App 帐户
+            </td>
+        </tr>
+        <tr>
+            <td id = ""i2"" style=""padding:0; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:41px; color:#2672ec;"">
+                验证码
+            </td>
+        </tr>
+        <tr>
+            <td id = ""i3"" style=""padding:0; padding-top:25px; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;"">
+                请为 Lemon App 帐户
+                使用以下验证码登录。
+            </td>
+        </tr>
+        <tr>
+            <td id = ""i4"" style=""padding:0; padding-top:25px; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;"">
+                验证码：
+                <b>
+                    {ninini}
+                </b>
+            </td>
+        </tr>
+        <tr>
+            <td id = ""i5"" style=""padding:0; padding-top:25px; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;"">
+                如果你无法识别此Lemon App 帐户，可以忽略此电子邮件
+            </td>
+        </tr>
+        <tr>
+            <td id = ""i6"" style=""padding:0; padding-top:25px; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;"">
+                谢谢!
+            </td>
+        </tr>
+        <tr>
+            <td id = ""i7"" style=""padding:0; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;"">
+                Lemon App 帐户团队
+            </td>
+        </tr>
+    </tbody>
+</table>".Replace("{ninini}", ini);
+                    m.BodyEncoding = Encoding.UTF8;
+                    m.IsBodyHtml = true;
+                    SmtpClient s = new SmtpClient()
+                    {
+                        Host = "smtp.qq.com",
+                        Port = 587,
+                        EnableSsl = true,
+                        Credentials = new NetworkCredential("lemon.app@qq.com", "qtmiqibczofmddbi")
+                    };
+                    s.Send(m);
+                    ns.Text = "发送成功";
+                    DoubleAnimationUsingKeyFrames d = new DoubleAnimationUsingKeyFrames();
+                    d.KeyFrames.Add(new LinearDoubleKeyFrame(0, TimeSpan.FromSeconds(0)));
+                    d.KeyFrames.Add(new LinearDoubleKeyFrame(1, TimeSpan.FromSeconds(0.3)));
+                    d.KeyFrames.Add(new LinearDoubleKeyFrame(1, TimeSpan.FromSeconds(3)));
+                    d.AutoReverse = true;
+                    po.BeginAnimation(OpacityProperty, d);
+                }
+            }catch(Exception es)
+            {
+                ns.Text = "发送失败" + es.Message;
+                DoubleAnimationUsingKeyFrames d = new DoubleAnimationUsingKeyFrames();
+                d.KeyFrames.Add(new LinearDoubleKeyFrame(0, TimeSpan.FromSeconds(0)));
+                d.KeyFrames.Add(new LinearDoubleKeyFrame(1, TimeSpan.FromSeconds(0.3)));
+                d.KeyFrames.Add(new LinearDoubleKeyFrame(1, TimeSpan.FromSeconds(3)));
+                d.AutoReverse = true;
+                po.BeginAnimation(OpacityProperty, d);
             }
         }
 
@@ -148,35 +209,11 @@ namespace Lemon_App
         }
 
         private void Email_KeyDown(object sender, KeyEventArgs e)
-        { try {
-                if (e.Key == Key.Enter)
-                {
-                    if (Email.Text != "" && IsValidEmail(Email.Text))
-                    {
-                        Random ra = new Random();
-                        ini = ra.Next(1000, 9999).ToString();
-                        MailMessage m = new MailMessage()
-                        {
-                            From = new MailAddress("lemon.app@qq.com", "Lemon团队")
-                        };
-                        m.To.Add(new MailAddress(Email.Text));
-                        m.Subject = "Lemon App";
-                        m.SubjectEncoding = Encoding.UTF8;
-                        m.Body = He.EmailMessage.Replace("{ninini}", ini);
-                        m.BodyEncoding = Encoding.UTF8;
-                        m.IsBodyHtml = true;
-                        SmtpClient s = new SmtpClient()
-                        {
-                            Host = "smtp.qq.com",
-                            Port = 587,
-                            EnableSsl = true,
-                            Credentials = new NetworkCredential("lemon.app@qq.com", "qtmiqibczofmddbi")
-                        };
-                        s.Send(m);
-                    }
-                }
+        {
+            if (e.Key == Key.Enter)
+            {
+                Border_MouseDown(null, null);
             }
-            catch { }
          }
         private bool IsValidEmail(string strIn)
         {
