@@ -200,6 +200,18 @@
                                     <ListBoxItem Content="微软雅黑"/>
                                 </ListBox>
                             </Border>
+                            <Border Height="15" Margin="0" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" Width="20">
+                                <Path Data="M68.2,31.8c-2.3-2.3-6.1-2.3-8.4,0l-56,56C0,91.6,2.7,98,8,98h112c5.3,0,8-6.4,4.2-10.2L68.2,31.8z" Fill="White" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
+                                    <Path.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform Angle="180"/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Path.RenderTransform>
+                                </Path>
+                            </Border>
                         </Grid>
                     </Popup>
                 </Grid>
@@ -212,6 +224,18 @@
                                     <DropShadowEffect Color="#FF2D2D30" BlurRadius="10" Opacity="0.3"/>
                                 </Border.Effect>
                                 <local:UserFeedback/>
+                            </Border>
+                            <Border Height="15" Margin="0" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" Width="20">
+                                <Path Data="M68.2,31.8c-2.3-2.3-6.1-2.3-8.4,0l-56,56C0,91.6,2.7,98,8,98h112c5.3,0,8-6.4,4.2-10.2L68.2,31.8z" Fill="White" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
+                                    <Path.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform Angle="180"/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Path.RenderTransform>
+                                </Path>
                             </Border>
                         </Grid>
                     </Popup>
