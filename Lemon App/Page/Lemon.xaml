@@ -200,16 +200,6 @@
                                     <ListBoxItem Content="微软雅黑"/>
                                 </ListBox>
                             </Border>
-                            <ed:RegularPolygon Fill="White" Height="10" InnerRadius="1" Margin="0" PointCount="3" Stretch="Fill" Stroke="#CCF2F8FA" StrokeThickness="0" VerticalAlignment="Bottom" Width="20" RenderTransformOrigin="0.5,0.5">
-                                <ed:RegularPolygon.RenderTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform/>
-                                        <SkewTransform/>
-                                        <RotateTransform Angle="180"/>
-                                        <TranslateTransform/>
-                                    </TransformGroup>
-                                </ed:RegularPolygon.RenderTransform>
-                            </ed:RegularPolygon>
                         </Grid>
                     </Popup>
                 </Grid>
@@ -223,16 +213,6 @@
                                 </Border.Effect>
                                 <local:UserFeedback/>
                             </Border>
-                            <ed:RegularPolygon Fill="White" Height="10" InnerRadius="1" Margin="0" PointCount="3" Stretch="Fill" Stroke="#CCF2F8FA" StrokeThickness="0" VerticalAlignment="Bottom" Width="20" RenderTransformOrigin="0.5,0.5">
-                                <ed:RegularPolygon.RenderTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform/>
-                                        <SkewTransform/>
-                                        <RotateTransform Angle="180"/>
-                                        <TranslateTransform/>
-                                    </TransformGroup>
-                                </ed:RegularPolygon.RenderTransform>
-                            </ed:RegularPolygon>
                         </Grid>
                     </Popup>
                 </Grid>
