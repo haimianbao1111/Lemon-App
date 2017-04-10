@@ -856,7 +856,7 @@ namespace Lemon_App
                     else { if (long.TryParse(textBox.Text, out ox)) { Settings.Default.ZJid = textBox.Text; Settings.Default.Save(); } else { textBox.Text = Settings.Default.ZJid; } }
                     listBox.Items.Clear();
                     jz.Visibility = Visibility.Visible;
-                    var s = await Uuuhh.GetWebAsync($"https://y.qq.com/portal/playlist/{textBox.Text}.html");
+                    var s = await Uuuhh.GetWebAsync($"https://y.qq.com/n/yqq/playlist/{textBox.Text}.html#stat=y_new.profile.create_playlist.click&dirid=6");
                     var j = "{\"list\":" + He.Text(s, "var getSongInfo = ", ";", 0) + "}";
                     JObject o = JObject.Parse(j);
                     int i = 0;
