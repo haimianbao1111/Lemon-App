@@ -19,17 +19,22 @@ namespace Lemon_App
         }
         private async Task LoadapisAsync(string ha="最新",int page=1)
         {
-            jz.Visibility = Visibility.Visible;
-            JObject o = JObject.Parse(await Uuuhh.GetWebAsync($"https://route.showapi.com/109-35?&page={page}&showapi_sign=cfa206656db244c089be2d1499735bb5&showapi_appid=29086&maxResult=10&channelName={ha}"));
-            int i = 0;
-            while (i != 10)
+            try
             {
-                WP.Children.Add(new NewsList(o["showapi_res_body"]["pagebean"]["contentlist"][i]["title"].ToString(), o["showapi_res_body"]["pagebean"]["contentlist"][i]["pubDate"].ToString(), o["showapi_res_body"]["pagebean"]["contentlist"][i]["source"].ToString(), "", o["showapi_res_body"]["pagebean"]["contentlist"][i]["link"].ToString()) { Width=this.ActualWidth});
-                i++;
+                jz.Text = "加载中";
+                jz.Visibility = Visibility.Visible;
+                JObject o = JObject.Parse(await Uuuhh.GetWebAsync($"https://route.showapi.com/109-35?&page={page}&showapi_sign=cfa206656db244c089be2d1499735bb5&showapi_appid=29086&maxResult=10&channelName={ha}"));
+                int i = 0;
+                while (i != 10)
+                {
+                    WP.Children.Add(new NewsList(o["showapi_res_body"]["pagebean"]["contentlist"][i]["title"].ToString(), o["showapi_res_body"]["pagebean"]["contentlist"][i]["pubDate"].ToString(), o["showapi_res_body"]["pagebean"]["contentlist"][i]["source"].ToString(), "", o["showapi_res_body"]["pagebean"]["contentlist"][i]["link"].ToString()) { Width = this.ActualWidth });
+                    i++;
+                }
+                jz.Visibility = Visibility.Collapsed;
+                O.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 86, 0, 0), new Thickness(0, 36, 0, 0), TimeSpan.FromSeconds(0.2)));
             }
-            jz.Visibility = Visibility.Collapsed;
-            O.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0,86,0,0),new Thickness(0,36,0,0),TimeSpan.FromSeconds(0.2)));
-        }
+            catch { jz.Text = "加载失败"; }
+     }
         private async void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             await LoadapisAsync();

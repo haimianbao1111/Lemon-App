@@ -37,63 +37,7 @@ namespace Lemon_App
 
         private async void label_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            JObject obj = JObject.Parse(await Uuuhh.GetWebAsync("http://www.tuling123.com/openapi/api?key=0651b32a3a6c8f54c7869b9e62872796&info=" + Uri.EscapeUriString(textBox1.Text) + "&userid=" + Uri.EscapeUriString(Settings.Default.LemonAreeunIts)));
-            if ((string)obj["code"] == "100000"||obj["code"].ToString()== "40002")
-            {
-                User U = new User(textBox1.Text)
-                {
-                    Width = Robot.ActualWidth
-                };
-                Robot Rb = new Robot((string)obj["text"])
-                {
-                    Width = Robot.ActualWidth
-                };
-                Robot.Children.Add(U);
-                Robot.Children.Add(Rb);
-            }
-            else if ((string)obj["code"] == "200000")
-            {
-                string i = (string)obj["text"];
-                User Uu = new User(textBox1.Text);
-                Uu.Width = Robot.ActualWidth;
-                Lemon_App.Robot Rbu = new Lemon_App.Robot((string)obj["url"] + i);
-                Rbu.Width = Robot.ActualWidth;
-                Rbu.ToolTip = (string)obj["url"].ToString();
-                Rbu.MouseDown += Rbu_MouseDown;
-                Robot.Children.Add(Uu);
-                Robot.Children.Add(Rbu);
-            }
-            else if ((string)obj["code"] == "308000")
-            {
-                User Uu = new User(textBox1.Text);
-                Uu.Width = Robot.ActualWidth;
-                Robot.Children.Add(Uu);
-                int i=0;
-                var s = new List<string>();
-                var f = new List<string>();
-                var u = new List<string>();
-                while (i != 5)
-                {
-                    s.Add(obj["list"][i]["name"].ToString());
-                    f.Add(obj["list"][i]["info"].ToString());
-                    u.Add(obj["list"][i]["detailurl"].ToString());
-                    i++;
-                }
-                var c = new RobotHrSp(s, f, u);
-                c.Width = Robot.ActualWidth;
-                Robot.Children.Add(c);
-            }
-            textBox1.Text = "";
-        }
-
-        private void Rbu_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            Process.Start((sender as Grid).ToolTip.ToString());
-        }
-
-        private async void textBox1_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
+            try
             {
                 JObject obj = JObject.Parse(await Uuuhh.GetWebAsync("http://www.tuling123.com/openapi/api?key=0651b32a3a6c8f54c7869b9e62872796&info=" + Uri.EscapeUriString(textBox1.Text) + "&userid=" + Uri.EscapeUriString(Settings.Default.LemonAreeunIts)));
                 if ((string)obj["code"] == "100000" || obj["code"].ToString() == "40002")
@@ -141,7 +85,33 @@ namespace Lemon_App
                     c.Width = Robot.ActualWidth;
                     Robot.Children.Add(c);
                 }
-                textBox1.Text = "";
+            }
+            catch
+            {
+                User U = new User(textBox1.Text)
+                {
+                    Width = Robot.ActualWidth
+                };
+                Robot Rb = new Robot("小萌机器人似乎遇到了些问题")
+                {
+                    Width = Robot.ActualWidth
+                };
+                Robot.Children.Add(U);
+                Robot.Children.Add(Rb);
+            }
+            textBox1.Text = "";
+        }
+
+        private void Rbu_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Process.Start((sender as Grid).ToolTip.ToString());
+        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                label_MouseDown(null, null);
             }
         }
 

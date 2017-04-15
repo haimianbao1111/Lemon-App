@@ -100,8 +100,13 @@ namespace Lemon_App
 
         private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
+
             if (xyuri.Text != "")
             {
+                Settings.Default.IsStart = (bool)checkBox.IsChecked;
+                Settings.Default.WeatherInfo = WeatherInfo.Text;
+                Settings.Default.RobotName = UserNameBox.Text;
+                Settings.Default.SearchUrl = UrlBox.Text;
                 Settings.Default.isWebProxy = true;
                 Settings.Default.WebProxyUri = xyuri.Text;
                 Settings.Default.WebProxyUser = xpuser.Text;

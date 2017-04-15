@@ -28,7 +28,7 @@ namespace Lemon_App
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (Uuuhh.Lalala("www.mi.com"))
+            if (e.ClickCount >= 2)
             {
                 if (Settings.Default.IsFistRun)
                     if (!Settings.Default.RNBM)
@@ -38,6 +38,20 @@ namespace Lemon_App
                 var c = new DoubleAnimation(1, 0, TimeSpan.FromSeconds(0.3));
                 c.Completed += delegate { Close(); };
                 this.BeginAnimation(OpacityProperty, c);
+            }
+            else if (e.ClickCount == 1)
+            {
+                if (Uuuhh.Lalala("www.mi.com"))
+                {
+                    if (Settings.Default.IsFistRun)
+                        if (!Settings.Default.RNBM)
+                            new LoadWindow().Show();
+                        else new lemon().Show();
+                    else new FistRun().Show();
+                    var c = new DoubleAnimation(1, 0, TimeSpan.FromSeconds(0.3));
+                    c.Completed += delegate { Close(); };
+                    this.BeginAnimation(OpacityProperty, c);
+                }
             }
         }
 
