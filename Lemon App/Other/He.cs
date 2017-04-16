@@ -16,6 +16,8 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Runtime.Serialization.Json;
 using System.Web.Script.Serialization;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 //🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂
 //                                                                                          🙂
@@ -340,6 +342,33 @@ namespace Lemon_App
                 return st;
             }
             catch { return ""; }
+        }
+        public static async Task<string> PostWebAsync(string url, string param)
+        {
+            string strURL = url;
+            System.Net.HttpWebRequest request;
+            request = (System.Net.HttpWebRequest)WebRequest.Create(strURL);
+            request.Method = "POST";
+            request.ContentType = "application/json;charset=UTF-8";
+            string paraUrlCoded = param;
+            byte[] payload;
+            payload = System.Text.Encoding.UTF8.GetBytes(paraUrlCoded);
+            request.ContentLength = payload.Length;
+            Stream writer = request.GetRequestStream();
+            writer.Write(payload, 0, payload.Length);
+            writer.Close();
+            System.Net.HttpWebResponse response;
+            response = (System.Net.HttpWebResponse)await request.GetResponseAsync();
+            System.IO.Stream s;
+            s = response.GetResponseStream();
+            string StrDate = "";
+            string strValue = "";
+            StreamReader Reader = new StreamReader(s, Encoding.UTF8);
+            while ((StrDate =await Reader.ReadLineAsync()) != null)
+            {
+                strValue += StrDate + "\r\n";
+            }
+            return strValue;
         }
         public static async System.Threading.Tasks.Task<string> GetWebAsync(string url, bool isOpen)
         {

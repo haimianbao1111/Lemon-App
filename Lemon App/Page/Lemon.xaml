@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Lemon_App"
          x:Class="Lemon_App.lemon"
         mc:Ignorable="d"
-        Title="Lemon App" Height="600" BorderThickness="10" Width="845" MinWidth="400" MinHeight="500" Background="{x:Null}" WindowStyle="None" AllowsTransparency="True" MouseLeftButtonDown="Window_MouseLeftButtonDown" ResizeMode="CanResizeWithGrip" SizeChanged="Window_SizeChanged" Loaded="Window_Loaded" Icon="Lemon App Ico.ico" Style="{DynamicResource WindowStyle}" WindowStartupLocation="CenterScreen">
+        Title="Lemon App" Height="600" BorderThickness="10" Width="845" MinWidth="800" MinHeight="500" Background="{x:Null}" WindowStyle="None" AllowsTransparency="True" MouseLeftButtonDown="Window_MouseLeftButtonDown" ResizeMode="CanResizeWithGrip" SizeChanged="Window_SizeChanged" Loaded="Window_Loaded" Icon="Lemon App Ico.ico" Style="{DynamicResource WindowStyle}" WindowStartupLocation="CenterScreen">
     <WindowChrome.WindowChrome>
         <WindowChrome GlassFrameThickness="0" ResizeBorderThickness="12" CaptionHeight="10" CornerRadius="0" />
     </WindowChrome.WindowChrome>

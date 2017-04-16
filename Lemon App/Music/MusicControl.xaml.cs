@@ -272,7 +272,7 @@ namespace Lemon_App
                             }
                             LyricShow.IsPauseLyricShow = false;
                             getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc");
-                            LyricShow.initializeLyricUI(getLT.LyricAndTimeDictionary);//解析歌词->得到歌词时间和歌词       
+                            LyricShow.initializeLyricUIAsync(getLT.LyricAndTimeDictionary);//解析歌词->得到歌词时间和歌词       
                         }
                         else { }
                     }
@@ -292,7 +292,7 @@ namespace Lemon_App
                         }
                         LyricShow.IsPauseLyricShow = false;
                         getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc");
-                        LyricShow.initializeLyricUI(getLT.LyricAndTimeDictionary);
+                        LyricShow.initializeLyricUIAsync(getLT.LyricAndTimeDictionary);
 
                     }
                 }
@@ -350,7 +350,7 @@ namespace Lemon_App
                             }
                             LyricShow.IsPauseLyricShow = false;
                             getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc");
-                            LyricShow.initializeLyricUI(getLT.LyricAndTimeDictionary);//解析歌词->得到歌词时间和歌词       
+                            LyricShow.initializeLyricUIAsync(getLT.LyricAndTimeDictionary);//解析歌词->得到歌词时间和歌词       
                         }
                         else { }
                     }
@@ -370,7 +370,7 @@ namespace Lemon_App
                         }
                         LyricShow.IsPauseLyricShow = false;
                         getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc");
-                        LyricShow.initializeLyricUI(getLT.LyricAndTimeDictionary);
+                        LyricShow.initializeLyricUIAsync(getLT.LyricAndTimeDictionary);
 
                     }
                 }
@@ -428,7 +428,7 @@ namespace Lemon_App
                             }
                             LyricShow.IsPauseLyricShow = false;
                             getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc");
-                            LyricShow.initializeLyricUI(getLT.LyricAndTimeDictionary);//解析歌词->得到歌词时间和歌词       
+                            LyricShow.initializeLyricUIAsync(getLT.LyricAndTimeDictionary);//解析歌词->得到歌词时间和歌词       
                         }
                         else { }
                     }
@@ -448,7 +448,7 @@ namespace Lemon_App
                         }
                         LyricShow.IsPauseLyricShow = false;
                         getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc");
-                        LyricShow.initializeLyricUI(getLT.LyricAndTimeDictionary);
+                        LyricShow.initializeLyricUIAsync(getLT.LyricAndTimeDictionary);
 
                     }
                 }
@@ -509,7 +509,7 @@ namespace Lemon_App
                                 }
                                 LyricShow.IsPauseLyricShow = false;
                                 getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc");
-                                LyricShow.initializeLyricUI(getLT.LyricAndTimeDictionary);//解析歌词->得到歌词时间和歌词       
+                                LyricShow.initializeLyricUIAsync(getLT.LyricAndTimeDictionary);//解析歌词->得到歌词时间和歌词       
                             }
                             else { }
                         }
@@ -529,7 +529,7 @@ namespace Lemon_App
                             }
                             LyricShow.IsPauseLyricShow = false;
                             getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc");
-                            LyricShow.initializeLyricUI(getLT.LyricAndTimeDictionary);
+                            LyricShow.initializeLyricUIAsync(getLT.LyricAndTimeDictionary);
 
                         }
                     }
@@ -586,7 +586,7 @@ namespace Lemon_App
                                 }
                                 LyricShow.IsPauseLyricShow = false;
                                 getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc");
-                                LyricShow.initializeLyricUI(getLT.LyricAndTimeDictionary);//解析歌词->得到歌词时间和歌词       
+                                LyricShow.initializeLyricUIAsync(getLT.LyricAndTimeDictionary);//解析歌词->得到歌词时间和歌词       
                             }
                             else { }
                         }
@@ -606,7 +606,7 @@ namespace Lemon_App
                             }
                             LyricShow.IsPauseLyricShow = false;
                             getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc");
-                            LyricShow.initializeLyricUI(getLT.LyricAndTimeDictionary);
+                            LyricShow.initializeLyricUIAsync(getLT.LyricAndTimeDictionary);
 
                         }
                     }

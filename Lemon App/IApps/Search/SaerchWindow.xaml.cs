@@ -60,6 +60,8 @@ namespace Lemon_App
         }
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
+            if (textBox1.Text == "搜索" && e.Key != Key.Enter)
+                textBox1.Text = "";
             if (e.Key == Key.Enter)
                 if (textBox1.Text != "")
                 {
@@ -90,6 +92,7 @@ namespace Lemon_App
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            textBox1.Focus();
             this.FontFamily = new FontFamily(Settings.Default.FontFamilly);
         }
 
@@ -102,6 +105,12 @@ namespace Lemon_App
         private void CLOSE_MouseDown(object sender, MouseButtonEventArgs e)
         {
             this.Close();
+        }
+
+        private void textBox1_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (textBox1.Text == "搜索")
+                textBox1.Text = "";
         }
     }
 }

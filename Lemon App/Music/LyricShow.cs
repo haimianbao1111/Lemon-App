@@ -362,7 +362,7 @@ namespace Lemon_App
         /// <summary>
         /// 歌词文本TextBlock的高度(默认36)
         /// </summary>
-        private static double lyricTextBlockHeight = 80; 
+        private static double lyricTextBlockHeight = 70; 
         /// <summary>
         /// 歌词文本TextBlock的高度(默认36)
         /// </summary>
@@ -1296,7 +1296,7 @@ namespace Lemon_App
         /// <summary>
         /// 初始化歌词界面(非桌面歌词),每次更换一首歌要显示它的歌词秀时，此方法是必须要第一调用的
         /// </summary>
-        public static  void initializeLyricUI(SortedDictionary<Double, string> TimeAndLyricDictionary)
+        public static async void initializeLyricUIAsync(SortedDictionary<Double, string> TimeAndLyricDictionary)
         {
             stopLyricShow();//停止上次的歌词秀,接下去再重新开始初始化
             LyricShow.TimeAndLyricDictionary.Clear();
@@ -1316,25 +1316,35 @@ namespace Lemon_App
             //添加歌词文本到歌词面板里
             foreach (string txt in TimeAndLyricDictionary.Values)
             {
-           //     JObject obj = JObject.Parse(await Uuuhh.GetWebAsync("http://api.fanyi.baidu.com/api/trans/vip/translate?q=" + Uri.EscapeDataString(txt) + "&from=" +"auto" + "&to=" + "zh" + "&appid=20151231000008489&salt=2004112629" + "&sign=" + FanyiBox.MD5.EncryptToMD5string("20151231000008489" + txt + "2004112629Q3EQP1ay2cLKAMxs2gqa")));
-              //  string ok= FanyiBox.DecodeUtf8(obj["trans_result"][0]["dst"].ToString());
+                string ok = "";
+                if (txt != null)
+                {
+                    try
+                    {
+                        JObject obj = JObject.Parse(await Uuuhh.PostWebAsync("http://translate.hotcn.top/translate/api", "{\"text\": \"" + txt + "\"}"));
+                        ok = obj["text"].ToString();
+                    }
+                    catch { }
+                }
                 TextBlock tb = new TextBlock();
                 tb.MouseDown += delegate (object sender, MouseButtonEventArgs e)
                 {
                     if (e.ClickCount >= 2)
                         Clipboard.SetText(tb.Text);
-                  //  MessageBox.Show("s");
+                    //  MessageBox.Show("s");
                 };
                 tb.FontSize = 18;
-               tb.Margin = new Thickness(0, 0, 0, 20);
+              //  tb.Margin = new Thickness(0, 0, 0, 20);
                 tb.TextWrapping = TextWrapping.Wrap;
                 tb.TextAlignment = TextAlignment.Center;
                 tb.FontSize = fontSmallA;
                 tb.FontFamily = CFontFamily;
                 tb.Foreground = new SolidColorBrush(Color.FromArgb(CA, CR, CG, CB));
                 tb.Background = new SolidColorBrush(Colors.Transparent);
-                //    tb.Height = lyricTextBlockHeight;
-                tb.Text = txt;
+                    tb.Height = lyricTextBlockHeight;
+                if (ok != string.Empty)
+                    tb.Text = txt + "\r\n" + ok;
+                else tb.Text = txt;
                 commonLyricStackPanel.Children.Add(tb);
             }
             //初始化高亮歌词的样式(高亮歌词的'背景色'是和普通歌词一样的,只是'前景'画刷色不一样)
@@ -1366,7 +1376,7 @@ namespace Lemon_App
                         }                                                                  
                         TextBlock CurrentTB = commonLyricStackPanel.Children[LyricShow.CurrentLyricIndex] as TextBlock;
                         tBFocusLyricBack.Visibility = Visibility.Hidden;
-                        LyricTextBlockHeight = CurrentTB.ActualHeight + 20;
+               //         LyricTextBlockHeight = CurrentTB.ActualHeight + 20;
                         //canvasFocusLyricForeMove.Visibility = Visibility.Hidden;
                         CurrentTB.Foreground = new SolidColorBrush(Color.FromArgb(HA, 49, 194, 124));
                         CurrentTB.FontFamily = HFontFamily;

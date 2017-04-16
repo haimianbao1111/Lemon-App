@@ -26,8 +26,10 @@ namespace Lemon_App
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.Key==Key.Enter)
-                if (textBox1.Text != "")
+               if (textBox1.Text != "")
                     Process.Start(Uri.EscapeUriString(Settings.Default.SearchUrl.Replace("%2a", textBox1.Text)));
+            if (textBox1.Text == "搜索"&&e.Key!=Key.Enter)
+                  textBox1.Text = "";
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)

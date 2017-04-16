@@ -66,7 +66,7 @@ namespace Lemon_App
                 mmi.ptMaxPosition.y = Math.Abs(rcWorkArea.top - rcMonitorArea.top);
                 mmi.ptMaxSize.x = Math.Abs(rcWorkArea.right - rcWorkArea.left);
                 mmi.ptMaxSize.y = Math.Abs(rcWorkArea.bottom - rcWorkArea.top);
-                mmi.ptMinTrackSize.x = 400;
+                mmi.ptMinTrackSize.x = 800;
                 mmi.ptMinTrackSize.y = 500;
             }
 
