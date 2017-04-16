@@ -354,7 +354,7 @@ namespace Lemon_App
             byte[] payload;
             payload = System.Text.Encoding.UTF8.GetBytes(paraUrlCoded);
             request.ContentLength = payload.Length;
-            Stream writer = request.GetRequestStream();
+            Stream writer =await request.GetRequestStreamAsync();
             writer.Write(payload, 0, payload.Length);
             writer.Close();
             System.Net.HttpWebResponse response;

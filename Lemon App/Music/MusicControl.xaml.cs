@@ -1199,5 +1199,14 @@ namespace Lemon_App
             dc.Dispose();
             popupop.IsOpen = false;
         }
+
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            LyricShow.IsLyFanyi = !LyricShow.IsLyFanyi;
+            LyricShow.stopLyricShow();
+            LyricShow.TimeAndLyricDictionary.Clear();
+            getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc");
+            LyricShow.initializeLyricUIAsync(getLT.LyricAndTimeDictionary);
+        }
     }
 }

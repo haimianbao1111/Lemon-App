@@ -1293,6 +1293,7 @@ namespace Lemon_App
                 canvasDeskLyricForeMove.BeginAnimation(Canvas.WidthProperty, deskLyricBrushAni);
             }        
         }
+        public static bool IsLyFanyi = true;
         /// <summary>
         /// 初始化歌词界面(非桌面歌词),每次更换一首歌要显示它的歌词秀时，此方法是必须要第一调用的
         /// </summary>
@@ -1317,14 +1318,15 @@ namespace Lemon_App
             foreach (string txt in TimeAndLyricDictionary.Values)
             {
                 string ok = "";
-                if (txt != null)
-                {
-                    try
-                    {
-                        JObject obj = JObject.Parse(await Uuuhh.PostWebAsync("http://translate.hotcn.top/translate/api", "{\"text\": \"" + txt + "\"}"));
-                        ok = obj["text"].ToString();
-                    }
-                    catch { }
+                if(IsLyFanyi)
+                    if (txt != null)
+                       {
+                         try
+                            {
+                               JObject obj = JObject.Parse(await Uuuhh.PostWebAsync("http://translate.hotcn.top/translate/api", "{\"text\": \"" + txt + "\"}"));
+                               ok = obj["text"].ToString();
+                         }
+                         catch { }
                 }
                 TextBlock tb = new TextBlock();
                 tb.MouseDown += delegate (object sender, MouseButtonEventArgs e)
@@ -1342,9 +1344,12 @@ namespace Lemon_App
                 tb.Foreground = new SolidColorBrush(Color.FromArgb(CA, CR, CG, CB));
                 tb.Background = new SolidColorBrush(Colors.Transparent);
                     tb.Height = lyricTextBlockHeight;
-                if (ok != string.Empty)
-                    tb.Text = txt + "\r\n" + ok;
-                else tb.Text = txt;
+                if (IsLyFanyi)
+                {
+                    if (ok != string.Empty)
+                        tb.Text = txt + "\r\n" + ok;
+                    else tb.Text = txt;
+                }else tb.Text = txt;
                 commonLyricStackPanel.Children.Add(tb);
             }
             //初始化高亮歌词的样式(高亮歌词的'背景色'是和普通歌词一样的,只是'前景'画刷色不一样)
