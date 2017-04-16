@@ -1299,6 +1299,10 @@ namespace Lemon_App
         /// </summary>
         public static async void initializeLyricUIAsync(SortedDictionary<Double, string> TimeAndLyricDictionary)
         {
+            if (TimeAndLyricDictionary.Values.Count == 0)
+            {
+                TimeAndLyricDictionary.Add(100, "纯音乐尽情欣赏");
+            }
             stopLyricShow();//停止上次的歌词秀,接下去再重新开始初始化
             LyricShow.TimeAndLyricDictionary.Clear();
             foreach (double key in TimeAndLyricDictionary.Keys)
