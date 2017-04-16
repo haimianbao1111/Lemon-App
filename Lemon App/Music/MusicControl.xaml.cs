@@ -1207,6 +1207,7 @@ namespace Lemon_App
             LyricShow.TimeAndLyricDictionary.Clear();
             getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc");
             LyricShow.initializeLyricUIAsync(getLT.LyricAndTimeDictionary);
+            LyricShow.refreshDeskLyricUIWhenChangeWINOrFontSize();
         }
     }
 }
