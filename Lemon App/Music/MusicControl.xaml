@@ -1080,6 +1080,16 @@
                 <DiscreteBooleanKeyFrame KeyTime="0" Value="False"/>
             </BooleanAnimationUsingKeyFrames>
         </Storyboard>
+        <Storyboard x:Key="OnMouseMove4">
+            <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(Popup.IsOpen)" Storyboard.TargetName="popup2">
+                <DiscreteBooleanKeyFrame KeyTime="0" Value="True"/>
+            </BooleanAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="OnMouseLeave4">
+            <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(Popup.IsOpen)" Storyboard.TargetName="popup2">
+                <DiscreteBooleanKeyFrame KeyTime="0" Value="False"/>
+            </BooleanAnimationUsingKeyFrames>
+        </Storyboard>
     </UserControl.Resources>
     <UserControl.Triggers>
         <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="popup">
@@ -1093,6 +1103,12 @@
         </EventTrigger>
         <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="popup1">
             <BeginStoryboard x:Name="OnMouseLeave3_BeginStoryboard" Storyboard="{StaticResource OnMouseLeave3}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseMove" SourceName="border2">
+            <BeginStoryboard x:Name="OnMouseMove4_BeginStoryboard" Storyboard="{StaticResource OnMouseMove4}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="popup2">
+            <BeginStoryboard x:Name="OnMouseLeave4_BeginStoryboard" Storyboard="{StaticResource OnMouseLeave4}"/>
         </EventTrigger>
     </UserControl.Triggers>
     <Grid x:Name="Cip">
@@ -1182,7 +1198,7 @@
                 <Grid HorizontalAlignment="Right" Width="310">
                     <Border x:Name="border1" Height="27" Margin="137,8,0,5" VerticalAlignment="Stretch" Background="#FFF1F3F7" CornerRadius="10">
                         <Grid>
-                            <Popup x:Name="popup1" Width="250" Height="200" AllowsTransparency="True" PopupAnimation="Fade">
+                            <Popup x:Name="popup1" Width="250" Height="200" AllowsTransparency="True" PopupAnimation="Fade" >
                                 <Border Background="White" CornerRadius="5" Margin="10">
                                     <Border.Effect>
                                         <DropShadowEffect BlurRadius="10" Color="#FF1B1B1C" ShadowDepth="2" Opacity="0.3"/>
@@ -1254,12 +1270,24 @@
                         <ComboBoxItem Content="单曲" Foreground="#FF252526"/>
                         <!--ComboBoxItem Content="SQ" Foreground="#FF252526"/-->
                     </ComboBox>
-                    <Border  HorizontalAlignment="Left" Margin="120,2,-2,3" Width="20" Background="#00F1F3F7" CornerRadius="5" ToolTip="桌面歌词" BorderBrush="#FF31C27C" BorderThickness="1" Height="20" MouseDown="Border_MouseDown_5">
-                        <Path Data="M60.101,2.007c-0.59-0.127-1.205,0.023-1.673,0.403c-0.468,0.38-0.74,0.951-0.74,1.554v8.225
+                    <Border x:Name="border2"  HorizontalAlignment="Left" Margin="120,2,-2,3" Width="20" Background="#00F1F3F7" CornerRadius="5" ToolTip="桌面歌词" BorderBrush="#FF31C27C" BorderThickness="1" Height="20" MouseDown="Border_MouseDown_5">
+                        <Grid>
+                            <Popup x:Name="popup2" Width="70" Height="80" AllowsTransparency="True" PopupAnimation="Fade">
+                                <Border Background="White" CornerRadius="5" Margin="5">
+                                    <Border.Effect>
+                                        <DropShadowEffect Opacity="0.3"/>
+                                    </Border.Effect>
+                                    <Border Width="50" Height="30" Background="#FF007ACC" CornerRadius="5" MouseDown="Border_MouseDown_7">
+                                        <TextBlock TextWrapping="NoWrap" Text="下载目录" Foreground="White" Margin="0,9,0,1" TextAlignment="Center"/>
+                                    </Border>
+                                </Border>
+                            </Popup>
+                            <Path Data="M60.101,2.007c-0.59-0.127-1.205,0.023-1.673,0.403c-0.468,0.38-0.74,0.951-0.74,1.554v8.225
 	c0,0.911,0.616,1.708,1.498,1.936C75.297,18.3,86.549,32.842,86.549,49.488c0,20.153-16.396,36.549-36.549,36.549
 	S13.451,69.642,13.451,49.488c0-16.646,11.252-31.188,27.363-35.363c0.882-0.229,1.498-1.025,1.498-1.936V3.964
 	c0-0.603-0.272-1.174-0.74-1.554s-1.082-0.528-1.673-0.403C17.621,6.716,1.451,26.685,1.451,49.488
 	c0,26.77,21.779,48.549,48.549,48.549s48.549-21.779,48.549-48.549C98.549,26.685,82.379,6.716,60.101,2.007z" Fill="#FF31C27C" Stretch="Uniform" StrokeThickness="0" Margin="3"/>
+                        </Grid>
                     </Border>
                     <Border HorizontalAlignment="Left" Width="20" Height="20" Background="#00F1F3F7" CornerRadius="3" ToolTip="添加到收藏" BorderBrush="#FF31C27C" BorderThickness="1" Margin="95,2,0,3" MouseDown="Border_MouseDown_1">
                         <Path StrokeThickness="0" Margin="2" Fill="#FF31C27C" Data="M56.14,28.375H35.274V7.506c0-1.809-1.462-3.271-3.274-3.271c-1.811,0-3.274,1.463-3.274,3.271v20.869H7.862  c-1.813,0-3.274,1.464-3.274,3.272c0,1.807,1.462,3.27,3.274,3.27h20.863v20.869c0,1.809,1.464,3.272,3.274,3.272  c1.813,0,3.274-1.464,3.274-3.272V34.918H56.14c1.811,0,3.272-1.463,3.272-3.27C59.412,29.839,57.95,28.375,56.14,28.375z" Stretch="Fill" ToolTip="添加到收藏"/>
