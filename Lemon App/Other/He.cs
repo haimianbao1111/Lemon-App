@@ -313,6 +313,7 @@ namespace Lemon_App
 
     public class Uuuhh
     {
+
         public static async System.Threading.Tasks.Task<string> GetWebAsync(string url)
         {
             try
@@ -343,7 +344,7 @@ namespace Lemon_App
             }
             catch { return ""; }
         }
-        public static async Task<string> PostWebAsync(string url, string param)
+        public static async Task<string> PostWebJSONAsync(string url, string param)
         {
             string strURL = url;
             System.Net.HttpWebRequest request;
@@ -369,6 +370,24 @@ namespace Lemon_App
                 strValue += StrDate + "\r\n";
             }
             return strValue;
+        }
+        public static async Task<string> PostWebAsync(string url,string idata)
+        {
+            var request = (HttpWebRequest)WebRequest.Create(url);
+            var data = Encoding.ASCII.GetBytes(idata);
+            request.Method = "POST";
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.ContentLength = data.Length;
+            using (var stream =await request.GetRequestStreamAsync())
+            {
+              await  stream.WriteAsync(data, 0, data.Length);
+            }
+
+            var response = (HttpWebResponse) await request.GetResponseAsync();
+
+            var r = new StreamReader(response.GetResponseStream());
+        //    System.Windows.MessageBox.Show(await r.ReadToEndAsync());
+            return await r.ReadToEndAsync();
         }
         public static async System.Threading.Tasks.Task<string> GetWebAsync(string url, bool isOpen)
         {

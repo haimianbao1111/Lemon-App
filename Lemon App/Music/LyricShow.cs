@@ -1327,8 +1327,9 @@ namespace Lemon_App
                        {
                          try
                             {
-                               JObject obj = JObject.Parse(await Uuuhh.PostWebAsync("http://translate.hotcn.top/translate/api", "{\"text\": \"" + txt + "\"}"));
-                               ok = obj["text"].ToString();
+                            // JObject obj = JObject.Parse(await Uuuhh.PostWebAsync("http://translate.hotcn.top/translate/api", "{\"text\": \"" + txt + "\"}"));
+                            JObject obj = JObject.Parse(await Uuuhh.PostWebAsync("http://fanyi.baidu.com/v2transapi", $"from=auto&to=zh&query={Uri.EscapeDataString(txt)}&transtype=translang&simple_means_flag=3"));
+                            ok =FanyiBox.DecodeUtf8( obj["trans_result"]["data"][0]["dst"].ToString());
                          }
                          catch { }
                 }
