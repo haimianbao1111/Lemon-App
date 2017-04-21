@@ -696,15 +696,21 @@ namespace Lemon_App
         {
             if (h.Visibility == Visibility.Visible)
             {
-                h.Visibility = Visibility.Hidden;
+                h.Visibility = Visibility.Collapsed;
                 ZjImAgE.Visibility = Visibility.Collapsed;
                 G.Visibility = Visibility.Visible;
+                h.Margin = new Thickness(-40, 40, 40, -20);
+                ZjImAgE.Margin = new Thickness(-40, 40, 40, -20);
+                G.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-40, 40, 40, -20), new Thickness(0, 0, 0, 49), TimeSpan.FromSeconds(0.1)));
             }
             else
             { 
                 h.Visibility = Visibility.Visible;
-                G.Visibility = Visibility.Hidden;
+                G.Visibility = Visibility.Collapsed;
                 ZjImAgE.Visibility = Visibility.Collapsed;
+                G.Margin = new Thickness(-40, 40, 40, -20);
+                ZjImAgE.Margin = new Thickness(-40, 40, 40, -20);
+                h.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-40, 40, 40, -20), new Thickness(0, 0, 0, 49), TimeSpan.FromSeconds(0.1)));
             }
         }
         public static object JsonToObject(string jsonString, object obj)
@@ -936,12 +942,19 @@ namespace Lemon_App
                 G.Visibility = Visibility.Collapsed;
                 ZjImAgE.Visibility = Visibility.Visible;
                 hs = 1;
-            }else if (hs == 1)
+                ZjImAgE.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-40, 40, 40, -20), new Thickness(0, 0, 0, 49), TimeSpan.FromSeconds(0.1)));
+                h.Margin = new Thickness(-40, 40, 40, -20);
+                G.Margin = new Thickness(-40, 40, 40, -20);
+            }
+            else if (hs == 1)
             {
                 hs = 0;
                 h.Visibility = Visibility.Visible;
                 G.Visibility = Visibility.Collapsed;
                 ZjImAgE.Visibility = Visibility.Collapsed;
+                ZjImAgE.Margin = new Thickness(-40, 40, 40, -20);
+                G.Margin = new Thickness(-40, 40, 40, -20);
+                h.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(- 40, 40, 40, -20), new Thickness(0, 0, 0, 49), TimeSpan.FromSeconds(0.1)));
             }
         }
 
