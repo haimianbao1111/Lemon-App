@@ -1317,7 +1317,8 @@ namespace Lemon_App
             currentAndNextLyricIntervalTime = 0;//时间间隔
             currentLyricWalkedPersent = 0;//当前歌词刷过的距离百分比
             CurrentLyricIndex = -1;//当前这句歌词的索引置为原始
-            LastLyricIndex = -1;//上次这句歌词的索引置为原始                      
+            LastLyricIndex = -1;//上次这句歌词的索引置为原始
+            int index = 0;
             //添加歌词文本到歌词面板里
            foreach (string txt in TimeAndLyricDictionary.Values)
             {
