@@ -1319,19 +1319,31 @@ namespace Lemon_App
             CurrentLyricIndex = -1;//当前这句歌词的索引置为原始
             LastLyricIndex = -1;//上次这句歌词的索引置为原始                      
             //添加歌词文本到歌词面板里
-            foreach (string txt in TimeAndLyricDictionary.Values)
+           foreach (string txt in TimeAndLyricDictionary.Values)
             {
                 string ok = "";
                 if(IsLyFanyi)
                     if (txt != null)
                        {
-                         try
+                        if (index!=0)
+                        {
+                            if (!txt.Contains("Written by："))
                             {
-                            // JObject obj = JObject.Parse(await Uuuhh.PostWebAsync("http://translate.hotcn.top/translate/api", "{\"text\": \"" + txt + "\"}"));
-                            JObject obj = JObject.Parse(await Uuuhh.PostWebAsync("http://fanyi.baidu.com/v2transapi", $"from=auto&to=zh&query={Uri.EscapeDataString(txt)}&transtype=translang&simple_means_flag=3"));
-                            ok =FanyiBox.DecodeUtf8( obj["trans_result"]["data"][0]["dst"].ToString());
-                         }
-                         catch { }
+                                if (!txt.Contains("词："))
+                                {
+                                    if (!txt.Contains("曲："))
+                                    {
+                                        try
+                                        {
+                                            // JObject obj = JObject.Parse(await Uuuhh.PostWebAsync("http://translate.hotcn.top/translate/api", "{\"text\": \"" + txt + "\"}"));
+                                            JObject obj = JObject.Parse(await Uuuhh.PostWebAsync("http://fanyi.baidu.com/v2transapi", $"from=auto&to=zh&query={Uri.EscapeDataString(txt)}&transtype=translang&simple_means_flag=3"));
+                                            ok = FanyiBox.DecodeUtf8(obj["trans_result"]["data"][0]["dst"].ToString());
+                                        }
+                                        catch { }
+                                    }
+                                }
+                            }
+                        }
                 }
                 TextBlock tb = new TextBlock();
                 tb.MouseDown += delegate (object sender, MouseButtonEventArgs e)
@@ -1356,6 +1368,7 @@ namespace Lemon_App
                     else tb.Text = txt;
                 }else tb.Text = txt;
                 commonLyricStackPanel.Children.Add(tb);
+                index++;
             }
             //初始化高亮歌词的样式(高亮歌词的'背景色'是和普通歌词一样的,只是'前景'画刷色不一样)
             tBFocusLyricBack.FontFamily = HFontFamily;
