@@ -10,7 +10,9 @@ using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Interop;
 using System.Windows.Threading;
+using Un4seen.Bass;
 
 namespace Lemon_App
 {

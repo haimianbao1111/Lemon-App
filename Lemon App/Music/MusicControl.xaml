@@ -176,7 +176,7 @@
                                         </Style>
                                     </ToggleButton.Style>
                                 </ToggleButton>
-                                <ContentPresenter  IsHitTestVisible="False" Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" VerticalAlignment="Center" Margin="3" HorizontalAlignment="Stretch" Width="16" />
+                                <ContentPresenter  IsHitTestVisible="False" Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" VerticalAlignment="Center" Margin="3" HorizontalAlignment="Stretch" Width="20" />
                                 <TextBox x:Name="PART_EditableTextBox" HorizontalAlignment="Stretch" Focusable="True" Visibility="Collapsed" IsReadOnly="False" TextAlignment="Center"/>
                                 <Popup x:Name="popup" HorizontalOffset="-2.5" Focusable="False"    PopupAnimation="Slide" AllowsTransparency="True" Placement="Top" local:PopopHelper.PopupPlacementTarget="{Binding ElementName=path}">
                                     <Grid  SnapsToDevicePixels="True" HorizontalAlignment="Stretch">
@@ -1261,7 +1261,8 @@
                     </Border>
                 </Grid>
                 <Grid x:Name="__PAGE" Margin="0,0,5,0" Height="25" Grid.Column="2">
-                    <ComboBox x:Name="pz" HorizontalAlignment="Left" Margin="38,2,0,3" Width="28" Background="{x:Null}" BorderBrush="{x:Null}" SelectedIndex="1" Foreground="#FF31C27C" FontSize="10" SelectionChanged="pz_SelectionChanged" Height="20">
+                    <ComboBox x:Name="pz" HorizontalAlignment="Left" Margin="38,2,0,3" Width="28" Background="{x:Null}" BorderBrush="{x:Null}" SelectedIndex="2" Foreground="#FF31C27C" FontSize="10" SelectionChanged="pz_SelectionChanged" Height="20">
+                        <ComboBoxItem Content="经济" Foreground="#FF252526"/>
                         <ComboBoxItem Content="标准" Foreground="#FF252526"/>
                         <ComboBoxItem Content="HQ" Foreground="#FF252526"/>
                     </ComboBox>

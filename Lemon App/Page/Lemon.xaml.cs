@@ -8,6 +8,7 @@ using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
+using Un4seen.Bass;
 
 namespace Lemon_App
 {
@@ -131,7 +132,10 @@ namespace Lemon_App
         }
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
-        {Rect rc = SystemParameters.WorkArea;
+        {
+            BassNet.Registration("52pojie@qq.com", "2X211223140022");
+            Bass.BASS_Init(-1, 44100, BASSInit.BASS_DEVICE_CPSPEAKERS, new WindowInteropHelper(this).Handle);
+            Rect rc = SystemParameters.WorkArea;
             this.MaxWidth = rc.Width;
             this.MaxHeight = rc.Height;
             IntPtr handle = new WindowInteropHelper(this).Handle;
