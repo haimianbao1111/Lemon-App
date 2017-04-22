@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Lemon_App"
         xmlns:Forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
         mc:Ignorable="d"
-        Title="登录到小萌" Height="350" Background="Transparent" Opacity="0" Width="525" WindowStyle="None" ResizeMode="NoResize">
+        Title="登录到小萌" Height="350" Background="Transparent" Opacity="0" Width="525" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Border BorderBrush="#FF007ACC" Background="White" BorderThickness="2" MouseLeftButtonDown="Grid_MouseLeftButtonDown">
         <Grid MouseLeftButtonDown="Grid_MouseLeftButtonDown" >
             <WindowsFormsHost Margin="0,40,0,0" >
