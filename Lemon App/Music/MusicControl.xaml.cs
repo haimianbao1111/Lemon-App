@@ -62,7 +62,9 @@ namespace Lemon_App
         {
             try
             {
+                t.Stop();
                 Bass.BASS_ChannelSetPosition(stream,0);
+                Bass.BASS_ChannelStop(stream);
                 jd.Value = 0;
                 s.Data = Geometry.Parse("M118.2,125.9c3.3,0,6-2.7,6-6V7.4c0-3.3-2.7-6-6-6h-36c-3.3,0-6,2.7-6,6v112.5c0,3.3,2.7,6,6,6H118.2z M46,125.9c3.3,0,6-2.7,6-6V7.4c0-3.3-2.7-6-6-6H10c-3.3,0-6,2.7-6,6v112.5c0,3.3,2.7,6,6,6H46z");
                 string i = "";
@@ -92,6 +94,7 @@ namespace Lemon_App
         int stream;
         private void Fis(object sender, AsyncCompletedEventArgs e)
         {
+            Bass.BASS_ChannelStop(stream);
             stream = Bass.BASS_StreamCreateFile(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.mp3", 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT);
             Bass.BASS_ChannelPlay(stream, true);
            // player.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.mp3"));
@@ -170,7 +173,7 @@ namespace Lemon_App
                                 m.ImageID = o["data"]["song"]["list"][i]["album"]["mid"].ToString();
                                 m.GC = o["data"]["song"]["list"][i]["id"].ToString();
                                 m.Fotmat = o["data"]["song"]["list"][i]["file"]["size_flac"].ToString();
-                                m.HQFOTmat = o["data"]["song"]["list"][i]["file"]["size_320"].ToString();
+                                m.HQFOTmat = o["data"]["song"]["list"][i]["file"]["size_ogg"].ToString();
                                 m.MV = o["data"]["song"]["list"][i]["mv"]["id"].ToString();
                                 string Q = "";
                                 if (m.Fotmat != "0")
@@ -199,6 +202,8 @@ namespace Lemon_App
         {
             if (listBox.SelectedIndex != -1)
             {
+                if (((listBox.SelectedItem as MusicItemControl).Music as Music).HQFOTmat != "HQ")
+                    if (pz.Text == "HQ") pz.Text = "标准";
                 try
                 {
                     Bass.BASS_ChannelStop(stream);
@@ -240,6 +245,7 @@ namespace Lemon_App
                             {
                                 //player.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.m4a"));
                                 //player.Play();
+                                Bass.BASS_ChannelStop(stream);
                                 stream = Bass.BASS_StreamCreateFile(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.m4a", 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT);
                                 Bass.BASS_ChannelPlay(stream, true);
                                 t.Start();
@@ -318,6 +324,7 @@ namespace Lemon_App
                             }
                             else
                             {
+                                Bass.BASS_ChannelStop(stream);
                                 stream = Bass.BASS_StreamCreateFile(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.mp3", 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT);
                                 Bass.BASS_ChannelPlay(stream, true);
                                 t.Start();
@@ -396,6 +403,7 @@ namespace Lemon_App
                             }
                             else
                             {
+                                Bass.BASS_ChannelStop(stream);
                                 stream = Bass.BASS_StreamCreateFile(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.ogg", 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT);
                                 Bass.BASS_ChannelPlay(stream, true);
                                 t.Start();
@@ -478,6 +486,7 @@ namespace Lemon_App
                             }
                             else
                             {
+                                Bass.BASS_ChannelStop(stream);
                                 stream = Bass.BASS_StreamCreateFile(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.m4a", 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT);
                                 Bass.BASS_ChannelPlay(stream, true);
                                 t.Start();
@@ -555,6 +564,7 @@ namespace Lemon_App
                             }
                             else
                             {
+                                Bass.BASS_ChannelStop(stream);
                                 stream = Bass.BASS_StreamCreateFile(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.mp3", 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT);
                                 Bass.BASS_ChannelPlay(stream, true);
                                 t.Start();
@@ -620,6 +630,7 @@ namespace Lemon_App
 
         private void Fi_Ogg(object sender, AsyncCompletedEventArgs e)
         {
+            Bass.BASS_ChannelStop(stream);
             stream = Bass.BASS_StreamCreateFile(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.ogg", 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT);
             Bass.BASS_ChannelPlay(stream, true);
             t.Start();
@@ -628,6 +639,7 @@ namespace Lemon_App
 
         private void Fi_BZ(object sender, AsyncCompletedEventArgs e)
         {
+            Bass.BASS_ChannelStop(stream);
             stream = Bass.BASS_StreamCreateFile(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.m4a", 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT);
             Bass.BASS_ChannelPlay(stream, true);
             t.Start();
@@ -636,6 +648,7 @@ namespace Lemon_App
 
         private void Fi(object sender, AsyncCompletedEventArgs e)
         {
+            Bass.BASS_ChannelStop(stream);
             stream = Bass.BASS_StreamCreateFile(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.mp3", 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT);
             Bass.BASS_ChannelPlay(stream, true);
             t.Start();
@@ -1166,7 +1179,7 @@ namespace Lemon_App
                         m.ImageID = o["data"]["song"]["list"][i]["album"]["mid"].ToString();
                         m.GC = o["data"]["song"]["list"][i]["id"].ToString();
                         m.Fotmat = o["data"]["song"]["list"][i]["file"]["size_flac"].ToString();
-                        m.HQFOTmat = o["data"]["song"]["list"][i]["file"]["size_320"].ToString();
+                        m.HQFOTmat = o["data"]["song"]["list"][i]["file"]["size_ogg"].ToString();
                         m.MV = o["data"]["song"]["list"][i]["mv"]["id"].ToString();
                         string Q = "";
                         if (m.Fotmat != "0")
@@ -1185,8 +1198,8 @@ namespace Lemon_App
 
         private void audio_MouseMove(object sender, MouseEventArgs e)
         {
-            txl.Text = audio.Value*100 + "%";
-            Bass.BASS_SetVolume(float.Parse(audio.Value.ToString()));
+            txl.Text = (audio.Value *100).ToString("F0") + "%";
+            Bass.BASS_SetVolume(float.Parse(audio.Value.ToString("F2")));
         }
 
         private void hsq_MouseLeave(object sender, MouseEventArgs e)
