@@ -4,7 +4,6 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
 using System.Net;
-using System.Speech.Synthesis;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -109,14 +108,12 @@ namespace Lemon_App
             rtf.BeginAnimation(RotateTransform.AngleProperty, dbAscending);
             GetWeather(Settings.Default.WeatherInfo);
         }
-
+        MediaPlayer p = new MediaPlayer();
         private void Biaoti_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            SpeechSynthesizer synth = new SpeechSynthesizer();
-            synth.Volume = 100;
-            synth.Rate = 0;
-            synth.SpeakAsync($"小萌天气为你播报，{Biaoti.Text},{Qiwen.Text},{Tianqi.Text},{fengsu.Text},{allqiyanjd.Text},{kqzl.Text}");
-            synth.Dispose();
+            p.Open(new Uri($"http://fanyi.baidu.com/gettts?lan=zh&text={Uri.EscapeDataString( $"小萌天气为你播报，{Biaoti.Text},{Qiwen.Text},{Tianqi.Text},{fengsu.Text},{allqiyanjd.Text},{kqzl.Text}")}&spd=3&source=web"));
+            p.Play();
+            p.MediaEnded += delegate { p.Close(); };
         }
     }
 }

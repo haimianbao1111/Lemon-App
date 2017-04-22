@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Security.Cryptography;
-using System.Speech.Synthesis;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -62,14 +61,13 @@ namespace Lemon_App
             });
             return result;
         }
-
+        string to = "en";
         private async void button_Cli(object sender, MouseButtonEventArgs e)
         {
             if (textBox1.Text != "")
             {
                 string q = Uri.EscapeDataString(textBox1.Text);
                 string from = "auto";
-                string to = "zh";
                 string sign = MD5.EncryptToMD5string("20151231000008489" + textBox1.Text + "2004112629Q3EQP1ay2cLKAMxs2gqa");
                 if (Yyycombo.Text == "自动")
                 {
@@ -302,10 +300,10 @@ namespace Lemon_App
         {
             if (FanyiFromtoTextBox.Text != "")
             {
-                SpeechSynthesizer synth = new SpeechSynthesizer();
-                synth.Volume = 50;
-                synth.Rate = 0;
-                synth.SpeakAsync(FanyiFromtoTextBox.Text);
+                MediaPlayer p = new MediaPlayer();
+                p.Open(new Uri($"http://fanyi.baidu.com/gettts?lan={to}&text={FanyiFromtoTextBox.Text}&spd=3&source=web"));
+                p.Play();
+                p.MediaEnded += delegate { p.Close(); };
             }
         }
 
