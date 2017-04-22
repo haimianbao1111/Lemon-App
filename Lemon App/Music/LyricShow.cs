@@ -1293,7 +1293,7 @@ namespace Lemon_App
                 canvasDeskLyricForeMove.BeginAnimation(Canvas.WidthProperty, deskLyricBrushAni);
             }        
         }
-        public static bool IsChinaString(string CString)
+        public bool IsChinaString(string CString)
         {
             bool BoolValue = false;
             for (int i = 0; i < CString.Length; i++)
@@ -1349,24 +1349,21 @@ namespace Lemon_App
                 if(IsLyFanyi)
                     if (txt != null)
                        {
-                        if (!IsChinaString(txt))
+                        if (index!=0)
                         {
-                            if (index != 0)
+                            if (!txt.Contains("Written by："))
                             {
-                                if (!txt.Contains("Written by："))
+                                if (!txt.Contains("词："))
                                 {
-                                    if (!txt.Contains("词："))
+                                    if (!txt.Contains("曲："))
                                     {
-                                        if (!txt.Contains("曲："))
+                                        try
                                         {
-                                            try
-                                            {
-                                                // JObject obj = JObject.Parse(await Uuuhh.PostWebAsync("http://translate.hotcn.top/translate/api", "{\"text\": \"" + txt + "\"}"));
-                                                JObject obj = JObject.Parse(await Uuuhh.PostWebAsync("http://fanyi.baidu.com/v2transapi", $"from=auto&to=zh&query={Uri.EscapeDataString(txt)}&transtype=translang&simple_means_flag=3"));
-                                                ok = FanyiBox.DecodeUtf8(obj["trans_result"]["data"][0]["dst"].ToString());
-                                            }
-                                            catch { }
+                                            // JObject obj = JObject.Parse(await Uuuhh.PostWebAsync("http://translate.hotcn.top/translate/api", "{\"text\": \"" + txt + "\"}"));
+                                            JObject obj = JObject.Parse(await Uuuhh.PostWebAsync("http://fanyi.baidu.com/v2transapi", $"from=auto&to=zh&query={Uri.EscapeDataString(txt)}&transtype=translang&simple_means_flag=3"));
+                                            ok = FanyiBox.DecodeUtf8(obj["trans_result"]["data"][0]["dst"].ToString());
                                         }
+                                        catch { }
                                     }
                                 }
                             }
