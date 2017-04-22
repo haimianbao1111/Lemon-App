@@ -1086,7 +1086,7 @@ namespace Lemon_App
 
         private async void OsAsync(object sender, AsyncCompletedEventArgs e)
         {
-            if (downloadindex <= listBox.Items.Count)
+            if (downloadindex != ic.Count)
             {
                 downloadindex++;
                     download_name.Text = (ic[downloadindex] as MusicItemControl).Content;
