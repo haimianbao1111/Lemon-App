@@ -167,7 +167,7 @@ namespace Lemon_App
         }
         public static WebProxy proxy = new WebProxy();
         public static string Url = "";
-        public static string KMS = "3.5.6.1";
+        public static string KMS = "3.5.6.3";
         public static int MS = 0;
         public static string on = "";
 

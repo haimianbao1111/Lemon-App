@@ -1294,11 +1294,13 @@ namespace Lemon_App
             }        
         }
         public static bool IsLyFanyi = true;
+        public static bool F = false;
         /// <summary>
         /// 初始化歌词界面(非桌面歌词),每次更换一首歌要显示它的歌词秀时，此方法是必须要第一调用的
         /// </summary>
         public static async void initializeLyricUIAsync(SortedDictionary<Double, string> TimeAndLyricDictionary)
         {
+            F = true;
             if (TimeAndLyricDictionary.Values.Count == 0)
             {
                 TimeAndLyricDictionary.Add(100, "纯音乐尽情欣赏");
@@ -1322,6 +1324,8 @@ namespace Lemon_App
             //添加歌词文本到歌词面板里
            foreach (string txt in TimeAndLyricDictionary.Values)
             {
+                if (F == false)
+                    return;
                 string ok = "";
                 if(IsLyFanyi)
                     if (txt != null)

@@ -62,7 +62,7 @@ namespace Lemon_App
         {
             try
             {
-                //    player.Stop();
+                Bass.BASS_ChannelSetPosition(stream,0);
                 s.Data = Geometry.Parse("M118.2,125.9c3.3,0,6-2.7,6-6V7.4c0-3.3-2.7-6-6-6h-36c-3.3,0-6,2.7-6,6v112.5c0,3.3,2.7,6,6,6H118.2z M46,125.9c3.3,0,6-2.7,6-6V7.4c0-3.3-2.7-6-6-6H10c-3.3,0-6,2.7-6,6v112.5c0,3.3,2.7,6,6,6H46z");
                 string i = "";
                 if (Move.Text == "循环")
@@ -201,6 +201,7 @@ namespace Lemon_App
                 try
                 {
                     Bass.BASS_ChannelStop(stream);
+                    LyricShow.F = true;
                     isR = true;
                     s.Data = Geometry.Parse("M118.2,125.9c3.3,0,6-2.7,6-6V7.4c0-3.3-2.7-6-6-6h-36c-3.3,0-6,2.7-6,6v112.5c0,3.3,2.7,6,6,6H118.2z M46,125.9c3.3,0,6-2.7,6-6V7.4c0-3.3-2.7-6-6-6H10c-3.3,0-6,2.7-6,6v112.5c0,3.3,2.7,6,6,6H46z");
                     string i = (listBox.SelectedItem as MusicItemControl).Content.Replace("\\", ",").Replace("/", ",");
