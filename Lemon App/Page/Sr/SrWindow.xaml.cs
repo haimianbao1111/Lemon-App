@@ -39,7 +39,7 @@ namespace Lemon_App.Page.Sr
         {
             string serverURL = "http://vop.baidu.com/server_api";
             string token = "24.287d1caf505f1a3c8ba0bee80b2e343e.2592000.1495502901.282335-9474467";
-            serverURL += "?lan=zh&cuid=kwwwvagaa&token=" + token;
+            serverURL += $"?lan=zh&cuid=kwwwvagaa&token=" + token;
             FileStream fs = new FileStream(audioFilePath, FileMode.Open);
             byte[] voice = new byte[fs.Length];
             await fs.ReadAsync(voice, 0, voice.Length);
