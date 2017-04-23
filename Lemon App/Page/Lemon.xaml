@@ -168,7 +168,7 @@
                 </RectangleGeometry.Rect>
             </RectangleGeometry>
         </Grid.Clip>
-        <Border x:Name="BackgroundPage" CornerRadius="3"/>
+        <Border x:Name="BackgroundPage" CornerRadius="3" Background="#00000000"/>
         <Grid x:Name="ContentPage" >
             <Grid x:Name="TopPage" MinHeight="50" Grid.RowSpan="1" HorizontalAlignment="Left" Width="63" Margin="0" Background="#E5FFFFFF">
                 <Border x:Name="CLOSE" ToolTip="关闭" HorizontalAlignment="Left" Margin="5,15,0,0" Width="13" Height="13" Background="#FFFE5E56" CornerRadius="13" MouseDown="CLOSE_MouseDown" VerticalAlignment="Top"/>
