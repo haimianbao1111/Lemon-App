@@ -499,9 +499,7 @@ namespace Lemon_App
         /// <summary>  
         public SoundRecorder()
         {
-            // 初始化音频捕捉设备  
             InitCaptureDevice();
-            // 设定录音格式  
             mWavFormat = CreateWaveFormat();
         }
 

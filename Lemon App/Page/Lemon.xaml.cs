@@ -86,6 +86,7 @@ namespace Lemon_App
             {
                 Robot.Visibility = Visibility.Visible;
                 Music.Visibility = Visibility.Collapsed;
+                _2048.Visibility = Visibility.Collapsed;
                 User.Visibility = Visibility.Collapsed;
                 All.Visibility = Visibility.Collapsed;
                 Robot.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 50, 0, 0), new Thickness(0), TimeSpan.FromSeconds(0.2)));
@@ -102,6 +103,7 @@ namespace Lemon_App
             {
                 Robot.Visibility = Visibility.Collapsed;
                 All.Visibility = Visibility.Collapsed;
+                _2048.Visibility = Visibility.Collapsed;
                 User.Visibility = Visibility.Collapsed;
                 Music.Visibility = Visibility.Visible;
                 Music.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 50, 0, 0), new Thickness(0), TimeSpan.FromSeconds(0.2)));
@@ -119,6 +121,7 @@ namespace Lemon_App
                 Robot.Visibility = Visibility.Collapsed;
                 Music.Visibility = Visibility.Collapsed;
                 User.Visibility = Visibility.Collapsed;
+                _2048.Visibility = Visibility.Collapsed;
                 All.Visibility = Visibility.Visible;
                 All.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 50, 0, 0), new Thickness(0), TimeSpan.FromSeconds(0.2)));
                 //  IContentPage.Children.Clear();
@@ -274,5 +277,25 @@ namespace Lemon_App
         }
         private const int WM_HOTKEY = 0x0312;
 
+        private void TopPage_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ClickCount == 2)
+            {
+                Robot.Visibility = Visibility.Collapsed;
+                Music.Visibility = Visibility.Collapsed;
+                User.Visibility = Visibility.Collapsed;
+                _2048.Visibility = Visibility.Visible;
+                All.Visibility = Visibility.Collapsed;
+               _2048 .BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 50, 0, 0), new Thickness(0), TimeSpan.FromSeconds(0.2)));
+                //  IContentPage.Children.Clear();
+                //IContentPage.Children.Add(new AllControl());
+                Mus.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
+                ALL.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
+                Rbt.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
+                Mus.StrokeThickness = 1;
+                ALL.StrokeThickness = 1;
+                Rbt.StrokeThickness = 1;
+            }
+        }
     }
 }

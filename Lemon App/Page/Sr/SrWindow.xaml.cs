@@ -39,14 +39,14 @@ namespace Lemon_App.Page.Sr
         // int uReturnLength,
         // int hwndCallback
         //);
-        private async Task<string> GetKey(string AppKey,string SecretKey)
+        private async Task<string> GetKey()
         {
-           return  JObject.Parse(await Uuuhh.GetWebAsync($"https://openapi.baidu.com/oauth/2.0/token?grant_type=client_credentials &client_id={AppKey}&client_secret={SecretKey}"))["access_token"].ToString();
+           return  JObject.Parse(await Uuuhh.GetWebAsync("https://openapi.baidu.com/oauth/2.0/token?grant_type=client_credentials&client_id=75bl82qIt9Rtly6Na6wqYUmm&client_secret=pMO9ZSQSsZFNvMMnXy5L3GaQbpWG6Fyw"))["access_token"].ToString();
         }
         private async Task<string> PostAsync(string audioFilePath)
         {
             string serverURL = "http://vop.baidu.com/server_api";
-            string token =await GetKey("75bl82qIt9Rtly6Na6wqYUmm", "pMO9ZSQSsZFNvMMnXy5L3GaQbpWG6Fyw");
+            string token = "24.7e89beaa7380e939ffb4890e05427d3d.2592000.1495540990.282335-9474467";//await GetKey("75bl82qIt9Rtly6Na6wqYUmm", "pMO9ZSQSsZFNvMMnXy5L3GaQbpWG6Fyw");
             serverURL += $"?lan=zh&cuid=kwwwvagaa&token=" + token;
             FileStream fs = new FileStream(audioFilePath, FileMode.Open);
             byte[] voice = new byte[fs.Length];

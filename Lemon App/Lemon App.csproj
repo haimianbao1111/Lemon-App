@@ -144,6 +144,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="IApps\2048\2048Control.xaml.cs">
+      <DependentUpon>2048Control.xaml</DependentUpon>
+    </Compile>
     <Compile Include="IApps\User\AllControl.xaml.cs">
       <DependentUpon>AllControl.xaml</DependentUpon>
     </Compile>
@@ -238,6 +241,10 @@
     <Compile Include="Page\WelcomeWindow.xaml.cs">
       <DependentUpon>WelcomeWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="IApps\2048\2048Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="IApps\User\AllControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
