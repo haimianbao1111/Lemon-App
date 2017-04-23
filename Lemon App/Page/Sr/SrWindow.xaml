@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lemon_App.Page.Sr"
         mc:Ignorable="d"
-        Title="小萌语音识别" Height="350" Width="470" AllowsTransparency="True" WindowStyle="None" ResizeMode="NoResize" Background="{x:Null}" MouseRightButtonDown="Window_MouseRightButtonDown" WindowStartupLocation="CenterScreen">
+        Title="小萌语音识别" Height="350" Width="470" AllowsTransparency="True" WindowStyle="None" ResizeMode="NoResize" Background="{x:Null}" WindowStartupLocation="CenterScreen" Topmost="True" MouseLeftButtonDown="Window_MouseLeftButtonDown">
     <Grid Background="#E5FFFFFF">
         <Grid.Clip>
             <RectangleGeometry RadiusX="5" RadiusY="5">

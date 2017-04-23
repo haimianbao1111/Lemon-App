@@ -103,7 +103,7 @@ namespace Lemon_App.Page.Sr
             }
             return result_final;
         }
-        SoundRecorder s = new SoundRecorder();
+        SoundRecorder s;
         private async void t_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (_in.Text == "喵喵喵")
@@ -114,6 +114,7 @@ namespace Lemon_App.Page.Sr
                 //mciSendString("set wave format tag pcm", "", 0, 0);
                 //mciSendString("open new type WAVEAudio alias movie", "", 0, 0);
                 //mciSendString("record movie", "", 0, 0);
+                s = new SoundRecorder();
                 s.SetFileName(AppDomain.CurrentDomain.BaseDirectory + "on.wav");
                 s.RecStart();
                 _in.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.3)));
@@ -127,6 +128,7 @@ namespace Lemon_App.Page.Sr
                 s.RecStop();
                 _in.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.3)));
                 _in.Text = "识别中...";
+                s = null;
                 if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "on.wav"))
                 {
                     o.Text = await PostAsync(AppDomain.CurrentDomain.BaseDirectory + "on.wav");
@@ -138,17 +140,10 @@ namespace Lemon_App.Page.Sr
 
         private void CLOSE_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (_in.Text == "录音中..." && _in.Text == "识别中...")
-            {
-                //mciSendString("stop movie", "", 0, 0);
-                //mciSendString("close movie", "", 0, 0);
-                s.RecStop();
-                s = null;
-            }
             this.Close();
         }
 
-        private void Window_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
                 this.DragMove();
