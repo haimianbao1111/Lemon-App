@@ -1,4 +1,5 @@
 ﻿using Lemon_App.Properties;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -38,10 +39,14 @@ namespace Lemon_App.Page.Sr
         // int uReturnLength,
         // int hwndCallback
         //);
+        private async Task<string> GetKey(string AppKey,string SecretKey)
+        {
+           return  JObject.Parse(await Uuuhh.GetWebAsync($"https://openapi.baidu.com/oauth/2.0/token?grant_type=client_credentials &client_id={AppKey}&client_secret={SecretKey}"))["access_token"].ToString();
+        }
         private async Task<string> PostAsync(string audioFilePath)
         {
             string serverURL = "http://vop.baidu.com/server_api";
-            string token = "24.287d1caf505f1a3c8ba0bee80b2e343e.2592000.1495502901.282335-9474467";
+            string token =await GetKey("75bl82qIt9Rtly6Na6wqYUmm", "pMO9ZSQSsZFNvMMnXy5L3GaQbpWG6Fyw");
             serverURL += $"?lan=zh&cuid=kwwwvagaa&token=" + token;
             FileStream fs = new FileStream(audioFilePath, FileMode.Open);
             byte[] voice = new byte[fs.Length];
