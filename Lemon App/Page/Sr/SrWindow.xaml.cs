@@ -13,6 +13,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -26,6 +27,8 @@ namespace Lemon_App.Page.Sr
         public SrWindow()
         {
             InitializeComponent();
+            var c = new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.3));
+            this.BeginAnimation(OpacityProperty, c);
             this.FontFamily = new FontFamily(Settings.Default.FontFamilly);
         }
         //[DllImport("winmm.dll", EntryPoint = "mciSendString", CharSet = CharSet.Auto)]
@@ -113,6 +116,7 @@ namespace Lemon_App.Page.Sr
                 //mciSendString("record movie", "", 0, 0);
                 s.SetFileName(AppDomain.CurrentDomain.BaseDirectory + "on.wav");
                 s.RecStart();
+                _in.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.3)));
                 _in.Text = "录音中...";
             }
             else if (_in.Text == "录音中...")
@@ -121,10 +125,12 @@ namespace Lemon_App.Page.Sr
                 //mciSendString("save movie on.wav", "", 0, 0);
                 //mciSendString("close movie", "", 0, 0);
                 s.RecStop();
+                _in.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.3)));
                 _in.Text = "识别中...";
                 if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "on.wav"))
                 {
                     o.Text = await PostAsync(AppDomain.CurrentDomain.BaseDirectory + "on.wav");
+                    _in.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.3)));
                     _in.Text = "喵喵喵";
                 }
             }
