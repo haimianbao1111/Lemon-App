@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lemon_App.Page.Sr"
         mc:Ignorable="d"
-        Title="SrWindow" Height="350" Width="470" AllowsTransparency="True" WindowStyle="None" ResizeMode="NoResize" Background="{x:Null}" MouseRightButtonDown="Window_MouseRightButtonDown">
+        Title="小萌语音识别" Height="350" Width="470" AllowsTransparency="True" WindowStyle="None" ResizeMode="NoResize" Background="{x:Null}" MouseRightButtonDown="Window_MouseRightButtonDown" WindowStartupLocation="CenterScreen">
     <Grid Background="#E5FFFFFF">
         <Grid.Clip>
             <RectangleGeometry RadiusX="5" RadiusY="5">
@@ -42,5 +42,6 @@
             </Border.Effect>
             <TextBox x:Name="o" TextWrapping="Wrap" Margin="10" Foreground="#FF474747" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="#FF31F59C" BorderThickness="0"/>
         </Border>
+        <TextBlock HorizontalAlignment="Left" Height="27" Margin="28,10,0,0" TextWrapping="Wrap" Text="小萌语音识别" VerticalAlignment="Top" Width="103" Foreground="#FF787878"/>
     </Grid>
 </Window>

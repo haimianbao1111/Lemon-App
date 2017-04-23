@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lemon_App.Properties;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +26,7 @@ namespace Lemon_App.Page.Sr
         public SrWindow()
         {
             InitializeComponent();
+            this.FontFamily = new FontFamily(Settings.Default.FontFamilly);
         }
         //[DllImport("winmm.dll", EntryPoint = "mciSendString", CharSet = CharSet.Auto)]
         //public static extern int mciSendString(
@@ -33,14 +35,14 @@ namespace Lemon_App.Page.Sr
         // int uReturnLength,
         // int hwndCallback
         //);
-        private string Post(string audioFilePath)
+        private async Task<string> PostAsync(string audioFilePath)
         {
             string serverURL = "http://vop.baidu.com/server_api";
             string token = "24.287d1caf505f1a3c8ba0bee80b2e343e.2592000.1495502901.282335-9474467";
             serverURL += "?lan=zh&cuid=kwwwvagaa&token=" + token;
             FileStream fs = new FileStream(audioFilePath, FileMode.Open);
             byte[] voice = new byte[fs.Length];
-            fs.Read(voice, 0, voice.Length);
+            await fs.ReadAsync(voice, 0, voice.Length);
             fs.Close();
             fs.Dispose();
 
@@ -53,9 +55,9 @@ namespace Lemon_App.Page.Sr
             request.ContentLength = voice.Length;
             try
             {
-                using (Stream writeStream = request.GetRequestStream())
+                using (Stream writeStream =await request.GetRequestStreamAsync())
                 {
-                    writeStream.Write(voice, 0, voice.Length);
+                    await writeStream.WriteAsync(voice, 0, voice.Length);
                     writeStream.Close();
                     writeStream.Dispose();
                 }
@@ -76,7 +78,7 @@ namespace Lemon_App.Page.Sr
                         StringBuilder sb = new StringBuilder();
                         while (!readStream.EndOfStream)
                         {
-                            line = readStream.ReadLine();
+                            line =await readStream.ReadLineAsync();
                             sb.Append(line);
                             sb.Append("\r");
                         }
@@ -99,7 +101,7 @@ namespace Lemon_App.Page.Sr
             return result_final;
         }
         SoundRecorder s = new SoundRecorder();
-        private void t_MouseDown(object sender, MouseButtonEventArgs e)
+        private async void t_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (_in.Text == "喵喵喵")
             {
@@ -112,7 +114,8 @@ namespace Lemon_App.Page.Sr
                 s.SetFileName(AppDomain.CurrentDomain.BaseDirectory + "on.wav");
                 s.RecStart();
                 _in.Text = "录音中...";
-            }else if (_in.Text == "录音中...")
+            }
+            else if (_in.Text == "录音中...")
             {
                 //mciSendString("stop movie", "", 0, 0);
                 //mciSendString("save movie on.wav", "", 0, 0);
@@ -121,8 +124,7 @@ namespace Lemon_App.Page.Sr
                 _in.Text = "识别中...";
                 if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "on.wav"))
                 {
-                    MessageBox.Show("OK");
-                    o.Text = Post(AppDomain.CurrentDomain.BaseDirectory + "on.wav");
+                    o.Text = await PostAsync(AppDomain.CurrentDomain.BaseDirectory + "on.wav");
                     _in.Text = "喵喵喵";
                 }
             }
