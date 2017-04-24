@@ -295,6 +295,25 @@ namespace Lemon_App
                 Mus.StrokeThickness = 1;
                 ALL.StrokeThickness = 1;
                 Rbt.StrokeThickness = 1;
+                _2048.a1.MouseDown += delegate {
+                    _2048 = new IApps._2048._2048Control();
+                    _2048.Visibility = Visibility.Collapsed;
+
+                    Robot.Visibility = Visibility.Collapsed;
+                    All.Visibility = Visibility.Collapsed;
+                    _2048.Visibility = Visibility.Collapsed;
+                    User.Visibility = Visibility.Collapsed;
+                    Music.Visibility = Visibility.Visible;
+                    Music.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 50, 0, 0), new Thickness(0), TimeSpan.FromSeconds(0.2)));
+                    //IContentPage.Children.Clear();
+                    //   IContentPage.Children.Add(new MusicControl());
+                    Mus.Fill = new SolidColorBrush(Color.FromArgb(200, 157, 159, 167));
+                    ALL.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
+                    Rbt.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
+                    Mus.StrokeThickness = 0;
+                    ALL.StrokeThickness = 1;
+                    Rbt.StrokeThickness = 1;
+                };
             }
         }
     }

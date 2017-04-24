@@ -517,10 +517,6 @@ namespace Lemon_App.IApps._2048
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
             v.IsOpen = false;
-            a.Children.Clear();
-            InitializeComponent();
-            NewNum();
-            NewNum();
         }
 
         private void Border_MouseDown_1(object sender, MouseButtonEventArgs e)
