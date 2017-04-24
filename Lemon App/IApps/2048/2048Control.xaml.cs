@@ -35,15 +35,12 @@ namespace Lemon_App.IApps._2048
             {0,0,0,0},
             {0,0,0,0}
 };
-        /// <summary>
-        /// 随机生成新数字
-        /// </summary>
         private void NewNum()
         {
             Random random = new Random();
-            int num = random.Next(0, 9) > 2 ? 2 : 4;//随机生成2、4
+            int num = random.Next(0, 9) > 2 ? 2 : 4;
 
-            int nullnum = 0;//剩余空格数，随机确定生成位置
+            int nullnum = 0;
             for (int i = 0; i < 4; i++)
                 for (int j = 0; j < 4; j++)
                     if (Block[i, j] == 0)
@@ -184,9 +181,6 @@ namespace Lemon_App.IApps._2048
                 lblScores.Text = (int.Parse(lblScores.Text) + scores).ToString();
             }
         }
-        /// <summary>
-        /// 枚举四个方向
-        /// </summary>
         enum Direction
         {
             Left,
@@ -195,9 +189,6 @@ namespace Lemon_App.IApps._2048
             Down
         }
 
-        /// <summary>
-        /// 根据数组生成界面方块
-        /// </summary>
         private void creatBlock(Direction deraction)
         {
             foreach (var uiele in grdMain.Children)

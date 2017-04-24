@@ -296,12 +296,13 @@ namespace Lemon_App
                 ALL.StrokeThickness = 1;
                 Rbt.StrokeThickness = 1;
                 _2048.a1.MouseDown += delegate {
+                    IContentPage.Children.Remove(_2048);
+                    _2048 = null;
                     _2048 = new IApps._2048._2048Control();
                     _2048.Visibility = Visibility.Collapsed;
-
-                    Robot.Visibility = Visibility.Collapsed;
+                    IContentPage.Children.Add(_2048);
+                   Robot.Visibility = Visibility.Collapsed;
                     All.Visibility = Visibility.Collapsed;
-                    _2048.Visibility = Visibility.Collapsed;
                     User.Visibility = Visibility.Collapsed;
                     Music.Visibility = Visibility.Visible;
                     Music.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 50, 0, 0), new Thickness(0), TimeSpan.FromSeconds(0.2)));

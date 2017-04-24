@@ -828,7 +828,7 @@ namespace Lemon_App
                     {
                         for (int j = 0; j < columns; j++)
                         {
-                            var border = new Border() { BorderBrush = new SolidColorBrush(Colors.Gray), BorderThickness = new Thickness(1) };
+                            var border = new Border() { BorderBrush = new SolidColorBrush(Colors.Gray), BorderThickness = new Thickness(0.5) };
                             Grid.SetRow(border, i);
                             Grid.SetColumn(border, j);
 

@@ -169,23 +169,15 @@ namespace Lemon_App
                     Settings.Default.Save();
                     OS.Visibility = Visibility.Collapsed;
                     RM.Visibility = Visibility.Collapsed;
+                    q.Visibility = Visibility.Collapsed;
+                    s.Visibility = Visibility.Collapsed;
+                    rk.Visibility = Visibility.Collapsed;
                     ThicknessAnimationUsingKeyFrames t = new ThicknessAnimationUsingKeyFrames();
                     t.KeyFrames.Add(new LinearThicknessKeyFrame(new Thickness(0, -45, 0, 0), TimeSpan.FromSeconds(0)));
                     t.KeyFrames.Add(new LinearThicknessKeyFrame(new Thickness(0, 50, 0, 0), TimeSpan.FromSeconds(0.3)));
                     t.KeyFrames.Add(new LinearThicknessKeyFrame(new Thickness(0, 50, 0, 0), TimeSpan.FromSeconds(3)));
                     TX.BeginAnimation(MarginProperty,t);
                     tr.Start();
-                }else
-                {
-                    OS.Visibility = Visibility.Collapsed;
-                    RM.Visibility = Visibility.Collapsed;
-                    ThicknessAnimationUsingKeyFrames t = new ThicknessAnimationUsingKeyFrames();
-                    t.KeyFrames.Add(new LinearThicknessKeyFrame(new Thickness(0, -45, 0, 0), TimeSpan.FromSeconds(0)));
-                    t.KeyFrames.Add(new LinearThicknessKeyFrame(new Thickness(0, 50, 0, 0), TimeSpan.FromSeconds(0.3)));
-                    t.KeyFrames.Add(new LinearThicknessKeyFrame(new Thickness(0, 50, 0, 0), TimeSpan.FromSeconds(2)));
-                    t.AutoReverse = true;
-                    TX.BeginAnimation(MarginProperty, t);
-                    trs.Start();
                 }
         }
 
@@ -228,6 +220,9 @@ namespace Lemon_App
                 Settings.Default.Save();
                 OS.Visibility = Visibility.Collapsed;
                 RM.Visibility = Visibility.Collapsed;
+                q.Visibility = Visibility.Collapsed;
+                s.Visibility = Visibility.Collapsed;
+                rk.Visibility = Visibility.Collapsed;
                 ThicknessAnimationUsingKeyFrames t = new ThicknessAnimationUsingKeyFrames();
                 t.KeyFrames.Add(new LinearThicknessKeyFrame(new Thickness(0, -45, 0, 0), TimeSpan.FromSeconds(0)));
                 t.KeyFrames.Add(new LinearThicknessKeyFrame(new Thickness(0, 50, 0, 0), TimeSpan.FromSeconds(0.3)));
