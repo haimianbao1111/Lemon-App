@@ -125,8 +125,6 @@ namespace Lemon_App.IApps._2048
                     }
                 }
             }
-
-            //列没有相同或0
             for (int col = 0; col < 4; col++)
             {
                 for (int i = 0; i < 4; i++)
@@ -155,10 +153,6 @@ namespace Lemon_App.IApps._2048
 
             return true;
         }
-        /// <summary>
-        /// 分数改变 动画效果
-        /// </summary>
-        /// <param name="scores"></param>
         private void ScoresChanged(int scores)
         {
             if (scores > 0)
