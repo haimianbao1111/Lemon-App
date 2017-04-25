@@ -295,15 +295,14 @@ namespace Lemon_App
         {
            
         }
-
+        MediaPlayer p = new MediaPlayer();
         private  void label3_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (FanyiFromtoTextBox.Text != "")
             {
-                MediaPlayer p = new MediaPlayer();
                 p.Open(new Uri($"http://fanyi.baidu.com/gettts?lan={to}&text={FanyiFromtoTextBox.Text}&spd=3&source=web"));
                 p.Play();
-                p.MediaEnded += delegate { p.Close(); };
+                //p.MediaEnded += delegate { p.Close(); };
             }
         }
 
@@ -315,7 +314,7 @@ namespace Lemon_App
             }
             else
             {
-                string o = await Uuuhh.GetWebAsync("http://dict-co.iciba.com/api/dictionary.php?w=" + Uri.EscapeUriString(textBox1.Text) + "&key=04C75B1C14FAEA63A0DDA93FE527EA0A");
+                string o = await Uuuhh.GetWebAsync("http://dict-co.iciba.com/api/dictionary.php?w=" + Uri.EscapeDataString(textBox1.Text) + "&key=04C75B1C14FAEA63A0DDA93FE527EA0A");
                 textBlock.Text = "vi." + 取出中间文本(o, "<acceptation>", "</acceptation>", 0) + "\r\n" + 取出中间文本(o, "<sent><orig>", "</orig>", 0) + 取出中间文本(o, "<trans>", "</trans></sent>", 0);
             }
         }
