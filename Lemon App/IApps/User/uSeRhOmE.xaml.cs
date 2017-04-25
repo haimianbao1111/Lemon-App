@@ -12,6 +12,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -94,6 +95,21 @@ namespace Lemon_App
             {
                 Settings.Default.qm = qm.Text;
                 Settings.Default.Save();
+            }
+        }
+        int iss = 0;
+        private void Path_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (iss==0)
+            {
+                iss = 1;
+                ss.BeginAnimation(OpacityProperty, new DoubleAnimation(1, 0, TimeSpan.FromSeconds(0.2)));
+                st.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.2)));
+            }else if(iss==1)
+            {
+                iss = 0;
+                ss.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.2)));
+                st.BeginAnimation(OpacityProperty, new DoubleAnimation(1, 0, TimeSpan.FromSeconds(0.2)));
             }
         }
     }

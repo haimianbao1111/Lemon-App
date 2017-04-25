@@ -624,7 +624,7 @@ namespace Lemon_App
                         }
                     }
                 }
-                catch { pz.Text = "标准"; listBox_SelectionChanged(sender, e); }
+                catch {  }
             }
         }
 
