@@ -1046,7 +1046,7 @@ namespace Lemon_App
             {
                 datadlwo = textBox.Text;
                 if (DownloadPath == "xxx")
-                    DownloadPath = AppDomain.CurrentDomain.BaseDirectory + datadlwo;
+                    DownloadPath = AppDomain.CurrentDomain.BaseDirectory + "\\"+datadlwo;
                 if (Directory.Exists(DownloadPath) == false)
                     Directory.CreateDirectory(DownloadPath);
                 downloadindex = 0;
