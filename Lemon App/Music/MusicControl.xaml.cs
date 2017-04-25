@@ -202,8 +202,9 @@ namespace Lemon_App
         {
             if (listBox.SelectedIndex != -1)
             {
-                if (((listBox.SelectedItem as MusicItemControl).Music as Music).HQFOTmat != "HQ")
-                    if (pz.Text == "HQ") pz.Text = "标准";
+                if ((listBox.SelectedItem as MusicItemControl).RS.Visibility != Visibility.Visible)
+                    if ((listBox.SelectedItem as MusicItemControl).RC.Visibility!=Visibility.Visible)
+                       if (pz.Text == "HQ") pz.Text = "标准";
                 try
                 {
                     Bass.BASS_ChannelStop(stream);
