@@ -1039,31 +1039,34 @@ namespace Lemon_App
         }
         int downloadindex = 0;
         string datadlwo = "";
-        ItemCollection ic;
+        List<Music> ic = new List<Music>();
         private async void Border_MouseDown_5(object sender, MouseButtonEventArgs e)
         {
                 if (e.ClickCount >= 2)
             {
                 datadlwo = textBox.Text;
                 if (DownloadPath == "xxx")
-                    DownloadPath = AppDomain.CurrentDomain.BaseDirectory + "\\"+datadlwo + "\\";
+                    DownloadPath = AppDomain.CurrentDomain.BaseDirectory + "\\"+datadlwo+"\\";
                 if (Directory.Exists(DownloadPath) == false)
                     Directory.CreateDirectory(DownloadPath);
                 downloadindex = 0;
                     popupop.IsOpen = true;
-                ic = listBox.Items;
-                    download_name.Text = (ic[downloadindex] as MusicItemControl).Content;
+                for(int k = 0; k != listBox.Items.Count; k++)
+                {
+                    ic.Add((listBox.Items[k] as MusicItemControl).Music as Music);
+                }
+                download_name.Text = ic[downloadindex].Singer + "-" + ic[downloadindex].MusicName;
                     string guid = "20D919A4D7700FBC424740E8CED80C5F";
                     string ioo = await Uuuhh.GetWebAsync($"http://59.37.96.220/base/fcgi-bin/fcg_musicexpress2.fcg?version=12&miniversion=92&key=19914AA57A96A9135541562F16DAD6B885AC8B8B5420AC567A0561D04540172E&guid={guid}");
                     string vkey = He.Text(ioo, "key=\"", "\" speedrpttype", 0);
-                    musicurl = $"http://182.247.250.19/streamoc.music.tc.qq.com/M500{((ic[downloadindex] as MusicItemControl).Music as Music).MusicID}.mp3?vkey={vkey}&guid={guid}";
+                    musicurl = $"http://182.247.250.19/streamoc.music.tc.qq.com/M500{ic[downloadindex].MusicID}.mp3?vkey={vkey}&guid={guid}";
                 dc = new WebClient()
                 {
                     Proxy = He.proxy
                 };
                 dc.DownloadFileCompleted += OsAsync;
                     dc.DownloadProgressChanged += As;
-                    dc.DownloadFileAsync(new Uri(musicurl),DownloadPath+(ic[downloadindex] as MusicItemControl).Content.Replace("\\", ",").Replace("/", ",")+".mp3");
+                    dc.DownloadFileAsync(new Uri(musicurl),DownloadPath+ download_name.Text.Replace("\\", ",").Replace("/", ",")+".mp3");
                 }
             if (e.ClickCount == 1)
             {
@@ -1104,14 +1107,14 @@ namespace Lemon_App
             if (downloadindex != ic.Count)
             {
                 downloadindex++;
-                    download_name.Text = (ic[downloadindex] as MusicItemControl).Content;
-                    string guid = "20D919A4D7700FBC424740E8CED80C5F";
+                    download_name.Text = ic[downloadindex].Singer + "-" + ic[downloadindex].MusicName;
+                string guid = "20D919A4D7700FBC424740E8CED80C5F";
                     string ioo = await Uuuhh.GetWebAsync($"http://59.37.96.220/base/fcgi-bin/fcg_musicexpress2.fcg?version=12&miniversion=92&key=19914AA57A96A9135541562F16DAD6B885AC8B8B5420AC567A0561D04540172E&guid={guid}");
                     string vkey = He.Text(ioo, "key=\"", "\" speedrpttype", 0);
-                    musicurl = $"http://182.247.250.19/streamoc.music.tc.qq.com/M500{((ic[downloadindex] as MusicItemControl).Music as Music).MusicID}.mp3?vkey={vkey}&guid={guid}";
-                dc.DownloadFileAsync(new Uri(musicurl), DownloadPath + (ic[downloadindex] as MusicItemControl).Content.Replace("\\", ",").Replace("/", ",") + ".mp3");
+                    musicurl = $"http://182.247.250.19/streamoc.music.tc.qq.com/M500{ic[downloadindex].MusicID}.mp3?vkey={vkey}&guid={guid}";
+                dc.DownloadFileAsync(new Uri(musicurl), DownloadPath + (download_name.Text.Replace("\\", ",").Replace("/", ",") + ".mp3"));
             }
-                else { popupop.IsOpen = false; MessageBox.Show("成功下载全部"); dc.Dispose();}
+                else { popupop.IsOpen = false; MessageBox.Show("成功下载全部"); dc.Dispose(); ic.Clear(); }
         }
 
         public bool IsVerticalScrollBarAtButtom(ScrollViewer o)
