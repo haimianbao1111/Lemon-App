@@ -1111,7 +1111,7 @@ namespace Lemon_App
                     musicurl = $"http://182.247.250.19/streamoc.music.tc.qq.com/M500{((ic[downloadindex] as MusicItemControl).Music as Music).MusicID}.mp3?vkey={vkey}&guid={guid}";
                 dc.DownloadFileAsync(new Uri(musicurl), DownloadPath + (ic[downloadindex] as MusicItemControl).Content.Replace("\\", ",").Replace("/", ",") + ".mp3");
             }
-                else { popupop.IsOpen = false; MessageBox.Show("成功下载全部"); dc.Dispose();ic.Clear(); }
+                else { popupop.IsOpen = false; MessageBox.Show("成功下载全部"); dc.Dispose();}
         }
 
         public bool IsVerticalScrollBarAtButtom(ScrollViewer o)
@@ -1236,7 +1236,6 @@ namespace Lemon_App
         private void CLOSE_MouseDown(object sender, MouseButtonEventArgs e)
         {
             dc.Dispose();
-            ic.Clear();
             popupop.IsOpen = false;
         }
 
