@@ -62,225 +62,13 @@ namespace Lemon_App
             return result;
         }
         string to = "en";
+        string from = "auto";
         private async void button_Cli(object sender, MouseButtonEventArgs e)
         {
             if (textBox1.Text != "")
             {
                 string q = Uri.EscapeDataString(textBox1.Text);
-                string from = "auto";
                 string sign = MD5.EncryptToMD5string("20151231000008489" + textBox1.Text + "2004112629Q3EQP1ay2cLKAMxs2gqa");
-                if (Yyycombo.Text == "自动")
-                {
-                    from = "auto";
-                }
-                if (Yyycombo.Text == "中文")
-                {
-                    from = "zh";
-                }
-                if (Yyycombo.Text == "粤语")
-                {
-                    from = "yue";
-                }
-                if (Yyycombo.Text == "英语")
-                {
-                    from = "en";
-                }
-                if (Yyycombo.Text == "文言文")
-                {
-                    from = "wyw";
-                }
-                if (Yyycombo.Text == "日语")
-                {
-                    from = "jp";
-                }
-                if (Yyycombo.Text == "韩语")
-                {
-                    from = "kor";
-                }
-                if (Yyycombo.Text == "法语")
-                {
-                    from = "fra";
-                }
-                if (Yyycombo.Text == "西班牙语")
-                {
-                    from = "spa";
-                }
-                if (Yyycombo.Text == "俄语")
-                {
-                    from = "ru";
-                }
-                if (Yyycombo.Text == "泰语")
-                {
-                    from = "th";
-                }
-                if (Yyycombo.Text == "阿拉伯语")
-                {
-                    from = "ara";
-                }
-                if (Yyycombo.Text == "德语")
-                {
-                    from = "de";
-                }
-                if (Yyycombo.Text == "意大利语")
-                {
-                    from = "it";
-                }
-                if (Yyycombo.Text == "希腊语")
-                {
-                    from = "el";
-                }
-                if (Yyycombo.Text == "荷兰语")
-                {
-                    from = "nl";
-                }
-                if (Yyycombo.Text == "波兰语")
-                {
-                    from = "pl";
-                }
-                if (Yyycombo.Text == "保加利亚语")
-                {
-                    from = "bul";
-                }
-                if (Yyycombo.Text == "爱沙尼亚语")
-                {
-                    from = "auto";
-                }
-                if (Yyycombo.Text == "丹麦语")
-                {
-                    from = "dan";
-                }
-                if (Yyycombo.Text == "芬兰语")
-                {
-                    from = "fin";
-                }
-                if (Yyycombo.Text == "捷克语")
-                {
-                    from = "cs";
-                }
-                if (Yyycombo.Text == "罗马尼亚语")
-                {
-                    from = "rom";
-                }
-                if (Yyycombo.Text == "斯洛文尼亚语")
-                {
-                    from = "slo";
-                }
-                if (Yyycombo.Text == "瑞典语")
-                {
-                    from = "swe";
-                }
-                if (Yyycombo.Text == "匈牙利语")
-                {
-                    from = "hu";
-                }
-                if (Yyycombo.Text == "繁体中文")
-                {
-                    from = "cht";
-                }
-                if (HyycomboBox.Text == "中文")
-                {
-                    to = "zh";
-                }
-                if (HyycomboBox.Text == "粤语")
-                {
-                    to = "yue";
-                }
-                if (HyycomboBox.Text == "英语")
-                {
-                    to = "en";
-                }
-                if (HyycomboBox.Text == "文言文")
-                {
-                    to = "wyw";
-                }
-                if (HyycomboBox.Text == "日语")
-                {
-                    to = "jp";
-                }
-                if (HyycomboBox.Text == "韩语")
-                {
-                    to = "kor";
-                }
-                if (HyycomboBox.Text == "法语")
-                {
-                    to = "fra";
-                }
-                if (HyycomboBox.Text == "西班牙语")
-                {
-                    to = "spa";
-                }
-                if (HyycomboBox.Text == "俄语")
-                {
-                    to = "ru";
-                }
-                if (HyycomboBox.Text == "泰语")
-                {
-                    to = "th";
-                }
-                if (HyycomboBox.Text == "阿拉伯语")
-                {
-                    to = "ara";
-                }
-                if (HyycomboBox.Text == "德语")
-                {
-                    to = "de";
-                }
-                if (HyycomboBox.Text == "意大利语")
-                {
-                    to = "it";
-                }
-                if (HyycomboBox.Text == "希腊语")
-                {
-                    to = "el";
-                }
-                if (HyycomboBox.Text == "荷兰语")
-                {
-                    to = "nl";
-                }
-                if (HyycomboBox.Text == "波兰语")
-                {
-                    to = "pl";
-                }
-                if (HyycomboBox.Text == "保加利亚语")
-                {
-                    to = "bul";
-                }
-                if (HyycomboBox.Text == "爱沙尼亚语")
-                {
-                    to = "auto";
-                }
-                if (HyycomboBox.Text == "丹麦语")
-                {
-                    to = "dan";
-                }
-                if (HyycomboBox.Text == "芬兰语")
-                {
-                    to = "fin";
-                }
-                if (HyycomboBox.Text == "捷克语")
-                {
-                    to = "cs";
-                }
-                if (HyycomboBox.Text == "罗马尼亚语")
-                {
-                    to = "rom";
-                }
-                if (HyycomboBox.Text == "斯洛文尼亚语")
-                {
-                    to = "slo";
-                }
-                if (HyycomboBox.Text == "瑞典语")
-                {
-                    to = "swe";
-                }
-                if (HyycomboBox.Text == "匈牙利语")
-                {
-                    to = "hu";
-                }
-                if (HyycomboBox.Text == "繁体中文")
-                {
-                    to = "cht";
-                }
                 try
                 {
                     string o = "http://api.fanyi.baidu.com/api/trans/vip/translate?q=" + q + "&from=" + from + "&to=" + to + "&appid=20151231000008489&salt=2004112629" + "&sign=" + sign;
@@ -300,7 +88,7 @@ namespace Lemon_App
         {
             if (FanyiFromtoTextBox.Text != "")
             {
-                p.Open(new Uri($"http://fanyi.baidu.com/gettts?lan={to}&text={FanyiFromtoTextBox.Text}&spd=3&source=web"));
+                p.Open(new Uri($"http://fanyi.baidu.com/gettts?lan={to}&text={Uri.EscapeDataString(FanyiFromtoTextBox.Text)}&spd=3&source=web"));
                 p.Play();
                 //p.MediaEnded += delegate { p.Close(); };
             }
@@ -338,6 +126,222 @@ namespace Lemon_App
                     sTemp += bytHash[i].ToString("X").PadLeft(2, '0');
                 }
                 return sTemp.ToLower();
+            }
+        }
+
+        private void HyycomboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (Yyycombo.Text == "自动")
+            {
+                from = "auto";
+            }
+            if (Yyycombo.Text == "中文")
+            {
+                from = "zh";
+            }
+            if (Yyycombo.Text == "粤语")
+            {
+                from = "yue";
+            }
+            if (Yyycombo.Text == "英语")
+            {
+                from = "en";
+            }
+            if (Yyycombo.Text == "文言文")
+            {
+                from = "wyw";
+            }
+            if (Yyycombo.Text == "日语")
+            {
+                from = "jp";
+            }
+            if (Yyycombo.Text == "韩语")
+            {
+                from = "kor";
+            }
+            if (Yyycombo.Text == "法语")
+            {
+                from = "fra";
+            }
+            if (Yyycombo.Text == "西班牙语")
+            {
+                from = "spa";
+            }
+            if (Yyycombo.Text == "俄语")
+            {
+                from = "ru";
+            }
+            if (Yyycombo.Text == "泰语")
+            {
+                from = "th";
+            }
+            if (Yyycombo.Text == "阿拉伯语")
+            {
+                from = "ara";
+            }
+            if (Yyycombo.Text == "德语")
+            {
+                from = "de";
+            }
+            if (Yyycombo.Text == "意大利语")
+            {
+                from = "it";
+            }
+            if (Yyycombo.Text == "希腊语")
+            {
+                from = "el";
+            }
+            if (Yyycombo.Text == "荷兰语")
+            {
+                from = "nl";
+            }
+            if (Yyycombo.Text == "波兰语")
+            {
+                from = "pl";
+            }
+            if (Yyycombo.Text == "保加利亚语")
+            {
+                from = "bul";
+            }
+            if (Yyycombo.Text == "爱沙尼亚语")
+            {
+                from = "auto";
+            }
+            if (Yyycombo.Text == "丹麦语")
+            {
+                from = "dan";
+            }
+            if (Yyycombo.Text == "芬兰语")
+            {
+                from = "fin";
+            }
+            if (Yyycombo.Text == "捷克语")
+            {
+                from = "cs";
+            }
+            if (Yyycombo.Text == "罗马尼亚语")
+            {
+                from = "rom";
+            }
+            if (Yyycombo.Text == "斯洛文尼亚语")
+            {
+                from = "slo";
+            }
+            if (Yyycombo.Text == "瑞典语")
+            {
+                from = "swe";
+            }
+            if (Yyycombo.Text == "匈牙利语")
+            {
+                from = "hu";
+            }
+            if (Yyycombo.Text == "繁体中文")
+            {
+                from = "cht";
+            }
+            if (HyycomboBox.Text == "中文")
+            {
+                to = "zh";
+            }
+            if (HyycomboBox.Text == "粤语")
+            {
+                to = "yue";
+            }
+            if (HyycomboBox.Text == "英语")
+            {
+                to = "en";
+            }
+            if (HyycomboBox.Text == "文言文")
+            {
+                to = "wyw";
+            }
+            if (HyycomboBox.Text == "日语")
+            {
+                to = "jp";
+            }
+            if (HyycomboBox.Text == "韩语")
+            {
+                to = "kor";
+            }
+            if (HyycomboBox.Text == "法语")
+            {
+                to = "fra";
+            }
+            if (HyycomboBox.Text == "西班牙语")
+            {
+                to = "spa";
+            }
+            if (HyycomboBox.Text == "俄语")
+            {
+                to = "ru";
+            }
+            if (HyycomboBox.Text == "泰语")
+            {
+                to = "th";
+            }
+            if (HyycomboBox.Text == "阿拉伯语")
+            {
+                to = "ara";
+            }
+            if (HyycomboBox.Text == "德语")
+            {
+                to = "de";
+            }
+            if (HyycomboBox.Text == "意大利语")
+            {
+                to = "it";
+            }
+            if (HyycomboBox.Text == "希腊语")
+            {
+                to = "el";
+            }
+            if (HyycomboBox.Text == "荷兰语")
+            {
+                to = "nl";
+            }
+            if (HyycomboBox.Text == "波兰语")
+            {
+                to = "pl";
+            }
+            if (HyycomboBox.Text == "保加利亚语")
+            {
+                to = "bul";
+            }
+            if (HyycomboBox.Text == "爱沙尼亚语")
+            {
+                to = "auto";
+            }
+            if (HyycomboBox.Text == "丹麦语")
+            {
+                to = "dan";
+            }
+            if (HyycomboBox.Text == "芬兰语")
+            {
+                to = "fin";
+            }
+            if (HyycomboBox.Text == "捷克语")
+            {
+                to = "cs";
+            }
+            if (HyycomboBox.Text == "罗马尼亚语")
+            {
+                to = "rom";
+            }
+            if (HyycomboBox.Text == "斯洛文尼亚语")
+            {
+                to = "slo";
+            }
+            if (HyycomboBox.Text == "瑞典语")
+            {
+                to = "swe";
+            }
+            if (HyycomboBox.Text == "匈牙利语")
+            {
+                to = "hu";
+            }
+            if (HyycomboBox.Text == "繁体中文")
+            {
+                to = "cht";
             }
         }
     }

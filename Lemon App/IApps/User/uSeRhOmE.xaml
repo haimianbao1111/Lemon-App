@@ -28,8 +28,11 @@
     </UserControl.Triggers>
     <Grid>
         <Grid Width="10" Height="10">
-            <Popup x:Name="popup" local:PopopHelper.PopupPlacementTarget="{Binding ElementName=border}" Width="260" Height="100" AllowsTransparency="True" PopupAnimation="Fade" Placement="Top" HorizontalOffset="-125" VerticalOffset="50">
-                <Border x:Name="border" Background="White" CornerRadius="5" BorderBrush="#FFC9C9C9" BorderThickness="1">
+            <Popup x:Name="popup" local:PopopHelper.PopupPlacementTarget="{Binding ElementName=border}" Width="280" Height="120" AllowsTransparency="True" PopupAnimation="Fade" Placement="Top" HorizontalOffset="-125" VerticalOffset="50">
+                <Border x:Name="border" Background="White" CornerRadius="5" BorderBrush="#FFC9C9C9" BorderThickness="1" Margin="10">
+                    <Border.Effect>
+                        <DropShadowEffect Opacity="0.4" ShadowDepth="0" BlurRadius="10"/>
+                    </Border.Effect>
                     <Grid Margin="0,0,-1,-1">
                         <Label x:Name="label3_Copy" Content="©2016 Twilight all rights reserved. &#xD;&#xA;QQ:2728578956    &#xD;&#xA;Lemon App Professional" Margin="10,24,0,10" Foreground="#FF959597" Background="{x:Null}"/>
                         <Border x:Name="border1" HorizontalAlignment="Left" Height="13" VerticalAlignment="Top" Width="13" Background="#FF5B5B5B" CornerRadius="100" Margin="5,5,0,0"/>
@@ -53,7 +56,11 @@
             </ScrollViewer>
         </Grid>
         <TextBlock x:Name="NM" Height="28.313" Margin="90,19.687,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF2D2D30" FontSize="20"><Run Text="Lemon User"/></TextBlock>
-        <Border x:Name="TX" Height="75" Width="75" Margin="10,10,0,0" VerticalAlignment="Top" CornerRadius="125" Background="#FF16537E" MouseDown="TX_MouseDown" HorizontalAlignment="Left" BorderBrush="#FF3399FF" BorderThickness="2"/>
+        <Border x:Name="TX" Height="75" Width="75" Margin="10,10,0,0" VerticalAlignment="Top" CornerRadius="125" Background="#FF16537E" MouseDown="TX_MouseDown" HorizontalAlignment="Left" BorderBrush="#FF3399FF" BorderThickness="2">
+            <Border.Effect>
+                <DropShadowEffect Opacity="0.4" ShadowDepth="0" BlurRadius="10"/>
+            </Border.Effect>
+        </Border>
         <TextBox x:Name="qm" BorderThickness="0" Margin="90,56,10,0" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2D2D30" SelectionBrush="#FF31C27C" KeyDown="qm_KeyDown"/>
         <Grid HorizontalAlignment="Right" MouseDown="Path_MouseDown" Width="25" Height="25" VerticalAlignment="Top" Background="#00000000">
             <Path StrokeThickness="0" Margin="0,5,5,0" Fill="Gray" Data="M344.25,357.75c10.404,10.404,15.606,23.154,15.606,38.25c0,15.096-5.202,27.846-15.606,38.25s-23.154,15.606-38.25,15.606

@@ -30,7 +30,7 @@
 			v-2.045C16.937,27.51,21.117,23.799,22,19z M11,24c3.866,0,7-3.134,7-7V7c0-3.866-3.134-7-7-7C7.134,0,4,3.134,4,7v10
 			C4,20.866,7.134,24,11,24z M6,7c0-2.761,2.239-5,5-5c2.761,0,5,2.239,5,5v10c0,2.761-2.239,5-5,5c-2.761,0-5-2.239-5-5V7z" Fill="White" Stretch="Uniform" Margin="10"/>
         </Border>
-        <Border Height="30" Margin="0,155,0,0" VerticalAlignment="Top" Background="White" Width="130" CornerRadius="5">
+        <Border Height="30" Margin="0,155,0,0" VerticalAlignment="Top" Background="White" Width="130" CornerRadius="5" MouseDown="Border_MouseDown">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="10" Opacity="0.4" ShadowDepth="0"/>
             </Border.Effect>

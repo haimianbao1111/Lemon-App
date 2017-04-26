@@ -141,8 +141,17 @@ namespace Lemon_App.Page.Sr
                     _in.Text = "喵喵喵";
                 }
             }
+            else if (_in.Text == "啦啦啦")
+            {
+                if (o.Text != "")
+                {
+                    p.Open(new Uri($"http://fanyi.baidu.com/gettts?lan=zh&text={Uri.EscapeDataString(o.Text)}&spd=3&source=web"));
+                    p.Play();
+                    //p.MediaEnded += delegate { p.Close(); };
+                }
+            }
         }
-
+        MediaPlayer p = new MediaPlayer();
         private void CLOSE_MouseDown(object sender, MouseButtonEventArgs e)
         {
             this.Close();
@@ -152,6 +161,18 @@ namespace Lemon_App.Page.Sr
         {
             if (e.LeftButton == MouseButtonState.Pressed)
                 this.DragMove();
+        }
+
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (_in.Text == "喵喵喵")
+            {
+                _in.Text = "啦啦啦";
+                _in.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.3)));
+            }
+            else {
+                _in.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.3)));
+                _in.Text = "喵喵喵"; }
         }
     }
 }
