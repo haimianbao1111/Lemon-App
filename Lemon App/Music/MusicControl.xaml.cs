@@ -626,6 +626,25 @@ namespace Lemon_App
                     }
                 }
                 catch {  }
+                if (pz.Text == "经济")
+                    musicurl = $"http://cc.stream.qqmusic.qq.com/C100{musicid}.m4a?fromtag=52";
+                else if(pz.Text=="标准")
+                {
+                    string guid = "20D919A4D7700FBC424740E8CED80C5F";
+                    string ioo = await Uuuhh.GetWebAsync($"http://59.37.96.220/base/fcgi-bin/fcg_musicexpress2.fcg?version=12&miniversion=92&key=19914AA57A96A9135541562F16DAD6B885AC8B8B5420AC567A0561D04540172E&guid={guid}");
+                    string vkey = He.Text(ioo, "key=\"", "\" speedrpttype", 0);
+                    musicurl = $"http://182.247.250.19/streamoc.music.tc.qq.com/M500{musicid}.mp3?vkey={vkey}&guid={guid}";
+                }else if (pz.Text == "HQ")
+                {
+                    string guid = "20D919A4D7700FBC424740E8CED80C5F";
+                    string ioo = await Uuuhh.GetWebAsync($"http://59.37.96.220/base/fcgi-bin/fcg_musicexpress2.fcg?version=12&miniversion=92&key=19914AA57A96A9135541562F16DAD6B885AC8B8B5420AC567A0561D04540172E&guid={guid}");
+                    string vkey = He.Text(ioo, "key=\"", "\" speedrpttype", 0);
+                    musicurl = $"http://182.247.250.19/streamoc.music.tc.qq.com/O600{musicid}.ogg?vkey={vkey}&guid={guid}";
+                }
+                string a= await Uuuhh.GetWebAsync($"http://api.t.sina.com.cn/short_url/shorten.json?source=3271760578&url_long={Uri.EscapeDataString(musicurl)}");
+                JObject al = JObject.Parse(He.Text(a,"[","]",0));
+                string data = al["url_short"].ToString();
+                q2code.Background = new ImageBrush(new BitmapImage(new Uri($"http://qr.topscan.com/api.php?text={Uri.EscapeDataString(data)}")));
             }
         }
 
@@ -818,6 +837,9 @@ namespace Lemon_App
                 var offsetetets = popup2.HorizontalOffset;
                 popup2.HorizontalOffset = offsetetets + 1;
                 popup2.HorizontalOffset = offsetetets;
+                var offsetetetssd = pu.HorizontalOffset;
+                pu.HorizontalOffset = offsetetetssd + 1;
+                pu.HorizontalOffset = offsetetetssd;
             };
 
             audio.Value = Bass.BASS_GetVolume();
@@ -1258,6 +1280,19 @@ namespace Lemon_App
             fbd.ShowDialog();
             if (fbd.SelectedPath != string.Empty)
                DownloadPath = fbd.SelectedPath;
+        }
+
+        private void Border_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (listBox.SelectedIndex != -1)
+            {
+                pu.IsOpen = true;
+            }
+        }
+
+        private void Border_MouseLeave(object sender, MouseEventArgs e)
+        {
+            pu.IsOpen = false;
         }
     }
 }
