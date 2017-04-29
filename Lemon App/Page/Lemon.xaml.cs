@@ -288,6 +288,7 @@ namespace Lemon_App
                         ConsoleManager.Toggle();
                         He.isOpMod = true;
                         Console.WriteLine("OPMOD IS OPEN");
+                        Console.Title = "OPMOD";
                     }
                     else
                     {
