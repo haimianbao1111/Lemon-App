@@ -22,11 +22,9 @@ namespace Lemon_App
     /// </summary>
     public partial class NewsList : UserControl
     {
-        public NewsList(string title,string time,string sousce,string Image,string url)
+        public NewsList(string title,string time,string sousce,string url)
         {
             InitializeComponent();
-       //     if(Image!="")
-          //      this.Image.Background = new ImageBrush(new BitmapImage(new Uri(Image)));
             this.title.Text = title;
             this.Source.Text = sousce + "  " + time;
             uri = url;

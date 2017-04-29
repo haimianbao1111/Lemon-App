@@ -23,6 +23,7 @@ using System.Threading;
 using Microsoft.DirectX;
 using System.Security;
 using System.Diagnostics;
+using System.Collections.Specialized;
 
 //🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂
 //                                                                                          🙂
@@ -234,11 +235,11 @@ namespace Lemon_App
     }
     public class He
     {
-        public static  string Text(string all, string r, string l, int t)
+        public static string Text(string all, string r, string l, int t)
         {
 
             int A = all.IndexOf(r, t);
-            int B =all.IndexOf(l, A + 1);
+            int B = all.IndexOf(l, A + 1);
             if (A < 0 || B < 0)
             {
                 return null;
@@ -255,6 +256,14 @@ namespace Lemon_App
             }
 
         }
+        public static DateTime StampToDateTime(string timeStamp)
+        {
+            DateTime dateTimeStart = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
+            long lTime = long.Parse(timeStamp + "0000000");
+            TimeSpan toNow = new TimeSpan(lTime);
+
+            return dateTimeStart.Add(toNow);
+        }
         public static bool isOpMod = false;
         public static WebProxy proxy = new WebProxy();
         public static string Url = "";
@@ -262,43 +271,43 @@ namespace Lemon_App
         public static int MS = 0;
         public static string on = "";
 
-       /* public static string EmailEorre = @"<table dir=""ltr"">
-    <tbody>
-        <tr>
-            <td id = ""i1"" style=""padding:0; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:17px; color:#707070;"">
-                Lemon App 异常报告
-            </td>
-        </tr>
-        <tr>
-            <td id = ""i2"" style=""padding:0; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:41px; color:#2672ec;"">
-                异常:
-            </td>
-        </tr>
-        <tr>
-            <td id = ""i3"" style=""padding:0; padding-top:25px; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;"">
-                在Lemon App中引发了异常
-            </td>
-        </tr>
-        <tr>
-            <td id = ""i4"" style=""padding:0; padding-top:25px; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;"">
-                异常码：
-                <b>
-                    {ninini}
-                </b>
-            </td>
-        </tr>
-        <tr>
-            <td id = ""i6"" style=""padding:0; padding-top:25px; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;"">
-                此邮件由LemonApp自动发出!
-            </td>
-        </tr>
-        <tr>
-            <td id = ""i7"" style=""padding:0; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;"">
-                Lemon App 团队
-            </td>
-        </tr>
-    </tbody>
-</table>";*/
+        /* public static string EmailEorre = @"<table dir=""ltr"">
+     <tbody>
+         <tr>
+             <td id = ""i1"" style=""padding:0; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:17px; color:#707070;"">
+                 Lemon App 异常报告
+             </td>
+         </tr>
+         <tr>
+             <td id = ""i2"" style=""padding:0; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:41px; color:#2672ec;"">
+                 异常:
+             </td>
+         </tr>
+         <tr>
+             <td id = ""i3"" style=""padding:0; padding-top:25px; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;"">
+                 在Lemon App中引发了异常
+             </td>
+         </tr>
+         <tr>
+             <td id = ""i4"" style=""padding:0; padding-top:25px; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;"">
+                 异常码：
+                 <b>
+                     {ninini}
+                 </b>
+             </td>
+         </tr>
+         <tr>
+             <td id = ""i6"" style=""padding:0; padding-top:25px; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;"">
+                 此邮件由LemonApp自动发出!
+             </td>
+         </tr>
+         <tr>
+             <td id = ""i7"" style=""padding:0; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;"">
+                 Lemon App 团队
+             </td>
+         </tr>
+     </tbody>
+ </table>";*/
         /// <summary>
         /// 发送HTTP请求
         /// </summary>
@@ -306,14 +315,15 @@ namespace Lemon_App
         /// <param name="param">请求的参数</param>
         /// <returns>请求结果</returns>
         public static string request(string url, string param)
-        { try
+        {
+            try
             {
                 string strURL = url + '?' + param;
                 System.Net.HttpWebRequest request;
                 request = (System.Net.HttpWebRequest)WebRequest.Create(strURL);
                 request.Method = "GET";
                 request.Proxy = He.proxy;
-           
+
                 request.Headers.Add("apikey", "d2eb2545efba96cd3c9b6cf0cd07f135");
                 System.Net.HttpWebResponse response;
                 response = (System.Net.HttpWebResponse)request.GetResponse();
@@ -329,7 +339,7 @@ namespace Lemon_App
                 return strValue;
             }
             catch { return null; }
-            }
+        }
     }
 
     public class Lemon_Updata
@@ -343,7 +353,7 @@ namespace Lemon_App
                 hwr.Proxy = He.proxy;
                 var o = await hwr.GetResponseAsync();
                 StreamReader sr = new StreamReader(o.GetResponseStream());
-                string html5 =await sr.ReadToEndAsync();
+                string html5 = await sr.ReadToEndAsync();
                 if (con == html5)
                     return false;
                 else return true;
@@ -357,7 +367,7 @@ namespace Lemon_App
             hwr.Proxy = He.proxy;
             var o = await hwr.GetResponseAsync();
             StreamReader sr = new StreamReader(o.GetResponseStream());
-            var st= await sr.ReadToEndAsync();
+            var st = await sr.ReadToEndAsync();
             return st.Replace(".", "\r\n");
         }
     }
@@ -404,6 +414,34 @@ namespace Lemon_App
 
     public class Uuuhh
     {
+        public static void SetHeaderValue(WebHeaderCollection header, string name, string value)
+        {
+            var property = typeof(WebHeaderCollection).GetProperty("InnerCollection",
+                System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+            if (property != null)
+            {
+                var collection = property.GetValue(header, null) as NameValueCollection;
+                collection[name] = value;
+            }
+        }
+        public static async System.Threading.Tasks.Task<string> GetNewsDataAsync(string url, Encoding c)
+        {
+            HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(url);
+            hwr.Timeout = 20000;
+            SetHeaderValue(hwr.Headers, "Connection", "keep-alive");
+            hwr.Headers.Add(HttpRequestHeader.CacheControl, "max-age=0");
+            hwr.Headers.Add(HttpRequestHeader.Upgrade, "1");
+            hwr.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.110 Safari/537.36";
+            SetHeaderValue(hwr.Headers, "Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");
+            hwr.Headers.Add(HttpRequestHeader.AcceptLanguage, "zh-CN,zh;q=0.8");
+            hwr.Headers.Add(HttpRequestHeader.Cookie, "uuid=\"w: 474bf851054f473fbb047c3ee88fb1d4\"; UM_distinctid=15bb99c4446e98-053585cc51c06c-b373f68-100200-15bb99c4447a42; tt_webid=6393431827013158402; utm_source=toutiao; csrftoken=89b7dde63a0edebe0a4c232685fae4d0; _ga=GA1.2.2017800297.1488586857; CNZZDATA1259612802=1144631660-1488585496-%7C1493468972; __tasessionId=h1xcwzl5d1493467677496");
+            if (Settings.Default.isWebProxy) hwr.Proxy = He.proxy;
+            var o = await hwr.GetResponseAsync();
+            StreamReader sr = new StreamReader(o.GetResponseStream(), c);
+            var st = await sr.ReadToEndAsync();
+            sr.Dispose();
+            return st;
+        }
 
         public static async System.Threading.Tasks.Task<string> GetWebAsync(string url)
         {
@@ -420,7 +458,7 @@ namespace Lemon_App
             }
             catch { return ""; }
         }
-        public static async System.Threading.Tasks.Task<string> GetWebAsync(string url,Encoding c)
+        public static async System.Threading.Tasks.Task<string> GetWebAsync(string url, Encoding c)
         {
             try
             {
@@ -446,7 +484,7 @@ namespace Lemon_App
             byte[] payload;
             payload = System.Text.Encoding.UTF8.GetBytes(paraUrlCoded);
             request.ContentLength = payload.Length;
-            Stream writer =await request.GetRequestStreamAsync();
+            Stream writer = await request.GetRequestStreamAsync();
             writer.Write(payload, 0, payload.Length);
             writer.Close();
             System.Net.HttpWebResponse response;
@@ -456,28 +494,28 @@ namespace Lemon_App
             string StrDate = "";
             string strValue = "";
             StreamReader Reader = new StreamReader(s, Encoding.UTF8);
-            while ((StrDate =await Reader.ReadLineAsync()) != null)
+            while ((StrDate = await Reader.ReadLineAsync()) != null)
             {
                 strValue += StrDate + "\r\n";
             }
             return strValue;
         }
-        public static async Task<string> PostWebAsync(string url,string idata)
+        public static async Task<string> PostWebAsync(string url, string idata)
         {
             var request = (HttpWebRequest)WebRequest.Create(url);
             var data = Encoding.ASCII.GetBytes(idata);
             request.Method = "POST";
             request.ContentType = "application/x-www-form-urlencoded";
             request.ContentLength = data.Length;
-            using (var stream =await request.GetRequestStreamAsync())
+            using (var stream = await request.GetRequestStreamAsync())
             {
-              await  stream.WriteAsync(data, 0, data.Length);
+                await stream.WriteAsync(data, 0, data.Length);
             }
 
-            var response = (HttpWebResponse) await request.GetResponseAsync();
+            var response = (HttpWebResponse)await request.GetResponseAsync();
 
             var r = new StreamReader(response.GetResponseStream());
-        //    System.Windows.MessageBox.Show(await r.ReadToEndAsync());
+            //    System.Windows.MessageBox.Show(await r.ReadToEndAsync());
             return await r.ReadToEndAsync();
         }
         public static async System.Threading.Tasks.Task<string> GetWebAsync(string url, bool isOpen)
@@ -490,7 +528,7 @@ namespace Lemon_App
                 hwr.Headers.Add(HttpRequestHeader.AcceptEncoding, "gzip, deflate, sdch, br");
                 hwr.Headers.Add(HttpRequestHeader.AcceptLanguage, " zh-CN,zh;q=0.8");
                 hwr.Headers.Add(HttpRequestHeader.Cookie, "tvfe_boss_uuid=c3db0dcc4d677c60; pac_uid=1_2728578956; ts_refer=ADTAGYQQ; qq_slist_autoplay=on; yq_index=0; pgv_pvi=5341831168; RK=gLPObA2/3O; ptui_loginuin=2728578956; o_cookie=2728578956; ptcz=897c17d7e17ae9009e018ebf3f818355147a3a26c6c67a63ae949e24758baa2d; pt2gguin=o2728578956; pgv_pvid=5107924810; ts_uid=996779984");
-          //      hwr.Headers.Add(HttpRequestHeader.IfModifiedSince, "");
+                //      hwr.Headers.Add(HttpRequestHeader.IfModifiedSince, "");
                 hwr.Timeout = 20000;
                 if (Settings.Default.isWebProxy) hwr.Proxy = He.proxy;
                 var o = await hwr.GetResponseAsync();
@@ -503,7 +541,8 @@ namespace Lemon_App
         }
         public static string PingErrorMsg = "";
         public static bool Lalala(string ip)
-        {try
+        {
+            try
             {
                 Ping ping = new Ping();
                 PingReply La = ping.Send(ip);
@@ -529,9 +568,9 @@ namespace Lemon_App
     public class Music
     {
         public Music() { }
-     /// <summary>
-    /// 歌曲名称
-    /// </summary>
+        /// <summary>
+        /// 歌曲名称
+        /// </summary>
         public string MusicName { set; get; }
         /// <summary>
         /// 歌手
@@ -548,7 +587,7 @@ namespace Lemon_App
         /// <summary>
         /// 专辑名称
         /// </summary>
-        public string   ZJ { set; get; }
+        public string ZJ { set; get; }
         /// <summary>
         /// SQ品质
         /// </summary>
@@ -653,7 +692,7 @@ namespace Lemon_App
             mWriter = null;
             mWaveFile = null;
         }
-#endregion
+        #endregion
         #region 成员数据  
         private Capture mCapDev = null;              // 音频捕捉设备  
         private CaptureBuffer mRecBuffer = null;     // 缓冲区对象  

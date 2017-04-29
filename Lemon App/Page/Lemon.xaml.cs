@@ -287,13 +287,13 @@ namespace Lemon_App
                     {
                         ConsoleManager.Show();
                         He.isOpMod = true;
-                        Console.WriteLine("OPMOD IS OPEN");
-                        Console.Title = "OPMOD";
+                        Console.WriteLine("DEBUGMOD IS OPEN");
+                        Console.Title = "DEBUGMOD";
                     }
                     else
                     {
                         He.isOpMod = false;
-                        Console.WriteLine("OPMOD IS CLOSE");
+                        Console.WriteLine("DEBUGMOD IS CLOSE");
                         ConsoleManager.Hide();
                     }
                 }

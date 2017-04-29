@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,24 +18,30 @@ namespace Lemon_App
         {
             InitializeComponent();
         }
-        private async Task LoadapisAsync(string ha="最新",int page=1)
+        private async Task LoadapisAsync(string info= "news_hot")
         {
-            try
+            jz.Text = "加载中";
+            jz.Visibility = Visibility.Visible;
+            var ass = await Uuuhh.GetNewsDataAsync($"https://www.toutiao.com/api/pc/feed/?category={info}&utm_source=toutiao&widen=1&tadrequire=true", Encoding.UTF8);
+  //          MessageBox.Show(ass);
+            JObject o = JObject.Parse(ass);
+            int i = 0;
+            while (i++ != 5)
             {
-                jz.Text = "加载中";
-                jz.Visibility = Visibility.Visible;
-                JObject o = JObject.Parse(await Uuuhh.GetWebAsync($"https://route.showapi.com/109-35?&page={page}&showapi_sign=cfa206656db244c089be2d1499735bb5&showapi_appid=29086&maxResult=10&channelName={ha}"));
-                int i = 0;
-                while (i != 10)
-                {
-                    WP.Children.Add(new NewsList(o["showapi_res_body"]["pagebean"]["contentlist"][i]["title"].ToString(), o["showapi_res_body"]["pagebean"]["contentlist"][i]["pubDate"].ToString(), o["showapi_res_body"]["pagebean"]["contentlist"][i]["source"].ToString(), "", o["showapi_res_body"]["pagebean"]["contentlist"][i]["link"].ToString()) { Width = this.ActualWidth });
-                    i++;
-                }
-                jz.Visibility = Visibility.Collapsed;
-                O.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 86, 0, 0), new Thickness(0, 36, 0, 0), TimeSpan.FromSeconds(0.2)));
+                if (i==3)
+                    continue;
+                string title = o["data"][i]["title"].ToString();
+                string time = He.StampToDateTime(o["data"][i]["behot_time"].ToString()).ToString();
+                string sousce = o["data"][i]["source"].ToString();
+                string url = "http://www.toutiao.com" + o["data"][i]["source_url"].ToString();
+                WP.Children.Add(new NewsList(title, time, sousce, url) { Width = this.ActualWidth });
+
             }
-            catch { jz.Text = "加载失败"; }
-     }
+            jz.Visibility = Visibility.Collapsed;
+            O.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 86, 0, 0), new Thickness(0, 36, 0, 0), TimeSpan.FromSeconds(0.2)));
+            //  }
+            //catch { jz.Text = "加载失败"; }
+        }
         private async void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             await LoadapisAsync();
@@ -76,28 +83,20 @@ namespace Lemon_App
 
             return isAtButtom;
         }
-        private async void textBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter) if (textBox.Text != "") await LoadapisAsync(textBox.Text);
-        }
-
         private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
-        {foreach (var o in WP.Children){(o as UserControl).Width = this.ActualWidth;}}
-        int Ipage = 1;
-        private async void Border_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (Ipage > 1) { Ipage--; await LoadapisAsync(textBox.Text, Ipage); }
-        }
-    
-        private async void Border_MouseDown_1(object sender, MouseButtonEventArgs e)
-        {
-            Ipage++;  await LoadapisAsync(textBox.Text, Ipage);
-        }
+        { foreach (var o in WP.Children) { (o as UserControl).Width = this.ActualWidth; } }
 
         private async void O_ScrollChanged(object sender, ScrollChangedEventArgs e)
         {
             if (IsVerticalScrollBarAtButtom(O))
-            { Ipage++; await LoadapisAsync(textBox.Text, Ipage); }
+            {  await LoadapisAsync(dindex); }
+        }
+        string dindex = "";
+        private async void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            WP.Children.Clear();
+            dindex = (sender as Border).ToolTip.ToString();
+            await LoadapisAsync("news_tech");
         }
     }
 }
