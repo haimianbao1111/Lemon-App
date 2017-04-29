@@ -168,32 +168,22 @@ namespace Lemon_App
             get { return GetConsoleWindow() != IntPtr.Zero; }
         }
 
-        /// <summary>  
-        /// Creates a new console instance if the process is not attached to a console already.  
-        /// </summary>  
         public static void Show()
         {
-#if DEBUG
             if (!HasConsole)
             {
                 AllocConsole();
                 InvalidateOutAndError();
             }
-#endif
         }
 
-        /// <summary>  
-        /// If the process has a console attached to it, it will be detached and no longer visible. Writing to the System.Console is still possible, but no output will be shown.  
-        /// </summary>  
         public static void Hide()
         {
-#if DEBUG
             if (HasConsole)
             {
                 SetOutAndErrorNull();
                 FreeConsole();
             }
-#endif
         }
 
         public static void Toggle()
