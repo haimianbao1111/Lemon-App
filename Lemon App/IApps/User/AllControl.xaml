@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Lemon_App"
-             mc:Ignorable="d" SizeChanged="UserControl_SizeChanged"  >
+             mc:Ignorable="d" SizeChanged="UserControl_SizeChanged" MouseDown="UserControl_MouseDown"  >
     <Grid >
         <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Visible" Style="{DynamicResource for_scrollviewer}">
             <WrapPanel x:Name="Conten" Height="40" VerticalAlignment="Top" Width="280">

@@ -82,6 +82,10 @@ namespace Lemon_App
                 sw.Flush();
                 sw.Close();
                 fs.Close();
+                if (He.isOpMod == true)
+                {
+                    Console.WriteLine(i);
+                }
             }
             catch { } }
 
@@ -127,6 +131,10 @@ namespace Lemon_App
                 sw.Flush();
                 sw.Close();
                 fs.Close();
+                if (He.isOpMod == true)
+                {
+                    Console.WriteLine(i);
+                }
             }
             catch { }
         }

@@ -75,5 +75,10 @@ namespace Lemon_App
         {
         //    (ContentPage.Children[0] as UserControl).
         }
+
+        private void UserControl_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }

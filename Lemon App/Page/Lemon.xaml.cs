@@ -281,40 +281,60 @@ namespace Lemon_App
         {
             if (e.ClickCount == 2)
             {
-                Robot.Visibility = Visibility.Collapsed;
-                Music.Visibility = Visibility.Collapsed;
-                User.Visibility = Visibility.Collapsed;
-                _2048.Visibility = Visibility.Visible;
-                All.Visibility = Visibility.Collapsed;
-               _2048 .BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 50, 0, 0), new Thickness(0), TimeSpan.FromSeconds(0.2)));
-                //  IContentPage.Children.Clear();
-                //IContentPage.Children.Add(new AllControl());
-                Mus.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
-                ALL.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
-                Rbt.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
-                Mus.StrokeThickness = 1;
-                ALL.StrokeThickness = 1;
-                Rbt.StrokeThickness = 1;
-                _2048.a1.MouseDown += delegate {
-                    IContentPage.Children.Remove(_2048);
-                    _2048 = null;
-                    _2048 = new IApps._2048._2048Control();
-                    _2048.Visibility = Visibility.Collapsed;
-                    IContentPage.Children.Add(_2048);
-                   Robot.Visibility = Visibility.Collapsed;
-                    All.Visibility = Visibility.Collapsed;
+                if (_2048.Visibility == Visibility.Visible)
+                {
+                    if (He.isOpMod == false)
+                    {
+                        ConsoleManager.Toggle();
+                        He.isOpMod = true;
+                        Console.WriteLine("OPMOD IS OPEN");
+                        Console.Title = "OPMOD";
+                    }
+                    else
+                    {
+                        He.isOpMod = false;
+                        Console.WriteLine("OPMOD IS CLOSE");
+                        ConsoleManager.Hide();
+                    }
+                }
+                else
+                {
+                    Robot.Visibility = Visibility.Collapsed;
+                    Music.Visibility = Visibility.Collapsed;
                     User.Visibility = Visibility.Collapsed;
-                    Music.Visibility = Visibility.Visible;
-                    Music.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 50, 0, 0), new Thickness(0), TimeSpan.FromSeconds(0.2)));
+                    _2048.Visibility = Visibility.Visible;
+                    All.Visibility = Visibility.Collapsed;
+                    _2048.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 50, 0, 0), new Thickness(0), TimeSpan.FromSeconds(0.2)));
+                    //  IContentPage.Children.Clear();
+                    //IContentPage.Children.Add(new AllControl());
+                    Mus.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
+                    ALL.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
+                    Rbt.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
+                    Mus.StrokeThickness = 1;
+                    ALL.StrokeThickness = 1;
+                    Rbt.StrokeThickness = 1;
+                    _2048.a1.MouseDown += delegate
+                    {
+                        IContentPage.Children.Remove(_2048);
+                        _2048 = null;
+                        _2048 = new IApps._2048._2048Control();
+                        _2048.Visibility = Visibility.Collapsed;
+                        IContentPage.Children.Add(_2048);
+                        Robot.Visibility = Visibility.Collapsed;
+                        All.Visibility = Visibility.Collapsed;
+                        User.Visibility = Visibility.Collapsed;
+                        Music.Visibility = Visibility.Visible;
+                        Music.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 50, 0, 0), new Thickness(0), TimeSpan.FromSeconds(0.2)));
                     //IContentPage.Children.Clear();
                     //   IContentPage.Children.Add(new MusicControl());
                     Mus.Fill = new SolidColorBrush(Color.FromArgb(200, 157, 159, 167));
-                    ALL.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
-                    Rbt.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
-                    Mus.StrokeThickness = 0;
-                    ALL.StrokeThickness = 1;
-                    Rbt.StrokeThickness = 1;
-                };
+                        ALL.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
+                        Rbt.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
+                        Mus.StrokeThickness = 0;
+                        ALL.StrokeThickness = 1;
+                        Rbt.StrokeThickness = 1;
+                    };
+                }
             }
         }
     }
