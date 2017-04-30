@@ -71,7 +71,7 @@
     </UserControl.Resources>
     <Grid>
         <ScrollViewer x:Name="O" PanningMode="Both" Margin="0,36,0,0" Template="{DynamicResource SCS}" HorizontalScrollBarVisibility="Visible" ScrollChanged="O_ScrollChanged">
-            <WrapPanel x:Name="WP" HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="574"/>
+            <WrapPanel x:Name="WP" HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="{Binding ActualWidth, ElementName=O, Mode=OneWay}"/>
         </ScrollViewer>
         <Border Height="32" Margin="10,4,10,0" VerticalAlignment="Top" CornerRadius="7">
             <Grid>
@@ -87,40 +87,40 @@
                     <Border.Effect>
                         <DropShadowEffect Opacity="0.3" ShadowDepth="0" BlurRadius="10"/>
                     </Border.Effect>
-                    <TextBlock TextWrapping="Wrap" Text="热点"  Margin="0,5,0,0" Foreground="#FFECECEC" TextAlignment="Center"/>
+                    <TextBlock TextWrapping="Wrap" Text="热点"  Margin="0,5,0,0" Foreground="#FFF9F9F9" TextAlignment="Center"/>
                 </Border>
                 <Border ToolTip="news_society" MouseDown="Border_MouseDown" BorderBrush="Black" Height="25" Background="#FF3399FF" CornerRadius="5" Width="50"  Grid.Column="1">
                     <Border.Effect>
                         <DropShadowEffect Opacity="0.3" ShadowDepth="0" BlurRadius="10"/>
                     </Border.Effect>
-                    <TextBlock TextWrapping="Wrap" Text="社会"  Margin="0,5,0,0" Foreground="#FFECECEC" TextAlignment="Center"/>
+                    <TextBlock TextWrapping="Wrap" Text="社会"  Margin="0,5,0,0" Foreground="#FFF9F9F9" TextAlignment="Center"/>
                 </Border>
                 <Border ToolTip="news_entertainment" MouseDown="Border_MouseDown" BorderBrush="Black" Height="25" Background="#FF3399FF" CornerRadius="5" Width="50" Grid.Column="2">
                     <Border.Effect>
                         <DropShadowEffect Opacity="0.3" ShadowDepth="0" BlurRadius="10"/>
                     </Border.Effect>
-                    <TextBlock TextWrapping="Wrap" Text="娱乐"  Margin="0,5,0,0" Foreground="#FFECECEC" TextAlignment="Center"/>
+                    <TextBlock TextWrapping="Wrap" Text="娱乐"  Margin="0,5,0,0" Foreground="#FFF9F9F9" TextAlignment="Center"/>
                 </Border>
                 <Border ToolTip="news_tech" MouseDown="Border_MouseDown" BorderBrush="Black" Height="25" Grid.Column="3" Background="#FF3399FF" CornerRadius="5" Width="50">
                     <Border.Effect>
                         <DropShadowEffect Opacity="0.3" ShadowDepth="0" BlurRadius="10"/>
                     </Border.Effect>
-                    <TextBlock TextWrapping="Wrap" Text="科技" ToolTip="news_tech" Margin="0,5,0,0" Foreground="#FFECECEC" TextAlignment="Center"/>
+                    <TextBlock TextWrapping="Wrap" Text="科技" ToolTip="news_tech" Margin="0,5,0,0" Foreground="#FFF9F9F9" TextAlignment="Center"/>
                 </Border>
                 <Border MouseDown="Border_MouseDown"  ToolTip="news_sports" BorderBrush="Black" Height="25" Grid.Column="4" Background="#FF3399FF" CornerRadius="5" Width="50">
                     <Border.Effect>
                         <DropShadowEffect Opacity="0.3" ShadowDepth="0" BlurRadius="10"/>
                     </Border.Effect>
-                    <TextBlock TextWrapping="Wrap" Text="体育" Margin="0,5,0,0" Foreground="#FFECECEC" TextAlignment="Center"/>
+                    <TextBlock TextWrapping="Wrap" Text="体育" Margin="0,5,0,0" Foreground="#FFF9F9F9" TextAlignment="Center"/>
                 </Border>
                 <Border BorderBrush="Black" ToolTip="news_finance" Height="25" Grid.Column="5" Background="#FF3399FF" CornerRadius="5" Width="50" MouseDown="Border_MouseDown">
                     <Border.Effect>
                         <DropShadowEffect Opacity="0.3" ShadowDepth="0" BlurRadius="10"/>
                     </Border.Effect>
-                    <TextBlock TextWrapping="Wrap" Text="财经" Margin="0,5,0,0" Foreground="#FFECECEC" TextAlignment="Center"/>
+                    <TextBlock TextWrapping="Wrap" Text="财经" Margin="0,5,0,0" Foreground="#FFF9F9F9" TextAlignment="Center"/>
                 </Border>
             </Grid>
         </Border>
-        <TextBlock x:Name="jz" TextWrapping="Wrap" Text="加载中" Width="50" Height="25" Foreground="#FF252526" FontSize="14" TextAlignment="Center"/>
+        <TextBlock x:Name="jz" TextWrapping="Wrap" Text="加载中" Width="100" Height="25" Foreground="#FF252526" FontSize="14" TextAlignment="Center"/>
     </Grid>
 </UserControl>

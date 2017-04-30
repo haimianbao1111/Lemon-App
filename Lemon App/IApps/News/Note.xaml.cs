@@ -18,29 +18,35 @@ namespace Lemon_App
         {
             InitializeComponent();
         }
+        string ass = "";
         private async Task LoadapisAsync(string info= "news_hot")
         {
+            try { 
             jz.Text = "加载中";
             jz.Visibility = Visibility.Visible;
-            var ass = await Uuuhh.GetNewsDataAsync($"https://www.toutiao.com/api/pc/feed/?category={info}&utm_source=toutiao&widen=1&tadrequire=true", Encoding.UTF8);
-  //          MessageBox.Show(ass);
+                var s = (DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000000;
+            ass = await Uuuhh.GetNewsDataAsync($"https://www.toutiao.com/api/pc/feed/?category={info}&utm_source=toutiao&widen=1&tadrequire=true&max_behot_time={s}&max_behot_time_tmp={s}&as=A1156950D5231C8&cp=59051331BC08CE1", Encoding.UTF8);
             JObject o = JObject.Parse(ass);
             int i = 0;
             while (i++ != 5)
             {
-                if (i==3)
+                if (o["data"][i].ToString().Contains("广告")==true)
                     continue;
                 string title = o["data"][i]["title"].ToString();
                 string time = He.StampToDateTime(o["data"][i]["behot_time"].ToString()).ToString();
                 string sousce = o["data"][i]["source"].ToString();
                 string url = "http://www.toutiao.com" + o["data"][i]["source_url"].ToString();
-                WP.Children.Add(new NewsList(title, time, sousce, url) { Width = this.ActualWidth });
+                string text = "";
+                 if (o["data"][i].ToString().Contains("abstract") == true)
+                    text = o["data"][i]["abstract"].ToString();
+                WP.Children.Add(new NewsList(title, time, sousce, url,text) { Width = this.ActualWidth });
 
             }
             jz.Visibility = Visibility.Collapsed;
             O.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 86, 0, 0), new Thickness(0, 36, 0, 0), TimeSpan.FromSeconds(0.2)));
-            //  }
-            //catch { jz.Text = "加载失败"; }
+              }
+            catch(Exception ex)
+            { jz.Text = "加载失败"; Console.WriteLine(ex.Message); Console.WriteLine(ass); }
         }
         private async void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
@@ -96,7 +102,7 @@ namespace Lemon_App
         {
             WP.Children.Clear();
             dindex = (sender as Border).ToolTip.ToString();
-            await LoadapisAsync("news_tech");
+            await LoadapisAsync(dindex);
         }
     }
 }

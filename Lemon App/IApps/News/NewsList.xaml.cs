@@ -22,10 +22,13 @@ namespace Lemon_App
     /// </summary>
     public partial class NewsList : UserControl
     {
-        public NewsList(string title,string time,string sousce,string url)
+        public NewsList(string title,string time,string sousce,string url,string text)
         {
             InitializeComponent();
-            this.title.Text = title;
+            this.title.Inlines.Clear();
+            this.title.Inlines.Add(new Run(title));
+            this.title.Inlines.Add(new LineBreak());
+            this.title.Inlines.Add(new Run(text) { Foreground = new SolidColorBrush(Color.FromArgb(255, 99, 99, 99)) });
             this.Source.Text = sousce + "  " + time;
             uri = url;
         }
