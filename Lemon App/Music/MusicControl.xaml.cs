@@ -207,6 +207,7 @@ namespace Lemon_App
                        if (pz.Text == "HQ") pz.Text = "标准";
                 try
                 {
+                    jd.Value = 0;
                     Bass.BASS_ChannelStop(stream);
                     LyricShow.F = true;
                     isR = true;
