@@ -1012,9 +1012,9 @@
                                 </BooleanAnimationUsingKeyFrames>
                             </Storyboard>
                         </ControlTemplate.Resources>
-                        <Border  BorderBrush="#FF31C27C" CornerRadius="5" Background="Transparent" BorderThickness="1">
+                        <Border  BorderBrush="#00000000" CornerRadius="5" Background="Transparent" BorderThickness="1">
                             <Grid>
-                                <ToggleButton x:Name="path" ClickMode="Press" Focusable="False" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Margin="2" MinWidth="0" MinHeight="0" Width="Auto" Foreground="{x:Null}" Background="Transparent">
+                                <ToggleButton x:Name="path" ClickMode="Press" Focusable="False" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" MinWidth="0" MinHeight="0" Width="Auto" Foreground="{x:Null}" Background="Transparent">
                                     <ToggleButton.Style>
                                         <Style TargetType="{x:Type ToggleButton}">
                                             <Setter Property="MinWidth" Value="0"/>
@@ -1046,11 +1046,11 @@
                                         </Style>
                                     </ToggleButton.Style>
                                 </ToggleButton>
-                                <ContentPresenter  IsHitTestVisible="False" Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" VerticalAlignment="Center" Margin="3" HorizontalAlignment="Stretch" Width="20" />
+                                <ContentPresenter  IsHitTestVisible="False" Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
                                 <TextBox x:Name="PART_EditableTextBox" HorizontalAlignment="Stretch" Focusable="True" Visibility="Collapsed" IsReadOnly="False" TextAlignment="Center"/>
-                                <Popup x:Name="popup" HorizontalOffset="-2.5" Focusable="False"    PopupAnimation="Slide" AllowsTransparency="True" Placement="Top" local:PopopHelper.PopupPlacementTarget="{Binding ElementName=path}">
+                                <Popup x:Name="popup" HorizontalOffset="-2.5" Focusable="False"    PopupAnimation="Slide" AllowsTransparency="True" Placement="Top" local:PopopHelper.PopupPlacementTarget="{Binding ElementName=path}" VerticalOffset="-5">
                                     <Grid  SnapsToDevicePixels="True" HorizontalAlignment="Stretch">
-                                        <Border  BorderThickness="1,1,1,1" BorderBrush="#FF31C27C" HorizontalAlignment="Stretch" CornerRadius="5" Background="#FFF1F2F6"/>
+                                        <Border  BorderThickness="1,1,1,1" BorderBrush="#FF686868" HorizontalAlignment="Stretch" CornerRadius="5" Background="#FFF1F2F6"/>
                                         <ScrollViewer  Style="{StaticResource for_scrollviewer}" SnapsToDevicePixels="True" HorizontalAlignment="Stretch" >
                                             <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" HorizontalAlignment="Stretch" />
                                         </ScrollViewer>
@@ -1122,12 +1122,12 @@
             </Border>
         </Popup>
         <Grid x:Name="BackgroundContent"/>
-        <Grid x:Name="ZjImAgE" Margin="0,0,0,49" Visibility="Collapsed">
+        <Grid x:Name="ZjImAgE" Margin="0,0,0,70" Visibility="Collapsed">
             <TextBlock Height="25" Margin="0,5,10,0" TextWrapping="Wrap" Text="{Binding Text, ElementName=lrcname}" VerticalAlignment="Top" Foreground="#FF686868" FontSize="20" TextAlignment="Center"/>
             <TextBlock Height="19" Margin="0,30,10,0" TextWrapping="Wrap" Text="{Binding Text, ElementName=zk}" VerticalAlignment="Top" Foreground="#FF828282" FontSize="14" TextAlignment="Center"/>
             <Border x:Name="os" MaxWidth="250" MaxHeight="250"  Margin="0,54,0,0" CornerRadius="235" Background="{Binding Background, ElementName=tx}" RenderTransformOrigin="0.5,0.5" Height="{Binding ActualWidth, ElementName=os, Mode=OneWay}"/>
         </Grid>
-        <Grid x:Name="G" Margin="0,0,0,49" Visibility="Collapsed">
+        <Grid x:Name="G" Margin="0,0,0,70" Visibility="Collapsed">
             <Grid Margin="20,60,20,0" Background="#00000000" >
                 <Canvas  x:Name="CanvasLyric" ClipToBounds="True">
                     <StackPanel x:Name="StackPanelCommonLyric"  Canvas.Left="0" Canvas.Top="300" Width="{Binding ActualWidth, ElementName=CanvasLyric, Mode=OneWay}" OpacityMask="Black" />
@@ -1143,7 +1143,7 @@
                     <!--TextBlock x:Name="tbDragTime" TextWrapping="Wrap" Text="0.00.00" TextAlignment="Left" Foreground="#FF007ACC" FontSize="18" Visibility="Collapsed" Width="{Binding ActualWidth, ElementName=CanvasLyric}" Background="#00000000" /-->
                 </StackPanel>
             </Grid>
-            <TextBlock x:Name="lrcname" Height="30" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="Auto" Margin="10,10,10,0" Foreground="#FF686868" FontSize="22" TextAlignment="Center"/>
+            <TextBlock x:Name="lrcname" Height="30" TextWrapping="Wrap" Text="小萌音乐" VerticalAlignment="Top" Width="Auto" Margin="10,10,10,0" Foreground="#FF686868" FontSize="22" TextAlignment="Center"/>
             <TextBlock x:Name="zk" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="Auto" Margin="10,35,10,0" Foreground="#FF969696" FontSize="16" TextAlignment="Center"><Run Text="歌手:" Foreground="#FFBDBDBD"/><Run Text="N\N  "/><Run Text="专辑:" Foreground="#FFBDBDBD"/><Run Text="N\N"/></TextBlock>
             <Border HorizontalAlignment="Right" Width="20" Height="20" Background="#00F1F3F7" CornerRadius="3" ToolTip="翻译" BorderBrush="#FF31C27C" BorderThickness="1" Margin="0,0,5,5" MouseDown="Border_MouseDown" VerticalAlignment="Bottom">
                 <Path StrokeThickness="0" Margin="2" Fill="#FF31C27C" Data="M35.133,60.5h-6.021c-0.906,0-1.222,0.002-4.309-7.646l-2.384-0.969c-6.496,2.947-7.265,2.947-7.522,2.947H14.4
@@ -1167,8 +1167,8 @@
 					C39.564,28.367,36.171,25.057,31.999,25.057z" Stretch="Fill" />
             </Border>
         </Grid>
-        <Grid x:Name="h" Margin="0,0,0,49">
-            <ListBox x:Name="listBox" Margin="0,43,0,0" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEEEEEE" SelectionChanged="listBox_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Visible" Style="{DynamicResource ListBoxStyle}">
+        <Grid x:Name="h" Margin="0,0,0,70">
+            <ListBox x:Name="listBox" Margin="0,45,0,0" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEEEEEE" SelectionChanged="listBox_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Visible" Style="{DynamicResource ListBoxStyle}">
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="ListBoxItem">
                         <Setter Property="BorderThickness" Value="0"/>
@@ -1242,7 +1242,7 @@
                 </Border>
             </Grid>
         </Grid>
-        <Border Height="47" VerticalAlignment="Bottom" BorderBrush="#FFE6E6E6" BorderThickness="0,2,0,0">
+        <Border Height="70" VerticalAlignment="Bottom" BorderBrush="#FFE6E6E6" BorderThickness="0,1,0,0">
             <Grid Background="#00000000">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -1261,17 +1261,7 @@
                     </Border>
                 </Grid>
                 <Grid x:Name="__PAGE" Margin="0,0,5,0" Height="25" Grid.Column="2">
-                    <ComboBox x:Name="pz" HorizontalAlignment="Left" Margin="38,2,0,3" Width="28" Background="{x:Null}" BorderBrush="{x:Null}" SelectedIndex="2" Foreground="#FF31C27C" FontSize="10" SelectionChanged="pz_SelectionChanged" Height="20">
-                        <ComboBoxItem Content="经济" Foreground="#FF252526"/>
-                        <ComboBoxItem Content="标准" Foreground="#FF252526"/>
-                        <ComboBoxItem Content="HQ" Foreground="#FF252526"/>
-                    </ComboBox>
-                    <ComboBox x:Name="Move" HorizontalAlignment="Left" Margin="5,2,0,3" Width="28" Background="{x:Null}" BorderBrush="{x:Null}" SelectedIndex="0" Foreground="#FF31C27C" FontSize="10" Height="20" SelectionChanged="Move_SelectionChanged" Style="{DynamicResource ComboBoxStyle1}">
-                        <ComboBoxItem Content="循环" Foreground="#FF252526"/>
-                        <ComboBoxItem Content="单曲" Foreground="#FF252526"/>
-                        <!--ComboBoxItem Content="SQ" Foreground="#FF252526"/-->
-                    </ComboBox>
-                    <Border x:Name="border2"  HorizontalAlignment="Left" Margin="120,2,-2,3" Width="20" Background="#00F1F3F7" CornerRadius="5" ToolTip="桌面歌词" BorderBrush="#FF31C27C" BorderThickness="1" Height="20" MouseDown="Border_MouseDown_5">
+                    <Border x:Name="border2"  HorizontalAlignment="Left" Margin="70,0,0,0" Width="20" Background="#00000000" CornerRadius="5" ToolTip="桌面歌词" BorderBrush="#00000000" Height="20" MouseDown="Border_MouseDown_5">
                         <Grid>
                             <Popup x:Name="popup2" Width="70" Height="80" AllowsTransparency="True" PopupAnimation="Fade">
                                 <Border Background="White" CornerRadius="5" Margin="5">
@@ -1287,12 +1277,12 @@
 	c0,0.911,0.616,1.708,1.498,1.936C75.297,18.3,86.549,32.842,86.549,49.488c0,20.153-16.396,36.549-36.549,36.549
 	S13.451,69.642,13.451,49.488c0-16.646,11.252-31.188,27.363-35.363c0.882-0.229,1.498-1.025,1.498-1.936V3.964
 	c0-0.603-0.272-1.174-0.74-1.554s-1.082-0.528-1.673-0.403C17.621,6.716,1.451,26.685,1.451,49.488
-	c0,26.77,21.779,48.549,48.549,48.549s48.549-21.779,48.549-48.549C98.549,26.685,82.379,6.716,60.101,2.007z" Fill="#FF31C27C" Stretch="Uniform" StrokeThickness="0" Margin="3"/>
+	c0,26.77,21.779,48.549,48.549,48.549s48.549-21.779,48.549-48.549C98.549,26.685,82.379,6.716,60.101,2.007z" Fill="#FFA0A0A0" Stretch="Uniform" StrokeThickness="0" Margin="3"/>
                         </Grid>
                     </Border>
-                    <Border HorizontalAlignment="Left" Width="20" Height="20" Background="#00F1F3F7" CornerRadius="3" ToolTip="添加到收藏" BorderBrush="#FF31C27C" BorderThickness="1" Margin="95,2,0,3" MouseDown="Border_MouseDown_1" MouseMove="Border_MouseMove" MouseLeave="Border_MouseLeave">
+                    <Border HorizontalAlignment="Left" Width="20" Height="20" Background="#00000000" CornerRadius="3" ToolTip="添加到收藏" BorderBrush="#00000000" Margin="50,0,0,0" MouseDown="Border_MouseDown_1" MouseMove="Border_MouseMove" MouseLeave="Border_MouseLeave">
                         <Grid>
-                            <Path StrokeThickness="0" Margin="2" Fill="#FF31C27C" Data="M56.14,28.375H35.274V7.506c0-1.809-1.462-3.271-3.274-3.271c-1.811,0-3.274,1.463-3.274,3.271v20.869H7.862  c-1.813,0-3.274,1.464-3.274,3.272c0,1.807,1.462,3.27,3.274,3.27h20.863v20.869c0,1.809,1.464,3.272,3.274,3.272  c1.813,0,3.274-1.464,3.274-3.272V34.918H56.14c1.811,0,3.272-1.463,3.272-3.27C59.412,29.839,57.95,28.375,56.14,28.375z" Stretch="Fill" ToolTip="添加到收藏"/>
+                            <Path StrokeThickness="0" Margin="2" Fill="#FFA0A0A0" Data="M56.14,28.375H35.274V7.506c0-1.809-1.462-3.271-3.274-3.271c-1.811,0-3.274,1.463-3.274,3.271v20.869H7.862  c-1.813,0-3.274,1.464-3.274,3.272c0,1.807,1.462,3.27,3.274,3.27h20.863v20.869c0,1.809,1.464,3.272,3.274,3.272  c1.813,0,3.274-1.464,3.274-3.272V34.918H56.14c1.811,0,3.272-1.463,3.272-3.27C59.412,29.839,57.95,28.375,56.14,28.375z" Stretch="Fill" ToolTip="添加到收藏"/>
                             <Popup x:Name="pu" Height="200" Width="200" Placement="Top" AllowsTransparency="True" PopupAnimation="Fade" HorizontalOffset="-100" VerticalOffset="-20">
                                 <Popup.Effect>
                                     <DropShadowEffect Opacity="0.3" ShadowDepth="0"/>
@@ -1306,7 +1296,7 @@
                             </Popup>
                         </Grid>
                     </Border>
-                    <Border x:Name="border" HorizontalAlignment="Left" Width="20" Height="20" CornerRadius="3" BorderBrush="#FF31C27C" BorderThickness="1" Margin="70,2,0,3">
+                    <Border x:Name="border" HorizontalAlignment="Left" Width="20" Height="20" CornerRadius="3" Margin="30,0,0,0" Background="#00000000" BorderBrush="#00000000">
                         <Grid x:Name="CB">
                             <Path x:Name="path" Margin="2" Data="M57.375,52c0-3.727-2.781-6.809-6.375-7.299V26.879h-2v17.822c-3.594,0.49-6.375,3.572-6.375,7.299
 		s2.781,6.809,6.375,7.299v14.904h2V59.299C54.594,58.809,57.375,55.727,57.375,52z M50,57.375c-2.964,0-5.375-2.411-5.375-5.375
@@ -1314,7 +1304,7 @@
 		s2.781,6.809,6.375,7.299v5.904h2v-5.904C67.344,67.809,70.125,64.727,70.125,61z M62.75,66.375c-2.964,0-5.375-2.411-5.375-5.375
 		s2.411-5.375,5.375-5.375s5.375,2.411,5.375,5.375S65.714,66.375,62.75,66.375z M44.625,39c0-3.727-2.781-6.809-6.375-7.299v-4.822h-2v4.822c-3.594,0.49-6.375,3.572-6.375,7.299s2.781,6.809,6.375,7.299
 		v27.904h2V46.299C41.844,45.809,44.625,42.727,44.625,39z M37.25,44.375c-2.964,0-5.375-2.411-5.375-5.375s2.411-5.375,5.375-5.375
-		s5.375,2.411,5.375,5.375S40.214,44.375,37.25,44.375z" Stretch="Fill" Stroke="#FF31C27C"/>
+		s5.375,2.411,5.375,5.375S40.214,44.375,37.25,44.375z" Stretch="Fill" Stroke="#FFA0A0A0" Fill="#FFA0A0A0" StrokeThickness="0.5"/>
                             <Popup x:Name="popup" Placement="Top" Width="70" Height="120" HorizontalOffset="-15" AllowsTransparency="True">
                                 <Border BorderThickness="1" Background="White" Margin="0,0,10,10" CornerRadius="5">
                                     <Border.Effect>
@@ -1329,14 +1319,40 @@
                             </Popup>
                         </Grid>
                     </Border>
+                    <Border x:Name="Move" HorizontalAlignment="Left" Width="20" Height="20" Background="#00000000" CornerRadius="3" ToolTip="列表循环" BorderBrush="#00000000" Margin="5,0,0,0" MouseDown="Move_MouseDown">
+                        <Path x:Name="MovePath" StrokeThickness="0" Margin="2" Fill="#FFA0A0A0" Stretch="Uniform" Data="M22.724,8.446L18.815,12.355C18.59,12.581,18.223,12.581,17.997,12.355L17.941,12.298 17.941,9.42C13.22,9.75 9.48,13.693 9.48,18.496 9.48,21.869 11.331,24.95 14.313,26.536 15.064,26.936 15.349,27.869 14.95,28.622 14.55,29.374 13.617,29.659 12.865,29.259 8.875,27.136 6.396,23.012 6.396,18.496 6.396,11.992 11.519,6.662 17.941,6.328L17.941,3.776 17.997,3.72C18.223,3.494,18.59,3.494,18.815,3.72L22.724,7.628C22.95,7.854,22.95,8.221,22.724,8.446z M20.497,32.618L16.589,28.71C16.363,28.484,16.363,28.118,16.589,27.892L20.497,23.984C20.723,23.758,21.09,23.758,21.316,23.984L21.371,24.041 21.372,26.918C26.092,26.589 29.833,22.646 29.833,17.843 29.833,14.47 27.981,11.389 25,9.803 24.248,9.403 23.963,8.469 24.362,7.717 24.763,6.965 25.697,6.679 26.449,7.08 30.438,9.203 32.917,13.327 32.917,17.843 32.917,24.347 27.794,29.677 21.372,30.01L21.372,32.561 21.316,32.618C21.09,32.844,20.723,32.844,20.497,32.618z"/>
+                    </Border>
                 </Grid>
                 <Grid Margin="0,0,5,0" Grid.Column="1">
                     <Grid>
-                        <Border x:Name="tx" BorderBrush="#FF31C27C" BorderThickness="1" HorizontalAlignment="Left" Margin="1,2,0,3" Width="40" CornerRadius="5" MouseDown="tx_MouseDown" Background="White"/>
+                        <Border x:Name="tx" BorderThickness="1" HorizontalAlignment="Left" Margin="1,2,0,3" Width="60" CornerRadius="5" MouseDown="tx_MouseDown" Height="60">
+                            <Border.Background>
+                                <VisualBrush>
+                                    <VisualBrush.Visual>
+                                        <Grid Background="#FFE6E6E6">
+                                            <Path Margin="3" Data="M10.708,21.416C4.804,21.416,0,16.613,0,10.709C0,4.804,4.804,0,10.708,0s10.708,4.804,10.708,10.709
+		C21.416,16.613,16.612,21.416,10.708,21.416z M10.708,1C5.355,1,1,5.355,1,10.709c0,5.353,4.355,9.707,9.708,9.707
+		s9.708-4.354,9.708-9.707C20.416,5.355,16.061,1,10.708,1z M8.303,2.709c-0.089,0-0.175-0.048-0.22-0.132c-0.065-0.121-0.02-0.272,0.102-0.338c0.746-0.402,1.591-0.614,2.445-0.614
+			c1.048,0,1.902,0.202,2.611,0.618c0.119,0.07,0.159,0.224,0.089,0.343c-0.071,0.12-0.224,0.158-0.342,0.089
+			c-0.63-0.37-1.401-0.55-2.358-0.55c-0.771,0-1.535,0.191-2.208,0.554C8.384,2.699,8.343,2.709,8.303,2.709z M9.508,3.604c-0.089,0-0.175-0.048-0.22-0.132C9.222,3.35,9.268,3.198,9.39,3.133c0.389-0.208,0.831-0.318,1.278-0.318
+			c0.548,0,0.995,0.105,1.367,0.323c0.119,0.07,0.159,0.223,0.089,0.342c-0.071,0.12-0.224,0.159-0.342,0.09
+			c-0.292-0.172-0.657-0.255-1.114-0.255c-0.371,0-0.721,0.087-1.042,0.26C9.588,3.594,9.548,3.604,9.508,3.604z M10.708,14.041c-1.838,0-3.333-1.495-3.333-3.332c0-1.838,1.495-3.334,3.333-3.334s3.333,1.496,3.333,3.334
+		C14.041,12.546,12.546,14.041,10.708,14.041z M10.708,8.375c-1.287,0-2.333,1.047-2.333,2.334c0,1.286,1.046,2.332,2.333,2.332
+		s2.333-1.046,2.333-2.332C13.041,9.422,11.995,8.375,10.708,8.375z" Fill="#FF7C7C7C"/>
+                                        </Grid>
+                                    </VisualBrush.Visual>
+                                </VisualBrush>
+                            </Border.Background>
+                        </Border>
+                        <TextBlock x:Name="textBlock1" Margin="100,0,0,15" TextWrapping="Wrap" Foreground="#FF686868" Text="小萌音乐" MouseDown="textBlock1_MouseDown" Height="18"/>
+                        <ComboBox x:Name="pz" HorizontalAlignment="Left" Margin="65,0,0,15" Width="28" Background="{x:Null}" BorderBrush="{x:Null}" SelectedIndex="2" Foreground="#FF31C27C" FontSize="10" SelectionChanged="pz_SelectionChanged" Height="20">
+                            <ComboBoxItem Content="经济" Foreground="#FF252526"/>
+                            <ComboBoxItem Content="标准" Foreground="#FF252526"/>
+                            <ComboBoxItem Content="HQ" Foreground="#FF252526"/>
+                        </ComboBox>
+                        <Slider x:Name="jd"  Margin="66,25,0,0" Style="{DynamicResource SliderStyle1}" MouseMove="jd_MouseMove" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" Height="15" />
+                        <TextBlock x:Name="loading" HorizontalAlignment="Left" Height="18" Margin="66,0,0,3.187" TextWrapping="Wrap" Text="加载中..." VerticalAlignment="Bottom" Width="51" Foreground="#FF31C27C" Visibility="Collapsed"/>
                     </Grid>
-                    <TextBlock x:Name="textBlock1" Margin="51,4,0,24" TextWrapping="Wrap" Foreground="#FF686868" Text="柠萌音乐" MouseDown="textBlock1_MouseDown"/>
-                    <Slider x:Name="jd"  Margin="51,22,0,13" Style="{DynamicResource SliderStyle1}" MouseMove="jd_MouseMove" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" />
-                    <TextBlock x:Name="loading" HorizontalAlignment="Left" Height="18" Margin="51,0,0,0" Visibility="Collapsed" TextWrapping="Wrap" Text="加载中..." VerticalAlignment="Bottom" Width="51" Foreground="#FF31C27C"/>
                 </Grid>
 
             </Grid>

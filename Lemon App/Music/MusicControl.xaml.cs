@@ -68,7 +68,7 @@ namespace Lemon_App
                 jd.Value = 0;
                 s.Data = Geometry.Parse("M118.2,125.9c3.3,0,6-2.7,6-6V7.4c0-3.3-2.7-6-6-6h-36c-3.3,0-6,2.7-6,6v112.5c0,3.3,2.7,6,6,6H118.2z M46,125.9c3.3,0,6-2.7,6-6V7.4c0-3.3-2.7-6-6-6H10c-3.3,0-6,2.7-6,6v112.5c0,3.3,2.7,6,6,6H46z");
                 string i = "";
-                if (Move.Text == "循环")
+                if (Move.ToolTip.ToString() == "列表循环")
                 {
                     if (listBox.SelectedIndex != listBox.Items.Count)
                     {
@@ -81,7 +81,7 @@ namespace Lemon_App
                         listBox.SelectedItem = listBox.Items[0];
                     }
                 }
-                else if (Move.Text == "单曲")
+                else if (Move.ToolTip.ToString() == "单曲循环")
                 {
                     i = (listBox.Items[listBox.SelectedIndex] as MusicItemControl).Content;
                     listBox.SelectedItem = listBox.Items[listBox.SelectedIndex];
@@ -743,7 +743,7 @@ namespace Lemon_App
                 G.Visibility = Visibility.Visible;
                 h.Margin = new Thickness(-40, 40, 40, -20);
                 ZjImAgE.Margin = new Thickness(-40, 40, 40, -20);
-                G.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-40, 40, 40, -20), new Thickness(0, 0, 0, 49), TimeSpan.FromSeconds(0.1)));
+                G.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-40, 40, 40, -20), new Thickness(0, 0, 0, 70), TimeSpan.FromSeconds(0.1)));
             }
             else
             { 
@@ -752,7 +752,7 @@ namespace Lemon_App
                 ZjImAgE.Visibility = Visibility.Collapsed;
                 G.Margin = new Thickness(-40, 40, 40, -20);
                 ZjImAgE.Margin = new Thickness(-40, 40, 40, -20);
-                h.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-40, 40, 40, -20), new Thickness(0, 0, 0, 49), TimeSpan.FromSeconds(0.1)));
+                h.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-40, 40, 40, -20), new Thickness(0, 0, 0, 70), TimeSpan.FromSeconds(0.1)));
             }
         }
         public static object JsonToObject(string jsonString, object obj)
@@ -845,7 +845,6 @@ namespace Lemon_App
             audio.Value = Bass.BASS_GetVolume();
             LyricShow.CFontFamily = this.FontFamily;
             LyricShow.HFontFamily = this.FontFamily;
-            Move.SelectedIndex = Settings.Default.sx;
 
             JObject json = JObject.Parse(await Uuuhh.GetWebAsync("http://59.37.96.220/soso/fcgi-bin/dynamic_content?format=json&outCharset=utf-8", Encoding.UTF8));
             textBox.Text = json["data"]["search_content"].ToString();
@@ -985,7 +984,7 @@ namespace Lemon_App
                 G.Visibility = Visibility.Collapsed;
                 ZjImAgE.Visibility = Visibility.Visible;
                 hs = 1;
-                ZjImAgE.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-40, 40, 40, -20), new Thickness(0, 0, 0, 49), TimeSpan.FromSeconds(0.1)));
+                ZjImAgE.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-40, 40, 40, -20), new Thickness(0, 0, 0, 70), TimeSpan.FromSeconds(0.1)));
                 h.Margin = new Thickness(-40, 40, 40, -20);
                 G.Margin = new Thickness(-40, 40, 40, -20);
             }
@@ -997,7 +996,7 @@ namespace Lemon_App
                 ZjImAgE.Visibility = Visibility.Collapsed;
                 ZjImAgE.Margin = new Thickness(-40, 40, 40, -20);
                 G.Margin = new Thickness(-40, 40, 40, -20);
-                h.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(- 40, 40, 40, -20), new Thickness(0, 0, 0, 49), TimeSpan.FromSeconds(0.1)));
+                h.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(- 40, 40, 40, -20), new Thickness(0, 0, 0, 70), TimeSpan.FromSeconds(0.1)));
             }
         }
 
@@ -1052,12 +1051,6 @@ namespace Lemon_App
                 jz.Visibility = Visibility.Collapsed;
                 listBox.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 93, 0, 0), new Thickness(0, 43, 0, 0), TimeSpan.FromSeconds(0.2)));
             }
-        }
-
-        private void Move_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            Settings.Default.sx = Move.SelectedIndex;
-            Settings.Default.Save();
         }
         int downloadindex = 0;
         string datadlwo = "";
@@ -1293,6 +1286,13 @@ namespace Lemon_App
         private void Border_MouseLeave(object sender, MouseEventArgs e)
         {
             pu.IsOpen = false;
+        }
+
+        private void Move_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if(Move.ToolTip.ToString()=="列表循环")
+            { Move.ToolTip = "单曲循环"; Move.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.2))); MovePath.Data = Geometry.Parse("M23.715,14.546c-0.104,0.172-0.051,0.392,0.115,0.492c0.008,0.004,0.014,0.009,0.018,0.011 l5.969,3.622l4.158-6.165c0.078-0.125,0.068-0.286-0.021-0.401c-0.078-0.115-0.229-0.169-0.367-0.133l-2.969,0.744l-0.152,0.038 C28.193,8.849,24.047,6.443,19.5,6.443c-7,0-12.695,5.695-12.695,12.694S12.5,31.832,19.5,31.832c5.273,0,10.053-3.319,11.896-8.258 c0.354-0.952-0.129-2.012-1.082-2.367c-0.953-0.356-2.012,0.129-2.367,1.081c-1.307,3.508-4.703,5.865-8.447,5.865 c-4.973,0-9.016-4.044-9.016-9.015s4.043-9.015,9.016-9.015c2.863,0,5.502,1.345,7.189,3.582l-2.662,0.669 C23.902,14.372,23.783,14.434,23.715,14.546z"); }
+            else { Move.ToolTip = "列表循环"; Move.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.2))); MovePath.Data = Geometry.Parse("M22.724,8.446l-3.909,3.909c-0.225,0.226-0.592,0.226-0.818,0l-0.056-0.057V9.42 C13.22,9.75,9.48,13.693,9.48,18.496c0,3.373,1.851,6.454,4.833,8.04c0.751,0.4,1.036,1.333,0.637,2.086 c-0.4,0.752-1.333,1.037-2.085,0.637c-3.99-2.123-6.469-6.247-6.469-10.763c0-6.504,5.123-11.834,11.545-12.168V3.776l0.056-0.056 c0.226-0.226,0.593-0.226,0.818,0l3.909,3.908C22.95,7.854,22.95,8.221,22.724,8.446z M20.497,32.618l-3.908-3.908c-0.226-0.226-0.226-0.592,0-0.818l3.908-3.908 c0.226-0.226,0.593-0.226,0.819,0l0.055,0.057l0.001,2.877c4.72-0.329,8.461-4.272,8.461-9.075c0-3.373-1.852-6.454-4.833-8.04 c-0.752-0.4-1.037-1.334-0.638-2.086c0.401-0.752,1.335-1.038,2.087-0.637c3.989,2.123,6.468,6.247,6.468,10.763 c0,6.504-5.123,11.834-11.545,12.167v2.551l-0.056,0.057C21.09,32.844,20.723,32.844,20.497,32.618z"); }
         }
     }
 }
