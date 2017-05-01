@@ -103,11 +103,15 @@ namespace Lemon_App
             if (iss==0)
             {
                 iss = 1;
+                ss.Visibility = Visibility.Collapsed;
+                st.Visibility = Visibility.Visible;
                 ss.BeginAnimation(OpacityProperty, new DoubleAnimation(1, 0, TimeSpan.FromSeconds(0.2)));
                 st.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.2)));
             }else if(iss==1)
             {
                 iss = 0;
+                ss.Visibility = Visibility.Visible;
+                st.Visibility = Visibility.Collapsed;
                 ss.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.2)));
                 st.BeginAnimation(OpacityProperty, new DoubleAnimation(1, 0, TimeSpan.FromSeconds(0.2)));
             }
