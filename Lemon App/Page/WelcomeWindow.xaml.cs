@@ -92,21 +92,16 @@ namespace Lemon_App
             d.KeyFrames.Add(new LinearDoubleKeyFrame(1,TimeSpan.FromSeconds(0.2)));
             d.KeyFrames.Add(new LinearDoubleKeyFrame(1, TimeSpan.FromSeconds(10)));
             d.KeyFrames.Add(new LinearDoubleKeyFrame(0, TimeSpan.FromSeconds(10.2)));
+            d.Completed += delegate { this.Close(); };
             BeginAnimation(OpacityProperty, d);
-            d.Completed += S;
-        }
-
-        private void S(object sender, EventArgs e)
-        {
-            Close();
         }
 
         private void CLOSE_MouseDown(object sender, MouseButtonEventArgs e)
         {
             DoubleAnimationUsingKeyFrames d = new DoubleAnimationUsingKeyFrames();
             d.KeyFrames.Add(new LinearDoubleKeyFrame(0, TimeSpan.FromSeconds(0.2)));
+            d.Completed += delegate { this.Close(); };
             BeginAnimation(OpacityProperty, d);
-            d.Completed += S;
         }
     }
 }
