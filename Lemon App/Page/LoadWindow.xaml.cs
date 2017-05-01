@@ -51,6 +51,7 @@ namespace Lemon_App
             {
                 if (wb.DocumentTitle == "我的QQ中心")
                 {
+                    op.IsOpen = false;
                     var qq = He.Text(wb.Document.Cookie, "uin=o", ";", 0);
                     wb.Dispose();
                     var sl = He.Text(await Uuuhh.GetWebAsync("http://r.pengyou.com/fcg-bin/cgi_get_portrait.fcg?uins=" + qq, Encoding.Default), "portraitCallBack(", ")", 0);
@@ -81,7 +82,7 @@ namespace Lemon_App
                 {
                     op.IsOpen = true;
                 }
-                else { rk.Text = "登录失败,请检查账号和密码."; }
+                else { rk.Text = "登录失败,请检查账号和密码."; op.IsOpen = false; }
             }else { index++; }
         }
         private System.Drawing.Image GetWebImage(System.Windows.Forms.WebBrowser WebCtl, HtmlElement ImgeTag)
@@ -302,9 +303,12 @@ namespace Lemon_App
 
         private void TextBlock_MouseDown_2(object sender, MouseButtonEventArgs e)
         {
-            Settings.Default.RNBM = (bool)RM.IsChecked;
-            new QQLogin().Show();
-            Close();
+            //Settings.Default.RNBM = (bool)RM.IsChecked;
+            //new QQLogin().Show();
+            //Close();
+            wb.Navigate("http://ui.ptlogin2.qq.com/cgi-bin/login?appid=1006102&s_url=http://id.qq.com/index.html&hide_close_icon=1");
+            op.IsOpen = true;
+            index = 0;
         }
      //   System.Windows.Forms.WebBrowser wb = new System.Windows.Forms.WebBrowser();
         private async void Border_MouseDown_1(object sender, MouseButtonEventArgs e)

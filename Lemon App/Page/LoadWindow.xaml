@@ -100,13 +100,12 @@
             <ImageBrush ImageSource="http://f.hiphotos.baidu.com/zhidao/pic/item/dc54564e9258d109cedcbe39d758ccbf6c814d79.jpg" Stretch="UniformToFill"/>
         </Grid.Background>
         <Popup x:Name="op" Width="350" local:PopopHelper.PopupPlacementTarget="{Binding ElementName=CLOSE}" Height="200" Placement="Right" HorizontalOffset="10">
-            <Border x:Name="po" Background="White" CornerRadius="3">
+            <Border x:Name="po" Background="White" BorderThickness="2" BorderBrush="#FFDEDEDE">
                 <Grid KeyDown="Grid_KeyDown">
                     <TextBlock x:Name="ns" TextWrapping="Wrap" Foreground="#FF686868" TextAlignment="Center" FontSize="14" Height="40"/>
                     <WindowsFormsHost Height="140" VerticalAlignment="Top" Margin="0,35,0,0">
                         <Forms:WebBrowser x:Name="wb" ScriptErrorsSuppressed="True"/>
                     </WindowsFormsHost>
-                    <TextBlock TextWrapping="Wrap" Text="回车以继续" VerticalAlignment="Top" Margin="10,10,10,0" Height="25" Foreground="#FF616161"/>
                 </Grid>
             </Border>
         </Popup>
@@ -137,7 +136,7 @@
             </Border>
             <TextBlock x:Name="rk" Height="24" Margin="10,0,10,10" TextWrapping="Wrap" Text="" VerticalAlignment="Bottom" TextAlignment="Center"/>
             <TextBlock x:Name="s" HorizontalAlignment="Right" Height="15" Margin="0,0,10,34" TextWrapping="Wrap" Text="游客访问&gt;" VerticalAlignment="Bottom" Width="85" Foreground="#FFB1B1B1" TextAlignment="Right" Background="#00000000" MouseDown="TextBlock_MouseDown_1" Visibility="{Binding ElementName=RM}"/>
-            <TextBlock x:Name="q" HorizontalAlignment="Right" Height="15" Margin="0,0,84,51" TextWrapping="Wrap" Text="QQ登录" VerticalAlignment="Bottom" Width="49" Foreground="#FFB1B1B1" TextAlignment="Right" Background="#00000000" MouseDown="TextBlock_MouseDown_2" Visibility="Collapsed"/>
+            <TextBlock x:Name="q" HorizontalAlignment="Right" Height="15" Margin="0,0,84,51" TextWrapping="Wrap" Text="快速登录" VerticalAlignment="Bottom" Width="49" Foreground="#FFB1B1B1" TextAlignment="Right" Background="#00000000" MouseDown="TextBlock_MouseDown_2"/>
         </Grid>
         <Border x:Name="CLOSE"  MouseDown="TextBlock_MouseDown"  HorizontalAlignment="Left" Margin="10,10,0,0" Width="13" Height="13" Background="#FF212121" CornerRadius="13" VerticalAlignment="Top"/>
     </Grid>
