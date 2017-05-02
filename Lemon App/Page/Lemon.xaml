@@ -145,7 +145,7 @@
 
     </Window.Resources>
     <Window.Effect>
-        <DropShadowEffect Color="#FF2D2D30" BlurRadius="10" Opacity="0.4"/>
+        <DropShadowEffect Color="#FF2D2D30" BlurRadius="10" Opacity="0.4" ShadowDepth="0"/>
     </Window.Effect>
     <Window.Triggers>
         <EventTrigger RoutedEvent="UIElement.MouseMove" SourceName="path">

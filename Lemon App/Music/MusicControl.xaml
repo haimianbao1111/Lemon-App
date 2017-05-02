@@ -1345,15 +1345,13 @@
                             </Border.Background>
                         </Border>
                         <TextBlock x:Name="textBlock1" Margin="100,0,0,15" TextWrapping="Wrap" Foreground="#FF686868" Text="小萌音乐" MouseDown="textBlock1_MouseDown" Height="18"/>
-                        <ComboBox x:Name="pz" HorizontalAlignment="Left" Margin="65,0,0,15" Width="28" Background="{x:Null}" BorderBrush="{x:Null}" SelectedIndex="2" Foreground="#FF31C27C" FontSize="10" SelectionChanged="pz_SelectionChanged" Height="20">
-                            <ComboBoxItem Content="经济" Foreground="#FF252526"/>
-                            <ComboBoxItem Content="标准" Foreground="#FF252526"/>
-                            <ComboBoxItem Content="HQ" Foreground="#FF252526"/>
-                        </ComboBox>
                         <Slider x:Name="jd"  Margin="66,25,0,0" Style="{DynamicResource SliderStyle1}" MouseMove="jd_MouseMove" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" Height="15" />
                         <TextBlock x:Name="loading" HorizontalAlignment="Left" Height="18" Margin="66,0,0,3.187" TextWrapping="Wrap" Text="加载中..." VerticalAlignment="Bottom" Width="51" Foreground="#FF31C27C" Visibility="Collapsed"/>
                     </Grid>
                 </Grid>
+                <Border HorizontalAlignment="Left" Width="30" Height="20" Background="#00000000" CornerRadius="3" ToolTip="列表循环" BorderBrush="#FF31C27C" Margin="65,0,0,15" MouseDown="Border_MouseDown_8" Grid.Column="1" BorderThickness="1">
+                    <TextBlock x:Name="pz" Foreground="#FF31C27C" Text="HQ" TextAlignment="Center" Margin="0,1,0,0"/>
+                </Border>
 
             </Grid>
         </Border>

@@ -154,7 +154,9 @@ namespace Lemon_App.Page.Sr
         MediaPlayer p = new MediaPlayer();
         private void CLOSE_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            this.Close();
+            var c = new DoubleAnimation(1, 0, TimeSpan.FromSeconds(0.3));
+            c.Completed += delegate { this.Close(); };
+            this.BeginAnimation(OpacityProperty, c);
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
