@@ -43,6 +43,12 @@ namespace Lemon_App
             tr.Tick += T;
             trs.Interval = 3000;
             trs.Tick += Trs;
+            if (Console.CapsLock)
+            {
+                oldtext = rk.Text;
+                rk.Text = "已开启大写锁定";
+            }
+            else { rk.Text = oldtext; }
         }
         int index = 0;
         private async void NaAsync(object sender, WebBrowserNavigatedEventArgs e)
