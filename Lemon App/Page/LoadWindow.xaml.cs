@@ -381,5 +381,15 @@ namespace Lemon_App
             if (e.ClickCount == 3)
                 op.IsOpen = !op.IsOpen;
         }
+        string oldtext = "";
+        private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if(Console.CapsLock)
+            {
+                oldtext = rk.Text;
+                rk.Text = "已开启大写锁定";
+            }
+            else { rk.Text = oldtext; }
+        }
     }
 }

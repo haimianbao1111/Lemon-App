@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Lemon_App"
         xmlns:Forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" x:Class="Lemon_App.LoadWindow"
         mc:Ignorable="d"
-        Title="登录到小萌" Height="325" MouseLeftButtonDown="Window_MouseLeftButtonDown" Width="428" Background="{x:Null}" ResizeMode="NoResize" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" MouseDown="Window_MouseDown">
+        Title="登录到小萌" Height="325" MouseLeftButtonDown="Window_MouseLeftButtonDown" Width="428" Background="{x:Null}" ResizeMode="NoResize" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" MouseDown="Window_MouseDown" KeyDown="Window_KeyDown">
     <Window.Resources>
         <SolidColorBrush x:Key="OptionMark.Static.Background" Color="#FFFFFFFF"/>
         <SolidColorBrush x:Key="OptionMark.Static.Border" Color="#FF707070"/>
