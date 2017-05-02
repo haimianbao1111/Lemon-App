@@ -48,7 +48,7 @@ namespace Lemon_App
                 oldtext = rk.Text;
                 rk.Text = "已开启大写锁定";
             }
-            else { rk.Text = oldtext; }
+            else { if (oldtext == "已开启大写锁定") rk.Text = oldtext; else { rk.Text = "";oldtext = ""; } }
         }
         int index = 0;
         private async void NaAsync(object sender, WebBrowserNavigatedEventArgs e)
@@ -390,12 +390,12 @@ namespace Lemon_App
         string oldtext = "";
         private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            if(Console.CapsLock)
+            if (Console.CapsLock)
             {
                 oldtext = rk.Text;
                 rk.Text = "已开启大写锁定";
             }
-            else { rk.Text = oldtext; }
+            else { if (oldtext == "已开启大写锁定") rk.Text = oldtext; else { rk.Text = ""; oldtext = ""; } }
         }
     }
 }
