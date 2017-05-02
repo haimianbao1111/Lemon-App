@@ -51,6 +51,7 @@ namespace Lemon_App
             {
                 if (wb.DocumentTitle == "我的QQ中心")
                 {
+                    rk.Text = "登录成功";
                     op.IsOpen = false;
                     var qq = He.Text(wb.Document.Cookie, "uin=o", ";", 0);
                     wb.Dispose();
@@ -81,6 +82,7 @@ namespace Lemon_App
                 else if (wb.DocumentText.Contains("安全验证"))
                 {
                     op.IsOpen = true;
+                    rk.Text = "请输入验证码";
                 }
                 else { rk.Text = "登录失败,请检查账号和密码."; op.IsOpen = false; }
             }else { index++; }
@@ -215,7 +217,7 @@ namespace Lemon_App
                     d.AutoReverse = true;
                     po.BeginAnimation(OpacityProperty, d);
                 }
-            }catch(Exception es)
+            }catch
             {
        //        ns.Text = "发送失败" + es.Message;
                 DoubleAnimationUsingKeyFrames d = new DoubleAnimationUsingKeyFrames();
@@ -315,15 +317,23 @@ namespace Lemon_App
         {
             if (Email.Text != string.Empty || PSW.Password != string.Empty)
             {
-               
+                rk.Text = "登录中...";
                 System.Windows.Forms.HtmlDocument doc = wb.Document;
                 doc.GetElementById("switcher_plogin").InvokeMember("click");
-                await Task.Delay(1000);
+                await Task.Delay(200);
                 doc.GetElementById("u").InnerText = Email.Text;
-                await Task.Delay(1000);
+                await Task.Delay(200);
                 doc.GetElementById("p").InnerText = PSW.Password;
-                await Task.Delay(1000);
+                await Task.Delay(200);
                 doc.GetElementById("login_button").InvokeMember("click");
+                await Task.Delay(1000);
+                if (wb.DocumentTitle != "我的QQ中心"|| !wb.DocumentText.Contains("安全验证"))
+                    rk.Text = "登录失败,请检查账号和密码.";
+                else if(wb.DocumentText.Contains("安全验证"))
+                {
+                    op.IsOpen = true;
+                    rk.Text = "请输入验证码";
+                }
             }
         }
 
@@ -335,6 +345,7 @@ namespace Lemon_App
                 //    wb.Document..GetElementById("submit").InvokeMember("click");
                 if (wb.DocumentTitle == "我的QQ中心")
                 {
+                    await Task.Delay(200);
                     var qq = He.Text(wb.Document.Cookie, "uin=o", ";", 0);
                     wb.Dispose();
                     var sl = He.Text(await Uuuhh.GetWebAsync("http://r.pengyou.com/fcg-bin/cgi_get_portrait.fcg?uins=" + qq, Encoding.Default), "portraitCallBack(", ")", 0);
@@ -363,6 +374,12 @@ namespace Lemon_App
                 }
                 else { rk.Text = "登录失败,请检查账号和密码."; }
             }
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ClickCount == 3)
+                op.IsOpen = !op.IsOpen;
         }
     }
 }
