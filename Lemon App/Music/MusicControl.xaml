@@ -1349,7 +1349,7 @@
                         <TextBlock x:Name="loading" HorizontalAlignment="Left" Height="18" Margin="66,0,0,3.187" TextWrapping="Wrap" Text="加载中..." VerticalAlignment="Bottom" Width="51" Foreground="#FF31C27C" Visibility="Collapsed"/>
                     </Grid>
                 </Grid>
-                <Border HorizontalAlignment="Left" Width="30" Height="20" Background="#00000000" CornerRadius="3" ToolTip="列表循环" BorderBrush="#FF31C27C" Margin="65,0,0,15" MouseDown="Border_MouseDown_8" Grid.Column="1" BorderThickness="1">
+                <Border HorizontalAlignment="Left" Width="30" Height="20" Background="#00000000" CornerRadius="5" ToolTip="品质" BorderBrush="#FF31C27C" Margin="65,0,0,15" MouseDown="Border_MouseDown_8" Grid.Column="1" BorderThickness="1">
                     <TextBlock x:Name="pz" Foreground="#FF31C27C" Text="HQ" TextAlignment="Center" Margin="0,1,0,0"/>
                 </Border>
 
