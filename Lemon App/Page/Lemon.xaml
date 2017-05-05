@@ -117,50 +117,11 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <Storyboard x:Key="OnMouseDown1">
-            <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(Popup.IsOpen)" Storyboard.TargetName="popup">
-                <DiscreteBooleanKeyFrame KeyTime="0" Value="True"/>
-            </BooleanAnimationUsingKeyFrames>
-        </Storyboard>
-        <Storyboard x:Key="OnMouseMove2">
-            <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(Popup.IsOpen)" Storyboard.TargetName="popup">
-                <DiscreteBooleanKeyFrame KeyTime="0" Value="False"/>
-            </BooleanAnimationUsingKeyFrames>
-        </Storyboard>
-        <Storyboard x:Key="OnMouseMove1">
-            <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(Popup.IsOpen)" Storyboard.TargetName="ufp">
-                <DiscreteBooleanKeyFrame KeyTime="0" Value="True"/>
-            </BooleanAnimationUsingKeyFrames>
-        </Storyboard>
-        <Storyboard x:Key="OnMouseDown2">
-            <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(Popup.IsOpen)" Storyboard.TargetName="ufp">
-                <DiscreteBooleanKeyFrame KeyTime="0" Value="False"/>
-            </BooleanAnimationUsingKeyFrames>
-        </Storyboard>
-        <Storyboard x:Key="OnMouseLeave1">
-            <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(Popup.IsOpen)" Storyboard.TargetName="ufp">
-                <DiscreteBooleanKeyFrame KeyTime="0" Value="False"/>
-            </BooleanAnimationUsingKeyFrames>
-        </Storyboard>
 
     </Window.Resources>
     <Window.Effect>
         <DropShadowEffect Color="#FF2D2D30" BlurRadius="10" Opacity="0.4" ShadowDepth="0"/>
     </Window.Effect>
-    <Window.Triggers>
-        <EventTrigger RoutedEvent="UIElement.MouseMove" SourceName="path">
-            <BeginStoryboard Storyboard="{StaticResource OnMouseDown1}"/>
-        </EventTrigger>
-        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="popup">
-            <BeginStoryboard x:Name="OnMouseMove2_BeginStoryboard" Storyboard="{StaticResource OnMouseMove2}"/>
-        </EventTrigger>
-        <EventTrigger RoutedEvent="UIElement.MouseMove" SourceName="uf">
-            <BeginStoryboard x:Name="OnMouseMove1_BeginStoryboard" Storyboard="{StaticResource OnMouseMove1}"/>
-        </EventTrigger>
-        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="ufp">
-            <BeginStoryboard x:Name="OnMouseLeave1_BeginStoryboard" Storyboard="{StaticResource OnMouseLeave1}"/>
-        </EventTrigger>
-    </Window.Triggers>
     <Grid x:Name="Page" >
         <Grid.Clip>
             <RectangleGeometry RadiusX="5" RadiusY="5">
@@ -197,7 +158,7 @@
                         <Path x:Name="ALL" StrokeThickness="1" Margin="0"   Data="M113.66,73.506c0.22,0.99,0.962,1.677,1.98,1.677c0.66,0,1.32-0.302,1.87-0.825l26.485-25.357   c0.797-0.77,1.265-1.843,1.265-2.86c0-0.825-0.33-1.567-0.907-2.145c-7.014-6.683-16.446-10.836-26.567-11.716   c-1.925-0.165-4.236,1.32-4.236,3.355l0,0l0,0v37.348l0,0l0,0C113.577,73.176,113.604,73.341,113.66,73.506z M113.082,81.234c-1.292-1.293-2.613-2.063-2.613-4.125l0.138-39.851c0.137-0.77,0.055-1.348-0.248-1.733   c-0.22-0.248-0.522-0.413-0.853-0.413c-23.652,0-42.876,20.104-42.876,44.829c0,24.092,19.747,43.701,44.031,43.701   c10.918,0,21.37-4.098,29.428-11.551c0.688-0.633,1.1-1.513,1.1-2.476c0.027-0.963-0.357-1.843-1.018-2.53L113.082,81.234z M150.237,52.247c-1.183-1.458-3.548-1.541-4.923-0.22l-26.182,25.357c-0.688,0.66-1.045,1.54-1.072,2.475   c0,0.936,0.357,1.815,1.018,2.503l25.879,25.88c0.798,0.77,1.513,1.018,2.421,1.018c0.962,0,1.87-0.413,2.502-1.155   c6.601-7.865,10.259-17.849,10.259-28.107C160.166,69.876,156.618,60.03,150.237,52.247z" Stretch="Uniform" Stroke="#CC9D9FA7"/>
                     </Border>
                 </WrapPanel>
-                <Grid Width="20" Height="20" Margin="0,0,0,10" VerticalAlignment="Bottom">
+                <Grid Width="20" Height="20" Margin="0,0,0,10" VerticalAlignment="Bottom" Background="#00000000" MouseDown="Grid_MouseDown">
                     <Path x:Name="path" StrokeThickness="0" Fill="#CC9D9FA7" Data="M236.844,198.936c-1.632-4.488-4.692-6.732-9.18-6.732h-78.948c-4.488,0-7.548,2.244-9.18,6.732L19.584,593.064  c-0.816,3.672-0.408,6.322,1.224,7.954c1.632,2.448,4.284,3.674,7.956,3.674h70.992c4.896,0,7.956-2.244,9.18-6.732l20.196-70.992  h118.117l20.196,70.992c1.224,4.488,4.08,6.732,8.568,6.732h71.604h0.61c2.448,0,4.592-0.817,6.428-2.448s2.754-3.876,2.754-6.732  c0-0.815-0.409-2.447-1.226-4.896L236.844,198.936z M147.492,450.468l40.392-144.432l41.004,144.432H147.492z M564.263,336.636  c-19.176-17.544-46.103-26.316-80.782-26.316c-21.624,0-41.616,3.57-59.976,10.709c-18.361,7.14-34.476,17.646-48.348,31.518  c-3.266,3.264-3.876,6.936-1.836,11.016l22.644,39.167c1.224,2.448,3.467,4.081,6.732,4.896c2.854,0.817,5.508,0,7.956-2.448  c18.768-19.176,39.575-28.764,62.424-28.764c29.375,0,44.062,14.077,44.062,42.228v17.748  c-17.135-13.464-38.351-20.194-63.646-20.194c-11.424,0-22.746,1.937-33.966,5.812c-11.221,3.876-21.218,9.792-29.988,17.748  c-8.773,7.956-15.912,18.157-21.42,30.602c-5.508,12.443-8.262,27.028-8.262,43.758c0,16.318,2.65,30.6,7.954,42.84  c5.306,12.24,12.444,22.542,21.422,30.906c8.975,8.363,18.971,14.688,29.986,18.972c11.017,4.284,22.44,6.426,34.272,6.426  s23.255-1.836,34.271-5.508c11.018-3.672,20.81-8.975,29.376-15.912v5.508c0,2.448,0.918,4.592,2.754,6.428  c1.838,1.836,3.979,2.754,6.428,2.754h57.526c2.448,0,4.591-0.918,6.428-2.754c1.836-1.836,2.754-3.979,2.754-6.428V411.3  C593.028,379.068,583.44,354.18,564.263,336.636z M517.14,534.923c-8.976,13.872-23.256,20.81-42.84,20.81  c-11.832,0-21.215-3.774-28.15-11.322c-6.937-7.548-10.404-17.443-10.404-29.684c0-12.238,3.467-22.234,10.404-29.986  c6.935-7.752,16.318-11.628,28.15-11.628c5.712,0,12.854,1.326,21.42,3.978c8.568,2.653,15.708,8.67,21.42,18.054V534.923z" Stretch="Uniform" Stroke="#CC9D9FA7" Width="20" Height="20" VerticalAlignment="Bottom"/>
                     <Popup x:Name="popup" AllowsTransparency="True" PopupAnimation="Fade" HorizontalOffset="-45" Placement="Top"  local:PopopHelper.PopupPlacementTarget="{Binding ElementName=Page}">
                         <Grid Width="110" Height="140">
@@ -224,7 +185,7 @@
                         </Grid>
                     </Popup>
                 </Grid>
-                <Grid Width="20" Height="20" Margin="0,0,0,45" VerticalAlignment="Bottom" Background="#00000000">
+                <Grid Width="20" Height="20" Margin="0,0,0,45" VerticalAlignment="Bottom" Background="#00000000" MouseDown="Grid_MouseDown_1">
                     <Path x:Name="uf" StrokeThickness="2" Fill="#CC9D9FA7" Stretch="Uniform" Stroke="#CC9D9FA7" Width="20" Height="20" VerticalAlignment="Bottom" Data="M21.759,19.639c2.557-2.014,4.205-5.131,4.205-8.639    c0-6.075-4.925-11-11-11s-11,4.925-11,11c0,3.508,1.648,6.625,4.205,8.639C3.584,21.976,0.357,26.592,0,32h2.003    c0.386-5.064,3.678-9.308,8.209-11.091C11.652,21.601,13.26,22,14.964,22c1.705,0,3.312-0.399,4.752-1.091    c4.531,1.783,7.823,6.027,8.209,11.091h2.003C29.572,26.592,26.344,21.976,21.759,19.639z M14.964,20c-4.971,0-9-4.029-9-9    c0-4.971,4.029-9,9-9c4.971,0,9,4.029,9,9C23.964,15.971,19.935,20,14.964,20z"/>
                     <Popup x:Name="ufp" AllowsTransparency="True" PopupAnimation="Fade" Placement="Top" HorizontalOffset="-120"  local:PopopHelper.PopupPlacementTarget="{Binding ElementName=Page}">
                         <Grid Width="260" Height="340">

@@ -235,6 +235,7 @@ namespace Lemon_App
             FontFamily = (Font.SelectedItem as ListBoxItem).FontFamily;
             Settings.Default.FontFamilly = (Font.SelectedItem as ListBoxItem).FontFamily.Source;
             Settings.Default.Save();
+            popup.IsOpen = false;
         }
 
         [System.Runtime.InteropServices.DllImport("user32")]
@@ -343,6 +344,16 @@ namespace Lemon_App
                     };
                 }
             }
+        }
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            popup.IsOpen = !popup.IsOpen;
+        }
+
+        private void Grid_MouseDown_1(object sender, MouseButtonEventArgs e)
+        {
+            ufp.IsOpen = !ufp.IsOpen;
         }
     }
 }
