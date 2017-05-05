@@ -28,7 +28,10 @@ namespace Lemon_App
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             if (System.IO.File.Exists(Settings.Default.UserImage))
-            { TX.Background = new ImageBrush(new BitmapImage(new Uri(Settings.Default.UserImage, UriKind.Absolute)));}
+            {
+                var image = new System.Drawing.Bitmap(Settings.Default.UserImage);
+                TX.Background = new ImageBrush(image.ToImageSource());
+            }
             DoubleAnimation da = new DoubleAnimation(0.2, 1, TimeSpan.FromSeconds(1));
             da.AutoReverse = true;
             NM.Text = Settings.Default.RobotName;
@@ -66,7 +69,10 @@ namespace Lemon_App
             {
                 NM.Text = Settings.Default.RobotName;
                 if (System.IO.File.Exists(Settings.Default.UserImage))
-                { TX.Background = new ImageBrush(new BitmapImage(new Uri(Settings.Default.UserImage, UriKind.Absolute))); }
+                {
+                    var image = new System.Drawing.Bitmap(Settings.Default.UserImage);
+                    TX.Background = new ImageBrush(image.ToImageSource());
+                }
                 XT.BeginAnimation(WidthProperty, new DoubleAnimation(0, 85, TimeSpan.FromSeconds(0.2)));
             }
         }

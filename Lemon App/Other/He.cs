@@ -414,6 +414,23 @@ namespace Lemon_App
 
     public class Uuuhh
     {
+        public static async Task HttpDownloadFileAsync(string url, string path)
+        {
+            HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
+            HttpWebResponse response = await request.GetResponseAsync() as HttpWebResponse;
+            Stream responseStream = response.GetResponseStream();
+            Stream stream = new FileStream(path, FileMode.Create);
+            byte[] bArr = new byte[1024];
+            int size =await  responseStream.ReadAsync(bArr, 0, bArr.Length);
+            while (size > 0)
+            {
+                await stream.WriteAsync(bArr, 0, size);
+                size =await responseStream.ReadAsync(bArr, 0, bArr.Length);
+            }
+            stream.Close();
+            responseStream.Close();
+        }
+
         public static void SetHeaderValue(WebHeaderCollection header, string name, string value)
         {
             var property = typeof(WebHeaderCollection).GetProperty("InnerCollection",

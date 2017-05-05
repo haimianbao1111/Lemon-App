@@ -34,7 +34,10 @@ namespace Lemon_App
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             if (System.IO.File.Exists(Settings.Default.UserImage))
-                bd.Background = new ImageBrush(new BitmapImage(new Uri(Settings.Default.UserImage, UriKind.Absolute)));
+            {
+                var image = new System.Drawing.Bitmap(Settings.Default.UserImage);
+                bd.Background = new ImageBrush(image.ToImageSource());
+            }
             UName.Text = Settings.Default.RobotName;
         }
     }

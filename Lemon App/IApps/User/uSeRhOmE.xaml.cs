@@ -38,7 +38,10 @@ namespace Lemon_App
         {
             qm.Text = Settings.Default.qm;
             if (System.IO.File.Exists(Settings.Default.UserImage))
-            { TX.Background = new ImageBrush(new BitmapImage(new Uri(Settings.Default.UserImage, UriKind.Absolute))); }
+            {
+                var image = new System.Drawing.Bitmap(Settings.Default.UserImage);
+                TX.Background = new ImageBrush(image.ToImageSource());
+            }
             NM.Text = Settings.Default.RobotName;
             if (Settings.Default.LZone!="null")
             {

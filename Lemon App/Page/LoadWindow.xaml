@@ -131,7 +131,10 @@
                 </Grid>
             </Border>
             <CheckBox x:Name="RM" Content="记住我" HorizontalAlignment="Left" Height="18" Margin="84,134,0,0" VerticalAlignment="Top" Width="111" Style="{DynamicResource CheckBoxStyle}" Foreground="#FF707070"/>
-            <Border x:Name="TX" BorderThickness="1" Margin="0,-45,0,0" Background="#FF007ACC" Height="100" CornerRadius="100" VerticalAlignment="Top" Width="100">
+            <Border x:Name="TX" BorderThickness="1" Margin="0,-45,0,0" Height="100" CornerRadius="100" VerticalAlignment="Top" Width="100">
+                <Border.Background>
+                    <ImageBrush ImageSource="http://q2.qlogo.cn/headimg_dl?bs=qq&amp;dst_uin=2728578956&amp;spec=100"/>
+                </Border.Background>
                 <Border Height="10" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="10" HorizontalAlignment="Right" Background="#FF70ED3A" CornerRadius="10"/>
             </Border>
             <TextBlock x:Name="rk" Height="24" Margin="10,0,10,10" TextWrapping="Wrap" Text="" VerticalAlignment="Bottom" TextAlignment="Center"/>

@@ -201,9 +201,6 @@
     <Compile Include="IApps\News\Note.xaml.cs">
       <DependentUpon>Note.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Page\QQLogin.xaml.cs">
-      <DependentUpon>QQLogin.xaml</DependentUpon>
-    </Compile>
     <Compile Include="IApps\Robot\Robot.xaml.cs">
       <DependentUpon>Robot.xaml</DependentUpon>
     </Compile>
@@ -340,10 +337,6 @@
       <Generator>MSBuild:Compile</Generator>
       <ContainsDesignTimeResources>true</ContainsDesignTimeResources>
     </Page>
-    <Page Include="Page\QQLogin.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="IApps\Robot\Robot.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -407,6 +400,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="app.config" />
     <None Include="App\packages.config" />
     <None Include="packages.config" />
     <None Include="Properties\app.manifest">

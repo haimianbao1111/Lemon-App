@@ -63,11 +63,7 @@ namespace Lemon_App
                     wb.Dispose();
                     var sl = He.Text(await Uuuhh.GetWebAsync("http://r.pengyou.com/fcg-bin/cgi_get_portrait.fcg?uins=" + qq, Encoding.Default), "portraitCallBack(", ")", 0);
                     JObject o = JObject.Parse(sl);
-                    if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + qq + ".jpg"))
-                    {
-                        System.Net.WebClient x = new System.Net.WebClient();
-                        x.DownloadFileAsync(new Uri($"http://q2.qlogo.cn/headimg_dl?bs=qq&dst_uin={qq}&spec=100"), AppDomain.CurrentDomain.BaseDirectory + qq + ".jpg");
-                    }
+                    await Uuuhh.HttpDownloadFileAsync($"http://q2.qlogo.cn/headimg_dl?bs=qq&dst_uin={qq}&spec=100", AppDomain.CurrentDomain.BaseDirectory + qq + ".jpg");
                     Settings.Default.RobotName = o[qq][6].ToString();
                     Settings.Default.UserImage = AppDomain.CurrentDomain.BaseDirectory + qq + ".jpg";
                     Settings.Default.LemonAreeunIts = qq + "@qq.com";
@@ -142,7 +138,10 @@ namespace Lemon_App
                var s = Settings.Default.LemonAreeunIts;
                 Email.Text = s.Remove(s.LastIndexOf("@qq.com"));
                 if (System.IO.File.Exists(Settings.Default.UserImage))
-                { TX.Background = new ImageBrush(new BitmapImage(new Uri(Settings.Default.UserImage, UriKind.Absolute))); }
+                {
+                    var image = new System.Drawing.Bitmap(Settings.Default.UserImage);
+                    TX.Background = new ImageBrush(image.ToImageSource());
+                }
                 RM.IsChecked = Settings.Default.RNBM;
             }
         }
@@ -356,11 +355,7 @@ namespace Lemon_App
                     wb.Dispose();
                     var sl = He.Text(await Uuuhh.GetWebAsync("http://r.pengyou.com/fcg-bin/cgi_get_portrait.fcg?uins=" + qq, Encoding.Default), "portraitCallBack(", ")", 0);
                     JObject o = JObject.Parse(sl);
-                    if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + qq + ".jpg"))
-                    {
-                        System.Net.WebClient x = new System.Net.WebClient();
-                        x.DownloadFileAsync(new Uri($"http://q2.qlogo.cn/headimg_dl?bs=qq&dst_uin={qq}&spec=100"), AppDomain.CurrentDomain.BaseDirectory + qq + ".jpg");
-                    }
+                    await Uuuhh.HttpDownloadFileAsync($"http://q2.qlogo.cn/headimg_dl?bs=qq&dst_uin={qq}&spec=100", AppDomain.CurrentDomain.BaseDirectory + qq + ".jpg");
                     Settings.Default.RobotName = o[qq][6].ToString();
                     Settings.Default.UserImage = AppDomain.CurrentDomain.BaseDirectory + qq + ".jpg";
                     Settings.Default.LemonAreeunIts = qq + "@qq.com";

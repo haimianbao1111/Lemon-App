@@ -53,7 +53,10 @@ namespace Lemon_App
         {
             GC.Collect();
             if (System.IO.File.Exists(Settings.Default.UserImage))
-            { tx.Background = new ImageBrush(new BitmapImage(new Uri(Settings.Default.UserImage, UriKind.Absolute))); }
+            {
+                var image = new System.Drawing.Bitmap(Settings.Default.UserImage);
+                tx.Background = new ImageBrush(image.ToImageSource());
+            }
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -165,7 +168,10 @@ namespace Lemon_App
                 ZX.Background = MIN.Background;
             else ZX.Background = MAX.Background;
             if (System.IO.File.Exists(Settings.Default.UserImage))
-            { tx.Background = new ImageBrush(new BitmapImage(new Uri(Settings.Default.UserImage, UriKind.Absolute))); }
+            {
+                var image = new System.Drawing.Bitmap(Settings.Default.UserImage);
+                tx.Background = new ImageBrush(image.ToImageSource());
+            }
         }
 
         private void tx_MouseDown(object sender, MouseButtonEventArgs e)
