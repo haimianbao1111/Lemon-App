@@ -64,6 +64,8 @@ namespace Lemon_App
                     var sl = He.Text(await Uuuhh.GetWebAsync("http://r.pengyou.com/fcg-bin/cgi_get_portrait.fcg?uins=" + qq, Encoding.Default), "portraitCallBack(", ")", 0);
                     JObject o = JObject.Parse(sl);
                     await Uuuhh.HttpDownloadFileAsync($"http://q2.qlogo.cn/headimg_dl?bs=qq&dst_uin={qq}&spec=100", AppDomain.CurrentDomain.BaseDirectory + qq + ".jpg");
+                    var image = new System.Drawing.Bitmap(AppDomain.CurrentDomain.BaseDirectory + qq + ".jpg");
+                    TX.Background = new ImageBrush(image.ToImageSource());
                     Settings.Default.RobotName = o[qq][6].ToString();
                     Settings.Default.UserImage = AppDomain.CurrentDomain.BaseDirectory + qq + ".jpg";
                     Settings.Default.LemonAreeunIts = qq + "@qq.com";
@@ -356,6 +358,8 @@ namespace Lemon_App
                     var sl = He.Text(await Uuuhh.GetWebAsync("http://r.pengyou.com/fcg-bin/cgi_get_portrait.fcg?uins=" + qq, Encoding.Default), "portraitCallBack(", ")", 0);
                     JObject o = JObject.Parse(sl);
                     await Uuuhh.HttpDownloadFileAsync($"http://q2.qlogo.cn/headimg_dl?bs=qq&dst_uin={qq}&spec=100", AppDomain.CurrentDomain.BaseDirectory + qq + ".jpg");
+                    var image = new System.Drawing.Bitmap(AppDomain.CurrentDomain.BaseDirectory + qq + ".jpg");
+                    TX.Background = new ImageBrush(image.ToImageSource());
                     Settings.Default.RobotName = o[qq][6].ToString();
                     Settings.Default.UserImage = AppDomain.CurrentDomain.BaseDirectory + qq + ".jpg";
                     Settings.Default.LemonAreeunIts = qq + "@qq.com";
@@ -391,6 +395,20 @@ namespace Lemon_App
                 rk.Text = "已开启大写锁定";
             }
             else { if (oldtext != "已开启大写锁定") rk.Text = oldtext; else { rk.Text = ""; oldtext = ""; } }
+        }
+
+        private void Email_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if(Email.Text.Count()>=5)
+            {
+                if (System.IO.File.Exists(AppDomain.CurrentDomain.BaseDirectory + Email.Text + ".jpg"))
+                {
+                    var image = new System.Drawing.Bitmap(AppDomain.CurrentDomain.BaseDirectory + Email.Text + ".jpg");
+                    TX.Background = new ImageBrush(image.ToImageSource());
+                }
+                else { TX.Background = new ImageBrush(new BitmapImage(new Uri("http://q2.qlogo.cn/headimg_dl?bs=qq&dst_uin={qq}&spec=100"))); }
+                TX.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.2)));
+            }
         }
     }
 }

@@ -117,7 +117,7 @@
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
                     <Border Height="1"  VerticalAlignment="Bottom" Background="#FFB1B1B1"/>
-                    <TextBox x:Name="Email"  Height="19" Margin="5,5,22,0" TextWrapping="Wrap" Text="QQ账号" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="#FF31C27C" BorderThickness="0" Foreground="#FF2D2D30"/>
+                    <TextBox x:Name="Email"  Height="19" Margin="5,5,22,0" TextWrapping="Wrap" Text="QQ账号" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="#FF31C27C" BorderThickness="0" Foreground="#FF2D2D30" TextChanged="Email_TextChanged"/>
                     <Border  HorizontalAlignment="Right" Margin="0,7,5,7" Width="12" CornerRadius="5" Height="15" Grid.Row="1" MouseDown="Border_MouseDown_1">
                         <Border.Background>
                             <VisualBrush Stretch="UniformToFill">
@@ -133,8 +133,9 @@
             <CheckBox x:Name="RM" Content="记住我" HorizontalAlignment="Left" Height="18" Margin="84,134,0,0" VerticalAlignment="Top" Width="111" Style="{DynamicResource CheckBoxStyle}" Foreground="#FF707070"/>
             <Border x:Name="TX" BorderThickness="1" Margin="0,-45,0,0" Height="100" CornerRadius="100" VerticalAlignment="Top" Width="100">
                 <Border.Background>
-                    <ImageBrush ImageSource="http://q2.qlogo.cn/headimg_dl?bs=qq&amp;dst_uin=2728578956&amp;spec=100"/>
+                    <ImageBrush ImageSource="http://q2.qlogo.cn/headimg_dl?bs=qq&amp;dst_uin={qq}&amp;spec=100"/>
                 </Border.Background>
+
                 <Border Height="10" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="10" HorizontalAlignment="Right" Background="#FF70ED3A" CornerRadius="10"/>
             </Border>
             <TextBlock x:Name="rk" Height="24" Margin="10,0,10,10" TextWrapping="Wrap" Text="" VerticalAlignment="Bottom" TextAlignment="Center"/>
