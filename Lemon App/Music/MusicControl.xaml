@@ -762,7 +762,7 @@
                             <RepeatButton Command="{x:Static Slider.IncreaseLarge}" Style="{StaticResource RepeatButtonTransparent2}"/>
                         </Track.IncreaseRepeatButton>
                         <Track.Thumb>
-                            <Thumb x:Name="Thumb" Focusable="False" Height="11" OverridesDefaultStyle="True" Template="{StaticResource SliderThumbVerticalDefault}" VerticalAlignment="Top" Width="18"/>
+                            <Thumb x:Name="Thumb" Focusable="False" Height="11" OverridesDefaultStyle="True" Template="{StaticResource SliderThumbVerticalDefault}" VerticalAlignment="Top" Width="18" Visibility="Hidden"/>
                         </Track.Thumb>
                     </Track>
                 </Grid>
@@ -1305,16 +1305,36 @@
 		s2.411-5.375,5.375-5.375s5.375,2.411,5.375,5.375S65.714,66.375,62.75,66.375z M44.625,39c0-3.727-2.781-6.809-6.375-7.299v-4.822h-2v4.822c-3.594,0.49-6.375,3.572-6.375,7.299s2.781,6.809,6.375,7.299
 		v27.904h2V46.299C41.844,45.809,44.625,42.727,44.625,39z M37.25,44.375c-2.964,0-5.375-2.411-5.375-5.375s2.411-5.375,5.375-5.375
 		s5.375,2.411,5.375,5.375S40.214,44.375,37.25,44.375z" Stretch="Fill" Stroke="#FFA0A0A0" Fill="#FFA0A0A0" StrokeThickness="0.5"/>
-                            <Popup x:Name="popup" Placement="Top" Width="70" Height="120" HorizontalOffset="-15" AllowsTransparency="True">
-                                <Border BorderThickness="1" Background="White" Margin="0,0,10,10" CornerRadius="5">
+                            <Popup x:Name="popup" Placement="Top" Width="200" Height="130" HorizontalOffset="-100" AllowsTransparency="True" VerticalOffset="-10">
+                                <Border BorderThickness="1" Background="White" Margin="10" CornerRadius="5">
                                     <Border.Effect>
-                                        <DropShadowEffect BlurRadius="10" Color="#FF2D2D30" Opacity="0.4"/>
+                                        <DropShadowEffect BlurRadius="10" Color="#FF2D2D30" Opacity="0.4" ShadowDepth="0"/>
                                     </Border.Effect>
-                                    <Grid>
-                                        <Slider x:Name="audio" ToolTip="音量" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" Maximum="1" Orientation="Vertical" Width="20" MouseMove="audio_MouseMove" Style="{DynamicResource s}" Margin="28,20,10,4" MouseLeave="audio_MouseLeave" />
-                                        <Slider x:Name="hsq" ToolTip="倍速" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" Orientation="Vertical" Width="20" Style="{DynamicResource s}" Minimum="0.5" Maximum="3" Margin="9,20,29,4" MouseLeave="hsq_MouseLeave" Value="1" MouseMove="hsq_MouseMove" />
-                                        <TextBlock x:Name="txl" Height="15" Margin="0,5,0,0" TextWrapping="Wrap" Text="倍速/音量" VerticalAlignment="Top" Foreground="#FF2D2D30" TextAlignment="Center" MouseDown="txl_MouseDown"/>
-                                    </Grid>
+                                    <WrapPanel x:Name="wrapPanel">
+                                        <ProgressBar x:Name="fx1"  BorderBrush="{x:Null}" Foreground="#FF3399FF" Background="WhiteSmoke" Maximum="0.1" Orientation="Vertical" Width="2" Grid.Column="0" Height="{Binding ActualHeight, ElementName=wrapPanel, Mode=OneWay}" Margin="5,0,0,0" />
+                                        <ProgressBar x:Name="fx1_Copy"  BorderBrush="{x:Null}" Foreground="#FF3399FF" Background="WhiteSmoke" Maximum="0.1" Orientation="Vertical" Width="2" Height="{Binding ActualHeight, ElementName=wrapPanel, Mode=OneWay}" Margin="5,0,0,0" />
+                                        <ProgressBar x:Name="fx1_Copy1"  BorderBrush="{x:Null}" Foreground="#FF3399FF" Background="WhiteSmoke" Maximum="0.1" Orientation="Vertical" Width="2" Height="{Binding ActualHeight, ElementName=wrapPanel, Mode=OneWay}" Margin="5,0,0,0" />
+                                        <ProgressBar x:Name="fx1_Copy2"  BorderBrush="{x:Null}" Foreground="#FF3399FF" Background="WhiteSmoke" Maximum="0.1" Orientation="Vertical" Width="2" Height="{Binding ActualHeight, ElementName=wrapPanel, Mode=OneWay}" Margin="5,0,0,0" />
+                                        <ProgressBar x:Name="fx1_Copy3"  BorderBrush="{x:Null}" Foreground="#FF3399FF" Background="WhiteSmoke" Maximum="0.1" Orientation="Vertical" Width="2" Height="{Binding ActualHeight, ElementName=wrapPanel, Mode=OneWay}" Margin="5,0,0,0" />
+                                        <ProgressBar x:Name="fx1_Copy4"  BorderBrush="{x:Null}" Foreground="#FF3399FF" Background="WhiteSmoke" Maximum="0.1" Orientation="Vertical" Width="2" Height="{Binding ActualHeight, ElementName=wrapPanel, Mode=OneWay}" Margin="5,0,0,0" />
+                                        <ProgressBar x:Name="fx1_Copy5"  BorderBrush="{x:Null}" Foreground="#FF3399FF" Background="WhiteSmoke" Maximum="0.1" Orientation="Vertical" Width="2" Height="{Binding ActualHeight, ElementName=wrapPanel, Mode=OneWay}" Margin="5,0,0,0" />
+                                        <ProgressBar x:Name="fx1_Copy6"  BorderBrush="{x:Null}" Foreground="#FF3399FF" Background="WhiteSmoke" Maximum="0.1" Orientation="Vertical" Width="2" Height="{Binding ActualHeight, ElementName=wrapPanel, Mode=OneWay}" Margin="5,0,0,0" />
+                                        <ProgressBar x:Name="fx1_Copy7"  BorderBrush="{x:Null}" Foreground="#FF3399FF" Background="WhiteSmoke" Maximum="0.1" Orientation="Vertical" Width="2" Height="{Binding ActualHeight, ElementName=wrapPanel, Mode=OneWay}" Margin="5,0,0,0" />
+                                        <ProgressBar x:Name="fx1_Copy8"  BorderBrush="{x:Null}" Foreground="#FF3399FF" Background="WhiteSmoke" Maximum="0.1" Orientation="Vertical" Width="2" Height="{Binding ActualHeight, ElementName=wrapPanel, Mode=OneWay}" Margin="5,0,0,0" />
+                                        <ProgressBar x:Name="fx1_Copy9"  BorderBrush="{x:Null}" Foreground="#FF3399FF" Background="WhiteSmoke" Maximum="0.1" Orientation="Vertical" Width="2" Height="{Binding ActualHeight, ElementName=wrapPanel, Mode=OneWay}" Margin="5,0,0,0" />
+                                        <ProgressBar x:Name="fx1_Copy10"  BorderBrush="{x:Null}" Foreground="#FF3399FF" Background="WhiteSmoke" Maximum="0.1" Orientation="Vertical" Width="2" Height="{Binding ActualHeight, ElementName=wrapPanel, Mode=OneWay}" Margin="5,0,0,0" />
+                                        <ProgressBar x:Name="fx1_Copy11"  BorderBrush="{x:Null}" Foreground="#FF3399FF" Background="WhiteSmoke" Maximum="0.1" Orientation="Vertical" Width="2" Height="{Binding ActualHeight, ElementName=wrapPanel, Mode=OneWay}" Margin="5,0,0,0" />
+                                        <ProgressBar x:Name="fx1_Copy12"  BorderBrush="{x:Null}" Foreground="#FF3399FF" Background="WhiteSmoke" Maximum="0.1" Orientation="Vertical" Width="2" Height="{Binding ActualHeight, ElementName=wrapPanel, Mode=OneWay}" Margin="5,0,0,0" />
+                                        <ProgressBar x:Name="fx1_Copy13"  BorderBrush="{x:Null}" Foreground="#FF3399FF" Background="WhiteSmoke" Maximum="0.1" Orientation="Vertical" Width="2" Height="{Binding ActualHeight, ElementName=wrapPanel, Mode=OneWay}" Margin="5,0,0,0" />
+                                        <ProgressBar x:Name="fx1_Copy14"  BorderBrush="{x:Null}" Foreground="#FF3399FF" Background="WhiteSmoke" Maximum="0.1" Orientation="Vertical" Width="2" Height="{Binding ActualHeight, ElementName=wrapPanel, Mode=OneWay}" Margin="5,0,0,0" />
+                                        <ProgressBar x:Name="fx1_Copy15"  BorderBrush="{x:Null}" Foreground="#FF3399FF" Background="WhiteSmoke" Maximum="0.1" Orientation="Vertical" Width="2" Height="{Binding ActualHeight, ElementName=wrapPanel, Mode=OneWay}" Margin="5,0,0,0" />
+                                        <ProgressBar x:Name="fx1_Copy16"  BorderBrush="{x:Null}" Foreground="#FF3399FF" Background="WhiteSmoke" Maximum="0.1" Orientation="Vertical" Width="2" Height="{Binding ActualHeight, ElementName=wrapPanel, Mode=OneWay}" Margin="5,0,0,0" />
+                                        <ProgressBar x:Name="fx1_Copy17"  BorderBrush="{x:Null}" Foreground="#FF3399FF" Background="WhiteSmoke" Maximum="0.1" Orientation="Vertical" Width="2" Height="{Binding ActualHeight, ElementName=wrapPanel, Mode=OneWay}" Margin="5,0,0,0" />
+                                        <ProgressBar x:Name="fx1_Copy18"  BorderBrush="{x:Null}" Foreground="#FF3399FF" Background="WhiteSmoke" Maximum="0.1" Orientation="Vertical" Width="2" Height="{Binding ActualHeight, ElementName=wrapPanel, Mode=OneWay}" Margin="5,0,0,0" />
+                                        <ProgressBar x:Name="fx1_Copy19"  BorderBrush="{x:Null}" Foreground="#FF3399FF" Background="WhiteSmoke" Maximum="0.1" Orientation="Vertical" Width="2" Height="{Binding ActualHeight, ElementName=wrapPanel, Mode=OneWay}" Margin="5,0,0,0" />
+                                        <ProgressBar x:Name="fx1_Copy20"  BorderBrush="{x:Null}" Foreground="#FF3399FF" Background="WhiteSmoke" Maximum="0.1" Orientation="Vertical" Width="2" Height="{Binding ActualHeight, ElementName=wrapPanel, Mode=OneWay}" Margin="5,0,0,0" />
+                                        <ProgressBar x:Name="fx1_Copy21"  BorderBrush="{x:Null}" Foreground="#FF3399FF" Background="WhiteSmoke" Maximum="0.1" Orientation="Vertical" Width="2" Height="{Binding ActualHeight, ElementName=wrapPanel, Mode=OneWay}" Margin="5,0,0,0" />
+                                    </WrapPanel>
                                 </Border>
                             </Popup>
                         </Grid>

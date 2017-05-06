@@ -35,13 +35,13 @@ namespace Lemon_App
     /// </summary>
     public partial class MusicControl : UserControl
     {
-     //   MediaPlayer player = new MediaPlayer();
-        System.Windows.Forms.Timer t = new System.Windows.Forms.Timer();
+        //   MediaPlayer player = new MediaPlayer();
+        System.Windows.Threading.DispatcherTimer t = new System.Windows.Threading.DispatcherTimer();
         int IslistBoxInfo = 1;//0=Search,1=G2d,2=SC,3=DFB
         public MusicControl()
         {
             InitializeComponent();
-            t.Interval = 500;
+            t.Interval = TimeSpan.FromSeconds(0.1);
             t.Tick += Tick;
             if (Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache") == false)
                 Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache");
@@ -105,15 +105,39 @@ namespace Lemon_App
 
         private void Tick(object sender, EventArgs e)
         {
-            try
+            if (popup.IsOpen)
             {
-                if (Bass.BASS_ChannelBytes2Seconds(stream, Bass.BASS_ChannelGetPosition(stream)) == Bass.BASS_ChannelBytes2Seconds(stream, Bass.BASS_ChannelGetLength(stream)))
+                float[] fft = new float[1024];
+                Bass.BASS_ChannelGetData(stream, fft, (int)BASSData.BASS_DATA_FFT1024);
+                fx1.Value = fft[0];
+                fx1_Copy.Value = fft[11];
+                fx1_Copy1.Value = fft[22];
+                fx1_Copy2.Value = fft[33];
+                fx1_Copy3.Value = fft[44];
+                fx1_Copy4.Value = fft[55];
+                fx1_Copy5.Value = fft[66];
+                fx1_Copy6.Value = fft[77];
+                fx1_Copy7.Value = fft[88];
+                fx1_Copy8.Value = fft[99];
+                fx1_Copy9.Value = fft[110];
+                fx1_Copy10.Value = fft[122];
+                fx1_Copy11.Value = fft[133];
+                fx1_Copy12.Value = fft[144];
+                fx1_Copy13.Value = fft[155];
+                fx1_Copy14.Value = fft[166];
+                fx1_Copy15.Value = fft[177];
+                fx1_Copy16.Value = fft[188];
+                fx1_Copy17.Value = fft[199];
+                fx1_Copy18.Value = fft[211];
+                fx1_Copy19.Value = fft[222];
+                fx1_Copy20.Value = fft[233];
+                fx1_Copy21.Value = fft[244];
+            }
+            if (Bass.BASS_ChannelBytes2Seconds(stream, Bass.BASS_ChannelGetPosition(stream)) == Bass.BASS_ChannelBytes2Seconds(stream, Bass.BASS_ChannelGetLength(stream)))
                     io();
                 LyricShow.refreshLyricShow(Bass.BASS_ChannelBytes2Seconds(stream, Bass.BASS_ChannelGetPosition(stream)));
                 jd.Maximum = Bass.BASS_ChannelBytes2Seconds(stream, Bass.BASS_ChannelGetLength(stream));
                 jd.Value = Bass.BASS_ChannelBytes2Seconds(stream, Bass.BASS_ChannelGetPosition(stream));
-            }
-            catch { }
         }
         int ioi = 3;
         List<string> data = new List<string>();
@@ -843,19 +867,11 @@ namespace Lemon_App
                 pu.HorizontalOffset = offsetetetssd;
             };
 
-            audio.Value = Bass.BASS_GetVolume();
             LyricShow.CFontFamily = this.FontFamily;
             LyricShow.HFontFamily = this.FontFamily;
 
             JObject json = JObject.Parse(await Uuuhh.GetWebAsync("http://59.37.96.220/soso/fcgi-bin/dynamic_content?format=json&outCharset=utf-8", Encoding.UTF8));
             textBox.Text = json["data"]["search_content"].ToString();
-
-            RotateTransform rtf = new RotateTransform();// { CenterX = 0.5,CenterY = 0.5};
-            os.RenderTransform = rtf;
-            os.RenderTransformOrigin = new Point(0.5, 0.5);
-            DoubleAnimation dbAscending = new DoubleAnimation(0, 360, new Duration(TimeSpan.FromSeconds(5))) { RepeatBehavior = RepeatBehavior.Forever };
-            rtf.BeginAnimation(RotateTransform.AngleProperty, dbAscending);
-
             Border_MouseDown_3(null, null);
                     //ListJson lj = new Lemon_App.ListJson();
                     //lj = JsonToObject(Settings.Default.MusicList, lj) as ListJson;
@@ -1214,42 +1230,6 @@ namespace Lemon_App
                     listBox.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 93, 0, 0), new Thickness(0, 43, 0, 0), TimeSpan.FromSeconds(0.2)));
                 }
             }
-        }
-
-        private void audio_MouseMove(object sender, MouseEventArgs e)
-        {
-            txl.Text = (audio.Value *100).ToString("F0") + "%";
-            Bass.BASS_SetVolume(float.Parse(audio.Value.ToString("F2")));
-        }
-
-        private void hsq_MouseLeave(object sender, MouseEventArgs e)
-        {
-            txl.Text = "倍速/音量";
-     //       player.SpeedRatio = hsq.Value;
-        }
-
-        private void hsq_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (hsq.Value >= 0.5 && hsq.Value < 1)
-                txl.Text = "滑稽";
-            else if (hsq.Value <= 1)
-                txl.Text = "正常";
-            else if (hsq.Value <= 2.25 && hsq.Value > 1)
-                txl.Text = "鬼畜";
-            else if (hsq.Value <= 3)
-                txl.Text = "鬼大畜";
-        }
-
-        private void audio_MouseLeave(object sender, MouseEventArgs e)
-        {
-            txl.Text = "倍速/音量";
-        }
-
-        private void txl_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            hsq.Value = 1;
-            audio.Value = 0.5;
-            txl.Text = "倍速/音量";
         }
 
         private void CLOSE_MouseDown(object sender, MouseButtonEventArgs e)

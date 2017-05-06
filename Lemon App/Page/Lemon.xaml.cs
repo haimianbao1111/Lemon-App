@@ -19,7 +19,7 @@ namespace Lemon_App
     /// </summary>
     public partial class lemon : Window
     {
-        System.Windows.Forms.Timer t = new System.Windows.Forms.Timer();
+        System.Windows.Threading.DispatcherTimer t = new System.Windows.Threading.DispatcherTimer();
         public lemon()
         {
             InitializeComponent();
@@ -28,7 +28,7 @@ namespace Lemon_App
             FullScreenManager.RepairWpfWindowFullScreenBehavior(this);
             this.FontFamily = new FontFamily(Settings.Default.FontFamilly);
             t.Tick += T_Elapsed;
-            t.Interval = 5000;
+            t.Interval = TimeSpan.FromSeconds(5);
             t.Start();
         }
         /// <summary>
