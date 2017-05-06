@@ -95,9 +95,9 @@ namespace Lemon_App
         private void Fis(object sender, AsyncCompletedEventArgs e)
         {
             Bass.BASS_ChannelStop(stream);
-            stream = Bass.BASS_StreamCreateFile(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.mp3", 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT);
+            stream = Bass.BASS_StreamCreateFile(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.mp3", 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT);
             Bass.BASS_ChannelPlay(stream, true);
-           // player.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.mp3"));
+           // player.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.mp3"));
       //      player.Play();
             t.Start();
             loading.Visibility = Visibility.Collapsed;
@@ -222,6 +222,110 @@ namespace Lemon_App
         string img = "";
         string musicurl = "";
         string musicid = "";
+
+        private async Task<GetLyricAndLyricTime> GetLyricAsync(string McMind)
+        {
+            if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{McMind}.lrc"))
+            {
+                WebClient c = new WebClient();
+
+                c.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.110 Safari/537.36");
+                c.Headers.Add("Accept", "*/*");
+                c.Headers.Add("Referer", "https://y.qq.com/portal/player.html");
+                //      c.Headers.Add("Accept-Encoding", "gzip, deflate, sdch, br");
+                c.Headers.Add("Accept-Language", "zh-CN,zh;q=0.8");
+                c.Headers.Add("Cookie", "tvfe_boss_uuid=c3db0dcc4d677c60; pac_uid=1_2728578956; qq_slist_autoplay=on; ts_refer=ADTAGh5_playsong; RK=pKOOKi2f1O; pgv_pvi=8927113216; o_cookie=2728578956; pgv_pvid=5107924810; ptui_loginuin=2728578956; ptcz=897c17d7e17ae9009e018ebf3f818355147a3a26c6c67a63ae949e24758baa2d; pt2gguin=o2728578956; pgv_si=s5715204096; qqmusic_fromtag=66; yplayer_open=1; ts_last=y.qq.com/portal/player.html; ts_uid=996779984; yq_index=0");
+                c.Headers.Add("Host", "c.y.qq.com");
+                string s = Text(c.DownloadString($"https://c.y.qq.com/lyric/fcgi-bin/fcg_query_lyric_new.fcg?callback=MusicJsonCallback_lrc&pcachetime=1494070301711&songmid={McMind}&g_tk=5381&jsonpCallback=MusicJsonCallback_lrc&loginUin=0&hostUin=0&format=jsonp&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0"), "MusicJsonCallback_lrc(", ")", 0);
+                JObject o = JObject.Parse(s);
+                string t = Encoding.UTF8.GetString(Convert.FromBase64String(o["lyric"].ToString()));
+                string x = Encoding.UTF8.GetString(Convert.FromBase64String(o["trans"].ToString()));
+                FileStream fs = new FileStream(AppDomain.CurrentDomain.BaseDirectory + "MusicCache/" + McMind + ".lrc", FileMode.Create);
+                StreamWriter sw = new StreamWriter(fs);
+                await sw.WriteAsync(t);
+                await sw.FlushAsync();
+                fs.Dispose();
+                FileStream fss = new FileStream(AppDomain.CurrentDomain.BaseDirectory + "MusicCaChe/" + McMind + "d.lrc", FileMode.Create);
+                StreamWriter sws = new StreamWriter(fss);
+                await sws.WriteAsync(x);
+                await sws.FlushAsync();
+                fss.Dispose();
+                GetLyricAndLyricTime getLT = new GetLyricAndLyricTime();
+                getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + "MusicCache/" + McMind + ".lrc");
+                GetLyricAndLyricTime getLTD = new GetLyricAndLyricTime();
+                getLTD.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + "MusicCaChe/" + McMind + "d.lrc");
+                GetLyricAndLyricTime LT = new GetLyricAndLyricTime();
+                foreach (var key in getLT.LyricAndTimeDictionary.Keys)
+                {
+                    if (!LT.LyricAndTimeDictionary.ContainsKey(key))
+                        LT.LyricAndTimeDictionary.Add(key, "");
+                }
+                foreach (var key in getLTD.LyricAndTimeDictionary.Keys)
+                {
+                    if (!LT.LyricAndTimeDictionary.ContainsKey(key))
+                        LT.LyricAndTimeDictionary.Add(key, "");
+                }
+                foreach (var ele in getLT.LyricAndTimeDictionary)
+                {
+                    try
+                    {
+                        LT.LyricAndTimeDictionary[ele.Key] = LT.LyricAndTimeDictionary[ele.Key] + "^" + ele.Value;
+                        LT.LyricAndTimeDictionary[ele.Key] = LT.LyricAndTimeDictionary[ele.Key].TrimStart('^');
+                    }
+                    catch { }
+                }
+
+                foreach (var ele in getLTD.LyricAndTimeDictionary)
+                {
+                    try
+                    {
+                        LT.LyricAndTimeDictionary[ele.Key] = LT.LyricAndTimeDictionary[ele.Key] + "^" + ele.Value;
+                        LT.LyricAndTimeDictionary[ele.Key] = LT.LyricAndTimeDictionary[ele.Key].TrimStart('^');
+                    }
+                    catch { }
+                }
+                return LT;
+            }
+            else
+            {
+                GetLyricAndLyricTime getLT = new GetLyricAndLyricTime();
+                getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + "MusicCache/" + McMind + ".lrc");
+                GetLyricAndLyricTime getLTD = new GetLyricAndLyricTime();
+                getLTD.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + "MusicCaChe/" + McMind + "d.lrc");
+                GetLyricAndLyricTime LT = new GetLyricAndLyricTime();
+                foreach (var key in getLT.LyricAndTimeDictionary.Keys)
+                {
+                    if (!LT.LyricAndTimeDictionary.ContainsKey(key))
+                        LT.LyricAndTimeDictionary.Add(key, "");
+                }
+                foreach (var key in getLTD.LyricAndTimeDictionary.Keys)
+                {
+                    if (!LT.LyricAndTimeDictionary.ContainsKey(key))
+                        LT.LyricAndTimeDictionary.Add(key, "");
+                }
+                foreach (var ele in getLT.LyricAndTimeDictionary)
+                {
+                    try
+                    {
+                        LT.LyricAndTimeDictionary[ele.Key] = LT.LyricAndTimeDictionary[ele.Key] + "^" + ele.Value;
+                        LT.LyricAndTimeDictionary[ele.Key] = LT.LyricAndTimeDictionary[ele.Key].TrimStart('^');
+                    }
+                    catch { }
+                }
+
+                foreach (var ele in getLTD.LyricAndTimeDictionary)
+                {
+                    try
+                    {
+                        LT.LyricAndTimeDictionary[ele.Key] = LT.LyricAndTimeDictionary[ele.Key] + "^" + ele.Value;
+                        LT.LyricAndTimeDictionary[ele.Key] = LT.LyricAndTimeDictionary[ele.Key].TrimStart('^');
+                    }
+                    catch { }
+                }
+                return LT;
+            }
+        }
+
         private async void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (listBox.SelectedIndex != -1)
@@ -257,81 +361,44 @@ namespace Lemon_App
                         musicid = ((listBox.SelectedItem as MusicItemControl).Music as Music).MusicID;
                         if (pz.Text == "经济")
                         {
-                            if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.m4a"))
+                            if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.m4a"))
                             {
                                 musicurl = $"http://cc.stream.qqmusic.qq.com/C100{musicid}.m4a?fromtag=52";
                                 WebClient dc = new WebClient();
                                 dc.Proxy = He.proxy;
                                 dc.DownloadFileCompleted += Fi_BZ;
-                                dc.DownloadFileAsync(new Uri(musicurl), AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.m4a");
+                                dc.DownloadFileAsync(new Uri(musicurl), AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.m4a");
                                 ///等待播放
                                 loading.Visibility = Visibility.Visible;
                             }
                             else
                             {
-                                //player.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.m4a"));
+                                //player.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.m4a"));
                                 //player.Play();
                                 Bass.BASS_ChannelStop(stream);
-                                stream = Bass.BASS_StreamCreateFile(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.m4a", 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT);
+                                stream = Bass.BASS_StreamCreateFile(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.m4a", 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT);
                                 Bass.BASS_ChannelPlay(stream, true);
                                 t.Start();
                             }
-                            if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc"))
+                            if (LyricShow.IsOpenDeskLyric == false)
                             {
-                                string lrc = ((listBox.SelectedItem as MusicItemControl).Music as Music).GC;
-                                //     MessageBox.Show(He.Text(sr.ReadToEnd(), @"<lyric><![CDATA[", "]]></lyric>", 0));
-                                FileStream fs = new FileStream(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc", FileMode.Create);
-                                StreamWriter sw = new StreamWriter(fs);
-                                string h = await Uuuhh.GetWebAsync($"https://route.showapi.com/213-2?showapi_sign=cfa206656db244c089be2d1499735bb5&showapi_appid=29086&musicid={lrc}");
-                                JObject o = JObject.Parse(h);
-                                string ijo = System.Web.HttpUtility.HtmlDecode(o["showapi_res_body"]["lyric"].ToString()).Replace("&apos;", "'");
-                                if (ijo != "")
-                                {
-                                    await sw.WriteAsync(ijo);
-                                    await sw.FlushAsync();
-                                    sw.Close();
-                                    fs.Close();
-                                    if (LyricShow.IsOpenDeskLyric == false)
-                                    {
-                                        //deskLyricWin = new DeskLyricWin();
-                                        //deskLyricWin.Show();
-                                        //LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
-                                        LyricShow.HB = 124;
-                                        LyricShow.HG = 194;
-                                        LyricShow.HR = 49;
-                                        LyricShow.CB = 193;
-                                        LyricShow.CG = 180;
-                                        LyricShow.CR = 180;
-                                    }
-                                    LyricShow.IsPauseLyricShow = false;
-                                    getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc");
-                                    LyricShow.initializeLyricUIAsync(getLT.LyricAndTimeDictionary);//解析歌词->得到歌词时间和歌词       
-                                }
-                                else { }
+                                //deskLyricWin = new DeskLyricWin();
+                                //deskLyricWin.Show();
+                                //LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
+                                LyricShow.HB = 124;
+                                LyricShow.HG = 194;
+                                LyricShow.HR = 49;
+                                LyricShow.CB = 193;
+                                LyricShow.CG = 180;
+                                LyricShow.CR = 180;
                             }
-                            else
-                            {
-                                if (LyricShow.IsOpenDeskLyric == false)
-                                {
-                                    //deskLyricWin = new DeskLyricWin();
-                                    //deskLyricWin.Show();
-                                    //LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
-                                    LyricShow.HB = 124;
-                                    LyricShow.HG = 194;
-                                    LyricShow.HR = 49;
-                                    LyricShow.CB = 193;
-                                    LyricShow.CG = 180;
-                                    LyricShow.CR = 180;
-                                }
-                                LyricShow.IsPauseLyricShow = false;
-                                getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc");
-                                LyricShow.initializeLyricUIAsync(getLT.LyricAndTimeDictionary);
-
-                            }
+                            LyricShow.IsPauseLyricShow = false;
+                            var dt = await GetLyricAsync(musicid);
+                            LyricShow.initializeLyricUIAsync(dt.LyricAndTimeDictionary);//解析歌词->得到歌词时间和歌词       
                         }
                         else if (pz.Text == "标准")
                         {
-                            if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.mp3"))
+                            if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.mp3"))
                             {
                                 // musicurl = $"http://cc.stream.qqmusic.qq.com/C100{musicid}.m4a?fromtag=52";
                                 string guid = "20D919A4D7700FBC424740E8CED80C5F";
@@ -344,73 +411,36 @@ namespace Lemon_App
                                     Proxy = He.proxy
                                 };
                                 dc.DownloadFileCompleted += Fi;
-                                dc.DownloadFileAsync(new Uri(musicurl), AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.mp3");
+                                dc.DownloadFileAsync(new Uri(musicurl), AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.mp3");
                                 ///等待播放
                                 loading.Visibility = Visibility.Visible;
                             }
                             else
                             {
                                 Bass.BASS_ChannelStop(stream);
-                                stream = Bass.BASS_StreamCreateFile(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.mp3", 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT);
+                                stream = Bass.BASS_StreamCreateFile(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.mp3", 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT);
                                 Bass.BASS_ChannelPlay(stream, true);
                                 t.Start();
                             }
-                            if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc"))
+                            if (LyricShow.IsOpenDeskLyric == false)
                             {
-                                string lrc = ((listBox.SelectedItem as MusicItemControl).Music as Music).GC;
-                                //     MessageBox.Show(He.Text(sr.ReadToEnd(), @"<lyric><![CDATA[", "]]></lyric>", 0));
-                                FileStream fs = new FileStream(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc", FileMode.Create);
-                                StreamWriter sw = new StreamWriter(fs);
-                                string h = await Uuuhh.GetWebAsync($"https://route.showapi.com/213-2?showapi_sign=cfa206656db244c089be2d1499735bb5&showapi_appid=29086&musicid={lrc}");
-                                JObject o = JObject.Parse(h);
-                                string ijo = System.Web.HttpUtility.HtmlDecode(o["showapi_res_body"]["lyric"].ToString()).Replace("&apos;", "'");
-                                if (ijo != "")
-                                {
-                                    await sw.WriteAsync(ijo);
-                                    await sw.FlushAsync();
-                                    sw.Close();
-                                    fs.Close();
-                                    if (LyricShow.IsOpenDeskLyric == false)
-                                    {
-                                        //deskLyricWin = new DeskLyricWin();
-                                        //deskLyricWin.Show();
-                                        //LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
-                                        LyricShow.HB = 124;
-                                        LyricShow.HG = 194;
-                                        LyricShow.HR = 49;
-                                        LyricShow.CB = 193;
-                                        LyricShow.CG = 180;
-                                        LyricShow.CR = 180;
-                                    }
-                                    LyricShow.IsPauseLyricShow = false;
-                                    getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc");
-                                    LyricShow.initializeLyricUIAsync(getLT.LyricAndTimeDictionary);//解析歌词->得到歌词时间和歌词       
-                                }
-                                else { }
+                                //deskLyricWin = new DeskLyricWin();
+                                //deskLyricWin.Show();
+                                //LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
+                                LyricShow.HB = 124;
+                                LyricShow.HG = 194;
+                                LyricShow.HR = 49;
+                                LyricShow.CB = 193;
+                                LyricShow.CG = 180;
+                                LyricShow.CR = 180;
                             }
-                            else
-                            {
-                                if (LyricShow.IsOpenDeskLyric == false)
-                                {
-                                    //deskLyricWin = new DeskLyricWin();
-                                    //deskLyricWin.Show();
-                                    //LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
-                                    LyricShow.HB = 124;
-                                    LyricShow.HG = 194;
-                                    LyricShow.HR = 49;
-                                    LyricShow.CB = 193;
-                                    LyricShow.CG = 180;
-                                    LyricShow.CR = 180;
-                                }
-                                LyricShow.IsPauseLyricShow = false;
-                                getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc");
-                                LyricShow.initializeLyricUIAsync(getLT.LyricAndTimeDictionary);
-
-                            }
+                            LyricShow.IsPauseLyricShow = false;
+                            var dt = await GetLyricAsync(musicid);
+                            LyricShow.initializeLyricUIAsync(dt.LyricAndTimeDictionary);//解析歌词->得到歌词时间和歌词       
                         }
                         else if (pz.Text == "HQ")
                         {
-                            if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.ogg"))
+                            if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.ogg"))
                             {
                                 // musicurl = $"http://cc.stream.qqmusic.qq.com/C100{musicid}.m4a?fromtag=52";
                                 string guid = "20D919A4D7700FBC424740E8CED80C5F";
@@ -423,69 +453,32 @@ namespace Lemon_App
                                     Proxy = He.proxy
                                 };
                                 dc.DownloadFileCompleted += Fi_Ogg;
-                                dc.DownloadFileAsync(new Uri(musicurl), AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.ogg");
+                                dc.DownloadFileAsync(new Uri(musicurl), AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.ogg");
                                 ///等待播放
                                 loading.Visibility = Visibility.Visible;
                             }
                             else
                             {
                                 Bass.BASS_ChannelStop(stream);
-                                stream = Bass.BASS_StreamCreateFile(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.ogg", 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT);
+                                stream = Bass.BASS_StreamCreateFile(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.ogg", 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT);
                                 Bass.BASS_ChannelPlay(stream, true);
                                 t.Start();
                             }
-                            if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc"))
+                            if (LyricShow.IsOpenDeskLyric == false)
                             {
-                                string lrc = ((listBox.SelectedItem as MusicItemControl).Music as Music).GC;
-                                //     MessageBox.Show(He.Text(sr.ReadToEnd(), @"<lyric><![CDATA[", "]]></lyric>", 0));
-                                FileStream fs = new FileStream(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc", FileMode.Create);
-                                StreamWriter sw = new StreamWriter(fs);
-                                string h = await Uuuhh.GetWebAsync($"https://route.showapi.com/213-2?showapi_sign=cfa206656db244c089be2d1499735bb5&showapi_appid=29086&musicid={lrc}");
-                                JObject o = JObject.Parse(h);
-                                string ijo = System.Web.HttpUtility.HtmlDecode(o["showapi_res_body"]["lyric"].ToString()).Replace("&apos;", "'");
-                                if (ijo != "")
-                                {
-                                    await sw.WriteAsync(ijo);
-                                    await sw.FlushAsync();
-                                    sw.Close();
-                                    fs.Close();
-                                    if (LyricShow.IsOpenDeskLyric == false)
-                                    {
-                                        //deskLyricWin = new DeskLyricWin();
-                                        //deskLyricWin.Show();
-                                        //LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
-                                        LyricShow.HB = 124;
-                                        LyricShow.HG = 194;
-                                        LyricShow.HR = 49;
-                                        LyricShow.CB = 193;
-                                        LyricShow.CG = 180;
-                                        LyricShow.CR = 180;
-                                    }
-                                    LyricShow.IsPauseLyricShow = false;
-                                    getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc");
-                                    LyricShow.initializeLyricUIAsync(getLT.LyricAndTimeDictionary);//解析歌词->得到歌词时间和歌词       
-                                }
-                                else { }
+                                //deskLyricWin = new DeskLyricWin();
+                                //deskLyricWin.Show();
+                                //LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
+                                LyricShow.HB = 124;
+                                LyricShow.HG = 194;
+                                LyricShow.HR = 49;
+                                LyricShow.CB = 193;
+                                LyricShow.CG = 180;
+                                LyricShow.CR = 180;
                             }
-                            else
-                            {
-                                if (LyricShow.IsOpenDeskLyric == false)
-                                {
-                                    //deskLyricWin = new DeskLyricWin();
-                                    //deskLyricWin.Show();
-                                    //LyricShow.openDeskLyric(deskLyricWin.textBlockDeskLyricFore, deskLyricWin.textBlockDeskLyricBack, deskLyricWin.canvasDeskLyricFore);
-                                    LyricShow.HB = 124;
-                                    LyricShow.HG = 194;
-                                    LyricShow.HR = 49;
-                                    LyricShow.CB = 193;
-                                    LyricShow.CG = 180;
-                                    LyricShow.CR = 180;
-                                }
-                                LyricShow.IsPauseLyricShow = false;
-                                getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc");
-                                LyricShow.initializeLyricUIAsync(getLT.LyricAndTimeDictionary);
-
-                            }
+                            LyricShow.IsPauseLyricShow = false;
+                            var dt = await GetLyricAsync(musicid);
+                            LyricShow.initializeLyricUIAsync(dt.LyricAndTimeDictionary);//解析歌词->得到歌词时间和歌词       
                         }
                     }
                     else
@@ -493,7 +486,7 @@ namespace Lemon_App
 
                         if (pz.Text == "标准")
                         {
-                            if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.m4a"))
+                            if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.m4a"))
                             {
                                 musicurl = ((listBox.SelectedItem as MusicItemControl).Music as Music).DFSONGURI;
                                 WebClient dc = new WebClient()
@@ -506,22 +499,22 @@ namespace Lemon_App
                                 dc.Headers.Add(HttpRequestHeader.AcceptEncoding, "gzip, deflate, sdch");
                                 dc.Headers.Add(HttpRequestHeader.AcceptLanguage, "zh-CN,zh;q=0.8");
                                 dc.Headers.Add(HttpRequestHeader.Cookie, "tvfe_boss_uuid=308e152dbaa0bd6b; eas_sid=h1D4k7n7h7G3g1N6A6c2a812e7; pac_uid=1_2728578956; _ga=GA1.2.889488099.1474016943; luin=o2728578956; lskey=000100005f25e44c67a9f6af47159fd54f9e23ed418536b3cbe8cfacebfa495259d109938019c06a0f2f9314; pgv_pvi=9043384320; RK=oLOObi2e0M; o_cookie=2728578956; pgv_pvid=9806437357; ptui_loginuin=2728578956; ptcz=92e59f3e2a0a260c0597ef023e0044edb543a10592392101aa43e8640241b28f; pt2gguin=o2728578956; pgv_si=s8448803840; qqmusic_uin=12345678; qqmusic_key=12345678; qqmusic_fromtag=30");
-                                dc.DownloadFileAsync(new Uri(musicurl), AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.m4a");
+                                dc.DownloadFileAsync(new Uri(musicurl), AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.m4a");
                                 ///等待播放
                                 loading.Visibility = Visibility.Visible;
                             }
                             else
                             {
                                 Bass.BASS_ChannelStop(stream);
-                                stream = Bass.BASS_StreamCreateFile(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.m4a", 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT);
+                                stream = Bass.BASS_StreamCreateFile(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.m4a", 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT);
                                 Bass.BASS_ChannelPlay(stream, true);
                                 t.Start();
                             }
-                            if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc"))
+                            if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.lrc"))
                             {
                                 string lrc = ((listBox.SelectedItem as MusicItemControl).Music as Music).GC;
                                 //     MessageBox.Show(He.Text(sr.ReadToEnd(), @"<lyric><![CDATA[", "]]></lyric>", 0));
-                                FileStream fs = new FileStream(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc", FileMode.Create);
+                                FileStream fs = new FileStream(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.lrc", FileMode.Create);
                                 StreamWriter sw = new StreamWriter(fs);
                                 string h = await Uuuhh.GetWebAsync($"https://route.showapi.com/213-2?showapi_sign=cfa206656db244c089be2d1499735bb5&showapi_appid=29086&musicid={lrc}");
                                 JObject o = JObject.Parse(h);
@@ -545,7 +538,7 @@ namespace Lemon_App
                                         LyricShow.CR = 180;
                                     }
                                     LyricShow.IsPauseLyricShow = false;
-                                    getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc");
+                                    getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.lrc");
                                     LyricShow.initializeLyricUIAsync(getLT.LyricAndTimeDictionary);//解析歌词->得到歌词时间和歌词       
                                 }
                                 else { }
@@ -565,14 +558,14 @@ namespace Lemon_App
                                     LyricShow.CR = 180;
                                 }
                                 LyricShow.IsPauseLyricShow = false;
-                                getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc");
+                                getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.lrc");
                                 LyricShow.initializeLyricUIAsync(getLT.LyricAndTimeDictionary);
 
                             }
                         }
                         else if (pz.Text == "HQ")
                         {
-                            if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.mp3"))
+                            if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.mp3"))
                             {
                                 musicurl = ((listBox.SelectedItem as MusicItemControl).Music as Music).DFSONGURI_HQ;
                                 WebClient dc = new WebClient()
@@ -585,21 +578,21 @@ namespace Lemon_App
                                 dc.Headers.Add(HttpRequestHeader.AcceptLanguage, "zh-CN,zh;q=0.8");
                                 dc.Headers.Add(HttpRequestHeader.Cookie, "tvfe_boss_uuid=308e152dbaa0bd6b; eas_sid=h1D4k7n7h7G3g1N6A6c2a812e7; pac_uid=1_2728578956; _ga=GA1.2.889488099.1474016943; luin=o2728578956; lskey=000100005f25e44c67a9f6af47159fd54f9e23ed418536b3cbe8cfacebfa495259d109938019c06a0f2f9314; pgv_pvi=9043384320; RK=oLOObi2e0M; o_cookie=2728578956; pgv_pvid=9806437357; ptui_loginuin=2728578956; ptcz=92e59f3e2a0a260c0597ef023e0044edb543a10592392101aa43e8640241b28f; pt2gguin=o2728578956; pgv_si=s8448803840; qqmusic_uin=12345678; qqmusic_key=12345678; qqmusic_fromtag=30");
                                 dc.DownloadFileCompleted += Fi;
-                                dc.DownloadFileAsync(new Uri(musicurl), AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.mp3");
+                                dc.DownloadFileAsync(new Uri(musicurl), AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.mp3");
                                 loading.Visibility = Visibility.Visible;
                             }
                             else
                             {
                                 Bass.BASS_ChannelStop(stream);
-                                stream = Bass.BASS_StreamCreateFile(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.mp3", 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT);
+                                stream = Bass.BASS_StreamCreateFile(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.mp3", 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT);
                                 Bass.BASS_ChannelPlay(stream, true);
                                 t.Start();
                             }
-                            if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc"))
+                            if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.lrc"))
                             {
                                 string lrc = ((listBox.SelectedItem as MusicItemControl).Music as Music).GC;
                                 //     MessageBox.Show(He.Text(sr.ReadToEnd(), @"<lyric><![CDATA[", "]]></lyric>", 0));
-                                FileStream fs = new FileStream(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc", FileMode.Create);
+                                FileStream fs = new FileStream(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.lrc", FileMode.Create);
                                 StreamWriter sw = new StreamWriter(fs);
                                 string h = await Uuuhh.GetWebAsync($"https://route.showapi.com/213-2?showapi_sign=cfa206656db244c089be2d1499735bb5&showapi_appid=29086&musicid={lrc}");
                                 JObject o = JObject.Parse(h);
@@ -623,7 +616,7 @@ namespace Lemon_App
                                         LyricShow.CR = 180;
                                     }
                                     LyricShow.IsPauseLyricShow = false;
-                                    getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc");
+                                    getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.lrc");
                                     LyricShow.initializeLyricUIAsync(getLT.LyricAndTimeDictionary);//解析歌词->得到歌词时间和歌词       
                                 }
                                 else { }
@@ -643,7 +636,7 @@ namespace Lemon_App
                                     LyricShow.CR = 180;
                                 }
                                 LyricShow.IsPauseLyricShow = false;
-                                getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc");
+                                getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.lrc");
                                 LyricShow.initializeLyricUIAsync(getLT.LyricAndTimeDictionary);
 
                             }
@@ -676,7 +669,7 @@ namespace Lemon_App
         private void Fi_Ogg(object sender, AsyncCompletedEventArgs e)
         {
             Bass.BASS_ChannelStop(stream);
-            stream = Bass.BASS_StreamCreateFile(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.ogg", 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT);
+            stream = Bass.BASS_StreamCreateFile(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.ogg", 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT);
             Bass.BASS_ChannelPlay(stream, true);
             t.Start();
             loading.Visibility = Visibility.Collapsed;
@@ -685,7 +678,7 @@ namespace Lemon_App
         private void Fi_BZ(object sender, AsyncCompletedEventArgs e)
         {
             Bass.BASS_ChannelStop(stream);
-            stream = Bass.BASS_StreamCreateFile(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.m4a", 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT);
+            stream = Bass.BASS_StreamCreateFile(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.m4a", 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT);
             Bass.BASS_ChannelPlay(stream, true);
             t.Start();
             loading.Visibility = Visibility.Collapsed;
@@ -694,7 +687,7 @@ namespace Lemon_App
         private void Fi(object sender, AsyncCompletedEventArgs e)
         {
             Bass.BASS_ChannelStop(stream);
-            stream = Bass.BASS_StreamCreateFile(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.mp3", 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT);
+            stream = Bass.BASS_StreamCreateFile(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.mp3", 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT);
             Bass.BASS_ChannelPlay(stream, true);
             t.Start();
             loading.Visibility = Visibility.Collapsed;
@@ -739,7 +732,7 @@ namespace Lemon_App
             {
                 Proxy = proxy
             };
-            dc.DownloadFileAsync(new Uri(musicurl), AppDomain.CurrentDomain.BaseDirectory + $@"MusicDownload/{textBlock1.Text}.{op}");
+            dc.DownloadFileAsync(new Uri(musicurl), AppDomain.CurrentDomain.BaseDirectory + $@"MusicDownload/{musicid}.{op}");
             dc.DownloadFileCompleted += OK;
             dc.DownloadProgressChanged += DownloadFileCompleted;
         }
@@ -1243,7 +1236,7 @@ namespace Lemon_App
             LyricShow.IsLyFanyi = !LyricShow.IsLyFanyi;
             LyricShow.stopLyricShow();
             LyricShow.TimeAndLyricDictionary.Clear();
-            getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{textBlock1.Text}.lrc");
+            getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.lrc");
             LyricShow.initializeLyricUIAsync(getLT.LyricAndTimeDictionary);
             LyricShow.refreshDeskLyricUIWhenChangeWINOrFontSize();
         }

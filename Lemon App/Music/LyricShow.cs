@@ -1317,7 +1317,7 @@ namespace Lemon_App
         /// <summary>
         /// 初始化歌词界面(非桌面歌词),每次更换一首歌要显示它的歌词秀时，此方法是必须要第一调用的
         /// </summary>
-        public static async void initializeLyricUIAsync(SortedDictionary<Double, string> TimeAndLyricDictionary)
+        public static void initializeLyricUIAsync(SortedDictionary<Double, string> TimeAndLyricDictionary)
         {
             F = true;
             if (TimeAndLyricDictionary.Values.Count == 0)
@@ -1345,30 +1345,6 @@ namespace Lemon_App
             {
                 if (F == false)
                     return;
-                string ok = "";
-                if(IsLyFanyi)
-                    if (txt != null)
-                       {
-                        if (index!=0)
-                        {
-                            if (!txt.Contains("Written by："))
-                            {
-                                if (!txt.Contains("词："))
-                                {
-                                    if (!txt.Contains("曲："))
-                                    {
-                                        try
-                                        {
-                                            // JObject obj = JObject.Parse(await Uuuhh.PostWebAsync("http://translate.hotcn.top/translate/api", "{\"text\": \"" + txt + "\"}"));
-                                            JObject obj = JObject.Parse(await Uuuhh.PostWebAsync("http://fanyi.baidu.com/v2transapi", $"from=auto&to=zh&query={Uri.EscapeDataString(txt)}&transtype=translang&simple_means_flag=3"));
-                                            ok = FanyiBox.DecodeUtf8(obj["trans_result"]["data"][0]["dst"].ToString());
-                                        }
-                                        catch { }
-                                    }
-                                }
-                            }
-                        }
-                }
                 TextBlock tb = new TextBlock();
                 tb.MouseDown += delegate (object sender, MouseButtonEventArgs e)
                 {
@@ -1384,13 +1360,8 @@ namespace Lemon_App
                 tb.FontFamily = CFontFamily;
                 tb.Foreground = new SolidColorBrush(Color.FromArgb(CA, CR, CG, CB));
                 tb.Background = new SolidColorBrush(Colors.Transparent);
-                    tb.Height = lyricTextBlockHeight;
-                if (IsLyFanyi)
-                {
-                    if (ok != string.Empty)
-                        tb.Text = txt + "\r\n" + ok;
-                    else tb.Text = txt;
-                }else tb.Text = txt;
+                tb.Height = lyricTextBlockHeight;
+                tb.Text = txt.Replace("^", "\r\n").Replace("//", "");
                 commonLyricStackPanel.Children.Add(tb);
                 index++;
             }

@@ -235,6 +235,19 @@ namespace Lemon_App
     }
     public class He
     {
+        public static void SaveControlImage(FrameworkElement ui, string fileName)
+        {
+
+            System.IO.FileStream fs = new System.IO.FileStream(fileName, System.IO.FileMode.Create);
+            RenderTargetBitmap bmp = new RenderTargetBitmap((int)ui.Width, (int)ui.Height, 96d, 96d,
+            PixelFormats.Pbgra32);
+            bmp.Render(ui);
+            BitmapEncoder encoder = new PngBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(bmp));
+            encoder.Save(fs);
+            fs.Close();
+        }
+
         public static string Text(string all, string r, string l, int t)
         {
 
@@ -267,7 +280,7 @@ namespace Lemon_App
         public static bool isOpMod = false;
         public static WebProxy proxy = new WebProxy();
         public static string Url = "";
-        public static string KMS = "3.5.6.8";
+        public static string KMS = "3.5.9.6";
         public static int MS = 0;
         public static string on = "";
 
@@ -414,6 +427,20 @@ namespace Lemon_App
 
     public class Uuuhh
     {
+        public static string BaiduInfoToBingInfo(string info)
+        {
+            switch (info)
+            {
+                case "jp":
+                    return "ja";
+                case "en":
+                    return "en";
+                case "kor":
+                    return "ko";
+                default:
+                    return "";
+            }
+        }
         public static async Task HttpDownloadFileAsync(string url, string path)
         {
             HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
