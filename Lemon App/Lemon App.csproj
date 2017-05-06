@@ -175,9 +175,6 @@
     <Compile Include="IApps\Robot\IMBOX.xaml.cs">
       <DependentUpon>IMBOX.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Page\InInternet.xaml.cs">
-      <DependentUpon>InInternet.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Page\Lemon.xaml.cs">
       <DependentUpon>Lemon.xaml</DependentUpon>
     </Compile>
@@ -292,10 +289,6 @@
       <DependentUpon>FanyiBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Other\He.cs" />
-    <Page Include="Page\InInternet.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Page\Lemon.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
