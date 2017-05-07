@@ -238,8 +238,8 @@ namespace Lemon_App
                 c.Headers.Add("Host", "c.y.qq.com");
                 string s = Text(c.DownloadString($"https://c.y.qq.com/lyric/fcgi-bin/fcg_query_lyric_new.fcg?callback=MusicJsonCallback_lrc&pcachetime=1494070301711&songmid={McMind}&g_tk=5381&jsonpCallback=MusicJsonCallback_lrc&loginUin=0&hostUin=0&format=jsonp&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0"), "MusicJsonCallback_lrc(", ")", 0);
                 JObject o = JObject.Parse(s);
-                string t = Encoding.UTF8.GetString(Convert.FromBase64String(o["lyric"].ToString()));
-                string x = Encoding.UTF8.GetString(Convert.FromBase64String(o["trans"].ToString()));
+                string t = Encoding.UTF8.GetString(Convert.FromBase64String(o["lyric"].ToString())).Replace("&apos;", "\'");
+                string x = Encoding.UTF8.GetString(Convert.FromBase64String(o["trans"].ToString())).Replace("&apos;", "\'"); 
                 FileStream fs = new FileStream(AppDomain.CurrentDomain.BaseDirectory + "MusicCache/" + McMind + ".lrc", FileMode.Create);
                 StreamWriter sw = new StreamWriter(fs);
                 await sw.WriteAsync(t);
