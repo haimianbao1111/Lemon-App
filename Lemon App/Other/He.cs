@@ -280,7 +280,7 @@ namespace Lemon_App
         public static bool isOpMod = false;
         public static WebProxy proxy = new WebProxy();
         public static string Url = "";
-        public static string KMS = "3.5.9.6";
+        public static string KMS = "3.5.9.8";
         public static int MS = 0;
         public static string on = "";
 

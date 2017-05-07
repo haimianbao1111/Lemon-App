@@ -333,6 +333,11 @@ namespace Lemon_App
                 if ((listBox.SelectedItem as MusicItemControl).RS.Visibility != Visibility.Visible)
                     if ((listBox.SelectedItem as MusicItemControl).RC.Visibility!=Visibility.Visible)
                        if (pz.Text == "HQ") pz.Text = "标准";
+
+                LyricShow.refreshLyricShow(0);
+                jd.Maximum = 1;
+                jd.Value = 0;
+
                 try
                 {
                     jd.Value = 0;

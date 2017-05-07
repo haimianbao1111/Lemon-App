@@ -92,7 +92,7 @@
                 </Border.Effect>
                 <TextBox x:Name="FanyiFromtoTextBox" TextWrapping="Wrap" BorderBrush="{x:Null}" SelectionBrush="#FF31C27C" BorderThickness="0" TextChanged="FanyiFromtoTextBox_TextChanged" Background="{x:Null}" Foreground="#FF1B1B1C"/>
             </Border>
-            <Border BorderThickness="1" Height="31" Margin="0,10,0,0" VerticalAlignment="Top" CornerRadius="5" HorizontalAlignment="Right" Width="66" Background="White" Grid.Column="1">
+            <Border BorderThickness="1" Height="31" Margin="0,10,10,0" VerticalAlignment="Top" CornerRadius="5" HorizontalAlignment="Right" Width="66" Background="White" Grid.Column="1">
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="10" Opacity="0.3" ShadowDepth="0"/>
                 </Border.Effect>
@@ -131,7 +131,7 @@
                 <ComboBoxItem BorderBrush="{x:Null}" Content="自动"/>
                 <ComboBoxItem  BorderBrush="{x:Null}" Content="中文"/>
             </ComboBox>
-            <ComboBox x:Name="HyycomboBox" HorizontalAlignment="Right" Height="31" Margin="0,10,70,0" VerticalAlignment="Top" Width="70" BorderBrush="{x:Null}" FontSize="14"  Background="White" Foreground="#FF1B1B1C" Grid.Column="1" SelectedIndex="24" SelectionChanged="HyycomboBox_SelectionChanged">
+            <ComboBox x:Name="HyycomboBox" HorizontalAlignment="Right" Height="31" Margin="0,10,80,0" VerticalAlignment="Top" Width="70" BorderBrush="{x:Null}" FontSize="14"  Background="White" Foreground="#FF1B1B1C" Grid.Column="1" SelectedIndex="24" SelectionChanged="HyycomboBox_SelectionChanged">
                 <ComboBox.Effect>
                     <DropShadowEffect BlurRadius="10" Opacity="0.3" ShadowDepth="0"/>
                 </ComboBox.Effect>
