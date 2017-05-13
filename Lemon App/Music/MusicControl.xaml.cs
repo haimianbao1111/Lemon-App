@@ -255,34 +255,17 @@ namespace Lemon_App
                 GetLyricAndLyricTime getLTD = new GetLyricAndLyricTime();
                 getLTD.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + "MusicCaChe/" + McMind + "d.lrc");
                 GetLyricAndLyricTime LT = new GetLyricAndLyricTime();
+                var dtd = getLTD.LyricAndTimeDictionary.Values.ToList();
                 foreach (var key in getLT.LyricAndTimeDictionary.Keys)
                 {
-                    if (!LT.LyricAndTimeDictionary.ContainsKey(key))
-                        LT.LyricAndTimeDictionary.Add(key, "");
+                    LT.LyricAndTimeDictionary.Add(key, "");
                 }
-                foreach (var key in getLTD.LyricAndTimeDictionary.Keys)
-                {
-                    if (!LT.LyricAndTimeDictionary.ContainsKey(key))
-                        LT.LyricAndTimeDictionary.Add(key, "");
-                }
+                int i = 0;
                 foreach (var ele in getLT.LyricAndTimeDictionary)
                 {
-                    try
-                    {
-                        LT.LyricAndTimeDictionary[ele.Key] = LT.LyricAndTimeDictionary[ele.Key] + "^" + ele.Value;
-                        LT.LyricAndTimeDictionary[ele.Key] = LT.LyricAndTimeDictionary[ele.Key].TrimStart('^');
-                    }
-                    catch { }
-                }
-
-                foreach (var ele in getLTD.LyricAndTimeDictionary)
-                {
-                    try
-                    {
-                        LT.LyricAndTimeDictionary[ele.Key] = LT.LyricAndTimeDictionary[ele.Key] + "^" + ele.Value;
-                        LT.LyricAndTimeDictionary[ele.Key] = LT.LyricAndTimeDictionary[ele.Key].TrimStart('^');
-                    }
-                    catch { }
+                    LT.LyricAndTimeDictionary[ele.Key] = ele.Value + "^" + dtd[i];
+                    LT.LyricAndTimeDictionary[ele.Key] = LT.LyricAndTimeDictionary[ele.Key].TrimStart('^');
+                    i++;
                 }
                 return LT;
             }
@@ -293,34 +276,17 @@ namespace Lemon_App
                 GetLyricAndLyricTime getLTD = new GetLyricAndLyricTime();
                 getLTD.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + "MusicCaChe/" + McMind + "d.lrc");
                 GetLyricAndLyricTime LT = new GetLyricAndLyricTime();
+                var dtd = getLTD.LyricAndTimeDictionary.Values.ToList();
                 foreach (var key in getLT.LyricAndTimeDictionary.Keys)
                 {
-                    if (!LT.LyricAndTimeDictionary.ContainsKey(key))
-                        LT.LyricAndTimeDictionary.Add(key, "");
+                    LT.LyricAndTimeDictionary.Add(key, "");
                 }
-                foreach (var key in getLTD.LyricAndTimeDictionary.Keys)
-                {
-                    if (!LT.LyricAndTimeDictionary.ContainsKey(key))
-                        LT.LyricAndTimeDictionary.Add(key, "");
-                }
+                int i = 0;
                 foreach (var ele in getLT.LyricAndTimeDictionary)
                 {
-                    try
-                    {
-                        LT.LyricAndTimeDictionary[ele.Key] = LT.LyricAndTimeDictionary[ele.Key] + "^" + ele.Value;
-                        LT.LyricAndTimeDictionary[ele.Key] = LT.LyricAndTimeDictionary[ele.Key].TrimStart('^');
-                    }
-                    catch { }
-                }
-
-                foreach (var ele in getLTD.LyricAndTimeDictionary)
-                {
-                    try
-                    {
-                        LT.LyricAndTimeDictionary[ele.Key] = LT.LyricAndTimeDictionary[ele.Key] + "^" + ele.Value;
-                        LT.LyricAndTimeDictionary[ele.Key] = LT.LyricAndTimeDictionary[ele.Key].TrimStart('^');
-                    }
-                    catch { }
+                    LT.LyricAndTimeDictionary[ele.Key] = ele.Value + "^" + dtd[i];
+                    LT.LyricAndTimeDictionary[ele.Key] = LT.LyricAndTimeDictionary[ele.Key].TrimStart('^');
+                    i++;
                 }
                 return LT;
             }
