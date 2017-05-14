@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lemon_App.Properties;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,12 @@ namespace Lemon_App
     /// </summary>
     public partial class DeskLyricWin : Window
     {
+
         public DeskLyricWin()
         {
             InitializeComponent();
+            this.Width = SystemParameters.WorkArea.Width - 50;
+            this.FontFamily = new FontFamily(Settings.Default.FontFamilly);
             MouseDown += delegate(object sender, MouseButtonEventArgs e)
              {
                  if(e.ClickCount>=2)
@@ -66,7 +70,7 @@ namespace Lemon_App
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
+            this.Top = SystemParameters.WorkArea.Height-this.ActualHeight-50;
         }
     }
 }
