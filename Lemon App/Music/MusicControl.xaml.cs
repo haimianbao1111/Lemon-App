@@ -254,32 +254,29 @@ namespace Lemon_App
                 getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + "MusicCache/" + McMind + ".lrc");
                 GetLyricAndLyricTime getLTD = new GetLyricAndLyricTime();
                 getLTD.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + "MusicCaChe/" + McMind + "d.lrc");
-                GetLyricAndLyricTime LT = new GetLyricAndLyricTime();
+                GetLyricAndLyricTime LTINDEX = new GetLyricAndLyricTime();
+                LTINDEX.LyricAndTimeDictionary = new SortedDictionary<double, string>();
+                foreach (var key in getLT.LyricAndTimeDictionary.Keys)
+                {
+                    if (!LTINDEX.LyricAndTimeDictionary.ContainsKey(key))
+                        LTINDEX.LyricAndTimeDictionary.Add(key, "");
+                }
+                foreach (var key in getLTD.LyricAndTimeDictionary.Keys)
+                {
+                    if (!LTINDEX.LyricAndTimeDictionary.ContainsKey(key))
+                        LTINDEX.LyricAndTimeDictionary.Add(key, "");
+                }
+                 GetLyricAndLyricTime LT = new GetLyricAndLyricTime();
                 foreach (var key in getLT.LyricAndTimeDictionary.Keys)
                 {
                     if (!LT.LyricAndTimeDictionary.ContainsKey(key))
                         LT.LyricAndTimeDictionary.Add(key, "");
                 }
-                foreach (var key in getLTD.LyricAndTimeDictionary.Keys)
-                {
-                    if (!LT.LyricAndTimeDictionary.ContainsKey(key))
-                        LT.LyricAndTimeDictionary.Add(key, "");
-                }
-                foreach (var ele in getLT.LyricAndTimeDictionary)
+                foreach (var ele in LTINDEX.LyricAndTimeDictionary)
                 {
                     try
                     {
-                        LT.LyricAndTimeDictionary[ele.Key] = LT.LyricAndTimeDictionary[ele.Key] + "^" + ele.Value;
-                        LT.LyricAndTimeDictionary[ele.Key] = LT.LyricAndTimeDictionary[ele.Key].TrimStart('^');
-                    }
-                    catch { }
-                }
-
-                foreach (var ele in getLTD.LyricAndTimeDictionary)
-                {
-                    try
-                    {
-                        LT.LyricAndTimeDictionary[ele.Key] = LT.LyricAndTimeDictionary[ele.Key] + "^" + ele.Value;
+                        LT.LyricAndTimeDictionary[ele.Key] = getLT.LyricAndTimeDictionary[ele.Key] + "^" + getLTD.LyricAndTimeDictionary[ele.Key];
                         LT.LyricAndTimeDictionary[ele.Key] = LT.LyricAndTimeDictionary[ele.Key].TrimStart('^');
                     }
                     catch { }
@@ -292,32 +289,29 @@ namespace Lemon_App
                 getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + "MusicCache/" + McMind + ".lrc");
                 GetLyricAndLyricTime getLTD = new GetLyricAndLyricTime();
                 getLTD.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + "MusicCaChe/" + McMind + "d.lrc");
+                GetLyricAndLyricTime LTINDEX = new GetLyricAndLyricTime();
+                LTINDEX.LyricAndTimeDictionary = new SortedDictionary<double, string>();
+                foreach (var key in getLT.LyricAndTimeDictionary.Keys)
+                {
+                    if (!LTINDEX.LyricAndTimeDictionary.ContainsKey(key))
+                        LTINDEX.LyricAndTimeDictionary.Add(key, "");
+                }
+                foreach (var key in getLTD.LyricAndTimeDictionary.Keys)
+                {
+                    if (!LTINDEX.LyricAndTimeDictionary.ContainsKey(key))
+                        LTINDEX.LyricAndTimeDictionary.Add(key, "");
+                }
                 GetLyricAndLyricTime LT = new GetLyricAndLyricTime();
                 foreach (var key in getLT.LyricAndTimeDictionary.Keys)
                 {
                     if (!LT.LyricAndTimeDictionary.ContainsKey(key))
                         LT.LyricAndTimeDictionary.Add(key, "");
                 }
-                foreach (var key in getLTD.LyricAndTimeDictionary.Keys)
-                {
-                    if (!LT.LyricAndTimeDictionary.ContainsKey(key))
-                        LT.LyricAndTimeDictionary.Add(key, "");
-                }
-                foreach (var ele in getLT.LyricAndTimeDictionary)
+                foreach (var ele in LTINDEX.LyricAndTimeDictionary)
                 {
                     try
                     {
-                        LT.LyricAndTimeDictionary[ele.Key] = LT.LyricAndTimeDictionary[ele.Key] + "^" + ele.Value;
-                        LT.LyricAndTimeDictionary[ele.Key] = LT.LyricAndTimeDictionary[ele.Key].TrimStart('^');
-                    }
-                    catch { }
-                }
-
-                foreach (var ele in getLTD.LyricAndTimeDictionary)
-                {
-                    try
-                    {
-                        LT.LyricAndTimeDictionary[ele.Key] = LT.LyricAndTimeDictionary[ele.Key] + "^" + ele.Value;
+                        LT.LyricAndTimeDictionary[ele.Key] = getLT.LyricAndTimeDictionary[ele.Key] + "^" + getLTD.LyricAndTimeDictionary[ele.Key];
                         LT.LyricAndTimeDictionary[ele.Key] = LT.LyricAndTimeDictionary[ele.Key].TrimStart('^');
                     }
                     catch { }

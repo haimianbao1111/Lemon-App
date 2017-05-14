@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Lemon_App"
         mc:Ignorable="d"
         Title="DeskLyricWin" Height="120" Width="1200" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="#00000000" Loaded="Window_Loaded" MouseDown="Window_MouseDown" MouseEnter="Window_MouseEnter" MouseLeave="Window_MouseLeave" ShowInTaskbar="False" Topmost="True">
-    <Grid Background="#00000000" Height="93" Width="1182">
+    <Grid Background="#00000000" >
         <Rectangle x:Name="rectangleDeskLyricBack" Stroke="Black" Width="{Binding ElementName=canvasDeskLyric, Path=ActualWidth}" Fill="#33797979" StrokeThickness="1" RadiusY="5" RadiusX="5" />
         <Canvas Height="{Binding ActualHeight, ElementName=textBlockDeskLyricBack, Mode=OneWay}"  Margin="0" Name="canvasDeskLyric" OpacityMask="Black" Background="#00000000">
             <TextBlock x:Name="textBlockDeskLyricBack" Text="柠檬Music" FontSize="40" TextAlignment="Center" Foreground="#FF6D6D6D" Background="#00000000" Width="{Binding ElementName=canvasDeskLyric, Path=ActualWidth}" TextWrapping="Wrap"/>
