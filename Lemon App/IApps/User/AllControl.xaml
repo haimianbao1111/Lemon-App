@@ -4,30 +4,41 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Lemon_App"
-             mc:Ignorable="d" SizeChanged="UserControl_SizeChanged" MouseDown="UserControl_MouseDown"  >
+             mc:Ignorable="d" SizeChanged="UserControl_SizeChanged" MouseDown="UserControl_MouseDown" d:DesignWidth="401.756" d:DesignHeight="186"  >
     <Grid >
-        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Visible" Style="{DynamicResource for_scrollviewer}">
-            <WrapPanel x:Name="Conten" Height="40" VerticalAlignment="Top" Width="241.756">
-                <Border Height="20" Width="20" Background="#00000000" Margin="10" ToolTip="新闻" MouseDown="Border_MouseDown">
+        <Grid x:Name="ContentPage"/>
+        <Border HorizontalAlignment="Right" Height="30" Margin="0,10,10,0" VerticalAlignment="Top" Width="30" Background="White" CornerRadius="100" MouseDown="Border_MouseDown_1">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="10" Opacity="0.4" ShadowDepth="0"/>
+            </Border.Effect>
+            <Grid>
+                <Path x:Name="info" Data="M6,20h2c1.105,0,2-0.896,2-2v-2c0-1.105-0.895-2-2-2H6    c-1.105,0-2,0.895-2,2v2C4,19.104,4.895,20,6,20z M6,16h2v2H6V16z M22,28h2c1.105,0,2-0.895,2-2v-2c0-1.105-0.895-2-2-2h-2    c-1.104,0-2,0.895-2,2v2C20,27.105,20.895,28,22,28z M22,24h2v2h-2V24z M22,20h2c1.105,0,2-0.896,2-2v-2c0-1.105-0.895-2-2-2h-2    c-1.104,0-2,0.895-2,2v2C20,19.104,20.895,20,22,20z M22,16h2v2h-2V16z M26,2h-4V1c0-0.552-0.448-1-1-1c-0.552,0-1,0.448-1,1v1H10    V1c0-0.552-0.448-1-1-1C8.448,0,8,0.448,8,1v1H4C1.791,2,0,3.791,0,6v22c0,2.209,1.791,4,4,4h22c2.209,0,4-1.791,4-4V6    C30,3.791,28.209,2,26,2z M28,28c0,1.105-0.895,2-2,2H4c-1.105,0-2-0.896-2-2V10h26V28z M28,8H2V6c0-1.105,0.895-2,2-2h4v1    c0,0.552,0.448,1,1,1c0.552,0,1-0.448,1-1V4h10v1c0,0.552,0.448,1,1,1c0.552,0,1-0.448,1-1V4h4c1.105,0,2,0.895,2,2V8z M14,28h2    c1.105,0,2-0.895,2-2v-2c0-1.105-0.895-2-2-2h-2c-1.104,0-2,0.895-2,2v2C12,27.105,12.895,28,14,28z M14,24h2v2h-2V24z M14,20h2    c1.105,0,2-0.896,2-2v-2c0-1.105-0.895-2-2-2h-2c-1.104,0-2,0.895-2,2v2C12,19.104,12.895,20,14,20z M14,16h2v2h-2V16z M6,28h2    c1.105,0,2-0.895,2-2v-2c0-1.105-0.895-2-2-2H6c-1.105,0-2,0.895-2,2v2C4,27.105,4.895,28,6,28z M6,24h2v2H6V24z" StrokeThickness="0" Fill="#FFB4B4C1" Stretch="Uniform" Height="20" Width="20"/>
+            </Grid>
+        </Border>
+        <Border x:Name="Conten"  Width="0" Margin="0,13,50,0" Height="25" Background="White" CornerRadius="3" HorizontalAlignment="Right" VerticalAlignment="Top">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="10" Opacity="0.4" ShadowDepth="0"/>
+            </Border.Effect>
+            <WrapPanel>
+                <Border Height="20" Width="20" Background="#00000000" Margin="10,2,10,0" ToolTip="新闻" MouseDown="Border_MouseDown">
                     <Path Data="M6,20h2c1.105,0,2-0.896,2-2v-2c0-1.105-0.895-2-2-2H6    c-1.105,0-2,0.895-2,2v2C4,19.104,4.895,20,6,20z M6,16h2v2H6V16z M22,28h2c1.105,0,2-0.895,2-2v-2c0-1.105-0.895-2-2-2h-2    c-1.104,0-2,0.895-2,2v2C20,27.105,20.895,28,22,28z M22,24h2v2h-2V24z M22,20h2c1.105,0,2-0.896,2-2v-2c0-1.105-0.895-2-2-2h-2    c-1.104,0-2,0.895-2,2v2C20,19.104,20.895,20,22,20z M22,16h2v2h-2V16z M26,2h-4V1c0-0.552-0.448-1-1-1c-0.552,0-1,0.448-1,1v1H10    V1c0-0.552-0.448-1-1-1C8.448,0,8,0.448,8,1v1H4C1.791,2,0,3.791,0,6v22c0,2.209,1.791,4,4,4h22c2.209,0,4-1.791,4-4V6    C30,3.791,28.209,2,26,2z M28,28c0,1.105-0.895,2-2,2H4c-1.105,0-2-0.896-2-2V10h26V28z M28,8H2V6c0-1.105,0.895-2,2-2h4v1    c0,0.552,0.448,1,1,1c0.552,0,1-0.448,1-1V4h10v1c0,0.552,0.448,1,1,1c0.552,0,1-0.448,1-1V4h4c1.105,0,2,0.895,2,2V8z M14,28h2    c1.105,0,2-0.895,2-2v-2c0-1.105-0.895-2-2-2h-2c-1.104,0-2,0.895-2,2v2C12,27.105,12.895,28,14,28z M14,24h2v2h-2V24z M14,20h2    c1.105,0,2-0.896,2-2v-2c0-1.105-0.895-2-2-2h-2c-1.104,0-2,0.895-2,2v2C12,19.104,12.895,20,14,20z M14,16h2v2h-2V16z M6,28h2    c1.105,0,2-0.895,2-2v-2c0-1.105-0.895-2-2-2H6c-1.105,0-2,0.895-2,2v2C4,27.105,4.895,28,6,28z M6,24h2v2H6V24z" StrokeThickness="0" Fill="#FFB4B4C1" Stretch="Uniform" Width="20" HorizontalAlignment="Left"/>
                 </Border>
-                <Border Height="20" Width="20" MouseDown="Border_MouseDown" Background="#00000000" Margin="10" ToolTip="天气">
+                <Border Height="20" Width="20" MouseDown="Border_MouseDown" Background="#00000000" Margin="10,2,10,0" ToolTip="天气">
                     <Path Data="M23.067,5.029C21.599,2.052 18.543,0 15,0 10.251,0 6.37,3.681 6.033,8.345 2.542,9.34 0,12.39 0,16 0,20.259 3.54,23.731 8,23.976 8,23.976 21.831,24 22,24 27.247,24 32,19.747 32,14.5 32,9.445 28.048,5.324 23.067,5.029z M22,22C21.873,22 8,22 8,22 8,22 1.962,21.38 2,16 2.021,12.964 4.688,10.182 8,10 8,5.858 10.651,2 15,2 18.433,2 20.723,4.095 21.538,7.013 26.493,6.797 29.844,10.717 30,14 30.21,18.413 25.601,22 22,22z" StrokeThickness="0" Fill="#FFB4B4C1" Stretch="Uniform" Width="20" HorizontalAlignment="Left" Height="20"/>
                 </Border>
-                <Border Height="20" Width="20" MouseDown="Border_MouseDown" Background="#00000000" Margin="10" ToolTip="美图">
+                <Border Height="20" Width="20" MouseDown="Border_MouseDown" Background="#00000000" Margin="10,2,10,0" ToolTip="美图">
                     <Path Data="M8,4C5.791,4 4,5.791 4,8 4,10.209 5.791,12 8,12 10.209,12 12,10.209 12,8 12,5.791 10.209,4 8,4z M8,10C6.895,10 6,9.105 6,8 6,6.895 6.895,6 8,6 9.105,6 10,6.896 10,8 10,9.104 9.105,10 8,10z M28,0L4,0C1.791,0,0,1.791,0,4L0,28C0,30.209,1.791,32,4,32L28,32C30.209,32,32,30.209,32,28L32,4C32,1.791,30.209,0,28,0z M4,30C2.895,30,2,29.104,2,28L2,27.06 9.945,19.945 20.001,30 4,30z M30,28C30,29.104,29.105,30,28,30L22.832,30 15.464,22.535 24,13.999 30,19.999 30,28z M30,17.128L24,11 14.058,21.111 10,17 2,24.336 2,4C2,2.896,2.895,2,4,2L28,2C29.105,2,30,2.896,30,4L30,17.128z" StrokeThickness="0" Fill="#FFB4B4C1" Stretch="Uniform" Width="20" HorizontalAlignment="Left"/>
                 </Border>
-                <Border Height="20" Width="20" MouseDown="Border_MouseDown" Background="#00000000" Margin="10" ToolTip="翻译">
+                <Border Height="20" Width="20" MouseDown="Border_MouseDown" Background="#00000000" Margin="10,2,10,0" ToolTip="翻译">
                     <Path Data="M22,28C22,29.104,21.105,30,20,30L4,30C2.895,30,2,29.105,2,28L2,12C2,10.895,2.895,10,4,10L6,10 6,8 4,8C1.791,8,0,9.791,0,12L0,28C0,30.209,1.791,32,4,32L20,32C22.209,32,24,30.209,24,28L24,26 22,26 22,28z M28,0L12,0C9.791,0,8,1.791,8,4L8,20C8,22.209,9.791,24,12,24L28,24C30.209,24,32,22.209,32,20L32,4C32,1.791,30.209,0,28,0z M30,20C30,21.104,29.105,22,28,22L12,22C10.895,22,10,21.104,10,20L10,4C10,2.895,10.895,2,12,2L28,2C29.105,2,30,2.895,30,4L30,20z" StrokeThickness="0" Fill="#FFB4B4C1" Stretch="Uniform" Width="20" HorizontalAlignment="Left"/>
                 </Border>
-                <Border Height="20" Width="20" MouseDown="Border_MouseDown" Background="#00000000" Margin="10" ToolTip="便签">
+                <Border Height="20" Width="20" MouseDown="Border_MouseDown" Background="#00000000" Margin="10,2,10,0" ToolTip="便签">
                     <Path Data="M7.704,17.482L2.513,13.285 7.704,9.088C8.098,8.704 8.098,8.081 7.704,7.697 7.31,7.313 6.672,7.313 6.278,7.697L0.287,12.54C0.077,12.745 -0.012,13.017 0.002,13.285 -0.012,13.553 0.077,13.825 0.287,14.03L6.278,18.873C6.672,19.257 7.31,19.257 7.704,18.873 8.098,18.489 8.098,17.866 7.704,17.482z M21.963,0.132C21.485,-0.139,20.873,0.022,20.597,0.491L8.097,24.578C7.821,25.047 7.935,25.764 8.463,25.917 9.109,26.104 9.553,26.027 9.829,25.558L22.329,1.471C22.606,1.001,22.442,0.402,21.963,0.132z M29.72,12.54L23.73,7.696C23.336,7.312 22.698,7.312 22.304,7.696 21.91,8.08 21.91,8.703 22.304,9.087L27.495,13.284 22.304,17.481C21.91,17.865 21.91,18.488 22.304,18.872 22.698,19.256 23.336,19.256 23.73,18.872L29.721,14.029C29.931,13.824 30.02,13.552 30.006,13.284 30.02,13.017 29.93,12.745 29.72,12.54z" StrokeThickness="0" Fill="#FFB4B4C1" Stretch="Uniform" Width="20" HorizontalAlignment="Left"/>
                 </Border>
-                <Border Height="20" Width="20" MouseDown="Border_MouseDown" Background="#00000000" Margin="10" ToolTip="搜索">
+                <Border Height="20" Width="20" MouseDown="Border_MouseDown" Background="#00000000" Margin="10,2,10,0" ToolTip="搜索">
                     <Path Data="M31.689,30.252L23.429,22.124C25.592,19.774 26.921,16.666 26.921,13.246 26.92,5.93 20.894,0 13.46,0 6.026,0 0,5.93 0,13.246 0,20.562 6.026,26.492 13.46,26.492 16.672,26.492 19.618,25.381 21.932,23.534L30.224,31.694C30.628,32.092 31.284,32.092 31.688,31.694 32.093,31.296 32.093,30.65 31.689,30.252z M13.46,24.454C7.17,24.454 2.071,19.436 2.071,13.246 2.071,7.056 7.17,2.038 13.46,2.038 19.75,2.038 24.849,7.056 24.849,13.246 24.849,19.436 19.75,24.454 13.46,24.454z" StrokeThickness="0" Fill="#FFB4B4C1" Stretch="Uniform" Width="20" HorizontalAlignment="Left"/>
                 </Border>
             </WrapPanel>
-        </ScrollViewer>
-        <Grid x:Name="ContentPage" Margin="0,40,0,0"/>
+        </Border>
     </Grid>
 </UserControl>

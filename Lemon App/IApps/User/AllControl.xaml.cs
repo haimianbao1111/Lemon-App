@@ -31,29 +31,30 @@ namespace Lemon_App
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
                 var Sende = (sender as Border).ToolTip.ToString();
+            info.Data = ((sender as Border).Child as Path).Data;
                 if (Sende == "新闻")
                 {
                     ContentPage.Children.Clear();
                     ContentPage.Children.Add(new Note());
-                    ContentPage.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-50, 40, 50, 0), new Thickness(0, 40, 0, 0), TimeSpan.FromSeconds(0.2)));
+                    ContentPage.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-50, 40, 50, 0), new Thickness(0, 0, 0, 0), TimeSpan.FromSeconds(0.2)));
                 }
                 else if (Sende == "天气")
                 {
                     ContentPage.Children.Clear();
                     ContentPage.Children.Add(new WeatherBox());
-                    ContentPage.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-50, 40, 50, 0), new Thickness(0, 40, 0, 0), TimeSpan.FromSeconds(0.2)));
+                    ContentPage.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-50, 40, 50, 0), new Thickness(0, 0, 0, 0), TimeSpan.FromSeconds(0.2)));
                 }
                 else if (Sende == "美图")
                 {
                     ContentPage.Children.Clear();
                     ContentPage.Children.Add(new BingDayImage());
-                    ContentPage.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-50, 40, 50, 0), new Thickness(0, 40, 0, 0), TimeSpan.FromSeconds(0.2)));
+                    ContentPage.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-50, 40, 50, 0), new Thickness(0, 0, 0, 0), TimeSpan.FromSeconds(0.2)));
                 }
                 else if (Sende == "翻译")
                 {
                     ContentPage.Children.Clear();
                     ContentPage.Children.Add(new FanyiBox());
-                    ContentPage.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-50, 40, 50, 0), new Thickness(0, 40, 0, 0), TimeSpan.FromSeconds(0.2)));
+                    ContentPage.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-50, 40, 50, 0), new Thickness(0, 0, 0, 0), TimeSpan.FromSeconds(0.2)));
                 }
                 else if (Sende == "便签")
                 {
@@ -63,14 +64,16 @@ namespace Lemon_App
                 {
                     ContentPage.Children.Clear();
                     ContentPage.Children.Add(new SearchBox());
-                    ContentPage.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-50, 40, 50, 0), new Thickness(0, 40, 0, 0), TimeSpan.FromSeconds(0.2)));
+                    ContentPage.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-50, 40, 50, 0), new Thickness(0, 0, 0, 0), TimeSpan.FromSeconds(0.2)));
                 }
                 else if (Sende == "设置")
                 {
                     ContentPage.Children.Clear();
                     ContentPage.Children.Add(new SettingsControl());
-                    ContentPage.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-50, 40, 50, 0), new Thickness(0, 40, 0, 0), TimeSpan.FromSeconds(0.2)));
+                    ContentPage.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-50, 40, 50, 0), new Thickness(0, 0, 0, 0), TimeSpan.FromSeconds(0.2)));
                 }
+            Conten.BeginAnimation(WidthProperty, new DoubleAnimation(240, 0, TimeSpan.FromSeconds(0.2)));
+            iso = false;
         }
 
         private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -81,6 +84,20 @@ namespace Lemon_App
         private void UserControl_MouseDown(object sender, MouseButtonEventArgs e)
         {
 
+        }
+        bool iso = false;
+        private void Border_MouseDown_1(object sender, MouseButtonEventArgs e)
+        {
+            if (!iso)
+            {
+                Conten.BeginAnimation(WidthProperty, new DoubleAnimation(0, 240, TimeSpan.FromSeconds(0.2)));
+                iso = true;
+            }
+            else
+            {
+                Conten.BeginAnimation(WidthProperty, new DoubleAnimation(240, 0, TimeSpan.FromSeconds(0.2)));
+                iso = false;
+            }
         }
     }
 }

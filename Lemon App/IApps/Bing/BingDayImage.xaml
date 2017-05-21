@@ -15,16 +15,16 @@
             <Border  HorizontalAlignment="Right" Margin="0,0,120,10" Width="35" MouseDown="Border_MouseDown_1" Background="#00000000" Height="35" BorderBrush="#CCFFFFFF" BorderThickness="2" CornerRadius="100" VerticalAlignment="Bottom">
                 <Path Data="M2.432,11.997L13.69,1.714c0.393-0.392,0.393-1.028,0-1.42
 			c-0.393-0.392-1.031-0.392-1.424,0L0.286,11.236c-0.21,0.209-0.299,0.487-0.285,0.76c-0.014,0.274,0.075,0.551,0.285,0.76
-			l11.98,10.942c0.393,0.392,1.031,0.392,1.424,0c0.393-0.392,0.393-1.028,0-1.42L2.432,11.997z" Stretch="Uniform" Fill="#CCFFFFFF" Margin="5"/>
+			l11.98,10.942c0.393,0.392,1.031,0.392,1.424,0c0.393-0.392,0.393-1.028,0-1.42L2.432,11.997z" Stretch="Uniform" Fill="#CCFFFFFF" Margin="8"/>
             </Border>
             <Border  HorizontalAlignment="Right" Width="35" MouseDown="Border_MouseDown_2"  Background="#00000000" Margin="0,0,65,10" Height="35" BorderBrush="#CCFFFFFF" BorderThickness="2" CornerRadius="100" VerticalAlignment="Bottom">
                 <Path Data="M13.729,11.236L1.722,0.294c-0.394-0.392-1.033-0.392-1.427,0
 			c-0.394,0.392-0.394,1.028,0,1.42l11.283,10.283L0.296,22.28c-0.394,0.392-0.394,1.028,0,1.42c0.394,0.392,1.033,0.392,1.427,0
-			l12.007-10.942c0.21-0.209,0.3-0.486,0.286-0.76C14.029,11.723,13.939,11.446,13.729,11.236z" Stretch="Uniform" Fill="#CCFFFFFF" Margin="5"/>
+			l12.007-10.942c0.21-0.209,0.3-0.486,0.286-0.76C14.029,11.723,13.939,11.446,13.729,11.236z" Stretch="Uniform" Fill="#CCFFFFFF" Margin="8"/>
             </Border>
             <Border MouseDown="label_MouseDown" Background="#00000000" Width="35" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Right" BorderBrush="#CCFFFFFF" BorderThickness="2" CornerRadius="100" Margin="0,0,10,10">
                 <Path Data="M494,52c-13-13-33-13-46,0L176,324L62,211c-13-13-33-13-46,0s-13,33,0,46l137,136c6,6,15,10,23,10s17-4,23-10L494,99
-	C507,86,507,65,494,52z" Stretch="Uniform" Margin="5" Fill="#CCFFFFFF"/>
+	C507,86,507,65,494,52z" Stretch="Uniform" Margin="8" Fill="#CCFFFFFF"/>
             </Border>
 
         </Grid>
