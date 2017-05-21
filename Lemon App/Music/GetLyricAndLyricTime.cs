@@ -178,11 +178,11 @@ namespace Lemon_App
                     //存放前先把时间转换成double型的毫秒
                     foreach (string time in timesStr)
                     {
-                        if (!string.IsNullOrEmpty(time))
+                        if (!string.IsNullOrEmpty(time)) 
                         {
                             try
                             {
-                               string timed= time.Substring(0, time.Length -1 );
+                               string timed= time.Substring(0, time.Length - 1);
                                 timed += "0";
                                 currentTime = strToDouble(timed);
                                 if (!lyricAndTimeDictionary.ContainsKey(currentTime))
