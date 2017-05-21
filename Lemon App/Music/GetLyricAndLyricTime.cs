@@ -182,8 +182,8 @@ namespace Lemon_App
                         {
                             try
                             {
-                               string timed= time.Substring(0, time.Length - 2);
-                                timed += "00";
+                               string timed= time.Substring(0, time.Length -1 );
+                                timed += "0";
                                 currentTime = strToDouble(timed);
                                 if (!lyricAndTimeDictionary.ContainsKey(currentTime))
                                 {

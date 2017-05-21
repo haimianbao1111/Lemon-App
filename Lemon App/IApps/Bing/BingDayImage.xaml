@@ -4,21 +4,25 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Lemon_App"
-             mc:Ignorable="d"  >
-    <Border Background="{Binding Background, ElementName=bingDailyPicture}">
+             mc:Ignorable="d">
+    <Border>
         <Grid Loaded="Grid_Loaded">
-            <Grid  Background="{Binding Background, ElementName=bingDailyPicture}">
-                <Grid.Effect>
-                    <BlurEffect Radius="20" RenderingBias="Quality"/>
-                </Grid.Effect>
-            </Grid>
-            <Border x:Name="bingDailyPicture" Margin="0,0,0,35"/>
-            <Grid Height="35" VerticalAlignment="Bottom">
-                <TextBlock x:Name="label" Text="设为桌面壁纸"  MouseDown="label_MouseDown" Foreground="White" TextAlignment="Center" Background="#00000000" Width="Auto" Height="20"/>
-                <Label x:Name="label1" Content="◀" HorizontalAlignment="Left" Height="35" Margin="10,0,0,0" VerticalAlignment="Top" Width="37" FontSize="20" MouseDown="Border_MouseDown_1" Foreground="White" Background="#00000000"/>
-                <Label x:Name="label2" Content="▶" HorizontalAlignment="Right" Height="35" VerticalAlignment="Top" Width="35" MouseDown="Border_MouseDown_2" FontSize="20" Foreground="White" Background="{x:Null}"/>
-            </Grid>
-            <TextBlock x:Name="textBlock" Height="18" Margin="0,0,0,35" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="White" Background="#4CFDFDFD" MouseDown="textBlock_MouseDown"/>
+            <Border x:Name="bingDailyPicture"/>
+            <TextBlock x:Name="textBlock" TextWrapping="Wrap" Foreground="White" MouseDown="textBlock_MouseDown" FontSize="36" Margin="0,0,35,0"/>
+            <Border  HorizontalAlignment="Left" Margin="10,0,0,10" Width="35" MouseDown="Border_MouseDown_1" Background="#00000000" Height="35">
+                <Path Data="M2.432,11.997L13.69,1.714c0.393-0.392,0.393-1.028,0-1.42
+			c-0.393-0.392-1.031-0.392-1.424,0L0.286,11.236c-0.21,0.209-0.299,0.487-0.285,0.76c-0.014,0.274,0.075,0.551,0.285,0.76
+			l11.98,10.942c0.393,0.392,1.031,0.392,1.424,0c0.393-0.392,0.393-1.028,0-1.42L2.432,11.997z" Stretch="Uniform" Fill="#CCFFFFFF"/>
+            </Border>
+            <Border  HorizontalAlignment="Right" Width="35" MouseDown="Border_MouseDown_2"  Background="#00000000" Margin="0,10,10,10" Height="35">
+                <Path Data="M13.729,11.236L1.722,0.294c-0.394-0.392-1.033-0.392-1.427,0
+			c-0.394,0.392-0.394,1.028,0,1.42l11.283,10.283L0.296,22.28c-0.394,0.392-0.394,1.028,0,1.42c0.394,0.392,1.033,0.392,1.427,0
+			l12.007-10.942c0.21-0.209,0.3-0.486,0.286-0.76C14.029,11.723,13.939,11.446,13.729,11.236z" Stretch="Uniform" Fill="#CCFFFFFF"/>
+            </Border>
+            <Border MouseDown="label_MouseDown" Background="#00000000" Width="30" Height="30" VerticalAlignment="Top" HorizontalAlignment="Right">
+                <Path Data="M494,52c-13-13-33-13-46,0L176,324L62,211c-13-13-33-13-46,0s-13,33,0,46l137,136c6,6,15,10,23,10s17-4,23-10L494,99
+	C507,86,507,65,494,52z" Stretch="Uniform" Margin="5" Fill="#CCFFFFFF"/>
+            </Border>
 
         </Grid>
     </Border>

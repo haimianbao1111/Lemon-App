@@ -17,6 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.ComponentModel;
+using System.Windows.Media.Animation;
 
 namespace Lemon_App
 {
@@ -59,6 +60,7 @@ namespace Lemon_App
             bingDailyPicture.Background =new ImageBrush( new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + System.IO.Path.GetFileNameWithoutExtension(obj["images"][0]["url"].ToString()), UriKind.Absolute)));
             textBlock.Text = obj["images"][0]["copyright"].ToString();
             downuri = obj["images"][0]["copyrightlink"].ToString();
+            this.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.2)));
         }
 
         private async void Border_MouseDown_1(object sender, MouseButtonEventArgs e)

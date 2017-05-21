@@ -274,7 +274,6 @@ namespace Lemon_App
                     }
                     catch { }
                 }
-
                 foreach (var ele in getLTD.LyricAndTimeDictionary)
                 {
                     try
@@ -284,6 +283,7 @@ namespace Lemon_App
                     }
                     catch { }
                 }
+
                 return LT;
             }
             else
