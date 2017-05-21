@@ -1175,7 +1175,7 @@
             </ListBox>
             <Grid Height="40" VerticalAlignment="Top">
                 <Grid HorizontalAlignment="Right" Width="310">
-                    <Border x:Name="border1" Height="27" Margin="137,8,0,5" VerticalAlignment="Stretch" Background="#FFF1F3F7" CornerRadius="10">
+                    <Border x:Name="border1" Height="27" Margin="137,8,10,5" VerticalAlignment="Stretch" Background="#FFF1F3F7" CornerRadius="10">
                         <Grid>
                             <Popup x:Name="popup1" Width="250" Height="200" AllowsTransparency="True" PopupAnimation="Fade" >
                                 <Border Background="White" CornerRadius="5" Margin="10">
