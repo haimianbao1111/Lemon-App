@@ -31,7 +31,6 @@ namespace Lemon_App
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
                 var Sende = (sender as Border).ToolTip.ToString();
-            info.Data = ((sender as Border).Child as Path).Data;
                 if (Sende == "新闻")
                 {
                     ContentPage.Children.Clear();
@@ -72,8 +71,6 @@ namespace Lemon_App
                     ContentPage.Children.Add(new SettingsControl());
                     ContentPage.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-50, 40, 50, 0), new Thickness(0, 0, 0, 0), TimeSpan.FromSeconds(0.2)));
                 }
-            Conten.BeginAnimation(WidthProperty, new DoubleAnimation(240, 0, TimeSpan.FromSeconds(0.2)));
-            iso = false;
         }
 
         private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -84,20 +81,6 @@ namespace Lemon_App
         private void UserControl_MouseDown(object sender, MouseButtonEventArgs e)
         {
 
-        }
-        bool iso = false;
-        private void Border_MouseDown_1(object sender, MouseButtonEventArgs e)
-        {
-            if (!iso)
-            {
-                Conten.BeginAnimation(WidthProperty, new DoubleAnimation(0, 240, TimeSpan.FromSeconds(0.2)));
-                iso = true;
-            }
-            else
-            {
-                Conten.BeginAnimation(WidthProperty, new DoubleAnimation(240, 0, TimeSpan.FromSeconds(0.2)));
-                iso = false;
-            }
         }
     }
 }

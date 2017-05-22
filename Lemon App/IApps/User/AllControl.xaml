@@ -5,17 +5,40 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Lemon_App"
              mc:Ignorable="d" SizeChanged="UserControl_SizeChanged" MouseDown="UserControl_MouseDown" d:DesignWidth="401.756" d:DesignHeight="186"  >
+    <UserControl.Resources>
+        <Storyboard x:Key="OnMouseMove1">
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Conten">
+                <EasingThicknessKeyFrame KeyTime="0:0:0.2" Value="0,30,10,0">
+                    <EasingThicknessKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingThicknessKeyFrame.EasingFunction>
+                </EasingThicknessKeyFrame>
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="OnMouseLeave1">
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Conten">
+                <EasingThicknessKeyFrame KeyTime="0:0:0.2" Value="0,30,-230,0">
+                    <EasingThicknessKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseOut"/>
+                    </EasingThicknessKeyFrame.EasingFunction>
+                </EasingThicknessKeyFrame>
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="UIElement.MouseMove" SourceName="Conten">
+            <BeginStoryboard Storyboard="{StaticResource OnMouseMove1}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="Conten">
+            <BeginStoryboard x:Name="OnMouseLeave1_BeginStoryboard" Storyboard="{StaticResource OnMouseLeave1}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseDown" SourceName="Conten">
+            <BeginStoryboard x:Name="OnMouseLeave1_BeginStoryboard1" Storyboard="{StaticResource OnMouseLeave1}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
     <Grid >
         <Grid x:Name="ContentPage"/>
-        <Border HorizontalAlignment="Right" Height="30" Margin="0,10,10,0" VerticalAlignment="Top" Width="30" Background="White" CornerRadius="100" MouseDown="Border_MouseDown_1">
-            <Border.Effect>
-                <DropShadowEffect BlurRadius="10" Opacity="0.4" ShadowDepth="0"/>
-            </Border.Effect>
-            <Grid>
-                <Path x:Name="info" Data="M6,20h2c1.105,0,2-0.896,2-2v-2c0-1.105-0.895-2-2-2H6    c-1.105,0-2,0.895-2,2v2C4,19.104,4.895,20,6,20z M6,16h2v2H6V16z M22,28h2c1.105,0,2-0.895,2-2v-2c0-1.105-0.895-2-2-2h-2    c-1.104,0-2,0.895-2,2v2C20,27.105,20.895,28,22,28z M22,24h2v2h-2V24z M22,20h2c1.105,0,2-0.896,2-2v-2c0-1.105-0.895-2-2-2h-2    c-1.104,0-2,0.895-2,2v2C20,19.104,20.895,20,22,20z M22,16h2v2h-2V16z M26,2h-4V1c0-0.552-0.448-1-1-1c-0.552,0-1,0.448-1,1v1H10    V1c0-0.552-0.448-1-1-1C8.448,0,8,0.448,8,1v1H4C1.791,2,0,3.791,0,6v22c0,2.209,1.791,4,4,4h22c2.209,0,4-1.791,4-4V6    C30,3.791,28.209,2,26,2z M28,28c0,1.105-0.895,2-2,2H4c-1.105,0-2-0.896-2-2V10h26V28z M28,8H2V6c0-1.105,0.895-2,2-2h4v1    c0,0.552,0.448,1,1,1c0.552,0,1-0.448,1-1V4h10v1c0,0.552,0.448,1,1,1c0.552,0,1-0.448,1-1V4h4c1.105,0,2,0.895,2,2V8z M14,28h2    c1.105,0,2-0.895,2-2v-2c0-1.105-0.895-2-2-2h-2c-1.104,0-2,0.895-2,2v2C12,27.105,12.895,28,14,28z M14,24h2v2h-2V24z M14,20h2    c1.105,0,2-0.896,2-2v-2c0-1.105-0.895-2-2-2h-2c-1.104,0-2,0.895-2,2v2C12,19.104,12.895,20,14,20z M14,16h2v2h-2V16z M6,28h2    c1.105,0,2-0.895,2-2v-2c0-1.105-0.895-2-2-2H6c-1.105,0-2,0.895-2,2v2C4,27.105,4.895,28,6,28z M6,24h2v2H6V24z" StrokeThickness="0" Fill="#FFB4B4C1" Stretch="Uniform" Height="20" Width="20"/>
-            </Grid>
-        </Border>
-        <Border x:Name="Conten"  Width="0" Margin="0,13,50,0" Height="25" Background="White" CornerRadius="3" HorizontalAlignment="Right" VerticalAlignment="Top">
+        <Border x:Name="Conten"  Width="240" Margin="0,30,-230,0" Height="25" Background="White" CornerRadius="3" HorizontalAlignment="Right" VerticalAlignment="Top">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="10" Opacity="0.4" ShadowDepth="0"/>
             </Border.Effect>
