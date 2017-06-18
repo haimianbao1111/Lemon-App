@@ -240,18 +240,6 @@ namespace Lemon_App.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool IsFistRun {
-            get {
-                return ((bool)(this["IsFistRun"]));
-            }
-            set {
-                this["IsFistRun"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("null")]
         public string LZone {
             get {

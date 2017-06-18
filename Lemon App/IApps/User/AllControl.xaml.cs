@@ -26,6 +26,9 @@ namespace Lemon_App
         public AllControl()
         {
             InitializeComponent();
+            ContentPage.Children.Clear();
+            ContentPage.Children.Add(new Note());
+            ContentPage.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-50, 40, 50, 0), new Thickness(0, 0, 0, 0), TimeSpan.FromSeconds(0.2)));
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)

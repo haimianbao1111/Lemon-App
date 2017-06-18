@@ -164,9 +164,6 @@
       <DependentUpon>DeskLyricWin.xaml</DependentUpon>
     </Compile>
     <Compile Include="Other\ImageHelper.cs" />
-    <Compile Include="Page\FistRun.xaml.cs">
-      <DependentUpon>FistRun.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Other\FX.cs" />
     <Compile Include="Music\GetLyricAndLyricTime.cs" />
     <Compile Include="Page\HaWindow.xaml.cs">
@@ -263,10 +260,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="IApps\Fanyi\FanyiBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Page\FistRun.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
