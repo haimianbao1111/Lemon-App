@@ -53,5 +53,15 @@ namespace Lemon_App.IApps.Bing
                jw.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.2)));
             else jw.BeginAnimation(OpacityProperty, new DoubleAnimation(1, 0, TimeSpan.FromSeconds(0.2)));
         }
+
+        private void Border_MouseDown_1(object sender, MouseButtonEventArgs e)
+        {
+            if (map.ZoomLevel <= 15&&map.ZoomLevel >3) map.ZoomLevel--;
+        }
+
+        private void Border_MouseDown_2(object sender, MouseButtonEventArgs e)
+        {
+            if (map.ZoomLevel >=3&&map.ZoomLevel<15) map.ZoomLevel++;
+        }
     }
 }
