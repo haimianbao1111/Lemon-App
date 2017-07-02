@@ -17,7 +17,7 @@
         </Storyboard>
         <Storyboard x:Key="OnMouseLeave1">
             <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Conten">
-                <EasingThicknessKeyFrame KeyTime="0:0:0.2" Value="0,30,-230,0">
+                <EasingThicknessKeyFrame KeyTime="0:0:0.2" Value="0,30,-270,0">
                     <EasingThicknessKeyFrame.EasingFunction>
                         <CubicEase EasingMode="EaseOut"/>
                     </EasingThicknessKeyFrame.EasingFunction>
@@ -38,7 +38,7 @@
     </UserControl.Triggers>
     <Grid >
         <Grid x:Name="ContentPage"/>
-        <Border x:Name="Conten"  Width="240" Margin="0,30,-230,0" Height="25" Background="White" CornerRadius="3" HorizontalAlignment="Right" VerticalAlignment="Top">
+        <Border x:Name="Conten"  Width="280" Margin="0,30,-270,0" Height="25" Background="White" CornerRadius="3" HorizontalAlignment="Right" VerticalAlignment="Top">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="10" Opacity="0.4" ShadowDepth="0"/>
             </Border.Effect>
@@ -60,6 +60,17 @@
                 </Border>
                 <Border Height="20" Width="20" MouseDown="Border_MouseDown" Background="#00000000" Margin="10,2,10,0" ToolTip="搜索">
                     <Path Data="M31.689,30.252L23.429,22.124C25.592,19.774 26.921,16.666 26.921,13.246 26.92,5.93 20.894,0 13.46,0 6.026,0 0,5.93 0,13.246 0,20.562 6.026,26.492 13.46,26.492 16.672,26.492 19.618,25.381 21.932,23.534L30.224,31.694C30.628,32.092 31.284,32.092 31.688,31.694 32.093,31.296 32.093,30.65 31.689,30.252z M13.46,24.454C7.17,24.454 2.071,19.436 2.071,13.246 2.071,7.056 7.17,2.038 13.46,2.038 19.75,2.038 24.849,7.056 24.849,13.246 24.849,19.436 19.75,24.454 13.46,24.454z" StrokeThickness="0" Fill="#FFB4B4C1" Stretch="Uniform" Width="20" HorizontalAlignment="Left"/>
+                </Border>
+                <Border Height="20" Width="20" MouseDown="Border_MouseDown" Background="#00000000" Margin="10,2,10,0" ToolTip="地图">
+                    <Path Data="M624.8,598.9c-47.6-50.8-91.3-109.8-129.9-175.6c-16.1-27.5-32.9-57-46.1-89.1c-1.7-4.1-3.3-8.2-4.8-12.2h-81
+	c-16,0-29,13-29,29v528.2c0,16,13,29,29,29h274c16,0,29-13,29-29V626c-1.9-0.7-3.9-1.5-5.8-2.3C646.8,618,634.8,609.7,624.8,598.9z M46.2,820.9l201.3,79.2c9.8,3.9,20.5-3.4,20.5-14V345.8c0-14.4-8.8-27.3-22.2-32.6L45.3,234.3c-10.2-4-21.3,3.5-21.3,14.5
+	v539.4C24,802.7,32.8,815.6,46.2,820.9z M892.2,452c-33,52.9-71.8,102.7-115.3,147.9c-10.1,10.5-21.9,18.6-35.1,24.2c-3.2,1.4-6.5,2.5-9.8,3.6v249.7
+	c0,14.4,8.8,27.3,22.2,32.6l200.5,78.9c10.2,4,21.3-3.5,21.3-14.5V434.8c0-14.4-8.8-27.3-22.2-32.6l-26.3-10.3
+	C916.3,412.9,904.1,432.9,892.2,452z M668.5,557.8c9,9.6,20.9,14.4,32.8,14.4c11,0,22-4.1,30.7-12.2c0.6-0.5,1.1-1.1,1.7-1.6c40.5-42.1,76.7-88.5,107.7-138.1
+	c10.1-16.1,20.4-33,30-50.5c25.2-45.9,45.7-95.9,45.7-147.2c0-119.3-96.7-216-216-216s-216,96.7-216,216c0,35,9.8,68,23.8,99.5
+	c10.9,24.5,24.4,48.1,37.8,71c33.9,57.9,73.6,113,119.4,162.2C666.8,556,667.7,556.9,668.5,557.8z M633,321.9
+	c-35-22.2-58.1-61.3-58.1-105.7C574.8,147.1,630.9,91,700,91s125.2,56.1,125.2,125.2c0,47.3-26.3,88.5-65,109.8
+	c-8.8,4.8-18.2,8.6-28.2,11.2c-10.2,2.7-20.9,4.1-32,4.1c-13.5,0-26.4-2.1-38.6-6.1C651.3,332.1,641.8,327.5,633,321.9z" StrokeThickness="0" Fill="#FFB4B4C1" Stretch="Uniform" Width="20" HorizontalAlignment="Left"/>
                 </Border>
             </WrapPanel>
         </Border>

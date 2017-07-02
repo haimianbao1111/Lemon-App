@@ -1,4 +1,5 @@
 ﻿using Lemon_App.IApps;
+using Lemon_App.IApps.Bing;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -68,10 +69,10 @@ namespace Lemon_App
                     ContentPage.Children.Add(new SearchBox());
                     ContentPage.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-50, 40, 50, 0), new Thickness(0, 0, 0, 0), TimeSpan.FromSeconds(0.2)));
                 }
-                else if (Sende == "设置")
+                else if (Sende == "地图")
                 {
                     ContentPage.Children.Clear();
-                    ContentPage.Children.Add(new SettingsControl());
+                    ContentPage.Children.Add(new MapControl());
                     ContentPage.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-50, 40, 50, 0), new Thickness(0, 0, 0, 0), TimeSpan.FromSeconds(0.2)));
                 }
         }

@@ -7,7 +7,7 @@
     xmlns:_2048="clr-namespace:Lemon_App.IApps._2048"
     x:Class="Lemon_App.lemon"
         mc:Ignorable="d"
-        Title="Lemon App" Height="600" BorderThickness="10" Width="845" Background="{x:Null}" WindowStyle="None" AllowsTransparency="True" MouseLeftButtonDown="Window_MouseLeftButtonDown" ResizeMode="CanResizeWithGrip" SizeChanged="Window_SizeChanged" Loaded="Window_Loaded" Icon="Lemon App Ico.ico" Style="{DynamicResource WindowStyle}" WindowStartupLocation="CenterScreen">
+        Title="Lemon App" Height="600" BorderThickness="10" Width="845" Background="{x:Null}" WindowStyle="None" AllowsTransparency="True" ResizeMode="CanResizeWithGrip" SizeChanged="Window_SizeChanged" Loaded="Window_Loaded" Icon="Lemon App Ico.ico" Style="{DynamicResource WindowStyle}" WindowStartupLocation="CenterScreen">
     <WindowChrome.WindowChrome>
         <WindowChrome GlassFrameThickness="0" ResizeBorderThickness="12" CaptionHeight="10" CornerRadius="0" />
     </WindowChrome.WindowChrome>
@@ -139,7 +139,7 @@
                 <local:AllControl x:Name="All" Visibility="Collapsed" />
                 <_2048:_2048Control x:Name="_2048" Visibility="Collapsed"  />
             </Grid>
-            <Grid x:Name="TopPage" MinHeight="50" Grid.RowSpan="1" HorizontalAlignment="Left" Width="63" Background="#FFFAFAFA" MouseDown="TopPage_MouseDown">
+            <Grid x:Name="TopPage" MinHeight="50" Grid.RowSpan="1" HorizontalAlignment="Left" Width="63" Background="#FFFAFAFA" MouseDown="TopPage_MouseDown" MouseLeftButtonDown="Window_MouseLeftButtonDown">
                 <Border Width="1" HorizontalAlignment="Right" Background="#FFEAEAEA"/>
                 <Border x:Name="CLOSE" ToolTip="关闭" HorizontalAlignment="Left" Margin="5,15,0,0" Width="13" Height="13" Background="#FFFE5E56" CornerRadius="13" MouseDown="CLOSE_MouseDown" VerticalAlignment="Top"/>
                 <Border x:Name="MIN" ToolTip="最大化" HorizontalAlignment="Left" Margin="25,15,0,0" Width="13" Height="13" Background="#FFFEBC2D" CornerRadius="13" MouseDown="MIN_MouseDown" VerticalAlignment="Top"/>

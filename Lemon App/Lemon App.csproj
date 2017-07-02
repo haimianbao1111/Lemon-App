@@ -113,6 +113,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Dll\Microsoft.DirectX.DirectSound.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Maps.MapControl.WPF, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dll\Microsoft.Maps.MapControl.WPF.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
@@ -149,6 +153,9 @@
     </ApplicationDefinition>
     <Compile Include="IApps\2048\2048Control.xaml.cs">
       <DependentUpon>2048Control.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IApps\Bing\MapControl.xaml.cs">
+      <DependentUpon>MapControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="IApps\User\AllControl.xaml.cs">
       <DependentUpon>AllControl.xaml</DependentUpon>
@@ -236,6 +243,10 @@
       <DependentUpon>WelcomeWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="IApps\2048\2048Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="IApps\Bing\MapControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -435,6 +446,7 @@
     <Content Include="Dll\Bass.Net.dll" />
     <Content Include="Dll\Microsoft.DirectX.DirectSound.dll" />
     <Content Include="Dll\Microsoft.DirectX.dll" />
+    <Content Include="Dll\Microsoft.Maps.MapControl.WPF.dll" />
     <Content Include="Dll\Newtonsoft.Json.dll" />
   </ItemGroup>
   <ItemGroup>

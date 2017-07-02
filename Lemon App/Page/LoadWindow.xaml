@@ -109,7 +109,7 @@
                 </Grid>
             </Border>
         </Popup>
-        <Grid Height="199" VerticalAlignment="Bottom" Background="#CCFFFFFF">
+        <Grid Height="199" VerticalAlignment="Bottom" Background="#F2FFFFFF">
             <Border x:Name="OS" BorderBrush="#FFB1B1B1" BorderThickness="1" Width="260" CornerRadius="5" Background="White" Height="60">
                 <Grid>
                     <Grid.RowDefinitions>
