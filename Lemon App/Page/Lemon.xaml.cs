@@ -68,7 +68,7 @@ namespace Lemon_App
         private void CLOSE_MouseDown(object sender, MouseButtonEventArgs e)
         {
             var c = new DoubleAnimation(1, 0, TimeSpan.FromSeconds(0.3));
-            c.Completed += delegate { Environment.Exit(0); };
+            c.Completed += delegate { Process.GetCurrentProcess().Kill(); };
             this.BeginAnimation(OpacityProperty, c);
         }
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)

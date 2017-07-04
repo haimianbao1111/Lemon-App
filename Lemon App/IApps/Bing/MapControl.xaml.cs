@@ -1,4 +1,5 @@
 ﻿using Microsoft.Maps.MapControl.WPF;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -62,6 +63,13 @@ namespace Lemon_App.IApps.Bing
         private void Border_MouseDown_2(object sender, MouseButtonEventArgs e)
         {
             if (map.ZoomLevel >=3&&map.ZoomLevel<15) map.ZoomLevel++;
+        }
+
+        private async void Border_MouseDown_3(object sender, MouseButtonEventArgs e)
+        {
+            var o = JObject.Parse(await Uuuhh.GetWebAsync("https://api.map.baidu.com/location/ip?ak=1jrcv864oGuHgyvLfPd0Tg8i&coor=bd09ll"));
+            map.SetView(new Location(double.Parse(o["content"]["point"]["y"].ToString()), double.Parse(o["content"]["point"]["x"].ToString())), 5);
+            map.ZoomLevel = 14;
         }
     }
 }

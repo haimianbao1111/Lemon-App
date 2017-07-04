@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Lemon_App.IApps.Bing"
              xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
-             mc:Ignorable="d" >
+             mc:Ignorable="d" d:DesignHeight="181" >
     <Grid>
         <m:Map x:Name="map" ZoomLevel="3" CredentialsProvider="AnckGBhIIg0ldeEk_CYSl3d_sj2J7IDBNwNLEo0OqsCkU9waE4MQB6myM1UHM3dp">
             <m:Map.Mode>
@@ -92,6 +92,14 @@
 	c-1.834,0-3.494-0.743-4.695-1.944c-1.202-1.202-1.945-2.862-1.944-4.695L43.359,56.64l-24.664,0c-1.833,0-3.492-0.742-4.695-1.945
 	c-1.2-1.201-1.943-2.861-1.943-4.694c-0.001-3.668,2.972-6.641,6.641-6.641h24.662V18.697c0-3.668,2.974-6.642,6.642-6.642
 	c3.667,0.001,6.638,2.972,6.64,6.64V43.36h24.664C84.973,43.362,87.942,46.333,87.944,50z" Fill="#FFBBBBBB" Width="10" Height="10" Stretch="Uniform" Margin="5"/>
+        </Border>
+        <Border  HorizontalAlignment="Right" Height="20" Margin="0,0,6,110" VerticalAlignment="Bottom" Width="20" Background="White" CornerRadius="3" MouseDown="Border_MouseDown_3">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="10" Opacity="0.3" ShadowDepth="0"/>
+            </Border.Effect>
+            <Path   Data="M32,3.867c-9.35,0-16.955,7.607-16.955,16.955c0,8.991,15.541,36.792,16.203,37.971L32,60.133l0.753-1.34
+			c0.661-1.18,16.202-28.98,16.202-37.971C48.955,11.474,41.348,3.867,32,3.867z M32,25.912c-3.522,0-6.388-2.866-6.388-6.389
+			c0-3.524,2.866-6.39,6.388-6.39c3.524,0,6.39,2.866,6.39,6.39C38.39,23.046,35.523,25.912,32,25.912z" Fill="#FFBBBBBB" Stretch="Uniform" Margin="3"/>
         </Border>
     </Grid>
 </UserControl>
