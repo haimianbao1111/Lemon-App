@@ -75,16 +75,7 @@ namespace Lemon_App
                     Settings.Default.LemonAreeunIts = qq + "@qq.com";
                     Settings.Default.RNBM = (Boolean)RM.IsChecked;
                     Settings.Default.Save();
-                    OS.Visibility = Visibility.Collapsed;
-                    RM.Visibility = Visibility.Collapsed;
-                    q.Visibility = Visibility.Collapsed;
-                    s.Visibility = Visibility.Collapsed;
-                    rk.Visibility = Visibility.Collapsed;
-                    ThicknessAnimationUsingKeyFrames t = new ThicknessAnimationUsingKeyFrames();
-                    t.KeyFrames.Add(new LinearThicknessKeyFrame(new Thickness(0, -45, 0, 0), TimeSpan.FromSeconds(0)));
-                    t.KeyFrames.Add(new LinearThicknessKeyFrame(new Thickness(0, 50, 0, 0), TimeSpan.FromSeconds(0.3)));
-                    t.KeyFrames.Add(new LinearThicknessKeyFrame(new Thickness(0, 50, 0, 0), TimeSpan.FromSeconds(3)));
-                    TX.BeginAnimation(MarginProperty, t);
+                    (Resources["OnLoaded1"] as Storyboard).Begin();
                     tr.Start();
                 }
                 else if (wb.DocumentText.Contains("安全验证"))
@@ -240,27 +231,7 @@ namespace Lemon_App
             }
         }
 
-        private void PSW_PasswordChanged(object sender, RoutedEventArgs e)
-        {
-            if (PSW.Password.Length == 4)
-                if (PSW.Password == ini)
-                {
-                    Settings.Default.RNBM = (Boolean)RM.IsChecked;
-                    Settings.Default.LemonAreeunIts = Email.Text;
-                    Settings.Default.Save();
-                    OS.Visibility = Visibility.Collapsed;
-                    RM.Visibility = Visibility.Collapsed;
-                    q.Visibility = Visibility.Collapsed;
-                    s.Visibility = Visibility.Collapsed;
-                    rk.Visibility = Visibility.Collapsed;
-                    ThicknessAnimationUsingKeyFrames t = new ThicknessAnimationUsingKeyFrames();
-                    t.KeyFrames.Add(new LinearThicknessKeyFrame(new Thickness(0, -45, 0, 0), TimeSpan.FromSeconds(0)));
-                    t.KeyFrames.Add(new LinearThicknessKeyFrame(new Thickness(0, 50, 0, 0), TimeSpan.FromSeconds(0.3)));
-                    t.KeyFrames.Add(new LinearThicknessKeyFrame(new Thickness(0, 50, 0, 0), TimeSpan.FromSeconds(3)));
-                    TX.BeginAnimation(MarginProperty,t);
-                    tr.Start();
-                }
-        }
+
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -274,13 +245,6 @@ namespace Lemon_App
             c.Completed += delegate { Environment.Exit(0); };
             this.BeginAnimation(OpacityProperty, c);
         }
-
-        private void PSW_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            Regex re = new Regex("[^0-9.-]+");
-            e.Handled = re.IsMatch(e.Text);
-        }
-
         private void Email_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
@@ -299,16 +263,7 @@ namespace Lemon_App
                 Settings.Default.RNBM = (Boolean)RM.IsChecked;
                 Settings.Default.LemonAreeunIts = Email.Text;
                 Settings.Default.Save();
-                OS.Visibility = Visibility.Collapsed;
-                RM.Visibility = Visibility.Collapsed;
-                q.Visibility = Visibility.Collapsed;
-                s.Visibility = Visibility.Collapsed;
-                rk.Visibility = Visibility.Collapsed;
-                ThicknessAnimationUsingKeyFrames t = new ThicknessAnimationUsingKeyFrames();
-                t.KeyFrames.Add(new LinearThicknessKeyFrame(new Thickness(0, -45, 0, 0), TimeSpan.FromSeconds(0)));
-                t.KeyFrames.Add(new LinearThicknessKeyFrame(new Thickness(0, 50, 0, 0), TimeSpan.FromSeconds(0.3)));
-                t.KeyFrames.Add(new LinearThicknessKeyFrame(new Thickness(0, 50, 0, 0), TimeSpan.FromSeconds(3)));
-                TX.BeginAnimation(MarginProperty, t);
+                (Resources["OnLoaded1"] as Storyboard).Begin();
                 tr.Start();
             }
             else { rk.Text = "游客访问必须输入你的邮箱"; }
@@ -373,16 +328,7 @@ namespace Lemon_App
                     Settings.Default.LemonAreeunIts = qq + "@qq.com";
                     Settings.Default.RNBM = (Boolean)RM.IsChecked;
                     Settings.Default.Save();
-                    OS.Visibility = Visibility.Collapsed;
-                    RM.Visibility = Visibility.Collapsed;
-                    q.Visibility = Visibility.Collapsed;
-                    s.Visibility = Visibility.Collapsed;
-                    rk.Visibility = Visibility.Collapsed;
-                    ThicknessAnimationUsingKeyFrames t = new ThicknessAnimationUsingKeyFrames();
-                    t.KeyFrames.Add(new LinearThicknessKeyFrame(new Thickness(0, -45, 0, 0), TimeSpan.FromSeconds(0)));
-                    t.KeyFrames.Add(new LinearThicknessKeyFrame(new Thickness(0, 50, 0, 0), TimeSpan.FromSeconds(0.3)));
-                    t.KeyFrames.Add(new LinearThicknessKeyFrame(new Thickness(0, 50, 0, 0), TimeSpan.FromSeconds(3)));
-                    TX.BeginAnimation(MarginProperty, t);
+                    (Resources["OnLoaded1"] as Storyboard).Begin();
                     tr.Start();
                 }
                 else { rk.Text = "登录失败,请检查账号和密码."; }

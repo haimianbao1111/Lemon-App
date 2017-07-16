@@ -7,7 +7,7 @@
     xmlns:_2048="clr-namespace:Lemon_App.IApps._2048"
     x:Class="Lemon_App.lemon"
         mc:Ignorable="d"
-        Title="Lemon App" Height="600" BorderThickness="10" Width="845" Background="{x:Null}" WindowStyle="None" AllowsTransparency="True" ResizeMode="CanResizeWithGrip" SizeChanged="Window_SizeChanged" Loaded="Window_Loaded" Icon="Lemon App Ico.ico" Style="{DynamicResource WindowStyle}" WindowStartupLocation="CenterScreen">
+        Title="Lemon App" Height="660" Width="905" Background="{x:Null}" WindowStyle="None" AllowsTransparency="True" ResizeMode="CanResizeWithGrip" SizeChanged="Window_SizeChanged" Loaded="Window_Loaded" Icon="Lemon App Ico.ico" Style="{DynamicResource WindowStyle}" WindowStartupLocation="CenterScreen" BorderThickness="30">
     <WindowChrome.WindowChrome>
         <WindowChrome GlassFrameThickness="0" ResizeBorderThickness="12" CaptionHeight="10" CornerRadius="0" />
     </WindowChrome.WindowChrome>
@@ -120,13 +120,13 @@
 
     </Window.Resources>
     <Window.Effect>
-        <DropShadowEffect Color="#FF2D2D30" BlurRadius="10" Opacity="0.4" ShadowDepth="0"/>
+        <DropShadowEffect Color="#FF2D2D30" BlurRadius="50" ShadowDepth="0" Opacity="0.4"/>
     </Window.Effect>
     <Grid x:Name="Page" >
         <Grid.Clip>
             <RectangleGeometry RadiusX="5" RadiusY="5">
                 <RectangleGeometry.Rect>
-                    <Rect Width="825" Height="580"/>
+                    <Rect Width="845" Height="600"/>
                 </RectangleGeometry.Rect>
             </RectangleGeometry>
         </Grid.Clip>
