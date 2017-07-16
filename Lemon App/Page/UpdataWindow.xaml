@@ -10,7 +10,7 @@
         <Grid>
             <Grid Height="34" VerticalAlignment="Top" Background="#FF3399FF" MouseLeftButtonDown="Grid_MouseLeftButtonDown">
                 <Label x:Name="label" Content="检测到新版本" HorizontalAlignment="Left" Height="24" Margin="30,5,0,0" VerticalAlignment="Top" Width="87" Foreground="White"/>
-                <Border x:Name="CLOSE"  HorizontalAlignment="Left" Width="13" Background="#FF1B1B1C" CornerRadius="13" MouseDown="label1_MouseDown" Height="13" Margin="10,10.5,0,10.5"/>
+                <Border x:Name="CLOSE"  HorizontalAlignment="Left" Width="13" Background="#99FFFFFF" CornerRadius="13" MouseDown="label1_MouseDown" Height="13" Margin="10,10.5,0,10.5"/>
             </Grid>
             <Border BorderThickness="1" Margin="10,39,10,10" Background="White" CornerRadius="5">
                 <Grid>

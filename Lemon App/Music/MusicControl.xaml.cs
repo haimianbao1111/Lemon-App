@@ -132,6 +132,8 @@ namespace Lemon_App
                 fx1_Copy19.Value = fft[222];
                 fx1_Copy20.Value = fft[233];
                 fx1_Copy21.Value = fft[244];
+                if (fft[0] >= 0.1 || fft[11] >= 0.1 || fft[22] >= 0.1 || fft[33] >= 0.1)
+                    (Resources["D"] as Storyboard).Begin();
             }
             if (Bass.BASS_ChannelBytes2Seconds(stream, Bass.BASS_ChannelGetPosition(stream)) == Bass.BASS_ChannelBytes2Seconds(stream, Bass.BASS_ChannelGetLength(stream)))
                     io();

@@ -255,18 +255,6 @@ namespace Lemon_App
         {
             return Regex.IsMatch(strIn, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)" + @"|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
         }
-        private void TextBlock_MouseDown_1(object sender, MouseButtonEventArgs e)
-        {
-            if(Email.Text!=""&& IsValidEmail(Email.Text))
-            {
-                Settings.Default.RNBM = (Boolean)RM.IsChecked;
-                Settings.Default.LemonAreeunIts = Email.Text;
-                Settings.Default.Save();
-                (Resources["OnLoaded1"] as Storyboard).Begin();
-                tr.Start();
-            }
-            else { rk.Text = "游客访问必须输入你的邮箱"; }
-        }
 
         private void TextBlock_MouseDown_2(object sender, MouseButtonEventArgs e)
         {

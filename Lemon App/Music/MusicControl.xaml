@@ -1090,6 +1090,22 @@
                 <DiscreteBooleanKeyFrame KeyTime="0" Value="False"/>
             </BooleanAnimationUsingKeyFrames>
         </Storyboard>
+        <Storyboard x:Key="D">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="os">
+                <EasingDoubleKeyFrame KeyTime="0" Value="3"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="10"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="os">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="-3"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="6"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-4"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
     </UserControl.Resources>
     <UserControl.Triggers>
         <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="popup">
@@ -1110,6 +1126,9 @@
         <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="popup2">
             <BeginStoryboard x:Name="OnMouseLeave4_BeginStoryboard" Storyboard="{StaticResource OnMouseLeave4}"/>
         </EventTrigger>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource D}"/>
+        </EventTrigger>
     </UserControl.Triggers>
     <Grid x:Name="Cip">
         <Popup x:Name="popupop" Width="180" Height="100" AllowsTransparency="True" PopupAnimation="Fade" Placement="Right">
@@ -1125,7 +1144,16 @@
         <Grid x:Name="ZjImAgE" Margin="0,0,0,70" Visibility="Collapsed">
             <TextBlock Height="25" Margin="0,5,10,0" TextWrapping="Wrap" Text="{Binding Text, ElementName=lrcname}" VerticalAlignment="Top" Foreground="#FF686868" FontSize="20" TextAlignment="Center"/>
             <TextBlock Height="19" Margin="0,30,10,0" TextWrapping="Wrap" Text="{Binding Text, ElementName=zk}" VerticalAlignment="Top" Foreground="#FF828282" FontSize="14" TextAlignment="Center"/>
-            <Border x:Name="os" MaxWidth="250" MaxHeight="250"  Margin="0,54,0,0" CornerRadius="235" Background="{Binding Background, ElementName=tx}" RenderTransformOrigin="0.5,0.5" Height="{Binding ActualWidth, ElementName=os, Mode=OneWay}"/>
+            <Border x:Name="os" MaxWidth="250" MaxHeight="250"  Margin="0,54,0,0" CornerRadius="235" Background="{Binding Background, ElementName=tx}" RenderTransformOrigin="0.5,0.5" Height="{Binding ActualWidth, ElementName=os, Mode=OneWay}">
+                <Border.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Border.RenderTransform>
+            </Border>
         </Grid>
         <Grid x:Name="G" Margin="0,0,0,70" Visibility="Collapsed">
             <Grid Margin="20,60,20,0" Background="#00000000" >
