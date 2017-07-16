@@ -384,6 +384,7 @@ namespace Lemon_App
                                 stream = Bass.BASS_StreamCreateFile(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.m4a", 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT);
                                 Bass.BASS_ChannelPlay(stream, true);
                                 t.Start();
+                                loading.Text = "";
                             }
                             if (LyricShow.IsOpenDeskLyric == false)
                             {
@@ -426,6 +427,7 @@ namespace Lemon_App
                                 stream = Bass.BASS_StreamCreateFile(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.mp3", 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT);
                                 Bass.BASS_ChannelPlay(stream, true);
                                 t.Start();
+                                loading.Text = "";
                             }
                             if (LyricShow.IsOpenDeskLyric == false)
                             {
@@ -464,10 +466,22 @@ namespace Lemon_App
                             }
                             else
                             {
-                                Bass.BASS_ChannelStop(stream);
-                                stream = Bass.BASS_StreamCreateFile(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.ogg", 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT);
-                                Bass.BASS_ChannelPlay(stream, true);
-                                t.Start();
+                                if (new FileInfo(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.ogg").Length != 0)
+                                {
+                                    Bass.BASS_ChannelStop(stream);
+                                    stream = Bass.BASS_StreamCreateFile(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.ogg", 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT);
+                                    Bass.BASS_ChannelPlay(stream, true);
+                                    t.Start();
+                                    loading.Text = "";
+                                }
+                                else
+                                {
+                                    File.Delete(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.ogg");
+                                    loading.Text = "当前通道不稳定，已为你切换到标准品质";
+                                    pz.Text = "标准";
+                                    await Task.Delay(1000);
+                                    listBox_SelectionChanged(null, null);
+                                }
                             }
                             if (LyricShow.IsOpenDeskLyric == false)
                             {
@@ -514,6 +528,7 @@ namespace Lemon_App
                                 stream = Bass.BASS_StreamCreateFile(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.m4a", 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT);
                                 Bass.BASS_ChannelPlay(stream, true);
                                 t.Start();
+                                loading.Text = "";
                             }
                             if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.lrc"))
                             {
@@ -592,6 +607,7 @@ namespace Lemon_App
                                 stream = Bass.BASS_StreamCreateFile(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.mp3", 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT);
                                 Bass.BASS_ChannelPlay(stream, true);
                                 t.Start();
+                                loading.Text = "";
                             }
                             if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.lrc"))
                             {
@@ -648,7 +664,7 @@ namespace Lemon_App
                         }
                     }
                 }
-                catch {  }
+                catch(Exception ex) { throw ex;  }
                 if (pz.Text == "经济")
                     musicurl = $"http://cc.stream.qqmusic.qq.com/C100{musicid}.m4a?fromtag=52";
                 else if(pz.Text=="标准")
@@ -671,13 +687,24 @@ namespace Lemon_App
             }
         }
 
-        private void Fi_Ogg(object sender, AsyncCompletedEventArgs e)
+        private async void Fi_Ogg(object sender, AsyncCompletedEventArgs e)
         {
-            Bass.BASS_ChannelStop(stream);
-            stream = Bass.BASS_StreamCreateFile(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.ogg", 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT);
-            Bass.BASS_ChannelPlay(stream, true);
-            t.Start();
-            loading.Text = "";
+            if (new FileInfo(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.ogg").Length != 0)
+            {
+                Bass.BASS_ChannelStop(stream);
+                stream = Bass.BASS_StreamCreateFile(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.ogg", 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT);
+                Bass.BASS_ChannelPlay(stream, true);
+                t.Start();
+                loading.Text = "";
+            }
+            else
+            {
+                File.Delete(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.ogg");
+                loading.Text = "当前通道不稳定，已为你切换到标准品质";
+                pz.Text = "标准";
+                await Task.Delay(1000);
+                listBox_SelectionChanged(null, null);
+            }
         }
 
         private void Fi_BZ(object sender, AsyncCompletedEventArgs e)
