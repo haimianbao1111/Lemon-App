@@ -742,8 +742,8 @@ namespace Lemon_App
         private void textBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (isR)
-            { isR = false; Bass.BASS_ChannelPause(stream); s.Data = Geometry.Parse("M40.2,3.8C36.4,0,30,2.7,30,8v112c0,5.3,6.4,8,10.2,4.2l56-56c2.3-2.3,2.3-6.1,0-8.4L40.2,3.8z"); }
-            else { isR = true; Bass.BASS_ChannelPlay(stream, true); Bass.BASS_ChannelSetPosition(stream, jd.Value); s.Data = Geometry.Parse("M118.2,125.9c3.3,0,6-2.7,6-6V7.4c0-3.3-2.7-6-6-6h-36c-3.3,0-6,2.7-6,6v112.5c0,3.3,2.7,6,6,6H118.2z M46,125.9c3.3,0,6-2.7,6-6V7.4c0-3.3-2.7-6-6-6H10c-3.3,0-6,2.7-6,6v112.5c0,3.3,2.7,6,6,6H46z"); }
+            { t.Stop(); isR = false; Bass.BASS_ChannelPause(stream); s.Data = Geometry.Parse("M40.2,3.8C36.4,0,30,2.7,30,8v112c0,5.3,6.4,8,10.2,4.2l56-56c2.3-2.3,2.3-6.1,0-8.4L40.2,3.8z"); }
+            else { t.Start(); isR = true; Bass.BASS_ChannelPlay(stream, true); Bass.BASS_ChannelSetPosition(stream, jd.Value); s.Data = Geometry.Parse("M118.2,125.9c3.3,0,6-2.7,6-6V7.4c0-3.3-2.7-6-6-6h-36c-3.3,0-6,2.7-6,6v112.5c0,3.3,2.7,6,6,6H118.2z M46,125.9c3.3,0,6-2.7,6-6V7.4c0-3.3-2.7-6-6-6H10c-3.3,0-6,2.7-6,6v112.5c0,3.3,2.7,6,6,6H46z"); }
         }
 
         private void jd_MouseMove(object sender, MouseEventArgs e)
