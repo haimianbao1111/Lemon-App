@@ -57,7 +57,6 @@ namespace Lemon_App
             {
                 if (wb.DocumentTitle == "我的QQ中心")
                 {
-                    rk.Text = "登录成功";
                     op.IsOpen = false;
                     var qq = He.Text(wb.Document.Cookie, "uin=o", ";", 0);
                     wb.Dispose();
