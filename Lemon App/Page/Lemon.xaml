@@ -120,7 +120,7 @@
 
     </Window.Resources>
     <Window.Effect>
-        <DropShadowEffect Color="#FF2D2D30" BlurRadius="50" ShadowDepth="0" Opacity="0.4"/>
+        <DropShadowEffect Color="#FF2D2D30" BlurRadius="40" ShadowDepth="0" Opacity="0.4"/>
     </Window.Effect>
     <Grid x:Name="Page" >
         <Grid.Clip>

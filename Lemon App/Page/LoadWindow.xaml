@@ -148,19 +148,19 @@
             </Border>
         </Popup>
         <Border x:Name="CLOSE"  MouseDown="TextBlock_MouseDown"  HorizontalAlignment="Left" Margin="10,10,0,0" Width="13" Height="13" Background="#FFC5C5C5" CornerRadius="13" VerticalAlignment="Top"/>
-        <Border x:Name="OS" BorderBrush="WhiteSmoke" BorderThickness="1" Width="260" CornerRadius="5" Background="White" Height="60" Margin="0,103,25,0" VerticalAlignment="Top" HorizontalAlignment="Right">
+        <Border x:Name="OS" BorderBrush="#FFECECEC" Width="260" CornerRadius="5" Background="White" Height="60" Margin="0,103,25,0" VerticalAlignment="Top" HorizontalAlignment="Right" BorderThickness="2">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
-                <Border Height="1"  VerticalAlignment="Bottom" Background="WhiteSmoke"/>
+                <Border Height="2"  VerticalAlignment="Bottom" Background="#FFECECEC"/>
                 <TextBox x:Name="Email"  Height="19" Margin="5,5,22,0" TextWrapping="Wrap" Text="QQ账号" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="#FF31C27C" BorderThickness="0" Foreground="#FF979797" TextChanged="Email_TextChanged"/>
-                <Border  HorizontalAlignment="Right" Margin="0,7,5,7" Width="12" CornerRadius="5" Height="15" Grid.Row="1" MouseDown="Border_MouseDown_1">
+                <Border  HorizontalAlignment="Right" Margin="0,6,6,6" Width="12" CornerRadius="5" Height="16" Grid.Row="1" MouseDown="Border_MouseDown_1">
                     <Border.Background>
                         <VisualBrush Stretch="UniformToFill">
                             <VisualBrush.Visual>
-                                <Path Data="M77.218,38.902L27.397,6.384c-3.47-2.264-8.117-1.289-10.38,2.182   c-2.265,3.469-1.288,8.116,2.181,10.38L66.778,50l-47.58,31.055c-3.469,2.264-4.445,6.911-2.181,10.38   c1.438,2.203,3.838,3.401,6.287,3.401c1.405,0,2.828-0.395,4.093-1.221l49.82-32.518c4.443-2.616,6.985-6.648,6.985-11.098   S81.661,41.518,77.218,38.902z" Fill="#FFB1B1B1" Margin="5" Stretch="Uniform"/>
+                                <Path Data="M77.218,38.902L27.397,6.384c-3.47-2.264-8.117-1.289-10.38,2.182   c-2.265,3.469-1.288,8.116,2.181,10.38L66.778,50l-47.58,31.055c-3.469,2.264-4.445,6.911-2.181,10.38   c1.438,2.203,3.838,3.401,6.287,3.401c1.405,0,2.828-0.395,4.093-1.221l49.82-32.518c4.443-2.616,6.985-6.648,6.985-11.098   S81.661,41.518,77.218,38.902z" Fill="#FFDEDEDE" Margin="5" Stretch="Uniform"/>
                             </VisualBrush.Visual>
                         </VisualBrush>
                     </Border.Background>
@@ -169,7 +169,7 @@
             </Grid>
         </Border>
         <CheckBox x:Name="RM" Content="记住我" HorizontalAlignment="Left" Height="18" Margin="115,167,0,0" VerticalAlignment="Top" Width="111" Style="{DynamicResource CheckBoxStyle}" Foreground="#FFB1B1B1"/>
-        <Border x:Name="TX" Margin="25,95,0,0" Height="76" CornerRadius="100" VerticalAlignment="Top" HorizontalAlignment="Left" Width="75" BorderThickness="3" BorderBrush="WhiteSmoke" RenderTransformOrigin="0.5,0.5">
+        <Border x:Name="TX" Margin="25,95,0,0" Height="76" CornerRadius="100" VerticalAlignment="Top" HorizontalAlignment="Left" Width="75" BorderThickness="3" BorderBrush="#FFECECEC" RenderTransformOrigin="0.5,0.5">
             <Border.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
