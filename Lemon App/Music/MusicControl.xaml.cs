@@ -100,7 +100,7 @@ namespace Lemon_App
            // player.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.mp3"));
       //      player.Play();
             t.Start();
-            loading.Visibility = Visibility.Collapsed;
+            loading.Text = "";
         }
 
         private void Tick(object sender, EventArgs e)
@@ -374,7 +374,7 @@ namespace Lemon_App
                                 dc.DownloadFileCompleted += Fi_BZ;
                                 dc.DownloadFileAsync(new Uri(musicurl), AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.m4a");
                                 ///等待播放
-                                loading.Visibility = Visibility.Visible;
+                                loading.Text = "加载中...";
                             }
                             else
                             {
@@ -418,7 +418,7 @@ namespace Lemon_App
                                 dc.DownloadFileCompleted += Fi;
                                 dc.DownloadFileAsync(new Uri(musicurl), AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.mp3");
                                 ///等待播放
-                                loading.Visibility = Visibility.Visible;
+                                loading.Text = "加载中...";
                             }
                             else
                             {
@@ -460,7 +460,7 @@ namespace Lemon_App
                                 dc.DownloadFileCompleted += Fi_Ogg;
                                 dc.DownloadFileAsync(new Uri(musicurl), AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.ogg");
                                 ///等待播放
-                                loading.Visibility = Visibility.Visible;
+                                loading.Text = "加载中...";
                             }
                             else
                             {
@@ -506,7 +506,7 @@ namespace Lemon_App
                                 dc.Headers.Add(HttpRequestHeader.Cookie, "tvfe_boss_uuid=308e152dbaa0bd6b; eas_sid=h1D4k7n7h7G3g1N6A6c2a812e7; pac_uid=1_2728578956; _ga=GA1.2.889488099.1474016943; luin=o2728578956; lskey=000100005f25e44c67a9f6af47159fd54f9e23ed418536b3cbe8cfacebfa495259d109938019c06a0f2f9314; pgv_pvi=9043384320; RK=oLOObi2e0M; o_cookie=2728578956; pgv_pvid=9806437357; ptui_loginuin=2728578956; ptcz=92e59f3e2a0a260c0597ef023e0044edb543a10592392101aa43e8640241b28f; pt2gguin=o2728578956; pgv_si=s8448803840; qqmusic_uin=12345678; qqmusic_key=12345678; qqmusic_fromtag=30");
                                 dc.DownloadFileAsync(new Uri(musicurl), AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.m4a");
                                 ///等待播放
-                                loading.Visibility = Visibility.Visible;
+                                loading.Text = "加载中...";
                             }
                             else
                             {
@@ -584,7 +584,7 @@ namespace Lemon_App
                                 dc.Headers.Add(HttpRequestHeader.Cookie, "tvfe_boss_uuid=308e152dbaa0bd6b; eas_sid=h1D4k7n7h7G3g1N6A6c2a812e7; pac_uid=1_2728578956; _ga=GA1.2.889488099.1474016943; luin=o2728578956; lskey=000100005f25e44c67a9f6af47159fd54f9e23ed418536b3cbe8cfacebfa495259d109938019c06a0f2f9314; pgv_pvi=9043384320; RK=oLOObi2e0M; o_cookie=2728578956; pgv_pvid=9806437357; ptui_loginuin=2728578956; ptcz=92e59f3e2a0a260c0597ef023e0044edb543a10592392101aa43e8640241b28f; pt2gguin=o2728578956; pgv_si=s8448803840; qqmusic_uin=12345678; qqmusic_key=12345678; qqmusic_fromtag=30");
                                 dc.DownloadFileCompleted += Fi;
                                 dc.DownloadFileAsync(new Uri(musicurl), AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.mp3");
-                                loading.Visibility = Visibility.Visible;
+                                loading.Text = "加载中...";
                             }
                             else
                             {
@@ -677,7 +677,7 @@ namespace Lemon_App
             stream = Bass.BASS_StreamCreateFile(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.ogg", 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT);
             Bass.BASS_ChannelPlay(stream, true);
             t.Start();
-            loading.Visibility = Visibility.Collapsed;
+            loading.Text = "";
         }
 
         private void Fi_BZ(object sender, AsyncCompletedEventArgs e)
@@ -686,7 +686,7 @@ namespace Lemon_App
             stream = Bass.BASS_StreamCreateFile(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.m4a", 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT);
             Bass.BASS_ChannelPlay(stream, true);
             t.Start();
-            loading.Visibility = Visibility.Collapsed;
+            loading.Text = "";
         }
 
         private void Fi(object sender, AsyncCompletedEventArgs e)
@@ -695,7 +695,7 @@ namespace Lemon_App
             stream = Bass.BASS_StreamCreateFile(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.mp3", 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT);
             Bass.BASS_ChannelPlay(stream, true);
             t.Start();
-            loading.Visibility = Visibility.Collapsed;
+            loading.Text = "";
         }
 
         string LanChange(string str)

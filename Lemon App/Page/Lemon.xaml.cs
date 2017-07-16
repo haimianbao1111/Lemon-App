@@ -37,6 +37,7 @@ namespace Lemon_App
         private void MaxEX()
         {
             BorderThickness = new Thickness(0);
+            c.ResizeBorderThickness = new Thickness(0);
             Page.Clip = new RectangleGeometry() { RadiusX = 0, RadiusY = 0, Rect = new Rect() { Width = Page.ActualWidth, Height = Page.ActualHeight } };
             this.WindowState = WindowState.Maximized;
         }
@@ -45,7 +46,8 @@ namespace Lemon_App
         /// </summary>
         private void EX()
         {
-            BorderThickness = new Thickness(10);
+            BorderThickness = new Thickness(30);
+            c.ResizeBorderThickness = new Thickness(35);
             Page.Clip = new RectangleGeometry() { RadiusX = 3, RadiusY = 3, Rect = new Rect() { Width = Page.ActualWidth, Height = Page.ActualHeight } };
             this.WindowState = WindowState.Normal;
         }
