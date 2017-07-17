@@ -67,6 +67,7 @@ namespace Lemon_App
         {
             if (textBox1.Text != "")
             {
+                Fx();
                 string q = Uri.EscapeDataString(textBox1.Text);
                 string sign = MD5.EncryptToMD5string("20151231000008489" + textBox1.Text + "2004112629Q3EQP1ay2cLKAMxs2gqa");
                 try
@@ -88,22 +89,10 @@ namespace Lemon_App
         {
             if (FanyiFromtoTextBox.Text != "")
             {
+                Fx();
                 p.Open(new Uri($"http://fanyi.baidu.com/gettts?lan={to}&text={Uri.EscapeDataString(FanyiFromtoTextBox.Text)}&spd=3&source=web"));
                 p.Play();
                 //p.MediaEnded += delegate { p.Close(); };
-            }
-        }
-
-        private async void FanyiFromtoTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (!Uuuhh.Lalala("www.mi.com"))
-            {
-                textBlock.Text = "无法连接到互联网！";
-            }
-            else
-            {
-                string o = await Uuuhh.GetWebAsync("http://dict-co.iciba.com/api/dictionary.php?w=" + Uri.EscapeDataString(textBox1.Text) + "&key=04C75B1C14FAEA63A0DDA93FE527EA0A");
-                textBlock.Text = "vi." + 取出中间文本(o, "<acceptation>", "</acceptation>", 0) + "\r\n" + 取出中间文本(o, "<sent><orig>", "</orig>", 0) + 取出中间文本(o, "<trans>", "</trans></sent>", 0);
             }
         }
         public class MD5
@@ -129,12 +118,10 @@ namespace Lemon_App
             }
         }
 
-        private void HyycomboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Fx()
         {
             try
             {
-                if (HyycomboBox.SelectedIndex != -1 || Yyycombo.SelectedIndex != -1)
-                {
                     if (Yyycombo.Text == "自动")
                     {
                         from = "auto";
@@ -347,9 +334,13 @@ namespace Lemon_App
                     {
                         to = "cht";
                     }
-                }
             }
             catch { }
+        }
+
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Clipboard.SetText(FanyiFromtoTextBox.Text);
         }
     }
 }

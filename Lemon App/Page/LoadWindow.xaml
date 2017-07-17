@@ -121,6 +121,14 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-42"/>
             </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="border">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="border">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </Window.Resources>
     <Window.Effect>
@@ -184,5 +192,8 @@
         </TextBlock>
         <TextBlock x:Name="q" HorizontalAlignment="Right" Height="15" Margin="0,167,25,0" TextWrapping="Wrap" Text="快速登录" VerticalAlignment="Top" Width="49" Foreground="#FFB1B1B1" TextAlignment="Right" Background="#00000000" MouseDown="TextBlock_MouseDown_2"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="25" Margin="38,10,0,0" TextWrapping="Wrap" Text="登陆到小萌" VerticalAlignment="Top" Width="96" Foreground="#FFCFCFCF"/>
+        <Border x:Name="border"  Height="30" VerticalAlignment="Bottom" Width="80" Margin="0,0,10,10" Background="#00000000"  MouseDown="border_MouseDown_2" HorizontalAlignment="Right" Visibility="Collapsed" Opacity="0">
+            <TextBlock Text="取消登录" Foreground="#FFB1B1B1" Margin="0,7,0,0" TextAlignment="Center"/>
+        </Border>
     </Grid>
 </Window>

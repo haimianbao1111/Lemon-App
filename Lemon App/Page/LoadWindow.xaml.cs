@@ -36,12 +36,13 @@ namespace Lemon_App
             InitializeComponent();
             wb.Navigate("http://ui.ptlogin2.qq.com/cgi-bin/login?appid=1006102&s_url=http://id.qq.com/index.html&hide_close_icon=1");
             wb.Navigated += NaAsync;
+            RM.IsChecked = Settings.Default.RNBM;
             var c = new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.3));
             this.BeginAnimation(OpacityProperty, c);
             this.FontFamily = new FontFamily(Settings.Default.FontFamilly);
-            tr.Interval = 3000;
+            tr.Interval = 5000;
             tr.Tick += T;
-            trs.Interval = 3000;
+            trs.Interval = 1000;
             trs.Tick += Trs;
             if (Console.CapsLock)
             {
@@ -59,7 +60,6 @@ namespace Lemon_App
                 {
                     op.IsOpen = false;
                     var qq = He.Text(wb.Document.Cookie, "uin=o", ";", 0);
-                    wb.Dispose();
                     var sl = He.Text(await Uuuhh.GetWebAsync("http://r.pengyou.com/fcg-bin/cgi_get_portrait.fcg?uins=" + qq, Encoding.Default), "portraitCallBack(", ")", 0);
                     JObject o = JObject.Parse(sl);
                     try
@@ -119,19 +119,17 @@ namespace Lemon_App
                 new lemon().Show();
                 this.Close();
                 tr.Stop();
-                tr.Dispose();
+                wb.Dispose();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (Settings.Default.RNBM&&Settings.Default.LemonAreeunIts!=string.Empty)
+            if (Settings.Default.RNBM)
             {
-                new lemon().Show();
-                this.Close();
+                (Resources["OnLoaded1"] as Storyboard).Begin();
+                tr.Start();
             }
-            else
-            {
-               var s = Settings.Default.LemonAreeunIts;
+                var s = Settings.Default.LemonAreeunIts;
                 Email.Text = s.Remove(s.LastIndexOf("@qq.com"));
                 if (System.IO.File.Exists(Settings.Default.UserImage))
                 {
@@ -139,7 +137,6 @@ namespace Lemon_App
                     TX.Background = new ImageBrush(image.ToImageSource());
                 }
                 RM.IsChecked = Settings.Default.RNBM;
-            }
         }
         string ini = "";
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -300,7 +297,6 @@ namespace Lemon_App
                 {
                     await Task.Delay(200);
                     var qq = He.Text(wb.Document.Cookie, "uin=o", ";", 0);
-                    wb.Dispose();
                     var sl = He.Text(await Uuuhh.GetWebAsync("http://r.pengyou.com/fcg-bin/cgi_get_portrait.fcg?uins=" + qq, Encoding.Default), "portraitCallBack(", ")", 0);
                     JObject o = JObject.Parse(sl);
                     try
@@ -350,6 +346,12 @@ namespace Lemon_App
                 else { TX.Background = new ImageBrush(new BitmapImage(new Uri("http://q2.qlogo.cn/headimg_dl?bs=qq&dst_uin={qq}&spec=100"))); }
                 TX.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.2)));
             }
+        }
+
+        private void border_MouseDown_2(object sender, MouseButtonEventArgs e)
+        {
+            tr.Stop();
+            (Resources["OnLoaded1"] as Storyboard).Stop();
         }
     }
 }

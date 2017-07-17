@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Lemon_App"
-             mc:Ignorable="d" >
+             mc:Ignorable="d" d:DesignWidth="475" d:DesignHeight="426.458">
     <UserControl.Resources>
         <Style  TargetType="{x:Type ComboBox}">
             <Setter Property="Margin" Value="5"></Setter>
@@ -13,7 +13,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ComboBox}">
-                        <Border  BorderBrush="{x:Null}" BorderThickness="1" CornerRadius="5" Background="White">
+                        <Border  BorderBrush="#FFD6D6D6" BorderThickness="1" CornerRadius="5" Background="White">
                             <Grid>
                                 <!--下拉箭头-->
                                 <ToggleButton ClickMode="Press" Focusable="False" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Margin="2" MinWidth="0" MinHeight="0" Width="Auto" Foreground="White">
@@ -74,103 +74,92 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    <Border>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
-            <Border Background="White" Margin="10,51,2.841,186.458" BorderThickness="1" CornerRadius="5">
-                <Border.Effect>
-                    <DropShadowEffect BlurRadius="10" Opacity="0.3" ShadowDepth="0"/>
-                </Border.Effect>
-                <TextBox x:Name="textBox1" Margin="0" AcceptsReturn="true" TextWrapping="Wrap" BorderBrush="{x:Null}" SelectionBrush="#FF31C27C" BorderThickness="0" Background="{x:Null}" Foreground="#FF1B1B1C"/>
-            </Border>
-            <Border Margin="2.159,51,10,186.458" Background="White" BorderThickness="1" CornerRadius="5" Grid.Column="1">
-                <Border.Effect>
-                    <DropShadowEffect BlurRadius="10" Opacity="0.3" ShadowDepth="0"/>
-                </Border.Effect>
-                <TextBox x:Name="FanyiFromtoTextBox" TextWrapping="Wrap" BorderBrush="{x:Null}" SelectionBrush="#FF31C27C" BorderThickness="0" TextChanged="FanyiFromtoTextBox_TextChanged" Background="{x:Null}" Foreground="#FF1B1B1C"/>
-            </Border>
-            <Border BorderThickness="1" Height="31" Margin="0,10,10,0" VerticalAlignment="Top" CornerRadius="5" HorizontalAlignment="Right" Width="66" Background="White" Grid.Column="1">
-                <Border.Effect>
-                    <DropShadowEffect BlurRadius="10" Opacity="0.3" ShadowDepth="0"/>
-                </Border.Effect>
-                <Label x:Name="label1" Content="翻译" Margin="15,3,14,-16" Foreground="#FF1B1B1C" MouseDown="button_Cli" Background="{x:Null}"/>
-            </Border>
-            <ComboBox x:Name="Yyycombo" HorizontalAlignment="Left" Height="31" Margin="78,10,0,0" VerticalAlignment="Top" Width="70" BorderBrush="{x:Null}" SelectedIndex="26" FontSize="14" Background="White" Foreground="#FF1B1B1C" SelectionChanged="HyycomboBox_SelectionChanged" >
-                <ComboBox.Effect>
-                    <DropShadowEffect BlurRadius="10" Opacity="0.3" ShadowDepth="0"/>
-                </ComboBox.Effect>
-                <ComboBoxItem  BorderBrush="{x:Null}" Content="阿拉伯语" Foreground="{x:Null}"/>
-                <ComboBoxItem BorderBrush="{x:Null}" Content="爱沙尼亚语"/>
-                <ComboBoxItem BorderBrush="{x:Null}" Content="保加利亚语"/>
-                <ComboBoxItem BorderBrush="{x:Null}" Content="波兰语"/>
-                <ComboBoxItem  Content="丹麦语"/>
-                <ComboBoxItem  Content="德语"/>
-                <ComboBoxItem BorderBrush="{x:Null}" Content="俄语"/>
-                <ComboBoxItem BorderBrush="{x:Null}" Content="法语"/>
-                <ComboBoxItem  BorderBrush="{x:Null}" Content="繁体中文"/>
-                <ComboBoxItem  BorderBrush="{x:Null}" Content="芬兰语"/>
-                <ComboBoxItem  BorderBrush="{x:Null}" Content="韩语"/>
-                <ComboBoxItem  BorderBrush="{x:Null}" Content="荷兰语"/>
-                <ComboBoxItem  Content="捷克语"/>
-                <ComboBoxItem  BorderBrush="{x:Null}" Content="罗马尼亚语"/>
-                <ComboBoxItem  BorderBrush="{x:Null}" Content="葡萄牙语"/>
-                <ComboBoxItem BorderBrush="{x:Null}" Content="日语"/>
-                <ComboBoxItem BorderBrush="{x:Null}" Content="瑞典语"/>
-                <ComboBoxItem BorderBrush="{x:Null}" Content="斯洛文尼亚语"/>
-                <ComboBoxItem BorderBrush="{x:Null}" Content="泰语"/>
-                <ComboBoxItem BorderBrush="{x:Null}" Content="文言文"/>
-                <ComboBoxItem BorderBrush="{x:Null}" Content="西班牙语"/>
-                <ComboBoxItem  BorderBrush="{x:Null}" Content="希腊语"/>
-                <ComboBoxItem BorderBrush="{x:Null}" Content="匈牙利语"/>
-                <ComboBoxItem BorderBrush="{x:Null}" Content="意大利语"/>
-                <ComboBoxItem BorderBrush="{x:Null}" Content="英语"/>
-                <ComboBoxItem  BorderBrush="{x:Null}" Content="粤语"/>
-                <ComboBoxItem BorderBrush="{x:Null}" Content="自动"/>
-                <ComboBoxItem  BorderBrush="{x:Null}" Content="中文"/>
-            </ComboBox>
-            <ComboBox x:Name="HyycomboBox" HorizontalAlignment="Right" Height="31" Margin="0,10,80,0" VerticalAlignment="Top" Width="70" BorderBrush="{x:Null}" FontSize="14"  Background="White" Foreground="#FF1B1B1C" Grid.Column="1" SelectedIndex="24" SelectionChanged="HyycomboBox_SelectionChanged">
-                <ComboBox.Effect>
-                    <DropShadowEffect BlurRadius="10" Opacity="0.3" ShadowDepth="0"/>
-                </ComboBox.Effect>
-                <ComboBoxItem  BorderBrush="{x:Null}" Content="阿拉伯语"/>
-                <ComboBoxItem BorderBrush="{x:Null}" Content="爱沙尼亚语"/>
-                <ComboBoxItem BorderBrush="{x:Null}" Content="保加利亚语"/>
-                <ComboBoxItem BorderBrush="{x:Null}" Content="波兰语"/>
-                <ComboBoxItem  Content="丹麦语"/>
-                <ComboBoxItem  Content="德语"/>
-                <ComboBoxItem BorderBrush="{x:Null}" Content="俄语"/>
-                <ComboBoxItem BorderBrush="{x:Null}" Content="法语"/>
-                <ComboBoxItem  BorderBrush="{x:Null}" Content="繁体中文"/>
-                <ComboBoxItem  BorderBrush="{x:Null}" Content="芬兰语"/>
-                <ComboBoxItem  BorderBrush="{x:Null}" Content="韩语"/>
-                <ComboBoxItem  BorderBrush="{x:Null}" Content="荷兰语"/>
-                <ComboBoxItem  Content="捷克语"/>
-                <ComboBoxItem  BorderBrush="{x:Null}" Content="罗马尼亚语"/>
-                <ComboBoxItem  BorderBrush="{x:Null}" Content="葡萄牙语"/>
-                <ComboBoxItem BorderBrush="{x:Null}" Content="日语"/>
-                <ComboBoxItem BorderBrush="{x:Null}" Content="瑞典语"/>
-                <ComboBoxItem BorderBrush="{x:Null}" Content="斯洛文尼亚语"/>
-                <ComboBoxItem BorderBrush="{x:Null}" Content="泰语"/>
-                <ComboBoxItem BorderBrush="{x:Null}" Content="文言文"/>
-                <ComboBoxItem BorderBrush="{x:Null}" Content="西班牙语"/>
-                <ComboBoxItem  BorderBrush="{x:Null}" Content="希腊语"/>
-                <ComboBoxItem BorderBrush="{x:Null}" Content="匈牙利语"/>
-                <ComboBoxItem BorderBrush="{x:Null}" Content="意大利语"/>
-                <ComboBoxItem BorderBrush="{x:Null}" Content="英语"/>
-                <ComboBoxItem  BorderBrush="{x:Null}" Content="粤语"/>
-                <ComboBoxItem  BorderBrush="{x:Null}" Content="中文"/>
-            </ComboBox>
-            <Border BorderThickness="1" Margin="10,10,0,0" CornerRadius="5" HorizontalAlignment="Left" Width="62.667" Background="White" Height="30.667" VerticalAlignment="Top">
-                <Border.Effect>
-                    <DropShadowEffect BlurRadius="10" Opacity="0.3" ShadowDepth="0"/>
-                </Border.Effect>
-                <Label x:Name="label3" Content="阅读" Margin="12,1.667,12.667,0" Foreground="#FF1B1B1C" MouseDown="label3_MouseDown" Height="25" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment"/>
-            </Border>
-            <TextBlock x:Name="textBlock" Margin="10,0,10,10" TextWrapping="Wrap" Foreground="#FF333337" Grid.ColumnSpan="2" Height="102" VerticalAlignment="Bottom"/>
-
-        </Grid>
-    </Border>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <TextBox x:Name="textBox1" Margin="10,0,10,41" AcceptsReturn="true" TextWrapping="Wrap" BorderBrush="{x:Null}" SelectionBrush="#FF31C27C" BorderThickness="0" Background="{x:Null}" Foreground="#FF1B1B1C"/>
+        <TextBox x:Name="FanyiFromtoTextBox" TextWrapping="Wrap" BorderBrush="{x:Null}" SelectionBrush="#FF31C27C" BorderThickness="0" Background="{x:Null}" Foreground="#FF1B1B1C" Grid.Row="1" Margin="10,0"/>
+        <Border BorderBrush="#FFC9C9C9" BorderThickness="1" Height="1" VerticalAlignment="Bottom" Margin="10,0"/>
+        <ComboBox x:Name="Yyycombo" HorizontalAlignment="Right" Height="31" Margin="0,0,150,5" VerticalAlignment="Bottom" Width="70" BorderBrush="{x:Null}" SelectedIndex="26" FontSize="14" Background="White" Foreground="#FF1B1B1C" >
+            <ComboBoxItem  BorderBrush="{x:Null}" Content="阿拉伯语" Foreground="{x:Null}"/>
+            <ComboBoxItem BorderBrush="{x:Null}" Content="爱沙尼亚语"/>
+            <ComboBoxItem BorderBrush="{x:Null}" Content="保加利亚语"/>
+            <ComboBoxItem BorderBrush="{x:Null}" Content="波兰语"/>
+            <ComboBoxItem  Content="丹麦语"/>
+            <ComboBoxItem  Content="德语"/>
+            <ComboBoxItem BorderBrush="{x:Null}" Content="俄语"/>
+            <ComboBoxItem BorderBrush="{x:Null}" Content="法语"/>
+            <ComboBoxItem  BorderBrush="{x:Null}" Content="繁体中文"/>
+            <ComboBoxItem  BorderBrush="{x:Null}" Content="芬兰语"/>
+            <ComboBoxItem  BorderBrush="{x:Null}" Content="韩语"/>
+            <ComboBoxItem  BorderBrush="{x:Null}" Content="荷兰语"/>
+            <ComboBoxItem  Content="捷克语"/>
+            <ComboBoxItem  BorderBrush="{x:Null}" Content="罗马尼亚语"/>
+            <ComboBoxItem  BorderBrush="{x:Null}" Content="葡萄牙语"/>
+            <ComboBoxItem BorderBrush="{x:Null}" Content="日语"/>
+            <ComboBoxItem BorderBrush="{x:Null}" Content="瑞典语"/>
+            <ComboBoxItem BorderBrush="{x:Null}" Content="斯洛文尼亚语"/>
+            <ComboBoxItem BorderBrush="{x:Null}" Content="泰语"/>
+            <ComboBoxItem BorderBrush="{x:Null}" Content="文言文"/>
+            <ComboBoxItem BorderBrush="{x:Null}" Content="西班牙语"/>
+            <ComboBoxItem  BorderBrush="{x:Null}" Content="希腊语"/>
+            <ComboBoxItem BorderBrush="{x:Null}" Content="匈牙利语"/>
+            <ComboBoxItem BorderBrush="{x:Null}" Content="意大利语"/>
+            <ComboBoxItem BorderBrush="{x:Null}" Content="英语"/>
+            <ComboBoxItem  BorderBrush="{x:Null}" Content="粤语"/>
+            <ComboBoxItem BorderBrush="{x:Null}" Content="自动"/>
+            <ComboBoxItem  BorderBrush="{x:Null}" Content="中文"/>
+        </ComboBox>
+        <ComboBox x:Name="HyycomboBox" HorizontalAlignment="Right" Height="31" Margin="0,0,75,5" VerticalAlignment="Bottom" Width="70" BorderBrush="{x:Null}" FontSize="14"  Background="White" Foreground="#FF1B1B1C" SelectedIndex="24">
+            <ComboBoxItem  BorderBrush="{x:Null}" Content="阿拉伯语"/>
+            <ComboBoxItem BorderBrush="{x:Null}" Content="爱沙尼亚语"/>
+            <ComboBoxItem BorderBrush="{x:Null}" Content="保加利亚语"/>
+            <ComboBoxItem BorderBrush="{x:Null}" Content="波兰语"/>
+            <ComboBoxItem  Content="丹麦语"/>
+            <ComboBoxItem  Content="德语"/>
+            <ComboBoxItem BorderBrush="{x:Null}" Content="俄语"/>
+            <ComboBoxItem BorderBrush="{x:Null}" Content="法语"/>
+            <ComboBoxItem  BorderBrush="{x:Null}" Content="繁体中文"/>
+            <ComboBoxItem  BorderBrush="{x:Null}" Content="芬兰语"/>
+            <ComboBoxItem  BorderBrush="{x:Null}" Content="韩语"/>
+            <ComboBoxItem  BorderBrush="{x:Null}" Content="荷兰语"/>
+            <ComboBoxItem  Content="捷克语"/>
+            <ComboBoxItem  BorderBrush="{x:Null}" Content="罗马尼亚语"/>
+            <ComboBoxItem  BorderBrush="{x:Null}" Content="葡萄牙语"/>
+            <ComboBoxItem BorderBrush="{x:Null}" Content="日语"/>
+            <ComboBoxItem BorderBrush="{x:Null}" Content="瑞典语"/>
+            <ComboBoxItem BorderBrush="{x:Null}" Content="斯洛文尼亚语"/>
+            <ComboBoxItem BorderBrush="{x:Null}" Content="泰语"/>
+            <ComboBoxItem BorderBrush="{x:Null}" Content="文言文"/>
+            <ComboBoxItem BorderBrush="{x:Null}" Content="西班牙语"/>
+            <ComboBoxItem  BorderBrush="{x:Null}" Content="希腊语"/>
+            <ComboBoxItem BorderBrush="{x:Null}" Content="匈牙利语"/>
+            <ComboBoxItem BorderBrush="{x:Null}" Content="意大利语"/>
+            <ComboBoxItem BorderBrush="{x:Null}" Content="英语"/>
+            <ComboBoxItem  BorderBrush="{x:Null}" Content="粤语"/>
+            <ComboBoxItem  BorderBrush="{x:Null}" Content="中文"/>
+        </ComboBox>
+        <Border Height="31" Margin="0,0,4,5" VerticalAlignment="Bottom" CornerRadius="5" HorizontalAlignment="Right" Width="66" Background="#FF3399FF">
+            <Label x:Name="label1" Content="翻译" Margin="15,3,14,-16" Foreground="#FFF7F7F7" MouseDown="button_Cli" Background="{x:Null}"/>
+        </Border>
+        <Border Margin="0,0,6.667,10" CornerRadius="5" HorizontalAlignment="Right" Width="15" Background="#00000000" Height="15" VerticalAlignment="Bottom" MouseDown="label3_MouseDown" Grid.Row="1">
+            <Path Data="M54.4,20.7L32.5,37.1h-20c-3.3,0-6,2.7-6,6v41.8c0,3.3,2.7,6,6,6h20l21.9,16.4c4,3,9.6,0.2,9.6-4.8V25.5  C64,20.5,58.3,17.7,54.4,20.7z M83.8,30.5c-2.7-2.7-7.2-2.7-9.9,0c-2.7,2.7-2.7,7.2,0,9.9c13,13,13,34.1,0,47.1c-2.7,2.7-2.7,7.2,0,9.9  c1.4,1.4,3.2,2,4.9,2s3.6-0.7,4.9-2.1C102.3,79,102.3,49,83.8,30.5z M91.6,14.8c-2.7,2.7-2.7,7.2,0,9.9c10.5,10.5,16.3,24.4,16.3,39.3s-5.8,28.8-16.3,39.3c-2.7,2.7-2.7,7.2,0,9.9  c1.4,1.4,3.2,2.1,4.9,2.1c1.8,0,3.6-0.7,4.9-2c13.1-13.1,20.4-30.6,20.4-49.2s-7.2-36-20.4-49.2C98.8,12.1,94.4,12.1,91.6,14.8z" Stretch="Uniform" Fill="#FFE0E0E0"/>
+        </Border>
+        <Border Margin="0,0,30,10" CornerRadius="5" HorizontalAlignment="Right" Width="15" Background="#00000000" Height="15" VerticalAlignment="Bottom" MouseDown="Border_MouseDown" Grid.Row="1">
+            <Path Stretch="Uniform" Fill="#FFE0E0E0" Data="M77.586,21.808h-13.5v-6.512c0-1.93-1.57-3.5-3.5-3.5h-40c-1.93,0-3.5,1.57-3.5,3.5v56.597
+	c0,1.93,1.57,3.5,3.5,3.5h13.5v6.512c0,1.93,1.57,3.5,3.5,3.5h40c1.93,0,3.5-1.57,3.5-3.5V25.308
+	C81.086,23.378,79.516,21.808,77.586,21.808z M20.586,72.393c-0.275,0-0.5-0.224-0.5-0.5V15.296c0-0.276,0.225-0.5,0.5-0.5h40
+	c0.275,0,0.5,0.224,0.5,0.5v6.512v50.085c0,0.276-0.225,0.5-0.5,0.5H20.586z M78.086,81.904c0,0.276-0.225,0.5-0.5,0.5h-40
+	c-0.275,0-0.5-0.224-0.5-0.5v-6.306h23.5c1.93,0,3.5-1.57,3.5-3.5v-0.206v-0.855h7.165c0.828,0,1.5-0.671,1.5-1.5
+	s-0.672-1.5-1.5-1.5h-7.165v-7.333h7.165c0.828,0,1.5-0.671,1.5-1.5s-0.672-1.5-1.5-1.5h-7.165v-7.5h7.165
+	c0.828,0,1.5-0.671,1.5-1.5s-0.672-1.5-1.5-1.5h-7.165V40h1.997c0.828,0,1.5-0.671,1.5-1.5s-0.672-1.5-1.5-1.5h-1.997V24.808h13.5
+	c0.275,0,0.5,0.224,0.5,0.5V81.904z M24,26.796c0-0.829,0.672-1.5,1.5-1.5h24.333c0.828,0,1.5,0.671,1.5,1.5s-0.672,1.5-1.5,1.5
+	H25.5C24.672,28.296,24,27.625,24,26.796z M56.501,37c0,0.829-0.672,1.5-1.5,1.5H25.5c-0.828,0-1.5-0.671-1.5-1.5s0.672-1.5,1.5-1.5
+	h29.501C55.829,35.5,56.501,36.171,56.501,37z M56.501,47.5c0,0.829-0.672,1.5-1.5,1.5H25.5c-0.828,0-1.5-0.671-1.5-1.5
+	s0.672-1.5,1.5-1.5h29.501C55.829,46,56.501,46.671,56.501,47.5z M56.501,57.833c0,0.829-0.672,1.5-1.5,1.5H25.5
+	c-0.828,0-1.5-0.671-1.5-1.5s0.672-1.5,1.5-1.5h29.501C55.829,56.333,56.501,57.005,56.501,57.833z" Stroke="#FFE0E0E0"/>
+        </Border>
+    </Grid>
 </UserControl>

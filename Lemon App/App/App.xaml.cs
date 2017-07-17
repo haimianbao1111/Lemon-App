@@ -23,9 +23,6 @@ namespace Lemon_App
     {
         public App()//
         {
-                    if (!Settings.Default.RNBM)
-                        StartupUri = new Uri("/Lemon App;component/Page/LoadWindow.xaml", UriKind.Relative);
-                    else StartupUri = new Uri("/Lemon App;component/Page/Lemon.xaml", UriKind.Relative);
             if (Settings.Default.isWebProxy)
             if (Settings.Default.WebProxyUri != "")
             {
