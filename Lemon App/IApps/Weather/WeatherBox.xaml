@@ -117,6 +117,6 @@
                 <TextBlock x:Name="qiwenwwwwwww" TextWrapping="Wrap" Foreground="#FFAEAEAE" Margin="0,0,10,0" TextAlignment="Center" HorizontalAlignment="Right" Height="15" FontSize="14"><Run Text="N/N"/><Run Text="°  "/><Run Text="N/N"/><Run Text="°"/></TextBlock>
             </Grid>
         </Grid>
-        <TextBlock x:Name="kqzl" Margin="10,158,10,0" TextWrapping="Wrap" Foreground="#99333337" FontSize="14" TextAlignment="Center" Height="21" VerticalAlignment="Top"><Run Text="气压:"/><Run Text="N/N"/><Run Text="     ，"/></TextBlock>
+        <TextBlock x:Name="kqzl" Margin="216.663,59.343,10,0" TextWrapping="Wrap" Foreground="#99333337" FontSize="14" TextAlignment="Center" Height="21" VerticalAlignment="Top" Width="90"><Run Text="气压:"/><Run Text="N/N"/><Run Text="     ，"/></TextBlock>
     </Grid>
 </UserControl>

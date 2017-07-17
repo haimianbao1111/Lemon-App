@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="小萌快捷搜索" Height="100" Width="400" AllowsTransparency="True" WindowStyle="None" ResizeMode="NoResize" Topmost="True" Background="{x:Null}" SizeChanged="Window_SizeChanged" Loaded="Window_Loaded" MouseLeftButtonDown="Window_MouseLeftButtonDown" WindowStartupLocation="CenterScreen" BorderThickness="10">
     <Window.Effect>
-        <DropShadowEffect Color="#FF2D2D30" BlurRadius="10" Opacity="0.4"/>
+        <DropShadowEffect Color="#FF2D2D30" BlurRadius="10" Opacity="0.4" ShadowDepth="0"/>
     </Window.Effect>
-    <Border Background="#E5FFFFFF" CornerRadius="5">
+    <Border Background="White" CornerRadius="5">
         <Grid x:Name="Page" Width="Auto" Height="Auto">
             <Border x:Name="CLOSE"  HorizontalAlignment="Left" Margin="5,5,0,0" Width="13" Height="13" Background="#FF2D2D30" CornerRadius="13" VerticalAlignment="Top" MouseDown="CLOSE_MouseDown"/>
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="小萌快捷搜索" VerticalAlignment="Top" Margin="20,4,0,0" Foreground="#FF2D2D30"/>
