@@ -4,22 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     x:Class="Lemon_App.SearchBox"
-             mc:Ignorable="d"  Loaded="UserControl_Loaded">
+             mc:Ignorable="d"  Loaded="UserControl_Loaded" >
     <Grid>
-        <Border x:Name="S" BorderThickness="1" MinWidth="200" MaxWidth="400" Height="Auto"  VerticalAlignment="Top" CornerRadius="5" Background="White" Grid.Column="1" Margin="0,50,0,0">
-            <Border.Effect>
-                <DropShadowEffect Opacity="0.4" ShadowDepth="0" BlurRadius="10"/>
-            </Border.Effect>
+        <Border x:Name="S" BorderThickness="1" MinWidth="200" MaxWidth="400" Height="30"  VerticalAlignment="Top" CornerRadius="5" Background="White" Margin="0,50,0,0" BorderBrush="#FFC5C5C5">
             <Grid Width="Auto" Height="Auto">
-                <TextBox x:Name="textBox1" Margin="10,15,35,15" TextWrapping="Wrap" Text="搜索" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="#FF31C27C" Foreground="#FF1B1B1C" FontSize="18" KeyDown="textBox1_KeyDown" BorderThickness=" 0,0,0,0" TextChanged="textBox1_TextChanged"/>
-                <Border Margin="0,16,10,0" CornerRadius="20" MouseDown="Border_MouseDown" Background="#FF007ACC" HorizontalAlignment="Right" Width="20" Height="20" VerticalAlignment="Top"/>
-                <ListBox x:Name="listBox" Height="Auto" Margin="10,50,10,0" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF252526" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden" BorderThickness="0" SelectionChanged="listBox_SelectionChanged">
+                <ListBox x:Name="listBox" Height="Auto" Margin="10,30,10,10" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFC5C5C5" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden" BorderThickness="0" SelectionChanged="listBox_SelectionChanged">
                     <ListBox.ItemContainerStyle>
                         <Style TargetType="ListBoxItem">
                             <Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="ListBoxItem">
-                                        <Border Background="{TemplateBinding Background}">
+                                        <Border Background="{TemplateBinding Background}" CornerRadius="2">
                                             <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                               TextBlock.Foreground="{TemplateBinding Foreground}"/>
@@ -38,6 +33,10 @@
                         </Style>
                     </ListBox.ItemContainerStyle>
                 </ListBox>
+                <TextBox x:Name="textBox1" Margin="28,5,8,0" TextWrapping="Wrap" Text="搜索" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="#FF31C27C" Foreground="#FF9C9C9C" KeyDown="textBox1_KeyDown" BorderThickness=" 0,0,0,0" TextChanged="textBox1_TextChanged" Height="20" VerticalAlignment="Top" FontSize="16"/>
+                <Border HorizontalAlignment="Left" Margin="3,2.5,0,0" Width="25" Height="25" Background="#00000000" VerticalAlignment="Top">
+                    <Path Data="M31.689,30.252l-8.26-8.128c2.163-2.35,3.492-5.458,3.492-8.878    C26.92,5.93,20.894,0,13.46,0C6.026,0,0,5.93,0,13.246s6.026,13.246,13.46,13.246c3.212,0,6.158-1.111,8.472-2.958l8.292,8.16    c0.404,0.398,1.06,0.398,1.464,0C32.093,31.296,32.093,30.65,31.689,30.252z M13.46,24.454c-6.29,0-11.389-5.018-11.389-11.208    S7.17,2.038,13.46,2.038c6.29,0,11.389,5.018,11.389,11.208S19.75,24.454,13.46,24.454z" Stretch="Uniform" Fill="#FF9C9C9C" Margin="5"/>
+                </Border>
             </Grid>
         </Border>
     </Grid>

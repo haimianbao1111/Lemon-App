@@ -13,6 +13,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -25,9 +26,10 @@ namespace Lemon_App
     {
         public SaerchWindow()
         {
-            this.FontFamily = new FontFamily(Settings.Default.FontFamilly);
             InitializeComponent();
+            this.FontFamily = new FontFamily(Settings.Default.FontFamilly);
         }
+        double tp = 0;
         private void textBox1_TextChanged(object sender, TextChangedEventArgs e)
         {
             try
@@ -36,7 +38,9 @@ namespace Lemon_App
                 {
                     if (textBox1.Text != "搜索")
                     {
-                        Height = 480;
+                        var d = new DoubleAnimation(380, TimeSpan.FromSeconds(0.3));
+                        d.Completed +=delegate{ BeginAnimation(TopProperty, new DoubleAnimation(tp-160, TimeSpan.FromSeconds(0.3))); };
+                        BeginAnimation(HeightProperty, d);
                         HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create("http://suggestion.baidu.com/su?wd=" + Uri.EscapeDataString(textBox1.Text) + "&action=opensearch");
                         hwr.Proxy = He.proxy;
                         string html6 = "";
@@ -54,7 +58,7 @@ namespace Lemon_App
                         }
                     }
                 }
-                else { Height = 100;listBox.Items.Clear(); }
+                else { var d = new DoubleAnimation(50, TimeSpan.FromSeconds(0.3));d.Completed += delegate { BeginAnimation(TopProperty, new DoubleAnimation(tp , TimeSpan.FromSeconds(0.3))); }; BeginAnimation(HeightProperty, d); listBox.Items.Clear(); }
             }
             catch { }
         }
@@ -93,6 +97,7 @@ namespace Lemon_App
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             textBox1.Focus();
+            tp = Top;
             this.FontFamily = new FontFamily(Settings.Default.FontFamilly);
         }
 
@@ -111,6 +116,12 @@ namespace Lemon_App
         {
             if (textBox1.Text == "搜索")
                 textBox1.Text = "";
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
         }
     }
 }

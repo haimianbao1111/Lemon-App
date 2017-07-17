@@ -51,6 +51,7 @@ namespace Lemon_App
                 {
                     if (textBox1.Text != "搜索")
                     {
+                        S.BeginAnimation(HeightProperty, new DoubleAnimation(400, TimeSpan.FromSeconds(0.3)));
                         HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create("http://suggestion.baidu.com/su?wd=" + Uri.EscapeDataString(textBox1.Text) + "&action=opensearch");
                         hwr.Proxy = He.proxy;
                         string html6 = "";
@@ -67,7 +68,7 @@ namespace Lemon_App
                             listBox.Items.Add(new ListBoxItem() { Content=item,Height =35});
                         }
                     }
-                }
+                }else { S.BeginAnimation(HeightProperty, new DoubleAnimation(30, TimeSpan.FromSeconds(0.3))); listBox.Items.Clear(); }
             }
             catch { }
         }
