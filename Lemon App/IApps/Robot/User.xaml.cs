@@ -28,6 +28,7 @@ namespace Lemon_App
         public User(String Text)
         {
             InitializeComponent();
+            RenderOptions.SetBitmapScalingMode(bd, BitmapScalingMode.Fant);
             Te.Text = Text;
         }
 

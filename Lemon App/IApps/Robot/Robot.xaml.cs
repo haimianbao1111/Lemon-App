@@ -23,11 +23,13 @@ namespace Lemon_App
         public Robot()
         {
             InitializeComponent();
+            RenderOptions.SetBitmapScalingMode(Image, BitmapScalingMode.Fant);
         }
         public Robot(string Text)
         {
             InitializeComponent();
             Te.Text = Text;
+            RenderOptions.SetBitmapScalingMode(Image, BitmapScalingMode.Fant);
         }
     }
 }

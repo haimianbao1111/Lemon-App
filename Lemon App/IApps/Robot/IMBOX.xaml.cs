@@ -14,6 +14,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -44,31 +45,40 @@ namespace Lemon_App
                 {
                     User U = new User(textBox1.Text)
                     {
-                        Width = Robot.ActualWidth
+                        Width = Robot.ActualWidth,Opacity = 0
                     };
                     Robot Rb = new Robot((string)obj["text"])
                     {
-                        Width = Robot.ActualWidth
+                        Width = Robot.ActualWidth, Opacity = 0
                     };
                     Robot.Children.Add(U);
                     Robot.Children.Add(Rb);
+                    var b = new DoubleAnimation(1, TimeSpan.FromSeconds(0.2));
+                    U.BeginAnimation(OpacityProperty, b);
+                    Rb.BeginAnimation(OpacityProperty, b);
                 }
                 else if ((string)obj["code"] == "200000")
                 {
                     string i = (string)obj["text"];
                     User Uu = new User(textBox1.Text);
+                    Uu.Opacity = 0;
                     Uu.Width = Robot.ActualWidth;
                     Lemon_App.Robot Rbu = new Lemon_App.Robot((string)obj["url"] + i);
+                    Rbu.Opacity = 0;
                     Rbu.Width = Robot.ActualWidth;
                     Rbu.ToolTip = (string)obj["url"].ToString();
                     Rbu.MouseDown += Rbu_MouseDown;
                     Robot.Children.Add(Uu);
                     Robot.Children.Add(Rbu);
+                    var b = new DoubleAnimation(1, TimeSpan.FromSeconds(0.2));
+                    Uu.BeginAnimation(OpacityProperty, b);
+                    Rbu.BeginAnimation(OpacityProperty, b);
                 }
                 else if ((string)obj["code"] == "308000")
                 {
                     User Uu = new User(textBox1.Text);
                     Uu.Width = Robot.ActualWidth;
+                    Uu.Opacity = 0;
                     Robot.Children.Add(Uu);
                     int i = 0;
                     var s = new List<string>();
@@ -83,7 +93,11 @@ namespace Lemon_App
                     }
                     var c = new RobotHrSp(s, f, u);
                     c.Width = Robot.ActualWidth;
+                    c.Opacity = 0;
                     Robot.Children.Add(c);
+                    var b = new DoubleAnimation(1, TimeSpan.FromSeconds(0.2));
+                    Uu.BeginAnimation(OpacityProperty, b);
+                    c.BeginAnimation(OpacityProperty, b);
                 }
             }
             catch
@@ -91,13 +105,17 @@ namespace Lemon_App
                 User U = new User(textBox1.Text)
                 {
                     Width = Robot.ActualWidth
+                    , Opacity = 0
                 };
                 Robot Rb = new Robot("小萌机器人似乎遇到了些问题")
                 {
-                    Width = Robot.ActualWidth
+                    Width = Robot.ActualWidth, Opacity = 0
                 };
                 Robot.Children.Add(U);
                 Robot.Children.Add(Rb);
+                var b = new DoubleAnimation(1, TimeSpan.FromSeconds(0.2));
+                U.BeginAnimation(OpacityProperty, b);
+                Rb.BeginAnimation(OpacityProperty, b);
             }
             textBox1.Text = "";
         }

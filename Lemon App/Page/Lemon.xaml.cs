@@ -23,6 +23,7 @@ namespace Lemon_App
         public lemon()
         {
             InitializeComponent();
+            RenderOptions.SetBitmapScalingMode(tx, BitmapScalingMode.Fant);
             var c = new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.3));
             this.BeginAnimation(OpacityProperty, c);
             FullScreenManager.RepairWpfWindowFullScreenBehavior(this);

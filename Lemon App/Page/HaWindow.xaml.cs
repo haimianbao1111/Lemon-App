@@ -32,6 +32,7 @@ namespace Lemon_App
                 var image = new System.Drawing.Bitmap(Settings.Default.UserImage);
                 TX.Background = new ImageBrush(image.ToImageSource());
             }
+            RenderOptions.SetBitmapScalingMode(TX, BitmapScalingMode.Fant);
             DoubleAnimation da = new DoubleAnimation(0.2, 1, TimeSpan.FromSeconds(1));
             da.AutoReverse = true;
             NM.Text = Settings.Default.RobotName;

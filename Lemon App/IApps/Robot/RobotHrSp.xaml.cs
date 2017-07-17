@@ -26,6 +26,7 @@ namespace Lemon_App
             try
             {
                 InitializeComponent();
+                RenderOptions.SetBitmapScalingMode(Image, BitmapScalingMode.Fant);
                 IName.Text = name[0];
                 IName1.Text = name[1];
                 IName2.Text = name[2];
