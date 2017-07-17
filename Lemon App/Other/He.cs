@@ -361,26 +361,25 @@ namespace Lemon_App
         {
             try
             {
-                HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create("http://api.lemonapp.tk/Updata.php");
-                hwr.Headers.Add("Cookie", "User=d2eb2545efba96cd3c9b6cf0cd07f135;");
+                HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create("https://github.com/TwilightLemon/Updata/blob/master/UNVTX");
                 hwr.Proxy = He.proxy;
                 var o = await hwr.GetResponseAsync();
                 StreamReader sr = new StreamReader(o.GetResponseStream());
-                string html5 = await sr.ReadToEndAsync();
+                string html5 = He.Text(await sr.ReadToEndAsync(), "----UVN-START---", "----UVN-STOP---", 0);
                 if (con == html5)
                     return false;
                 else return true;
+                
             }
             catch { return false; }
         }
         public static async System.Threading.Tasks.Task<string> NewText(string con)
         {
-            HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create("http://api.lemonapp.tk/UpdataText.php");
-            hwr.Headers.Add("Cookie", "User=d2eb2545efba96cd3c9b6cf0cd07f135;");
+            HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create("https://github.com/TwilightLemon/Updata/blob/master/UNVTX");
             hwr.Proxy = He.proxy;
             var o = await hwr.GetResponseAsync();
             StreamReader sr = new StreamReader(o.GetResponseStream());
-            var st = await sr.ReadToEndAsync();
+            var st = He.Text(await sr.ReadToEndAsync(), "----UTX-START---", "----UTX-STOP---", 0);
             return st.Replace(".", "\r\n");
         }
     }
