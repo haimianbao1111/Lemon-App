@@ -5,20 +5,71 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lemon_App"
         mc:Ignorable="d"
-        Title="Lemon App" WindowStyle="None" MouseMove="Window_MouseMove" ResizeMode="NoResize" Foreground="{x:Null}" Background="{x:Null}" AllowsTransparency="True" Loaded="Window_Loaded" WindowStartupLocation="CenterOwner" MouseLeftButtonDown="Window_MouseLeftButtonDown" Topmost="True" ShowInTaskbar="False" Width="100" Height="43">
+        Title="Lemon App" WindowStyle="None" MouseMove="Window_MouseMove" ResizeMode="NoResize" Foreground="{x:Null}" Background="{x:Null}" AllowsTransparency="True" Loaded="Window_Loaded" WindowStartupLocation="CenterOwner" MouseLeftButtonDown="Window_MouseLeftButtonDown" Topmost="True" ShowInTaskbar="False" Width="227.994" Height="70.918">
+    <Window.Resources>
+        <Storyboard x:Key="l">
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="XT">
+                <EasingThicknessKeyFrame KeyTime="0:0:0.2" Value="50,16,0,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="up">
+                <EasingThicknessKeyFrame KeyTime="0:0:0.2" Value="10,3,25,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="down">
+                <EasingThicknessKeyFrame KeyTime="0:0:0.2" Value="10,18,25,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="r">
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="XT">
+                <EasingThicknessKeyFrame KeyTime="0:0:0.2" Value="110,16,0,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="up">
+                <EasingThicknessKeyFrame KeyTime="0:0:0.2" Value="25,3,4,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="down">
+                <EasingThicknessKeyFrame KeyTime="0:0:0.2" Value="25,18,4,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource l}"/>
+            <BeginStoryboard Storyboard="{StaticResource r}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Window.Effect>
+        <DropShadowEffect BlurRadius="20" ShadowDepth="0" Opacity="0.4"/>
+    </Window.Effect>
     <Grid>
         <Grid.ContextMenu>
             <ContextMenu Name="cm" StaysOpen="true">
                 <MenuItem Header="关闭" Click="MenuItem_Click"/>
             </ContextMenu>
         </Grid.ContextMenu>
-        <Border x:Name="XT" BorderThickness="0" HorizontalAlignment="Left" Margin="15,0,0,0" Width="85" CornerRadius="17" Background="#E5F7F7F7" BorderBrush="#FFE7E7E7" Height="35">
+        <Border x:Name="XT" BorderThickness="0"  HorizontalAlignment="Left" Margin="50,16,0,0" Width="85" CornerRadius="17" Background="#FFF7F7F7" BorderBrush="#FFE7E7E7" Height="35" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
             <Grid >
-                <TextBlock x:Name="NM" Height="12" Margin="25,3,4,0" TextWrapping="Wrap" Text="Lemon User" VerticalAlignment="Top" Foreground="#FFADADAD" FontSize="10" TextAlignment="Center"/>
-                <TextBlock x:Name="Js" Height="17" Margin="22.25,18,7,-2" TextWrapping="Wrap" Text="Online" VerticalAlignment="Top" Foreground="#FF7DCA81" FontSize="11" TextAlignment="Center"/>
+                <TextBlock x:Name="up" Height="15" Margin="10,3,25,0" TextWrapping="Wrap" Text="0KB/s" VerticalAlignment="Top" Foreground="#FFADADAD" TextAlignment="Center" FontSize="11" RenderTransformOrigin="0.5,0.5">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <TextBlock x:Name="down" Height="17" Margin="10,18,25,0" TextWrapping="Wrap" Text="0KB/s" VerticalAlignment="Top" Foreground="#FF7DCA81" TextAlignment="Center" FontSize="11" RenderTransformOrigin="0.5,0.5">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
             </Grid>
         </Border>
-        <Border x:Name="TX" BorderThickness="1" HorizontalAlignment="Left" Width="43" CornerRadius="100" Height="43" BorderBrush="#19333337" VerticalAlignment="Top" MouseDown="TX_MouseDown" Background="#FF007ACC">
+        <Border x:Name="TX" BorderThickness="1" RenderOptions.BitmapScalingMode="Fant"  HorizontalAlignment="Left" Width="43" CornerRadius="100" Height="43" BorderBrush="#19333337" VerticalAlignment="Top" MouseDown="TX_MouseDown" Background="#FF007ACC" Margin="101,12,0,0" UseLayoutRounding="False">
             <Border.Effect>
                 <DropShadowEffect Color="#FF2D2D30" Direction="340" Opacity="0.1"/>
             </Border.Effect>
