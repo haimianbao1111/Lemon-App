@@ -113,6 +113,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Dll\Microsoft.DirectX.DirectSound.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Expression.Drawing, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Maps.MapControl.WPF, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Dll\Microsoft.Maps.MapControl.WPF.dll</HintPath>
@@ -120,6 +121,7 @@
     <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Users\cz241\Documents\Visual Studio 2017\Projects\Login\Login\Dll\Newtonsoft.Json.dll</HintPath>
@@ -170,6 +172,7 @@
     <Compile Include="Music\DeskLyricWin.xaml.cs">
       <DependentUpon>DeskLyricWin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Other\Controls\ValuePercentConverter.cs" />
     <Compile Include="Other\ImageHelper.cs" />
     <Compile Include="Other\FX.cs" />
     <Compile Include="Music\GetLyricAndLyricTime.cs" />
@@ -273,6 +276,10 @@
     <Page Include="IApps\Fanyi\FanyiBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Other\Controls\CircleProgressBarStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Page\HaWindow.xaml">
       <SubType>Designer</SubType>
@@ -452,6 +459,7 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

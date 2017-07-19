@@ -5,6 +5,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Lemon App;component/Other/Controls/CircleProgressBarStyle.xaml"/>
                 <ResourceDictionary Source="/Lemon App;component/Other/Onvvl.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <SolidColorBrush x:Key="SliderThumb.Static.Foreground" Color="#FFE5E5E5"/>

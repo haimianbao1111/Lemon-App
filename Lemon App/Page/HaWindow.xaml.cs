@@ -1,4 +1,5 @@
 ﻿using Lemon_App.Properties;
+using Microsoft.VisualBasic.Devices;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -66,6 +67,11 @@ namespace Lemon_App
         /// </summary>
         private void UpdateNetworkInterface()
         {
+            var myInfo = new Computer();
+            var z = (double)myInfo.Info.TotalPhysicalMemory/1024/1024;
+            var k = z - (double)myInfo.Info.AvailablePhysicalMemory/1024/1024;
+            var l = k / z;
+            pb.Value=360 * l;
             IPv4InterfaceStatistics interfaceStats = nic.GetIPv4Statistics();
             int bytesSentSpeed = (int)(interfaceStats.BytesSent - bt) / 1024;
             int bytesReceivedSpeed = (int)(interfaceStats.BytesReceived - br) / 1024;
