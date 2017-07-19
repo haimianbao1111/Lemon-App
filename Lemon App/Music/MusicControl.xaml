@@ -1352,7 +1352,7 @@
                 </Grid>
                 <Grid Margin="0,0,5,0" Grid.Column="1">
                     <Grid>
-                        <Border x:Name="tx" BorderThickness="1" HorizontalAlignment="Left" Margin="1,2,0,3" Width="60" CornerRadius="5" MouseDown="tx_MouseDown" Height="60">
+                        <Border x:Name="tx" RenderOptions.BitmapScalingMode="Fant" BorderThickness="1" HorizontalAlignment="Left" Margin="1,2,0,3" Width="60" CornerRadius="5" MouseDown="tx_MouseDown" Height="60">
                             <Border.Background>
                                 <VisualBrush>
                                     <VisualBrush.Visual>

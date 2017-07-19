@@ -30,9 +30,6 @@ namespace Lemon_App
         public HaWindow()
         {
             InitializeComponent();
-            if (Left > SystemParameters.WorkArea.Height - 200)
-                (Resources["l"] as Storyboard).Begin();
-            else (Resources["r"] as Storyboard).Begin();
         }
 
         /// <summary>
@@ -79,6 +76,9 @@ namespace Lemon_App
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            if (Left > SystemParameters.WorkArea.Height - 200)
+                (Resources["l"] as Storyboard).Begin();
+            else (Resources["r"] as Storyboard).Begin();
             InitNetworkInterface();
             InitializeTimer();
             if (System.IO.File.Exists(Settings.Default.UserImage))
