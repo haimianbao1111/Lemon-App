@@ -127,5 +127,49 @@ namespace Lemon_App
                 XT.BeginAnimation(OpacityProperty, new DoubleAnimation(1, TimeSpan.FromSeconds(0.2)));
             }
         }
+        [DllImport("psapi.dll")]
+        static extern int EmptyWorkingSet(IntPtr hwProc);
+        private async void Window_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            osx = 9;
+            var dt= new Computer().Info.AvailablePhysicalMemory;
+            XT.BeginAnimation(OpacityProperty, new DoubleAnimation(0, TimeSpan.FromSeconds(0.2)));
+            RotateTransform rtf = new RotateTransform();
+            TX.RenderTransform = rtf;
+            DoubleAnimation dbAscending = new DoubleAnimation(0, 3600, new Duration
+            (TimeSpan.FromSeconds(3)));
+            dbAscending.Completed += delegate { XT.BeginAnimation(OpacityProperty, new DoubleAnimation(1, TimeSpan.FromSeconds(0.2))); };
+            rtf.BeginAnimation(RotateTransform.AngleProperty, dbAscending);
+            await Task.Run(new Action(delegate {
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                Process[] processes = Process.GetProcesses();
+                foreach (Process process in processes)
+                {
+                    if ((process.ProcessName == "System") && (process.ProcessName == "Idle"))
+                        continue;
+                    try { EmptyWorkingSet(process.Handle); } catch { }
+                }
+            }));
+            var dtf = new Computer().Info.AvailablePhysicalMemory;
+            var v = dtf - dt;
+            await Task.Delay(3000);
+            Tbi.Text = "已清理内存:"+HumanReadableFilesize(v);
+            await Task.Delay(3000);
+            Tbi.Text = "";
+            osx = 0;
+        }
+        private String HumanReadableFilesize(double size)
+        {
+            String[] units = new String[] { "B", "KB", "MB", "GB", "TB", "PB" };
+            double mod = 1024.0;
+            int i = 0;
+            while (size >= mod)
+            {
+                size /= mod;
+                i++;
+            }
+            return Math.Round(size) + units[i];
+        }
     }
 }
