@@ -48,7 +48,7 @@ namespace Lemon_App
         private void EX()
         {
             BorderThickness = new Thickness(30);
-            c.ResizeBorderThickness = new Thickness(35);
+            c.ResizeBorderThickness = new Thickness(30);
             Page.Clip = new RectangleGeometry() { RadiusX = 3, RadiusY = 3, Rect = new Rect() { Width = Page.ActualWidth, Height = Page.ActualHeight } };
             this.WindowState = WindowState.Normal;
         }
