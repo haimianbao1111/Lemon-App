@@ -1,5 +1,4 @@
-﻿using Lemon_App.Properties;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,7 +23,7 @@ namespace Lemon_App
         public WelcomeWindow()
         {
             InitializeComponent();
-            this.FontFamily = new FontFamily(Settings.Default.FontFamilly);
+            this.FontFamily = new FontFamily(He.Settings.FontFamilly);
             this.Left = SystemParameters.WorkArea.Width - this.Width+10;
             this.EndTop = SystemParameters.WorkArea.Height - this.Height+10;
             this.Top = SystemParameters.WorkArea.Height;
@@ -57,7 +56,7 @@ namespace Lemon_App
         else if (tmCur.Hour >= 1 && tmCur.Hour <= 5)
             {
                 b.Background = new ImageBrush(new BitmapImage(new Uri("http://img.kutoo8.com//upload/thumb/012066/f36a5eff700ba80a626fe54eb1bce043_320x480.jpg")));
-                Welcome.Inlines.Add(new Run($"凌晨好呀，{Settings.Default.RobotName}"));
+                Welcome.Inlines.Add(new Run($"凌晨好呀，{He.Settings.RobotName}"));
                 Welcome.Inlines.Add(new LineBreak());
                 Welcome.Inlines.Add(new Run("不乖哦~还没有睡觉惹~")
                 {
@@ -67,7 +66,7 @@ namespace Lemon_App
         else if (tmCur.Hour >= 6 && tmCur.Hour <= 11)
             {
                 b.Background = new ImageBrush(new BitmapImage(new Uri("http://img.kutoo8.com//upload/thumb/583419/e47164658e5c23cf2424bbb72ef56b65_320x480.jpg")));
-                Welcome.Inlines.Add(new Run($"早呀，{Settings.Default.RobotName}"));
+                Welcome.Inlines.Add(new Run($"早呀，{He.Settings.RobotName}"));
                 Welcome.Inlines.Add(new LineBreak());
                 Welcome.Inlines.Add(new Run("一日之计在于晨，早上是最宝贵的时间哦~")
                 {
@@ -77,14 +76,14 @@ namespace Lemon_App
         else if (tmCur.Hour >= 13 && tmCur.Hour <= 17)
             {
                 b.Background = new ImageBrush(new BitmapImage(new Uri("http://img.pconline.com.cn/images/upload/upc/tx/wallpaper/1207/30/c1/12613028_1343631802292.jpg")));
-                Welcome.Inlines.Add(new Run($"下午好呀，{Settings.Default.RobotName}"));
+                Welcome.Inlines.Add(new Run($"下午好呀，{He.Settings.RobotName}"));
                 Welcome.Inlines.Add(new LineBreak());
                 Welcome.Inlines.Add(new Run("有什么新鲜事吗？")
                 {
                     FontSize = 14
                 });
             }
-        LemonWeather w = new LemonWeather(Settings.Default.WeatherInfo);
+        LemonWeather w = new LemonWeather(He.Settings.WeatherInfo);
             Weather.Inlines.Add(new Run($"今日{w.WeatherName}天气"));
             Weather.Inlines.Add(new LineBreak());
             Weather.Inlines.Add(new Run(w.WeatherMessage));

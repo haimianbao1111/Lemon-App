@@ -1,5 +1,4 @@
 ﻿using Lemon_App.IApps.User;
-using Lemon_App.Properties;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -36,12 +35,12 @@ namespace Lemon_App
         List<string> data = new List<string>();
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            if (System.IO.File.Exists(Settings.Default.UserImage))
+            if (System.IO.File.Exists(He.Settings.UserImage))
             {
-                var image = new System.Drawing.Bitmap(Settings.Default.UserImage);
+                var image = new System.Drawing.Bitmap(He.Settings.UserImage);
                 TX.Background = new ImageBrush(image.ToImageSource());
             }
-            NM.Text = Settings.Default.RobotName;
+            NM.Text = He.Settings.RobotName;
         }
 
         private void TX_MouseDown(object sender, MouseButtonEventArgs e)
@@ -51,17 +50,9 @@ namespace Lemon_App
             {
                 var image = new System.Drawing.Bitmap(o.FileName);
                 TX.Background = new ImageBrush(image.ToImageSource());
-                Settings.Default.UserImage = o.FileName;
-                Settings.Default.Save();
+                He.Settings.UserImage = o.FileName;
+                He.SaveSettings();
             }
-        }
-
-        private void Mou(object sender, MouseButtonEventArgs e)
-        {
-            data.Remove((sender as Border).ToolTip as string);
-            Settings.Default.LZone = JSON.ToJSON(data);
-            Settings.Default.Save();
-           // MessageBox.Show(JSON.ToJSON(data));
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using Lemon_App.Properties;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
@@ -34,7 +33,7 @@ namespace Lemon_App
         }
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            GetWeather(Settings.Default.WeatherInfo);
+            GetWeather(He.Settings.WeatherInfo);
         }
         private async void GetWeather(string i)
         {//V5
@@ -87,8 +86,8 @@ namespace Lemon_App
             if(e.Key==Key.Enter)
                 if (textBox.Text != "") {
                     GetWeather(textBox.Text);
-                    Settings.Default.WeatherInfo = textBox.Text;
-                    Settings.Default.Save();
+                    He.Settings.WeatherInfo = textBox.Text;
+                    He.SaveSettings();
                 }
                     
         }
@@ -100,13 +99,15 @@ namespace Lemon_App
 
         private void textBlock2_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            RotateTransform rtf = new RotateTransform();
-            rtf.CenterX = 0.5;
-            rtf.CenterY = 0.5;
+            RotateTransform rtf = new RotateTransform()
+            {
+                CenterX = 0.5,
+                CenterY = 0.5
+            };
             (sender as Border).RenderTransform = rtf;
             DoubleAnimation dbAscending = new DoubleAnimation(0, 360, new Duration(TimeSpan.FromSeconds(0.3)));
             rtf.BeginAnimation(RotateTransform.AngleProperty, dbAscending);
-            GetWeather(Settings.Default.WeatherInfo);
+            GetWeather(He.Settings.WeatherInfo);
         }
         MediaPlayer p = new MediaPlayer();
         private void Biaoti_MouseDown(object sender, MouseButtonEventArgs e)

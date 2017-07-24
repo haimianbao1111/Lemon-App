@@ -1,5 +1,4 @@
-﻿using Lemon_App.Properties;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -27,7 +26,7 @@ namespace Lemon_App
         public UpdataWindow()
         {
             InitializeComponent();
-            this.FontFamily = new FontFamily(Settings.Default.FontFamilly);
+            this.FontFamily = new FontFamily(He.Settings.FontFamilly);
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)

@@ -6,8 +6,6 @@ using System.Net;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Windows.Media.Imaging;
-//using Windows.UI.Notifications;
-using Lemon_App.Properties;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Windows;
@@ -98,44 +96,33 @@ namespace Lemon_App
         }
 
     }
-    public class ExceptionItem
+    public class SettingsData
     {
-        /// <summary>
-        /// 名称
-        /// </summary>
-        public string UserName { get; set; }
-        /// <summary>
-        /// 版本号
-        /// </summary>
-        public string KMS { get; set; }
-        /// <summary>
-        /// 描述
-        /// </summary>
-        public string Message { get; set; }
-        /// <summary>
-        /// 对象
-        /// </summary>
-        public string Source { get; set; }
-        /// <summary>
-        /// 方法
-        /// </summary>
-        public string TargetSite { get; set; }
-        /// <summary>
-        /// 链接
-        /// </summary>
-        public string HelpLink { get; set; }
-        /// <summary>
-        /// 堆
-        /// </summary>
-        public string StackTrace { get; set; }
+        public string SearchUrl { get; set; } = "https://www.baidu.com/s?tn=mswin_oem_dg&ie=utf-16&word=%2a";
+        public string RobotName { get; set; } = "LemonUser";
+        public string WeatherInfo { get; set; } = "北京";
+        public bool RNBM { get; set; } = false;
+        public bool IsStart { get; set; } = false;
+        public string MusicList { get; set; } = "{\"List\":[]}";
+        public string WebProxyUri { get; set; } = "";
+        public string WebProxyUser { get; set; } = "";
+        public string WebProxyPassWord { get; set; } = "";
+        public bool isWebProxy { get; set; } = false;
+        public object HaTop { get; set; } = new OnRect();
+        public string UserImage { get; set; } = "";
+        public string ZJid { get; set; } = "2591355982";
+        public string LemonAreeunIts { get; set; } = "你的QQ";
+        public int sx { get; set; } = 0;
+        public string FontFamilly { get; set; } = ".PingFang SC,Microsoft Yahei UI";
+        public string MusicGD { get; set; } = "{\"List\":[]}";
+        public string MusicSearch { get; set; } = "null";
     }
-
-    public class EX
+    public class OnRect
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        public List<ExceptionItem> Exception { get; set; }
+        public double x = 0;
+        public double y = 0;
+        public double width = 0;
+        public double height = 0;
     }
     public class JSON
     {
@@ -148,8 +135,10 @@ namespace Lemon_App
 
         public static string ToJSON(object obj)
         {
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-            serializer.MaxJsonLength = Int32.MaxValue;
+            JavaScriptSerializer serializer = new JavaScriptSerializer()
+            {
+                MaxJsonLength = Int32.MaxValue
+            };
             return serializer.Serialize(obj);
         }
     }
@@ -161,7 +150,7 @@ namespace Lemon_App
             try
             {
                 HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create($"https://api.heweather.com/v5/now?city={Uri.EscapeUriString(info)}&key=f97e6a6ad4cd49babd0538747c86b88d");
-                if (Settings.Default.isWebProxy) hwr.Proxy = He.proxy;
+                if (He.Settings.isWebProxy) hwr.Proxy = He.proxy;
                 StreamReader sr = new StreamReader(hwr.GetResponse().GetResponseStream());
                 string html5 = sr.ReadToEnd().Replace("HeWeather5", "Weather");
                 JObject obj = JObject.Parse(html5);
@@ -275,6 +264,11 @@ namespace Lemon_App
             encoder.Save(fs);
             fs.Close();
         }
+        public static void SaveSettings()
+        {
+            var data = JSON.ToJSON(Settings);
+            File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"Settings.st", data);
+        }
 
         public static string Text(string all, string r, string l, int t)
         {
@@ -306,6 +300,7 @@ namespace Lemon_App
             return dateTimeStart.Add(toNow);
         }
         public static bool isOpMod = false;
+        public static SettingsData Settings = new SettingsData();
         public static WebProxy proxy = new WebProxy();
         public static string Url = "";
         public static string KMS = "3.9.9.8";
@@ -506,7 +501,7 @@ namespace Lemon_App
             SetHeaderValue(hwr.Headers, "Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");
             hwr.Headers.Add(HttpRequestHeader.AcceptLanguage, "zh-CN,zh;q=0.8");
             hwr.Headers.Add(HttpRequestHeader.Cookie, "uuid=\"w: 474bf851054f473fbb047c3ee88fb1d4\"; UM_distinctid=15bb99c4446e98-053585cc51c06c-b373f68-100200-15bb99c4447a42; tt_webid=6393431827013158402; utm_source=toutiao; csrftoken=89b7dde63a0edebe0a4c232685fae4d0; _ga=GA1.2.2017800297.1488586857; CNZZDATA1259612802=1144631660-1488585496-%7C1493468972; __tasessionId=h1xcwzl5d1493467677496");
-            if (Settings.Default.isWebProxy) hwr.Proxy = He.proxy;
+            if (He.Settings.isWebProxy) hwr.Proxy = He.proxy;
             var o = await hwr.GetResponseAsync();
             StreamReader sr = new StreamReader(o.GetResponseStream(), c);
             var st = await sr.ReadToEndAsync();
@@ -520,7 +515,7 @@ namespace Lemon_App
             {
                 HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(url);
                 hwr.Timeout = 20000;
-                if (Settings.Default.isWebProxy) hwr.Proxy = He.proxy;
+                if (He.Settings.isWebProxy) hwr.Proxy = He.proxy;
                 var o = await hwr.GetResponseAsync();
                 StreamReader sr = new StreamReader(o.GetResponseStream(), Encoding.UTF8);
                 var st = await sr.ReadToEndAsync();
@@ -535,7 +530,7 @@ namespace Lemon_App
             {
                 HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(url);
                 hwr.Timeout = 20000;
-                if (Settings.Default.isWebProxy) hwr.Proxy = He.proxy;
+                if (He.Settings.isWebProxy) hwr.Proxy = He.proxy;
                 var o = await hwr.GetResponseAsync();
                 StreamReader sr = new StreamReader(o.GetResponseStream(), c);
                 var st = await sr.ReadToEndAsync();
@@ -601,7 +596,7 @@ namespace Lemon_App
                 hwr.Headers.Add(HttpRequestHeader.Cookie, "tvfe_boss_uuid=c3db0dcc4d677c60; pac_uid=1_2728578956; ts_refer=ADTAGYQQ; qq_slist_autoplay=on; yq_index=0; pgv_pvi=5341831168; RK=gLPObA2/3O; ptui_loginuin=2728578956; o_cookie=2728578956; ptcz=897c17d7e17ae9009e018ebf3f818355147a3a26c6c67a63ae949e24758baa2d; pt2gguin=o2728578956; pgv_pvid=5107924810; ts_uid=996779984");
                 //      hwr.Headers.Add(HttpRequestHeader.IfModifiedSince, "");
                 hwr.Timeout = 20000;
-                if (Settings.Default.isWebProxy) hwr.Proxy = He.proxy;
+                if (He.Settings.isWebProxy) hwr.Proxy = He.proxy;
                 var o = await hwr.GetResponseAsync();
                 StreamReader sr = new StreamReader(o.GetResponseStream());
                 var st = await sr.ReadToEndAsync();

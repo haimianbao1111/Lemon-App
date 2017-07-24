@@ -1,5 +1,4 @@
-﻿using Lemon_App.Properties;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -28,12 +27,18 @@ namespace Lemon_App
     {
         public App()//
         {
-            if (Settings.Default.isWebProxy)
-            if (Settings.Default.WebProxyUri != "")
+            if (He.Settings.isWebProxy)
+            if (He.Settings.WebProxyUri != "")
             {
-                He.proxy.Address = new Uri(Settings.Default.WebProxyUri);
-                He.proxy.Credentials = new NetworkCredential(Settings.Default.WebProxyUser, Settings.Default.WebProxyPassWord);
+                He.proxy.Address = new Uri(He.Settings.WebProxyUri);
+                He.proxy.Credentials = new NetworkCredential(He.Settings.WebProxyUser, He.Settings.WebProxyPassWord);
             }
+            if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + @"Settings.st"))
+            {
+                var data = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"Settings.st");
+                He.Settings = (SettingsData)JSON.JsonToObject(data, He.Settings);
+            }
+            else He.SaveSettings();
             Current.DispatcherUnhandledException += Current_DispatcherUnhandledException;
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             Startup += delegate {
@@ -79,7 +84,7 @@ namespace Lemon_App
                 //    });
                 //    i = JSON.ToJSON(a);
                 //}
-                string i = "\r\n柠萌账号:" + Settings.Default.RobotName + "\r\n柠萌版本:" + He.KMS +"\r\n"+ ((Exception)e.ExceptionObject).Message + "\r\n 导致错误的对象名称:" + ((Exception)e.ExceptionObject).Source + "\r\n 引发异常的方法:" + ((Exception)e.ExceptionObject).TargetSite + "\r\n  帮助链接:" + ((Exception)e.ExceptionObject).HelpLink + "\r\n 调用堆:" + ((Exception)e.ExceptionObject).StackTrace;
+                string i = "\r\n柠萌账号:" + He.Settings.RobotName + "\r\n柠萌版本:" + He.KMS +"\r\n"+ ((Exception)e.ExceptionObject).Message + "\r\n 导致错误的对象名称:" + ((Exception)e.ExceptionObject).Source + "\r\n 引发异常的方法:" + ((Exception)e.ExceptionObject).TargetSite + "\r\n  帮助链接:" + ((Exception)e.ExceptionObject).HelpLink + "\r\n 调用堆:" + ((Exception)e.ExceptionObject).StackTrace;
                 FileStream fs = new FileStream(AppDomain.CurrentDomain.BaseDirectory+@"Log.log", FileMode.Append);
                 StreamWriter sw = new StreamWriter(fs);
                 sw.Write(i);
@@ -128,7 +133,7 @@ namespace Lemon_App
                 //    });
                 //    i = JSON.ToJSON(a);
                 //}
-                string i = "\r\n柠萌账号:" + Settings.Default.RobotName + "\r\n柠萌版本:" + He.KMS +"\r\n"+ ((Exception)e.Exception).Message + "\r\n 导致错误的对象名称:" + ((Exception)e.Exception).Source + "\r\n 引发异常的方法:" + ((Exception)e.Exception).TargetSite + "\r\n  帮助链接:" + ((Exception)e.Exception).HelpLink + "\r\n 调用堆:" + ((Exception)e.Exception).StackTrace;
+                string i = "\r\n柠萌账号:" + He.Settings.RobotName + "\r\n柠萌版本:" + He.KMS +"\r\n"+ ((Exception)e.Exception).Message + "\r\n 导致错误的对象名称:" + ((Exception)e.Exception).Source + "\r\n 引发异常的方法:" + ((Exception)e.Exception).TargetSite + "\r\n  帮助链接:" + ((Exception)e.Exception).HelpLink + "\r\n 调用堆:" + ((Exception)e.Exception).StackTrace;
                 FileStream fs = new FileStream(AppDomain.CurrentDomain.BaseDirectory + @"Log.log", FileMode.Append);
                 StreamWriter sw = new StreamWriter(fs);
                 sw.Write(i);

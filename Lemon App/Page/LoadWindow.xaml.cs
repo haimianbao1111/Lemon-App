@@ -1,5 +1,4 @@
-﻿using Lemon_App.Properties;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -36,10 +35,10 @@ namespace Lemon_App
             InitializeComponent();
             wb.Navigate("http://ui.ptlogin2.qq.com/cgi-bin/login?appid=1006102&s_url=http://id.qq.com/index.html&hide_close_icon=1");
             wb.Navigated += NaAsync;
-            RM.IsChecked = Settings.Default.RNBM;
+            RM.IsChecked = He.Settings.RNBM;
             var c = new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.3));
             this.BeginAnimation(OpacityProperty, c);
-            this.FontFamily = new FontFamily(Settings.Default.FontFamilly);
+            this.FontFamily = new FontFamily(He.Settings.FontFamilly);
             tr.Interval = 5000;
             tr.Tick += T;
             trs.Interval = 1000;
@@ -69,11 +68,11 @@ namespace Lemon_App
                         TX.Background = new ImageBrush(image.ToImageSource());
                     }
                     catch { }
-                    Settings.Default.RobotName = o[qq][6].ToString();
-                    Settings.Default.UserImage = AppDomain.CurrentDomain.BaseDirectory + qq + ".jpg";
-                    Settings.Default.LemonAreeunIts = qq + "@qq.com";
-                    Settings.Default.RNBM = (Boolean)RM.IsChecked;
-                    Settings.Default.Save();
+                    He.Settings.RobotName = o[qq][6].ToString();
+                    He.Settings.UserImage = AppDomain.CurrentDomain.BaseDirectory + qq + ".jpg";
+                    He.Settings.LemonAreeunIts = qq + "@qq.com";
+                    He.Settings.RNBM = (Boolean)RM.IsChecked;
+                    He.SaveSettings();
                     (Resources["OnLoaded1"] as Storyboard).Begin();
                     tr.Start();
                 }
@@ -124,19 +123,19 @@ namespace Lemon_App
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (Settings.Default.RNBM)
+            if (He.Settings.RNBM)
             {
                 (Resources["OnLoaded1"] as Storyboard).Begin();
                 tr.Start();
             }
-                var s = Settings.Default.LemonAreeunIts;
+                var s = He.Settings.LemonAreeunIts;
                 Email.Text = s.Remove(s.LastIndexOf("@qq.com"));
-                if (System.IO.File.Exists(Settings.Default.UserImage))
+                if (System.IO.File.Exists(He.Settings.UserImage))
                 {
-                    var image = new System.Drawing.Bitmap(Settings.Default.UserImage);
+                    var image = new System.Drawing.Bitmap(He.Settings.UserImage);
                     TX.Background = new ImageBrush(image.ToImageSource());
                 }
-                RM.IsChecked = Settings.Default.RNBM;
+                RM.IsChecked = He.Settings.RNBM;
         }
         string ini = "";
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -255,7 +254,7 @@ namespace Lemon_App
 
         private void TextBlock_MouseDown_2(object sender, MouseButtonEventArgs e)
         {
-            //Settings.Default.RNBM = (bool)RM.IsChecked;
+            //He.Settings.RNBM = (bool)RM.IsChecked;
             //new QQLogin().Show();
             //Close();
             wb.Navigate("http://ui.ptlogin2.qq.com/cgi-bin/login?appid=1006102&s_url=http://id.qq.com/index.html&hide_close_icon=1");
@@ -306,11 +305,11 @@ namespace Lemon_App
                         TX.Background = new ImageBrush(image.ToImageSource());
                     }
                     catch { }
-                    Settings.Default.RobotName = o[qq][6].ToString();
-                    Settings.Default.UserImage = AppDomain.CurrentDomain.BaseDirectory + qq + ".jpg";
-                    Settings.Default.LemonAreeunIts = qq + "@qq.com";
-                    Settings.Default.RNBM = (Boolean)RM.IsChecked;
-                    Settings.Default.Save();
+                    He.Settings.RobotName = o[qq][6].ToString();
+                    He.Settings.UserImage = AppDomain.CurrentDomain.BaseDirectory + qq + ".jpg";
+                    He.Settings.LemonAreeunIts = qq + "@qq.com";
+                    He.Settings.RNBM = (Boolean)RM.IsChecked;
+                    He.SaveSettings();
                     (Resources["OnLoaded1"] as Storyboard).Begin();
                     tr.Start();
                 }

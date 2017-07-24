@@ -1,5 +1,4 @@
-﻿using Lemon_App.Properties;
-using Microsoft.VisualBasic.Devices;
+﻿using Microsoft.VisualBasic.Devices;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -84,13 +83,14 @@ namespace Lemon_App
             else (Resources["r"] as Storyboard).Begin();
             InitNetworkInterface();
             InitializeTimer();
-            if (System.IO.File.Exists(Settings.Default.UserImage))
+            if (System.IO.File.Exists(He.Settings.UserImage))
             {
-                var image = new System.Drawing.Bitmap(Settings.Default.UserImage);
+                var image = new System.Drawing.Bitmap(He.Settings.UserImage);
                 TX.Background = new ImageBrush(image.ToImageSource());
             }
             RenderOptions.SetBitmapScalingMode(TX, BitmapScalingMode.Fant);
-            Rect bounds = Properties.Settings.Default.Hatop;
+            var d = He.Settings.HaTop as OnRect;
+            Rect bounds = new Rect(d.x, d.y, d.width, d.height);
             Top = bounds.Top;
             Left = bounds.Left;
         }
@@ -110,8 +110,9 @@ namespace Lemon_App
             if (Left > SystemParameters.WorkArea.Height - 200)
                 (Resources["l"] as Storyboard).Begin();
             else (Resources["r"] as Storyboard).Begin();
-            Settings.Default.Hatop = this.RestoreBounds;
-            Settings.Default.Save();
+            var d = this.RestoreBounds;
+            He.Settings.HaTop = new OnRect { x = d.X, y = d.Y, width = d.Width, height = d.Height };
+            He.SaveSettings();
         }
         int osx = 0;
         private void TX_MouseDown(object sender, MouseButtonEventArgs e)

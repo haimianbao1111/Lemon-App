@@ -1,5 +1,4 @@
-﻿using Lemon_App.Properties;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -27,7 +26,7 @@ namespace Lemon_App
         {
             if(e.Key==Key.Enter)
                if (textBox1.Text != "")
-                    Process.Start(Uri.EscapeUriString(Settings.Default.SearchUrl.Replace("%2a", textBox1.Text)));
+                    Process.Start(Uri.EscapeUriString(He.Settings.SearchUrl.Replace("%2a", textBox1.Text)));
             if (textBox1.Text == "搜索"&&e.Key!=Key.Enter)
                   textBox1.Text = "";
         }
@@ -35,7 +34,7 @@ namespace Lemon_App
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (textBox1.Text != "")
-                Process.Start(Uri.EscapeUriString(Settings.Default.SearchUrl.Replace("%2a", textBox1.Text)));
+                Process.Start(Uri.EscapeUriString(He.Settings.SearchUrl.Replace("%2a", textBox1.Text)));
         }
 
         private void UserControl_Loaded(object sender, System.Windows.RoutedEventArgs e)
@@ -76,7 +75,7 @@ namespace Lemon_App
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             textBox1.Text = (listBox.SelectedItem as ListBoxItem).Content.ToString();
-            Process.Start(Uri.EscapeUriString(Settings.Default.SearchUrl.Replace("%2a", textBox1.Text)));
+            Process.Start(Uri.EscapeUriString(He.Settings.SearchUrl.Replace("%2a", textBox1.Text)));
         }
     }
 }

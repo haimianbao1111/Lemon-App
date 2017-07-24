@@ -1,5 +1,4 @@
-﻿using Lemon_App.Properties;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,7 +24,7 @@ namespace Lemon_App
         {
             InitializeComponent();
             this.Width = SystemParameters.WorkArea.Width - 50;
-            this.FontFamily = new FontFamily(Settings.Default.FontFamilly);
+            this.FontFamily = new FontFamily(He.Settings.FontFamilly);
             MouseDown += delegate(object sender, MouseButtonEventArgs e)
              {
                  if(e.ClickCount>=2)

@@ -1,5 +1,4 @@
-﻿using Lemon_App.Properties;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -40,7 +39,7 @@ namespace Lemon_App
         {
             try
             {
-                JObject obj = JObject.Parse(await Uuuhh.GetWebAsync("http://www.tuling123.com/openapi/api?key=0651b32a3a6c8f54c7869b9e62872796&info=" + Uri.EscapeUriString(textBox1.Text) + "&userid=" + Uri.EscapeUriString(Settings.Default.LemonAreeunIts)));
+                JObject obj = JObject.Parse(await Uuuhh.GetWebAsync("http://www.tuling123.com/openapi/api?key=0651b32a3a6c8f54c7869b9e62872796&info=" + Uri.EscapeUriString(textBox1.Text) + "&userid=" + Uri.EscapeUriString(He.Settings.LemonAreeunIts)));
                 if ((string)obj["code"] == "100000" || obj["code"].ToString() == "40002")
                 {
                     User U = new User(textBox1.Text)
@@ -60,13 +59,17 @@ namespace Lemon_App
                 else if ((string)obj["code"] == "200000")
                 {
                     string i = (string)obj["text"];
-                    User Uu = new User(textBox1.Text);
-                    Uu.Opacity = 0;
-                    Uu.Width = Robot.ActualWidth;
-                    Lemon_App.Robot Rbu = new Lemon_App.Robot((string)obj["url"] + i);
-                    Rbu.Opacity = 0;
-                    Rbu.Width = Robot.ActualWidth;
-                    Rbu.ToolTip = (string)obj["url"].ToString();
+                    User Uu = new User(textBox1.Text)
+                    {
+                        Opacity = 0,
+                        Width = Robot.ActualWidth
+                    };
+                    Lemon_App.Robot Rbu = new Lemon_App.Robot((string)obj["url"] + i)
+                    {
+                        Opacity = 0,
+                        Width = Robot.ActualWidth,
+                        ToolTip = (string)obj["url"].ToString()
+                    };
                     Rbu.MouseDown += Rbu_MouseDown;
                     Robot.Children.Add(Uu);
                     Robot.Children.Add(Rbu);
@@ -76,9 +79,11 @@ namespace Lemon_App
                 }
                 else if ((string)obj["code"] == "308000")
                 {
-                    User Uu = new User(textBox1.Text);
-                    Uu.Width = Robot.ActualWidth;
-                    Uu.Opacity = 0;
+                    User Uu = new User(textBox1.Text)
+                    {
+                        Width = Robot.ActualWidth,
+                        Opacity = 0
+                    };
                     Robot.Children.Add(Uu);
                     int i = 0;
                     var s = new List<string>();
@@ -91,9 +96,11 @@ namespace Lemon_App
                         u.Add(obj["list"][i]["detailurl"].ToString());
                         i++;
                     }
-                    var c = new RobotHrSp(s, f, u);
-                    c.Width = Robot.ActualWidth;
-                    c.Opacity = 0;
+                    var c = new RobotHrSp(s, f, u)
+                    {
+                        Width = Robot.ActualWidth,
+                        Opacity = 0
+                    };
                     Robot.Children.Add(c);
                     var b = new DoubleAnimation(1, TimeSpan.FromSeconds(0.2));
                     Uu.BeginAnimation(OpacityProperty, b);

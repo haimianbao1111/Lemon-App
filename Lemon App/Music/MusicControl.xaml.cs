@@ -1,5 +1,4 @@
-﻿using Lemon_App.Properties;
-using static Lemon_App.Uuuhh;
+﻿using static Lemon_App.Uuuhh;
 using static Lemon_App.He;
 using Newtonsoft.Json.Linq;
 using System;
@@ -146,8 +145,8 @@ namespace Lemon_App
         private void Mou(object sender, MouseButtonEventArgs e)
         {
             data.Remove((sender as Border).ToolTip as string);
-            Settings.Default.MusicSearch = JSON.ToJSON(data);
-            Settings.Default.Save();
+            He.Settings.MusicSearch = JSON.ToJSON(data);
+            He.SaveSettings();
             // MessageBox.Show(JSON.ToJSON(data));
         }
         private async void textBox_KeyDown(object sender, KeyEventArgs e)
@@ -165,8 +164,8 @@ namespace Lemon_App
                         this.SearchDataContent.Children.Insert(0, co);
                         data.Add(textBox.Text);
                         //   MessageBox.Show(JSON.ToJSON(data));
-                        Settings.Default.MusicSearch = JSON.ToJSON(data);
-                        Settings.Default.Save();
+                        He.Settings.MusicSearch = JSON.ToJSON(data);
+                        He.SaveSettings();
                     }
                     int i = 0;
                     try
@@ -188,8 +187,10 @@ namespace Lemon_App
                                 //string songname = o["data"]["song"]["list"][i]["fsong"].ToString();
                                 //string Zhj = o["data"]["song"]["list"][i]["albumName_hilight"].ToString();
                                 //    img = ContentLines[22];
-                                Music m = new Music();
-                                m.MusicName = o["data"]["song"]["list"][i]["name"].ToString();
+                                Music m = new Music()
+                                {
+                                    MusicName = o["data"]["song"]["list"][i]["name"].ToString()
+                                };
                                 string Singer = "";
                                 for (int osxc = 0; osxc != o["data"]["song"]["list"][i]["singer"].Count(); osxc++)
                                 { Singer += o["data"]["song"]["list"][i]["singer"][osxc]["name"] + "/"; }
@@ -371,8 +372,10 @@ namespace Lemon_App
                             if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.m4a"))
                             {
                                 musicurl = $"http://cc.stream.qqmusic.qq.com/C100{musicid}.m4a?fromtag=52";
-                                WebClient dc = new WebClient();
-                                dc.Proxy = He.proxy;
+                                WebClient dc = new WebClient()
+                                {
+                                    Proxy = He.proxy
+                                };
                                 dc.DownloadFileCompleted += Fi_BZ;
                                 dc.DownloadFileAsync(new Uri(musicurl), AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.m4a");
                                 ///等待播放
@@ -825,10 +828,10 @@ namespace Lemon_App
         private void Border_MouseDown_1(object sender, MouseButtonEventArgs e)
         {
             ListJson lj = new ListJson();
-            if (Settings.Default.MusicList != "") lj = JsonToObject(Settings.Default.MusicList, lj) as ListJson;
+            if (He.Settings.MusicList != "") lj = JsonToObject(He.Settings.MusicList, lj) as ListJson;
             lj.List.Add(new ListItem() { ItemText = ((listBox.SelectedItem as MusicItemControl).Music as Music) });
-            Settings.Default.MusicList = ToJSON(lj);
-            Settings.Default.Save();
+            He.Settings.MusicList = ToJSON(lj);
+            He.SaveSettings();
         }
 
         private void Border_MouseDown_2(object sender, MouseButtonEventArgs e)
@@ -837,7 +840,7 @@ namespace Lemon_App
             jz.Visibility = Visibility.Visible;
             listBox.Items.Clear();
             ListJson lj = new Lemon_App.ListJson();
-            lj = JsonToObject(Settings.Default.MusicList, lj) as ListJson;
+            lj = JsonToObject(He.Settings.MusicList, lj) as ListJson;
             for (int i = 0; i < lj.List.Count; i++)
             {
                 string os = "";
@@ -853,9 +856,9 @@ namespace Lemon_App
 
         private async void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            if (Settings.Default.MusicSearch!= "null")
+            if (He.Settings.MusicSearch!= "null")
             {
-                data = (List<string>)JSON.JsonToObject(Settings.Default.MusicSearch, data);
+                data = (List<string>)JSON.JsonToObject(He.Settings.MusicSearch, data);
                 for (int i = 0; i != data.Count; i++)
                 {
                     var co = new LZoneItemControl();
@@ -901,7 +904,7 @@ namespace Lemon_App
             textBox.Text = json["data"]["search_content"].ToString();
             Border_MouseDown_3(null, null);
                     //ListJson lj = new Lemon_App.ListJson();
-                    //lj = JsonToObject(Settings.Default.MusicList, lj) as ListJson;
+                    //lj = JsonToObject(He.Settings.MusicList, lj) as ListJson;
                     //for (int i = 0; i < lj.List.Count; i++)
                     //{
                     //    string os = "";
@@ -947,8 +950,8 @@ namespace Lemon_App
                 if (Uuuhh.Lalala("www.mi.com"))
                 {
                     long ox = 0;
-                    if (Settings.Default.ZJid != "null" && textBox.Text == string.Empty) { textBox.Text = Settings.Default.ZJid; }
-                    else { if (long.TryParse(textBox.Text, out ox)) { Settings.Default.ZJid = textBox.Text; Settings.Default.Save(); } else { textBox.Text = Settings.Default.ZJid; } }
+                    if (He.Settings.ZJid != "null" && textBox.Text == string.Empty) { textBox.Text = He.Settings.ZJid; }
+                    else { if (long.TryParse(textBox.Text, out ox)) { He.Settings.ZJid = textBox.Text; He.SaveSettings(); } else { textBox.Text = He.Settings.ZJid; } }
                     listBox.Items.Clear();
                     jz.Visibility = Visibility.Visible;
                     var s = await GetWebAsync($"https://y.qq.com/n/yqq/playlist/{textBox.Text}.html#stat=y_new.profile.create_playlist.click&dirid=6");
@@ -987,13 +990,13 @@ namespace Lemon_App
                         l.Add((listBox.Items[ic] as MusicItemControl).Music as Music);
                         ic++;
                     }
-                    Settings.Default.MusicGD = ToJSON(l);
-                    Settings.Default.Save();
+                    He.Settings.MusicGD = ToJSON(l);
+                    He.SaveSettings();
                 }
                 else
                 {
                     List<Music> lj = new List<Music>();
-                    lj = JsonToObject(Settings.Default.MusicGD, lj) as List<Music>;
+                    lj = JsonToObject(He.Settings.MusicGD, lj) as List<Music>;
                     for (int i = 0; i < lj.Count; i++)
                     {
                         string os = "";
@@ -1006,7 +1009,7 @@ namespace Lemon_App
                  }
                 }
             catch { jz.Visibility = Visibility.Collapsed; List<Music> lj = new List<Music>();
-                lj = JsonToObject(Settings.Default.MusicGD, lj) as List<Music>;
+                lj = JsonToObject(He.Settings.MusicGD, lj) as List<Music>;
                 for (int i = 0; i < lj.Count; i++)
                 {
                     string os = "";
@@ -1231,8 +1234,10 @@ namespace Lemon_App
                         //string songname = o["data"]["song"]["list"][i]["fsong"].ToString();
                         //string Zhj = o["data"]["song"]["list"][i]["albumName_hilight"].ToString();
                         //    img = ContentLines[22];
-                        Music m = new Music();
-                        m.MusicName = o["data"]["song"]["list"][i]["name"].ToString();
+                        Music m = new Music()
+                        {
+                            MusicName = o["data"]["song"]["list"][i]["name"].ToString()
+                        };
                         string Singer = "";
                         for (int osxc = 0; osxc != o["data"]["song"]["list"][i]["singer"].Count(); osxc++)
                         { Singer += o["data"]["song"]["list"][i]["singer"][osxc]["name"] + "/"; }

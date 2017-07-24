@@ -1,5 +1,4 @@
-﻿using Lemon_App.Properties;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
@@ -26,7 +25,7 @@ namespace Lemon_App
             var c = new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.3));
             this.BeginAnimation(OpacityProperty, c);
             FullScreenManager.RepairWpfWindowFullScreenBehavior(this);
-            this.FontFamily = new FontFamily(Settings.Default.FontFamilly);
+            this.FontFamily = new FontFamily(He.Settings.FontFamilly);
             t.Tick += T_Elapsed;
             t.Interval = TimeSpan.FromSeconds(5);
             t.Start();
@@ -54,9 +53,9 @@ namespace Lemon_App
         private void T_Elapsed(object sender, EventArgs e)
         {
             GC.Collect();
-            if (System.IO.File.Exists(Settings.Default.UserImage))
+            if (System.IO.File.Exists(He.Settings.UserImage))
             {
-                var image = new System.Drawing.Bitmap(Settings.Default.UserImage);
+                var image = new System.Drawing.Bitmap(He.Settings.UserImage);
                 tx.Background = new ImageBrush(image.ToImageSource());
             }
         }
@@ -169,9 +168,9 @@ namespace Lemon_App
             if (!Uuuhh.Lalala("www.mi.com"))
                 ZX.Background = MIN.Background;
             else ZX.Background = MAX.Background;
-            if (System.IO.File.Exists(Settings.Default.UserImage))
+            if (System.IO.File.Exists(He.Settings.UserImage))
             {
-                var image = new System.Drawing.Bitmap(Settings.Default.UserImage);
+                var image = new System.Drawing.Bitmap(He.Settings.UserImage);
                 tx.Background = new ImageBrush(image.ToImageSource());
             }
         }
@@ -206,7 +205,7 @@ namespace Lemon_App
             Music.Visibility = Visibility.Collapsed;
             User.Visibility = Visibility.Visible;
             User.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 50, 0, 0), new Thickness(0), TimeSpan.FromSeconds(0.2)));
-            User.NM.Text = Settings.Default.RobotName;
+            User.NM.Text = He.Settings.RobotName;
             Mus.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
             ALL.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
             Rbt.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
@@ -236,8 +235,8 @@ namespace Lemon_App
         private void Font_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             FontFamily = (Font.SelectedItem as ListBoxItem).FontFamily;
-            Settings.Default.FontFamilly = (Font.SelectedItem as ListBoxItem).FontFamily.Source;
-            Settings.Default.Save();
+            He.Settings.FontFamilly = (Font.SelectedItem as ListBoxItem).FontFamily.Source;
+            He.SaveSettings();
             popup.IsOpen = false;
         }
 
@@ -322,8 +321,10 @@ namespace Lemon_App
                     {
                         IContentPage.Children.Remove(_2048);
                         _2048 = null;
-                        _2048 = new IApps._2048._2048Control();
-                        _2048.Visibility = Visibility.Collapsed;
+                        _2048 = new IApps._2048._2048Control()
+                        {
+                            Visibility = Visibility.Collapsed
+                        };
                         IContentPage.Children.Add(_2048);
                         Robot.Visibility = Visibility.Collapsed;
                         All.Visibility = Visibility.Collapsed;

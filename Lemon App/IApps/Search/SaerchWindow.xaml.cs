@@ -1,5 +1,4 @@
-﻿using Lemon_App.Properties;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -27,7 +26,7 @@ namespace Lemon_App
         public SaerchWindow()
         {
             InitializeComponent();
-            this.FontFamily = new FontFamily(Settings.Default.FontFamilly);
+            this.FontFamily = new FontFamily(He.Settings.FontFamilly);
         }
         double tp = 0;
         private void textBox1_TextChanged(object sender, TextChangedEventArgs e)
@@ -69,7 +68,7 @@ namespace Lemon_App
             if (e.Key == Key.Enter)
                 if (textBox1.Text != "")
                 {
-                    Process.Start(Uri.EscapeUriString(Settings.Default.SearchUrl.Replace("%2a", textBox1.Text)));
+                    Process.Start(Uri.EscapeUriString(He.Settings.SearchUrl.Replace("%2a", textBox1.Text)));
                     this.Close();
                 }
         }
@@ -77,7 +76,7 @@ namespace Lemon_App
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (textBox1.Text != "")
-            { Process.Start(Uri.EscapeUriString(Settings.Default.SearchUrl.Replace("%2a", textBox1.Text)));
+            { Process.Start(Uri.EscapeUriString(He.Settings.SearchUrl.Replace("%2a", textBox1.Text)));
                 this.Close();
             }
         }
@@ -85,7 +84,7 @@ namespace Lemon_App
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             textBox1.Text = (listBox.SelectedItem as ListBoxItem).Content.ToString();
-            Process.Start(Uri.EscapeUriString(Settings.Default.SearchUrl.Replace("%2a", textBox1.Text)));
+            Process.Start(Uri.EscapeUriString(He.Settings.SearchUrl.Replace("%2a", textBox1.Text)));
             this.Close();
         }
 
@@ -98,7 +97,7 @@ namespace Lemon_App
         {
             textBox1.Focus();
             tp = Top;
-            this.FontFamily = new FontFamily(Settings.Default.FontFamilly);
+            this.FontFamily = new FontFamily(He.Settings.FontFamilly);
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

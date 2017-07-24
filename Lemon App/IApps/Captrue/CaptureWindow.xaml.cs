@@ -136,8 +136,10 @@ namespace Lemon_App
         {
             Visibility = Visibility.Collapsed;
             canmove = true;
-            SaveFileDialog dialog = new SaveFileDialog();
-            dialog.Filter = "Png files (*.png)|*.png|Bmp files (*.bmp)|*.bmp|Jpeg files (*.jpg)|*.jpg";
+            SaveFileDialog dialog = new SaveFileDialog()
+            {
+                Filter = "Png files (*.png)|*.png|Bmp files (*.bmp)|*.bmp|Jpeg files (*.jpg)|*.jpg"
+            };
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 if (System.IO.Path.GetExtension(dialog.FileName) == ".png" || System.IO.Path.GetExtension(dialog.FileName) == ".PNG")

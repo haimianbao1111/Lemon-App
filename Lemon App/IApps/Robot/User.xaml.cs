@@ -1,5 +1,4 @@
-﻿using Lemon_App.Properties;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,12 +33,12 @@ namespace Lemon_App
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            if (System.IO.File.Exists(Settings.Default.UserImage))
+            if (System.IO.File.Exists(He.Settings.UserImage))
             {
-                var image = new System.Drawing.Bitmap(Settings.Default.UserImage);
+                var image = new System.Drawing.Bitmap(He.Settings.UserImage);
                 bd.Background = new ImageBrush(image.ToImageSource());
             }
-            UName.Text = Settings.Default.RobotName;
+            UName.Text = He.Settings.RobotName;
         }
     }
 }
