@@ -89,10 +89,8 @@ namespace Lemon_App
                 TX.Background = new ImageBrush(image.ToImageSource());
             }
             RenderOptions.SetBitmapScalingMode(TX, BitmapScalingMode.Fant);
-            var d = He.Settings.HaTop as OnRect;
-            Rect bounds = new Rect(d.x, d.y, d.width, d.height);
-            Top = bounds.Top;
-            Left = bounds.Left;
+            Top = He.Settings.HaTop.y;
+            Left = He.Settings.HaTop.x;
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

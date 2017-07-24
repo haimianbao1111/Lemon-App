@@ -108,7 +108,7 @@ namespace Lemon_App
         public string WebProxyUser { get; set; } = "";
         public string WebProxyPassWord { get; set; } = "";
         public bool isWebProxy { get; set; } = false;
-        public object HaTop { get; set; } = new OnRect();
+        public OnRect HaTop { get; set; } = new OnRect();
         public string UserImage { get; set; } = "";
         public string ZJid { get; set; } = "2591355982";
         public string LemonAreeunIts { get; set; } = "你的QQ";

@@ -24,8 +24,8 @@ namespace Lemon_App
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.Key==Key.Enter)
-               if (textBox1.Text != "")
+            if (e.Key == Key.Enter)
+                if (textBox1.Text != "" && os != 1) 
                     Process.Start(Uri.EscapeUriString(He.Settings.SearchUrl.Replace("%2a", textBox1.Text)));
             if (textBox1.Text == "搜索"&&e.Key!=Key.Enter)
                   textBox1.Text = "";
@@ -33,7 +33,7 @@ namespace Lemon_App
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (textBox1.Text != "")
+            if (textBox1.Text != ""&&os!=1)
                 Process.Start(Uri.EscapeUriString(He.Settings.SearchUrl.Replace("%2a", textBox1.Text)));
         }
 
@@ -46,7 +46,8 @@ namespace Lemon_App
         {
             try
             {
-                if (textBox1.Text != "")
+                if(os!=1)
+                    if (textBox1.Text != "")
                 {
                     if (textBox1.Text != "搜索")
                     {
@@ -76,6 +77,30 @@ namespace Lemon_App
         {
             textBox1.Text = (listBox.SelectedItem as ListBoxItem).Content.ToString();
             Process.Start(Uri.EscapeUriString(He.Settings.SearchUrl.Replace("%2a", textBox1.Text)));
+        }
+        int os = 0;
+        private void Border_MouseDown_1(object sender, MouseButtonEventArgs e)
+        {
+            if (os == 0)
+            {
+                os = 1;
+                RotateTransform rtf = new RotateTransform();
+                (sender as Border).RenderTransform = rtf;
+                DoubleAnimation dbAscending = new DoubleAnimation(0, 170, TimeSpan.FromSeconds(0.3));
+                rtf.BeginAnimation(RotateTransform.AngleProperty, dbAscending);
+                textBox1.Text = He.Settings.SearchUrl;
+            }
+            else
+            {
+                os = 0;
+                RotateTransform rtf = new RotateTransform();
+                (sender as Border).RenderTransform = rtf;
+                DoubleAnimation dbAscending = new DoubleAnimation(170, 0, TimeSpan.FromSeconds(0.3));
+                rtf.BeginAnimation(RotateTransform.AngleProperty, dbAscending);
+                He.Settings.SearchUrl = textBox1.Text;
+                He.SaveSettings();
+                textBox1.Text = "搜索";
+            }
         }
     }
 }
