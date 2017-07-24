@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Lemon_App"
          xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" x:Class="Lemon_App.HaWindow"
         mc:Ignorable="d"
-        Title="Lemon App" WindowStyle="None" MouseMove="Window_MouseMove" ResizeMode="NoResize" Foreground="{x:Null}" Background="{x:Null}" AllowsTransparency="True" Loaded="Window_Loaded" WindowStartupLocation="CenterOwner" MouseLeftButtonDown="Window_MouseLeftButtonDown" Topmost="True" ShowInTaskbar="False" Width="227.994" Height="70.918" MouseDoubleClick="Window_MouseDoubleClick">
+        Title="Lemon App" WindowStyle="None" MouseMove="Window_MouseMove" ResizeMode="NoResize" Foreground="{x:Null}" Background="{x:Null}" AllowsTransparency="True" Loaded="Window_Loaded" WindowStartupLocation="CenterOwner" MouseLeftButtonDown="Window_MouseLeftButtonDown" Topmost="True" ShowInTaskbar="False" Width="227.994" Height="70.918" MouseDoubleClick="Window_MouseDoubleClick" FontFamily=".PingFang SC,Microsoft YaHei UI">
     <Window.Resources>
         <Storyboard x:Key="l">
             <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="XT">

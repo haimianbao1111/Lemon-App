@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         x:Class="Lemon_App.UpdataWindow"
         mc:Ignorable="d"
-        Title="UpdataWindow" Height="260" Width="380" WindowStyle="None" ResizeMode="NoResize" Background="{x:Null}" Loaded="Window_Loaded" AllowsTransparency="True">
+        Title="UpdataWindow" Height="260" Width="380" WindowStyle="None" ResizeMode="NoResize" Background="{x:Null}" Loaded="Window_Loaded" AllowsTransparency="True" FontFamily=".PingFang SC,Microsoft YaHei UI">
     <Window.Effect>
         <DropShadowEffect BlurRadius="20" Opacity="0.4" ShadowDepth="0"/>
     </Window.Effect>

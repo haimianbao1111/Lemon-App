@@ -11,7 +11,7 @@
     </Window.Effect>
     <Border x:Name="S"  MinWidth="200" MaxWidth="400" CornerRadius="5" Background="#FFFBFBFB">
         <Grid Width="Auto" Height="Auto">
-            <TextBox x:Name="textBox1" Margin="28,5,10,0" TextWrapping="Wrap" Text="搜索" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="#FF31C27C" Foreground="#FF9C9C9C" KeyDown="textBox1_KeyDown" BorderThickness=" 0,0,0,0" TextChanged="textBox1_TextChanged" MouseDown="textBox1_MouseDown" Height="20" VerticalAlignment="Top" FontSize="16"/>
+            <TextBox x:Name="textBox1" Margin="28,6,10,0" TextWrapping="Wrap" Text="搜索" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="#FF31C27C" Foreground="#FF9C9C9C" KeyDown="textBox1_KeyDown" BorderThickness=" 0,0,0,0" TextChanged="textBox1_TextChanged" MouseDown="textBox1_MouseDown" Height="20" VerticalAlignment="Top" FontSize="14"/>
             <ListBox x:Name="listBox" Margin="10,31,10,10" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFC5C5C5" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden" BorderThickness="0" SelectionChanged="listBox_SelectionChanged">
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="{x:Type ListBoxItem}">

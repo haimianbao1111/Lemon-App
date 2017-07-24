@@ -19,15 +19,15 @@
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
-                    <Border Margin="0" Width="30" Height="30" Grid.Column="1" Background="#FFF7F7F7" CornerRadius="5" MouseDown="Border_MouseDown_1" ToolTip="取消">
+                    <Border Margin="0" Width="30" Height="30" Grid.Column="1" CornerRadius="5" MouseDown="Border_MouseDown_1" ToolTip="取消" Background="White">
                         <Path Fill="#FF686868" Data="M301,223l114,114c13,13,13,33,0,46c-6,6-15,10-23,10s-17-4-23-10L255,269L141,383c-6,6-15,10-23,10s-17-4-23-10
 	c-13-13-13-33,0-46l114-114L95,109c-13-13-13-33,0-46s33-13,46,0l114,114L369,63c13-13,33-13,46,0s13,33,0,46L301,223z" Stretch="UniformToFill" Margin="8"/>
                     </Border>
-                    <Border Width="30" Height="30" Background="#FFF7F7F7" CornerRadius="5" Grid.Column="2" MouseDown="Border_MouseDown" ToolTip="完成并保存">
+                    <Border Width="30" Height="30" CornerRadius="5" Grid.Column="2" MouseDown="Border_MouseDown" ToolTip="完成并保存" Background="White">
                         <Path Fill="#FF007ACC" Data="M494,52c-13-13-33-13-46,0L176,324L62,211c-13-13-33-13-46,0s-13,33,0,46l137,136c6,6,15,10,23,10s17-4,23-10L494,99
 	C507,86,507,65,494,52z" Stretch="Uniform" Margin="8" Stroke="#FF007ACC"/>
                     </Border>
-                    <Border Margin="5.5,1.5" Width="30" Height="30" Grid.Column="0" Background="#FFF7F7F7" CornerRadius="5" MouseDown="Border_MouseDown_2" ToolTip="复制到剪切板">
+                    <Border Margin="5.5,1.5" Width="30" Height="30" Grid.Column="0" CornerRadius="5" MouseDown="Border_MouseDown_2" ToolTip="复制到剪切板" Background="White">
                         <Path Stretch="Uniform" Margin="5" Data="M21,0C20.876,0,9,0,9,0C6.884,0,5,1.941,5,4L3.844,4.027
 			C1.729,4.027,0,5.941,0,8v20c0,2.059,1.884,4,4,4h15c2.116,0,4-1.941,4-4h1c2.116,0,4-1.941,4-4V8.024L21,0z M19,30H4
 			c-1.05,0-2-0.981-2-2V8c0-1.019,0.855-1.967,1.905-1.967L5,6v18c0,2.059,1.884,4,4,4h12C21,29.019,20.05,30,19,30z M26,24

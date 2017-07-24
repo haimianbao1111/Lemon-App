@@ -105,14 +105,6 @@
       <HintPath>Dll\Bass.Net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.DirectX, Version=1.0.2902.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Dll\Microsoft.DirectX.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.DirectX.DirectSound, Version=1.0.2902.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Dll\Microsoft.DirectX.DirectSound.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Expression.Drawing, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Maps.MapControl.WPF, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -224,9 +216,6 @@
     <Compile Include="IApps\User\UFWindow.xaml.cs">
       <DependentUpon>UFWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Page\Sr\SrWindow.xaml.cs">
-      <DependentUpon>SrWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Page\UpdataWindow.xaml.cs">
       <DependentUpon>UpdataWindow.xaml</DependentUpon>
     </Compile>
@@ -329,10 +318,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Other\Onvvl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Page\Sr\SrWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -451,8 +436,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Dll\Bass.Net.dll" />
-    <Content Include="Dll\Microsoft.DirectX.DirectSound.dll" />
-    <Content Include="Dll\Microsoft.DirectX.dll" />
     <Content Include="Dll\Microsoft.Maps.MapControl.WPF.dll" />
     <Content Include="Dll\Newtonsoft.Json.dll" />
   </ItemGroup>

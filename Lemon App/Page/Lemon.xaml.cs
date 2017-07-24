@@ -1,5 +1,4 @@
-﻿using Lemon_App.Page.Sr;
-using Lemon_App.Properties;
+﻿using Lemon_App.Properties;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -154,8 +153,7 @@ namespace Lemon_App
             RegisterHotKey(handle, 125, (uint)4, (uint)System.Windows.Forms.Keys.S);
             RegisterHotKey(handle, 126, (uint)4, (uint)System.Windows.Forms.Keys.X);
             RegisterHotKey(handle, 127, (uint)4, (uint)System.Windows.Forms.Keys.A);
-            RegisterHotKey(handle, 128, (uint)4, (uint)System.Windows.Forms.Keys.Q);
-            RegisterHotKey(handle, 129, (uint)4, (uint)System.Windows.Forms.Keys.End);
+            RegisterHotKey(handle, 128, (uint)4, (uint)System.Windows.Forms.Keys.End);
             InstallHotKeyHook(this);
             // FontFamily = new FontFamily(".PingFang SC");
             Font.Items.Clear();
@@ -207,6 +205,7 @@ namespace Lemon_App
             All.Visibility = Visibility.Collapsed;
             Music.Visibility = Visibility.Collapsed;
             User.Visibility = Visibility.Visible;
+            User.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 50, 0, 0), new Thickness(0), TimeSpan.FromSeconds(0.2)));
             User.NM.Text = Settings.Default.RobotName;
             Mus.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
             ALL.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
@@ -271,22 +270,13 @@ namespace Lemon_App
                     this.Activate();
                 }
                 else if (wParam.ToInt32() == 125)
-                {
                     new SaerchWindow().Show();
-                }else if (wParam.ToInt32() == 126)
-                {
+                else if (wParam.ToInt32() == 126)
                     new CaptureWindow().Show();
-                }
                 else if (wParam.ToInt32() == 127)
-                {
                     Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"/Note.exe");
-                }else if (wParam.ToInt32() == 128)
-                {
-                    new SrWindow().Show();
-                }else if (wParam.ToInt32() == 129)
-                {
+                else if (wParam.ToInt32() == 128)
                     He.SaveControlImage(this, "data.bmp");
-                }
             }
             return IntPtr.Zero;
         }

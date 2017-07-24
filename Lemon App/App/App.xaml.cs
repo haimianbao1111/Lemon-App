@@ -4,12 +4,17 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.IO;
+using System.IO.Pipes;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Runtime.InteropServices;
+using System.Security.Principal;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Interop;
 using System.Windows.Threading;
 using Un4seen.Bass;
@@ -19,7 +24,7 @@ namespace Lemon_App
     /// <summary>
     /// App.xaml 的交互逻辑
     /// </summary>
-    public partial class App : Application
+    public partial class App : System.Windows.Application
     {
         public App()//
         {
@@ -31,7 +36,15 @@ namespace Lemon_App
             }
             Current.DispatcherUnhandledException += Current_DispatcherUnhandledException;
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+            Startup += delegate {
+                mutex = new Mutex(true, "Lemon App", out bool ret);
+                if (!ret)
+                    Environment.Exit(0);
+            };
         }
+        Mutex mutex;
+        [DllImport("user32.dll", EntryPoint = "keybd_event", SetLastError = true)]
+        public static extern void keybd_event(Keys bVk, byte bScan, uint dwFlags, uint dwExtraInfo);
         private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {try
             {
@@ -129,5 +142,6 @@ namespace Lemon_App
             }
             catch { }
         }
+        
     }
 }

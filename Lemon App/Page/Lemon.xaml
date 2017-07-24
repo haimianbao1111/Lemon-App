@@ -7,51 +7,11 @@
     xmlns:_2048="clr-namespace:Lemon_App.IApps._2048"
     x:Class="Lemon_App.lemon"
         mc:Ignorable="d"
-        Title="Lemon App" Height="660" Width="905" Background="{x:Null}" WindowStyle="None" AllowsTransparency="True" ResizeMode="CanResizeWithGrip" SizeChanged="Window_SizeChanged" Loaded="Window_Loaded" Icon="Lemon App Ico.ico" Style="{DynamicResource WindowStyle}" WindowStartupLocation="CenterScreen" BorderThickness="30">
+        Title="Lemon App" Height="660" Width="905" Background="{x:Null}" WindowStyle="None" AllowsTransparency="True" SizeChanged="Window_SizeChanged" Loaded="Window_Loaded" Icon="Lemon App Ico.ico" WindowStartupLocation="CenterScreen" BorderThickness="30" FontFamily=".PingFang SC,Microsoft YaHei UI">
     <WindowChrome.WindowChrome>
         <WindowChrome x:Name="c" GlassFrameThickness="0" ResizeBorderThickness="30" CaptionHeight="10" CornerRadius="0" />
     </WindowChrome.WindowChrome>
     <Window.Resources>
-
-        <ControlTemplate x:Key="WindowTemplateKey" TargetType="{x:Type Window}">
-            <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
-                <Grid>
-                    <AdornerDecorator>
-                        <ContentPresenter/>
-                    </AdornerDecorator>
-                    <ResizeGrip x:Name="WindowResizeGrip" HorizontalAlignment="Right" IsTabStop="false" Visibility="Visible" VerticalAlignment="Bottom" Background="Transparent" Style="{DynamicResource ResizeGripStyle}"/>
-                </Grid>
-            </Border>
-            <ControlTemplate.Triggers>
-                <MultiTrigger>
-                    <MultiTrigger.Conditions>
-                        <Condition Property="ResizeMode" Value="CanResizeWithGrip"/>
-                        <Condition Property="WindowState" Value="Normal"/>
-                    </MultiTrigger.Conditions>
-                    <Setter Property="Visibility" TargetName="WindowResizeGrip" Value="Visible"/>
-                </MultiTrigger>
-            </ControlTemplate.Triggers>
-        </ControlTemplate>
-        <Style x:Key="WindowStyle" TargetType="{x:Type Window}">
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
-            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Window}">
-                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
-                            <AdornerDecorator>
-                                <ContentPresenter/>
-                            </AdornerDecorator>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <Trigger Property="ResizeMode" Value="CanResizeWithGrip">
-                    <Setter Property="Template" Value="{StaticResource WindowTemplateKey}"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
         <SolidColorBrush x:Key="ResizeGripperForeground" Color="#FFF0EFF1"/>
         <Style x:Key="ResizeGripStyle" TargetType="{x:Type ResizeGrip}">
             <Setter Property="MinWidth" Value="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}"/>

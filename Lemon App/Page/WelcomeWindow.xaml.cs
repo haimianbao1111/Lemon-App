@@ -25,8 +25,8 @@ namespace Lemon_App
         {
             InitializeComponent();
             this.FontFamily = new FontFamily(Settings.Default.FontFamilly);
-            this.Left = SystemParameters.WorkArea.Width - this.Width-10;
-            this.EndTop = SystemParameters.WorkArea.Height - this.Height-10;
+            this.Left = SystemParameters.WorkArea.Width - this.Width+10;
+            this.EndTop = SystemParameters.WorkArea.Height - this.Height+10;
             this.Top = SystemParameters.WorkArea.Height;
         }
         public double EndTop { get; set; }
@@ -43,13 +43,13 @@ namespace Lemon_App
             if (tmCur.Hour >= 18 && tmCur.Hour <= 24)
             {
                 b.Background = new ImageBrush(new BitmapImage(new Uri("https://a-ssl.duitang.com/uploads/item/201208/12/20120812230254_czPMZ.thumb.700_0.jpeg")));
-                Welcome.Inlines.Add(new Run($"晚上好呀，{Settings.Default.RobotName}"));
+                Welcome.Inlines.Add(new Run($"晚上好呀！"));
                 Welcome.Inlines.Add(new LineBreak());
                 Welcome.Inlines.Add(new Run("早睡早起身体好") { FontSize = 14 }); }
             else if (tmCur.Hour >= 11 && tmCur.Hour <= 12)
             {
                 b.Background = new ImageBrush(new BitmapImage(new Uri("http://i9.download.fd.pchome.net/t_960x600/g1/M00/10/15/ooYBAFWoU_mIZ8UZAAL0iXuHXcgAACmNwIIMlcAAvSh377.jpg")));
-                Welcome.Inlines.Add(new Run($"中午好呀，{Settings.Default.RobotName}"));
+                Welcome.Inlines.Add(new Run($"午安！"));
                 Welcome.Inlines.Add(new LineBreak());
                 Welcome.Inlines.Add(new Run("中午啦~吃饭饭惹~") { FontSize = 14
             });
@@ -77,7 +77,7 @@ namespace Lemon_App
         else if (tmCur.Hour >= 13 && tmCur.Hour <= 17)
             {
                 b.Background = new ImageBrush(new BitmapImage(new Uri("http://img.pconline.com.cn/images/upload/upc/tx/wallpaper/1207/30/c1/12613028_1343631802292.jpg")));
-                Welcome.Inlines.Add(new Run($"下午呀，{Settings.Default.RobotName}"));
+                Welcome.Inlines.Add(new Run($"下午好呀，{Settings.Default.RobotName}"));
                 Welcome.Inlines.Add(new LineBreak());
                 Welcome.Inlines.Add(new Run("有什么新鲜事吗？")
                 {

@@ -62,16 +62,13 @@ namespace Lemon_App
         }
         double bt = 0;
         double br = 0;
-        /// <summary>
-        /// 获取网络数据并更新到UI
-        /// </summary>
         private void UpdateNetworkInterface()
         {
             var myInfo = new Computer();
-            var z = (double)myInfo.Info.TotalPhysicalMemory/1024/1024;
-            var k = z - (double)myInfo.Info.AvailablePhysicalMemory/1024/1024;
+            var z = (double)myInfo.Info.TotalPhysicalMemory / 1024 / 1024;
+            var k = z - (double)myInfo.Info.AvailablePhysicalMemory / 1024 / 1024;
             var l = k / z;
-            pb.Value=360 * l;
+            pb.Value = 360 * l;
             IPv4InterfaceStatistics interfaceStats = nic.GetIPv4Statistics();
             int bytesSentSpeed = (int)(interfaceStats.BytesSent - bt) / 1024;
             int bytesReceivedSpeed = (int)(interfaceStats.BytesReceived - br) / 1024;
