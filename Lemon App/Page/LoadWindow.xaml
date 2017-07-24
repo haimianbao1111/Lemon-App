@@ -142,6 +142,13 @@
                 </RectangleGeometry.Rect>
             </RectangleGeometry>
         </Grid.Clip>
+        <Grid Height="40" VerticalAlignment="Top" Background="#FFFAFAFA">
+            <Border Background="#FFEAEAEA" Height="1" VerticalAlignment="Bottom" Margin="0,0,0,-1"/>
+            <Border x:Name="CLOSE" ToolTip="关闭" HorizontalAlignment="Left" Margin="5,14,0,0" Width="13" Height="13" Background="#FFFE5E56" CornerRadius="13" MouseDown="TextBlock_MouseDown" VerticalAlignment="Top"/>
+            <Border x:Name="MIN" ToolTip="最大化" HorizontalAlignment="Left" Margin="25,14,0,0" Width="13" Height="13" Background="#FFFEBC2D" CornerRadius="13" VerticalAlignment="Top"/>
+            <Border x:Name="MAX" ToolTip="最小化" Margin="45,14,0,0" Height="13" Background="#FF60C940" CornerRadius="13" VerticalAlignment="Top" HorizontalAlignment="Left" Width="13"/>
+            <TextBlock x:Name="textBlock" Height="18" Margin="10,13,10,0" TextWrapping="Wrap" Text="登陆到小萌" VerticalAlignment="Top" Foreground="#FFCFCFCF" TextAlignment="Center"/>
+        </Grid>
         <Popup x:Name="op" Width="350" local:PopopHelper.PopupPlacementTarget="{Binding ElementName=CLOSE}" Height="200" Placement="Right" HorizontalOffset="10">
             <Border x:Name="po" Background="White" BorderThickness="2" BorderBrush="#FFDEDEDE">
                 <Grid KeyDown="Grid_KeyDown">
@@ -152,7 +159,6 @@
                 </Grid>
             </Border>
         </Popup>
-        <Border x:Name="CLOSE"  MouseDown="TextBlock_MouseDown"  HorizontalAlignment="Left" Margin="10,10,0,0" Width="13" Height="13" Background="#FFC5C5C5" CornerRadius="13" VerticalAlignment="Top"/>
         <Border x:Name="OS" BorderBrush="#FFECECEC" Width="260" CornerRadius="5" Background="White" Height="60" Margin="0,103,25,0" VerticalAlignment="Top" HorizontalAlignment="Right" BorderThickness="2">
             <Grid>
                 <Grid.RowDefinitions>
@@ -191,7 +197,6 @@
             </TextBlock.RenderTransform>
         </TextBlock>
         <TextBlock x:Name="q" HorizontalAlignment="Right" Height="15" Margin="0,167,25,0" TextWrapping="Wrap" Text="快速登录" VerticalAlignment="Top" Width="49" Foreground="#FFB1B1B1" TextAlignment="Right" Background="#00000000" MouseDown="TextBlock_MouseDown_2"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="25" Margin="38,10,0,0" TextWrapping="Wrap" Text="登陆到小萌" VerticalAlignment="Top" Width="96" Foreground="#FFCFCFCF"/>
         <Border x:Name="border"  Height="30" VerticalAlignment="Bottom" Width="80" Margin="0,0,10,10" Background="#00000000"  MouseDown="border_MouseDown_2" HorizontalAlignment="Right" Visibility="Collapsed" Opacity="0">
             <TextBlock Text="取消登录" Foreground="#FFB1B1B1" Margin="0,7,0,0" TextAlignment="Center"/>
         </Border>
