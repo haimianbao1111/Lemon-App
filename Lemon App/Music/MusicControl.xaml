@@ -1203,7 +1203,7 @@
             </ListBox>
             <Grid Height="40" VerticalAlignment="Top">
                 <Grid HorizontalAlignment="Right" Width="420">
-                    <Border x:Name="border1" Height="27" Margin="137,8,10,5" VerticalAlignment="Stretch" Background="White" CornerRadius="5" BorderBrush="#FFC5C5C5" BorderThickness="1">
+                    <Border x:Name="border1" Height="25" Margin="137,8,10,7" VerticalAlignment="Stretch" Background="White" CornerRadius="5" BorderBrush="#FFC5C5C5" BorderThickness="1">
                         <Grid>
                             <Popup x:Name="popup1" Width="250" Height="200" AllowsTransparency="True" PopupAnimation="Fade" >
                                 <Border Background="White" CornerRadius="5" Margin="10">
@@ -1217,19 +1217,19 @@
                                     </Grid>
                                 </Border>
                             </Popup>
-                            <TextBox x:Name="textBox" Margin="25,5,9,3" BorderThickness="0" Text="搜索" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="#FF31C27C" KeyDown="textBox_KeyDown" Foreground="#FFB9B9C5"/>
-                            <Border HorizontalAlignment="Left" Margin="3,0,0,0" Width="25" Background="#00000000">
+                            <TextBox x:Name="textBox" Margin="22,4,10,4" BorderThickness="0" Text="搜索" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="#FF31C27C" KeyDown="textBox_KeyDown" Foreground="#FFB9B9C5"/>
+                            <Border HorizontalAlignment="Left" Width="25" Background="#00000000">
                                 <Path Data="M31.689,30.252l-8.26-8.128c2.163-2.35,3.492-5.458,3.492-8.878    C26.92,5.93,20.894,0,13.46,0C6.026,0,0,5.93,0,13.246s6.026,13.246,13.46,13.246c3.212,0,6.158-1.111,8.472-2.958l8.292,8.16    c0.404,0.398,1.06,0.398,1.464,0C32.093,31.296,32.093,30.65,31.689,30.252z M13.46,24.454c-6.29,0-11.389-5.018-11.389-11.208    S7.17,2.038,13.46,2.038c6.29,0,11.389,5.018,11.389,11.208S19.75,24.454,13.46,24.454z" Stretch="Uniform" Fill="#FF9C9C9C" Margin="6"/>
                             </Border>
                         </Grid>
                     </Border>
-                    <Border HorizontalAlignment="Left" Height="26" Margin="107,8,0,0" VerticalAlignment="Top" Width="25" Background="White" CornerRadius="5" MouseDown="Border_MouseDown_2" ToolTip="我的收藏" BorderBrush="#FFC5C5C5" BorderThickness="1">
+                    <Border HorizontalAlignment="Left" Height="25" Margin="107,8,0,0" VerticalAlignment="Top" Width="25" Background="White" CornerRadius="5" MouseDown="Border_MouseDown_2" ToolTip="我的收藏" BorderBrush="#FFC5C5C5" BorderThickness="1">
                         <Path Data="M92.361,35.955L67.95,30.352L52.814,7.012c-1.554-2.397-4.074-2.397-5.628,0L32.05,30.352   L7.639,35.955c-2.784,0.639-3.523,2.906-1.651,5.063l18.019,20.759l-2.757,25.916c-0.302,2.841,1.669,4.471,4.402,3.641L50,83.945   l24.347,7.39c2.733,0.83,4.704-0.801,4.402-3.641l-2.757-25.916l18.019-20.759C95.884,38.861,95.145,36.594,92.361,35.955z" Fill="#FFB4B4C1" Stretch="Uniform" StrokeThickness="0" Margin="4"/>
                     </Border>
-                    <Border HorizontalAlignment="Left" Margin="74,8,0,0" Width="25" Background="White" CornerRadius="5" MouseDown="Border_MouseDown_3" ToolTip="我的收藏" Height="26" VerticalAlignment="Top" BorderBrush="#FFC5C5C5" BorderThickness="1">
+                    <Border HorizontalAlignment="Left" Margin="74,8,0,0" Width="25" Background="White" CornerRadius="5" MouseDown="Border_MouseDown_3" ToolTip="我的收藏" Height="25" VerticalAlignment="Top" BorderBrush="#FFC5C5C5" BorderThickness="1">
                         <Path Data="M50.174,83.543L48.313,57.16C48.208,55.665,47.051,54.441,45.563,54.252L21.266,51.14 74.52,27.426 50.174,83.543z" Fill="#FFB4B4C1" Stretch="Uniform" StrokeThickness="0" Margin="4"/>
                     </Border>
-                    <ComboBox x:Name="DF" HorizontalAlignment="Left" Margin="6,8,0,8" Width="63" Background="{x:Null}" BorderBrush="{x:Null}" SelectedIndex="0" Foreground="#FFB4B4C1" Style="{DynamicResource C}" FontSize="14" SelectionChanged="DF_SelectionChanged">
+                    <ComboBox x:Name="DF" HorizontalAlignment="Left" Margin="6,8,0,7" Width="63" Background="{x:Null}" BorderBrush="{x:Null}" SelectedIndex="0" Foreground="#FFB4B4C1" Style="{DynamicResource C}" FontSize="14" SelectionChanged="DF_SelectionChanged">
                         <ComboBoxItem Content="巅峰榜" ToolTip="巅峰榜" Foreground="#FF252526"/>
                         <ComboBoxItem Content="销量" ToolTip="23" Foreground="#FF252526"/>
                         <ComboBoxItem Content="热歌" ToolTip="26" Foreground="#FF252526"/>

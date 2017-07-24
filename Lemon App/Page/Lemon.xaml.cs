@@ -353,5 +353,23 @@ namespace Lemon_App
         {
             ufp.IsOpen = !ufp.IsOpen;
         }
+        int fx = 0;
+        private void border_MouseDown_1(object sender, MouseButtonEventArgs e)
+        {
+            if (fx == 0)
+            {
+                fx = 1;
+                BackgroundPage.Background = new ImageBrush(new BitmapImage(new Uri("http://att.x2.hiapk.com/forum/201312/23/202538bqnu0t2xnoq0nuox.jpg")));
+                (Resources["animation"] as Storyboard).Begin();
+                (Resources["s"] as Storyboard).Begin();
+            }
+            else
+            {
+                fx = 0;
+                (Resources["animation"] as Storyboard).Begin();
+                (Resources["op"] as Storyboard).Begin();
+                BackgroundPage.Background = new SolidColorBrush(Colors.Transparent);
+            }
+        }
     }
 }

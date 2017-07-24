@@ -5,38 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lemon_App"
     xmlns:_2048="clr-namespace:Lemon_App.IApps._2048"
+    xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
     x:Class="Lemon_App.lemon"
         mc:Ignorable="d"
         Title="Lemon App" Height="660" Width="905" Background="{x:Null}" WindowStyle="None" AllowsTransparency="True" SizeChanged="Window_SizeChanged" Loaded="Window_Loaded" Icon="Lemon App Ico.ico" WindowStartupLocation="CenterScreen" BorderThickness="30" FontFamily=".PingFang SC,Microsoft YaHei UI">
-    <WindowChrome.WindowChrome>
-        <WindowChrome x:Name="c" GlassFrameThickness="0" ResizeBorderThickness="30" CaptionHeight="10" CornerRadius="0" />
-    </WindowChrome.WindowChrome>
     <Window.Resources>
-        <SolidColorBrush x:Key="ResizeGripperForeground" Color="#FFF0EFF1"/>
-        <Style x:Key="ResizeGripStyle" TargetType="{x:Type ResizeGrip}">
-            <Setter Property="MinWidth" Value="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}"/>
-            <Setter Property="MinHeight" Value="{DynamicResource {x:Static SystemParameters.HorizontalScrollBarHeightKey}}"/>
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ResizeGrip}">
-                        <Grid Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
-                            <Path Data="M 9,0 L 11,0 L 11,11 L 0,11 L 0,9 L 3,9 L 3,6 L 6,6 L 6,3 L 9,3 z" HorizontalAlignment="Right" Margin="0,0,2,2" VerticalAlignment="Bottom">
-                                <Path.Fill>
-                                    <DrawingBrush TileMode="Tile" Viewbox="0,0,3,3" Viewport="0,0,3,3" ViewportUnits="Absolute" ViewboxUnits="Absolute">
-                                        <DrawingBrush.Drawing>
-                                            <DrawingGroup>
-                                                <GeometryDrawing Brush="#FFE4E4E4" Geometry="M 0,0 L 2,0 L 2,2 L 0,2 z "/>
-                                            </DrawingGroup>
-                                        </DrawingBrush.Drawing>
-                                    </DrawingBrush>
-                                </Path.Fill>
-                            </Path>
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
         <SolidColorBrush x:Key="ListBox.Static.Background" Color="#FFFFFFFF"/>
         <SolidColorBrush x:Key="ListBox.Static.Border" Color="#FFABADB3"/>
         <SolidColorBrush x:Key="ListBox.Disabled.Background" Color="#FFFFFFFF"/>
@@ -77,8 +50,38 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Storyboard x:Key="animation">
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="border">
+                <EasingThicknessKeyFrame KeyTime="0:0:0.2" Value="90,-25,0,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:0.4" Value="90,-28,0,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="s">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="TopPage">
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#E5FAFAFA"/>
+            </ColorAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="IContentPage">
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#CCFFFFFF"/>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="op">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="TopPage">
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FFFAFAFA"/>
+            </ColorAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="IContentPage">
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="White"/>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
 
     </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource op}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <WindowChrome.WindowChrome>
+        <WindowChrome x:Name="c" GlassFrameThickness="0" ResizeBorderThickness="30" CaptionHeight="10" CornerRadius="0" />
+    </WindowChrome.WindowChrome>
     <Window.Effect>
         <DropShadowEffect Color="#FF2D2D30" BlurRadius="40" ShadowDepth="0" Opacity="0.4"/>
     </Window.Effect>
@@ -90,7 +93,7 @@
                 </RectangleGeometry.Rect>
             </RectangleGeometry>
         </Grid.Clip>
-        <Border x:Name="BackgroundPage" CornerRadius="3" Background="#00000000"/>
+        <Border x:Name="BackgroundPage" CornerRadius="3"/>
         <Grid x:Name="ContentPage" >
             <Grid x:Name="IContentPage" Margin="63,0,0,0" Background="White">
                 <local:uSeRhOmE x:Name="User" Visibility="Collapsed"  />
@@ -172,5 +175,11 @@
                 </Grid>
             </Grid>
         </Grid>
+        <Border x:Name="border" Background="#FF3399FF" CornerRadius="14" HorizontalAlignment="Left" Height="45" Margin="90,-28,0,0" VerticalAlignment="Top" Width="25" MouseDown="border_MouseDown_1">
+            <Grid>
+                <Border Height="5" VerticalAlignment="Bottom" Margin="5,0,0,7" Width="5" HorizontalAlignment="Left" Background="White" CornerRadius="5"/>
+                <Border Height="5" VerticalAlignment="Bottom" Margin="0,0,5,7" Width="5" HorizontalAlignment="Right" Background="White" CornerRadius="5"/>
+            </Grid>
+        </Border>
     </Grid>
 </Window>
