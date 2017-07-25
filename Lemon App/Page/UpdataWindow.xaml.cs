@@ -60,16 +60,15 @@ namespace Lemon_App
             this.K.Text = await Lemon_Updata.NewText(He.KMS);
             if(File.Exists(AppDomain.CurrentDomain.BaseDirectory + @"Setup.exe")) { File.Delete(AppDomain.CurrentDomain.BaseDirectory + @"Setup.exe"); }
         }
+        private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
+        }
 
-        private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
                 this.DragMove();
-        }
-
-        private void label1_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            Close();
         }
     }
 }

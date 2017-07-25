@@ -129,6 +129,12 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="topage">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="topage">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Collapsed}"/>
+            </ObjectAnimationUsingKeyFrames>
         </Storyboard>
     </Window.Resources>
     <Window.Effect>
@@ -142,7 +148,7 @@
                 </RectangleGeometry.Rect>
             </RectangleGeometry>
         </Grid.Clip>
-        <Grid Height="40" VerticalAlignment="Top" Background="#FFFAFAFA">
+        <Grid x:Name="topage" Height="40" VerticalAlignment="Top" Background="#FFFAFAFA">
             <Border Background="#FFEAEAEA" Height="1" VerticalAlignment="Bottom" Margin="0,0,0,-1"/>
             <Border x:Name="CLOSE" ToolTip="关闭" HorizontalAlignment="Left" Margin="5,14,0,0" Width="13" Height="13" Background="#FFFE5E56" CornerRadius="13" MouseDown="TextBlock_MouseDown" VerticalAlignment="Top"/>
             <Border x:Name="MIN" ToolTip="最大化" HorizontalAlignment="Left" Margin="25,14,0,0" Width="13" Height="13" Background="#FFFEBC2D" CornerRadius="13" VerticalAlignment="Top"/>

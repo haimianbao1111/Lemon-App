@@ -34,10 +34,7 @@ namespace Lemon_App
                 He.proxy.Credentials = new NetworkCredential(He.Settings.WebProxyUser, He.Settings.WebProxyPassWord);
             }
             if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + @"Settings.st"))
-            {
-                var data = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"Settings.st");
-                He.Settings = (SettingsData)JSON.JsonToObject(data, He.Settings);
-            }
+                He.Settings = (SettingsData)JSON.JsonToObject(Encoding.Default.GetString(Convert.FromBase64String(He.TextDecrypt(File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"Settings.st"), FanyiBox.MD5.EncryptToMD5string("Settings.st")))), He.Settings);
             else He.SaveSettings();
             Current.DispatcherUnhandledException += Current_DispatcherUnhandledException;
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;

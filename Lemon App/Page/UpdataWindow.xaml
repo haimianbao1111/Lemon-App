@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         x:Class="Lemon_App.UpdataWindow"
         mc:Ignorable="d"
-        Title="UpdataWindow" Height="300" Width="420" WindowStyle="None" ResizeMode="NoResize" Background="{x:Null}" Loaded="Window_Loaded" AllowsTransparency="True" FontFamily=".PingFang SC,Microsoft YaHei UI">
+        Title="UpdataWindow" Height="240" Width="320" WindowStyle="None" ResizeMode="NoResize" Background="{x:Null}" Loaded="Window_Loaded" AllowsTransparency="True" FontFamily=".PingFang SC,Microsoft YaHei UI" MouseLeftButtonDown="Window_MouseLeftButtonDown">
     <Window.Effect>
         <DropShadowEffect BlurRadius="20" Opacity="0.4" ShadowDepth="0"/>
     </Window.Effect>
@@ -13,7 +13,7 @@
         <Grid.Clip>
             <RectangleGeometry RadiusX="3" RadiusY="3">
                 <RectangleGeometry.Rect>
-                    <Rect Width="380" Height="260"/>
+                    <Rect Width="280" Height="200"/>
                 </RectangleGeometry.Rect>
             </RectangleGeometry>
         </Grid.Clip>
@@ -25,11 +25,11 @@
             <ProgressBar x:Name="progressBar1" Height="10" Margin="10,0,10,45" VerticalAlignment="Bottom" Background="White" BorderBrush="#FF3399FF" Foreground="#FF3399FF"/>
         </Grid>
         <Grid Height="40" VerticalAlignment="Top" Background="#FFFAFAFA">
+            <TextBlock x:Name="textBlock" Height="18" Margin="63,13,63,0" TextWrapping="Wrap" Text="有新版本啦 (＾Ｕ＾)ノ~" VerticalAlignment="Top" Foreground="#FFCFCFCF" TextAlignment="Center"/>
             <Border Background="#FFEAEAEA" Height="1" VerticalAlignment="Bottom" Margin="0,0,0,-1"/>
             <Border x:Name="CLOSE" ToolTip="关闭" HorizontalAlignment="Left" Margin="5,14,0,0" Width="13" Height="13" Background="#FFFE5E56" CornerRadius="13" MouseDown="TextBlock_MouseDown" VerticalAlignment="Top"/>
             <Border x:Name="MIN" ToolTip="最大化" HorizontalAlignment="Left" Margin="25,14,0,0" Width="13" Height="13" Background="#FFFEBC2D" CornerRadius="13" VerticalAlignment="Top"/>
             <Border x:Name="MAX" ToolTip="最小化" Margin="45,14,0,0" Height="13" Background="#FF60C940" CornerRadius="13" VerticalAlignment="Top" HorizontalAlignment="Left" Width="13"/>
-            <TextBlock x:Name="textBlock" Height="18" Margin="10,13,10,0" TextWrapping="Wrap" Text="有新版本啦 (＾Ｕ＾)ノ~" VerticalAlignment="Top" Foreground="#FFCFCFCF" TextAlignment="Center"/>
         </Grid>
     </Grid>
 </Window>

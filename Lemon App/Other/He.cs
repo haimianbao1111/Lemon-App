@@ -21,6 +21,7 @@ using System.Diagnostics;
 using System.Collections.Specialized;
 using System.Windows.Data;
 using System.Globalization;
+using System.Security.Cryptography;
 
 //🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂
 //                                                                                          🙂
@@ -252,6 +253,30 @@ namespace Lemon_App
     }
     public class He
     {
+        public static string TextEncrypt(string encryptStr, string key)
+        {
+            byte[] keyArray = Encoding.UTF8.GetBytes(key);
+            byte[] toEncryptArray = Encoding.UTF8.GetBytes(encryptStr);
+            RijndaelManaged rDel = new RijndaelManaged();
+            rDel.Key = keyArray;
+            rDel.Mode = CipherMode.ECB;
+            rDel.Padding = PaddingMode.PKCS7;
+            ICryptoTransform cTransform = rDel.CreateEncryptor();
+            byte[] resultArray = cTransform.TransformFinalBlock(toEncryptArray, 0, toEncryptArray.Length);
+            return Convert.ToBase64String(resultArray, 0, resultArray.Length);
+        }
+        public static string TextDecrypt(string decryptStr, string key)
+        {
+            byte[] keyArray = UTF8Encoding.UTF8.GetBytes(key);
+            byte[] toEncryptArray = Convert.FromBase64String(decryptStr);
+            RijndaelManaged rDel = new RijndaelManaged();
+            rDel.Key = keyArray;
+            rDel.Mode = CipherMode.ECB;
+            rDel.Padding = PaddingMode.PKCS7;
+            ICryptoTransform cTransform = rDel.CreateDecryptor();
+            byte[] resultArray = cTransform.TransformFinalBlock(toEncryptArray, 0, toEncryptArray.Length);
+            return UTF8Encoding.UTF8.GetString(resultArray);
+        }
         public static void SaveControlImage(FrameworkElement ui, string fileName)
         {
 
@@ -264,11 +289,8 @@ namespace Lemon_App
             encoder.Save(fs);
             fs.Close();
         }
-        public static void SaveSettings()
-        {
-            var data = JSON.ToJSON(Settings);
-            File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"Settings.st", data);
-        }
+        public static void SaveSettings(){
+            File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"Settings.st", TextEncrypt(Convert.ToBase64String(Encoding.Default.GetBytes(JSON.ToJSON(Settings))), FanyiBox.MD5.EncryptToMD5string("Settings.st")));}
 
         public static string Text(string all, string r, string l, int t)
         {

@@ -955,22 +955,22 @@ namespace Lemon_App
                     listBox.Items.Clear();
                     jz.Visibility = Visibility.Visible;
                     var s = await GetWebAsync($"https://y.qq.com/n/yqq/playlist/{textBox.Text}.html#stat=y_new.profile.create_playlist.click&dirid=6");
-                    var j = "{\"list\":" + He.Text(s, "var getSongInfo = ", ";", 0) + "}";
+                    var j = He.Text(s, "playlist_detail.init(", ");", 0);
                     JObject o = JObject.Parse(j);
                     int i = 0;
-                    while (i != o["list"].Count())
+                    while (i != o["songList"].Count())
                     {
                         Music m = new Music()
                         {
-                            MusicName = o["list"][i]["songname"].ToString(),
-                            Singer = o["list"][i]["singer"][0]["name"].ToString(),
-                            ZJ = o["list"][i]["albumdesc"].ToString(),
-                            GC = o["list"][i]["songid"].ToString(),
-                            Fotmat = o["list"][i]["sizeflac"].ToString(),
-                            HQFOTmat = o["list"][i]["size320"].ToString(),
-                            MusicID = o["list"][i]["songmid"].ToString(),
-                            ImageID = o["list"][i]["albummid"].ToString(),
-                            MV = o["list"][i]["vid"].ToString()
+                            MusicName = o["songList"][i]["songname"].ToString(),
+                            Singer = o["songList"][i]["singer"][0]["name"].ToString(),
+                            ZJ = o["songList"][i]["albumdesc"].ToString(),
+                            GC = o["songList"][i]["songid"].ToString(),
+                            Fotmat = o["songList"][i]["sizeflac"].ToString(),
+                            HQFOTmat = o["songList"][i]["size320"].ToString(),
+                            MusicID = o["songList"][i]["songmid"].ToString(),
+                            ImageID = o["songList"][i]["albummid"].ToString(),
+                            MV = o["songList"][i]["vid"].ToString()
                         };
                         string Q = "";
                         if (m.Fotmat != "0")
