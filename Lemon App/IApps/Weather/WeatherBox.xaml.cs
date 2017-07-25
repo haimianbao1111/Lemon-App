@@ -34,6 +34,7 @@ namespace Lemon_App
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             GetWeather(He.Settings.WeatherInfo);
+            textBox.Text = He.Settings.WeatherInfo;
         }
         private async void GetWeather(string i)
         {//V5
