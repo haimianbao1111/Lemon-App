@@ -512,7 +512,7 @@ namespace Lemon_App
                 collection[name] = value;
             }
         }
-        public static async System.Threading.Tasks.Task<string> GetNewsDataAsync(string url, Encoding c)
+        public static async System.Threading.Tasks.Task<string> GetWebDataAsync(string url, Encoding c)
         {
             HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(url);
             hwr.Timeout = 20000;

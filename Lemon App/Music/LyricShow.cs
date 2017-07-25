@@ -362,7 +362,7 @@ namespace Lemon_App
         /// <summary>
         /// 歌词文本TextBlock的高度(默认36)
         /// </summary>
-        private static double lyricTextBlockHeight = 70; 
+        private static double lyricTextBlockHeight = 50; 
         /// <summary>
         /// 歌词文本TextBlock的高度(默认36)
         /// </summary>
@@ -508,7 +508,7 @@ namespace Lemon_App
         /// <summary>
         /// 非高亮歌词的字体Red
         /// </summary>
-        private static byte cR=255;
+        private static byte cR = 220;
         /// <summary>
         /// 非高亮歌词的字体Red
         /// </summary>
@@ -523,7 +523,7 @@ namespace Lemon_App
         /// <summary>
         /// 非高亮歌词的字体Green
         /// </summary>
-        private static byte cG=255;
+        private static byte cG = 220;
         /// <summary>
         /// 非高亮歌词的字体Green
         /// </summary>
@@ -538,7 +538,7 @@ namespace Lemon_App
         /// <summary>
         /// 非高亮歌词的字体Blue
         /// </summary>
-        private static byte cB=255;
+        private static byte cB = 220;
         /// <summary>
         /// 非高亮歌词的字体Blue
         /// </summary>
@@ -975,7 +975,7 @@ namespace Lemon_App
             }
             catch 
             {
-                tBDeskLyricBack.Text = "柠檬Music";
+                tBDeskLyricBack.Text = "小萌Music";
                 canvasDeskLyricForeMove.Width = tBDeskLyricBack.ActualWidth;
             }
         }
@@ -1353,14 +1353,14 @@ namespace Lemon_App
                     //  MessageBox.Show("s");
                 };
                 tb.FontSize = 18;
-              //  tb.Margin = new Thickness(0, 0, 0, 20);
+                tb.Margin = new Thickness(0, 0, 0, 10);
                 tb.TextWrapping = TextWrapping.Wrap;
                 tb.TextAlignment = TextAlignment.Center;
                 tb.FontSize = fontSmallA;
                 tb.FontFamily = CFontFamily;
                 tb.Foreground = new SolidColorBrush(Color.FromArgb(CA, CR, CG, CB));
                 tb.Background = new SolidColorBrush(Colors.Transparent);
-                tb.Height = lyricTextBlockHeight;
+                tb.Height = lyricTextBlockHeight-10;
                 tb.Text = txt.Replace("^", "\r\n").Replace("//", "");
                 commonLyricStackPanel.Children.Add(tb);
                 index++;

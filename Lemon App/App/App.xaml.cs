@@ -39,7 +39,8 @@ namespace Lemon_App
             Current.DispatcherUnhandledException += Current_DispatcherUnhandledException;
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             Startup += delegate {
-                mutex = new Mutex(true, "Lemon App", out bool ret);
+                bool ret;
+                mutex = new Mutex(true, "Lemon App", out ret);
                 if (!ret)
                     Environment.Exit(0);
             };

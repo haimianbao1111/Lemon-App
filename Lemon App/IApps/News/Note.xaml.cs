@@ -25,7 +25,7 @@ namespace Lemon_App
             jz.Text = "加载中";
             jz.Visibility = Visibility.Visible;
                 var s = (DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000000;
-            ass = await Uuuhh.GetNewsDataAsync($"https://www.toutiao.com/api/pc/feed/?category={info}&utm_source=toutiao&widen=1&tadrequire=true&max_behot_time={s}&max_behot_time_tmp={s}&as=A1156950D5231C8&cp=59051331BC08CE1", Encoding.UTF8);
+            ass = await Uuuhh.GetWebDataAsync($"https://www.toutiao.com/api/pc/feed/?category={info}&utm_source=toutiao&widen=1&tadrequire=true&max_behot_time={s}&max_behot_time_tmp={s}&as=A1156950D5231C8&cp=59051331BC08CE1", Encoding.UTF8);
             JObject o = JObject.Parse(ass);
             int i = 0;
             while (i++ != 5)
