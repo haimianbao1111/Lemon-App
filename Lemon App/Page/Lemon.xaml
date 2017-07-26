@@ -95,7 +95,7 @@
         </EventTrigger>
     </Window.Triggers>
     <WindowChrome.WindowChrome>
-        <WindowChrome x:Name="c" GlassFrameThickness="0" ResizeBorderThickness="30" CaptionHeight="10" CornerRadius="0" />
+        <WindowChrome x:Name="c" GlassFrameThickness="0" ResizeBorderThickness="28" CaptionHeight="10" CornerRadius="0" />
     </WindowChrome.WindowChrome>
     <Window.Effect>
         <DropShadowEffect Color="#FF2D2D30" BlurRadius="40" ShadowDepth="0" Opacity="0.4"/>
@@ -110,7 +110,7 @@
         </Grid.Clip>
         <Border x:Name="BackgroundPage" CornerRadius="3"/>
         <Grid x:Name="ContentPage" >
-            <Grid x:Name="IContentPage" Margin="63,0,0,0" Background="White" MouseLeftButtonDown="Window_MouseLeftButtonDown">
+            <Grid x:Name="IContentPage" Margin="63,0,0,0" Background="White">
                 <local:uSeRhOmE x:Name="User" Visibility="Collapsed"  />
                 <local:IMBOX x:Name="Robot" Visibility="Collapsed" />
                 <local:MusicControl x:Name="Music"/>
@@ -192,8 +192,8 @@
         </Grid>
         <Border x:Name="border" Background="#FF3399FF" CornerRadius="14" HorizontalAlignment="Left" Height="45" Margin="90,-28,0,0" VerticalAlignment="Top" Width="25" MouseDown="border_MouseDown_1">
             <Grid>
-                <Border Height="5" VerticalAlignment="Bottom" Margin="5,0,0,7" Width="5" HorizontalAlignment="Left" Background="White" CornerRadius="5"/>
-                <Border Height="5" VerticalAlignment="Bottom" Margin="0,0,5,7" Width="5" HorizontalAlignment="Right" Background="White" CornerRadius="5"/>
+                <Border Height="5" VerticalAlignment="Bottom" Margin="5,0,0,7" Width="5" HorizontalAlignment="Left" Background="White" CornerRadius="5" MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
+                <Border Height="5" VerticalAlignment="Bottom" Margin="0,0,5,7" Width="5" HorizontalAlignment="Right" Background="White" CornerRadius="5" MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
             </Grid>
         </Border>
     </Grid>
