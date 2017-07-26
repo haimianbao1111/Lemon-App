@@ -60,7 +60,7 @@ namespace Lemon_App
             }
         }
 
-        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        public void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
                 this.DragMove();
@@ -359,16 +359,14 @@ namespace Lemon_App
             if (fx == 0)
             {
                 fx = 1;
-                BackgroundPage.Background = new ImageBrush(new BitmapImage(new Uri("http://att.x2.hiapk.com/forum/201312/23/202538bqnu0t2xnoq0nuox.jpg")));
                 (Resources["animation"] as Storyboard).Begin();
-                (Resources["s"] as Storyboard).Begin();
+                (Resources["START"] as Storyboard).Begin();
             }
             else
             {
                 fx = 0;
                 (Resources["animation"] as Storyboard).Begin();
-                (Resources["op"] as Storyboard).Begin();
-                BackgroundPage.Background = new SolidColorBrush(Colors.Transparent);
+                (Resources["STOP"] as Storyboard).Begin();
             }
         }
     }

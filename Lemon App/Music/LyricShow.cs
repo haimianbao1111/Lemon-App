@@ -496,7 +496,7 @@ namespace Lemon_App
         /// <summary>
         /// 非高亮歌词的字体不透明度
         /// </summary>
-        private static byte cA=255;
+        private static byte cA=200;
         /// <summary>
         /// 非高亮歌词的字体不透明度
         /// </summary>
@@ -508,7 +508,7 @@ namespace Lemon_App
         /// <summary>
         /// 非高亮歌词的字体Red
         /// </summary>
-        private static byte cR = 220;
+        private static byte cR = 255;
         /// <summary>
         /// 非高亮歌词的字体Red
         /// </summary>
@@ -523,7 +523,7 @@ namespace Lemon_App
         /// <summary>
         /// 非高亮歌词的字体Green
         /// </summary>
-        private static byte cG = 220;
+        private static byte cG = 255;
         /// <summary>
         /// 非高亮歌词的字体Green
         /// </summary>
@@ -538,7 +538,7 @@ namespace Lemon_App
         /// <summary>
         /// 非高亮歌词的字体Blue
         /// </summary>
-        private static byte cB = 220;
+        private static byte cB = 255;
         /// <summary>
         /// 非高亮歌词的字体Blue
         /// </summary>
@@ -572,7 +572,7 @@ namespace Lemon_App
         /// <summary>
         /// 高亮歌词的字体不透明度
         /// </summary>
-        private static byte hA=255;
+        private static byte hA=200;
         /// <summary>
         /// 高亮歌词的字体不透明度
         /// </summary>
@@ -617,7 +617,7 @@ namespace Lemon_App
         /// <summary>
         /// 高亮歌词的字体Blue
         /// </summary>
-        private static byte hB=10;
+        private static byte hB=255;
         /// <summary>
         /// 高亮歌词的字体Blue
         /// </summary>
@@ -1389,14 +1389,14 @@ namespace Lemon_App
                         {
                             TextBlock LastTB = commonLyricStackPanel.Children[LyricShow.LastLyricIndex] as TextBlock;
                             LastTB.Visibility = Visibility.Visible;
-                            LastTB.Foreground = new SolidColorBrush(Color.FromArgb(HA, CR, CG, CB));
+                            LastTB.Foreground = new SolidColorBrush(Color.FromArgb(CA, CR, CG, CB));
                             //         fontSizeToSmall(LastTB);//把上一句的歌词字体由大渐变到小
                         }                                                                  
                         TextBlock CurrentTB = commonLyricStackPanel.Children[LyricShow.CurrentLyricIndex] as TextBlock;
                         tBFocusLyricBack.Visibility = Visibility.Hidden;
                //         LyricTextBlockHeight = CurrentTB.ActualHeight + 20;
                         //canvasFocusLyricForeMove.Visibility = Visibility.Hidden;
-                        CurrentTB.Foreground = new SolidColorBrush(Color.FromArgb(HA, 49, 194, 124));
+                        CurrentTB.Foreground = new SolidColorBrush(Color.FromArgb(255, 113, 241, 180));
                         CurrentTB.FontFamily = HFontFamily;
                         tBFocusLyricBack.Text = CurrentTB.Text;
                         if (isOpenDeskLyric == true)

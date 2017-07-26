@@ -682,7 +682,10 @@ namespace Lemon_App
             {
                 h.Visibility = Visibility.Collapsed;
                 G.Visibility = Visibility.Visible;
+                BlurPage.Visibility = Visibility.Visible;
                 h.Margin = new Thickness(-40, 40, 40, -20);
+                (Resources["START"] as Storyboard).Begin();
+                BlurPage.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-40, 40, 40, -20), new Thickness(0), TimeSpan.FromSeconds(0.1)));
                 G.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-40, 40, 40, -20), new Thickness(0, 0, 0, 70), TimeSpan.FromSeconds(0.1)));
             }
             else
@@ -690,6 +693,8 @@ namespace Lemon_App
                 h.Visibility = Visibility.Visible;
                 G.Visibility = Visibility.Collapsed;
                 G.Margin = new Thickness(-40, 40, 40, -20);
+                BlurPage.Visibility = Visibility.Collapsed;
+                (Resources["STOP"] as Storyboard).Begin();
                 h.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-40, 40, 40, -20), new Thickness(0, 0, 0, 70), TimeSpan.FromSeconds(0.1)));
             }
         }

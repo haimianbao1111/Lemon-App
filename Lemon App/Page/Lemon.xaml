@@ -56,27 +56,42 @@
                 <EasingThicknessKeyFrame KeyTime="0:0:0.4" Value="90,-28,0,0"/>
             </ThicknessAnimationUsingKeyFrames>
         </Storyboard>
-        <Storyboard x:Key="s">
-            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="TopPage">
-                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#E5FAFAFA"/>
-            </ColorAnimationUsingKeyFrames>
-            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="IContentPage">
-                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#CCFFFFFF"/>
-            </ColorAnimationUsingKeyFrames>
+        <Storyboard x:Key="START">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="TopPage">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="IContentPage">
+                <EasingThicknessKeyFrame KeyTime="0:0:0.2" Value="0"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="border">
+                <EasingThicknessKeyFrame KeyTime="0:0:0.2" Value="30,-28,0,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="TopPage">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Collapsed}"/>
+            </ObjectAnimationUsingKeyFrames>
         </Storyboard>
-        <Storyboard x:Key="op">
-            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="TopPage">
-                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FFFAFAFA"/>
-            </ColorAnimationUsingKeyFrames>
-            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="IContentPage">
-                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="White"/>
-            </ColorAnimationUsingKeyFrames>
+        <Storyboard x:Key="STOP">
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="border">
+                <EasingThicknessKeyFrame KeyTime="0:0:0.2" Value="90,-28,0,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="TopPage">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="IContentPage">
+                <EasingThicknessKeyFrame KeyTime="0:0:0.2" Value="63,0,0,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="TopPage">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
         </Storyboard>
 
     </Window.Resources>
     <Window.Triggers>
         <EventTrigger RoutedEvent="FrameworkElement.Loaded">
-            <BeginStoryboard Storyboard="{StaticResource op}"/>
+            <BeginStoryboard Storyboard="{StaticResource START}"/>
+            <BeginStoryboard Storyboard="{StaticResource STOP}"/>
         </EventTrigger>
     </Window.Triggers>
     <WindowChrome.WindowChrome>
@@ -95,7 +110,7 @@
         </Grid.Clip>
         <Border x:Name="BackgroundPage" CornerRadius="3"/>
         <Grid x:Name="ContentPage" >
-            <Grid x:Name="IContentPage" Margin="63,0,0,0" Background="White">
+            <Grid x:Name="IContentPage" Margin="63,0,0,0" Background="White" MouseLeftButtonDown="Window_MouseLeftButtonDown">
                 <local:uSeRhOmE x:Name="User" Visibility="Collapsed"  />
                 <local:IMBOX x:Name="Robot" Visibility="Collapsed" />
                 <local:MusicControl x:Name="Music"/>
