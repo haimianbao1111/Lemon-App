@@ -10,9 +10,6 @@
         <DropShadowEffect ShadowDepth="0" BlurRadius="20" Opacity="0.4"/>
     </Window.Effect>
     <Grid x:Name="b" Margin="20">
-        <Grid.Effect>
-            <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.4"/>
-        </Grid.Effect>
         <Grid.Background>
             <ImageBrush Stretch="UniformToFill" ImageSource="http://i9.download.fd.pchome.net/t_960x600/g1/M00/10/15/ooYBAFWoU_mIZ8UZAAL0iXuHXcgAACmNwIIMlcAAvSh377.jpg"/>
         </Grid.Background>

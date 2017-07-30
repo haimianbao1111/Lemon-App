@@ -68,6 +68,8 @@ namespace Lemon_App
             var k = z - (double)myInfo.Info.AvailablePhysicalMemory / 1024 / 1024;
             var l = k / z;
             pb.Value = 360 * l;
+            if (l >= 0.8)
+                Window_MouseDoubleClick(null, null);
             IPv4InterfaceStatistics interfaceStats = nic.GetIPv4Statistics();
             int bytesSentSpeed = (int)(interfaceStats.BytesSent - bt) / 1024;
             int bytesReceivedSpeed = (int)(interfaceStats.BytesReceived - br) / 1024;

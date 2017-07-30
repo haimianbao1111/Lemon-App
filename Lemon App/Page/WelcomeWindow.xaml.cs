@@ -41,7 +41,7 @@ namespace Lemon_App
             DateTime tmCur = DateTime.Now;
             if (tmCur.Hour >= 18 && tmCur.Hour <= 24)
             {
-                b.Background = new ImageBrush(new BitmapImage(new Uri("https://a-ssl.duitang.com/uploads/item/201208/12/20120812230254_czPMZ.thumb.700_0.jpeg")));
+                b.Background = new ImageBrush(new BitmapImage(new Uri("http://i9.download.fd.pchome.net/t_960x600/g1/M00/10/15/ooYBAFWoU_mIZ8UZAAL0iXuHXcgAACmNwIIMlcAAvSh377.jpg")));
                 Welcome.Inlines.Add(new Run($"晚上好呀！"));
                 Welcome.Inlines.Add(new LineBreak());
                 Welcome.Inlines.Add(new Run("早睡早起身体好") { FontSize = 14 }); }
