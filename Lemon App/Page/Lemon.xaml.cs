@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lemon_App.Page;
+using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
@@ -153,6 +154,7 @@ namespace Lemon_App
             RegisterHotKey(handle, 126, (uint)4, (uint)System.Windows.Forms.Keys.X);
             RegisterHotKey(handle, 127, (uint)4, (uint)System.Windows.Forms.Keys.A);
             RegisterHotKey(handle, 128, (uint)4, (uint)System.Windows.Forms.Keys.End);
+            RegisterHotKey(handle, 129, (uint)4, (uint)System.Windows.Forms.Keys.Q);
             InstallHotKeyHook(this);
             // FontFamily = new FontFamily(".PingFang SC");
             Font.Items.Clear();
@@ -276,6 +278,8 @@ namespace Lemon_App
                     Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"/Note.exe");
                 else if (wParam.ToInt32() == 128)
                     He.SaveControlImage(this, "data.bmp");
+                else if (wParam.ToInt32() == 129)
+                    new MG().Show();
             }
             return IntPtr.Zero;
         }

@@ -212,6 +212,9 @@
     <Compile Include="IApps\User\UFWindow.xaml.cs">
       <DependentUpon>UFWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Page\MG.xaml.cs">
+      <DependentUpon>MG.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Page\UpdataWindow.xaml.cs">
       <DependentUpon>UpdataWindow.xaml</DependentUpon>
     </Compile>
@@ -334,6 +337,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="IApps\User\UFWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page\MG.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
