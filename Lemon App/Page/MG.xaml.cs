@@ -11,6 +11,7 @@ using System.Windows.Documents;
 using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -24,6 +25,8 @@ namespace Lemon_App.Page
         public MG()
         {
             InitializeComponent();
+            var c = new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.3));
+            this.BeginAnimation(OpacityProperty, c);
         }
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -32,7 +35,9 @@ namespace Lemon_App.Page
         }
         private void CLOSE_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Close();
+            var c = new DoubleAnimation(1, 0, TimeSpan.FromSeconds(0.3));
+            c.Completed += delegate { Close(); };
+            this.BeginAnimation(OpacityProperty, c);
         }
         [DllImport("user32.dll", EntryPoint = "keybd_event", SetLastError = true)]
         public static extern void keybd_event(Keys bVk, byte bScan, uint dwFlags, uint dwExtraInfo);
