@@ -805,6 +805,14 @@ namespace Lemon_App
 
         private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
         {
+            if (ActualWidth > 700)
+            {
+                (Resources["MIN"] as Storyboard).Stop();
+                (Resources["MAX"] as Storyboard).Begin();
+            }
+            else {
+                (Resources["MAX"] as Storyboard).Stop();
+                (Resources["MIN"] as Storyboard).Begin(); }
             LyricShow.refreshLyricShowUIWhenChangeWINOrFontSize();
             foreach (var o in listBox.Items)
             {

@@ -815,8 +815,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <Storyboard x:Key="OnMouseLeave1"/>
-        <Storyboard x:Key="OnMouseMove1"/>
         <Style x:Key="RepeatButtonTransparent3" TargetType="{x:Type RepeatButton}">
             <Setter Property="OverridesDefaultStyle" Value="true"/>
             <Setter Property="Background" Value="Transparent"/>
@@ -983,8 +981,6 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-        <Storyboard x:Key="OnMouseMove2"/>
-        <Storyboard x:Key="OnMouseLeave2"/>
         <Style x:Key="ComboBoxStyle1"  TargetType="{x:Type ComboBox}">
             <Setter Property="Margin" Value="5"/>
             <Setter Property="Width" Value="120"/>
@@ -1124,11 +1120,78 @@
                 <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FFA0A0A0"/>
             </ColorAnimationUsingKeyFrames>
         </Storyboard>
+        <Storyboard x:Key="MAX">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.HorizontalAlignment)" Storyboard.TargetName="tx">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static HorizontalAlignment.Stretch}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.VerticalAlignment)" Storyboard.TargetName="tx">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static VerticalAlignment.Stretch}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="lrcname">
+                <EasingThicknessKeyFrame KeyTime="0" Value="10,10,10,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="zk">
+                <EasingThicknessKeyFrame KeyTime="0" Value="10,35,10,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.HorizontalAlignment)" Storyboard.TargetName="border3">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static HorizontalAlignment.Stretch}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.VerticalAlignment)" Storyboard.TargetName="border3">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static VerticalAlignment.Stretch}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="grid">
+                <EasingThicknessKeyFrame KeyTime="0" Value="300,80,20,30"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="tx">
+                <EasingThicknessKeyFrame KeyTime="0" Value="0,35,350,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="border3">
+                <EasingThicknessKeyFrame KeyTime="0" Value="0,260,160,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="tx">
+                <EasingDoubleKeyFrame KeyTime="0" Value="300"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="tx">
+                <EasingDoubleKeyFrame KeyTime="0" Value="300"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MIN">
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="tx">
+                <EasingThicknessKeyFrame KeyTime="0" Value="0,35,0,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.HorizontalAlignment)" Storyboard.TargetName="tx">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static HorizontalAlignment.Stretch}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.VerticalAlignment)" Storyboard.TargetName="tx">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static VerticalAlignment.Top}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.HorizontalAlignment)" Storyboard.TargetName="border3">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static HorizontalAlignment.Stretch}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.VerticalAlignment)" Storyboard.TargetName="border3">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static VerticalAlignment.Top}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="border3">
+                <EasingThicknessKeyFrame KeyTime="0" Value="160,220,0,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="lrcname">
+                <EasingThicknessKeyFrame KeyTime="0" Value="10,238,10,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="zk">
+                <EasingThicknessKeyFrame KeyTime="0" Value="10,263,10,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.HorizontalAlignment)" Storyboard.TargetName="grid">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static HorizontalAlignment.Stretch}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.VerticalAlignment)" Storyboard.TargetName="grid">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static VerticalAlignment.Stretch}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="grid">
+                <EasingThicknessKeyFrame KeyTime="0" Value="20,300,20,30"/>
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
     </UserControl.Resources>
     <UserControl.Triggers>
-        <EventTrigger RoutedEvent="UIElement.MouseMove" SourceName="border">
-            <BeginStoryboard x:Name="OnMouseMove1_BeginStoryboard" Storyboard="{StaticResource OnMouseMove1}"/>
-        </EventTrigger>
         <EventTrigger RoutedEvent="UIElement.MouseMove" SourceName="border1">
             <BeginStoryboard x:Name="OnMouseMove3_BeginStoryboard" Storyboard="{StaticResource OnMouseMove3}"/>
         </EventTrigger>
@@ -1140,11 +1203,6 @@
         </EventTrigger>
         <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="popup2">
             <BeginStoryboard x:Name="OnMouseLeave4_BeginStoryboard" Storyboard="{StaticResource OnMouseLeave4}"/>
-        </EventTrigger>
-        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
-            <BeginStoryboard Storyboard="{StaticResource D}"/>
-            <BeginStoryboard Storyboard="{StaticResource START}"/>
-            <BeginStoryboard Storyboard="{StaticResource STOP}"/>
         </EventTrigger>
     </UserControl.Triggers>
     <Grid x:Name="Cip">
