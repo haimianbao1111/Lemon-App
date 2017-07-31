@@ -332,9 +332,9 @@ namespace Lemon_App
                 if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{img}.jpg"))
                 {
                     new WebClient().DownloadFile(new Uri(He.on), AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{img}.jpg");
-                    tx.Background = new ImageBrush(new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{img}.jpg", UriKind.Absolute)));
+                    tx.Background = new ImageBrush(new System.Drawing.Bitmap(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{img}.jpg").ToImageSource());
                 }
-                else tx.Background = new ImageBrush(new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{img}.jpg", UriKind.Absolute)));
+                else tx.Background = new ImageBrush(new System.Drawing.Bitmap(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{img}.jpg").ToImageSource());
                 if (!((listBox.SelectedItem as MusicItemControl).Music as Music).IsDF)
                 {
                     musicid = ((listBox.SelectedItem as MusicItemControl).Music as Music).MusicID;
@@ -1168,6 +1168,12 @@ namespace Lemon_App
         private void border_MouseDown_9(object sender, MouseButtonEventArgs e)
         {
             Clipboard.SetText(a);
+        }
+
+        private void border1_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (data.Count != 0)
+                popup1.IsOpen = true;
         }
     }
 }

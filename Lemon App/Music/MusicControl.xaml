@@ -1192,9 +1192,6 @@
         </Storyboard>
     </UserControl.Resources>
     <UserControl.Triggers>
-        <EventTrigger RoutedEvent="UIElement.MouseMove" SourceName="border1">
-            <BeginStoryboard x:Name="OnMouseMove3_BeginStoryboard" Storyboard="{StaticResource OnMouseMove3}"/>
-        </EventTrigger>
         <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="popup1">
             <BeginStoryboard x:Name="OnMouseLeave3_BeginStoryboard" Storyboard="{StaticResource OnMouseLeave3}"/>
         </EventTrigger>
@@ -1328,7 +1325,7 @@
                 </ListBox.ItemContainerStyle>
             </ListBox>
             <Grid Height="40" VerticalAlignment="Top">
-                <Border x:Name="border1"  Height="25" Margin="0,8,10,7" VerticalAlignment="Stretch" Background="White" CornerRadius="5" BorderBrush="#FFC5C5C5" BorderThickness="1" HorizontalAlignment="Right" Width="180">
+                <Border x:Name="border1"  Height="25" Margin="0,8,10,7" VerticalAlignment="Stretch" Background="White" CornerRadius="5" BorderBrush="#FFC5C5C5" BorderThickness="1" HorizontalAlignment="Right" Width="180" MouseDown="border1_MouseDown">
                     <Grid>
                         <Popup x:Name="popup1" Width="250" Height="200" AllowsTransparency="True" PopupAnimation="Fade" >
                             <Border Background="White" CornerRadius="5" Margin="10">
