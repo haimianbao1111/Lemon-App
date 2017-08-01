@@ -14,8 +14,8 @@
             </Border.Background>
             <!--ed:RegularPolygon Fill="White" InnerRadius="0.47211" Margin="5" PointCount="5" Stretch="Fill"/!-->
         </Border>
-        <Border Width="Auto" Height="Auto" Margin="55,35,0,0" CornerRadius="5" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF3399FF">
-            <TextBlock x:Name="Te" Height="Auto" TextWrapping="Wrap" Width="Auto" d:LayoutOverrides="LeftPosition, RightPosition" Cursor="" Margin="6" Foreground="White" FontSize="14" Text="欢迎回来"/>
+        <Border Width="Auto" Height="Auto" Margin="55,35,0,0" CornerRadius="5" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FFF0F0F0">
+            <TextBlock x:Name="Te" Height="Auto" TextWrapping="Wrap" Width="Auto" d:LayoutOverrides="LeftPosition, RightPosition" Cursor="" Margin="6" Foreground="#FF3E3E40" FontSize="14" Text="欢迎回来"/>
         </Border>
         <TextBlock Margin="50,15,40,35.78" TextWrapping="Wrap" Text="小萌机器人" Foreground="#FF2D2D30"/>
         <Border HorizontalAlignment="Left" Height="16" Margin="46,38,0,0" VerticalAlignment="Top" Width="10" RenderTransformOrigin="0.5,0.5">
@@ -27,7 +27,7 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Border.RenderTransform>
-            <Path Data="M68.2,31.8c-2.3-2.3-6.1-2.3-8.4,0l-56,56C0,91.6,2.7,98,8,98h112c5.3,0,8-6.4,4.2-10.2L68.2,31.8z" Fill="#FF3399FF" Stretch="Fill" Margin="0,0,0,-2.912"/>
+            <Path Data="M68.2,31.8c-2.3-2.3-6.1-2.3-8.4,0l-56,56C0,91.6,2.7,98,8,98h112c5.3,0,8-6.4,4.2-10.2L68.2,31.8z" Fill="#FFF0F0F0" Stretch="Fill" Margin="0,0,0,-2.912"/>
         </Border>
 
     </Grid>

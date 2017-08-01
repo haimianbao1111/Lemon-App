@@ -32,6 +32,15 @@ namespace Lemon_App
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
+            string[] s = {"别来无恙呀！","你好，我能为你做点什么呢？","你回来啦！","有何吩咐？","Hi~"};
+            Robot Rb = new Robot(s[new Random().Next(4)])
+            {
+                Width = Robot.ActualWidth,
+                Opacity = 0
+            };
+            Robot.Children.Add(Rb);
+            var b = new DoubleAnimation(1, TimeSpan.FromSeconds(0.2));
+            Rb.BeginAnimation(OpacityProperty, b);
             Robot.Width = this.ActualWidth;
         }
 

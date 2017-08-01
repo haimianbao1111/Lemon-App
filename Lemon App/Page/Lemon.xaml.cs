@@ -357,21 +357,5 @@ namespace Lemon_App
         {
             ufp.IsOpen = !ufp.IsOpen;
         }
-        int fx = 0;
-        private void border_MouseDown_1(object sender, MouseButtonEventArgs e)
-        {
-            if (fx == 0)
-            {
-                fx = 1;
-                (Resources["animation"] as Storyboard).Begin();
-                (Resources["START"] as Storyboard).Begin();
-            }
-            else
-            {
-                fx = 0;
-                (Resources["animation"] as Storyboard).Begin();
-                (Resources["STOP"] as Storyboard).Begin();
-            }
-        }
     }
 }

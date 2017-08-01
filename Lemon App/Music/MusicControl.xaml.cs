@@ -682,6 +682,7 @@ namespace Lemon_App
                 BlurPage.Visibility = Visibility.Visible;
                 h.Margin = new Thickness(-40, 40, 40, -20);
                 (Resources["START"] as Storyboard).Begin();
+                (Window.GetWindow(this).Resources["START"] as Storyboard).Begin();
                 BlurPage.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-40, 40, 40, -20), new Thickness(0), TimeSpan.FromSeconds(0.1)));
                 G.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-40, 40, 40, -20), new Thickness(0, 0, 0, 70), TimeSpan.FromSeconds(0.1)));
             }
@@ -692,6 +693,7 @@ namespace Lemon_App
                 G.Margin = new Thickness(-40, 40, 40, -20);
                 BlurPage.Visibility = Visibility.Collapsed;
                 (Resources["STOP"] as Storyboard).Begin();
+                (Window.GetWindow(this).Resources["STOP"] as Storyboard).Begin();
                 h.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(-40, 40, 40, -20), new Thickness(0, 0, 0, 70), TimeSpan.FromSeconds(0.1)));
             }
         }

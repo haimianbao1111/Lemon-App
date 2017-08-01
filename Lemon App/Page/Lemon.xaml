@@ -50,12 +50,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <Storyboard x:Key="animation">
-            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="border">
-                <EasingThicknessKeyFrame KeyTime="0:0:0.2" Value="90,-25,0,0"/>
-                <EasingThicknessKeyFrame KeyTime="0:0:0.4" Value="90,-28,0,0"/>
-            </ThicknessAnimationUsingKeyFrames>
-        </Storyboard>
+        <Storyboard x:Key="animation"/>
         <Storyboard x:Key="START">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="TopPage">
                 <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
@@ -63,18 +58,12 @@
             <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="IContentPage">
                 <EasingThicknessKeyFrame KeyTime="0:0:0.2" Value="0"/>
             </ThicknessAnimationUsingKeyFrames>
-            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="border">
-                <EasingThicknessKeyFrame KeyTime="0:0:0.2" Value="30,-28,0,0"/>
-            </ThicknessAnimationUsingKeyFrames>
             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="TopPage">
                 <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Visible}"/>
                 <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Collapsed}"/>
             </ObjectAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="STOP">
-            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="border">
-                <EasingThicknessKeyFrame KeyTime="0:0:0.2" Value="90,-28,0,0"/>
-            </ThicknessAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="TopPage">
                 <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
@@ -111,11 +100,11 @@
         <Border x:Name="BackgroundPage" CornerRadius="3"/>
         <Grid x:Name="ContentPage" >
             <Grid x:Name="IContentPage" Margin="63,0,0,0" Background="White">
-                <local:uSeRhOmE x:Name="User" Visibility="Collapsed"  />
-                <local:IMBOX x:Name="Robot" Visibility="Collapsed" />
-                <local:MusicControl x:Name="Music"/>
+                <local:uSeRhOmE x:Name="User" Visibility="Collapsed"  MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
+                <local:IMBOX x:Name="Robot" Visibility="Collapsed" MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
+                <local:MusicControl x:Name="Music" MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
                 <local:AllControl x:Name="All" Visibility="Collapsed" />
-                <_2048:_2048Control x:Name="_2048" Visibility="Collapsed"  />
+                <_2048:_2048Control x:Name="_2048" Visibility="Collapsed" MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
             </Grid>
             <Grid x:Name="TopPage" MinHeight="50" Grid.RowSpan="1" HorizontalAlignment="Left" Width="63" Background="#FFFAFAFA" MouseDown="TopPage_MouseDown" MouseLeftButtonDown="Window_MouseLeftButtonDown">
                 <Border Width="1" HorizontalAlignment="Right" Background="#FFEAEAEA"/>
@@ -190,11 +179,5 @@
                 </Grid>
             </Grid>
         </Grid>
-        <Border x:Name="border" Background="#FF3399FF" CornerRadius="14" HorizontalAlignment="Left" Height="45" Margin="90,-28,0,0" VerticalAlignment="Top" Width="25" MouseDown="border_MouseDown_1">
-            <Grid>
-                <Border Height="5" VerticalAlignment="Bottom" Margin="5,0,0,7" Width="5" HorizontalAlignment="Left" Background="White" CornerRadius="5" MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
-                <Border Height="5" VerticalAlignment="Bottom" Margin="0,0,5,7" Width="5" HorizontalAlignment="Right" Background="White" CornerRadius="5" MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
-            </Grid>
-        </Border>
     </Grid>
 </Window>
