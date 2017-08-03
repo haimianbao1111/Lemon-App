@@ -129,12 +129,6 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="topage">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
-            </DoubleAnimationUsingKeyFrames>
-            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="topage">
-                <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Collapsed}"/>
-            </ObjectAnimationUsingKeyFrames>
         </Storyboard>
     </Window.Resources>
     <Window.Effect>
@@ -148,13 +142,6 @@
                 </RectangleGeometry.Rect>
             </RectangleGeometry>
         </Grid.Clip>
-        <Grid x:Name="topage" Height="40" VerticalAlignment="Top" Background="#FFFAFAFA">
-            <Border Background="#FFEAEAEA" Height="1" VerticalAlignment="Bottom" Margin="0,0,0,-1"/>
-            <Border x:Name="CLOSE" ToolTip="关闭" HorizontalAlignment="Left" Margin="5,14,0,0" Width="13" Height="13" Background="#FFFE5E56" CornerRadius="13" MouseDown="TextBlock_MouseDown" VerticalAlignment="Top"/>
-            <Border x:Name="MIN" ToolTip="最大化" HorizontalAlignment="Left" Margin="25,14,0,0" Width="13" Height="13" Background="#FFFEBC2D" CornerRadius="13" VerticalAlignment="Top"/>
-            <Border x:Name="MAX" ToolTip="最小化" Margin="45,14,0,0" Height="13" Background="#FF60C940" CornerRadius="13" VerticalAlignment="Top" HorizontalAlignment="Left" Width="13"/>
-            <TextBlock x:Name="textBlock" Height="18" Margin="58,13,58,0" TextWrapping="Wrap" Text="登陆到小萌" VerticalAlignment="Top" Foreground="#FFCFCFCF" TextAlignment="Center"/>
-        </Grid>
         <Popup x:Name="op" Width="350" local:PopopHelper.PopupPlacementTarget="{Binding ElementName=CLOSE}" Height="200" Placement="Right" HorizontalOffset="10">
             <Border x:Name="po" Background="White" BorderThickness="2" BorderBrush="#FFDEDEDE">
                 <Grid KeyDown="Grid_KeyDown">
@@ -206,5 +193,7 @@
         <Border x:Name="border"  Height="30" VerticalAlignment="Bottom" Width="80" Margin="0,0,10,10" Background="#00000000"  MouseDown="border_MouseDown_2" HorizontalAlignment="Right" Visibility="Collapsed" Opacity="0">
             <TextBlock Text="取消登录" Foreground="#FFB1B1B1" Margin="0,7,0,0" TextAlignment="Center"/>
         </Border>
+        <Border x:Name="CLOSE" ToolTip="关闭" HorizontalAlignment="Left" Margin="10,10,0,0" Width="13" Height="13" Background="#FFB8B8B8" CornerRadius="13" MouseDown="TextBlock_MouseDown" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock" Height="18" Margin="28,7,28,0" TextWrapping="Wrap" Text="登陆到小萌" VerticalAlignment="Top" Foreground="#FFCFCFCF" TextAlignment="Center"/>
     </Grid>
 </Window>

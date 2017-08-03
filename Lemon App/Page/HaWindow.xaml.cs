@@ -103,7 +103,7 @@ namespace Lemon_App
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            Environment.Exit(0);
+            Process.GetCurrentProcess().Kill();
         }
         private void Window_MouseMove(object sender, MouseEventArgs e)
         {

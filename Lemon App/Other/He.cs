@@ -322,7 +322,7 @@ namespace Lemon_App
         public static SettingsData Settings = new SettingsData();
         public static WebProxy proxy = new WebProxy();
         public static string Url = "";
-        public static string KMS = "4.0.0.0";
+        public static string KMS = "4.0.1.9";
         public static int MS = 0;
         public static string on = "";
 

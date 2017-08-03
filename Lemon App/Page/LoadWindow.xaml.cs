@@ -20,6 +20,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Forms;
 using mshtml;
+using System.Diagnostics;
 
 namespace Lemon_App
 {
@@ -237,7 +238,7 @@ namespace Lemon_App
         private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
             var c = new DoubleAnimation(1, 0, TimeSpan.FromSeconds(0.3));
-            c.Completed += delegate { Environment.Exit(0); };
+            c.Completed += delegate { Process.GetCurrentProcess().Kill(); };
             this.BeginAnimation(OpacityProperty, c);
         }
         private void Email_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
