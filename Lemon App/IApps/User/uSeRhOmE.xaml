@@ -53,11 +53,7 @@
 	C10,5.56,10.56,5,11.25,5z M8.5,16.5H10v-7H8.5v-1h4v8H14v1H8.5V16.5z" Width="15" Height="15" HorizontalAlignment="Right" VerticalAlignment="Top" Stretch="Fill" />
         </Grid>
         <Grid Height="150" Margin="0,0,0,100">
-            <Border x:Name="TX" Height="100" Margin="0,10,0,0" VerticalAlignment="Top" CornerRadius="125" Background="#FF16537E" MouseDown="TX_MouseDown" BorderBrush="#FF3399FF" BorderThickness="2" Width="100">
-                <Border.Effect>
-                    <DropShadowEffect Opacity="0.4" ShadowDepth="0" BlurRadius="10"/>
-                </Border.Effect>
-            </Border>
+            <Border x:Name="TX" Height="100" Margin="0,10,0,0" VerticalAlignment="Top" CornerRadius="125" MouseDown="TX_MouseDown" BorderThickness="10" Width="100" BorderBrush="#99FFFFFF"/>
             <TextBlock x:Name="NM" Height="28.313" Margin="10,115,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF494949" FontSize="20" TextAlignment="Center"><Run Text="Lemon User"/></TextBlock>
         </Grid>
     </Grid>

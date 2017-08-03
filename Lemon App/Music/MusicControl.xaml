@@ -221,7 +221,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ListBox}">
                         <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="1" SnapsToDevicePixels="true">
-                            <ScrollViewer PanningMode="Both" Focusable="false" Padding="{TemplateBinding Padding}" Template="{DynamicResource SCS}" ScrollChanged="ScrollViewer_ScrollChanged">
+                            <ScrollViewer x:Name="sv" PanningMode="Both" Focusable="false" Padding="{TemplateBinding Padding}" Template="{DynamicResource SCS}" ScrollChanged="ScrollViewer_ScrollChanged">
                                 <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Style="{DynamicResource ItemsPresenterStyle}" Margin="0,0,5,0"/>
                             </ScrollViewer>
                         </Border>
@@ -1213,11 +1213,14 @@
             <Grid Background="#4C000000" />
         </Grid>
         <Popup x:Name="popupop" Width="180" Height="100" AllowsTransparency="True" PopupAnimation="Fade" Placement="Right">
-            <Border Background="White" CornerRadius="5">
+            <Border Background="White" CornerRadius="5" Margin="10">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="10" Opacity="0.4" ShadowDepth="0"/>
+                </Border.Effect>
                 <Grid>
-                    <TextBlock x:Name="download_name" Margin="10,10,10,60" TextWrapping="Wrap" Text="Name" Foreground="#FF1B1B1C" TextAlignment="Center"/>
-                    <ProgressBar x:Name="p" Height="10" Margin="10,0" BorderBrush="#FF31C27C" Foreground="#FF31C27C" Background="White"/>
-                    <Border x:Name="CLOSE" ToolTip="关闭" Height="13" Background="#FFFE5E56" CornerRadius="13" MouseDown="CLOSE_MouseDown" VerticalAlignment="Bottom" Width="13" Margin="0,0,0,10"/>
+                    <TextBlock x:Name="download_name" Margin="10,18,10,25" TextWrapping="Wrap" Text="Name" Foreground="#FF616161" TextAlignment="Center"/>
+                    <ProgressBar x:Name="p" Height="5" Margin="10,0,10,10" BorderBrush="#FF31C27C" Foreground="#FF31C27C" Background="White" VerticalAlignment="Bottom"/>
+                    <Border x:Name="CLOSE" ToolTip="停止" Height="13" Background="#FFFE5E56" CornerRadius="13" MouseDown="CLOSE_MouseDown" VerticalAlignment="Top" Width="13" Margin="5,5,0,0" HorizontalAlignment="Left"/>
                 </Grid>
             </Border>
         </Popup>
@@ -1391,16 +1394,14 @@
                     </Grid>
                     <Border
                 Width="25" ToolTip="桌面歌词" x:Name="border2" Margin="0,22.5,10,22.5" MouseDown="Border_MouseDown_5" Height="25" HorizontalAlignment="Right" CornerRadius="5" Background="#00000000" BorderBrush="#00000000">
-                        <Grid
-                >
+                        <Grid>
                             <Popup
                 Width="70" PopupAnimation="Fade" x:Name="popup2" Height="80" AllowsTransparency="True">
                                 <Border
                 Margin="5" CornerRadius="5" Background="White">
-                                    <Border.Effect
-                >
+                                    <Border.Effect>
                                         <DropShadowEffect
-                Opacity="0.3"/>
+                Opacity="0.3" ShadowDepth="0"/>
                                     </Border.Effect>
                                     <Border
                 Width="50" MouseDown="Border_MouseDown_7" Height="30" CornerRadius="5" Background="#FF007ACC">

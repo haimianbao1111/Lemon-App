@@ -304,7 +304,7 @@ namespace Lemon_App
                 return LT;
             }
         }
-
+        bool autois = true;
         private async void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (listBox.SelectedIndex != -1)
@@ -312,7 +312,13 @@ namespace Lemon_App
                 if ((listBox.SelectedItem as MusicItemControl).RS.Visibility != Visibility.Visible)
                     if ((listBox.SelectedItem as MusicItemControl).RC.Visibility != Visibility.Visible)
                         if (pz.Text == "HQ") pz.Text = "标准";
-
+                if (autois)
+                {
+                    if ((listBox.SelectedItem as MusicItemControl).RS.Visibility == Visibility.Visible)
+                        pz.Text = "HQ";
+                    if ((listBox.SelectedItem as MusicItemControl).RC.Visibility == Visibility.Visible)
+                        pz.Text = "HQ";
+                }
                 LyricShow.refreshLyricShow(0);
                 LyricShow.clearLyricShowAllText();
                 jd.Maximum = 1;
@@ -431,6 +437,7 @@ namespace Lemon_App
                                 File.Delete(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.ogg");
                                 loading.Text = "当前通道不稳定，已为你切换到标准品质";
                                 pz.Text = "标准";
+                                autois = false;
                                 await Task.Delay(1000);
                                 listBox_SelectionChanged(null, null);
                             }
@@ -591,6 +598,7 @@ namespace Lemon_App
                 File.Delete(AppDomain.CurrentDomain.BaseDirectory + $@"MusicCache/{musicid}.ogg");
                 loading.Text = "当前通道不稳定，已为你切换到标准品质";
                 pz.Text = "标准";
+                autois = false;
                 await Task.Delay(1000);
                 listBox_SelectionChanged(null, null);
             }
@@ -1143,16 +1151,19 @@ namespace Lemon_App
         {
             if (pz.Text == "HQ")
             {
+                autois = false;
                 pz.Text = "标准";
                 pz.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.2)));
             }
             else if (pz.Text == "标准")
             {
+                autois = false;
                 pz.Text = "经济";
                 pz.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.2)));
             }
             else
             {
+                autois = true;
                 pz.Text = "HQ";
                 pz.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.2)));
             }

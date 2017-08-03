@@ -133,13 +133,10 @@ namespace Lemon_App
             MemoryStream mStream = new MemoryStream(Encoding.UTF8.GetBytes(jsonString));
             return serializer.ReadObject(mStream);
         }
-
         public static string ToJSON(object obj)
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer()
-            {
-                MaxJsonLength = Int32.MaxValue
-            };
+            {MaxJsonLength = Int32.MaxValue};
             return serializer.Serialize(obj);
         }
     }

@@ -1403,13 +1403,9 @@ namespace Lemon_App
                         {
                            // canvasDeskLyricForeMove.Visibility = Visibility.Hidden;
                             if (string.IsNullOrWhiteSpace(CurrentTB.Text))
-                            {
                                 tBDeskLyricBack.Text = "......";
-                            }
                             else
-                            {
                                 tBDeskLyricBack.Text = CurrentTB.Text;
-                            }
                         }
                         LyricShow.LastLyricIndex = LyricShow.CurrentLyricIndex;
                         scrollLyric(LyricShow.CurrentLyricIndex);//滚动歌词                                               
