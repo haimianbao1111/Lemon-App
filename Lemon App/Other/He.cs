@@ -150,7 +150,7 @@ namespace Lemon_App
         {
             try
             {
-                HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create($"https://api.heweather.com/v5/now?city={Uri.EscapeUriString(info)}&key=f97e6a6ad4cd49babd0538747c86b88d");
+                HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create($"https://free-api.heweather.com/v5/now?city={Uri.EscapeUriString(info)}&key=f97e6a6ad4cd49babd0538747c86b88d");
                 if (He.Settings.isWebProxy) hwr.Proxy = He.proxy;
                 StreamReader sr = new StreamReader(hwr.GetResponse().GetResponseStream());
                 string html5 = sr.ReadToEnd().Replace("HeWeather5", "Weather");

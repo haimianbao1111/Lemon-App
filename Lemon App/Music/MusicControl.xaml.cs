@@ -632,15 +632,6 @@ namespace Lemon_App
             { t.Stop(); isR = false; s.Margin = new Thickness(11, 10, 9, 10); Bass.BASS_ChannelPause(stream); s.Data = Geometry.Parse("M40.2,3.8C36.4,0,30,2.7,30,8v112c0,5.3,6.4,8,10.2,4.2l56-56c2.3-2.3,2.3-6.1,0-8.4L40.2,3.8z"); }
             else { t.Start(); isR = true; s.Margin = new Thickness(11); Bass.BASS_ChannelPlay(stream, true); Bass.BASS_ChannelSetPosition(stream, jd.Value); s.Data = Geometry.Parse("M118.2,125.9c3.3,0,6-2.7,6-6V7.4c0-3.3-2.7-6-6-6h-36c-3.3,0-6,2.7-6,6v112.5c0,3.3,2.7,6,6,6H118.2z M46,125.9c3.3,0,6-2.7,6-6V7.4c0-3.3-2.7-6-6-6H10c-3.3,0-6,2.7-6,6v112.5c0,3.3,2.7,6,6,6H46z"); }
         }
-
-        private void jd_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.LeftButton == MouseButtonState.Pressed)
-            {
-                LyricShow.refreshLyricShow(Bass.BASS_ChannelBytes2Seconds(stream, Bass.BASS_ChannelGetPosition(stream)));
-                Bass.BASS_ChannelSetPosition(stream, jd.Value);
-            }
-        }
         private void textBlock4_MouseDown(object sender, MouseButtonEventArgs e)
         {
             DOWN.Visibility = Visibility.Visible;
@@ -1176,6 +1167,23 @@ namespace Lemon_App
         {
             if (data.Count != 0)
                 popup1.IsOpen = true;
+        }
+        bool ismove = false;
+        private void jd_MouseMove(object sender, MouseEventArgs e)
+        {
+            if(e.LeftButton==MouseButtonState.Pressed)
+            {
+                ismove = true;
+                t.Stop();
+                Bass.BASS_ChannelPause(stream);
+            }else if (ismove)
+            {
+                ismove = false;
+                LyricShow.refreshLyricShow(Bass.BASS_ChannelBytes2Seconds(stream, Bass.BASS_ChannelGetPosition(stream)));
+                Bass.BASS_ChannelPlay(stream, true);
+                Bass.BASS_ChannelSetPosition(stream, jd.Value);
+                t.Start();
+            }
         }
     }
 }

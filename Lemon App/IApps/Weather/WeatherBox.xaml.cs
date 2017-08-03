@@ -46,7 +46,7 @@ namespace Lemon_App
                 JObject p = JObject.Parse(await Uuuhh.GetWebAsync($"https://route.showapi.com/104-29?showapi_sign=cfa206656db244c089be2d1499735bb5&showapi_appid=29086&city={Uri.EscapeUriString(i)}"));
                 kqzl.Text = p["showapi_res_body"]["pm"]["quality"]+"  "+ p["showapi_res_body"]["pm"]["aqi"];
 
-                JObject obj = JObject.Parse(await Uuuhh.GetWebAsync($"https://api.heweather.com/v5/now?city={Uri.EscapeUriString(i)}&key=f97e6a6ad4cd49babd0538747c86b88d"));
+                JObject obj = JObject.Parse(await Uuuhh.GetWebAsync($"https://free-api.heweather.com/v5/now?city={Uri.EscapeUriString(i)}&key=f97e6a6ad4cd49babd0538747c86b88d"));
                 Biaoti.Text = "天气预报•" + obj["HeWeather5"][0]["basic"]["city"];
                 Qiwen.Text = obj["HeWeather5"][0]["now"]["tmp"] + "°";
                 Tianqi.Text = obj["HeWeather5"][0]["now"]["cond"]["txt"] + "    相对湿度 " + obj["HeWeather5"][0]["now"]["hum"] + "%   体感:"+ obj["HeWeather5"][0]["now"]["fl"]+"°";
@@ -54,7 +54,7 @@ namespace Lemon_App
                 allqiyanjd.Text = "气压:" + obj["HeWeather5"][0]["now"]["pres"] + "    能见度" + obj["HeWeather5"][0]["now"]["vis"];
                 Icon.Background =new ImageBrush(new BitmapImage(new Uri($"http://files.heweather.com/cond_icon/{obj["HeWeather5"][0]["now"]["cond"]["code"]}.png"))) { Stretch=Stretch.UniformToFill};
                 //7天天气预报
-                JObject obj1 = JObject.Parse(await Uuuhh.GetWebAsync($"https://api.heweather.com/v5/forecast?city={Uri.EscapeUriString(i)}&key=f97e6a6ad4cd49babd0538747c86b88d"));
+                JObject obj1 = JObject.Parse(await Uuuhh.GetWebAsync($"https://free-api.heweather.com/v5/forecast?city={Uri.EscapeUriString(i)}&key=f97e6a6ad4cd49babd0538747c86b88d"));
                 //Icon图标
                 iconw.Source = new BitmapImage(new Uri($"http://files.heweather.com/cond_icon/{obj1["HeWeather5"][0]["daily_forecast"][0]["cond"]["code_d"]}.png"));
                 iconww.Background =new ImageBrush( new BitmapImage(new Uri($"http://files.heweather.com/cond_icon/{obj1["HeWeather5"][0]["daily_forecast"][1]["cond"]["code_d"]}.png"))) { Stretch = Stretch.UniformToFill };

@@ -1376,7 +1376,7 @@
         <Border Height="70" VerticalAlignment="Bottom">
             <Grid Background="#00000000">
                 <Grid Background="#00000000" MouseDown="tx_MouseDown"/>
-                <Slider x:Name="jd"  Margin="0,-4,0,0" Style="{DynamicResource SliderStyle1}" MouseMove="jd_MouseMove" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" Height="15" VerticalAlignment="Top" />
+                <Slider x:Name="jd"  Margin="0,-4,0,0" Style="{DynamicResource SliderStyle1}" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#00000000" Height="15" VerticalAlignment="Top" MouseMove="jd_MouseMove" />
                 <Grid Width="280">
                     <Grid x:Name="_PAGE" Width="130">
                         <Border CornerRadius="100" MouseDown="textBlock_MouseDown" BorderBrush="#FF71F1B4" Background="#00000000" Height="40" Width="40" BorderThickness="1.5">
@@ -1454,7 +1454,7 @@
                 StrokeThickness="0" Stretch="Uniform" x:Name="MovePath" Fill="#FFA0A0A0" Data="M22.724,8.446L18.815,12.355C18.59,12.581,18.223,12.581,17.997,12.355L17.941,12.298 17.941,9.42C13.22,9.75 9.48,13.693 9.48,18.496 9.48,21.869 11.331,24.95 14.313,26.536 15.064,26.936 15.349,27.869 14.95,28.622 14.55,29.374 13.617,29.659 12.865,29.259 8.875,27.136 6.396,23.012 6.396,18.496 6.396,11.992 11.519,6.662 17.941,6.328L17.941,3.776 17.997,3.72C18.223,3.494,18.59,3.494,18.815,3.72L22.724,7.628C22.95,7.854,22.95,8.221,22.724,8.446z M20.497,32.618L16.589,28.71C16.363,28.484,16.363,28.118,16.589,27.892L20.497,23.984C20.723,23.758,21.09,23.758,21.316,23.984L21.371,24.041 21.372,26.918C26.092,26.589 29.833,22.646 29.833,17.843 29.833,14.47 27.981,11.389 25,9.803 24.248,9.403 23.963,8.469 24.362,7.717 24.763,6.965 25.697,6.679 26.449,7.08 30.438,9.203 32.917,13.327 32.917,17.843 32.917,24.347 27.794,29.677 21.372,30.01L21.372,32.561 21.316,32.618C21.09,32.844,20.723,32.844,20.497,32.618z" Height="15" Width="15"/>
                     </Border>
                 </Grid>
-                <TextBlock x:Name="loading" Height="16" Margin="10,0" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="#FF31C27C" TextAlignment="Center"/>
+                <TextBlock x:Name="loading" Height="16" Margin="10,0" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="#FF71F1B4" TextAlignment="Center"/>
             </Grid>
         </Border>
     </Grid>
