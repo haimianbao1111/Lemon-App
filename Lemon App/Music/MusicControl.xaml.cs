@@ -830,23 +830,22 @@ namespace Lemon_App
                 if (He.Settings.ZJid != "null" && textBox.Text == string.Empty) { textBox.Text = He.Settings.ZJid; }
                 else { if (long.TryParse(textBox.Text, out ox)) { He.Settings.ZJid = textBox.Text; He.SaveSettings(); } else { textBox.Text = He.Settings.ZJid; } }
                 listBox.Items.Clear();
-                var s = await GetWebDataAsync($"http://y.qq.com/n/yqq/playlist/{textBox.Text}.html#stat=y_new.profile.create_playlist.click&dirid=6", Encoding.UTF8);
-                var j = He.Text(s, "playlist_detail.init(", ");", 0);
-                JObject o = JObject.Parse(j);
+                var s = await GetWebDataAsync($"https://c.y.qq.com/qzone/fcg-bin/fcg_ucc_getcdinfo_byids_cp.fcg?type=1&json=1&utf8=1&onlysong=0&disstid={textBox.Text}&format=json&g_tk=5381&loginUin=0&hostUin=0&format=jsonp&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0", Encoding.UTF8);
+                JObject o = JObject.Parse(s);
                 int i = 0;
-                while (i != o["songList"].Count())
+                while (i != o["cdlist"][0]["songlist"].Count())
                 {
                     Music m = new Music()
                     {
-                        MusicName = o["songList"][i]["songname"].ToString(),
-                        Singer = o["songList"][i]["singer"][0]["name"].ToString(),
-                        ZJ = o["songList"][i]["albumdesc"].ToString(),
-                        GC = o["songList"][i]["songid"].ToString(),
-                        Fotmat = o["songList"][i]["sizeflac"].ToString(),
-                        HQFOTmat = o["songList"][i]["size320"].ToString(),
-                        MusicID = o["songList"][i]["songmid"].ToString(),
-                        ImageID = o["songList"][i]["albummid"].ToString(),
-                        MV = o["songList"][i]["vid"].ToString()
+                        MusicName = o["cdlist"][0]["songlist"][i]["songname"].ToString(),
+                        Singer = o["cdlist"][0]["songlist"][i]["singer"][0]["name"].ToString(),
+                        ZJ = o["cdlist"][0]["songlist"][i]["albumdesc"].ToString(),
+                        GC = o["cdlist"][0]["songlist"][i]["songid"].ToString(),
+                        Fotmat = o["cdlist"][0]["songlist"][i]["sizeflac"].ToString(),
+                        HQFOTmat = o["cdlist"][0]["songlist"][i]["size320"].ToString(),
+                        MusicID = o["cdlist"][0]["songlist"][i]["songmid"].ToString(),
+                        ImageID = o["cdlist"][0]["songlist"][i]["albummid"].ToString(),
+                        MV = o["cdlist"][0]["songlist"][i]["vid"].ToString()
                     };
                     string Q = "";
                     if (m.Fotmat != "0")
