@@ -251,22 +251,6 @@ namespace Lemon_App
         {
             return Regex.IsMatch(strIn, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)" + @"|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
         }
-
-        private async void TextBlock_MouseDown_2(object sender, MouseButtonEventArgs e)
-        {
-            wb.Navigate("http://ui.ptlogin2.qq.com/cgi-bin/login?appid=1006102&s_url=http://id.qq.com/index.html&hide_close_icon=1");
-            await Task.Delay(1000);
-            string str = wb.Document.Body.OuterHtml;
-            MatchCollection matches;
-            matches = Regex.Matches(str, @"<img\b[^<>]*?\bsrc[\s\t\r\n]*=[\s\t\r\n]*[""']?[\s\t\r\n]*(?<imgUrl>[^\s\t\r\n""'<>]*)[^<>]*?/?[\s\t\r\n]*>", RegexOptions.IgnoreCase);
-            var t = matches[1].Value.ToString();
-            Regex reg = new Regex(@"<img.*?src=""(?<src>[^""]*)""[^>]*>", RegexOptions.IgnoreCase);
-            MatchCollection mc = reg.Matches(t);
-            var content =mc[0].Groups["src"].Value;
-            qrcode.Background = new ImageBrush(new BitmapImage(new Uri(content)));
-            //       op.IsOpen = true;
-            index = 0;
-        }
         //   System.Windows.Forms.WebBrowser wb = new System.Windows.Forms.WebBrowser();
         private async void Border_MouseDown_1(object sender, MouseButtonEventArgs e)
         {
@@ -360,8 +344,25 @@ namespace Lemon_App
             (Resources["OnLoaded1"] as Storyboard).Stop();
             (Resources["FXC"] as Storyboard).Begin();
         }
-
+        string t = "";
         private async void qrcode_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            wb.Navigate("http://ui.ptlogin2.qq.com/cgi-bin/login?appid=1006102&s_url=http://id.qq.com/index.html&hide_close_icon=1");
+            await Task.Delay(1000);
+            string str = wb.Document.Body.OuterHtml;
+            MatchCollection matches;
+            matches = Regex.Matches(str, @"<img\b[^<>]*?\bsrc[\s\t\r\n]*=[\s\t\r\n]*[""']?[\s\t\r\n]*(?<imgUrl>[^\s\t\r\n""'<>]*)[^<>]*?/?[\s\t\r\n]*>", RegexOptions.IgnoreCase);
+            var t = matches[1].Value.ToString();
+            Regex reg = new Regex(@"<img.*?src=""(?<src>[^""]*)""[^>]*>", RegexOptions.IgnoreCase);
+            MatchCollection mc = reg.Matches(t);
+            var content = mc[0].Groups["src"].Value;
+            t = He.Text(content+"\"", "t=", "\"", 0);
+            qrcode.Background = new ImageBrush(new BitmapImage(new Uri(content)));
+            //       op.IsOpen = true;
+            index = 0;
+        }
+
+        private async void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
             wb.Navigate("http://ui.ptlogin2.qq.com/cgi-bin/login?appid=1006102&s_url=http://id.qq.com/index.html&hide_close_icon=1");
             await Task.Delay(1000);

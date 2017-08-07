@@ -403,7 +403,7 @@ namespace Lemon_App
         {
             try
             {
-                HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create("https://git.oschina.net/Twilight-Lemon/Updata/raw/master/UNVTX");
+                HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create("https://git.oschina.net/TwilightLemon/Updata/raw/master/UNVTX");
                 hwr.Proxy = He.proxy;
                 var o = await hwr.GetResponseAsync();
                 StreamReader sr = new StreamReader(o.GetResponseStream());
@@ -417,7 +417,7 @@ namespace Lemon_App
         }
         public static async System.Threading.Tasks.Task<string> NewText(string con)
         {
-            HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create("https://git.oschina.net/Twilight-Lemon/Updata/raw/master/UNVTX");
+            HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create("https://git.oschina.net/TwilightLemon/Updata/raw/master/UNVTX");
             hwr.Proxy = He.proxy;
             var o = await hwr.GetResponseAsync();
             StreamReader sr = new StreamReader(o.GetResponseStream());
