@@ -8,7 +8,7 @@
     xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
     x:Class="Lemon_App.lemon"
         mc:Ignorable="d"
-        Title="Lemon App" Height="660" Width="905" Background="{x:Null}" WindowStyle="None" AllowsTransparency="True" SizeChanged="Window_SizeChanged" Loaded="Window_Loaded" Icon="Lemon App Ico.ico" WindowStartupLocation="CenterScreen" BorderThickness="30" FontFamily=".PingFang SC,Microsoft YaHei UI">
+        Title="Lemon App" Height="660" Width="905" Background="{x:Null}" WindowStyle="None" AllowsTransparency="True" Loaded="Window_Loaded" Icon="Lemon App Ico.ico" WindowStartupLocation="CenterScreen" BorderThickness="30" FontFamily=".PingFang SC,Microsoft YaHei UI" SizeChanged="Window_SizeChanged">
     <Window.Resources>
         <SolidColorBrush x:Key="ListBox.Static.Background" Color="#FFFFFFFF"/>
         <SolidColorBrush x:Key="ListBox.Static.Border" Color="#FFABADB3"/>
@@ -75,21 +75,40 @@
                 <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Visible}"/>
             </ObjectAnimationUsingKeyFrames>
         </Storyboard>
+        <Storyboard x:Key="l">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="Page">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="845"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="Page">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="600"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Page">
+                <EasingThicknessKeyFrame KeyTime="0" Value="0,620,0,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:0.2" Value="0"/>
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="c">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="Page">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="Page">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Page">
+                <EasingThicknessKeyFrame KeyTime="0:0:0.2" Value="0,620,0,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
 
     </Window.Resources>
-    <Window.Triggers>
-        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
-            <BeginStoryboard Storyboard="{StaticResource START}"/>
-            <BeginStoryboard Storyboard="{StaticResource STOP}"/>
-        </EventTrigger>
-    </Window.Triggers>
     <WindowChrome.WindowChrome>
         <WindowChrome x:Name="c" GlassFrameThickness="0" ResizeBorderThickness="28" CaptionHeight="10" CornerRadius="0" />
     </WindowChrome.WindowChrome>
     <Window.Effect>
         <DropShadowEffect Color="#FF2D2D30" BlurRadius="40" ShadowDepth="0" Opacity="0.4"/>
     </Window.Effect>
-    <Grid x:Name="Page" >
+    <Grid x:Name="Page" Width="845" Height="600" >
         <Grid.Clip>
             <RectangleGeometry RadiusX="5" RadiusY="5">
                 <RectangleGeometry.Rect>

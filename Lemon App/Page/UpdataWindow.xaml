@@ -6,10 +6,42 @@
         x:Class="Lemon_App.UpdataWindow"
         mc:Ignorable="d"
         Title="UpdataWindow" Height="240" Width="320" WindowStyle="None" ResizeMode="NoResize" Background="{x:Null}" Loaded="Window_Loaded" AllowsTransparency="True" FontFamily=".PingFang SC,Microsoft YaHei UI" MouseLeftButtonDown="Window_MouseLeftButtonDown">
+    <Window.Resources>
+        <Storyboard x:Key="l">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="grid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="280"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="grid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="200"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="grid">
+                <EasingThicknessKeyFrame KeyTime="0" Value="20,240,20,20"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:0.2" Value="20"/>
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="c">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="grid">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="grid">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="grid">
+                <EasingThicknessKeyFrame KeyTime="0:0:0.2" Value="20,240,20,20"/>
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource l}"/>
+        </EventTrigger>
+    </Window.Triggers>
     <Window.Effect>
         <DropShadowEffect BlurRadius="20" Opacity="0.4" ShadowDepth="0"/>
     </Window.Effect>
-    <Grid Margin="20" Background="White" >
+    <Grid x:Name="grid" Margin="20" Background="White" Width="280" Height="200" >
         <Grid.Clip>
             <RectangleGeometry RadiusX="3" RadiusY="3">
                 <RectangleGeometry.Rect>

@@ -130,11 +130,36 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
+        <Storyboard x:Key="l">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="grid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="400"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="grid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="280"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="grid">
+                <EasingThicknessKeyFrame KeyTime="0" Value="0,305,0,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:0.2" Value="0"/>
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="c">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="grid">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="grid">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="grid">
+                <EasingThicknessKeyFrame KeyTime="0:0:0.2" Value="0,305,0,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
     </Window.Resources>
     <Window.Effect>
         <DropShadowEffect BlurRadius="30" Opacity="0.4" ShadowDepth="0"/>
     </Window.Effect>
-    <Grid Background="White">
+    <Grid x:Name="grid" Background="White" Width="400" Height="280">
         <Grid.Clip>
             <RectangleGeometry RadiusX="3" RadiusY="3">
                 <RectangleGeometry.Rect>
@@ -142,11 +167,11 @@
                 </RectangleGeometry.Rect>
             </RectangleGeometry>
         </Grid.Clip>
-        <Popup x:Name="op" Width="350" local:PopopHelper.PopupPlacementTarget="{Binding ElementName=CLOSE}" Height="200" Placement="Right" HorizontalOffset="10">
+        <Popup x:Name="op" Width="350" local:PopopHelper.PopupPlacementTarget="{Binding ElementName=CLOSE}" Height="280" Placement="Right" HorizontalOffset="10">
             <Border x:Name="po" Background="White" BorderThickness="2" BorderBrush="#FFDEDEDE">
                 <Grid KeyDown="Grid_KeyDown">
                     <TextBlock x:Name="ns" TextWrapping="Wrap" Foreground="#FF686868" TextAlignment="Center" FontSize="14" Height="40"/>
-                    <WindowsFormsHost Height="140" VerticalAlignment="Top" Margin="0,35,0,0">
+                    <WindowsFormsHost Margin="0,35">
                         <Forms:WebBrowser x:Name="wb" ScriptErrorsSuppressed="True"/>
                     </WindowsFormsHost>
                 </Grid>

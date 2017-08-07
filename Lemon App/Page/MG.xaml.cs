@@ -35,9 +35,9 @@ namespace Lemon_App.Page
         }
         private void CLOSE_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            var c = new DoubleAnimation(1, 0, TimeSpan.FromSeconds(0.3));
+            var c = Resources["c"] as Storyboard;
             c.Completed += delegate { Close(); };
-            this.BeginAnimation(OpacityProperty, c);
+            c.Begin();
         }
         [DllImport("user32.dll", EntryPoint = "keybd_event", SetLastError = true)]
         public static extern void keybd_event(Keys bVk, byte bScan, uint dwFlags, uint dwExtraInfo);

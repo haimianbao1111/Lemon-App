@@ -34,11 +34,8 @@ namespace Lemon_App
         public LoadWindow()
         {
             InitializeComponent();
-            wb.Navigate("http://ui.ptlogin2.qq.com/cgi-bin/login?appid=1006102&s_url=http://id.qq.com/index.html&hide_close_icon=1");
             wb.Navigated += NaAsync;
             RM.IsChecked = He.Settings.RNBM;
-            var c = new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.3));
-            this.BeginAnimation(OpacityProperty, c);
             this.FontFamily = new FontFamily(He.Settings.FontFamilly);
             tr.Interval = 5000;
             tr.Tick += T;
@@ -50,6 +47,8 @@ namespace Lemon_App
                 rk.Text = "已开启大写锁定";
             }
             else { if (oldtext != "已开启大写锁定") rk.Text = oldtext; else { rk.Text = "";oldtext = ""; } }
+            (Resources["l"] as Storyboard).Begin();
+
         }
         int index = 0;
         private async void NaAsync(object sender, WebBrowserNavigatedEventArgs e)
@@ -237,16 +236,14 @@ namespace Lemon_App
 
         private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            var c = new DoubleAnimation(1, 0, TimeSpan.FromSeconds(0.3));
+            var c = (Resources["c"] as Storyboard);
             c.Completed += delegate { Process.GetCurrentProcess().Kill(); };
-            this.BeginAnimation(OpacityProperty, c);
+            c.Begin();
         }
         private void Email_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
-            {
                 Border_MouseDown_1(null, null);
-            }
          }
         private bool IsValidEmail(string strIn)
         {
@@ -267,6 +264,7 @@ namespace Lemon_App
         {
             if (Email.Text != string.Empty || PSW.Password != string.Empty)
             {
+                wb.Navigate("http://ui.ptlogin2.qq.com/cgi-bin/login?appid=1006102&s_url=http://id.qq.com/index.html&hide_close_icon=1");
                 rk.Text = "登录中...";
                 System.Windows.Forms.HtmlDocument doc = wb.Document;
                 doc.GetElementById("switcher_plogin").InvokeMember("click");

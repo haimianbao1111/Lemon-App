@@ -6,10 +6,48 @@
         xmlns:local="clr-namespace:Lemon_App"
         mc:Ignorable="d"
         Title="欢迎" Height="390" Opacity="1" Width="320" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True" Background="{x:Null}" ShowInTaskbar="False" Loaded="Window_Loaded" Topmost="True" FontFamily=".PingFang SC,Microsoft YaHei UI">
+    <Window.Resources>
+        <Storyboard x:Key="l" Completed="Storyboard_Completed">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="b">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="280"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:10" Value="280"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:10.2" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="b">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="350"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:10" Value="350"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:10.2" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="b">
+                <EasingThicknessKeyFrame KeyTime="0" Value="20,390,20,20"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:0.2" Value="20"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:10" Value="20"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:10.2" Value="20,390,20,20"/>
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="x">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="b">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="b">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="b">
+                <EasingThicknessKeyFrame KeyTime="0:0:0.2" Value="20,390,20,20"/>
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource l}"/>
+        </EventTrigger>
+    </Window.Triggers>
     <Window.Effect>
         <DropShadowEffect ShadowDepth="0" BlurRadius="20" Opacity="0.4"/>
     </Window.Effect>
-    <Grid x:Name="b" Margin="20">
+    <Grid x:Name="b" Margin="20" Width="280" Height="350">
         <Grid.Background>
             <ImageBrush Stretch="UniformToFill" ImageSource="http://i9.download.fd.pchome.net/t_960x600/g1/M00/10/15/ooYBAFWoU_mIZ8UZAAL0iXuHXcgAACmNwIIMlcAAvSh377.jpg"/>
         </Grid.Background>
@@ -20,7 +58,7 @@
                 </RectangleGeometry.Rect>
             </RectangleGeometry>
         </Grid.Clip>
-        <Border x:Name="CLOSE"  HorizontalAlignment="Left" Margin="10,10,0,0" Width="13" Height="13" Background="#662D2D30" CornerRadius="13" MouseDown="CLOSE_MouseDown" VerticalAlignment="Top"/>
+        <Border x:Name="CLOSE"  HorizontalAlignment="Left" Margin="10,10,0,0" Width="13" Height="13" Background="#66FFFFFF" CornerRadius="13" MouseDown="CLOSE_MouseDown" VerticalAlignment="Top"/>
         <TextBlock x:Name="Welcome" Height="Auto"  VerticalAlignment="Bottom" Foreground="#FFE7E0DF" FontSize="24" Margin="10,0,10,20"><Run Text="早呀!"/><LineBreak/><Run FontSize="14" Text="新的一天开始啦"/></TextBlock>
         <TextBlock x:Name="Weather" Margin="10,28,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFFDFDFD" FontSize="24"><Run Text="今日NaN天气"/><LineBreak/><Run Text="NaN℃ NaN"/></TextBlock>
     </Grid>

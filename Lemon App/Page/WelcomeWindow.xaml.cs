@@ -87,20 +87,18 @@ namespace Lemon_App
             Weather.Inlines.Add(new Run($"今日{w.WeatherName}天气"));
             Weather.Inlines.Add(new LineBreak());
             Weather.Inlines.Add(new Run(w.WeatherMessage));
-            DoubleAnimationUsingKeyFrames d = new DoubleAnimationUsingKeyFrames();
-            d.KeyFrames.Add(new LinearDoubleKeyFrame(1,TimeSpan.FromSeconds(0.2)));
-            d.KeyFrames.Add(new LinearDoubleKeyFrame(1, TimeSpan.FromSeconds(10)));
-            d.KeyFrames.Add(new LinearDoubleKeyFrame(0, TimeSpan.FromSeconds(10.2)));
-            d.Completed += delegate { this.Close(); };
-            BeginAnimation(OpacityProperty, d);
         }
 
         private void CLOSE_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            DoubleAnimationUsingKeyFrames d = new DoubleAnimationUsingKeyFrames();
-            d.KeyFrames.Add(new LinearDoubleKeyFrame(0, TimeSpan.FromSeconds(0.2)));
-            d.Completed += delegate { this.Close(); };
-            BeginAnimation(OpacityProperty, d);
+            var c = Resources["x"] as Storyboard;
+            c.Completed += delegate { Close(); };
+            c.Begin();
+        }
+
+        private void Storyboard_Completed(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

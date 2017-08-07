@@ -13,6 +13,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -62,7 +63,9 @@ namespace Lemon_App
         }
         private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            this.Close();
+            var c = Resources["c"] as Storyboard;
+            c.Completed += delegate { Close(); };
+            c.Begin();
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

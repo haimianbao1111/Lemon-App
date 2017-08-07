@@ -18,18 +18,20 @@ namespace Lemon_App
     /// </summary>
     public partial class lemon : Window
     {
+        bool isc = false;
         System.Windows.Threading.DispatcherTimer t = new System.Windows.Threading.DispatcherTimer();
         public lemon()
         {
             InitializeComponent();
             RenderOptions.SetBitmapScalingMode(tx, BitmapScalingMode.Fant);
-            var c = new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.3));
-            this.BeginAnimation(OpacityProperty, c);
             FullScreenManager.RepairWpfWindowFullScreenBehavior(this);
             this.FontFamily = new FontFamily(He.Settings.FontFamilly);
             t.Tick += T_Elapsed;
             t.Interval = TimeSpan.FromSeconds(5);
             t.Start();
+            var c = (Resources["l"] as Storyboard);
+            c.Completed += delegate { isc = true; c.Stop(); };
+            c.Begin();
         }
         /// <summary>
         /// 最大化
@@ -69,20 +71,25 @@ namespace Lemon_App
 
         private void CLOSE_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            var c = new DoubleAnimation(1, 0, TimeSpan.FromSeconds(0.3));
+            var c = Resources["c"] as Storyboard;
             c.Completed += delegate { Process.GetCurrentProcess().Kill(); };
-            this.BeginAnimation(OpacityProperty, c);
+            c.Begin();
         }
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            if (this.ActualHeight > SystemParameters.WorkArea.Height || this.ActualWidth > SystemParameters.WorkArea.Width)
+            if (isc == true)
             {
-                this.WindowState = System.Windows.WindowState.Normal;
-                MaxEX();
+                if (this.WindowState == WindowState.Normal)
+                {
+                    Page.Width = Width - 60;
+                    Page.Height = Height - 60;
+                }else
+                {
+                    Page.Width = Width;
+                    Page.Height = Height;
+                }
+                Page.Clip = new RectangleGeometry() { RadiusX = 5, RadiusY = 5, Rect = new Rect() { Width = Page.Width, Height = Page.Height } };
             }
-            Page.Clip = new RectangleGeometry() { RadiusX = 5, RadiusY = 5, Rect = new Rect() { Width = Page.ActualWidth, Height = Page.ActualHeight } };
-            //    (IContentPage.Child as UserControl).Width = IContentPage.ActualWidth;
-            // (IContentPage.Child as UserControl).Height = ActualHeight;
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -95,12 +102,12 @@ namespace Lemon_App
                 _2048.Visibility = Visibility.Collapsed;
                 User.Visibility = Visibility.Collapsed;
                 All.Visibility = Visibility.Collapsed;
-                Robot.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 50, 0, 0), new Thickness(0), TimeSpan.FromSeconds(0.2)));
+                Robot.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 50, 0, -50), new Thickness(0), TimeSpan.FromSeconds(0.2)));
                 //IContentPage.Children.Clear();
                 //IContentPage.Children.Add(new IMBOX());
-                Mus.Fill = new SolidColorBrush(Color.FromArgb(0, 255,255, 255));
-                ALL.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255,255));
-                Rbt.Fill = new SolidColorBrush(Color.FromArgb(200,157, 159, 167));
+                Mus.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
+                ALL.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
+                Rbt.Fill = new SolidColorBrush(Color.FromArgb(200, 157, 159, 167));
                 Mus.StrokeThickness = 1;
                 ALL.StrokeThickness = 1;
                 Rbt.StrokeThickness = 0;
@@ -112,7 +119,7 @@ namespace Lemon_App
                 _2048.Visibility = Visibility.Collapsed;
                 User.Visibility = Visibility.Collapsed;
                 Music.Visibility = Visibility.Visible;
-                Music.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 50, 0, 0), new Thickness(0), TimeSpan.FromSeconds(0.2)));
+                Music.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 50, 0, -50), new Thickness(0), TimeSpan.FromSeconds(0.2)));
                 //IContentPage.Children.Clear();
                 //   IContentPage.Children.Add(new MusicControl());
                 Mus.Fill = new SolidColorBrush(Color.FromArgb(200, 157, 159, 167));
@@ -129,7 +136,7 @@ namespace Lemon_App
                 User.Visibility = Visibility.Collapsed;
                 _2048.Visibility = Visibility.Collapsed;
                 All.Visibility = Visibility.Visible;
-                All.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 50, 0, 0), new Thickness(0), TimeSpan.FromSeconds(0.2)));
+                All.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 50, 0, -50), new Thickness(0), TimeSpan.FromSeconds(0.2)));
                 //  IContentPage.Children.Clear();
                 //IContentPage.Children.Add(new AllControl());
                 Mus.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
@@ -206,7 +213,7 @@ namespace Lemon_App
             All.Visibility = Visibility.Collapsed;
             Music.Visibility = Visibility.Collapsed;
             User.Visibility = Visibility.Visible;
-            User.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 50, 0, 0), new Thickness(0), TimeSpan.FromSeconds(0.2)));
+            User.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 50, 0, -50), new Thickness(0), TimeSpan.FromSeconds(0.2)));
             User.NM.Text = He.Settings.RobotName;
             Mus.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
             ALL.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
@@ -223,7 +230,7 @@ namespace Lemon_App
                 EX();
             }
             else { MaxEX(); }
-            }
+        }
 
         private void MAX_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -249,20 +256,20 @@ namespace Lemon_App
         public static extern bool UnregisterHotKey(IntPtr hWnd, int id);
         public bool InstallHotKeyHook(Window window)
         {
-            if (window==null)
+            if (window == null)
                 return false;
             System.Windows.Interop.WindowInteropHelper helper = new System.Windows.Interop.WindowInteropHelper(window);
-            if (IntPtr.Zero == helper.Handle )
+            if (IntPtr.Zero == helper.Handle)
                 return false;
             System.Windows.Interop.HwndSource source = System.Windows.Interop.HwndSource.FromHwnd(helper.Handle);
-            if ( source==null )
+            if (source == null)
                 return false;
-            source.AddHook(this.HotKeyHook );
+            source.AddHook(this.HotKeyHook);
             return true;
         }
         private IntPtr HotKeyHook(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
-            if (msg == WM_HOTKEY )
+            if (msg == WM_HOTKEY)
             {
                 if (wParam.ToInt32() == 124)
                 {
@@ -335,9 +342,9 @@ namespace Lemon_App
                         User.Visibility = Visibility.Collapsed;
                         Music.Visibility = Visibility.Visible;
                         Music.BeginAnimation(MarginProperty, new ThicknessAnimation(new Thickness(0, 50, 0, 0), new Thickness(0), TimeSpan.FromSeconds(0.2)));
-                    //IContentPage.Children.Clear();
-                    //   IContentPage.Children.Add(new MusicControl());
-                    Mus.Fill = new SolidColorBrush(Color.FromArgb(200, 157, 159, 167));
+                        //IContentPage.Children.Clear();
+                        //   IContentPage.Children.Add(new MusicControl());
+                        Mus.Fill = new SolidColorBrush(Color.FromArgb(200, 157, 159, 167));
                         ALL.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
                         Rbt.Fill = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
                         Mus.StrokeThickness = 0;
