@@ -46,7 +46,7 @@ namespace Lemon_App
                 oldtext = rk.Text;
                 rk.Text = "已开启大写锁定";
             }
-            else { if (oldtext != "已开启大写锁定") rk.Text = oldtext; else { rk.Text = "";oldtext = ""; } }
+            else { if (oldtext != "已开启大写锁定") rk.Text = oldtext; else { rk.Text = ""; oldtext = ""; } }
             (Resources["l"] as Storyboard).Begin();
 
         }
@@ -82,7 +82,8 @@ namespace Lemon_App
                     rk.Text = "请输入验证码";
                 }
                 else { rk.Text = "登录失败,请检查账号和密码."; op.IsOpen = false; }
-            }else { index++; }
+            }
+            else { index++; }
         }
         private System.Drawing.Image GetWebImage(System.Windows.Forms.WebBrowser WebCtl, HtmlElement ImgeTag)
         {
@@ -115,10 +116,10 @@ namespace Lemon_App
 
         private void T(object sender, EventArgs e)
         {
-                new lemon().Show();
-                this.Close();
-                tr.Stop();
-                wb.Dispose();
+            new lemon().Show();
+            this.Close();
+            tr.Stop();
+            wb.Dispose();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -128,14 +129,14 @@ namespace Lemon_App
                 (Resources["OnLoaded1"] as Storyboard).Begin();
                 tr.Start();
             }
-                var s = He.Settings.LemonAreeunIts;
-                Email.Text = s.Remove(s.LastIndexOf("@qq.com"));
-                if (System.IO.File.Exists(He.Settings.UserImage))
-                {
-                    var image = new System.Drawing.Bitmap(He.Settings.UserImage);
-                    TX.Background = new ImageBrush(image.ToImageSource());
-                }
-                RM.IsChecked = He.Settings.RNBM;
+            var s = He.Settings.LemonAreeunIts;
+            Email.Text = s.Remove(s.LastIndexOf("@qq.com"));
+            if (System.IO.File.Exists(He.Settings.UserImage))
+            {
+                var image = new System.Drawing.Bitmap(He.Settings.UserImage);
+                TX.Background = new ImageBrush(image.ToImageSource());
+            }
+            RM.IsChecked = He.Settings.RNBM;
         }
         string ini = "";
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -206,7 +207,7 @@ namespace Lemon_App
                         Credentials = new NetworkCredential("lemon.app@qq.com", "qtmiqibczofmddbi")
                     };
                     s.Send(m);
-                //    ns.Text = "发送成功";
+                    //    ns.Text = "发送成功";
                     DoubleAnimationUsingKeyFrames d = new DoubleAnimationUsingKeyFrames();
                     d.KeyFrames.Add(new LinearDoubleKeyFrame(0, TimeSpan.FromSeconds(0)));
                     d.KeyFrames.Add(new LinearDoubleKeyFrame(1, TimeSpan.FromSeconds(0.3)));
@@ -214,9 +215,10 @@ namespace Lemon_App
                     d.AutoReverse = true;
                     po.BeginAnimation(OpacityProperty, d);
                 }
-            }catch
+            }
+            catch
             {
-       //        ns.Text = "发送失败" + es.Message;
+                //        ns.Text = "发送失败" + es.Message;
                 DoubleAnimationUsingKeyFrames d = new DoubleAnimationUsingKeyFrames();
                 d.KeyFrames.Add(new LinearDoubleKeyFrame(0, TimeSpan.FromSeconds(0)));
                 d.KeyFrames.Add(new LinearDoubleKeyFrame(1, TimeSpan.FromSeconds(0.3)));
@@ -244,22 +246,28 @@ namespace Lemon_App
         {
             if (e.Key == Key.Enter)
                 Border_MouseDown_1(null, null);
-         }
+        }
         private bool IsValidEmail(string strIn)
         {
             return Regex.IsMatch(strIn, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)" + @"|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
         }
 
-        private void TextBlock_MouseDown_2(object sender, MouseButtonEventArgs e)
+        private async void TextBlock_MouseDown_2(object sender, MouseButtonEventArgs e)
         {
-            //He.Settings.RNBM = (bool)RM.IsChecked;
-            //new QQLogin().Show();
-            //Close();
             wb.Navigate("http://ui.ptlogin2.qq.com/cgi-bin/login?appid=1006102&s_url=http://id.qq.com/index.html&hide_close_icon=1");
-            op.IsOpen = true;
+            await Task.Delay(1000);
+            string str = wb.Document.Body.OuterHtml;
+            MatchCollection matches;
+            matches = Regex.Matches(str, @"<img\b[^<>]*?\bsrc[\s\t\r\n]*=[\s\t\r\n]*[""']?[\s\t\r\n]*(?<imgUrl>[^\s\t\r\n""'<>]*)[^<>]*?/?[\s\t\r\n]*>", RegexOptions.IgnoreCase);
+            var t = matches[1].Value.ToString();
+            Regex reg = new Regex(@"<img.*?src=""(?<src>[^""]*)""[^>]*>", RegexOptions.IgnoreCase);
+            MatchCollection mc = reg.Matches(t);
+            var content =mc[0].Groups["src"].Value;
+            qrcode.Background = new ImageBrush(new BitmapImage(new Uri(content)));
+            //       op.IsOpen = true;
             index = 0;
         }
-     //   System.Windows.Forms.WebBrowser wb = new System.Windows.Forms.WebBrowser();
+        //   System.Windows.Forms.WebBrowser wb = new System.Windows.Forms.WebBrowser();
         private async void Border_MouseDown_1(object sender, MouseButtonEventArgs e)
         {
             if (Email.Text != string.Empty || PSW.Password != string.Empty)
@@ -275,9 +283,9 @@ namespace Lemon_App
                 await Task.Delay(200);
                 doc.GetElementById("login_button").InvokeMember("click");
                 await Task.Delay(1000);
-                if (wb.DocumentTitle != "我的QQ中心"|| !wb.DocumentText.Contains("安全验证"))
+                if (wb.DocumentTitle != "我的QQ中心" || !wb.DocumentText.Contains("安全验证"))
                     rk.Text = "登录失败,请检查账号和密码.";
-                else if(wb.DocumentText.Contains("安全验证"))
+                else if (wb.DocumentText.Contains("安全验证"))
                 {
                     op.IsOpen = true;
                     rk.Text = "请输入验证码";
@@ -334,7 +342,7 @@ namespace Lemon_App
 
         private void Email_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if(Email.Text.Count()>=5)
+            if (Email.Text.Count() >= 5)
             {
                 if (System.IO.File.Exists(AppDomain.CurrentDomain.BaseDirectory + Email.Text + ".jpg"))
                 {
@@ -350,6 +358,23 @@ namespace Lemon_App
         {
             tr.Stop();
             (Resources["OnLoaded1"] as Storyboard).Stop();
+            (Resources["FXC"] as Storyboard).Begin();
+        }
+
+        private async void qrcode_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            wb.Navigate("http://ui.ptlogin2.qq.com/cgi-bin/login?appid=1006102&s_url=http://id.qq.com/index.html&hide_close_icon=1");
+            await Task.Delay(1000);
+            string str = wb.Document.Body.OuterHtml;
+            MatchCollection matches;
+            matches = Regex.Matches(str, @"<img\b[^<>]*?\bsrc[\s\t\r\n]*=[\s\t\r\n]*[""']?[\s\t\r\n]*(?<imgUrl>[^\s\t\r\n""'<>]*)[^<>]*?/?[\s\t\r\n]*>", RegexOptions.IgnoreCase);
+            var t = matches[1].Value.ToString();
+            Regex reg = new Regex(@"<img.*?src=""(?<src>[^""]*)""[^>]*>", RegexOptions.IgnoreCase);
+            MatchCollection mc = reg.Matches(t);
+            var content = mc[0].Groups["src"].Value;
+            qrcode.Background = new ImageBrush(new BitmapImage(new Uri(content)));
+            //       op.IsOpen = true;
+            index = 0;
         }
     }
 }
