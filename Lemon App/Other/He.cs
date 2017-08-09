@@ -318,6 +318,7 @@ namespace Lemon_App
 
             return dateTimeStart.Add(toNow);
         }
+        public static bool issl = false;
         public static bool isOpMod = false;
         public static SettingsData Settings = new SettingsData();
         public static WebProxy proxy = new WebProxy();
@@ -701,6 +702,14 @@ namespace Lemon_App
         /// 排行榜歌HQ
         /// </summary>
         public string DFSONGURI_HQ { set; get; }
+        /// <summary>
+        /// 特殊类型歌曲C4L0
+        /// </summary>
+        public bool SL_128 { set; get; }
+        /// <summary>
+        /// 特殊类型歌曲C4L0 ID
+        /// </summary>
+        public string SL_128ID { set; get; }
     }
 
     public class GridHelper

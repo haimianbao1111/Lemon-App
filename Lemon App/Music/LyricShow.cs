@@ -1361,7 +1361,9 @@ namespace Lemon_App
                 tb.Foreground = new SolidColorBrush(Color.FromArgb(CA, CR, CG, CB));
                 tb.Background = new SolidColorBrush(Colors.Transparent);
                 tb.Height = lyricTextBlockHeight-10;
-                tb.Text = txt.Replace("^", "\r\n").Replace("//", "");
+                if (He.issl == false)
+                    tb.Text = txt.Replace("^", "\r\n").Replace("//", "");
+                else tb.Text = txt;
                 commonLyricStackPanel.Children.Add(tb);
                 index++;
             }

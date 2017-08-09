@@ -167,6 +167,7 @@ namespace Lemon_App
                         else
                         {
                             currentTxt = content;//这是歌词  
+                            Console.WriteLine(content);
                             if (!string.IsNullOrEmpty(content))
                             {
                                 correctLyricTxt = content;
@@ -182,9 +183,12 @@ namespace Lemon_App
                         {
                             try
                             {
-                               string timed= time.Substring(0, time.Length - 1);
-                                timed += "0";
-                                currentTime = strToDouble(timed);
+                                if (He.issl == false)
+                                {
+                                    string timed = time.Substring(0, time.Length - 1);
+                                    timed += "0";
+                                    currentTime = strToDouble(timed);
+                                }else currentTime = strToDouble(time);
                                 if (!lyricAndTimeDictionary.ContainsKey(currentTime))
                                 {
                                     lyricAndTimeDictionary.Add(currentTime, correctLyricTxt);

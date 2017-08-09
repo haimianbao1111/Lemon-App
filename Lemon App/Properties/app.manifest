@@ -16,7 +16,7 @@
             元素。
         -->
         <!--requestedExecutionLevel level="asInvoker" uiAccess="false" /-->
-        <requestedExecutionLevel level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
       </requestedPrivileges>
       <applicationRequestMinimum>
         <defaultAssemblyRequest permissionSetReference="Custom" />
