@@ -324,6 +324,7 @@ namespace Lemon_App
                 StreamWriter sw = new StreamWriter(fs);
                 await sw.WriteAsync(t);
                 await sw.FlushAsync();
+                await Task.Delay(1000);
                 GetLyricAndLyricTime getLT = new GetLyricAndLyricTime();
                 getLT.getLyricAndLyricTimeByLyricPath(AppDomain.CurrentDomain.BaseDirectory + "MusicCache/" +SL_128ID+ McMind + ".lrc");
                 return getLT;
@@ -855,6 +856,7 @@ namespace Lemon_App
                 Bass.BASS_Stop();
                 Bass.BASS_Free();
             };
+            PopopHelper.SetPopupPlacementTarget(popup, this);
             Window.GetWindow(this).LocationChanged += delegate
             {
                 var offset1 = popup1.HorizontalOffset;
@@ -874,8 +876,22 @@ namespace Lemon_App
             LyricShow.CFontFamily = this.FontFamily;
             LyricShow.HFontFamily = this.FontFamily;
 
-            Border_MouseDown_3(null, null);
+            GETMID(Settings.ZJid);
             textBox.Text = "搜索";
+            foreach (var dt in Settings.MIDLIST)
+            {
+                var Item = new MIDITEM();
+                Item.SETMIDAsync(dt);
+                MIDLIST.Items.Add(Item);
+            }
+            if(MIDLIST.Items.Count==0)
+            {
+                var Item = new MIDITEM();
+                Item.SETMIDAsync("2591355982");
+                MIDLIST.Items.Add(Item);
+                Settings.MIDLIST.Add("2591355982");
+                SaveSettings();
+            }
             //ListJson lj = new Lemon_App.ListJson();
             //lj = JsonToObject(He.Settings.MusicList, lj) as ListJson;
             //for (int i = 0; i < lj.List.Count; i++)
@@ -911,16 +927,15 @@ namespace Lemon_App
             }
         }
 
-        private async void Border_MouseDown_3(object sender, MouseButtonEventArgs e)
+        private async void GETMID(string MID= "2591355982")
         {
             IslistBoxInfo = 1;
             if (Uuuhh.Lalala("www.mi.com"))
             {
-                long ox = 0;
-                if (He.Settings.ZJid != "null" && textBox.Text == string.Empty) { textBox.Text = He.Settings.ZJid; }
-                else { if (long.TryParse(textBox.Text, out ox)) { He.Settings.ZJid = textBox.Text; He.SaveSettings(); } else { textBox.Text = He.Settings.ZJid; } }
+                Settings.ZJid = MID;
+                SaveSettings();
                 listBox.Items.Clear();
-                var s = await GetWebDataAsync($"https://c.y.qq.com/qzone/fcg-bin/fcg_ucc_getcdinfo_byids_cp.fcg?type=1&json=1&utf8=1&onlysong=0&disstid={textBox.Text}&format=json&g_tk=5381&loginUin=0&hostUin=0&format=jsonp&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0", Encoding.UTF8);
+                var s = await GetWebDataAsync($"https://c.y.qq.com/qzone/fcg-bin/fcg_ucc_getcdinfo_byids_cp.fcg?type=1&json=1&utf8=1&onlysong=0&disstid={MID}&format=json&g_tk=5381&loginUin=0&hostUin=0&format=jsonp&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0", Encoding.UTF8);
                 JObject o = JObject.Parse(s);
                 int i = 0;
                 while (i != o["cdlist"][0]["songlist"].Count())
@@ -1284,6 +1299,22 @@ namespace Lemon_App
                 Bass.BASS_ChannelSetPosition(stream, jd.Value);
                 t.Start();
             }
+        }
+
+        private void Border_MouseDown_10(object sender, MouseButtonEventArgs e)
+        {
+            var Item = new MIDITEM();
+            Item.SETMIDAsync(MID.Text);
+            MIDLIST.Items.Add(Item);
+            Settings.MIDLIST.Add(MID.Text);
+            SaveSettings();
+            MID.Text = "音乐ID";
+        }
+        
+        private void MIDLIST_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (MIDLIST.SelectedIndex != -1)
+                GETMID((MIDLIST.SelectedItem as MIDITEM).MID);
         }
     }
 }

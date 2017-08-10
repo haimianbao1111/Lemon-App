@@ -161,6 +161,9 @@
     <Compile Include="IApps\User\LZoneItemControl.xaml.cs">
       <DependentUpon>LZoneItemControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Music\MIDITEM.xaml.cs">
+      <DependentUpon>MIDITEM.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Music\DeskLyricWin.xaml.cs">
       <DependentUpon>DeskLyricWin.xaml</DependentUpon>
     </Compile>
@@ -168,6 +171,7 @@
     <Compile Include="Other\ImageHelper.cs" />
     <Compile Include="Other\FX.cs" />
     <Compile Include="Music\GetLyricAndLyricTime.cs" />
+    <Compile Include="Other\Music.cs" />
     <Compile Include="Page\HaWindow.xaml.cs">
       <DependentUpon>HaWindow.xaml</DependentUpon>
     </Compile>
@@ -254,6 +258,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="IApps\User\LZoneItemControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Music\MIDITEM.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

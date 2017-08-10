@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="Lemon_App.MIDITEM"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d"  Height="40" Width="Auto">
+    <UserControl.Resources>
+        <Storyboard x:Key="OnMouseMove1">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="border">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="border">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="OnMouseLeave1">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="border">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="border">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Collapsed}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="UIElement.MouseMove">
+            <BeginStoryboard Storyboard="{StaticResource OnMouseMove1}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave">
+            <BeginStoryboard x:Name="OnMouseLeave1_BeginStoryboard" Storyboard="{StaticResource OnMouseLeave1}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
+    <Grid>
+        <Border x:Name="MIDIMAGE" RenderOptions.BitmapScalingMode="Fant"  HorizontalAlignment="Left" Width="30" Height="30" Margin="5,0,0,0" CornerRadius="30" Background="Black"/>
+        <TextBlock x:Name="MIDNAME" Margin="40,0,10,0" TextWrapping="Wrap" Text="TextBlock" Height="17" Foreground="#FF999999"/>
+        <Border x:Name="border" HorizontalAlignment="Left" Height="10" Margin="5,5,0,0" VerticalAlignment="Top" Width="10" Background="#FFFF6565" CornerRadius="10" Opacity="0" Visibility="Collapsed" MouseDown="border_MouseDown"/>
+
+    </Grid>
+</UserControl>
