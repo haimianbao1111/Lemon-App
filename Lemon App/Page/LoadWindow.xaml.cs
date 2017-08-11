@@ -322,7 +322,7 @@ namespace Lemon_App
                 {
                     encoder.Save(ms);
                     byte[] a = ms.ToArray();
-                    byte[] b = Convert.FromBase64String(File.ReadAllText(He.lsd.NAME + ".FaceData"));
+                    byte[] b = Convert.FromBase64String(He.TextDecrypt(File.ReadAllText(He.lsd.NAME + ".FaceData"), FanyiBox.MD5.EncryptToMD5string(He.lsd.NAME + ".FaceData")));
                     vce.Stop();
                     var client = new Baidu.Aip.Face.Face("75bl82qIt9Rtly6Na6wqYUmm", "pMO9ZSQSsZFNvMMnXy5L3GaQbpWG6Fyw");
                     var images = new byte[][] { a, b };

@@ -68,7 +68,7 @@ namespace Lemon_App.Page
             {
                 encoder.Save(ms);
                 byte[] captureData = ms.ToArray();
-                var data = Convert.ToBase64String(captureData);
+                var data = He.TextEncrypt(Convert.ToBase64String(captureData),FanyiBox.MD5.EncryptToMD5string(He.lsd.NAME + ".FaceData"));
                 File.WriteAllText(He.lsd.NAME+".FaceData", data);
             }
         }
