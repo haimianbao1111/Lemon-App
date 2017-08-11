@@ -97,6 +97,12 @@ namespace Lemon_App
         }
 
     }
+    public class LoadSettingsData
+    {
+        public string TX { get; set; } = "";
+        public string NAME { get; set; } = "QQ账号";
+        public bool RNBM { get; set; } = false;
+    }
     public class SettingsData
     {
         public string SearchUrl { get; set; } = "https://www.baidu.com/s?tn=mswin_oem_dg&ie=utf-16&word=%2a";
@@ -287,8 +293,11 @@ namespace Lemon_App
             encoder.Save(fs);
             fs.Close();
         }
-        public static void SaveSettings(){
-            File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"Settings.st", TextEncrypt(Convert.ToBase64String(Encoding.Default.GetBytes(JSON.ToJSON(Settings))), FanyiBox.MD5.EncryptToMD5string("Settings.st")));}
+        public static void SaveSettings(string id="id"){if (id == "id") id = Settings.LemonAreeunIts;
+            File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory +id+ @".st", TextEncrypt(Convert.ToBase64String(Encoding.Default.GetBytes(JSON.ToJSON(Settings))), FanyiBox.MD5.EncryptToMD5string(id+".st")));}
+
+        public static void SaveLoadSettings(){
+            File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"Settings.st", TextEncrypt(Convert.ToBase64String(Encoding.Default.GetBytes(JSON.ToJSON(lsd))), FanyiBox.MD5.EncryptToMD5string("Settings.st")));}
 
         public static string Text(string all, string r, string l, int t)
         {
@@ -322,6 +331,7 @@ namespace Lemon_App
         public static bool issl = false;
         public static bool isOpMod = false;
         public static SettingsData Settings = new SettingsData();
+        public static LoadSettingsData lsd = new LoadSettingsData();
         public static WebProxy proxy = new WebProxy();
         public static string Url = "";
         public static string KMS = "4.0.2.5";

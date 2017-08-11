@@ -1,4 +1,5 @@
 ﻿using Lemon_App.IApps.User;
+using Lemon_App.Page;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -53,6 +54,11 @@ namespace Lemon_App
                 He.Settings.UserImage = o.FileName;
                 He.SaveSettings();
             }
+        }
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            new FC().Show();
         }
     }
 }

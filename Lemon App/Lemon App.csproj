@@ -100,6 +100,10 @@
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AipSdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dll\AipSdk.dll</HintPath>
+    </Reference>
     <Reference Include="Bass.Net, Version=2.4.12.5, Culture=neutral, PublicKeyToken=b7566c273e6ef480, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Dll\Bass.Net.dll</HintPath>
@@ -139,6 +143,10 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="WPFMediaKit, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dll\WPFMediaKit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App\App.xaml">
@@ -172,6 +180,9 @@
     <Compile Include="Other\FX.cs" />
     <Compile Include="Music\GetLyricAndLyricTime.cs" />
     <Compile Include="Other\Music.cs" />
+    <Compile Include="Page\FC.xaml.cs">
+      <DependentUpon>FC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Page\HaWindow.xaml.cs">
       <DependentUpon>HaWindow.xaml</DependentUpon>
     </Compile>
@@ -276,6 +287,10 @@
     <Page Include="Other\Controls\CircleProgressBarStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Page\FC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Page\HaWindow.xaml">
       <SubType>Designer</SubType>
@@ -426,9 +441,11 @@
     <Content Include="bass.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Dll\AipSdk.dll" />
     <Content Include="Dll\Bass.Net.dll" />
     <Content Include="Dll\Microsoft.Maps.MapControl.WPF.dll" />
     <Content Include="Dll\Newtonsoft.Json.dll" />
+    <Content Include="Dll\WPFMediaKit.dll" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

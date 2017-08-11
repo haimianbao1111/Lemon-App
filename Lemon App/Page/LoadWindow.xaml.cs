@@ -21,6 +21,7 @@ using System.Windows.Shapes;
 using System.Windows.Forms;
 using mshtml;
 using System.Diagnostics;
+using WPFMediaKit.DirectShow.Controls;
 
 namespace Lemon_App
 {
@@ -35,7 +36,7 @@ namespace Lemon_App
         {
             InitializeComponent();
             wb.Navigated += NaAsync;
-            RM.IsChecked = He.Settings.RNBM;
+            RM.IsChecked = He.lsd.RNBM;
             this.FontFamily = new FontFamily(He.Settings.FontFamilly);
             tr.Interval = 5000;
             tr.Tick += T;
@@ -59,6 +60,9 @@ namespace Lemon_App
                 {
                     op.IsOpen = false;
                     var qq = He.Text(wb.Document.Cookie, "uin=o", ";", 0);
+                    if (File.Exists(AppDomain.CurrentDomain.BaseDirectory +qq+ @"@qq.com.st"))
+                        He.Settings = (SettingsData)JSON.JsonToObject(Encoding.Default.GetString(Convert.FromBase64String(He.TextDecrypt(File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + qq+@"@qq.com.st"), FanyiBox.MD5.EncryptToMD5string(qq+"@qq.com.st")))), He.Settings);
+                    else He.SaveSettings(qq+"@qq.com");
                     var sl = He.Text(await Uuuhh.GetWebAsync("http://r.pengyou.com/fcg-bin/cgi_get_portrait.fcg?uins=" + qq, Encoding.Default), "portraitCallBack(", ")", 0);
                     JObject o = JObject.Parse(sl);
                     try
@@ -73,6 +77,10 @@ namespace Lemon_App
                     He.Settings.LemonAreeunIts = qq + "@qq.com";
                     He.Settings.RNBM = (Boolean)RM.IsChecked;
                     He.SaveSettings();
+                    He.lsd.NAME = qq;
+                    He.lsd.RNBM = (Boolean)RM.IsChecked;
+                    He.lsd.TX= AppDomain.CurrentDomain.BaseDirectory + qq + ".jpg";
+                    He.SaveLoadSettings();
                     (Resources["OnLoaded1"] as Storyboard).Begin();
                     tr.Start();
                 }
@@ -124,112 +132,23 @@ namespace Lemon_App
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (He.Settings.RNBM)
+            if (He.lsd.RNBM)
             {
+                if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + He.lsd.NAME + "@qq.com.st"))
+                    He.Settings = (SettingsData)JSON.JsonToObject(Encoding.Default.GetString(Convert.FromBase64String(He.TextDecrypt(File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + He.lsd.NAME + "@qq.com.st"), FanyiBox.MD5.EncryptToMD5string(He.lsd.NAME + "@qq.com.st")))), He.Settings);
+                else He.SaveSettings(He.lsd.NAME+"@qq.com");
                 (Resources["OnLoaded1"] as Storyboard).Begin();
                 tr.Start();
             }
-            var s = He.Settings.LemonAreeunIts;
-            Email.Text = s.Remove(s.LastIndexOf("@qq.com"));
-            if (System.IO.File.Exists(He.Settings.UserImage))
+            Email.Text = He.lsd.NAME;
+            if (System.IO.File.Exists(He.lsd.TX))
             {
-                var image = new System.Drawing.Bitmap(He.Settings.UserImage);
+                var image = new System.Drawing.Bitmap(He.lsd.TX);
                 TX.Background = new ImageBrush(image.ToImageSource());
             }
-            RM.IsChecked = He.Settings.RNBM;
+            RM.IsChecked = He.lsd.RNBM;
         }
         string ini = "";
-        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            try
-            {
-                if (Email.Text != "" && IsValidEmail(Email.Text))
-                {
-                    Random ra = new Random();
-                    ini = ra.Next(1000, 9999).ToString();
-                    MailMessage m = new MailMessage()
-                    {
-                        From = new MailAddress("lemon.app@qq.com", "Lemon团队")
-                    };
-                    m.To.Add(new MailAddress(Email.Text));
-                    m.Subject = "Lemon App";
-                    m.SubjectEncoding = Encoding.UTF8;
-                    m.Body = @"<table dir=""ltr"">
-    <tbody>
-        <tr>
-            <td id = ""i1"" style=""padding:0; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:17px; color:#707070;"">
-                Lemon App 帐户
-            </td>
-        </tr>
-        <tr>
-            <td id = ""i2"" style=""padding:0; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:41px; color:#2672ec;"">
-                验证码
-            </td>
-        </tr>
-        <tr>
-            <td id = ""i3"" style=""padding:0; padding-top:25px; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;"">
-                请为 Lemon App 帐户
-                使用以下验证码登录。
-            </td>
-        </tr>
-        <tr>
-            <td id = ""i4"" style=""padding:0; padding-top:25px; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;"">
-                验证码：
-                <b>
-                    {ninini}
-                </b>
-            </td>
-        </tr>
-        <tr>
-            <td id = ""i5"" style=""padding:0; padding-top:25px; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;"">
-                如果你无法识别此Lemon App 帐户，可以忽略此电子邮件
-            </td>
-        </tr>
-        <tr>
-            <td id = ""i6"" style=""padding:0; padding-top:25px; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;"">
-                谢谢!
-            </td>
-        </tr>
-        <tr>
-            <td id = ""i7"" style=""padding:0; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;"">
-                Lemon App 帐户团队
-            </td>
-        </tr>
-    </tbody>
-</table>".Replace("{ninini}", ini);
-                    m.BodyEncoding = Encoding.UTF8;
-                    m.IsBodyHtml = true;
-                    SmtpClient s = new SmtpClient()
-                    {
-                        Host = "smtp.qq.com",
-                        Port = 587,
-                        EnableSsl = true,
-                        Credentials = new NetworkCredential("lemon.app@qq.com", "qtmiqibczofmddbi")
-                    };
-                    s.Send(m);
-                    //    ns.Text = "发送成功";
-                    DoubleAnimationUsingKeyFrames d = new DoubleAnimationUsingKeyFrames();
-                    d.KeyFrames.Add(new LinearDoubleKeyFrame(0, TimeSpan.FromSeconds(0)));
-                    d.KeyFrames.Add(new LinearDoubleKeyFrame(1, TimeSpan.FromSeconds(0.3)));
-                    d.KeyFrames.Add(new LinearDoubleKeyFrame(1, TimeSpan.FromSeconds(3)));
-                    d.AutoReverse = true;
-                    po.BeginAnimation(OpacityProperty, d);
-                }
-            }
-            catch
-            {
-                //        ns.Text = "发送失败" + es.Message;
-                DoubleAnimationUsingKeyFrames d = new DoubleAnimationUsingKeyFrames();
-                d.KeyFrames.Add(new LinearDoubleKeyFrame(0, TimeSpan.FromSeconds(0)));
-                d.KeyFrames.Add(new LinearDoubleKeyFrame(1, TimeSpan.FromSeconds(0.3)));
-                d.KeyFrames.Add(new LinearDoubleKeyFrame(1, TimeSpan.FromSeconds(3)));
-                d.AutoReverse = true;
-                po.BeginAnimation(OpacityProperty, d);
-            }
-        }
-
-
-
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -287,6 +206,9 @@ namespace Lemon_App
                 {
                     await Task.Delay(200);
                     var qq = He.Text(wb.Document.Cookie, "uin=o", ";", 0);
+                    if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + qq + @"@qq.com.st"))
+                        He.Settings = (SettingsData)JSON.JsonToObject(Encoding.Default.GetString(Convert.FromBase64String(He.TextDecrypt(File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + qq + @"@qq.com.st"), FanyiBox.MD5.EncryptToMD5string(qq + "@qq.com.st")))), He.Settings);
+                    else He.SaveSettings(qq + "@qq.com");
                     var sl = He.Text(await Uuuhh.GetWebAsync("http://r.pengyou.com/fcg-bin/cgi_get_portrait.fcg?uins=" + qq, Encoding.Default), "portraitCallBack(", ")", 0);
                     JObject o = JObject.Parse(sl);
                     try
@@ -301,6 +223,10 @@ namespace Lemon_App
                     He.Settings.LemonAreeunIts = qq + "@qq.com";
                     He.Settings.RNBM = (Boolean)RM.IsChecked;
                     He.SaveSettings();
+                    He.lsd.NAME = qq;
+                    He.lsd.RNBM = (Boolean)RM.IsChecked;
+                    He.lsd.TX = AppDomain.CurrentDomain.BaseDirectory + qq + ".jpg";
+                    He.SaveLoadSettings();
                     (Resources["OnLoaded1"] as Storyboard).Begin();
                     tr.Start();
                 }
@@ -311,7 +237,10 @@ namespace Lemon_App
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ClickCount == 3)
+            {
                 op.IsOpen = !op.IsOpen;
+                wb.Navigate("http://ui.ptlogin2.qq.com/cgi-bin/login?appid=1006102&s_url=http://id.qq.com/index.html&hide_close_icon=1");
+            }
         }
         string oldtext = "";
         private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
@@ -344,7 +273,6 @@ namespace Lemon_App
             (Resources["OnLoaded1"] as Storyboard).Stop();
             (Resources["FXC"] as Storyboard).Begin();
         }
-        string t = "";
         private async void qrcode_MouseDown(object sender, MouseButtonEventArgs e)
         {
             wb.Navigate("http://ui.ptlogin2.qq.com/cgi-bin/login?appid=1006102&s_url=http://id.qq.com/index.html&hide_close_icon=1");
@@ -376,6 +304,51 @@ namespace Lemon_App
             qrcode.Background = new ImageBrush(new BitmapImage(new Uri(content)));
             //       op.IsOpen = true;
             index = 0;
+        }
+
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                vce.Play();
+                RenderTargetBitmap bmp = new RenderTargetBitmap(
+                    (int)vce.ActualWidth,
+                    (int)vce.ActualHeight,
+                    96, 96, PixelFormats.Default);
+                bmp.Render(vce);
+                BitmapEncoder encoder = new JpegBitmapEncoder();
+                encoder.Frames.Add(BitmapFrame.Create(bmp));
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    encoder.Save(ms);
+                    byte[] a = ms.ToArray();
+                    byte[] b = Convert.FromBase64String(File.ReadAllText(He.lsd.NAME + ".FaceData"));
+                    vce.Stop();
+                    var client = new Baidu.Aip.Face.Face("75bl82qIt9Rtly6Na6wqYUmm", "pMO9ZSQSsZFNvMMnXy5L3GaQbpWG6Fyw");
+                    var images = new byte[][] { a, b };
+                    var result = double.Parse(client.FaceMatch(images).First.First.Last.Last.First.ToString());
+                    if (result >= 90)
+                    {
+                        if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + He.lsd.NAME + "@qq.com.st"))
+                            He.Settings = (SettingsData)JSON.JsonToObject(Encoding.Default.GetString(Convert.FromBase64String(He.TextDecrypt(File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + He.lsd.NAME + "@qq.com.st"), FanyiBox.MD5.EncryptToMD5string(He.lsd.NAME + "@qq.com.st")))), He.Settings);
+                        else He.SaveSettings(He.lsd.NAME + "@qq.com");
+                        (Resources["OnLoaded1"] as Storyboard).Begin();
+                        tr.Start();
+                    }
+                    else txb.Text = "识别失败";
+                }
+            }
+            catch { txb.Text = "识别失败"; }
+            }
+
+        private void face_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (Email.Text != "QQ账号" && File.Exists(Email.Text + ".FaceData"))
+            {
+               vce.VideoCaptureSource = MultimediaUtil.VideoInputNames[0];
+                (Resources["FACESTAR"] as Storyboard).Begin();
+            }
+            else { rk.Text = "没有录入面部数据"; }
         }
     }
 }
