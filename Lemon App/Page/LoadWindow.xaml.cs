@@ -177,6 +177,7 @@ namespace Lemon_App
             {
                 wb.Navigate("http://ui.ptlogin2.qq.com/cgi-bin/login?appid=1006102&s_url=http://id.qq.com/index.html&hide_close_icon=1");
                 rk.Text = "登录中...";
+                await Task.Delay(2000);
                 System.Windows.Forms.HtmlDocument doc = wb.Document;
                 doc.GetElementById("switcher_plogin").InvokeMember("click");
                 await Task.Delay(200);

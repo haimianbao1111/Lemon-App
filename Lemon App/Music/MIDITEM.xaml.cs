@@ -29,7 +29,7 @@ namespace Lemon_App
         public async void SETMIDAsync(string MID)
         {
             this.MID = MID;
-            var s = await Uuuhh.GetWebDataAsync($"https://c.y.qq.com/qzone/fcg-bin/fcg_ucc_getcdinfo_byids_cp.fcg?type=1&json=1&utf8=1&onlysong=0&disstid={MID}&format=json&g_tk=5381&loginUin=0&hostUin=0&format=jsonp&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0", Encoding.UTF8);
+            var s = await Uuuhh.GetWebDatacAsync($"https://c.y.qq.com/qzone/fcg-bin/fcg_ucc_getcdinfo_byids_cp.fcg?type=1&json=1&utf8=1&onlysong=0&disstid={MID}&format=json&g_tk=5381&loginUin=0&hostUin=0&format=jsonp&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0", Encoding.UTF8);
             JObject o = JObject.Parse(s);
             MIDNAME.Text = o["cdlist"][0]["dissname"].ToString();
             MIDIMAGE.Background = new ImageBrush(new BitmapImage(new Uri(o["cdlist"][0]["logo"].ToString())));
